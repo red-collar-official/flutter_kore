@@ -1,0 +1,41 @@
+name: sample_basic
+description: Sample with basic interactor example and global navigation
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+  flutter: ^3.0.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+
+  mvvm_redux:
+    path: ../../
+
+  dio: ^4.0.6
+  freezed_annotation: ^2.1.0
+  shared_preferences: ^2.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  integration_test:
+    sdk: flutter
+
+  json_serializable:
+  build: ^2.2.1
+  build_config: ^1.0.0
+  build_runner: ^2.1.8
+  freezed: ^2.1.0+1
+  test:
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - "assets/flare/Like_best.flr"
+    - "assets/flare/bg_dance.png"
