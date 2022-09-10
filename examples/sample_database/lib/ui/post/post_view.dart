@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/data/stateful_data.dart';
-import 'package:sample/ui/posts_list/components/post_card.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/data/stateful_data.dart';
+import 'package:sample_database/ui/posts_list/components/post_card.dart';
 
 import 'post_view_model.dart';
 import 'post_view_state.dart';

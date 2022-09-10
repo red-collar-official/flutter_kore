@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample/domain/data/app_tab.dart';
+import 'package:sample_database/domain/data/app_tab.dart';
 
 typedef OnTabChangedCallback = void Function(AppTab appTab);
 

@@ -30,7 +30,7 @@ void main() {
         ..registerBuilders()
         ..registerSingletons();
 
-      Apis.posts = MockPostsApi();
+      app.apis.posts = MockPostsApi();
 
       await tester.pumpAndSettle();
 

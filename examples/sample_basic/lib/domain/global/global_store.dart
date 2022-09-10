@@ -5,12 +5,14 @@ import 'package:sample_basic/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
+import 'apis.dart';
 
 part 'global_store.g.dart';
 
 @mainApp
 class App extends MvvmReduxApp with AppGen {
-  static late SharedPreferences prefs;
+  late SharedPreferences prefs;
+  final apis = Apis();
 
   @override
   Future<void> initialize() async {
@@ -29,14 +31,14 @@ Future<void> initApp({bool testMode = false}) async {
     return;
   }
 
-  App.prefs = await SharedPreferences.getInstance();
+  app.prefs = await SharedPreferences.getInstance();
 
   MvvmReduxApp.cacheGetDelegate = (key) {
-    return App.prefs.getString(key) ?? '';
+    return app.prefs.getString(key) ?? '';
   };
 
   MvvmReduxApp.cachePutDelegate = (key, value) async {
-    return App.prefs.setString(key, value);
+    return app.prefs.setString(key, value);
   };
 
   await app.initialize();

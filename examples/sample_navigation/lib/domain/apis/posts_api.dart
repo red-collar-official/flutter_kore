@@ -5,6 +5,7 @@ import 'package:sample_navigation/domain/apis/base/apis.dart';
 import 'package:sample_navigation/domain/apis/base/request.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 
+@api
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
     ..method = RequestMethod.get

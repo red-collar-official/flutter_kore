@@ -2,7 +2,6 @@ import 'package:mvvm_redux/arch/http/simulate_response.dart';
 import 'package:sample_basic/domain/apis/base/request.dart';
 import 'package:sample_basic/domain/apis/posts_api.dart';
 import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/database/posts_box.dart';
 import 'package:sample_basic/domain/global/apis.dart';
 import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:test/test.dart';
@@ -19,9 +18,9 @@ void main() {
   test('getPosts parsing test', () async {
     await initApp(testMode: true);
 
-    Apis.posts = MockPostsApi();
+    app.apis.posts = MockPostsApi();
 
-    final response = await Apis.posts.getPosts(0, 30).execute();
+    final response = await app.apis.posts.getPosts(0, 30).execute();
 
     expect(response.result![0].body, 'qwerty');
   });

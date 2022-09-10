@@ -1,10 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sample_basic/domain/apis/posts_api.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:sample_basic/domain/apis/apis.dart';
+import 'package:flutter/material.dart';
 
-class Apis {
-  static PostsApi? _posts;
-  static PostsApi get posts => _posts ??= PostsApi();
-  @visibleForTesting
-  static set posts(value) => _posts = value;
+part 'apis.g.dart';
 
-}
+@mainApi
+class Apis with ApisGen {}

@@ -1,8 +1,8 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/data/stateful_data.dart';
-import 'package:sample_basic/domain/global/apis.dart';
 import 'package:sample_basic/domain/global/events.dart';
+import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 
 import 'post_state.dart';
@@ -12,7 +12,7 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
     updateState(state.copyWith(post: StatefulData.loading()));
 
-    final response = await Apis.posts.getPost(id).execute();
+    final response = await app.apis.posts.getPost(id).execute();
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
       updateState(state.copyWith(post: StatefulData.result(response.result!)));

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/data/stateful_data.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/data/stateful_data.dart';
 
 part 'posts_state.freezed.dart';
 

@@ -1,4 +1,4 @@
-import 'package:sample/ui/post/post_view.dart';
+import 'package:sample_database/ui/post/post_view.dart';
 
 import '../navigation_interactor.dart';
 import 'routes.dart';

@@ -24,7 +24,7 @@ void main() {
   test('PostsInteractorTest', () async {
     await initApp(testMode: true);
     
-    Apis.posts = MockPostsApi();
+    app.apis.posts = MockPostsApi();
 
     final postsInteractor = PostsInteractor();
     app.interactors.addTest<PostsInteractor>(postsInteractor);

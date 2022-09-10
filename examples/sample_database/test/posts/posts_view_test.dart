@@ -5,7 +5,6 @@ import 'package:mvvm_redux/arch/http/base_request.dart';
 import 'package:sample/domain/apis/base/request.dart';
 import 'package:sample/domain/apis/posts_api.dart';
 import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/global/apis.dart';
 import 'package:sample/domain/global/global_store.dart';
 import 'package:sample/ui/posts_list/posts_list_view.dart';
 
@@ -32,7 +31,7 @@ void main() {
         ..registerBuilders()
         ..registerSingletons();
 
-      Apis.posts = MockPostsApi();
+      app.apis.posts = MockPostsApi();
 
       await tester.pumpAndSettle();
 

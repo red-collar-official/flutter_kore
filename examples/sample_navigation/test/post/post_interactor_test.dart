@@ -3,7 +3,6 @@ import 'package:sample_navigation/domain/apis/base/request.dart';
 import 'package:sample_navigation/domain/apis/posts_api.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/data/stateful_data.dart';
-import 'package:sample_navigation/domain/global/apis.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';
 import 'package:test/test.dart';
@@ -22,7 +21,7 @@ void main() {
   test('PostsInteractorTest', () async {
     await initApp(testMode: true);
     
-    Apis.posts = MockPostsApi();
+    app.apis.posts = MockPostsApi();
 
     final postInteractor = PostInteractor();
     app.interactors.addTest<PostInteractor>(postInteractor);

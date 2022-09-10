@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/data/app_tab.dart';
-import 'package:sample/domain/global/global_store.dart';
-import 'package:sample/domain/interactors/navigation/navigation_interactor.dart';
+import 'package:sample_database/domain/data/app_tab.dart';
+import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 import 'home_view.dart';
 import 'home_view_state.dart';
@@ -16,6 +16,11 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
     // ignore
   }
 
+  @override
+  void onRestore(Map<String, dynamic> savedStateObject) {
+    updateState(HomeViewState.fromJson(savedStateObject));
+  }
+
   GlobalKey<NavigatorState> getNavigatorKey(AppTab tab) {
     return app.interactors.get<NavigationInteractor>().tabNavigatorKeys[tab]!;
   }
@@ -27,4 +32,7 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   AppTab get initialTab => app.interactors.get<NavigationInteractor>().state.currentTab!;
 
   Stream<AppTab?> get currentTabStream => app.interactors.get<NavigationInteractor>().updates((state) => state.currentTab);
+
+  @override
+  Map<String, dynamic> get savedStateObject => state.toJson();
 }

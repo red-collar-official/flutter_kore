@@ -4,11 +4,12 @@ import 'dart:async';
 import 'package:build/src/builder/build_step.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:mvvm_redux/annotations/default_interactor.dart';
+import 'package:mvvm_redux/annotations/main_api.dart';
 import 'package:mvvm_redux/annotations/main_app.dart';
+import 'package:mvvm_redux/annotations/api.dart';
 import 'package:mvvm_redux/annotations/singleton_interactor.dart';
 import 'package:source_gen/source_gen.dart';
-
-import 'main_app_visitor.dart';
+import 'package:mvvm_redux/generators/main_app_visitor.dart';
 
 class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
   List<Element> singletonAnnotated = [];
@@ -109,6 +110,63 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     classBuffer
       ..writeln('}')
       ..writeln('}');
+
+    return classBuffer.toString();
+  }
+}
+
+class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
+  List<Element> apiAnnotated = [];
+
+  @override
+  FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
+    const apiAnnotation = TypeChecker.fromRuntime(ApiAnnotation);
+
+    final annotatedApiFinder = [
+      for (var member in library.annotatedWith(apiAnnotation)) member.element,
+    ];
+
+    if (annotatedApiFinder.isNotEmpty) {
+      apiAnnotated.addAll(annotatedApiFinder);
+    }
+
+    return super.generate(library, buildStep);
+  }
+
+  @override
+  String generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    final visitor = MainAppVisitor();
+
+    element.visitChildren(visitor);
+
+    final className = '${visitor.className}Gen';
+    final classBuffer = StringBuffer();
+
+    // class Apis {
+    //   static PostsApi? _posts;
+    //   static PostsApi get posts => _posts ??= PostsApi();
+    //   @visibleForTesting
+    //   static set posts(value) => _posts = value;
+    // }
+
+    // ignore: cascade_invocations
+    classBuffer.writeln('mixin $className {');
+
+    // ignore: prefer_foreach
+    for (final element in apiAnnotated) {
+      if (element.name != null) {
+        final elementName = element.name!;
+        final elementShortName = elementName.toLowerCase().split('api')[0];
+
+        classBuffer
+          ..writeln('$elementName? _$elementShortName;')
+          ..writeln('$elementName get $elementShortName => _$elementShortName ??= $elementName();')
+          ..writeln('@visibleForTesting')
+          ..writeln('set $elementShortName(value) => _$elementShortName = value;');
+      }
+    }
+
+    classBuffer.writeln('}');
 
     return classBuffer.toString();
   }

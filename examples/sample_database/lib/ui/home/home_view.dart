@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/data/app_tab.dart';
-import 'package:sample/ui/posts_list/posts_list_view.dart';
+import 'package:sample_database/domain/data/app_tab.dart';
+import 'package:sample_database/ui/posts_list/posts_list_view.dart';
 
 import 'components/bottom_navigation.dart';
 import 'home_view_model.dart';

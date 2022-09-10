@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sample/domain/data/app_tab.dart';
+import 'package:sample_database/domain/data/app_tab.dart';
 
 part 'navigation_state.freezed.dart';
 

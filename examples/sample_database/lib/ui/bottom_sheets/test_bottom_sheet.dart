@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sample/domain/global/global_store.dart';
-import 'package:sample/domain/interactors/navigation/navigation_interactor.dart';
+import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 class TestBottomSheet extends StatelessWidget {
   @override

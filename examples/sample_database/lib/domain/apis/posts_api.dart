@@ -1,11 +1,12 @@
-// ignore_for_file: cascade_invocations
+// ignore_for_file: cascade_invocations, invalid_use_of_visible_for_testing_member
 
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/apis/base/apis.dart';
-import 'package:sample/domain/apis/base/request.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/database/posts_box.dart';
+import 'package:sample_database/domain/apis/base/apis.dart';
+import 'package:sample_database/domain/apis/base/request.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/database/posts_box.dart';
 
+@api
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
     ..method = RequestMethod.get
@@ -37,7 +38,6 @@ class PostsApi {
 
       return Post.fromJson(result);
     }
-    // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
       code: 200,
       result: Post(
@@ -62,7 +62,6 @@ class PostsApi {
 
       return Post.fromJson(result);
     }
-    // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
       code: 200,
       result: Post(

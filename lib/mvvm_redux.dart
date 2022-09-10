@@ -16,3 +16,5 @@ export 'arch/http/base_request.dart';
 export 'annotations/default_interactor.dart';
 export 'annotations/main_app.dart';
 export 'annotations/singleton_interactor.dart';
+export 'annotations/api.dart';
+export 'annotations/main_api.dart';

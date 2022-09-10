@@ -1,8 +1,8 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/data/stateful_data.dart';
-import 'package:sample_basic/domain/global/apis.dart';
 import 'package:sample_basic/domain/global/events.dart';
+import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 
 import 'posts_state.dart';
@@ -15,9 +15,9 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
     late Response<List<Post>> response;
 
     if (refresh) {
-      response = await Apis.posts.getPosts(0, limit).execute();
+      response = await app.apis.posts.getPosts(0, limit).execute();
     } else {
-      response = await Apis.posts.getPosts(offset, limit).execute();
+      response = await app.apis.posts.getPosts(offset, limit).execute();
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {

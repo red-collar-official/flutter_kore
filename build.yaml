@@ -6,9 +6,9 @@ targets:
 
 builders:
   generators:
-    target: ":streamservice-client-toolbox"
+    target: ":mvvm_redux"
     import: "package:mvvm_redux/generators/builders.dart"
-    builder_factories: ["generateMainApp"]
+    builder_factories: ["generateMainApp", "generateMainApi"]
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents
     build_to: cache

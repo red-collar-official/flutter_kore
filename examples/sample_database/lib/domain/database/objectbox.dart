@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-import 'package:sample/domain/data/post.dart';
+import 'package:sample_database/domain/data/post.dart';
 
 import '../../objectbox.g.dart';
 

@@ -1,4 +1,4 @@
-import 'package:sample/domain/flavors/base/flavor.dart';
+import 'package:sample_database/domain/flavors/base/flavor.dart';
 
 class TestFlavor extends Flavor {
   @override

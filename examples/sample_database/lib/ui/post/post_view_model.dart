@@ -1,11 +1,11 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/data/stateful_data.dart';
-import 'package:sample/domain/global/global_store.dart';
-import 'package:sample/domain/interactors/navigation/components/bottom_sheets.dart';
-import 'package:sample/domain/interactors/navigation/components/dialogs.dart';
-import 'package:sample/domain/interactors/navigation/navigation_interactor.dart';
-import 'package:sample/domain/interactors/post/post_interactor.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/data/stateful_data.dart';
+import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/interactors/navigation/components/bottom_sheets.dart';
+import 'package:sample_database/domain/interactors/navigation/components/dialogs.dart';
+import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
+import 'package:sample_database/domain/interactors/post/post_interactor.dart';
 
 import 'post_view.dart';
 import 'post_view_state.dart';

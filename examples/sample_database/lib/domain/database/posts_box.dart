@@ -1,9 +1,9 @@
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/global/global_store.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/global/global_store.dart';
 
 class PostsBox {
   static Future<List<Post>> getPostsDelegate(int offset, int limit, Map? headers) async {
-    final postsBox = App.objectBox.store.box<Post>();
+    final postsBox = app.objectBox.store.box<Post>();
 
     final query = postsBox.query().build();
 
@@ -18,13 +18,13 @@ class PostsBox {
   }
 
   static Future putPostsDelegate(List<Post> result) async {
-    final postsBox = App.objectBox.store.box<Post>();
+    final postsBox = app.objectBox.store.box<Post>();
     // ignore: cascade_invocations
     postsBox.putMany(result);
   }
 
   static Future<Post?> getPostDelegate(int id) async {
-    final postsBox = App.objectBox.store.box<Post>();
+    final postsBox = app.objectBox.store.box<Post>();
     final post = postsBox.get(id);
     return post;
   }
@@ -34,7 +34,7 @@ class PostsBox {
       return;
     }
 
-    final postsBox = App.objectBox.store.box<Post>();
+    final postsBox = app.objectBox.store.box<Post>();
     // ignore: cascade_invocations
     postsBox.put(result);
   }

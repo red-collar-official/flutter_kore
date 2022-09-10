@@ -3,7 +3,6 @@ import 'package:sample/domain/apis/base/request.dart';
 import 'package:sample/domain/apis/posts_api.dart';
 import 'package:sample/domain/data/post.dart';
 import 'package:sample/domain/database/posts_box.dart';
-import 'package:sample/domain/global/apis.dart';
 import 'package:sample/domain/global/global_store.dart';
 import 'package:test/test.dart';
 
@@ -22,9 +21,9 @@ void main() {
 
     await initApp(testMode: true);
 
-    Apis.posts = MockPostsApi();
+    app.apis.posts = MockPostsApi();
 
-    final response = await Apis.posts.getPosts(0, 30).execute();
+    final response = await app.apis.posts.getPosts(0, 30).execute();
 
     expect(response.result![0].body, 'qwerty');
 

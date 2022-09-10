@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample/domain/data/app_tab.dart';
-import 'package:sample/domain/interactors/navigation/components/bottom_sheets_mixin.dart';
-import 'package:sample/domain/interactors/navigation/components/dialogs_mixin.dart';
-import 'package:sample/domain/interactors/navigation/components/routes.dart';
-import 'package:sample/domain/interactors/navigation/components/routes_mixin.dart';
+import 'package:sample_database/domain/data/app_tab.dart';
+import 'package:sample_database/domain/interactors/navigation/components/bottom_sheets_mixin.dart';
+import 'package:sample_database/domain/interactors/navigation/components/dialogs_mixin.dart';
+import 'package:sample_database/domain/interactors/navigation/components/routes.dart';
+import 'package:sample_database/domain/interactors/navigation/components/routes_mixin.dart';
 import 'package:mvvm_redux/utility/navigation/dialog_route.dart' as navigations;
 import 'package:mvvm_redux/utility/navigation/bottom_sheet_route.dart' as bottom_sheet;
 

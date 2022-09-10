@@ -1,4 +1,4 @@
-import 'package:sample/ui/bottom_sheets/test_bottom_sheet.dart';
+import 'package:sample_database/ui/bottom_sheets/test_bottom_sheet.dart';
 
 import '../navigation_interactor.dart';
 import 'bottom_sheets.dart';
