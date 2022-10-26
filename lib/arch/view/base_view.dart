@@ -16,7 +16,7 @@ import 'base_view_model.dart';
 /// 
 /// class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewModel> {
 ///   @override
-///   Widget buildPage(BuildContext context) {
+///   Widget buildView(BuildContext context) {
 ///     return Container();
 ///   }
 /// 
@@ -70,7 +70,7 @@ abstract class BaseView<View extends StatefulWidget, ScreenState, ViewModel exte
   /// Factory method for view model for this view
   ViewModel createViewModel();
 
-  Widget buildPage(BuildContext context);
+  Widget buildView(BuildContext context);
 
   bool get isInnerView => false;
 
@@ -78,6 +78,6 @@ abstract class BaseView<View extends StatefulWidget, ScreenState, ViewModel exte
   Widget build(BuildContext context) {
     super.build(context);
 
-    return buildPage(context);
+    return buildView(context);
   }
 }

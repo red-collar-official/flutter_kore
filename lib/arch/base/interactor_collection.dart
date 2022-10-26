@@ -139,7 +139,7 @@ class InteractorCollection {
   /// Adds test interactor for given interactor type
   /// Used only for tests
   @visibleForTesting
-  void addTest<Interactor extends BaseInteractor>(Interactor interactor) {
+  void addTest<Interactor extends BaseInteractor>(BaseInteractor interactor) {
     final id = Interactor.toString();
     _interactors[id] = interactor;
 

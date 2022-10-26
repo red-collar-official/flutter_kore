@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/data/stateful_data.dart';
+import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:sample_basic/domain/interactors/posts/posts_interactor.dart';
+import 'package:sample_basic/domain/interactors/user_defaults/user_defaults_interactor.dart';
 import 'package:sample_basic/ui/post/post_view.dart';
 
 import 'posts_list_view.dart';
@@ -14,13 +16,18 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
         Connector(interactor: PostsInteractor),
       ];
 
+  late final postsInteractor = interactors.get<PostsInteractor>();
+  
+  late final userDefaultsInteractor = app.interactors.get<UserDefaultsInteractor>();
+
   @override
   void onLaunch(PostsListView widget) {
-    interactors.get<PostsInteractor>().loadPosts(0, 30);
+    postsInteractor.loadPosts(0, 30);
+    userDefaultsInteractor.saveFirstAppLaunch();
   }
 
   void like(int id) {
-    interactors.get<PostsInteractor>().likePost(id);
+    postsInteractor.likePost(id);
   }
 
   void openPost(BuildContext context, Post post) {
@@ -29,6 +36,6 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     }));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
-  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
+  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => postsInteractor.changes((state) => state.posts);
 }

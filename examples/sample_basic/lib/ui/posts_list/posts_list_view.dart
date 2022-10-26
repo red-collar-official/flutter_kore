@@ -16,7 +16,7 @@ class PostsListView extends StatefulWidget {
 
 class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
-  Widget buildPage(BuildContext context) {
+  Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       appBar: AppBar(

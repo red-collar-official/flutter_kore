@@ -21,7 +21,7 @@ class _HomeViewWidgetState extends BaseView<HomeView, HomeViewState, HomeViewMod
   };
 
   @override
-  Widget buildPage(BuildContext context) {
+  Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: StreamBuilder<AppTab?>(

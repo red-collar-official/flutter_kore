@@ -5,7 +5,7 @@
 Data layer consists of <b>Api</b> and <b>Box</b> classes.
 
 Api class contains getters or functions that return <b>HttpRequest</b>.
-Api classes must be annotated with <b>api</b> annotation
+Api classes must be annotated with <b>api</b> annotation.
 
 <b>HttpRequest</b> has following fields:
 
@@ -155,18 +155,18 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 This layer contains <b>Interactor</b> classes.
 Interactors contain state and subscription to <b>EventBus</b> events (EventBus will be described later). 
 
-State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updatesFor</b> or <b>changesFor</b>
+State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updatesFor</b> or <b>changesFor</b>.
 
-Interactors must be annotated with <b>defaultInteractor</b> or <b>singletonInteractor</b>
+Interactors must be annotated with <b>defaultInteractor</b> or <b>singletonInteractor</b>.
 
 When interactor is annotated with <b>singletonInteractor</b> it belongs to global interactors collection.
 
 We dont need to write dependencies in our view models for singleton interactors (view model dependencies will be explained below) 
-and we can access it with <b>app.interactors</b>
+and we can access it with <b>app.interactors</b>.
 
-When interactor is annotated with <b>defaultInteractor</b> we need to write dependency for it in our view model (view model dependencies will be explained below) 
+When interactor is annotated with <b>defaultInteractor</b> we need to write dependency for it in our view model (view model dependencies will be explained below).
 
-This interactors can be disposed when dependent element is disposed
+This interactors can be disposed when dependent element is disposed.
 
 Typical example would be:
 
@@ -242,15 +242,15 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
 
 ```
 
-In the last example we also can see that every interactor also has <b>savedStateObject</b>
+In the last example we also can see that every interactor also has <b>savedStateObject</b>.
 
 When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b>
-It later can be restored with <b>onRestore</b>
+It later can be restored with <b>onRestore</b>.
 
 ### EventBus
 
-View models and interactors have access to <b>EventBus</b> events
-Events can be subscribed to with <b>subscribeTo</b> getter
+View models and interactors have access to <b>EventBus</b> events.
+Events can be subscribed to with <b>subscribeTo</b> getter.
 
 An example:
 
@@ -263,7 +263,7 @@ Map<String, EventBusSubscriber> get subscribeTo => {
     };
 ```
 
-To send events you need to access <b>EventBus</b> instance
+To send events you need to access <b>EventBus</b> instance.
 
 An example:
 
@@ -273,10 +273,10 @@ app.eventBus.send(Events.eventPostLiked, payload: id);
 
 ### MainApp and Apis
 
-There are also utility classes to connect all components of architecture
-This classes are generated using <b>builder</b> package
+There are also utility classes to connect all components of architecture.
+This classes are generated using <b>builder</b> package.
 
-For example here is definition of main app class
+For example here is definition of main app class:
 
 ```dart
 @mainApp
@@ -292,7 +292,7 @@ class App extends MvvmReduxApp with AppGen {
 }
 ```
 
-And here is definition of Apis class 
+And here is definition of Apis class:
 
 
 ```dart
@@ -301,11 +301,11 @@ class Apis with ApisGen {}
 ```
 
 App class holds instances to global <b>InteractorCollection</b>, <b>SharedPreferences</b>, <b>Apis</b> and <b>ObjectBox</b>(if needed)
-We define global variable for app class and initialize it before calling <b>runApp</b>
+We define global variable for app class and initialize it before calling <b>runApp</b>.
 
 ## Presentation Layer
 
-Presentation layer consists of view model and view classes that are connected together
+Presentation layer consists of view model and view classes that are connected together.
 
 ### ViewModel
 
@@ -362,11 +362,11 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 }
 ```
 
-View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>
+View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>.
 
 ### View
 
-The last class is view. View has a reference to view model and getter for initial state.
+The last class is view. View has a reference to view model and getter for initial state for view model.
 
 Example: 
 
@@ -380,7 +380,7 @@ class PostsListView extends StatefulWidget {
 
 class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
-  Widget buildPage(BuildContext context) {
+  Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       appBar: AppBar(
@@ -439,4 +439,8 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
   PostsListViewState get initialState => PostsListViewState();
 }
 ```
+
+Important note:
+
+If you are using VSCode you can install extension to generate interactor and view folders for this architecture.
 

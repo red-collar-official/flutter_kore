@@ -25,7 +25,7 @@ class PostView extends StatefulWidget {
 
 class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewModel> {
   @override
-  Widget buildPage(BuildContext context) {
+  Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

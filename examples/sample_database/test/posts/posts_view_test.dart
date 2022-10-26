@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:mvvm_redux/arch/http/base_request.dart';
-import 'package:sample/domain/apis/base/request.dart';
-import 'package:sample/domain/apis/posts_api.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/global/global_store.dart';
-import 'package:sample/ui/posts_list/posts_list_view.dart';
+import 'package:sample_database/domain/apis/base/request.dart';
+import 'package:sample_database/domain/apis/posts_api.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/ui/posts_list/posts_list_view.dart';
 
 class MockPostsApi extends PostsApi {
   @override
