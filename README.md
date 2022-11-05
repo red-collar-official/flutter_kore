@@ -442,5 +442,5 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Important note:
 
-If you are using VSCode you can install extension to generate interactor and view folders for this architecture.
+If you using VSCode then to quickly generate files for this architecture use [Mvvm-Redux-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/mvvm-redux-vs-code-gen-plugin/)
 

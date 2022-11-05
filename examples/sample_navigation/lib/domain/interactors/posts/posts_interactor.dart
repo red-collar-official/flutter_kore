@@ -20,7 +20,7 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
       response = await app.apis.posts.getPosts(offset, limit).execute();
     }
 
-    if (response.isSuccessful || response.isSuccessfulFromDatabase) {
+    if (response.isSuccessful) {
       updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
     } else {
       updateState(state.copyWith(posts: StatefulData.error(response.error)));

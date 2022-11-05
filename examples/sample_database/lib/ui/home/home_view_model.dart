@@ -22,7 +22,7 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   }
 
   GlobalKey<NavigatorState> getNavigatorKey(AppTab tab) {
-    return app.interactors.get<NavigationInteractor>().tabNavigatorKeys[tab]!;
+    return app.interactors.get<NavigationInteractor>().getNavigatorForTab(tab);
   }
 
   void changeTab(AppTab tab) {

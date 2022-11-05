@@ -2,9 +2,6 @@ analyzer:
   errors:
     todo: ignore
   exclude:
-    - test/
-    - test/**.*
-    - test_driver/
     - lib/**.g.dart
     - lib/**.freezed.dart
 

@@ -2,7 +2,7 @@ import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/data/stateful_data.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/routes.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart';
 

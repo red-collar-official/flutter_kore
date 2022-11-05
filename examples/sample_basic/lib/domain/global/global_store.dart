@@ -22,6 +22,8 @@ class App extends MvvmReduxApp with AppGen {
 
 final app = App();
 
+/// Initializes global app instance and global flutter fields and callbacks
+/// [testMode] means flutter test enviroment, not some flavor
 Future<void> initApp({bool testMode = false}) async {
   WidgetsFlutterBinding.ensureInitialized();
 

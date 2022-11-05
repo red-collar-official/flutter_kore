@@ -2,8 +2,8 @@ import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/data/stateful_data.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/bottom_sheets.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/dialogs.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/bottom_sheets/bottom_sheets.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/dialogs/dialogs.dart';
 import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';
 

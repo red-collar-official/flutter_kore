@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sample_database/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_database/ui/home/home_view.dart';
 import 'domain/global/global_store.dart';
-import 'domain/interactors/navigation/navigation_interactor.dart';
 
 void main() async {
   await initApp();

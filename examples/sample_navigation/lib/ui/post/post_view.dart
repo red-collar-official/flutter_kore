@@ -55,8 +55,9 @@ class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewMod
           body: value.body ?? '',
           isLiked: value.isLiked,
           onLikeTap: () {
-            viewModel.like(value.id ?? 0);
-            //viewModel.openTestBottomSheet();
+            viewModel
+              ..like(value.id ?? 0)
+              ..openTestDialog();
           },
         );
       },

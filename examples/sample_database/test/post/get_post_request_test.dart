@@ -1,9 +1,9 @@
 import 'package:mvvm_redux/arch/http/simulate_response.dart';
-import 'package:sample/domain/apis/base/request.dart';
-import 'package:sample/domain/apis/posts_api.dart';
-import 'package:sample/domain/data/post.dart';
-import 'package:sample/domain/database/posts_box.dart';
-import 'package:sample/domain/global/global_store.dart';
+import 'package:sample_database/domain/apis/base/request.dart';
+import 'package:sample_database/domain/apis/posts_api.dart';
+import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/database/posts_box.dart';
+import 'package:sample_database/domain/global/global_store.dart';
 import 'package:test/test.dart';
 
 class MockPostsApi extends PostsApi {

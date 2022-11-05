@@ -2,7 +2,6 @@ import 'package:mvvm_redux/arch/http/simulate_response.dart';
 import 'package:sample_basic/domain/apis/base/request.dart';
 import 'package:sample_basic/domain/apis/posts_api.dart';
 import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/global/apis.dart';
 import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:test/test.dart';
 

@@ -3,7 +3,6 @@ import 'package:sample_basic/domain/apis/base/request.dart';
 import 'package:sample_basic/domain/apis/posts_api.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/data/stateful_data.dart';
-import 'package:sample_basic/domain/global/apis.dart';
 import 'package:sample_basic/domain/global/global_store.dart';
 import 'package:sample_basic/domain/interactors/post/post_interactor.dart';
 import 'package:test/test.dart';
