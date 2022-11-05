@@ -64,7 +64,7 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
     bool global = false,
   }) async {
     // Firstly check if element is already in stack
-    // if it is we just return immediately
+    // if it is and uniqueInStack flag is set to true we just return immediately
     if (uniqueInStack && !navigationStack.checkUnique(routeName, state.currentTab, _checkIfGlobalNavigatorNeeded(global)) && !replace) {
       return;
     }
