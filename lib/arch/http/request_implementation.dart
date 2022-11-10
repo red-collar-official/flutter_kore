@@ -196,7 +196,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     try {
       response = await constructRequest(client, method, data);
     } on dio.DioError catch (error) {
-      await onError(error, () => _retryRequest(client, data, error));
+      return onError(error, () => _retryRequest(client, data, error));
     }
 
     return response;
