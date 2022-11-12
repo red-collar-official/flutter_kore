@@ -162,10 +162,13 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
     client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
 
+    final resultHeaders = defaultHeaders;
+
     if (headers != null) {
-      defaultHeaders.addAll(headers!);
+      resultHeaders.addAll(headers!);
     }
-    client.options.headers = defaultHeaders;
+
+    client.options.headers = resultHeaders;
 
     client.interceptors.addAll([
       dio.LogInterceptor(
@@ -220,7 +223,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       case RequestMethod.get:
         return dio.getUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''));
       case RequestMethod.post:
-        return dio.post(Uri.encodeFull(url ?? ''), data: data);
+        return dio.postUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
       case RequestMethod.put:
         return dio.putUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
       case RequestMethod.delete:
