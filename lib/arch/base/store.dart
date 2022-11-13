@@ -74,7 +74,7 @@ class Store<State> {
     Value? lastRegisteredValue;
 
     return _state.stream.map((event) => StoreChange(mapper(_state.previous ?? event), mapper(event))).where((element) {
-      return lastRegisteredValue != element.next;
+      return element.previous != element.next || lastRegisteredValue != element.next;
     }).map((event) {
       lastRegisteredValue = event.next;
       return event.next;
@@ -90,8 +90,6 @@ class Store<State> {
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
-    return _state.stream.map((event) => StoreChange(mapper(_state.previous ?? event), mapper(event))).where((element) {
-      return element.previous != element.next;
-    });
+    return _state.stream.map((event) => StoreChange(mapper(_state.previous ?? event), mapper(event)));
   }
 }
