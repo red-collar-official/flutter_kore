@@ -27,11 +27,11 @@ class Observable<T> {
   T? _previous;
 
   Observable() {
-    _controller = StreamController<T>.broadcast(sync: true);
+    _controller = StreamController<T>.broadcast();
   }
 
   Observable.initial(T initial) {
-    _controller = StreamController<T>.broadcast(sync: true);
+    _controller = StreamController<T>.broadcast();
 
     update(initial);
   }

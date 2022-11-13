@@ -8,5 +8,6 @@ part 'posts_state.freezed.dart';
 class PostsState with _$PostsState {
   factory PostsState({
     StatefulData<List<Post>>? posts,
+    bool? active,
   }) = _PostsState;
 }
