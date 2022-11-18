@@ -61,7 +61,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   Future<dynamic> onError(dio.DioError error, RetryHandler retry);
 
   /// Function to add autharization headers to [Dio] instance
-  void onAutharization(dio.Dio dio);
+  void onAuthorization(dio.Dio dio);
 
   @override
   Future<Response<T>> execute() async {
@@ -216,7 +216,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
 
     if (requiresLogin) {
-      onAutharization(dio);
+      onAuthorization(dio);
     }
 
     switch (method) {

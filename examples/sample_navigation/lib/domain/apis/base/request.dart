@@ -39,7 +39,7 @@ class HttpRequest<T> extends RequestImplementation<T> {
   }
 
   @override
-  void onAutharization(Dio dio) {
+  void onAuthorization(Dio dio) {
     // ignore
   }
 
