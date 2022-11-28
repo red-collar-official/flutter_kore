@@ -44,7 +44,7 @@ class InteractorCollection {
     final builder = _builders[id];
 
     final interactor = builder!();
-    interactor.initialize();
+    interactor.initializeInternal();
 
     return interactor;
   }
