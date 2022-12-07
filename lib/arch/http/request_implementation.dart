@@ -227,9 +227,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       case RequestMethod.put:
         return dio.putUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
       case RequestMethod.delete:
-        return dio.delete(Uri.encodeFull(url ?? ''));
+        return dio.deleteUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
       case RequestMethod.patch:
-        return dio.patch(Uri.encodeFull(url ?? ''), data: encodedData);
+        return dio.patchUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
       default:
         return dio.get(Uri.encodeFull(url ?? ''));
     }
