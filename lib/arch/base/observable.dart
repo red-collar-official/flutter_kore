@@ -50,7 +50,9 @@ class Observable<T> {
     _previous = current;
     _current = data;
 
-    _controller.add(data);
+    if (!_controller.isClosed) {
+      _controller.add(data);
+    }
   }
 
   /// Closes underlaying stream controller
