@@ -66,10 +66,7 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
       bottomSheet = Theme(data: theme!, child: bottomSheet);
     }
 
-    return Container(
-      padding: const EdgeInsets.only(top: 32),
-      child: bottomSheet,
-    );
+    return bottomSheet;
   }
 }
 
@@ -99,24 +96,21 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
                 0,
                 MediaQuery.of(context).size.height + MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: BottomSheet(
-                  animationController: widget.route._animationController,
-                  enableDrag: widget.enableDrag ?? true,
-                  onClosing: () async {
-                    if (widget.route.isCurrent) {
-                      if (widget.onClosed != null) {
-                        await widget.onClosed!(true);
-                      }
+              child: BottomSheet(
+                animationController: widget.route._animationController,
+                enableDrag: widget.enableDrag ?? true,
+                onClosing: () async {
+                  if (widget.route.isCurrent) {
+                    if (widget.onClosed != null) {
+                      await widget.onClosed!(true);
                     }
-                  },
-                  builder: widget.route.builder,
-                  backgroundColor: widget.backgroundColor,
-                  elevation: widget.elevation,
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent),
-                  ),
+                  }
+                },
+                builder: widget.route.builder,
+                backgroundColor: widget.backgroundColor,
+                elevation: widget.elevation,
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.transparent),
                 ),
               ),
             ),
