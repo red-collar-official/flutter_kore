@@ -106,7 +106,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {
     dependsOn.forEach((element) {
-      if (!element.unique) {
+      if (element.unique) {
         return;
       }
 
@@ -117,7 +117,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
   /// Decreases reference count for every interactor in [dependsOn]
   void _decreaseReferences() {
     dependsOn.forEach((element) {
-      if (!element.unique) {
+      if (element.unique) {
         return;
       }
 
