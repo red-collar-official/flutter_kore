@@ -17,15 +17,19 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
   @override
   FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
-    const singletonInteractorAnnotation = TypeChecker.fromRuntime(SingletonInteractorAnnotation);
-    const defaultInteractorAnnotation = TypeChecker.fromRuntime(DefaultInteractorAnnotation);
+    const singletonInteractorAnnotation =
+        TypeChecker.fromRuntime(SingletonInteractorAnnotation);
+    const defaultInteractorAnnotation =
+        TypeChecker.fromRuntime(DefaultInteractorAnnotation);
 
     final annotatedSingletonFinder = [
-      for (var member in library.annotatedWith(singletonInteractorAnnotation)) member.element,
+      for (var member in library.annotatedWith(singletonInteractorAnnotation))
+        member.element,
     ];
 
     final defaultAnnotatedFinder = [
-      for (var member in library.annotatedWith(defaultInteractorAnnotation)) member.element,
+      for (var member in library.annotatedWith(defaultInteractorAnnotation))
+        member.element,
     ];
 
     if (annotatedSingletonFinder.isNotEmpty) {
@@ -40,7 +44,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
   }
 
   @override
-  String generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  String generateForAnnotatedElement(
+      Element element, ConstantReader annotation, BuildStep buildStep) {
     final visitor = MainAppVisitor();
 
     element.visitChildren(visitor);
@@ -96,11 +101,13 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     }
 
     singletonAnnotated.forEach((element) {
-      classBuffer.writeln('..addBuilder<${element.name}>(() => ${element.name}())');
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
     defaultAnnotated.forEach((element) {
-      classBuffer.writeln('..addBuilder<${element.name}>(() => ${element.name}())');
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
     if (singletonAnnotated.isNotEmpty || defaultAnnotated.isNotEmpty) {
@@ -134,7 +141,8 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
   }
 
   @override
-  String generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+  String generateForAnnotatedElement(
+      Element element, ConstantReader annotation, BuildStep buildStep) {
     final visitor = MainAppVisitor();
 
     element.visitChildren(visitor);
@@ -160,9 +168,11 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
 
         classBuffer
           ..writeln('$elementName? _$elementShortName;')
-          ..writeln('$elementName get $elementShortName => _$elementShortName ??= $elementName();')
+          ..writeln(
+              '$elementName get $elementShortName => _$elementShortName ??= $elementName();')
           ..writeln('@visibleForTesting')
-          ..writeln('set $elementShortName(value) => _$elementShortName = value;');
+          ..writeln(
+              'set $elementShortName(value) => _$elementShortName = value;');
       }
     }
 

@@ -20,11 +20,14 @@ import 'navigation_state.dart';
 typedef RouteBuilder = Widget Function(Map<String, dynamic>? payload);
 
 @singletonInteractor
-class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMixin, DialogsMixin, BottomSheetsMixin {
+class NavigationInteractor extends BaseInteractor<NavigationState>
+    with RoutesMixin, DialogsMixin, BottomSheetsMixin {
   final navigationStack = NavigationStack();
 
-  RouteModel latestGlobalRoute() => navigationStack.globalNavigationStack.routeStack.last;
-  RouteModel latestTabRoute() => navigationStack.tabNavigationStack.tabRouteStack[state.currentTab]!.last;
+  RouteModel latestGlobalRoute() =>
+      navigationStack.globalNavigationStack.routeStack.last;
+  RouteModel latestTabRoute() =>
+      navigationStack.tabNavigationStack.tabRouteStack[state.currentTab]!.last;
 
   // On android we always use global navigator
   bool _checkIfGlobalNavigatorNeeded(bool global) {
@@ -48,9 +51,11 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
   }
 
   void pop({dynamic payload, bool global = false}) {
-    final navigator = getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
+    final navigator =
+        getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
 
-    navigationStack.pop(state.currentTab, _checkIfGlobalNavigatorNeeded(global));
+    navigationStack.pop(
+        state.currentTab, _checkIfGlobalNavigatorNeeded(global));
 
     navigator.currentState?.pop(payload);
   }
@@ -65,17 +70,23 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
   }) async {
     // Firstly check if element is already in stack
     // if it is and uniqueInStack flag is set to true we just return immediately
-    if (uniqueInStack && !navigationStack.checkUnique(routeName, state.currentTab, _checkIfGlobalNavigatorNeeded(global)) && !replace) {
+    if (uniqueInStack &&
+        !navigationStack.checkUnique(routeName, state.currentTab,
+            _checkIfGlobalNavigatorNeeded(global)) &&
+        !replace) {
       return;
     }
 
-    final navigator = getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
+    final navigator =
+        getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
 
-    final route = NavigationUtilities.buildPageRoute(routes[routeName]!(payload), fullScreenDialog, routeName);
+    final route = NavigationUtilities.buildPageRoute(
+        routes[routeName]!(payload), fullScreenDialog, routeName);
 
     if (replace) {
       // if replace flag is provided we clear stack and navigator state
-      navigationStack.replaceStack(routeName, state.currentTab, _checkIfGlobalNavigatorNeeded(global), uniqueInStack);
+      navigationStack.replaceStack(routeName, state.currentTab,
+          _checkIfGlobalNavigatorNeeded(global), uniqueInStack);
 
       unawaited(navigator.currentState?.pushAndRemoveUntil(
         route,
@@ -83,7 +94,8 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
       ));
     } else {
       // otherwise we just add route and push it to navigator
-      navigationStack.addRoute(routeName, state.currentTab, _checkIfGlobalNavigatorNeeded(global), uniqueInStack, true);
+      navigationStack.addRoute(routeName, state.currentTab,
+          _checkIfGlobalNavigatorNeeded(global), uniqueInStack, true);
 
       final result = await navigator.currentState?.push(
         route,
@@ -99,9 +111,11 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
     bool dismissable = true,
     bool global = false,
   }) async {
-    final navigator = getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
+    final navigator =
+        getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
 
-    navigationStack.addRoute(dialogName, state.currentTab, _checkIfGlobalNavigatorNeeded(global), true, dismissable);
+    navigationStack.addRoute(dialogName, state.currentTab,
+        _checkIfGlobalNavigatorNeeded(global), true, dismissable);
 
     final result = await NavigationUtilities.pushDialogRoute(
       navigator: navigator,
@@ -109,10 +123,12 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
       child: dialogs[dialogName]!(payload),
     );
 
-    if (!navigationStack.checkUnique(dialogName, state.currentTab, _checkIfGlobalNavigatorNeeded(global))) {
+    if (!navigationStack.checkUnique(
+        dialogName, state.currentTab, _checkIfGlobalNavigatorNeeded(global))) {
       // this means that bottom sheet was closed by tap to outside space
       // because dialogs are unique in stack
-      navigationStack.pop(state.currentTab, _checkIfGlobalNavigatorNeeded(global));
+      navigationStack.pop(
+          state.currentTab, _checkIfGlobalNavigatorNeeded(global));
     }
 
     return result;
@@ -124,23 +140,28 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
     bool global = false,
     bool dismissable = true,
   }) async {
-    final navigator = getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
+    final navigator =
+        getNavigator(global: _checkIfGlobalNavigatorNeeded(global));
 
-    navigationStack.addRoute(bottomSheetName, state.currentTab, _checkIfGlobalNavigatorNeeded(global), true, dismissable);
+    navigationStack.addRoute(bottomSheetName, state.currentTab,
+        _checkIfGlobalNavigatorNeeded(global), true, dismissable);
 
     final result = await NavigationUtilities.pushBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: bottomSheets[bottomSheetName]!(payload),
       onClosed: () {
-        navigationStack.pop(state.currentTab, _checkIfGlobalNavigatorNeeded(global));
+        navigationStack.pop(
+            state.currentTab, _checkIfGlobalNavigatorNeeded(global));
       },
     );
 
-    if (!navigationStack.checkUnique(bottomSheetName, state.currentTab, _checkIfGlobalNavigatorNeeded(global))) {
+    if (!navigationStack.checkUnique(bottomSheetName, state.currentTab,
+        _checkIfGlobalNavigatorNeeded(global))) {
       // this means that bottom sheet was closed by tap to outside space
       // because bottom sheets are unique in stack
-      navigationStack.pop(state.currentTab, _checkIfGlobalNavigatorNeeded(global));
+      navigationStack.pop(
+          state.currentTab, _checkIfGlobalNavigatorNeeded(global));
     }
 
     return result;
@@ -151,5 +172,6 @@ class NavigationInteractor extends BaseInteractor<NavigationState> with RoutesMi
   }
 
   @override
-  NavigationState get initialState => NavigationState(currentTab: AppTabs.posts);
+  NavigationState initialState(Map<String, dynamic>? input) =>
+      NavigationState(currentTab: AppTabs.posts);
 }

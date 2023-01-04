@@ -28,17 +28,22 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
   void _onPostLiked() {
     final currentLike = (state.post as ResultData<Post?>).result!.isLiked;
 
-    final newPost = StatefulData.result((state.post as ResultData<Post?>).result!.copyWith(isLiked: !currentLike));
+    final newPost = StatefulData.result((state.post as ResultData<Post?>)
+        .result!
+        .copyWith(isLiked: !currentLike));
     updateState(state.copyWith(post: newPost));
   }
 
   @override
-  PostState get initialState => PostState();
+  PostState initialState(Map<String, dynamic>? input) => PostState(
+        post: StatefulData.result(input?['post']),
+      );
 
   @override
   Map<String, EventBusSubscriber> get subscribeTo => {
         Events.eventPostLiked: (payload) {
-          if (state.post is ResultData<Post> && payload == (state.post as ResultData<Post>).result.id) {
+          if (state.post is ResultData<Post> &&
+              payload == (state.post as ResultData<Post>).result.id) {
             _onPostLiked();
           }
         }

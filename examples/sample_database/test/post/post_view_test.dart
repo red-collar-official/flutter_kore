@@ -11,11 +11,13 @@ import 'package:sample_database/ui/post/post_view.dart';
 class MockPostsApi extends PostsApi {
   @override
   HttpRequest<Post?> getPost(int id) => super.getPost(id)
-    ..simulateResult = Response(code: 200, result: Post(
-      title: 'TestTitle',
-      body: 'TestBody',
-      id: 1,
-    ));
+    ..simulateResult = Response(
+        code: 200,
+        result: Post(
+          title: 'TestTitle',
+          body: 'TestBody',
+          id: 1,
+        ));
 }
 
 void main() {
@@ -24,7 +26,7 @@ void main() {
   group('PostViewTest', () {
     testWidgets('PostViewTest InitialLoadTest', (tester) async {
       await initApp(testMode: true);
-      
+
       app
         ..registerBuilders()
         ..registerSingletons();

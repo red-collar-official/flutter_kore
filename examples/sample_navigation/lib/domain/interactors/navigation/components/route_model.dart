@@ -1,4 +1,3 @@
-
 class RouteModel {
   final bool dismissable;
   final bool uniqueInStack;

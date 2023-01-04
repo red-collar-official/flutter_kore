@@ -5,11 +5,11 @@ import 'package:mvvm_redux/arch/base/mvvm_element.dart';
 import 'package:mvvm_redux/arch/base/scope_stack.dart';
 
 /// Class containing interactor type to connect to given view model
-/// 
+///
 /// ```dart
 /// class PostViewModel extends BaseViewModel<PostView, PostViewState> {
 ///   @override
-///   List<Connector> get dependsOn => [
+///   List<Connector> dependsOn(PostView widget) => [
 ///         Connector(interactor: ShareInteractor),
 ///         Connector(interactor: PostInteractor, unique: true),
 ///       ];
@@ -18,43 +18,50 @@ import 'package:mvvm_redux/arch/base/scope_stack.dart';
 class Connector {
   final Type interactor;
   final bool unique;
+  final Map<String, dynamic>? params;
 
   Connector({
     required this.interactor,
     this.unique = false,
+    this.params,
   });
 }
 
 /// Main class to extend to create view models
-/// 
+///
 /// ```dart
 /// class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
 ///   @override
-///   List<Connector> get dependsOn => [
+///   List<Connector> dependsOn(PostsListView widget) => [
 ///         Connector(interactor: PostsInteractor),
 ///       ];
-/// 
+///
 ///   @override
 ///   void onLaunch(PostsListView widget) {
 ///     interactors.get<PostsInteractor>().loadPosts(0, 30);
 ///   }
 /// }
 /// ```
-abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmElement<State> {
+abstract class BaseViewModel<Widget extends StatefulWidget, State>
+    extends MvvmElement<State> {
   /// Local interactors
   /// Does not hold singleton instances
   final interactors = InteractorCollection.newInstance();
 
+  late List<Connector> _dependsOn;
+
   /// Dependencies for this view model
   /// Does not hold singleton instances
-  List<Connector> get dependsOn;
+  List<Connector> dependsOn(Widget widget);
 
   /// Initializes this view model
   /// Subsribes to [EventBus] events, initializes underlying store
   /// Loads interactors and restore cached state if needed
-  void inititialze(State initialState) {
+  void inititialze(Widget widget) {
+    _dependsOn = dependsOn(widget);
+
     subscribeToEvents();
-    initializeStore(initialState);
+    initializeStore(initialState(widget));
     _ensureInteractorsAreLoaded();
     _increaseReferences();
     _addInteractors();
@@ -63,13 +70,16 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
 
   /// Adds interactors to local collection
   void _addInteractors() {
-    dependsOn.forEach((element) {
+    _dependsOn.forEach((element) {
       if (element.unique) {
-        final interactor = InteractorCollection.instance.getUniqueByTypeString(element.interactor.toString());
-        interactors.addExisting(interactor);
+        final interactor = InteractorCollection.instance.getUniqueByTypeString(
+            element.interactor.toString(),
+            params: element.params);
+        interactors.addExisting(interactor, element.params);
       } else {
-        final interactor = InteractorCollection.instance.getByTypeString(element.interactor.toString());
-        interactors.addExisting(interactor);
+        final interactor = InteractorCollection.instance
+            .getByTypeString(element.interactor.toString(), element.params);
+        interactors.addExisting(interactor, element.params);
       }
     });
   }
@@ -89,12 +99,13 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
 
   /// Disposes unique interactors in [interactors]
   void _disposeUniqueInteractors() {
-    dependsOn.forEach((element) {
+    _dependsOn.forEach((element) {
       if (!element.unique) {
         return;
       }
 
-      final interactor = interactors.getByTypeString(element.interactor.toString());
+      final interactor =
+          interactors.getByTypeString(element.interactor.toString(), null);
       // ignore: cascade_invocations
       interactor.dispose();
     });
@@ -105,7 +116,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
 
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {
-    dependsOn.forEach((element) {
+    _dependsOn.forEach((element) {
       if (element.unique) {
         return;
       }
@@ -116,7 +127,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
 
   /// Decreases reference count for every interactor in [dependsOn]
   void _decreaseReferences() {
-    dependsOn.forEach((element) {
+    _dependsOn.forEach((element) {
       if (element.unique) {
         return;
       }
@@ -127,12 +138,13 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
 
   /// Function to check if every interactor is loaded
   void _ensureInteractorsAreLoaded() {
-    dependsOn.forEach((element) {
+    _dependsOn.forEach((element) {
       if (element.unique) {
         return;
       }
 
-      InteractorCollection.instance.add(element.interactor.toString());
+      InteractorCollection.instance
+          .add(element.interactor.toString(), element.params);
     });
   }
 
@@ -146,4 +158,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmE
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     FocusScope.of(context).requestFocus(FocusNode());
   }
+
+  /// Initial state for this view model
+  State initialState(Widget widget);
 }

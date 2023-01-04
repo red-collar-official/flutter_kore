@@ -9,7 +9,7 @@ import 'home_view_state.dart';
 
 class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   @override
-  List<Connector> get dependsOn => [];
+  List<Connector> dependsOn(HomeView widget) => [];
 
   @override
   void onLaunch(HomeView widget) {
@@ -24,7 +24,13 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
     app.interactors.get<NavigationInteractor>().setCurrentTab(tab);
   }
 
-  AppTab get initialTab => app.interactors.get<NavigationInteractor>().state.currentTab!;
+  AppTab get initialTab =>
+      app.interactors.get<NavigationInteractor>().state.currentTab!;
 
-  Stream<AppTab?> get currentTabStream => app.interactors.get<NavigationInteractor>().updates((state) => state.currentTab);
+  Stream<AppTab?> get currentTabStream => app.interactors
+      .get<NavigationInteractor>()
+      .updates((state) => state.currentTab);
+
+  @override
+  HomeViewState initialState(HomeView widget) => HomeViewState();
 }

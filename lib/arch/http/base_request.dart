@@ -47,7 +47,8 @@ enum RequestMethod {
   patch,
 }
 
-typedef ResponseParser<ItemType> = Future<ItemType> Function(dynamic result, Map? headers);
+typedef ResponseParser<ItemType> = Future<ItemType> Function(
+    dynamic result, Map? headers);
 typedef DatabasePutDelegate<ItemType> = Future Function(ItemType parsedItem);
 typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 

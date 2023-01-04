@@ -5,12 +5,11 @@ part 'post.freezed.dart';
 
 @freezed
 class Post with _$Post {
-  factory Post({
-    String? title,
-    String? body,
-    int? id,
-    @Default(false) bool isLiked
-  }) = _Post;
+  factory Post(
+      {String? title,
+      String? body,
+      int? id,
+      @Default(false) bool isLiked}) = _Post;
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 }

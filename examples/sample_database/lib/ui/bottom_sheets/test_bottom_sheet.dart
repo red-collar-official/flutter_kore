@@ -12,11 +12,10 @@ class TestBottomSheet extends StatelessWidget {
         children: [
           const Text('Test bottom sheet'),
           TextButton(
-            onPressed: () {
-              app.interactors.get<NavigationInteractor>().pop(global: true);
-            }, 
-            child: const Text('Close')
-          )
+              onPressed: () {
+                app.interactors.get<NavigationInteractor>().pop(global: true);
+              },
+              child: const Text('Close'))
         ],
       ),
     );

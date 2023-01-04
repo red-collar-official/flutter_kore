@@ -9,5 +9,6 @@ class AutharizationState with _$AutharizationState {
     String? token,
   }) = _AutharizationState;
 
-  factory AutharizationState.fromJson(Map<String, dynamic> json) => _$AutharizationStateFromJson(json);
+  factory AutharizationState.fromJson(Map<String, dynamic> json) =>
+      _$AutharizationStateFromJson(json);
 }

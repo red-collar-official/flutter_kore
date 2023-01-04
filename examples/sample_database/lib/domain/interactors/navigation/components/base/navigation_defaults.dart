@@ -35,4 +35,3 @@ final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
   AppTabs.posts: GlobalKey<NavigatorState>(),
   AppTabs.likedPosts: GlobalKey<NavigatorState>(),
 };
-

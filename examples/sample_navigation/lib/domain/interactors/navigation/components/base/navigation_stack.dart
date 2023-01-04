@@ -19,14 +19,16 @@ class NavigationStack {
   /// Can be screen route, dialog route or bottom sheet route
   /// Therefore route name is [Object]
   /// CurrentTab is always null for global navigation
-  void addRoute(Object routeName, AppTab? currentTab, bool global, bool uniqueInStack, bool dismissable) {
+  void addRoute(Object routeName, AppTab? currentTab, bool global,
+      bool uniqueInStack, bool dismissable) {
     final stack = _getStack(global);
     stack.addRoute(routeName, currentTab, global, uniqueInStack, dismissable);
   }
 
   /// Replaces whole stack with given route
   /// Route can be only screen route therefore routeName defined as [Routes]
-  void replaceStack(Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+  void replaceStack(
+      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
     final stack = _getStack(global);
     stack.replaceStack(routeName, currentTab, global, uniqueInStack);
   }

@@ -14,7 +14,8 @@ class HomeView extends StatefulWidget {
   }
 }
 
-class _HomeViewWidgetState extends BaseView<HomeView, HomeViewState, HomeViewModel> {
+class _HomeViewWidgetState
+    extends BaseView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabs = {
     AppTabs.posts: PostsListView(),
     AppTabs.likedPosts: PostsListView(),
@@ -29,7 +30,9 @@ class _HomeViewWidgetState extends BaseView<HomeView, HomeViewState, HomeViewMod
         initialData: viewModel.initialTab,
         builder: (context, snapshot) {
           return Stack(
-            children: AppTabs.tabs.map((tab) => _buildOffstageNavigator(tab, snapshot.data)).toList(),
+            children: AppTabs.tabs
+                .map((tab) => _buildOffstageNavigator(tab, snapshot.data))
+                .toList(),
           );
         },
       ),
@@ -81,7 +84,4 @@ class _HomeViewWidgetState extends BaseView<HomeView, HomeViewState, HomeViewMod
   HomeViewModel createViewModel() {
     return HomeViewModel();
   }
-
-  @override
-  HomeViewState get initialState => HomeViewState();
 }

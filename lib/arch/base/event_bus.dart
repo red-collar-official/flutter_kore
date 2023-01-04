@@ -47,7 +47,8 @@ class EventBus {
 
   /// Return dart stream of events with particular names
   Stream<BusEventData> streamOfCollection(List<String> eventNames) {
-    return _streamController.stream.where((event) => eventNames.contains(event.name));
+    return _streamController.stream
+        .where((event) => eventNames.contains(event.name));
   }
 
   /// Sends event to stream controller

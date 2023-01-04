@@ -26,7 +26,7 @@ class AppTabs {
   );
 
   static const List<AppTab> tabs = [
-        posts,
-        likedPosts,
-      ];
+    posts,
+    likedPosts,
+  ];
 }

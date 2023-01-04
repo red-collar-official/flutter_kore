@@ -205,7 +205,7 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
   }
 
   @override
-  PostsState get initialState => PostsState();
+  PostsState initialState(Map<String, dynamic>? params) => PostsState();
 
   @override
   Map<String, EventBusSubscriber> get subscribeTo => {
@@ -231,7 +231,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   }
 
   @override
-  UserDefaultsState get initialState => UserDefaultsState();
+  UserDefaultsState initialState(Map<String, dynamic>? params) => UserDefaultsState();
   
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
@@ -324,7 +324,7 @@ View models also can override <b>onLaunch</b> method that is called on first fra
 ```dart
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> get dependsOn => [
+  List<Connector> dependsOn(PostsListView widget) => [
         Connector(interactor: PostsInteractor),
         Connector(interactor: PostInteractor, unique: true),
       ];
@@ -350,6 +350,9 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   }
 
   Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
+
+  @override
+  PostsListViewState get initialState => PostsListViewState();
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
@@ -434,9 +437,6 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
   PostsListViewModel createViewModel() {
     return PostsListViewModel();
   }
-
-  @override
-  PostsListViewState get initialState => PostsListViewState();
 }
 ```
 

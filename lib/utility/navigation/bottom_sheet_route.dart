@@ -43,12 +43,14 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
   @override
   AnimationController createAnimationController() {
     assert(_animationController == null);
-    _animationController = BottomSheet.createAnimationController(navigator!.overlay!);
+    _animationController =
+        BottomSheet.createAnimationController(navigator!.overlay!);
     return _animationController!;
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
     Widget bottomSheet = MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -82,7 +84,9 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
     return AnimatedBuilder(
       animation: widget.route.animation!,
       builder: (BuildContext context, Widget? child) {
-        final animationValue = mediaQuery.accessibleNavigation ? 1.0 : widget.route.animation?.value;
+        final animationValue = mediaQuery.accessibleNavigation
+            ? 1.0
+            : widget.route.animation?.value;
 
         return Semantics(
           scopesRoute: true,
@@ -94,7 +98,8 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
               delegate: _ModalBottomSheetLayout(
                 animationValue ?? 0.0,
                 0,
-                MediaQuery.of(context).size.height + MediaQuery.of(context).viewInsets.bottom,
+                MediaQuery.of(context).size.height +
+                    MediaQuery.of(context).viewInsets.bottom,
               ),
               child: BottomSheet(
                 animationController: widget.route._animationController,
@@ -186,6 +191,7 @@ class _ModalBottomSheetLayout extends SingleChildLayoutDelegate {
 
   @override
   bool shouldRelayout(_ModalBottomSheetLayout oldDelegate) {
-    return progress != oldDelegate.progress || bottomInset != oldDelegate.bottomInset;
+    return progress != oldDelegate.progress ||
+        bottomInset != oldDelegate.bottomInset;
   }
 }

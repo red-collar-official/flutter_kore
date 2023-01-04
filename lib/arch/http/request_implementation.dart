@@ -106,7 +106,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       return Response<T>(
         code: response.response?.statusCode ?? 0,
         headers: response.response?.headers.map,
-        error: response.response?.data ?? response.response?.statusMessage ?? '',
+        error:
+            response.response?.data ?? response.response?.statusMessage ?? '',
         result: databaseData,
         fromDatabase: databaseData != null,
       );
@@ -140,7 +141,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     if (parser == null) {
       result = jsonDecode(simulateResponse!.data);
     } else {
-      result = await parser!(jsonDecode(simulateResponse!.data), simulateResponse!.headers);
+      result = await parser!(
+          jsonDecode(simulateResponse!.data), simulateResponse!.headers);
     }
 
     await databasePutDelegate?.call(result);
@@ -159,8 +161,10 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     client.options.baseUrl = baseUrl ?? defaultBaseUrl;
 
     final requestTimeout = timeout?.inSeconds ?? defaultTimeoutInSeconds;
-    client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
-    client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
+    client.options.connectTimeout =
+        Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
+    client.options.receiveTimeout =
+        Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
 
     final resultHeaders = defaultHeaders;
 
@@ -184,7 +188,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   }
 
   /// Function to retry request
-  Future<dynamic> _retryRequest(dio.Dio client, dynamic data, dio.DioError error) async {
+  Future<dynamic> _retryRequest(
+      dio.Dio client, dynamic data, dio.DioError error) async {
     try {
       return await constructRequest(client, method, data);
     } catch (e) {
@@ -206,7 +211,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   }
 
   /// Adds data to dio, adds autharization headers if needed and returns [Future] with request results
-  Future<dio.Response> constructRequest(dio.Dio dio, RequestMethod method, dynamic encodedData) async {
+  Future<dio.Response> constructRequest(
+      dio.Dio dio, RequestMethod method, dynamic encodedData) async {
     dynamic data;
 
     if (encodedData != null && encodedData is File) {
@@ -223,13 +229,17 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       case RequestMethod.get:
         return dio.getUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''));
       case RequestMethod.post:
-        return dio.postUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
+        return dio.postUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+            data: data);
       case RequestMethod.put:
-        return dio.putUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
+        return dio.putUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+            data: data);
       case RequestMethod.delete:
-        return dio.deleteUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
+        return dio.deleteUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+            data: data);
       case RequestMethod.patch:
-        return dio.patchUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''), data: data);
+        return dio.patchUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+            data: data);
       default:
         return dio.get(Uri.encodeFull(url ?? ''));
     }
@@ -245,14 +255,18 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     final correctedMap = {
       for (var value in queryParameters.keys)
-        value.toString():
-            queryParameters[value] is List ? queryParameters[value].map((value) => value?.toString()) : queryParameters[value]?.toString(),
+        value.toString(): queryParameters[value] is List
+            ? queryParameters[value].map((value) => value?.toString())
+            : queryParameters[value]?.toString(),
     };
 
     final uri = Uri.parse((baseUrl ?? '') + finalUrl);
 
-    final resultUri =
-        Uri(scheme: uri.scheme, host: uri.host, path: uri.path.substring(1), queryParameters: correctedMap.isEmpty ? null : correctedMap);
+    final resultUri = Uri(
+        scheme: uri.scheme,
+        host: uri.host,
+        path: uri.path.substring(1),
+        queryParameters: correctedMap.isEmpty ? null : correctedMap);
 
     return resultUri;
   }

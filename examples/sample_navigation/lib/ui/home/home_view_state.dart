@@ -7,5 +7,6 @@ part 'home_view_state.freezed.dart';
 class HomeViewState with _$HomeViewState {
   factory HomeViewState() = _HomeViewState;
 
-  factory HomeViewState.fromJson(Map<String, dynamic> json) => _$HomeViewStateFromJson(json);
+  factory HomeViewState.fromJson(Map<String, dynamic> json) =>
+      _$HomeViewStateFromJson(json);
 }

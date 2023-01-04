@@ -38,72 +38,76 @@ class InteractorCollection {
   }
 
   /// Similar to get, but create new instance every time
-  /// Also calls [initialize] for this interactor
-  Interactor getUnique<Interactor extends BaseInteractor>() {
+  /// Also calls [initializeInternal] for this interactor
+  Interactor getUnique<Interactor extends BaseInteractor>(
+      {Map<String, dynamic>? params}) {
     final id = Interactor.toString();
     final builder = _builders[id];
 
     final interactor = builder!();
-    interactor.initializeInternal();
+    interactor.initializeInternal(params);
 
     return interactor;
   }
 
   /// Return instance of interactor for given type
-  /// Also calls [initialize] for this interactor
-  Interactor get<Interactor extends BaseInteractor>() {
+  /// Also calls [initializeInternal] for this interactor
+  Interactor get<Interactor extends BaseInteractor>(
+      {Map<String, dynamic>? params}) {
     final runtimeType = Interactor.toString();
 
     final interactor = _interactors[runtimeType] as Interactor;
 
     if (!interactor.initialized) {
-      interactor.initializeInternal();
+      interactor.initializeInternal(params);
     }
 
     return interactor;
   }
 
   /// Similar to get, but create new instance every time
-  /// Also calls [initialize] for this interactor
-  BaseInteractor getUniqueByTypeString(String type) {
+  /// Also calls [initializeInternal] for this interactor
+  BaseInteractor getUniqueByTypeString(String type,
+      {Map<String, dynamic>? params}) {
     final id = type;
     final builder = _builders[id];
 
     final interactor = builder!();
-    interactor.initializeInternal();
+    interactor.initializeInternal(params);
 
     return interactor;
   }
 
   /// Similar to get
-  /// Also calls [initialize] for this interactor
-  BaseInteractor getByTypeString(String type) {
+  /// Also calls [initializeInternal] for this interactor
+  BaseInteractor getByTypeString(String type, Map<String, dynamic>? params) {
     final runtimeType = type;
 
     final interactor = _interactors[runtimeType];
 
     if (!interactor!.initialized) {
-      interactor.initializeInternal();
+      interactor.initializeInternal(params);
     }
 
     return interactor;
   }
 
   /// Updates interactor in collection
-  /// Also calls [initialize] for this interactor
-  void update<Interactor extends BaseInteractor>(Interactor interactor) {
+  /// Also calls [initializeInternal] for this interactor
+  void update<Interactor extends BaseInteractor>(
+      Interactor interactor, Map<String, dynamic> params) {
     final runtimeType = Interactor.toString();
 
     _interactors[runtimeType] = interactor;
 
     if (!interactor.initialized) {
-      interactor.initializeInternal();
+      interactor.initializeInternal(params);
     }
   }
 
   /// Adds interactor in collection
-  /// Also calls [initialize] for this interactor
-  void add(String type) {
+  /// Also calls [initializeInternal] for this interactor
+  void add(String type, Map<String, dynamic>? params) {
     final id = type;
 
     if (_interactors[id] != null) {
@@ -115,18 +119,18 @@ class InteractorCollection {
     _interactors[id] = builder!();
 
     if (!_interactors[id]!.initialized) {
-      _interactors[id]!.initializeInternal();
+      _interactors[id]!.initializeInternal(params);
     }
   }
 
   /// Adds existing interactor in collection
-  /// Also calls [initialize] for this interactor
-  void addExisting(BaseInteractor interactor) {
+  /// Also calls [initializeInternal] for this interactor
+  void addExisting(BaseInteractor interactor, Map<String, dynamic>? params) {
     final id = interactor.runtimeType.toString();
     _interactors[id] = interactor;
 
     if (!_interactors[id]!.initialized) {
-      _interactors[id]!.initializeInternal();
+      _interactors[id]!.initializeInternal(params);
     }
   }
 
@@ -139,12 +143,13 @@ class InteractorCollection {
   /// Adds test interactor for given interactor type
   /// Used only for tests
   @visibleForTesting
-  void addTest<Interactor extends BaseInteractor>(BaseInteractor interactor) {
+  void addTest<Interactor extends BaseInteractor>(BaseInteractor interactor,
+      {Map<String, dynamic>? params}) {
     final id = Interactor.toString();
     _interactors[id] = interactor;
 
     if (!_interactors[id]!.initialized) {
-      _interactors[id]!.initializeInternal();
+      _interactors[id]!.initializeInternal(params);
     }
   }
 
@@ -153,7 +158,8 @@ class InteractorCollection {
     _interactors.clear();
   }
 
-  static final InteractorCollection _singletonInteractorCollection = InteractorCollection._internal();
+  static final InteractorCollection _singletonInteractorCollection =
+      InteractorCollection._internal();
 
   static InteractorCollection get instance {
     return _singletonInteractorCollection;

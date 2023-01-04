@@ -1,3 +1,1 @@
-enum Dialogs {
-  error
-}
+enum Dialogs { error }

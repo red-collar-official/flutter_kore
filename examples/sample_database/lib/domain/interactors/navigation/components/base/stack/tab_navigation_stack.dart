@@ -10,7 +10,8 @@ class TabNavigationStack extends BaseNavigationStack {
   final tabRouteStack = defaultTabRouteStack;
 
   @override
-  void addRoute(Object routeName, AppTab? currentTab, bool global, bool uniqueInStack, bool dismissable) {
+  void addRoute(Object routeName, AppTab? currentTab, bool global,
+      bool uniqueInStack, bool dismissable) {
     tabRouteStack[currentTab]!.add(RouteModel(
       name: routeName,
       dismissable: dismissable,
@@ -24,11 +25,14 @@ class TabNavigationStack extends BaseNavigationStack {
       return false;
     }
 
-    return tabRouteStack[currentTab.name]!.indexWhere((element) => element.name == routeName) == -1;
+    return tabRouteStack[currentTab.name]!
+            .indexWhere((element) => element.name == routeName) ==
+        -1;
   }
 
   @override
-  void replaceStack(Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+  void replaceStack(
+      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
     if (currentTab == null) {
       return;
     }

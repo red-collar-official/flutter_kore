@@ -13,7 +13,7 @@ part 'global_store.g.dart';
 class App extends MvvmReduxApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
-  
+
   @override
   Future<void> initialize() async {
     await super.initialize();
@@ -40,6 +40,6 @@ Future<void> initApp({bool testMode = false}) async {
       return app.prefs.setString(key, value);
     };
   }
-  
+
   await app.initialize();
 }

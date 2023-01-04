@@ -10,14 +10,15 @@ import 'package:sample_database/ui/posts_list/posts_list_view.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
-    ..simulateResult = Response(code: 200, result: [
-      Post(
-        title: 'TestTitle',
-        body: 'TestBody',
-        id: 1,
-      )
-    ]);
+  HttpRequest<List<Post>> getPosts(int offset, int limit) =>
+      HttpRequest<List<Post>>()
+        ..simulateResult = Response(code: 200, result: [
+          Post(
+            title: 'TestTitle',
+            body: 'TestBody',
+            id: 1,
+          )
+        ]);
 }
 
 void main() {
@@ -26,7 +27,7 @@ void main() {
   group('PostsListViewTest', () {
     testWidgets('PostsListViewTest InitialLoadTest', (tester) async {
       await initApp(testMode: true);
-      
+
       app
         ..registerBuilders()
         ..registerSingletons();

@@ -9,9 +9,10 @@ import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart
 import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel
+    extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> get dependsOn => [
+  List<Connector> dependsOn(PostsListView widget) => [
         Connector(interactor: PostsInteractor),
       ];
 
@@ -30,6 +31,11 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     });
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream =>
+      interactors.get<PostsInteractor>().updates((state) => state.posts);
+
+  @override
+  PostsListViewState initialState(PostsListView widget) => PostsListViewState();
+
   // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
 }

@@ -3,7 +3,7 @@ import 'dart:collection';
 /// Simple class to count references for interactors
 /// When view models are created we call [increaseReferences] for each interactor
 /// When view models are disposed [decreaseReferences] called for each interactor
-/// [InteractorCollection] look up this map to dispose and remove interactors 
+/// [InteractorCollection] look up this map to dispose and remove interactors
 /// that has zero references with [proone] method
 class ScopeStack {
   final HashMap<Type, int> references = HashMap();

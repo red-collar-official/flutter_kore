@@ -8,7 +8,7 @@ import 'mvvm_element.dart';
 /// @defaultInteractor
 /// class TestInteractor extends BaseInteractor<int> {
 ///   @override
-///   int get initialState => 1;
+///   int initialState(Map<String, dynamic>? input) => 1;
 /// }
 /// ```
 abstract class BaseInteractor<State> extends MvvmElement<State> {
@@ -16,17 +16,17 @@ abstract class BaseInteractor<State> extends MvvmElement<State> {
 
   /// Creates [Store], subscribes to [EventBus] events and restores cached state if needed
   @mustCallSuper
-  void initializeInternal() {
+  void initializeInternal(Map<String, dynamic>? input) {
     if (initialized) {
       return;
     }
 
-    initializeStore(initialState);
+    initializeStore(initialState(input));
     subscribeToEvents();
     restoreCachedState();
 
     initialized = true;
   }
 
-  State get initialState;
+  State initialState(Map<String, dynamic>? input);
 }

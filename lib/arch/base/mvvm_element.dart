@@ -39,24 +39,26 @@ abstract class MvvmElement<State> {
   State get state => _store.state;
 
   /// Stream of values for given [State] mapper
-  /// 
+  ///
   /// ```dart
   /// Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
   /// ```
-  Stream<Value> updates<Value>(Value Function(State) mapper) => _store.updates(mapper);
+  Stream<Value> updates<Value>(Value Function(State) mapper) =>
+      _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
-  /// 
+  ///
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
   /// ```
-  Stream<StoreChange<Value>> changes<Value>(Value Function(State) mapper) => _store.changes(mapper);
+  Stream<StoreChange<Value>> changes<Value>(Value Function(State) mapper) =>
+      _store.changes(mapper);
 
   /// Underlying stream subsription for [Store] updates
   StreamSubscription<State>? _storeSaveSubscription;
 
   /// Model as json to be saved to cache
-  /// 
+  ///
   /// ```dart
   /// @singletonInteractor
   /// class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
@@ -64,7 +66,7 @@ abstract class MvvmElement<State> {
   ///   void onRestore(Map<String, dynamic> savedStateObject) {
   ///     updateState(UserDefaultsState.fromJson(savedStateObject));
   ///   }
-  /// 
+  ///
   ///   @override
   ///   Map<String, dynamic> get savedStateObject => state.toJson();
   /// }
@@ -92,15 +94,15 @@ abstract class MvvmElement<State> {
   void onRestore(Map<String, dynamic> savedStateObject) {}
 
   /// Updates state in underlying [Store]
-  /// 
+  ///
   /// ```dart
   /// @defaultInteractor
   /// class PostsInteractor extends BaseInteractor<PostsState> {
   ///   Future<void> loadPosts({bool refresh = false}) async {
   ///     updateState(state.copyWith(posts: StatefulData.loading()));
-  /// 
+  ///
   ///     final response = await Apis.posts.getPosts().execute();
-  /// 
+  ///
   ///     if (response.error == null) {
   ///       updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
   ///     } else {
@@ -131,11 +133,12 @@ abstract class MvvmElement<State> {
 
     _storeSaveSubscription = _store.stream.listen((_) async {
       final stateId = state.runtimeType.toString();
-      await MvvmReduxApp.cachePutDelegate(stateId, json.encode(savedStateObject));
+      await MvvmReduxApp.cachePutDelegate(
+          stateId, json.encode(savedStateObject));
     });
   }
 
-  /// Creates stream subscription for [EventBus] events. 
+  /// Creates stream subscription for [EventBus] events.
   /// If [subscribeTo] is empty does nothing
   @protected
   void subscribeToEvents() {
@@ -143,7 +146,9 @@ abstract class MvvmElement<State> {
       return;
     }
 
-    _eventsSubscription = EventBus.instance.streamOfCollection(subscribeTo.keys.toList()).listen((event) {
+    _eventsSubscription = EventBus.instance
+        .streamOfCollection(subscribeTo.keys.toList())
+        .listen((event) {
       subscribeTo[event.name]?.call(event.payload);
     });
   }

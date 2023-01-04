@@ -10,15 +10,17 @@ import 'package:sample_basic/ui/post/post_view.dart';
 import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel
+    extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> get dependsOn => [
+  List<Connector> dependsOn(PostsListView widget) => [
         Connector(interactor: PostsInteractor),
       ];
 
   late final postsInteractor = interactors.get<PostsInteractor>();
-  
-  late final userDefaultsInteractor = app.interactors.get<UserDefaultsInteractor>();
+
+  late final userDefaultsInteractor =
+      app.interactors.get<UserDefaultsInteractor>();
 
   @override
   void onLaunch(PostsListView widget) {
@@ -36,6 +38,11 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     }));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream =>
+      postsInteractor.updates((state) => state.posts);
+
+  @override
+  PostsListViewState initialState(PostsListView widget) => PostsListViewState();
+
   // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => postsInteractor.changes((state) => state.posts);
 }

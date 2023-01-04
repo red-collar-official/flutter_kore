@@ -10,17 +10,19 @@ import 'package:test/test.dart';
 class MockPostsApi extends PostsApi {
   @override
   HttpRequest<Post?> getPost(int id) => super.getPost(id)
-    ..simulateResult = Response(code: 200, result: Post(
-      title: '',
-      body: '',
-      id: 1,
-    ));
+    ..simulateResult = Response(
+        code: 200,
+        result: Post(
+          title: '',
+          body: '',
+          id: 1,
+        ));
 }
 
 void main() {
   test('PostsInteractorTest', () async {
     await initApp(testMode: true);
-    
+
     app.apis.posts = MockPostsApi();
 
     final postInteractor = PostInteractor();

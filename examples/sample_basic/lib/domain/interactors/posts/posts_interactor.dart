@@ -21,7 +21,8 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
     }
 
     if (response.isSuccessful) {
-      updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
+      updateState(
+          state.copyWith(posts: StatefulData.result(response.result ?? [])));
     } else {
       updateState(state.copyWith(posts: StatefulData.error(response.error)));
     }
@@ -41,7 +42,7 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
   }
 
   @override
-  PostsState get initialState => PostsState();
+  PostsState initialState(Map<String, dynamic>? input) => PostsState();
 
   @override
   Map<String, EventBusSubscriber> get subscribeTo => {

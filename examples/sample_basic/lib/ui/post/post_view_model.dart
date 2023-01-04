@@ -8,8 +8,10 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<Connector> get dependsOn => [
-        Connector(interactor: PostInteractor, unique: true),
+  List<Connector> dependsOn(PostView widget) => [
+        Connector(interactor: PostInteractor, unique: true, params: {
+          'post': widget.post,
+        }),
       ];
 
   @override
@@ -18,8 +20,6 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
 
     if (widget.post == null) {
       postInteractor.loadPost(widget.id!);
-    } else {
-      postInteractor.useExistingPost(widget.post!);
     }
   }
 
@@ -27,5 +27,12 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
     interactors.get<PostInteractor>().likePost(id);
   }
 
-  Stream<StatefulData<Post>?> get postStream => interactors.get<PostInteractor>().updates((state) => state.post);
+  Stream<StatefulData<Post>?> get postStream =>
+      interactors.get<PostInteractor>().updates((state) => state.post);
+
+  StatefulData<Post>? get currentPost =>
+      interactors.get<PostInteractor>().state.post;
+
+  @override
+  PostViewState initialState(PostView widget) => PostViewState();
 }

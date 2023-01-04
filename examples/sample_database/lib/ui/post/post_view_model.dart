@@ -12,7 +12,7 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<Connector> get dependsOn => [
+  List<Connector> dependsOn(PostView widget) => [
         Connector(interactor: PostInteractor, unique: true),
       ];
 
@@ -32,12 +32,21 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   }
 
   void openTestDialog() {
-    app.interactors.get<NavigationInteractor>().showDialog(Dialogs.error, dismissable: false);
+    app.interactors
+        .get<NavigationInteractor>()
+        .showDialog(Dialogs.error, dismissable: false);
   }
 
   void openTestBottomSheet() {
-    app.interactors.get<NavigationInteractor>().showBottomSheet(BottomSheets.autharization, dismissable: false, global: true);
+    app.interactors.get<NavigationInteractor>().showBottomSheet(
+        BottomSheets.autharization,
+        dismissable: false,
+        global: true);
   }
 
-  Stream<StatefulData<Post>?> get postStream => interactors.get<PostInteractor>().updates((state) => state.post);
+  Stream<StatefulData<Post>?> get postStream =>
+      interactors.get<PostInteractor>().updates((state) => state.post);
+
+  @override
+  PostViewState initialState(PostView widget) => PostViewState();
 }

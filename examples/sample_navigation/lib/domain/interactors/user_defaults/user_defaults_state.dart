@@ -9,5 +9,6 @@ class UserDefaultsState with _$UserDefaultsState {
     @Default(false) bool firstAppLaunch,
   }) = _UserDefaultsState;
 
-  factory UserDefaultsState.fromJson(Map<String, dynamic> json) => _$UserDefaultsStateFromJson(json);
+  factory UserDefaultsState.fromJson(Map<String, dynamic> json) =>
+      _$UserDefaultsStateFromJson(json);
 }

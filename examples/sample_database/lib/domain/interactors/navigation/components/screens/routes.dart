@@ -1,7 +1,1 @@
-enum Routes {
-  home,
-  post,
-  posts,
-  likedPosts
-
-}
+enum Routes { home, post, posts, likedPosts }

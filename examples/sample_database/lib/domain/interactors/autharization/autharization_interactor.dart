@@ -14,7 +14,8 @@ class AutharizationInteractor extends BaseInteractor<AutharizationState> {
   }
 
   @override
-  AutharizationState get initialState => AutharizationState();
+  AutharizationState initialState(Map<String, dynamic>? input) =>
+      AutharizationState();
 
   @override
   Map<String, EventBusSubscriber> get subscribeTo => {};

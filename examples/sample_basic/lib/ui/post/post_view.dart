@@ -23,7 +23,8 @@ class PostView extends StatefulWidget {
   }
 }
 
-class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewModel> {
+class _PostViewWidgetState
+    extends BaseView<PostView, PostViewState, PostViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
@@ -34,6 +35,7 @@ class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewMod
       body: Center(
         child: StreamBuilder<StatefulData<Post>?>(
           stream: viewModel.postStream,
+          initialData: viewModel.currentPost,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               return buildPost(snapshot.data!);
@@ -73,7 +75,4 @@ class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewMod
   PostViewModel createViewModel() {
     return PostViewModel();
   }
-
-  @override
-  PostViewState get initialState => PostViewState();
 }

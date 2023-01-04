@@ -6,15 +6,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mvvm_redux/utility/navigation/dialog_route.dart' as dialog;
-import 'package:mvvm_redux/utility/navigation/bottom_sheet_route.dart' as bottom_sheet;
+import 'package:mvvm_redux/utility/navigation/bottom_sheet_route.dart'
+    as bottom_sheet;
 
 class NavigationUtilities {
   static Future<Object?>? pushDialogRoute(
-          {required GlobalKey<NavigatorState> navigator, required bool dismissable, required Widget child}) =>
+          {required GlobalKey<NavigatorState> navigator,
+          required bool dismissable,
+          required Widget child}) =>
       navigator.currentState?.push(
         dialog.DialogRoute(
           barrierDismissible: dismissable,
-          pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
+          pageBuilder: (BuildContext buildContext, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
             return Builder(
               builder: (BuildContext context) {
                 return WillPopScope(
@@ -30,7 +34,10 @@ class NavigationUtilities {
       );
 
   static Future<void> pushBottomSheetRoute(
-      {required GlobalKey<NavigatorState> navigator, required bool dismissable, required Widget child, required Function onClosed}) async {
+      {required GlobalKey<NavigatorState> navigator,
+      required bool dismissable,
+      required Widget child,
+      required Function onClosed}) async {
     final completer = Completer<void>();
 
     unawaited(navigator.currentState
@@ -62,7 +69,8 @@ class NavigationUtilities {
     return completer.future;
   }
 
-  static PageRoute buildPageRoute(Widget child, bool fullScreenDialog, Routes routeName) {
+  static PageRoute buildPageRoute(
+      Widget child, bool fullScreenDialog, Routes routeName) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
         builder: (BuildContext context) => child,
