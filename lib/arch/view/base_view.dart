@@ -28,7 +28,7 @@ import 'base_view_model.dart';
 /// ```
 abstract class BaseView<View extends StatefulWidget, ScreenState,
         ViewModel extends BaseViewModel<View, ScreenState>> extends State<View>
-    with WidgetsBindingObserver, AutomaticKeepAliveClientMixin<View> {
+    with AutomaticKeepAliveClientMixin<View> {
   /// View model for this view
   late ViewModel _viewModel;
 
@@ -41,11 +41,7 @@ abstract class BaseView<View extends StatefulWidget, ScreenState,
 
     initializeViewModel();
 
-    WidgetsBinding.instance.addPostFrameCallback(
-      (value) {
-        viewModel.onLaunch(widget);
-      },
-    );
+    viewModel.onLaunch(widget);
   }
 
   @override

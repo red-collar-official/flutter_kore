@@ -7,7 +7,7 @@ import 'base_navigation_stack.dart';
 
 class GlobalNavigationStack extends BaseNavigationStack {
   /// List of all routes that are currently active globaly
-  final routeStack = defaultRouteStack;
+  final routeStack = defaultRouteStack();
 
   @override
   void addRoute(Object routeName, AppTab? currentTab, bool global,

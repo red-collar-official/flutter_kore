@@ -43,7 +43,7 @@ abstract class MvvmElement<State> {
   /// ```dart
   /// Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
   /// ```
-  Stream<Value> updates<Value>(Value Function(State) mapper) =>
+  Stream<Value> updates<Value>(Value Function(State state) mapper) =>
       _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
@@ -51,7 +51,7 @@ abstract class MvvmElement<State> {
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
   /// ```
-  Stream<StoreChange<Value>> changes<Value>(Value Function(State) mapper) =>
+  Stream<StoreChange<Value>> changes<Value>(Value Function(State state) mapper) =>
       _store.changes(mapper);
 
   /// Underlying stream subsription for [Store] updates

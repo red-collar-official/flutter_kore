@@ -35,6 +35,7 @@ class _PostViewWidgetState
       body: Center(
         child: StreamBuilder<StatefulData<Post>?>(
           stream: viewModel.postStream,
+          initialData: viewModel.initialPost,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               return buildPost(snapshot.data!);

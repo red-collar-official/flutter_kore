@@ -1,9 +1,9 @@
 // ignore_for_file: cascade_invocations
 
 import 'package:sample_navigation/domain/data/app_tab.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/base/stack/base_navigation_stack.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
 
+import 'stack/base_navigation_stack.dart';
 import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';
 
@@ -44,5 +44,9 @@ class NavigationStack {
   void pop(AppTab? currentTab, bool global) {
     final stack = _getStack(global);
     return stack.pop(currentTab);
+  }
+
+  void clearTabNavigationStack() {
+    tabNavigationStack.reset();
   }
 }

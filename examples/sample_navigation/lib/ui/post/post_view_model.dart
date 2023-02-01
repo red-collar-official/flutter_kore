@@ -38,14 +38,16 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   }
 
   void openTestBottomSheet() {
-    app.interactors.get<NavigationInteractor>().showBottomSheet(
-        BottomSheets.autharization,
-        dismissable: false,
-        global: true);
+    app.interactors
+        .get<NavigationInteractor>()
+        .showBottomSheet(BottomSheets.autharization, dismissable: false);
   }
 
   Stream<StatefulData<Post>?> get postStream =>
       interactors.get<PostInteractor>().updates((state) => state.post);
+
+  StatefulData<Post>? get initialPost =>
+      interactors.get<PostInteractor>().state.post;
 
   @override
   PostViewState initialState(PostView widget) => PostViewState();

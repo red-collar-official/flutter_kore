@@ -7,16 +7,20 @@ import 'base_navigation_stack.dart';
 
 class TabNavigationStack extends BaseNavigationStack {
   /// Map of all routes that are currently active in tabs
-  final tabRouteStack = defaultTabRouteStack;
+  final tabRouteStack = defaultTabRouteStack();
 
   @override
   void addRoute(Object routeName, AppTab? currentTab, bool global,
       bool uniqueInStack, bool dismissable) {
-    tabRouteStack[currentTab]!.add(RouteModel(
-      name: routeName,
-      dismissable: dismissable,
-      uniqueInStack: uniqueInStack,
-    ));
+    try {
+      tabRouteStack[currentTab]!.add(RouteModel(
+        name: routeName,
+        dismissable: dismissable,
+        uniqueInStack: uniqueInStack,
+      ));
+    } catch (e) {
+      // ignore
+    }
   }
 
   @override
@@ -49,5 +53,11 @@ class TabNavigationStack extends BaseNavigationStack {
   @override
   void pop(AppTab? currentTab) {
     tabRouteStack[currentTab]!.removeLast();
+  }
+
+  void reset() {
+    tabRouteStack
+      ..clear()
+      ..addAll(defaultTabRouteStack());
   }
 }

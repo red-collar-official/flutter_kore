@@ -1,7 +1,7 @@
+// Interface for managing navigation stack
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
 
-// Interface for managing navigation stack
 abstract class BaseNavigationStack {
   /// Adds specific route to stack
   /// Can be screen route, dialog route or bottom sheet route
