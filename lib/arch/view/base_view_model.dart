@@ -111,8 +111,11 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     });
   }
 
-  /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
+  /// Function to be executed after initState
   void onLaunch(Widget widget);
+
+  /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
+  void onFirstFrame(Widget widget) {}
 
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {

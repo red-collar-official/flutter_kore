@@ -2,7 +2,7 @@ name: mvvm_redux
 
 description: Mvvm-Redux base classes
 
-version: 1.0.5
+version: 1.0.6
 
 publish_to: none
 
@@ -17,7 +17,6 @@ dependencies:
   dio: ^4.0.6
   intl: ^0.17.0
   pedantic: ^1.11.1
-  sticky_infinite_list: ^4.0.1
   async: ^2.6.1
   source_gen:
 
