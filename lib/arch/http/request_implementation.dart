@@ -161,10 +161,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     client.options.baseUrl = baseUrl ?? defaultBaseUrl;
 
     final requestTimeout = timeout?.inSeconds ?? defaultTimeoutInSeconds;
-    client.options.connectTimeout =
-        Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
-    client.options.receiveTimeout =
-        Duration(seconds: requestTimeout ~/ 2).inMilliseconds;
+    client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
+    client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
 
     final resultHeaders = defaultHeaders;
 
