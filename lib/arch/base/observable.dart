@@ -54,7 +54,7 @@ class Observable<T> {
 
   /// Updates [current] and [previous]
   void update(T data) {
-    final change = ObservableChange(_current, data);
+    final change = ObservableChange(data, _current);
     _current = data;
 
     if (!_controller.isClosed) {
