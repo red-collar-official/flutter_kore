@@ -1,5 +1,15 @@
 import 'dart:async';
 
+class ObservableChange<T> {
+  final T? next;
+  final T? previous;
+
+  ObservableChange(
+    this.next,
+    this.previous,
+  );
+}
+
 /// Base class for observable object
 ///
 /// You can get [stream] of object changes and also [update] object data
@@ -22,16 +32,15 @@ import 'dart:async';
 /// }
 /// ```
 class Observable<T> {
-  late StreamController<T> _controller;
+  late StreamController<ObservableChange<T>> _controller;
   T? _current;
-  T? _previous;
 
   Observable() {
-    _controller = StreamController<T>.broadcast();
+    _controller = StreamController<ObservableChange<T>>.broadcast();
   }
 
   Observable.initial(T initial) {
-    _controller = StreamController<T>.broadcast();
+    _controller = StreamController<ObservableChange<T>>.broadcast();
 
     update(initial);
   }
@@ -39,19 +48,17 @@ class Observable<T> {
   /// Current value of observable object
   T? get current => _current;
 
-  /// Previous value of observable object
-  T? get previous => _previous;
-
   /// Broadcast stream of [current] changes
-  Stream<T> get stream => _controller.stream.asBroadcastStream();
+  Stream<ObservableChange<T>> get stream =>
+      _controller.stream.asBroadcastStream();
 
   /// Updates [current] and [previous]
   void update(T data) {
-    _previous = current;
+    final change = ObservableChange(_current, data);
     _current = data;
 
     if (!_controller.isClosed) {
-      _controller.add(data);
+      _controller.add(change);
     }
   }
 
