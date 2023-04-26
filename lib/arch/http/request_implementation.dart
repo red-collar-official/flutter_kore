@@ -5,7 +5,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 
-import 'background_dio_transformer.dart';
 import 'base_request.dart';
 
 typedef RetryHandler = Future<dynamic> Function();
@@ -180,7 +179,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       ),
     ]);
 
-    client.transformer = BackgroundTransformer();
+    client.transformer = dio.BackgroundTransformer();
 
     return client;
   }

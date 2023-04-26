@@ -7,7 +7,9 @@ import 'package:mvvm_redux/annotations/default_interactor.dart';
 import 'package:mvvm_redux/annotations/main_api.dart';
 import 'package:mvvm_redux/annotations/main_app.dart';
 import 'package:mvvm_redux/annotations/api.dart';
+import 'package:mvvm_redux/annotations/service.dart';
 import 'package:mvvm_redux/annotations/singleton_interactor.dart';
+import 'package:mvvm_redux/annotations/singleton_service.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:mvvm_redux/generators/main_app_visitor.dart';
 
@@ -15,12 +17,19 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
   List<Element> singletonAnnotated = [];
   List<Element> defaultAnnotated = [];
 
+  List<Element> singletonAnnotatedServices = [];
+  List<Element> defaultAnnotatedServices = [];
+
   @override
   FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
     const singletonInteractorAnnotation =
         TypeChecker.fromRuntime(SingletonInteractorAnnotation);
     const defaultInteractorAnnotation =
         TypeChecker.fromRuntime(DefaultInteractorAnnotation);
+    const defaultServiceAnnotation =
+        TypeChecker.fromRuntime(DefaultServiceAnnotation);
+    const singletonServiceAnnotation =
+        TypeChecker.fromRuntime(SingletonServiceAnnotation);
 
     final annotatedSingletonFinder = [
       for (var member in library.annotatedWith(singletonInteractorAnnotation))
@@ -32,12 +41,30 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
         member.element,
     ];
 
+    final defaultServiceAnnotationFinder = [
+      for (var member in library.annotatedWith(defaultServiceAnnotation))
+        member.element,
+    ];
+
+    final singletonServiceAnnotationFinder = [
+      for (var member in library.annotatedWith(singletonServiceAnnotation))
+        member.element,
+    ];
+
     if (annotatedSingletonFinder.isNotEmpty) {
       singletonAnnotated.addAll(annotatedSingletonFinder);
     }
 
     if (defaultAnnotatedFinder.isNotEmpty) {
       defaultAnnotated.addAll(defaultAnnotatedFinder);
+    }
+
+    if (defaultServiceAnnotationFinder.isNotEmpty) {
+      defaultAnnotatedServices.addAll(defaultServiceAnnotationFinder);
+    }
+
+    if (singletonServiceAnnotationFinder.isNotEmpty) {
+      singletonAnnotatedServices.addAll(singletonServiceAnnotationFinder);
     }
 
     return super.generate(library, buildStep);
@@ -111,6 +138,32 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     });
 
     if (singletonAnnotated.isNotEmpty || defaultAnnotated.isNotEmpty) {
+      classBuffer.writeln(';');
+    }
+
+    classBuffer
+      ..writeln('}')
+      ..writeln()
+      ..writeln('@override')
+      ..writeln('void registerServices() {');
+
+    if (singletonAnnotatedServices.isNotEmpty ||
+        defaultAnnotatedServices.isNotEmpty) {
+      classBuffer.writeln('services');
+    }
+
+    singletonAnnotatedServices.forEach((element) {
+      classBuffer.writeln(
+          '..registerSingleton<${element.name}>(() => ${element.name}())');
+    });
+
+    defaultAnnotatedServices.forEach((element) {
+      classBuffer.writeln(
+          '..registerFactory<${element.name}>(() => ${element.name}())');
+    });
+
+    if (singletonAnnotatedServices.isNotEmpty ||
+        defaultAnnotatedServices.isNotEmpty) {
       classBuffer.writeln(';');
     }
 
