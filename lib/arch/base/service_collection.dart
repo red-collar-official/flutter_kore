@@ -1,5 +1,7 @@
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+
 import 'base_service.dart';
 
 class ServiceCollection {
@@ -31,6 +33,11 @@ class ServiceCollection {
 
   void registerFactory<T extends BaseService>(T Function() create) {
     _builders[T.toString()] = create;
+  }
+
+  @visibleForTesting
+  void addTest<T extends BaseService>(T service) {
+    _services[T.toString()] = service;
   }
 
   static final ServiceCollection _singletonInteractorCollection =
