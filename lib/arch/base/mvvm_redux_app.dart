@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/arch/base/event_bus.dart';
 import 'package:mvvm_redux/arch/base/interactor_collection.dart';
+import 'package:mvvm_redux/arch/base/service_collection.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
 typedef LocaleCachePutDelegate = Future<bool> Function(
@@ -43,10 +44,13 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// ```
 abstract class MvvmReduxApp {
   final interactors = InteractorCollection.instance;
+  final serviceLocator = ServiceCollection.instance;
+
   EventBus get eventBus => EventBus.instance;
 
   @mustCallSuper
   Future<void> initialize() async {
+    registerServices();
     registerBuilders();
     registerSingletons();
   }
@@ -74,6 +78,9 @@ abstract class MvvmReduxApp {
   ///  }
   /// ```
   void registerBuilders();
+
+  /// Collection of service objects
+  void registerServices();
 
   /// Collection of singletion interactors
   ///
