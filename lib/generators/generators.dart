@@ -72,65 +72,6 @@ class InteractorsCollectorGenerator extends Generator {
 }
 
 class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
-  // List<Element> singletonAnnotated = [];
-  // List<Element> defaultAnnotated = [];
-
-  // List<Element> singletonAnnotatedServices = [];
-  // List<Element> defaultAnnotatedServices = [];
-
-  // @override
-  // FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
-  //   const singletonInteractorAnnotation =
-  //       TypeChecker.fromRuntime(SingletonInteractorAnnotation);
-  //   const defaultInteractorAnnotation =
-  //       TypeChecker.fromRuntime(DefaultInteractorAnnotation);
-  //   const defaultServiceAnnotation =
-  //       TypeChecker.fromRuntime(DefaultServiceAnnotation);
-  //   const singletonServiceAnnotation =
-  //       TypeChecker.fromRuntime(SingletonServiceAnnotation);
-
-  //   final annotatedSingletonFinder = [
-  //     for (var member in library.annotatedWith(singletonInteractorAnnotation))
-  //       member.element,
-  //   ];
-
-  //   final defaultAnnotatedFinder = [
-  //     for (var member in library.annotatedWith(defaultInteractorAnnotation))
-  //       member.element,
-  //   ];
-
-  //   final defaultServiceAnnotationFinder = [
-  //     for (var member in library.annotatedWith(defaultServiceAnnotation))
-  //       member.element,
-  //   ];
-
-  //   print(
-  //       '1231231231231231 ${library.annotatedWith(singletonServiceAnnotation)}');
-
-  //   final singletonServiceAnnotationFinder = [
-  //     for (var member in library.annotatedWith(singletonServiceAnnotation))
-  //       member.element,
-  //   ];
-
-  //   if (annotatedSingletonFinder.isNotEmpty) {
-  //     singletonAnnotated.addAll(annotatedSingletonFinder);
-  //   }
-
-  //   if (defaultAnnotatedFinder.isNotEmpty) {
-  //     defaultAnnotated.addAll(defaultAnnotatedFinder);
-  //   }
-
-  //   if (defaultServiceAnnotationFinder.isNotEmpty) {
-  //     defaultAnnotatedServices.addAll(defaultServiceAnnotationFinder);
-  //   }
-
-  //   if (singletonServiceAnnotationFinder.isNotEmpty) {
-  //     singletonAnnotatedServices.addAll(singletonServiceAnnotationFinder);
-  //   }
-
-  //   return super.generate(library, buildStep);
-  // }
-
   @override
   String generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
@@ -201,6 +142,11 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     if (InteractorsCollectorGenerator.singletonAnnotated.isNotEmpty || InteractorsCollectorGenerator.defaultAnnotated.isNotEmpty) {
       classBuffer.writeln(';');
     }
+
+    // @override
+    // void registerServices() {
+    //   services.registerSingleton<StripeService>(() => StripeService());
+    // }
 
     classBuffer
       ..writeln('}')
