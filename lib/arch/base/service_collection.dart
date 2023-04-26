@@ -6,7 +6,7 @@ class ServiceCollection {
   final HashMap<String, BaseService> _services = HashMap();
   final HashMap<String, BaseService Function()> _builders = HashMap();
 
-  T getInstance<T extends BaseService>() {
+  T get<T extends BaseService>() {
     if (_services.containsKey(T.toString())) {
       final service = _services[T.toString()]!;
 
