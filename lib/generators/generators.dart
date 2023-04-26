@@ -156,7 +156,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
     if (InteractorsCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
         InteractorsCollectorGenerator.defaultAnnotatedServices.isNotEmpty) {
-      classBuffer.writeln('services');
+      classBuffer.writeln('serviceLocator');
     }
 
     InteractorsCollectorGenerator.singletonAnnotatedServices.forEach((element) {
