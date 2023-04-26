@@ -13,15 +13,15 @@ import 'package:mvvm_redux/annotations/singleton_service.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:mvvm_redux/generators/main_app_visitor.dart';
 
-class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
-  List<Element> singletonAnnotated = [];
-  List<Element> defaultAnnotated = [];
+class InteractorsCollectorGenerator extends Generator {
+  static List<Element> singletonAnnotated = [];
+  static List<Element> defaultAnnotated = [];
 
-  List<Element> singletonAnnotatedServices = [];
-  List<Element> defaultAnnotatedServices = [];
+  static List<Element> singletonAnnotatedServices = [];
+  static List<Element> defaultAnnotatedServices = [];
 
   @override
-  FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
+  FutureOr<String?> generate(LibraryReader library, BuildStep buildStep) async {
     const singletonInteractorAnnotation =
         TypeChecker.fromRuntime(SingletonInteractorAnnotation);
     const defaultInteractorAnnotation =
@@ -69,6 +69,67 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
     return super.generate(library, buildStep);
   }
+}
+
+class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
+  // List<Element> singletonAnnotated = [];
+  // List<Element> defaultAnnotated = [];
+
+  // List<Element> singletonAnnotatedServices = [];
+  // List<Element> defaultAnnotatedServices = [];
+
+  // @override
+  // FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
+  //   const singletonInteractorAnnotation =
+  //       TypeChecker.fromRuntime(SingletonInteractorAnnotation);
+  //   const defaultInteractorAnnotation =
+  //       TypeChecker.fromRuntime(DefaultInteractorAnnotation);
+  //   const defaultServiceAnnotation =
+  //       TypeChecker.fromRuntime(DefaultServiceAnnotation);
+  //   const singletonServiceAnnotation =
+  //       TypeChecker.fromRuntime(SingletonServiceAnnotation);
+
+  //   final annotatedSingletonFinder = [
+  //     for (var member in library.annotatedWith(singletonInteractorAnnotation))
+  //       member.element,
+  //   ];
+
+  //   final defaultAnnotatedFinder = [
+  //     for (var member in library.annotatedWith(defaultInteractorAnnotation))
+  //       member.element,
+  //   ];
+
+  //   final defaultServiceAnnotationFinder = [
+  //     for (var member in library.annotatedWith(defaultServiceAnnotation))
+  //       member.element,
+  //   ];
+
+  //   print(
+  //       '1231231231231231 ${library.annotatedWith(singletonServiceAnnotation)}');
+
+  //   final singletonServiceAnnotationFinder = [
+  //     for (var member in library.annotatedWith(singletonServiceAnnotation))
+  //       member.element,
+  //   ];
+
+  //   if (annotatedSingletonFinder.isNotEmpty) {
+  //     singletonAnnotated.addAll(annotatedSingletonFinder);
+  //   }
+
+  //   if (defaultAnnotatedFinder.isNotEmpty) {
+  //     defaultAnnotated.addAll(defaultAnnotatedFinder);
+  //   }
+
+  //   if (defaultServiceAnnotationFinder.isNotEmpty) {
+  //     defaultAnnotatedServices.addAll(defaultServiceAnnotationFinder);
+  //   }
+
+  //   if (singletonServiceAnnotationFinder.isNotEmpty) {
+  //     singletonAnnotatedServices.addAll(singletonServiceAnnotationFinder);
+  //   }
+
+  //   return super.generate(library, buildStep);
+  // }
 
   @override
   String generateForAnnotatedElement(
@@ -100,7 +161,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('List<Type> get singletons => [');
 
     // ignore: prefer_foreach
-    for (final element in singletonAnnotated) {
+    for (final element in InteractorsCollectorGenerator.singletonAnnotated) {
       if (element.name != null) {
         classBuffer.writeln(element.name! + ', ');
       }
@@ -123,21 +184,21 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('@override')
       ..writeln('void registerBuilders() {');
 
-    if (singletonAnnotated.isNotEmpty || defaultAnnotated.isNotEmpty) {
+    if (InteractorsCollectorGenerator.singletonAnnotated.isNotEmpty || InteractorsCollectorGenerator.defaultAnnotated.isNotEmpty) {
       classBuffer.writeln('interactors');
     }
 
-    singletonAnnotated.forEach((element) {
+    InteractorsCollectorGenerator.singletonAnnotated.forEach((element) {
       classBuffer
           .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
-    defaultAnnotated.forEach((element) {
+    InteractorsCollectorGenerator.defaultAnnotated.forEach((element) {
       classBuffer
           .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
-    if (singletonAnnotated.isNotEmpty || defaultAnnotated.isNotEmpty) {
+    if (InteractorsCollectorGenerator.singletonAnnotated.isNotEmpty || InteractorsCollectorGenerator.defaultAnnotated.isNotEmpty) {
       classBuffer.writeln(';');
     }
 
@@ -147,23 +208,23 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('@override')
       ..writeln('void registerServices() {');
 
-    if (singletonAnnotatedServices.isNotEmpty ||
-        defaultAnnotatedServices.isNotEmpty) {
+    if (InteractorsCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
+        InteractorsCollectorGenerator.defaultAnnotatedServices.isNotEmpty) {
       classBuffer.writeln('services');
     }
 
-    singletonAnnotatedServices.forEach((element) {
+    InteractorsCollectorGenerator.singletonAnnotatedServices.forEach((element) {
       classBuffer.writeln(
           '..registerSingleton<${element.name}>(() => ${element.name}())');
     });
 
-    defaultAnnotatedServices.forEach((element) {
+    InteractorsCollectorGenerator.defaultAnnotatedServices.forEach((element) {
       classBuffer.writeln(
           '..registerFactory<${element.name}>(() => ${element.name}())');
     });
 
-    if (singletonAnnotatedServices.isNotEmpty ||
-        defaultAnnotatedServices.isNotEmpty) {
+    if (InteractorsCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
+        InteractorsCollectorGenerator.defaultAnnotatedServices.isNotEmpty) {
       classBuffer.writeln(';');
     }
 

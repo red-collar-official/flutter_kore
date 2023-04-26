@@ -18,11 +18,6 @@ class App extends MvvmReduxApp with AppGen {
   Future<void> initialize() async {
     await super.initialize();
   }
-  
-  @override
-  void registerServices() {
-    // ignore
-  }
 }
 
 final app = App();

@@ -7,7 +7,7 @@ targets:
 builders:
   generators:
     import: "package:mvvm_redux/generators/builders.dart"
-    builder_factories: ["generateMainApp", "generateMainApi"]
+    builder_factories: ["generateInteractorCollector", "generateMainApp", "generateMainApi"]
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents
     build_to: cache
