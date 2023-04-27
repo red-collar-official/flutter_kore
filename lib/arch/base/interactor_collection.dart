@@ -12,6 +12,8 @@ class InteractorCollection {
   final HashMap<String, BaseInteractor> _interactors = HashMap();
   final HashMap<String, Function> _builders = HashMap();
 
+  List<BaseInteractor> get all => _interactors.values.toList();
+
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
   void proone() {
@@ -56,6 +58,10 @@ class InteractorCollection {
       {Map<String, dynamic>? params}) {
     final runtimeType = Interactor.toString();
 
+    if (!_interactors.containsKey(runtimeType)) {
+      return getUnique<Interactor>(params: params);
+    }
+
     final interactor = _interactors[runtimeType] as Interactor;
 
     if (!interactor.initialized) {
@@ -82,6 +88,10 @@ class InteractorCollection {
   /// Also calls [initializeInternal] for this interactor
   BaseInteractor getByTypeString(String type, Map<String, dynamic>? params) {
     final runtimeType = type;
+
+    if (!_interactors.containsKey(runtimeType)) {
+      return getUnique(params: params);
+    }
 
     final interactor = _interactors[runtimeType];
 

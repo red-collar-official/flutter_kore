@@ -44,7 +44,7 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// ```
 abstract class MvvmReduxApp {
   final interactors = InteractorCollection.instance;
-  final serviceLocator = ServiceCollection.instance;
+  final services = ServiceCollection.instance;
 
   EventBus get eventBus => EventBus.instance;
 

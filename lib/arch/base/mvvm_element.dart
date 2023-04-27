@@ -4,28 +4,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'event_bus.dart';
+import 'event_bus_receiver.dart';
 import 'mvvm_redux_app.dart';
 import 'store.dart';
 
 /// Base class for storing test data
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
-abstract class MvvmElement<State> {
-  /// [Map] of [EventBus] events and function to be executed for this events
-  ///
-  /// ```dart
-  /// @override
-  /// Map<String, EventBusSubscriber> get subscribeTo => {
-  ///       Events.eventPostLiked: (payload) {
-  ///         _onPostLiked(payload);
-  ///       }
-  ///     };
-  /// ```
-  Map<String, EventBusSubscriber> get subscribeTo => {};
-
-  /// Underlying stream subsription for [EventBus] events
-  StreamSubscription<BusEventData>? _eventsSubscription;
-
+abstract class MvvmElement<State> extends EventBusReceiver {
   /// [Store] instance containg [State] object
   late Store<State> _store;
 
@@ -51,7 +37,8 @@ abstract class MvvmElement<State> {
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
   /// ```
-  Stream<StoreChange<Value>> changes<Value>(Value Function(State state) mapper) =>
+  Stream<StoreChange<Value>> changes<Value>(
+          Value Function(State state) mapper) =>
       _store.changes(mapper);
 
   /// Underlying stream subsription for [Store] updates
@@ -138,24 +125,12 @@ abstract class MvvmElement<State> {
     });
   }
 
-  /// Creates stream subscription for [EventBus] events.
-  /// If [subscribeTo] is empty does nothing
-  @protected
-  void subscribeToEvents() {
-    if (subscribeTo.keys.isEmpty) {
-      return;
-    }
-
-    _eventsSubscription = EventBus.instance
-        .streamOfCollection(subscribeTo.keys.toList())
-        .listen((event) {
-      subscribeTo[event.name]?.call(event.payload);
-    });
-  }
-
   /// Closes underlying stream subscriptions for [Store] and [EventBus]
+  @mustCallSuper
+  @override
   void dispose() {
-    _eventsSubscription?.cancel();
+    super.dispose();
+
     _storeSaveSubscription?.cancel();
     _store.dispose();
   }

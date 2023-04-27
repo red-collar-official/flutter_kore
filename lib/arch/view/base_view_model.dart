@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mvvm_redux/arch/base/interactor_collection.dart';
 import 'package:mvvm_redux/arch/base/mvvm_element.dart';
 import 'package:mvvm_redux/arch/base/scope_stack.dart';
+import 'package:mvvm_redux/arch/base/service_collection.dart';
 
 /// Class containing interactor type to connect to given view model
 ///
@@ -52,20 +53,44 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
   /// Dependencies for this view model
   /// Does not hold singleton instances
-  List<Connector> dependsOn(Widget widget);
+  List<Connector> dependsOn(Widget widget) => [];
+
+  /// Local services
+  /// Does not hold singleton instances
+  final services = ServiceCollection.newInstance();
+
+  late List<Connector> _usesServices;
+
+  /// Services for this interactor
+  /// Does not hold singleton instances
+  List<Connector> usesServices(Widget widget) => [];
 
   /// Initializes this view model
   /// Subsribes to [EventBus] events, initializes underlying store
   /// Loads interactors and restore cached state if needed
   void inititialze(Widget widget) {
     _dependsOn = dependsOn(widget);
+    _usesServices = usesServices(widget);
 
     subscribeToEvents();
     initializeStore(initialState(widget));
     _ensureInteractorsAreLoaded();
     _increaseReferences();
     _addInteractors();
+    _addServices();
     restoreCachedState();
+  }
+
+  /// Adds services to local collection
+  void _addServices() {
+    _usesServices.forEach((element) {
+      final service = ServiceCollection.instance.getByTypeString(
+        element.interactor.toString(),
+        element.params,
+      );
+
+      services.addExisting(service, element.params);
+    });
   }
 
   /// Adds interactors to local collection
@@ -90,6 +115,10 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @override
   void dispose() {
     super.dispose();
+
+    services.all.forEach((element) {
+      element.dispose();
+    });
 
     _disposeUniqueInteractors();
     _decreaseReferences();
