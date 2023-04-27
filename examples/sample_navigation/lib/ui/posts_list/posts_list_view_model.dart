@@ -13,7 +13,7 @@ class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
   List<Connector> dependsOn(PostsListView widget) => [
-        Connector(interactor: PostsInteractor),
+        Connector(type: PostsInteractor),
       ];
 
   @override

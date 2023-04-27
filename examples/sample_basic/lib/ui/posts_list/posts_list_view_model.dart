@@ -14,7 +14,7 @@ class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
   List<Connector> dependsOn(PostsListView widget) => [
-        Connector(interactor: PostsInteractor),
+        Connector(type: PostsInteractor),
       ];
 
   late final postsInteractor = interactors.get<PostsInteractor>();

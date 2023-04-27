@@ -46,7 +46,7 @@ abstract class BaseInteractor<State> extends MvvmElement<State> {
   void _addServices() {
     _usesServices.forEach((element) {
       final service = ServiceCollection.instance.getByTypeString(
-        element.interactor.toString(),
+        element.type.toString(),
         element.params,
       );
 

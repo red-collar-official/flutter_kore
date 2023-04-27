@@ -17,12 +17,12 @@ import 'package:mvvm_redux/arch/base/service_collection.dart';
 /// }
 /// ```
 class Connector {
-  final Type interactor;
+  final Type type;
   final bool unique;
   final Map<String, dynamic>? params;
 
   Connector({
-    required this.interactor,
+    required this.type,
     this.unique = false,
     this.params,
   });
@@ -85,7 +85,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   void _addServices() {
     _usesServices.forEach((element) {
       final service = ServiceCollection.instance.getByTypeString(
-        element.interactor.toString(),
+        element.type.toString(),
         element.params,
       );
 
@@ -98,12 +98,12 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     _dependsOn.forEach((element) {
       if (element.unique) {
         final interactor = InteractorCollection.instance.getUniqueByTypeString(
-            element.interactor.toString(),
+            element.type.toString(),
             params: element.params);
         interactors.addExisting(interactor, element.params);
       } else {
         final interactor = InteractorCollection.instance
-            .getByTypeString(element.interactor.toString(), element.params);
+            .getByTypeString(element.type.toString(), element.params);
         interactors.addExisting(interactor, element.params);
       }
     });
@@ -134,7 +134,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
       }
 
       final interactor =
-          interactors.getByTypeString(element.interactor.toString(), null);
+          interactors.getByTypeString(element.type.toString(), null);
       // ignore: cascade_invocations
       interactor.dispose();
     });
@@ -153,7 +153,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
         return;
       }
 
-      ScopeStack.instance.increaseReferences(element.interactor);
+      ScopeStack.instance.increaseReferences(element.type);
     });
   }
 
@@ -164,7 +164,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
         return;
       }
 
-      ScopeStack.instance.decreaseReferences(element.interactor);
+      ScopeStack.instance.decreaseReferences(element.type);
     });
   }
 
@@ -176,7 +176,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
       }
 
       InteractorCollection.instance
-          .add(element.interactor.toString(), element.params);
+          .add(element.type.toString(), element.params);
     });
   }
 
