@@ -45,9 +45,9 @@ abstract class BaseInteractor<State> extends MvvmElement<State> {
   /// Adds services to local collection
   void _addServices() {
     _usesServices.forEach((element) {
-      final service = ServiceCollection.instance.getByTypeString(
+      final service = ServiceCollection.instance.getUniqueByTypeString(
         element.type.toString(),
-        element.params,
+        params: element.params,
       );
 
       services.addExisting(service, element.params);

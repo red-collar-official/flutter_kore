@@ -45,6 +45,19 @@ class ServiceCollection {
     return service;
   }
 
+  BaseService getUniqueByTypeString(String type,
+      {Map<String, dynamic>? params}) {
+    final id = type;
+    final builder = _builders[id];
+
+    final service = builder!();
+    
+    // ignore: cascade_invocations
+    service.initialize(params);
+
+    return service;
+  }
+
   T getUnique<T extends BaseService>({Map<String, dynamic>? params}) {
     final service = _builders[T.toString()]!();
 
