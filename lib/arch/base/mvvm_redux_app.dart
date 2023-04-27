@@ -48,11 +48,16 @@ abstract class MvvmReduxApp {
 
   EventBus get eventBus => EventBus.instance;
 
+  bool _initialized = false;
+  bool get initialized => _initialized;
+
   @mustCallSuper
   Future<void> initialize() async {
     registerServices();
     registerBuilders();
     registerSingletons();
+
+    _initialized = true;
   }
 
   @visibleForTesting
