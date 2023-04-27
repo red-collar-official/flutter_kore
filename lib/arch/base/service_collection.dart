@@ -8,12 +8,13 @@ class ServiceCollection {
   final HashMap<String, BaseService> _services = HashMap();
   final HashMap<String, BaseService Function()> _builders = HashMap();
 
-  T get<T extends BaseService>() {
+  T get<T extends BaseService>({Map<String, dynamic>? params}) {
     if (_services.containsKey(T.toString())) {
       final service = _services[T.toString()]!;
 
-      // ignore: cascade_invocations
-      service.initialize();
+      if (!service.initialized) {
+        service.initialize(params);
+      }
 
       return service as T;
     }
@@ -21,7 +22,7 @@ class ServiceCollection {
     final service = _builders[T.toString()]!();
 
     // ignore: cascade_invocations
-    service.initialize();
+    service.initialize(params);
 
     return service as T;
   }

@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 /// @singletonService
 /// class StripeService extends BaseService<Stripe> {
 ///   @override
-///   Stripe createService() {
+///   Stripe createService(Map<String, dynamic>? params) {
 ///     return Stripe.instance;
 ///   }
 /// }
@@ -18,8 +18,8 @@ abstract class BaseService<T> {
 
   /// Inititalizes service
   @mustCallSuper
-  void initialize() {
-    _instance = createService();
+  void initialize(Map<String, dynamic>? params) {
+    _instance = createService(params);
     initialized = true;
   }
 
@@ -27,7 +27,7 @@ abstract class BaseService<T> {
   void dispose() {}
 
   /// Creates actual object instance
-  T createService();
+  T createService(Map<String, dynamic>? params);
 
   /// actual object instance
   T get instance => _instance;

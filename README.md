@@ -152,7 +152,10 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 
 ## Business Logic Layer
 
-This layer contains <b>Interactor</b> classes.
+This layer contains <b>Interactor</b> and <b>Service</b> classes.
+
+### Interactors
+
 Interactors contain state and subscription to <b>EventBus</b> events (EventBus will be described later). 
 
 State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updatesFor</b> or <b>changesFor</b>.
@@ -247,6 +250,42 @@ In the last example we also can see that every interactor also has <b>savedState
 When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b>
 It later can be restored with <b>onRestore</b>.
 
+### Services
+
+Services hold instances of third party dependencies
+Service can be just used as intance holder or contain logic for working with third party api
+
+Services also can be singleton or default
+
+Typical example would be:
+
+```dart
+@defaultService
+class StringService extends BaseService<String> {
+  @override
+  String createService(Map<String, dynamic>? params) {
+    return '';
+  }
+}
+
+```
+
+or singleton service:
+
+```dart
+@singletonService
+class StringService extends BaseService<String> {
+  @override
+  String createService(Map<String, dynamic>? params) {
+    return '';
+  }
+}
+
+```
+
+Instances can be then obtained using <b>app.serviceLocator.get<T>()</b>
+
+
 ### EventBus
 
 View models and interactors have access to <b>EventBus</b> events.
@@ -275,6 +314,8 @@ app.eventBus.send(Events.eventPostLiked, payload: id);
 
 There are also utility classes to connect all components of architecture.
 This classes are generated using <b>builder</b> package.
+
+Main app class contains instances of interactor collection and service locator
 
 For example here is definition of main app class:
 
