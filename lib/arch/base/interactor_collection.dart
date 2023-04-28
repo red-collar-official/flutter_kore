@@ -59,7 +59,10 @@ class InteractorCollection {
     final runtimeType = Interactor.toString();
 
     if (!_interactors.containsKey(runtimeType)) {
-      return getUnique<Interactor>(params: params);
+      final interactor = getUnique<Interactor>(params: params);
+      _interactors[runtimeType] = interactor;
+
+      return interactor;
     }
 
     final interactor = _interactors[runtimeType] as Interactor;
@@ -90,7 +93,10 @@ class InteractorCollection {
     final runtimeType = type;
 
     if (!_interactors.containsKey(runtimeType)) {
-      return getUnique(params: params);
+      final interactor = getUnique(params: params);
+      _interactors[runtimeType] = interactor;
+
+      return interactor;
     }
 
     final interactor = _interactors[runtimeType];

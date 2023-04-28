@@ -98,12 +98,17 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     _dependsOn.forEach((element) {
       if (element.unique) {
         final interactor = InteractorCollection.instance.getUniqueByTypeString(
-            element.type.toString(),
-            params: element.params);
+          element.type.toString(),
+          params: element.params,
+        );
+
         interactors.addExisting(interactor, element.params);
       } else {
-        final interactor = InteractorCollection.instance
-            .getByTypeString(element.type.toString(), element.params);
+        final interactor = InteractorCollection.instance.getByTypeString(
+          element.type.toString(),
+          element.params,
+        );
+        
         interactors.addExisting(interactor, element.params);
       }
     });
