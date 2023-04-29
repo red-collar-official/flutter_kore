@@ -263,7 +263,7 @@ Typical example would be:
 @defaultService
 class StringService extends BaseService<String> {
   @override
-  String createService(Map<String, dynamic>? params) {
+  String provideInstance(Map<String, dynamic>? params) {
     return '';
   }
 }
@@ -276,7 +276,7 @@ or singleton service:
 @singletonService
 class StringService extends BaseService<String> {
   @override
-  String createService(Map<String, dynamic>? params) {
+  String provideInstance(Map<String, dynamic>? params) {
     return '';
   }
 }
