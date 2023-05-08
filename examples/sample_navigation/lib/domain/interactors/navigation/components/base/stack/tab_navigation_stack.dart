@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/route_model.dart';
@@ -10,16 +11,52 @@ class TabNavigationStack extends BaseNavigationStack {
   final tabRouteStack = defaultTabRouteStack();
 
   @override
-  void addRoute(Object routeName, AppTab? currentTab, bool global,
-      bool uniqueInStack, bool dismissable) {
+  void addRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
     try {
       tabRouteStack[currentTab]!.add(RouteModel(
         name: routeName,
         dismissable: dismissable,
         uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
       ));
-    } catch (e) {
-      // ignore
+    } catch (e, trace) {
+      if (kDebugMode) {
+        print(e);
+        print(trace);
+      }
+    }
+  }
+
+  @override
+  void replaceLastRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
+    try {
+      final stack = tabRouteStack[currentTab]!;
+
+      stack[stack.length - 1] = RouteModel(
+        name: routeName,
+        dismissable: dismissable,
+        uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
+      );
+    } catch (e, trace) {
+      if (kDebugMode) {
+        print(e);
+        print(trace);
+      }
     }
   }
 
@@ -36,7 +73,11 @@ class TabNavigationStack extends BaseNavigationStack {
 
   @override
   void replaceStack(
-      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+    Routes routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+  ) {
     if (currentTab == null) {
       return;
     }

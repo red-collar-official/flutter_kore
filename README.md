@@ -171,11 +171,27 @@ When interactor is annotated with <b>defaultInteractor</b> we need to write depe
 
 This interactors can be disposed when dependent element is disposed.
 
+Interactors also can depend on other interactors via <b>dependsOn</b> override
+
+Interactors also can use services via <b>usesServices</b> override
+
+They are connected with <b>Connector</b> objects that will be discussed below
+
 Typical example would be:
 
 ```dart
 @defaultInteractor
 class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
+  @override
+  List<Connector> dependsOn(Map<String, dynamic>? input) => [
+        Connector(type: SupportInteractor, unique: true),
+      ];
+
+  @override
+  List<Connector> usesServices(Map<String, dynamic>? input) => [
+        Connector(type: ReactionsService),
+      ];
+
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: StatefulData.loading()));
 
@@ -247,15 +263,17 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
 
 In the last example we also can see that every interactor also has <b>savedStateObject</b>.
 
-When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b>
+When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider
 It later can be restored with <b>onRestore</b>.
 
 ### Services
 
 Services hold instances of third party dependencies
-Service can be just used as intance holder or contain logic for working with third party api
+Service can be just used as instance holders or contain logic for working with third party api
 
 Services also can be singleton or default
+
+Services unlike interactors don`t have state, but they also can receive <b>EventBus</b> events (EventBus will be described later). 
 
 Typical example would be:
 
@@ -283,7 +301,32 @@ class StringService extends BaseService<String> {
 
 ```
 
-Instances can be then obtained using <b>app.serviceLocator.get<T>()</b>
+Instances can be then obtained using <b>app.services.get<T>()</b>
+
+### Connectors
+
+Connectors are objects that describe dependency for interactor or service
+
+We can specify a type of object(interactor or service) we want to depend on.
+
+We can also specify if we want to get unique instance or shared instance
+
+We also can define count of objects that we want to connect
+
+Examples would be:
+
+```dart
+@override
+List<Connector> dependsOn(Map<String, dynamic>? input) => [
+      Connector(type: SupportInteractor, unique: true), // unique instance
+      Connector(type: ShareInteractor, count: 5), // 5 unique instances
+    ];
+
+@override
+List<Connector> usesServices(Map<String, dynamic>? input) => [
+      Connector(type: ReactionsService), // shared instance
+    ];
+```
 
 
 ### EventBus
@@ -352,13 +395,12 @@ Presentation layer consists of view model and view classes that are connected to
 
 View models contain logic for view classes
 
-It also contains local <b>InteractorCollection</b> and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
+It also contains local <b>InteractorCollection</b>, <b>ServiceCollection</b> and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
 We also can listen to state changes with <b>updatesFor</b> or <b>changesFor</b>
 We add interactors to view model using <b>dependsOn</b> getter.
+We add services to view model using <b>usesServices</b> getter.
 Using this getter we can connect default interactors to view model.
-When we connect interactor to view model it ensures that interactor is initialized and alive for lifetime of view model.
-If we add <b>unique</b> flag we get unique instance of interactor - otherwise we get instance from global interactors collection.
-View models like interactors can receive <b>EventBus</b> events using <b>subscribeTo</b> getter.
+View models like interactors and services can receive <b>EventBus</b> events using <b>subscribeTo</b> getter.
 
 View models also can override <b>onLaunch</b> method that is called on first frame of corresponding view.
 
@@ -369,10 +411,21 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
         Connector(interactor: PostsInteractor),
         Connector(interactor: PostInteractor, unique: true),
       ];
+  
+  @override
+  List<Connector> usesServices(Map<String, dynamic>? input) => [
+        Connector(type: ReactionsService), // shared instance
+      ];    
 
   @override
   void onLaunch(PostsListView widget) {
+    // called with initState
     interactors.get<PostsInteractor>().loadPosts(0, 30);
+  }
+
+  @override
+  void onFirstFrame(SearchView widget) {
+    // called with first frame - post frame callback
   }
 
   @override

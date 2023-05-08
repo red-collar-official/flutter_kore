@@ -31,6 +31,18 @@ Map<AppTab, List<RouteModel>> defaultTabRouteStack() => {
       ],
     };
 
+void resetTabsKeys() {
+  // creating new ones
+  final newMap = {
+    AppTabs.posts: GlobalKey<NavigatorState>(),
+    AppTabs.likedPosts: GlobalKey<NavigatorState>(),
+  };
+
+  tabNavigatorKeys
+    ..clear()
+    ..addAll(newMap);
+}
+
 /// Global keys for every tab navigator
 final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
   AppTabs.posts: GlobalKey<NavigatorState>(),

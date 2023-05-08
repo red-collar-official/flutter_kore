@@ -10,14 +10,38 @@ class GlobalNavigationStack extends BaseNavigationStack {
   final routeStack = defaultRouteStack();
 
   @override
-  void addRoute(Object routeName, AppTab? currentTab, bool global,
-      bool uniqueInStack, bool dismissable) {
+  void addRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
     routeStack.add(
       RouteModel(
         name: routeName,
         dismissable: dismissable,
         uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
       ),
+    );
+  }
+
+  @override
+  void replaceLastRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
+    routeStack[routeStack.length - 1] = RouteModel(
+      name: routeName,
+      dismissable: dismissable,
+      uniqueInStack: uniqueInStack,
+      needToEnsureClose: needToEnsureClose,
     );
   }
 
@@ -28,7 +52,11 @@ class GlobalNavigationStack extends BaseNavigationStack {
 
   @override
   void replaceStack(
-      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+    Routes routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+  ) {
     routeStack
       ..clear()
       ..add(

@@ -1,9 +1,9 @@
 // ignore_for_file: cascade_invocations
 
 import 'package:sample_navigation/domain/data/app_tab.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/base/stack/base_navigation_stack.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
 
-import 'stack/base_navigation_stack.dart';
 import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';
 
@@ -19,16 +19,56 @@ class NavigationStack {
   /// Can be screen route, dialog route or bottom sheet route
   /// Therefore route name is [Object]
   /// CurrentTab is always null for global navigation
-  void addRoute(Object routeName, AppTab? currentTab, bool global,
-      bool uniqueInStack, bool dismissable) {
+  void addRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
     final stack = _getStack(global);
-    stack.addRoute(routeName, currentTab, global, uniqueInStack, dismissable);
+    stack.addRoute(
+      routeName,
+      currentTab,
+      global,
+      uniqueInStack,
+      dismissable,
+      needToEnsureClose,
+    );
+  }
+
+  /// Replaces latest route in stack
+  /// Can be screen route, dialog route or bottom sheet route
+  /// Therefore route name is [Object]
+  /// CurrentTab is always null for global navigation
+  void replaceLastRoute(
+    Object routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+    bool dismissable,
+    bool needToEnsureClose,
+  ) {
+    final stack = _getStack(global);
+    stack.replaceLastRoute(
+      routeName,
+      currentTab,
+      global,
+      uniqueInStack,
+      dismissable,
+      needToEnsureClose,
+    );
   }
 
   /// Replaces whole stack with given route
   /// Route can be only screen route therefore routeName defined as [Routes]
   void replaceStack(
-      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+    Routes routeName,
+    AppTab? currentTab,
+    bool global,
+    bool uniqueInStack,
+  ) {
     final stack = _getStack(global);
     stack.replaceStack(routeName, currentTab, global, uniqueInStack);
   }
@@ -37,12 +77,14 @@ class NavigationStack {
   /// Therefore route name is [Object] returns true if object is not present in stack
   bool checkUnique(Object routeName, AppTab? currentTab, bool global) {
     final stack = _getStack(global);
+
     return stack.checkUnique(routeName, currentTab, global);
   }
 
   /// Pops latest route from stack
   void pop(AppTab? currentTab, bool global) {
     final stack = _getStack(global);
+
     return stack.pop(currentTab);
   }
 
