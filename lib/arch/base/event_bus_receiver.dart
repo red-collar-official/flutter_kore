@@ -37,9 +37,14 @@ abstract class EventBusReceiver {
     });
   }
 
+  @mustCallSuper
+  void initializeSub() {
+    subscribeToEvents();
+  }
+
   /// Closes underlying stream subscription for [EventBus]
   @mustCallSuper
-  void dispose() {
+  void disposeSub() {
     eventsSubscription?.cancel();
   }
 }

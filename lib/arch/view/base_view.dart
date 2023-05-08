@@ -54,7 +54,7 @@ abstract class BaseView<View extends StatefulWidget, ScreenState,
   /// Initializes view model
   void initializeViewModel() {
     _viewModel = createViewModel();
-    _viewModel.inititialze(widget);
+    _viewModel.initialize(widget);
   }
 
   @override

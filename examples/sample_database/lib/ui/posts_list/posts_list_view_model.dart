@@ -12,7 +12,7 @@ import 'posts_list_view_state.dart';
 class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView widget) => [
+  List<Connector> dependsOn(PostsListView input) => [
         Connector(type: PostsInteractor),
       ];
 
@@ -35,7 +35,7 @@ class PostsListViewModel
       interactors.get<PostsInteractor>().updates((state) => state.posts);
 
   @override
-  PostsListViewState initialState(PostsListView widget) => PostsListViewState();
+  PostsListViewState initialState(PostsListView input) => PostsListViewState();
 
   // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
 }

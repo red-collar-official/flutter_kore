@@ -8,9 +8,9 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<Connector> dependsOn(PostView widget) => [
+  List<Connector> dependsOn(PostView input) => [
         Connector(type: PostInteractor, unique: true, params: {
-          'post': widget.post,
+          'post': input.post,
         }),
       ];
 
@@ -24,6 +24,8 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   }
 
   void like(int id) {
+    interactors.debugPrintMap();
+
     interactors.get<PostInteractor>().likePost(id);
   }
 
@@ -34,5 +36,5 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
       interactors.get<PostInteractor>().state.post;
 
   @override
-  PostViewState initialState(PostView widget) => PostViewState();
+  PostViewState initialState(PostView input) => PostViewState();
 }

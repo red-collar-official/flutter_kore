@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'event_bus_receiver.dart';
+import 'mvvm_instance.dart';
 
 /// Base class that creates and holds some third party instance
 ///
@@ -11,19 +11,18 @@ import 'event_bus_receiver.dart';
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class BaseService<T> extends EventBusReceiver {
+abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   /// actual object instance
   late T _instance;
 
-  /// flag indicating that instance is created
-  bool initialized = false;
-
   /// Inititalizes service
   @mustCallSuper
-  void initialize(Map<String, dynamic>? params) {
-    _instance = provideInstance(params);
-    subscribeToEvents();
-    
+  @override
+  void initialize(Map<String, dynamic>? input) {
+    super.initialize(input);
+
+    _instance = provideInstance(input);
+
     initialized = true;
   }
 

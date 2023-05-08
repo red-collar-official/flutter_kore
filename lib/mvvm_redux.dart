@@ -6,6 +6,7 @@ export 'arch/base/event_bus.dart';
 export 'arch/base/mvvm_element.dart';
 export 'arch/base/mvvm_redux_app.dart';
 export 'arch/base/store.dart';
+export 'arch/base/connector.dart';
 
 export 'arch/view/base_view.dart';
 export 'arch/view/base_view_model.dart';

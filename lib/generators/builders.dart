@@ -2,9 +2,9 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'generators.dart';
 
-Builder generateInteractorCollector(BuilderOptions options) => SharedPartBuilder(
-      [InteractorsCollectorGenerator()],
-      'interactor_collector_generator',
+Builder generateInstanceCollector(BuilderOptions options) => SharedPartBuilder(
+      [InstancesCollectorGenerator()],
+      'instances_collector_generator',
       allowSyntaxErrors: true,
     );
 Builder generateMainApp(BuilderOptions options) => SharedPartBuilder(

@@ -12,7 +12,7 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<Connector> dependsOn(PostView widget) => [
+  List<Connector> dependsOn(PostView input) => [
         Connector(type: PostInteractor, unique: true),
       ];
 
@@ -47,7 +47,7 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
       interactors.get<PostInteractor>().updates((state) => state.post);
 
   @override
-  PostViewState initialState(PostView widget) => PostViewState();
+  PostViewState initialState(PostView input) => PostViewState();
 
   StatefulData<Post>? get initialPost =>
       interactors.get<PostInteractor>().state.post;

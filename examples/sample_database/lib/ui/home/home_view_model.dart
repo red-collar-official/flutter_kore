@@ -9,7 +9,7 @@ import 'home_view_state.dart';
 
 class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   @override
-  List<Connector> dependsOn(HomeView widget) => [];
+  List<Connector> dependsOn(HomeView input) => [];
 
   @override
   void onLaunch(HomeView widget) {
@@ -40,5 +40,5 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  HomeViewState initialState(HomeView widget) => HomeViewState();
+  HomeViewState initialState(HomeView input) => HomeViewState();
 }

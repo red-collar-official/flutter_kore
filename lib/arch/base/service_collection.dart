@@ -1,97 +1,11 @@
-import 'dart:collection';
-
-import 'package:flutter/material.dart';
+import 'package:mvvm_redux/arch/base/instance_collection.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
 
 import 'base_service.dart';
 
-class ServiceCollection {
-  final HashMap<String, BaseService> _services = HashMap();
-  final HashMap<String, BaseService Function()> _builders = HashMap();
-
-  Iterable<BaseService> get all => _services.values;
-
-  T get<T extends BaseService>({Map<String, dynamic>? params}) {
-    if (_services.containsKey(T.toString())) {
-      final service = _services[T.toString()]!;
-
-      if (!service.initialized) {
-        service.initialize(params);
-      }
-
-      return service as T;
-    }
-
-    final service = _builders[T.toString()]!();
-
-    // ignore: cascade_invocations
-    service.initialize(params);
-
-    return service as T;
-  }
-
-  BaseService getByTypeString(String type, Map<String, dynamic>? params) {
-    final runtimeType = type;
-
-    if (!_services.containsKey(runtimeType)) {
-      return getUnique(params: params);
-    }
-
-    final service = _services[runtimeType];
-
-    if (!service!.initialized) {
-      service.initialize(params);
-    }
-
-    return service;
-  }
-
-  BaseService getUniqueByTypeString(String type,
-      {Map<String, dynamic>? params}) {
-    final id = type;
-    final builder = _builders[id];
-
-    final service = builder!();
-    
-    // ignore: cascade_invocations
-    service.initialize(params);
-
-    return service;
-  }
-
-  T getUnique<T extends BaseService>({Map<String, dynamic>? params}) {
-    final service = _builders[T.toString()]!();
-
-    // ignore: cascade_invocations
-    service.initialize(params);
-
-    return service as T;
-  }
-
-  /// Adds existing service to collection
-  /// Also calls [initializeInternal] for this interactor
-  void addExisting(BaseService service, Map<String, dynamic>? params) {
-    final id = service.runtimeType.toString();
-    _services[id] = service;
-
-    if (!_services[id]!.initialized) {
-      _services[id]!.initialize(params);
-    }
-  }
-
-  void registerSingleton<T extends BaseService>(T Function() create) {
-    _builders[T.toString()] = create;
-    _services[T.toString()] = create();
-  }
-
-  void registerFactory<T extends BaseService>(T Function() create) {
-    _builders[T.toString()] = create;
-  }
-
-  @visibleForTesting
-  void addTest<T extends BaseService>(T Function() create) {
-    registerSingleton<T>(create);
-  }
-
+/// Main class to store instances of services
+/// Contains internal methods to manage services
+class ServiceCollection extends InstanceCollection<BaseService> {
   static final ServiceCollection _singletonInteractorCollection =
       ServiceCollection._internal();
 

@@ -2,16 +2,16 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:mvvm_redux/arch/base/mvvm_instance.dart';
 
 import 'event_bus.dart';
-import 'event_bus_receiver.dart';
 import 'mvvm_redux_app.dart';
 import 'store.dart';
 
 /// Base class for storing test data
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
-abstract class MvvmElement<State> extends EventBusReceiver {
+abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// [Store] instance containg [State] object
   late Store<State> _store;
 
