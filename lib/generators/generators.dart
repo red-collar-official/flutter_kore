@@ -125,7 +125,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('@override')
       ..writeln('void registerBuilders() {');
 
-    if (InstancesCollectorGenerator.singletonAnnotated.isNotEmpty || InstancesCollectorGenerator.defaultAnnotated.isNotEmpty) {
+    if (InstancesCollectorGenerator.singletonAnnotated.isNotEmpty ||
+        InstancesCollectorGenerator.defaultAnnotated.isNotEmpty) {
       classBuffer.writeln('interactors');
     }
 
@@ -139,14 +140,10 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
           .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
-    if (InstancesCollectorGenerator.singletonAnnotated.isNotEmpty || InstancesCollectorGenerator.defaultAnnotated.isNotEmpty) {
+    if (InstancesCollectorGenerator.singletonAnnotated.isNotEmpty ||
+        InstancesCollectorGenerator.defaultAnnotated.isNotEmpty) {
       classBuffer.writeln(';');
     }
-
-    // @override
-    // void registerServices() {
-    //   services.registerSingleton<StripeService>(() => StripeService());
-    // }
 
     classBuffer
       ..writeln('}')
@@ -160,13 +157,13 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     }
 
     InstancesCollectorGenerator.singletonAnnotatedServices.forEach((element) {
-      classBuffer.writeln(
-          '..addBuilder<${element.name}>(() => ${element.name}())');
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
     InstancesCollectorGenerator.defaultAnnotatedServices.forEach((element) {
-      classBuffer.writeln(
-          '..addBuilder<${element.name}>(() => ${element.name}())');
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     });
 
     if (InstancesCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
