@@ -137,7 +137,7 @@ abstract class BaseDependentElement<State, Input>
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {
     _dependsOn.forEach((element) {
-      if (element.unique && element.count == 1) {
+      if (element.unique || element.count > 1) {
         return;
       }
 
@@ -145,7 +145,7 @@ abstract class BaseDependentElement<State, Input>
     });
 
     _usesServices.forEach((element) {
-      if (element.unique && element.count == 1) {
+      if (element.unique || element.count > 1) {
         return;
       }
 
@@ -156,7 +156,7 @@ abstract class BaseDependentElement<State, Input>
   /// Decreases reference count for every interactor in [dependsOn]
   void _decreaseReferences() {
     _dependsOn.forEach((element) {
-      if (element.unique && element.count == 1) {
+      if (element.unique || element.count > 1) {
         return;
       }
 
@@ -164,7 +164,7 @@ abstract class BaseDependentElement<State, Input>
     });
 
     _usesServices.forEach((element) {
-      if (element.unique && element.count == 1) {
+      if (element.unique || element.count > 1) {
         return;
       }
 
@@ -204,6 +204,10 @@ abstract class BaseDependentElement<State, Input>
         return;
       }
 
+      if (element.count != 1) {
+        return;
+      }
+
       final uniqueInteractors =
           interactors.getAllByTypeString(element.type.toString());
 
@@ -218,6 +222,10 @@ abstract class BaseDependentElement<State, Input>
   void _disposeUniqueServices() {
     _usesServices.forEach((element) {
       if (!element.unique && element.count == 1) {
+        return;
+      }
+
+      if (element.count != 1) {
         return;
       }
 
