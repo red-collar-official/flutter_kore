@@ -42,19 +42,21 @@ class InstanceCollection<T extends MvvmInstance> {
   /// Also calls [dispose] for this instance
   void remove(String type, {int? index}) {
     if (index == null) {
-      _instances[type]?.forEach((element) {
+      final instances = _instances[type];
+      _instances.remove(type);
+
+      instances?.forEach((element) {
         element.dispose();
       });
-
-      _instances.remove(type);
 
       return;
     }
 
     final instance = _instances[type]?[index];
-    instance?.dispose();
-
+    
     _instances[type]?.removeAt(index);
+
+    instance?.dispose();
   }
 
   /// Similar to get, but create new instance every time
