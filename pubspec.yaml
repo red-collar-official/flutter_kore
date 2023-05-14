@@ -14,10 +14,10 @@ dependencies:
   flutter:
     sdk: flutter
   
-  dio: ^5.1.1
-  intl: ^0.17.0
+  dio: ^5.1.2
+  intl: ^0.18.0
   pedantic: ^1.11.1
-  async: ^2.10.0
+  async: ^2.11.0
   source_gen:
 
 dev_dependencies:
