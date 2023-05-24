@@ -16,7 +16,7 @@ dependencies:
   dio: ^5.1.2
   intl: ^0.18.0
   pedantic: ^1.11.1
-  async: ^2.11.0
+  async: ^2.9.0
   source_gen:
 
 dev_dependencies:
