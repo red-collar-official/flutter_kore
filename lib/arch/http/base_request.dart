@@ -140,6 +140,8 @@ abstract class BaseRequest<T> {
   /// Form data for this request
   Future<FormData>? formData;
 
+  void Function(T)? onPrefetchFromDatabase;
+
   /// Executes this request and returns [Response] value
   Future<Response<T>> execute();
 }

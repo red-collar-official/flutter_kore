@@ -64,6 +64,12 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   @override
   Future<Response<T>> execute() async {
+    if (onPrefetchFromDatabase != null) {
+      final databaseData = await databaseGetDelegate?.call(headers);
+
+      onPrefetchFromDatabase!(databaseData);
+    }
+
     if (simulateResult != null) {
       if (simulateResult!.result != null) {
         await databasePutDelegate?.call(simulateResult!.result!);
