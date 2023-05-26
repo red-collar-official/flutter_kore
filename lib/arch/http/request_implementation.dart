@@ -65,9 +65,13 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   @override
   Future<Response<T>> execute() async {
     if (onPrefetchFromDatabase != null) {
-      final databaseData = await databaseGetDelegate?.call(headers);
+      try {
+        final databaseData = await databaseGetDelegate?.call(headers);
 
-      onPrefetchFromDatabase!(databaseData);
+        onPrefetchFromDatabase!(databaseData);
+      } catch(e) {
+        // ignore
+      }
     }
 
     if (simulateResult != null) {
@@ -95,14 +99,21 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     final response = simulateResponse ?? (await _startRequest(client, data));
 
     if (response == null) {
-      final databaseData = await databaseGetDelegate?.call(headers);
+      try {
+        final databaseData = await databaseGetDelegate?.call(headers);
 
-      return Response<T>(
-        code: 0,
-        error: 'not_recognized_error',
-        result: databaseData,
-        fromDatabase: databaseData != null,
-      );
+        return Response<T>(
+          code: 0,
+          error: 'not_recognized_error',
+          result: databaseData,
+          fromDatabase: databaseData != null,
+        );
+      } catch(e) {
+        return Response<T>(
+          code: 0,
+          error: 'not_recognized_error',
+        );
+      }
     }
 
     if (response is dio.DioError) {
@@ -129,7 +140,11 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
 
     if (result != null) {
-      await databasePutDelegate?.call(result);
+      try {
+        await databasePutDelegate?.call(result);
+      } catch(e) {
+        // ignore
+      }
     }
 
     return Response<T>(
