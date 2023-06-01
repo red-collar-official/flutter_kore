@@ -78,7 +78,7 @@ class MockPostsApiResult extends PostsApi {
 }
 ```
 
-If project requires database we use <b>ObjectBox</b> library and add delegates to <b>HttpRequest</b> if needed.
+If project requires database we can use any database such as <b>ObjectBox</b> or <b>Hive</b> or <b>Isar</b> library and add delegates to <b>HttpRequest</b> if needed.
 
 Here is an example:
 

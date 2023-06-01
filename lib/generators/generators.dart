@@ -99,7 +99,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     classBuffer
       ..writeln('mixin $className on MvvmReduxApp {')
       ..writeln('@override')
-      ..writeln('List<Type> get singletons => [');
+      ..writeln('List<Type> get singletonInteractors => [');
 
     // ignore: prefer_foreach
     for (final element in InstancesCollectorGenerator.singletonAnnotated) {
@@ -123,7 +123,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('  ];')
       ..writeln()
       ..writeln('@override')
-      ..writeln('void registerBuilders() {');
+      ..writeln('void registerInteractors() {');
 
     if (InstancesCollectorGenerator.singletonAnnotated.isNotEmpty ||
         InstancesCollectorGenerator.defaultAnnotated.isNotEmpty) {
@@ -147,6 +147,22 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
     classBuffer
       ..writeln('}')
+      ..writeln();
+
+    // ignore: cascade_invocations
+    classBuffer
+      ..writeln('@override')
+      ..writeln('List<Type> get singletonServices => [');
+
+    // ignore: prefer_foreach
+    for (final element in InstancesCollectorGenerator.singletonAnnotatedServices) {
+      if (element.name != null) {
+        classBuffer.writeln(element.name! + ', ');
+      }
+    }
+
+    classBuffer
+      ..writeln('  ];')
       ..writeln()
       ..writeln('@override')
       ..writeln('void registerServices() {');

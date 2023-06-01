@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base/event_bus.dart';
 import 'package:mvvm_redux/arch/base/interactor_collection.dart';
 import 'package:mvvm_redux/arch/base/service_collection.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
 typedef LocaleCachePutDelegate = Future<bool> Function(
@@ -54,7 +54,7 @@ abstract class MvvmReduxApp {
   @mustCallSuper
   Future<void> initialize() async {
     registerServices();
-    registerBuilders();
+    registerInteractors();
     registerSingletons();
 
     _initialized = true;
@@ -63,8 +63,12 @@ abstract class MvvmReduxApp {
   @visibleForTesting
   void registerSingletons() {
     // no need to count references for singletons
-    for (final element in singletons) {
+    for (final element in singletonInteractors) {
       interactors.add(element.toString(), null);
+    }
+
+    for (final element in singletonServices) {
+      services.add(element.toString(), null);
     }
   }
 
@@ -72,7 +76,7 @@ abstract class MvvmReduxApp {
   ///
   /// ```dart
   ///  @override
-  ///  void registerBuilders() {
+  ///  void registerInteractors() {
   ///    interactors
   ///      ..addBuilder<UserDefaultsInteractor>(() => UserDefaultsInteractor())
   ///      ..addBuilder<AutharizationInteractor>(() => AutharizationInteractor())
@@ -82,7 +86,7 @@ abstract class MvvmReduxApp {
   ///      ..addBuilder<ShareInteractor>(() => ShareInteractor());
   ///  }
   /// ```
-  void registerBuilders();
+  void registerInteractors();
 
   /// Collection of service objects
   void registerServices();
@@ -91,13 +95,24 @@ abstract class MvvmReduxApp {
   ///
   /// ```dart
   ///   @override
-  ///   List<Type> get singletons => [
+  ///   List<Type> get singletonInteractors => [
   ///         UserDefaultsInteractor,
   ///         AutharizationInteractor,
   ///         NavigationInteractor,
   ///       ];
   /// ```
-  List<Type> get singletons;
+  List<Type> get singletonInteractors;
+
+  /// Collection of singletion services
+  ///
+  /// ```dart
+  ///   @override
+  ///   List<Type> get singletonServices => [
+  ///         UserDefaultsService,
+  ///         DbService,
+  ///       ];
+  /// ```
+  List<Type> get singletonServices;
 
   /// Delegate function to get data from [SharedPreferences]
   static LocaleCacheGetDelegate cacheGetDelegate = (key) {
