@@ -13,6 +13,7 @@ import 'mvvm_instance.dart';
 /// }
 abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   /// actual object instance
+  late T Function() _instanceCreator;
   late T _instance;
 
   /// Inititalizes service
@@ -21,7 +22,7 @@ abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   void initialize(Map<String, dynamic>? input) {
     super.initialize(input);
 
-    _instance = provideInstance(input);
+    _instanceCreator = () => provideInstance(input);
 
     initialized = true;
   }
@@ -30,5 +31,5 @@ abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   T provideInstance(Map<String, dynamic>? params);
 
   /// actual object instance
-  T get instance => _instance;
+  T get instance => _instance ??= _instanceCreator();
 }
