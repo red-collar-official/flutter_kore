@@ -14,7 +14,7 @@ import 'mvvm_instance.dart';
 abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   /// actual object instance
   late T Function() _instanceCreator;
-  late T _instance;
+  T? _instance;
 
   /// Inititalizes service
   @mustCallSuper
