@@ -56,6 +56,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   /// Print function for [Dio] logger
   void logPrint(Object obj);
 
+  /// Print function for [Dio] logger
+  void exceptionPrint(Object error, StackTrace trace);
+
   /// Function to retry error requests
   Future<dynamic> onError(dio.DioError error, RetryHandler retry);
 
@@ -69,8 +72,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         final databaseData = await databaseGetDelegate?.call(headers);
 
         onPrefetchFromDatabase!(databaseData);
-      } catch(e) {
-        // ignore
+      } catch (e, trace) {
+        exceptionPrint(e, trace);
       }
     }
 
@@ -108,7 +111,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
           result: databaseData,
           fromDatabase: databaseData != null,
         );
-      } catch(e) {
+      } catch (e, trace) {
+        exceptionPrint(e, trace);
+        
         return Response<T>(
           code: 0,
           error: 'not_recognized_error',
@@ -142,8 +147,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     if (result != null) {
       try {
         await databasePutDelegate?.call(result);
-      } catch(e) {
-        // ignore
+      } catch (e, trace) {
+        exceptionPrint(e, trace);
       }
     }
 
@@ -210,7 +215,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       dio.Dio client, dynamic data, dio.DioError error) async {
     try {
       return await constructRequest(client, method, data);
-    } catch (e) {
+    } catch (e, trace) {
+      exceptionPrint(e, trace);
+      
       return error;
     }
   }
@@ -221,7 +228,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     try {
       response = await constructRequest(client, method, data);
-    } on dio.DioError catch (error) {
+    } on dio.DioError catch (error, trace) {
+      exceptionPrint(error, trace);
+
       return onError(error, () => _retryRequest(client, data, error));
     }
 

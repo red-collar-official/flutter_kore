@@ -39,6 +39,14 @@ class HttpRequest<T> extends RequestImplementation<T> {
   }
 
   @override
+  void exceptionPrint(Object error, StackTrace trace) {
+    if (kDebugMode) {
+      print(error);
+      print(trace);
+    }
+  }
+
+  @override
   void onAuthorization(Dio dio) {
     // ignore
   }
