@@ -13,7 +13,7 @@ dependencies:
   mvvm_redux:
     path: ../../
 
-  dio: ^5.1.1
+  dio: ^5.2.0
   freezed_annotation: ^2.1.0
   shared_preferences: ^2.0.15
   objectbox: ^1.6.2

@@ -61,7 +61,7 @@ class PostCard extends StatelessWidget {
       );
 
   Widget _buildUserHeader() => const Row(
-        children: const [
+        children: [
           Icon(Icons.person),
           Text(
             'Unnamed user',

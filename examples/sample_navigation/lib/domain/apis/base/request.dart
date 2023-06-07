@@ -1,7 +1,4 @@
-// ignore: implementation_imports
-import 'package:dio/src/dio_error.dart';
-// ignore: implementation_imports
-import 'package:dio/src/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
 
@@ -52,7 +49,7 @@ class HttpRequest<T> extends RequestImplementation<T> {
   }
 
   @override
-  Future onError(DioError error, RetryHandler retry) async {
+  Future onError(DioException error, RetryHandler retry) async {
     await retry();
   }
 }

@@ -60,7 +60,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   void exceptionPrint(Object error, StackTrace trace);
 
   /// Function to retry error requests
-  Future<dynamic> onError(dio.DioError error, RetryHandler retry);
+  Future<dynamic> onError(dio.DioException error, RetryHandler retry);
 
   /// Function to add autharization headers to [Dio] instance
   void onAuthorization(dio.Dio dio);
@@ -121,7 +121,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       }
     }
 
-    if (response is dio.DioError) {
+    if (response is dio.DioException) {
       final databaseData = await databaseGetDelegate?.call(headers);
 
       return Response<T>(
@@ -212,7 +212,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   /// Function to retry request
   Future<dynamic> _retryRequest(
-      dio.Dio client, dynamic data, dio.DioError error) async {
+      dio.Dio client, dynamic data, dio.DioException error) async {
     try {
       return await constructRequest(client, method, data);
     } catch (e, trace) {
@@ -228,7 +228,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     try {
       response = await constructRequest(client, method, data);
-    } on dio.DioError catch (error, trace) {
+    } on dio.DioException catch (error, trace) {
       exceptionPrint(error, trace);
 
       return onError(error, () => _retryRequest(client, data, error));
