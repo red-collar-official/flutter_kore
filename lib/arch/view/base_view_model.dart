@@ -31,8 +31,8 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   }
 
   /// Utility function to remove input focus for current view
-  void removeInputFocus(BuildContext context) {
+  void removeInputFocus() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
-    FocusScope.of(context).requestFocus(FocusNode());
+    FocusManager.instance.primaryFocus?.unfocus();
   }
 }
