@@ -60,11 +60,31 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// ```
   Map<String, dynamic> get savedStateObject => {};
 
+  /// Flag indicating that this interactor needs to save state to user defaults
+  ///
+  /// ```dart
+  /// @singletonInteractor
+  /// class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
+  ///   @override
+  ///   void onRestore(Map<String, dynamic> savedStateObject) {
+  ///     updateState(UserDefaultsState.fromJson(savedStateObject));
+  ///   }
+  ///
+  ///   @override
+  ///   bool get isRestores => true;
+  /// }
+  /// ```
+  bool get isRestores => false;
+
   /// Tries to restore cached state
   /// If cached state is empty does nothing
   /// if cached state is not empty calls [onRestore]
   @protected
   void restoreCachedState() {
+    if (!isRestores) {
+      return;
+    }
+
     final stateId = state.runtimeType.toString();
     final stateFromCacheJsonString = MvvmReduxApp.cacheGetDelegate(stateId);
 
@@ -114,7 +134,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// if [savedStateObject] is not empty listens to state updates and puts it to cache using [MvvmReduxApp.cachePutDelegate]
   /// If [savedStateObject] is empty does nothing
   void _subscribeToStoreUpdates() {
-    if (savedStateObject.keys.isEmpty) {
+    if (!isRestores) {
       return;
     }
 
