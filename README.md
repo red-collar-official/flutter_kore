@@ -254,6 +254,9 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
+
+  @override
+  bool get isRestores => true;
   
   @override
   Map<String, EventBusSubscriber> get subscribeTo => {};
@@ -264,7 +267,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
 In the last example we also can see that every interactor also has <b>savedStateObject</b>.
 
 When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider
-It later can be restored with <b>onRestore</b>.
+It later can be restored with <b>onRestore</b>. It also has <b>isRestores</b> flag - that is false by default.
 
 ### Services
 
