@@ -10,13 +10,22 @@ class TabNavigationStack extends BaseNavigationStack {
   final tabRouteStack = defaultTabRouteStack();
 
   @override
-  void addRoute(Object routeName, AppTab? currentTab, bool global,
-      bool uniqueInStack, bool dismissable) {
+  void addRoute({
+    required Object routeName,
+    AppTab? currentTab,
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
     try {
       tabRouteStack[currentTab]!.add(RouteModel(
         name: routeName,
         dismissable: dismissable,
         uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
+        id: id,
       ));
     } catch (e) {
       // ignore
@@ -24,7 +33,36 @@ class TabNavigationStack extends BaseNavigationStack {
   }
 
   @override
-  bool checkUnique(Object routeName, AppTab? currentTab, bool global) {
+  void replaceLastRoute({
+    required Object routeName,
+    AppTab? currentTab,
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
+    try {
+      final stack = tabRouteStack[currentTab]!;
+
+      stack[stack.length - 1] = RouteModel(
+        name: routeName,
+        dismissable: dismissable,
+        uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
+        id: id,
+      );
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  @override
+  bool checkUnique({
+    required Object routeName,
+    AppTab? currentTab,
+    required bool global,
+  }) {
     if (currentTab == null) {
       return false;
     }
@@ -35,8 +73,13 @@ class TabNavigationStack extends BaseNavigationStack {
   }
 
   @override
-  void replaceStack(
-      Routes routeName, AppTab? currentTab, bool global, bool uniqueInStack) {
+  void replaceStack({
+    required Routes routeName,
+    AppTab? currentTab,
+    required bool global,
+    required bool uniqueInStack,
+    Object? id,
+  }) {
     if (currentTab == null) {
       return;
     }
@@ -46,6 +89,7 @@ class TabNavigationStack extends BaseNavigationStack {
         name: routeName,
         dismissable: false,
         uniqueInStack: uniqueInStack,
+        id: id,
       ),
     ];
   }

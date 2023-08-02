@@ -7,44 +7,18 @@ final globalNavigatorKey = GlobalKey<NavigatorState>();
 final bottomSheetDialogNavigatorKey = GlobalKey<NavigatorState>();
 final routeObserver = RouteObserver<ModalRoute<void>>();
 
+RouteModel _defailtRouteModelFor(Routes route) => RouteModel(
+      name: route,
+      dismissable: false,
+    );
+
 /// Default stack for global navigator
 List<RouteModel> defaultRouteStack() => [
-      const RouteModel(
-        name: Routes.home,
-        dismissable: false,
-      ),
+      _defailtRouteModelFor(Routes.home),
     ];
 
 /// Default stacks for every tab navigator
 Map<AppTab, List<RouteModel>> defaultTabRouteStack() => {
-      AppTabs.posts: [
-        const RouteModel(
-          name: Routes.posts,
-          dismissable: false,
-        ),
-      ],
-      AppTabs.likedPosts: [
-        const RouteModel(
-          name: Routes.likedPosts,
-          dismissable: false,
-        ),
-      ],
+      AppTabs.posts: [_defailtRouteModelFor(Routes.posts)],
+      AppTabs.likedPosts: [_defailtRouteModelFor(Routes.likedPosts)],
     };
-
-void resetTabsKeys() {
-  // creating new ones
-  final newMap = {
-    AppTabs.posts: GlobalKey<NavigatorState>(),
-    AppTabs.likedPosts: GlobalKey<NavigatorState>(),
-  };
-
-  tabNavigatorKeys
-    ..clear()
-    ..addAll(newMap);
-}
-
-/// Global keys for every tab navigator
-final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
-  AppTabs.posts: GlobalKey<NavigatorState>(),
-  AppTabs.likedPosts: GlobalKey<NavigatorState>(),
-};

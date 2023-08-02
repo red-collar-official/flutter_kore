@@ -19,22 +19,25 @@ class NavigationStack {
   /// Can be screen route, dialog route or bottom sheet route
   /// Therefore route name is [Object]
   /// CurrentTab is always null for global navigation
-  void addRoute(
-    Object routeName,
+  void addRoute({
+    required Object routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-    bool dismissable,
-    bool needToEnsureClose,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
     final stack = _getStack(global);
+
     stack.addRoute(
-      routeName,
-      currentTab,
-      global,
-      uniqueInStack,
-      dismissable,
-      needToEnsureClose,
+      routeName: routeName,
+      currentTab: currentTab,
+      global: global,
+      uniqueInStack: uniqueInStack,
+      dismissable: dismissable,
+      needToEnsureClose: needToEnsureClose,
+      id: id,
     );
   }
 
@@ -42,43 +45,61 @@ class NavigationStack {
   /// Can be screen route, dialog route or bottom sheet route
   /// Therefore route name is [Object]
   /// CurrentTab is always null for global navigation
-  void replaceLastRoute(
-    Object routeName,
+  void replaceLastRoute({
+    required Object routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-    bool dismissable,
-    bool needToEnsureClose,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
     final stack = _getStack(global);
+
     stack.replaceLastRoute(
-      routeName,
-      currentTab,
-      global,
-      uniqueInStack,
-      dismissable,
-      needToEnsureClose,
+      routeName: routeName,
+      currentTab: currentTab,
+      global: global,
+      uniqueInStack: uniqueInStack,
+      dismissable: dismissable,
+      needToEnsureClose: needToEnsureClose,
+      id: id,
     );
   }
 
   /// Replaces whole stack with given route
   /// Route can be only screen route therefore routeName defined as [Routes]
-  void replaceStack(
-    Routes routeName,
+  void replaceStack({
+    required Routes routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    Object? id,
+  }) {
     final stack = _getStack(global);
-    stack.replaceStack(routeName, currentTab, global, uniqueInStack);
+    stack.replaceStack(
+      routeName: routeName,
+      currentTab: currentTab,
+      global: global,
+      uniqueInStack: uniqueInStack,
+      id: id,
+    );
   }
 
   /// Checks if specific route is already in stack Can be screen route, dialog route or bottom sheet route
   /// Therefore route name is [Object] returns true if object is not present in stack
-  bool checkUnique(Object routeName, AppTab? currentTab, bool global) {
+  bool checkUnique({
+    required Object routeName,
+    AppTab? currentTab,
+    required bool global,
+  }) {
     final stack = _getStack(global);
 
-    return stack.checkUnique(routeName, currentTab, global);
+    return stack.checkUnique(
+      routeName: routeName,
+      currentTab: currentTab,
+      global: global,
+    );
   }
 
   /// Pops latest route from stack

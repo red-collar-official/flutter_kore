@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/global/events.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_utilities.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/bottom_sheets/bottom_sheets.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/bottom_sheets/bottom_sheets_mixin.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/dialogs/dialogs.dart';
@@ -25,6 +25,8 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     with RoutesMixin, DialogsMixin, BottomSheetsMixin {
   final navigationStack = app.services.get<NavigationService>().instance;
 
+  Map<AppTab, GlobalKey<NavigatorState>> currentTabKeys = {};
+
   RouteModel latestGlobalRoute() =>
       navigationStack.globalNavigationStack.routeStack.last;
   RouteModel latestTabRoute() =>
@@ -32,10 +34,10 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
 
   void initStack() {
     navigationStack.replaceStack(
-      Routes.home,
-      state.currentTab,
-      true,
-      true,
+      routeName: Routes.home,
+      currentTab: state.currentTab,
+      global: true,
+      uniqueInStack: true,
     );
   }
 
@@ -70,27 +72,35 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     // otherwise return navigator key for current tab
     final currentTab = state.currentTab;
 
-    return tabNavigatorKeys[currentTab]!;
+    return currentTabKeys[currentTab]!;
   }
 
   GlobalKey<NavigatorState> getNavigatorForTab(AppTab tab) {
-    return tabNavigatorKeys[tab]!;
+    return currentTabKeys[tab]!;
   }
 
   void pop({
     dynamic payload,
     bool onlyInternalStack = false,
-    // bool dontCheckForTabFirstPage = false,
   }) {
     final bool isInGlobal = isInGlobalStack();
 
-    // if (!isInGlobal && !dontCheckForTabFirstPage) {
-    //   if (latestTabRoute().name ==
-    //       defaultTabRouteStack()[state.currentTab]![0].name) {
-    //     // preventing close of first page in tab stack
-    //     return;
-    //   }
-    // }
+    if (!isInGlobal) {
+      final tabStack =
+          navigationStack.tabNavigationStack.tabRouteStack[state.currentTab]!;
+
+      if (tabStack.length == 1) {
+        // preventing close of first page in tab stack
+        return;
+      }
+    } else {
+      final globalStack = navigationStack.globalNavigationStack.routeStack;
+
+      if (globalStack.length == 1) {
+        // preventing close of first page in tab stack
+        return;
+      }
+    }
 
     if (onlyInternalStack) {
       navigationStack.pop(state.currentTab, isInGlobal);
@@ -105,6 +115,31 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     navigator.currentState?.pop(payload);
   }
 
+  void popInTab(
+    AppTab tab, {
+    dynamic payload,
+    bool onlyInternalStack = false,
+  }) {
+    final tabStack = navigationStack.tabNavigationStack.tabRouteStack[tab]!;
+
+    if (tabStack.length == 1) {
+      // preventing close of first page in tab stack
+      return;
+    }
+
+    if (onlyInternalStack) {
+      navigationStack.pop(state.currentTab, false);
+
+      return;
+    }
+
+    final navigator = currentTabKeys[tab];
+
+    navigationStack.pop(state.currentTab, false);
+
+    navigator?.currentState?.pop(payload);
+  }
+
   Future<void> routeTo(
     Routes routeName, {
     Map<String, dynamic>? payload,
@@ -115,21 +150,28 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     bool forceGlobal = false,
     bool needToEnsureClose = false,
     bool dismissable = true,
+    Object? id,
   }) async {
     final bool global = _checkGlobalNavigatorNeeded(forceGlobal);
 
     // Firstly check if element is already in stack
     // if it is and uniqueInStack flag is set to true we just return immediately
     if (uniqueInStack &&
-        !navigationStack.checkUnique(routeName, state.currentTab, global) &&
+        !navigationStack.checkUnique(
+          routeName: routeName,
+          currentTab: state.currentTab,
+          global: global,
+        ) &&
         !replace) {
       return;
     }
 
     final navigator = getNavigator(forceGlobal: global);
 
+    final screenToOpen = routes[routeName]!(payload);
+
     final route = NavigationUtilities.buildPageRoute(
-      routes[routeName]!(payload),
+      screenToOpen,
       fullScreenDialog,
       routeName,
       replace
@@ -155,16 +197,14 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
       navigationStack
         ..clearTabNavigationStack()
         ..replaceStack(
-          routeName,
-          null,
-          global,
-          uniqueInStack,
+          routeName: routeName,
+          global: global,
+          uniqueInStack: uniqueInStack,
+          id: id,
         );
 
       if (global) {
         app.eventBus.send(Events.globalRoutePushed, payload: replace);
-
-        resetTabsKeys();
       }
 
       unawaited(navigator.currentState?.pushAndRemoveUntil(
@@ -174,12 +214,13 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     } else if (replacePrevious) {
       // if replace flag is provided we clear stack and navigator state
       navigationStack.replaceLastRoute(
-        routeName,
-        state.currentTab,
-        global,
-        uniqueInStack,
-        dismissable,
-        needToEnsureClose,
+        routeName: routeName,
+        currentTab: state.currentTab,
+        global: global,
+        uniqueInStack: uniqueInStack,
+        dismissable: dismissable,
+        needToEnsureClose: needToEnsureClose,
+        id: id,
       );
 
       if (global) {
@@ -192,12 +233,13 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     } else {
       // otherwise we just add route and push it to navigator
       navigationStack.addRoute(
-        routeName,
-        state.currentTab,
-        global,
-        uniqueInStack,
-        dismissable,
-        needToEnsureClose,
+        routeName: routeName,
+        currentTab: state.currentTab,
+        global: global,
+        uniqueInStack: uniqueInStack,
+        dismissable: dismissable,
+        needToEnsureClose: needToEnsureClose,
+        id: id,
       );
 
       if (global) {
@@ -215,6 +257,7 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     Map<String, dynamic>? payload,
     bool dismissable = true,
     bool forceGlobal = true,
+    Object? id,
   }) async {
     final bool global = _checkGlobalNavigatorNeeded(forceGlobal);
 
@@ -223,12 +266,13 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
         : getNavigator(forceGlobal: global);
 
     navigationStack.addRoute(
-      dialogName,
-      state.currentTab,
-      global,
-      true,
-      dismissable,
-      false,
+      routeName: dialogName,
+      currentTab: state.currentTab,
+      global: global,
+      uniqueInStack: true,
+      dismissable: dismissable,
+      needToEnsureClose: false,
+      id: id,
     );
 
     final result = await NavigationUtilities.pushDialogRoute(
@@ -245,6 +289,7 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     Map<String, dynamic>? payload,
     bool forceGlobal = true,
     bool dismissable = true,
+    Object? id,
   }) async {
     final bool global = _checkGlobalNavigatorNeeded(forceGlobal);
 
@@ -253,14 +298,14 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
         : getNavigator(forceGlobal: global);
 
     navigationStack.addRoute(
-      bottomSheetName,
-      state.currentTab,
-      global,
-      true,
-      dismissable,
-      false,
+      routeName: bottomSheetName,
+      currentTab: state.currentTab,
+      global: global,
+      uniqueInStack: true,
+      dismissable: dismissable,
+      needToEnsureClose: false,
+      id: id,
     );
-
     final result = await NavigationUtilities.pushBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
@@ -271,9 +316,9 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     );
 
     if (!navigationStack.checkUnique(
-      bottomSheetName,
-      state.currentTab,
-      global,
+      routeName: bottomSheetName,
+      currentTab: state.currentTab,
+      global: global,
     )) {
       // this means that bottom sheet was closed by tap to outside space
       // because bottom sheets are unique in stack
@@ -302,16 +347,35 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     navigator.currentState?.popUntil((route) => route.isFirst);
 
     navigationStack.replaceStack(
-      Routes.home,
-      null,
-      true,
-      true,
+      routeName: Routes.home,
+      global: true,
+      uniqueInStack: true,
     );
   }
 
-  void popInTabToFirst(AppTab appTab) {
-    final navigator = tabNavigatorKeys[appTab]!;
+  void popInTabToFirst(AppTab appTab, {bool clearStack = true}) {
+    final navigator = currentTabKeys[appTab];
+
+    if (navigator == null) {
+      return;
+    }
+
     navigator.currentState?.popUntil((route) => route.isFirst);
+
+    if (!clearStack) {
+      return;
+    }
+
+    final currentTab = state.currentTab;
+    final firstRoute =
+        navigationStack.tabNavigationStack.tabRouteStack[currentTab]![0];
+
+    navigationStack.tabNavigationStack.replaceStack(
+      routeName: firstRoute.name as Routes,
+      currentTab: currentTab,
+      global: false,
+      uniqueInStack: true,
+    );
   }
 
   void popToTab(AppTab tab) {
@@ -341,7 +405,7 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
   void popAllTabsToFirst() {
     // ignore: prefer_foreach
     for (final element in AppTabs.tabs) {
-      popInTabToFirst(element);
+      popInTabToFirst(element, clearStack: false);
     }
 
     navigationStack.clearTabNavigationStack();
@@ -357,7 +421,7 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     }
   }
 
-  Future<bool> homeBackButtonCallback() async {
+  Future<bool> homeBackButtonTabCallback() async {
     if (latestTabRoute().needToEnsureClose) {
       app.eventBus.send(Events.ensureCloseRequested);
     } else if (canPop(global: false)) {
@@ -365,6 +429,16 @@ class NavigationInteractor extends BaseInteractor<NavigationState>
     }
 
     return false;
+  }
+
+  bool homeBackButtonGlobalCallback() {
+    if (latestGlobalRoute().needToEnsureClose) {
+      app.eventBus.send(Events.ensureCloseRequested);
+    } else if (canPop()) {
+      pop();
+    }
+
+    return true;
   }
 
   @override

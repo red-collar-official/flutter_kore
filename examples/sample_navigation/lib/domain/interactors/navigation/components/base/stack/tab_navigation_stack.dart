@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/route_model.dart';
@@ -11,38 +10,38 @@ class TabNavigationStack extends BaseNavigationStack {
   final tabRouteStack = defaultTabRouteStack();
 
   @override
-  void addRoute(
-    Object routeName,
+  void addRoute({
+    required Object routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-    bool dismissable,
-    bool needToEnsureClose,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
     try {
       tabRouteStack[currentTab]!.add(RouteModel(
         name: routeName,
         dismissable: dismissable,
         uniqueInStack: uniqueInStack,
         needToEnsureClose: needToEnsureClose,
+        id: id,
       ));
-    } catch (e, trace) {
-      if (kDebugMode) {
-        print(e);
-        print(trace);
-      }
+    } catch (e) {
+      // ignore
     }
   }
 
   @override
-  void replaceLastRoute(
-    Object routeName,
+  void replaceLastRoute({
+    required Object routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-    bool dismissable,
-    bool needToEnsureClose,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    required bool dismissable,
+    required bool needToEnsureClose,
+    Object? id,
+  }) {
     try {
       final stack = tabRouteStack[currentTab]!;
 
@@ -51,17 +50,19 @@ class TabNavigationStack extends BaseNavigationStack {
         dismissable: dismissable,
         uniqueInStack: uniqueInStack,
         needToEnsureClose: needToEnsureClose,
+        id: id,
       );
-    } catch (e, trace) {
-      if (kDebugMode) {
-        print(e);
-        print(trace);
-      }
+    } catch (e) {
+      // ignore
     }
   }
 
   @override
-  bool checkUnique(Object routeName, AppTab? currentTab, bool global) {
+  bool checkUnique({
+    required Object routeName,
+    AppTab? currentTab,
+    required bool global,
+  }) {
     if (currentTab == null) {
       return false;
     }
@@ -72,12 +73,13 @@ class TabNavigationStack extends BaseNavigationStack {
   }
 
   @override
-  void replaceStack(
-    Routes routeName,
+  void replaceStack({
+    required Routes routeName,
     AppTab? currentTab,
-    bool global,
-    bool uniqueInStack,
-  ) {
+    required bool global,
+    required bool uniqueInStack,
+    Object? id,
+  }) {
     if (currentTab == null) {
       return;
     }
@@ -87,6 +89,7 @@ class TabNavigationStack extends BaseNavigationStack {
         name: routeName,
         dismissable: false,
         uniqueInStack: uniqueInStack,
+        id: id,
       ),
     ];
   }

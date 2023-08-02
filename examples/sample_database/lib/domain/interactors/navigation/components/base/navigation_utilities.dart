@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
-import 'package:mvvm_redux/utility/navigation/dialog_route.dart' as dialog;
-import 'package:mvvm_redux/utility/navigation/bottom_sheet_route.dart'
-    as bottom_sheet;
+import 'package:flutter/material.dart' hide ModalBottomSheetRoute, DialogRoute;
 import 'package:sample_database/domain/global/global_store.dart';
 import 'package:sample_database/domain/interactors/interactors.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_database/domain/interactors/navigation/components/utilities/bottom_sheet_route.dart';
+import 'package:sample_database/domain/interactors/navigation/components/utilities/dialog_route.dart';
 import 'package:sample_database/domain/interactors/navigation/components/utilities/willpop_cupertino_page_route.dart';
 
 class NavigationUtilities {
@@ -18,15 +16,17 @@ class NavigationUtilities {
     required Widget child,
   }) =>
       navigator.currentState?.push(
-        dialog.DialogRoute(
+        DialogRoute(
           barrierDismissible: dismissable,
-          pageBuilder: (BuildContext buildContext, Animation<double> animation,
-              Animation<double> secondaryAnimation) {
+          pageBuilder: (
+            BuildContext buildContext,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) {
             return Builder(
               builder: (BuildContext context) {
                 return GestureDetector(
                   onTap: () {
-                    // TODO find better solution
                     if (dismissable) {
                       app.interactors.get<NavigationInteractor>().pop();
                     }
@@ -48,22 +48,23 @@ class NavigationUtilities {
         ),
       );
 
-  static Future<void> pushBottomSheetRoute(
-      {required GlobalKey<NavigatorState> navigator,
-      required bool dismissable,
-      required Widget child,
-      required Function onClosed}) async {
+  static Future<void> pushBottomSheetRoute({
+    required GlobalKey<NavigatorState> navigator,
+    required bool dismissable,
+    required Widget child,
+    required Function onClosed,
+  }) async {
     final completer = Completer<void>();
 
     unawaited(
       navigator.currentState
           ?.push(
-        bottom_sheet.ModalBottomSheetRoute(
+        ModalBottomSheetRoute(
           builder: (BuildContext buildContext) {
             return Builder(
               builder: (BuildContext context) {
                 return WillPopScope(
-                  onWillPop: () async {
+                  onWillPop: () {
                     return Future.value(dismissable);
                   },
                   child: child,
@@ -96,15 +97,27 @@ class NavigationUtilities {
     return completer.future;
   }
 
-  static PageRoute buildPageRoute(Widget child, bool fullScreenDialog,
-      Routes routeName, VoidCallback? onClosed) {
+  static PageRoute buildPageRoute(
+    Widget child,
+    bool fullScreenDialog,
+    Routes routeName,
+    VoidCallback? onClosed,
+    Future<void> Function()? onWillPop,
+  ) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
         builder: (BuildContext context) => onClosed == null
             ? child
             : WillPopScope(
                 onWillPop: () async {
+                  if (onWillPop != null) {
+                    await onWillPop();
+
+                    return false;
+                  }
+
                   onClosed(); // triggers only when used android system back button
+
                   return Future.value(true);
                 },
                 child: child,
@@ -113,7 +126,16 @@ class NavigationUtilities {
       );
     } else {
       return UICupertinoPageRoute(
-        builder: (BuildContext context) => child,
+        builder: (BuildContext context) => onWillPop != null
+            ? WillPopScope(
+                onWillPop: () async {
+                  await onWillPop();
+
+                  return false;
+                },
+                child: child,
+              )
+            : child,
         fullscreenDialog: fullScreenDialog,
         title: routeName.toString(),
         onClosedCallback: onClosed, // triggers only when used ios back gesture

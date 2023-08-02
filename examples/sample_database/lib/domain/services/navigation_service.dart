@@ -1,0 +1,10 @@
+import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:sample_database/domain/interactors/navigation/components/base/navigation_stack.dart';
+
+@singletonService
+class NavigationService extends BaseService<NavigationStack> {
+  @override
+  NavigationStack provideInstance(Map<String, dynamic>? params) {
+    return NavigationStack();
+  }
+}

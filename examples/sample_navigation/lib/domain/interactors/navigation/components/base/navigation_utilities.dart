@@ -1,15 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/material.dart' hide ModalBottomSheetRoute, DialogRoute;
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/interactors.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/utilities/bottom_sheet_route.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/utilities/dialog_route.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/utilities/willpop_cupertino_page_route.dart';
-import 'package:flutter/material.dart';
-
-import 'package:mvvm_redux/utility/navigation/dialog_route.dart' as dialog;
-import 'package:mvvm_redux/utility/navigation/bottom_sheet_route.dart'
-    as bottom_sheet;
 
 class NavigationUtilities {
   static Future<Object?>? pushDialogRoute({
@@ -18,7 +16,7 @@ class NavigationUtilities {
     required Widget child,
   }) =>
       navigator.currentState?.push(
-        dialog.DialogRoute(
+        DialogRoute(
           barrierDismissible: dismissable,
           pageBuilder: (
             BuildContext buildContext,
@@ -61,7 +59,7 @@ class NavigationUtilities {
     unawaited(
       navigator.currentState
           ?.push(
-        bottom_sheet.ModalBottomSheetRoute(
+        ModalBottomSheetRoute(
           builder: (BuildContext buildContext) {
             return Builder(
               builder: (BuildContext context) {
