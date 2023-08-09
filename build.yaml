@@ -1,10 +1,19 @@
 targets:
   $default:
     builders:
+      collectors:
+        enabled: true
       generators:
         enabled: true
 
 builders:
+  collectors:
+    import: "package:mvvm_redux/generators/builders.dart"
+    builder_factories: ["generateInstanceCollector"]
+    build_extensions: { ".dart": [".main_app_generator.g.part", ".main_api_generator.g.part"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen:combining_builder"]
   generators:
     import: "package:mvvm_redux/generators/builders.dart"
     builder_factories: ["generateMainApp", "generateMainApi"]
@@ -12,3 +21,5 @@ builders:
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen:combining_builder"]
+    runs_before:
+      - collectors
