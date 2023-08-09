@@ -8,7 +8,7 @@ targets:
 
 builders:
   collectors:
-    import: "package:mvvm_redux/generators/builders.dart"
+    import: "package:mvvm_redux/collectors/builders.dart"
     builder_factories: ["generateInstanceCollector"]
     build_extensions: { ".dart": [".main_app_generator.g.part", ".main_api_generator.g.part"] }
     auto_apply: dependents
