@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
 import 'package:analyzer/dart/element/element.dart';
@@ -127,6 +129,24 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
     classBuffer
       ..writeln('}')
       ..writeln('}');
+
+    print('Generated Mvvm app');
+    
+    print(
+      'Singleton interactors count: ${InstancesCollectorGenerator.singletonAnnotated.length}',
+    );
+    print(
+      'Default interactors count: ${InstancesCollectorGenerator.defaultAnnotated.length}',
+    );
+    print(
+      'Singleton services count: ${InstancesCollectorGenerator.singletonAnnotatedServices.length}',
+    );
+    print(
+      'Default services count: ${InstancesCollectorGenerator.defaultAnnotatedServices.length}',
+    );
+    print(
+      'Apis count: ${InstancesCollectorGenerator.apiAnnotated.length}',
+    );
 
     return classBuffer.toString();
   }
