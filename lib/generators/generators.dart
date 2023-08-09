@@ -1,11 +1,8 @@
-import 'dart:async';
-
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:mvvm_redux/annotations/main_api.dart';
 import 'package:mvvm_redux/annotations/main_app.dart';
-import 'package:mvvm_redux/annotations/api.dart';
 import 'package:mvvm_redux/collectors/collectors.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:mvvm_redux/generators/main_app_visitor.dart';
@@ -94,7 +91,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('List<Type> get singletonServices => [');
 
     // ignore: prefer_foreach
-    for (final element in InstancesCollectorGenerator.singletonAnnotatedServices) {
+    for (final element
+        in InstancesCollectorGenerator.singletonAnnotatedServices) {
       if (element.name != null) {
         classBuffer.writeln(element.name! + ', ');
       }
@@ -135,23 +133,6 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 }
 
 class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
-  List<Element> apiAnnotated = [];
-
-  @override
-  FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
-    const apiAnnotation = TypeChecker.fromRuntime(ApiAnnotation);
-
-    final annotatedApiFinder = [
-      for (var member in library.annotatedWith(apiAnnotation)) member.element,
-    ];
-
-    if (annotatedApiFinder.isNotEmpty) {
-      apiAnnotated.addAll(annotatedApiFinder);
-    }
-
-    return super.generate(library, buildStep);
-  }
-
   @override
   String generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
@@ -173,7 +154,7 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
     classBuffer.writeln('mixin $className {');
 
     // ignore: prefer_foreach
-    for (final element in apiAnnotated) {
+    for (final element in InstancesCollectorGenerator.apiAnnotated) {
       if (element.name != null) {
         final elementName = element.name!;
         final elementShortName = elementName.toLowerCase().split('api')[0];

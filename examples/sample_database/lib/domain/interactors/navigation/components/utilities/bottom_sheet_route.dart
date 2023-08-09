@@ -1,4 +1,3 @@
-import 'package:cifra/resources/resources.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -95,10 +94,6 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
           label: routeLabel,
           explicitChildNodes: true,
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: UIDimentions.defaultWidgetBorderRadius.topLeft,
-              topRight: UIDimentions.defaultWidgetBorderRadius.topRight
-            ),
             child: CustomSingleChildLayout(
               delegate: _ModalBottomSheetLayout(
                 animationValue ?? 0.0,

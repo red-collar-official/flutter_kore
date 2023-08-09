@@ -2,13 +2,13 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'generators.dart';
 
-Builder generateMainApp(BuilderOptions options) => SharedPartBuilder(
+Builder generateMainApp(BuilderOptions options) => PartBuilder(
       [MainAppGenerator()],
-      'main_app_generator',
+       '.mvvm.dart',
       allowSyntaxErrors: true,
     );
-Builder generateMainApi(BuilderOptions options) => SharedPartBuilder(
+Builder generateMainApi(BuilderOptions options) => PartBuilder(
       [MainApiGenerator()],
-      'main_api_generator',
+      '.api.dart',
       allowSyntaxErrors: true,
     );

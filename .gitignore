@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+migrate_working_dir/
 
 # IntelliJ related
 *.iml
@@ -15,30 +16,31 @@
 *.iws
 .idea/
 
-# Visual Studio Code related
-.vscode/
-
-#Dart generated file
-**/*.g.dart
-**/*.freezed.dart
-
 # Flutter/Dart/Pub related
 **/doc/api/
+**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
-build/
+/build/
 
-# Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+#Dart generated file
+lib/**/*.g.dart
+lib/**/*.freezed.dart
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -63,6 +65,7 @@ build/
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
@@ -72,3 +75,17 @@ build/
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Lock files
+pubspec.lock
+ios/Podfile.lock
+
+# Android related
+**/android/captures/
+**/android/**/GeneratedPluginRegistrant.java
+**/android/key.properties
+**/android/.externalNativeBuild
+**/android/app/.externalNativeBuild
+**/android/app/.cxx
+
+coverage/
