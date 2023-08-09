@@ -3,7 +3,11 @@ import 'dart:async';
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
 import 'package:analyzer/dart/element/element.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:mvvm_redux/annotations/api.dart';
+import 'package:mvvm_redux/annotations/default_interactor.dart';
+import 'package:mvvm_redux/annotations/service.dart';
+import 'package:mvvm_redux/annotations/singleton_interactor.dart';
+import 'package:mvvm_redux/annotations/singleton_service.dart';
 import 'package:source_gen/source_gen.dart';
 
 class InstancesCollectorGenerator extends Generator {
