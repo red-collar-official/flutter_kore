@@ -40,6 +40,11 @@ class EventBus {
     return _singletonEventBus;
   }
 
+  // ignore: prefer_constructors_over_static_methods
+  static EventBus get newSeparateInstance {
+    return EventBus._internal();
+  }
+
   /// Return dart stream of events with particular name
   Stream<BusEventData> streamOf(String eventName) {
     return _streamController.stream.where((event) => event.name == eventName);
