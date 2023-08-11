@@ -130,23 +130,22 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
       ..writeln('}')
       ..writeln('}');
 
-    print('Generated Mvvm app');
-    
-    print(
-      'Singleton interactors count: ${InstancesCollectorGenerator.singletonAnnotated.length}',
-    );
-    print(
-      'Default interactors count: ${InstancesCollectorGenerator.defaultAnnotated.length}',
-    );
-    print(
-      'Singleton services count: ${InstancesCollectorGenerator.singletonAnnotatedServices.length}',
-    );
-    print(
-      'Default services count: ${InstancesCollectorGenerator.defaultAnnotatedServices.length}',
-    );
-    print(
-      'Apis count: ${InstancesCollectorGenerator.apiAnnotated.length}',
-    );
+    String printMessage = '';
+
+    printMessage += 'Generated Mvvm app\n\n';
+
+    printMessage +=
+        'Singleton interactors count: ${InstancesCollectorGenerator.singletonAnnotated.length}\n';
+    printMessage +=
+        'Default interactors count: ${InstancesCollectorGenerator.defaultAnnotated.length}\n';
+    printMessage +=
+        'Singleton services count: ${InstancesCollectorGenerator.singletonAnnotatedServices.length}\n';
+    printMessage +=
+        'Default services count: ${InstancesCollectorGenerator.defaultAnnotatedServices.length}\n';
+    printMessage +=
+        'Apis count: ${InstancesCollectorGenerator.apiAnnotated.length}';
+
+    print(printMessage);
 
     return classBuffer.toString();
   }
