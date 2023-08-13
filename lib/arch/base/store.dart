@@ -6,7 +6,7 @@ import 'observable.dart';
 typedef StateUpdater<State> = void Function(State state);
 typedef StoreMapper<Value, State> = Value Function(State state);
 
-typedef EventBusSubscriber = void Function(dynamic payload);
+typedef EventBusSubscriber<T> = void Function(T event);
 
 /// Class to hold store change
 class StoreChange<Value> {

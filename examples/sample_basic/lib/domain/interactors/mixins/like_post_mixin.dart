@@ -8,7 +8,7 @@ mixin LikePostMixin {
     final result = await app.apis.posts.likePost(id).execute();
 
     if (result.isSuccessful) {
-      app.eventBus.send(Events.eventPostLiked, payload: id);
+      app.eventBus.send(PostLikedEvent(id: id));
     }
 
     return result.isSuccessful;

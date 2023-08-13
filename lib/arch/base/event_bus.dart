@@ -2,14 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-/// Class to hold name and payload for [EventBus] event
-class BusEventData {
-  final String name;
-  final dynamic payload;
-
-  BusEventData(this.name, this.payload);
-}
-
 /// Basic Event bus implementation
 /// You can [send] events and [streamOf] to stream of event callbacks or collection of events callbacks with [streamOfCollection]
 ///
@@ -27,8 +19,8 @@ class BusEventData {
 /// }
 /// ```
 class EventBus {
-  late final StreamController<BusEventData> _streamController;
-  final _events = <String>[];
+  late final StreamController _streamController;
+  final _events = [];
 
   EventBus._internal() {
     _streamController = StreamController.broadcast();
@@ -46,22 +38,20 @@ class EventBus {
   }
 
   /// Return dart stream of events with particular name
-  Stream<BusEventData> streamOf(String eventName) {
-    return _streamController.stream.where((event) => event.name == eventName);
+  Stream<T> streamOf<T>() {
+    return _streamController.stream.where((event) => event is T).map((event) => event as T);
   }
 
   /// Return dart stream of events with particular names
-  Stream<BusEventData> streamOfCollection(List<String> eventNames) {
+  Stream streamOfCollection(List<Type> events) {
     return _streamController.stream
-        .where((event) => eventNames.contains(event.name));
+        .where((event) => events.contains(event.runtimeType));
   }
 
   /// Sends event to stream controller
-  void send(String eventName, {dynamic payload}) {
-    final event = BusEventData(eventName, payload);
-
+  void send(dynamic event) {
     if (kDebugMode) {
-      _events.add(event.name);
+      _events.add(event);
     }
 
     _streamController.add(event);
@@ -74,7 +64,7 @@ class EventBus {
 
   /// Returns true if underlying events list contains given event name
   @visibleForTesting
-  bool checkEventWasSent(String eventName) {
-    return _events.contains(eventName);
+  bool checkEventWasSent(Type event) {
+    return _events.contains(event);
   }
 }

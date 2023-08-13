@@ -1,3 +1,5 @@
-class Events {
-  static const String eventPostLiked = 'eventPostLiked';
+class PostLikedEvent {
+  final int id;
+
+  const PostLikedEvent({required this.id});
 }

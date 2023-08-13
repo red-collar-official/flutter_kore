@@ -18,8 +18,5 @@ class AutharizationInteractor extends BaseInteractor<AutharizationState> {
       AutharizationState();
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {};
-
-  @override
   Map<String, dynamic> get savedStateObject => state.toJson();
 }

@@ -40,12 +40,12 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
       );
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {
-        Events.eventPostLiked: (payload) {
+  List<EventBusSubscriber> subscribe() => [
+        on<PostLikedEvent>((event) {
           if (state.post is ResultData<Post> &&
-              payload == (state.post as ResultData<Post>).result.id) {
+              event.id == (state.post as ResultData<Post>).result.id) {
             _onPostLiked();
           }
-        }
-      };
+        }),
+      ];
 }

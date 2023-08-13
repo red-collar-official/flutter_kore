@@ -17,34 +17,48 @@ abstract class EventBusReceiver {
   ///       }
   ///     };
   /// ```
-  Map<String, EventBusSubscriber> get subscribeTo => {};
+  List<EventBusSubscriber> subscribe() => [];
+
+  final Map<Type, EventBusSubscriber> _subscribers = {};
 
   /// Underlying stream subsription for [EventBus] events
-  StreamSubscription<BusEventData>? eventsSubscription;
+  StreamSubscription? _eventsSubscription;
 
   /// Creates stream subscription for [EventBus] events.
   /// If [subscribeTo] is empty does nothing
   @protected
-  void subscribeToEvents() {
-    if (subscribeTo.keys.isEmpty) {
+  void _subscribeToEvents() {
+    subscribe();
+
+    if (_subscribers.isEmpty) {
       return;
     }
 
-    eventsSubscription = EventBus.instance
-        .streamOfCollection(subscribeTo.keys.toList())
+    _eventsSubscription = EventBus.instance
+        .streamOfCollection(_subscribers.keys.toList())
         .listen((event) {
-      subscribeTo[event.name]?.call(event.payload);
+      _subscribers[event.runtimeType]?.call(event);
     });
   }
 
   @mustCallSuper
   void initializeSub() {
-    subscribeToEvents();
+    _subscribeToEvents();
   }
 
   /// Closes underlying stream subscription for [EventBus]
   @mustCallSuper
   void disposeSub() {
-    eventsSubscription?.cancel();
+    _eventsSubscription?.cancel();
+  }
+
+  EventBusSubscriber on<T>(EventBusSubscriber<T> processor) {
+    void dynamicProcessor(event) {
+      processor(event as T);
+    }
+
+    _subscribers[T] = dynamicProcessor;
+
+    return dynamicProcessor;
   }
 }

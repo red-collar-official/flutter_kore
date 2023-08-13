@@ -19,7 +19,4 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
-
-  @override
-  Map<String, EventBusSubscriber> get subscribeTo => {};
 }

@@ -45,9 +45,9 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
   PostsState initialState(Map<String, dynamic>? input) => PostsState();
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {
-        Events.eventPostLiked: (payload) {
-          _onPostLiked(payload);
-        }
-      };
+  List<EventBusSubscriber> subscribe() => [
+        on<PostLikedEvent>((event) {
+          _onPostLiked(event.id);
+        }),
+      ];
 }
