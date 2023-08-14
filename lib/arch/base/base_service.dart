@@ -11,7 +11,7 @@ import 'mvvm_instance.dart';
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class BaseService<Instance, Input> extends MvvmInstance<Input> {
+abstract class BaseService<Instance, Input> extends MvvmInstance<Input?> {
   /// actual object instance
   late Instance Function() _instanceCreator;
   Instance? _instance;
@@ -19,7 +19,7 @@ abstract class BaseService<Instance, Input> extends MvvmInstance<Input> {
   /// Inititalizes service
   @mustCallSuper
   @override
-  void initialize(Input input) {
+  void initialize(Input? input) {
     super.initialize(input);
 
     _instanceCreator = () => provideInstance(input);
@@ -28,7 +28,7 @@ abstract class BaseService<Instance, Input> extends MvvmInstance<Input> {
   }
 
   /// Creates actual object instance
-  Instance provideInstance(Input params);
+  Instance provideInstance(Input? params);
 
   /// actual object instance
   Instance get instance => _instance ??= _instanceCreator();

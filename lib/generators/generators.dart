@@ -221,7 +221,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
       classBuffer
         ..writeln(
-          'class ${nameOfElementClass}Connector extends ConnectorCall<$nameOfElementClass, $nameOfInputType> {}',
+          'class ${nameOfElementClass}Connector extends ConnectorCall<$nameOfElementClass, $nameOfInputType?> {}',
         )
         ..writeln();
     }

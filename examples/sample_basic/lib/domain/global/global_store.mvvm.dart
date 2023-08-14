@@ -7,18 +7,18 @@ part of 'global_store.dart';
 // **************************************************************************
 
 class UserDefaultsInteractorConnector
-    extends ConnectorCall<UserDefaultsInteractor, Map<String, dynamic>> {}
+    extends ConnectorCall<UserDefaultsInteractor, Map<String, dynamic>?> {}
 
 class AutharizationInteractorConnector
-    extends ConnectorCall<AutharizationInteractor, Map<String, dynamic>> {}
+    extends ConnectorCall<AutharizationInteractor, Map<String, dynamic>?> {}
 
 class PostsInteractorConnector
-    extends ConnectorCall<PostsInteractor, Map<String, dynamic>> {}
+    extends ConnectorCall<PostsInteractor, Map<String, dynamic>?> {}
 
-class PostInteractorConnector extends ConnectorCall<PostInteractor, Post> {}
+class PostInteractorConnector extends ConnectorCall<PostInteractor, Post?> {}
 
 class StringServiceConnector
-    extends ConnectorCall<StringService, Map<String, dynamic>> {}
+    extends ConnectorCall<StringService, Map<String, dynamic>?> {}
 
 class Connectors {
   late final userDefaultsInteractorConnector =

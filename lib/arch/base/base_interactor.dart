@@ -10,4 +10,4 @@ import 'dependent_element.dart';
 /// }
 /// ```
 abstract class BaseInteractor<State, Input>
-    extends BaseDependentElement<State, Input> {}
+    extends BaseDependentElement<State, Input?> {}
