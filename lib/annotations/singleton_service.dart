@@ -1,5 +1,9 @@
-class SingletonServiceAnnotation {
-  const SingletonServiceAnnotation();
+class SingletonService {
+  final Type inputType;
+
+  const SingletonService({
+    this.inputType = Map<String, dynamic>,
+  });
 }
 
 /// Annotate class as service that holds some singleton instance
@@ -13,4 +17,4 @@ class SingletonServiceAnnotation {
 /// }
 /// }
 /// ```
-const singletonService = SingletonServiceAnnotation();
+const singletonService = SingletonService();

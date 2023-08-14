@@ -11,15 +11,3 @@ import 'dependent_element.dart';
 /// ```
 abstract class BaseInteractor<State, Input>
     extends BaseDependentElement<State, Input> {}
-
-/// Main class to extend to create interactor
-/// Interactors contain business logic for given state type
-///  ```dart
-/// @defaultInteractor
-/// class TestInteractor extends BaseInteractor<int> {
-///   @override
-///   int initialState(Map<String, dynamic>? input) => 1;
-/// }
-/// ```
-abstract class DefaultInteractor<State>
-    extends BaseInteractor<State, Map<String, dynamic>?> {}

@@ -1,5 +1,9 @@
-class DefaultServiceAnnotation {
-  const DefaultServiceAnnotation();
+class DefaultService {
+  final Type inputType;
+
+  const DefaultService({
+    this.inputType = Map<String, dynamic>,
+  });
 }
 
 /// Annotate class as service that holds some instance
@@ -13,4 +17,4 @@ class DefaultServiceAnnotation {
 /// }
 /// }
 /// ```
-const defaultService = DefaultServiceAnnotation();
+const defaultService = DefaultService();

@@ -73,11 +73,7 @@ abstract class BaseDependentElement<State, Input>
 
   /// Adds interactors to local collection
   void _addInteractors() {
-    if (!_dependsOn.isEmpty) {
-      print('1231231232132131aaaa ${_dependsOn.first.type}');
-    }
     _dependsOn.forEach((element) {
-      print('1231231232132131bbbbb  ${element.type.toString()}');
       if (element.count != 1) {
         for (var i = 0; i < element.count; i++) {
           final interactor =

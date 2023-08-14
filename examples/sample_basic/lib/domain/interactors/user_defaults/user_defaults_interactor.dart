@@ -3,7 +3,7 @@ import 'package:mvvm_redux/mvvm_redux.dart';
 import 'user_defaults_state.dart';
 
 @singletonInteractor
-class UserDefaultsInteractor extends DefaultInteractor<UserDefaultsState> {
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>?> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(UserDefaultsState.fromJson(savedStateObject));
