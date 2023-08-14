@@ -9,6 +9,5 @@ import 'dependent_element.dart';
 ///   int initialState(Map<String, dynamic>? input) => 1;
 /// }
 /// ```
-abstract class BaseInteractor<State>
-    extends BaseDependentElement<State, Map<String, dynamic>?> {
-}
+abstract class BaseInteractor<State, Input>
+    extends BaseDependentElement<State, Input> {}

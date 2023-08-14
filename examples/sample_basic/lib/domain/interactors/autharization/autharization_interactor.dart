@@ -3,7 +3,7 @@ import 'package:mvvm_redux/mvvm_redux.dart';
 import 'autharization_state.dart';
 
 @singletonInteractor
-class AutharizationInteractor extends BaseInteractor<AutharizationState> {
+class AutharizationInteractor extends BaseInteractor<AutharizationState, Map<String, dynamic>?> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(AutharizationState.fromJson(savedStateObject));
@@ -14,8 +14,7 @@ class AutharizationInteractor extends BaseInteractor<AutharizationState> {
   }
 
   @override
-  AutharizationState initialState(Map<String, dynamic>? input) =>
-      AutharizationState();
+  AutharizationState initialState(Map<String, dynamic>? input) => AutharizationState();
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();

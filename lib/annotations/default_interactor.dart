@@ -1,5 +1,9 @@
-class DefaultInteractorAnnotation {
-  const DefaultInteractorAnnotation();
+class DefaultInteractor {
+  final Type inputType;
+
+  const DefaultInteractor({
+    this.inputType = Map<String, dynamic>,
+  });
 }
 
 /// Annotate classes as default interactor
@@ -11,4 +15,4 @@ class DefaultInteractorAnnotation {
 ///   int get initialState => 1;
 /// }
 /// ```
-const defaultInteractor = DefaultInteractorAnnotation();
+const defaultInteractor = DefaultInteractor();

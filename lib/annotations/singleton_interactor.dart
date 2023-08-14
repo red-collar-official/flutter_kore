@@ -1,5 +1,9 @@
-class SingletonInteractorAnnotation {
-  const SingletonInteractorAnnotation();
+class SingletonInteractor {
+  final Type inputType;
+
+  const SingletonInteractor({
+    this.inputType = Map<String, dynamic>,
+  });
 }
 
 /// Annotate classes as singleton interactor
@@ -11,4 +15,4 @@ class SingletonInteractorAnnotation {
 ///   int get initialState => 1;
 /// }
 /// ```
-const singletonInteractor = SingletonInteractorAnnotation();
+const singletonInteractor = SingletonInteractor();

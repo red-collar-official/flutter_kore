@@ -9,16 +9,36 @@
 ///       ];
 /// }
 /// ```
-class Connector {
+class BaseConnector {
   final Type type;
   final bool unique;
-  final Map<String, dynamic>? params;
+  final dynamic input;
+  final dynamic Function(int)? inputForIndex;
   final int count;
 
-  Connector({
+  BaseConnector({
     required this.type,
     this.unique = false,
-    this.params,
+    this.input,
+    this.inputForIndex,
     this.count = 1,
   });
 }
+
+class ConnectorCall<InstanceType, InputStateType> {
+  BaseConnector call({
+    bool unique = false,
+    InputStateType? input,
+    InputStateType? Function(int)? inputForIndex,
+    int count = 1,
+  }) =>
+      BaseConnector(
+        unique: unique,
+        input: input,
+        inputForIndex: inputForIndex,
+        count: count,
+        type: InstanceType,
+      );
+}
+
+class DefaultConnector<T> extends ConnectorCall<T, Map<String, dynamic>?> {}

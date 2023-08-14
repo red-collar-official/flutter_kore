@@ -6,10 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
 import '../services/services.dart';
+import '../data/post.dart';
 
 import 'apis.dart';
 
-part 'global_store.g.dart';
+part 'global_store.mvvm.dart';
 
 @mainApp
 class App extends MvvmReduxApp with AppGen {

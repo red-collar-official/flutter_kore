@@ -8,7 +8,7 @@ import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 import 'posts_state.dart';
 
 @defaultInteractor
-class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> with LikePostMixin {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: StatefulData.loading()));
 
