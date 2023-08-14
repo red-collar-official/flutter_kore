@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:mvvm_redux/arch/base/mvvm_instance.dart';
 import 'package:mvvm_redux/arch/base/scope_stack.dart';
 
+typedef DefaultInputType = Map<String, dynamic>;
+
 /// Main class to store instances of mvvm elements
 /// Contains internal methods to manage instances
 class InstanceCollection<T extends MvvmInstance> {
@@ -53,7 +55,7 @@ class InstanceCollection<T extends MvvmInstance> {
     }
 
     final instance = _instances[type]?[index];
-    
+
     _instances[type]?.removeAt(index);
 
     instance?.dispose();
@@ -61,81 +63,106 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  Instance getUnique<Instance extends T>({Map<String, dynamic>? params}) {
-    final id = Instance.toString();
-    final builder = _builders[id];
-
-    final instance = builder!();
-
-    instance.initialize(params);
-
-    return instance;
-  }
-
-  /// Return instance for given type
-  /// Also calls [initialize] for this instance
-  Instance get<Instance extends T>({Map<String, dynamic>? params, int? index}) {
-    final runtimeType = Instance.toString();
-
-    if (!_instances.containsKey(runtimeType)) {
-      final instance = getUnique<Instance>(params: params);
-      _instances[runtimeType] = [instance];
-
-      return instance;
-    }
-
-    final instances = _instances[runtimeType];
-    final instance = instances![index ?? 0] as Instance;
-
-    if (!instance.initialized) {
-      instance.initialize(params);
-    }
-
-    return instance;
+  Instance getUnique<Instance extends T>({DefaultInputType? params}) {
+    return getUniqueWithParams<Instance, DefaultInputType?>(
+      params: params,
+    );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  T getUniqueByTypeString(String type, {Map<String, dynamic>? params}) {
+  Instance getUniqueWithParams<Instance extends T, InputState>({
+    InputState? params,
+  }) {
+    final id = Instance.toString();
+
+    return _constructInstance<Instance>(id, params: params);
+  }
+
+  /// Return instance for given type
+  /// Also calls [initialize] for this instance
+  Instance get<Instance extends T>({DefaultInputType? params, int? index}) {
+    return getWithParams<Instance, DefaultInputType?>(
+      params: params,
+      index: index,
+    );
+  }
+
+  /// Return instance for given type
+  /// Also calls [initialize] for this instance
+  Instance getWithParams<Instance extends T, InputState>({
+    InputState? params,
+    int? index,
+  }) {
+    final runtimeType = Instance.toString();
+
+    return _getInstanceFromCache<Instance, InputState>(
+      runtimeType,
+      params: params,
+      index: index,
+    );
+  }
+
+  /// Similar to get, but create new instance every time
+  /// Also calls [initialize] for this instance
+  T getUniqueByTypeStringWithParams<InputState>(
+    String type, {
+    InputState? params,
+  }) {
     final id = type;
-    final builder = _builders[id];
 
-    final interactor = builder!();
-    interactor.initialize(params);
+    return _constructInstance(id, params: params);
+  }
 
-    return interactor;
+  /// Similar to get, but create new instance every time
+  /// Also calls [initialize] for this instance
+  T getUniqueByTypeString(String type, {DefaultInputType? params}) {
+    return getUniqueByTypeStringWithParams<DefaultInputType?>(
+      type,
+      params: params,
+    );
   }
 
   /// Similar to get
   /// Also calls [initialize] for this instance
-  T getByTypeString(String type, Map<String, dynamic>? params, int? index) {
+  T getByTypeStringWithParams<InputState>(
+    String type,
+    InputState? params,
+    int? index,
+  ) {
     final runtimeType = type;
 
-    if (!_instances.containsKey(runtimeType)) {
-      final instance = getUnique(params: params);
-      _instances[runtimeType] = [instance];
+    return _getInstanceFromCache(
+      runtimeType,
+      params: params,
+      index: index,
+    );
+  }
 
-      return instance;
-    }
-
-    final instances = _instances[runtimeType];
-    final instance = instances![index ?? 0];
-
-    if (!instance.initialized) {
-      instance.initialize(params);
-    }
-
-    return instance;
+  /// Similar to get
+  /// Also calls [initialize] for this instance
+  T getByTypeString(String type, DefaultInputType? params, int? index) {
+    return getByTypeStringWithParams<DefaultInputType>(type, params, index);
   }
 
   /// Similar to get
   List<T> getAllByTypeString(String type) {
-    return _instances[runtimeType] ?? [];
+    return _instances[type] ?? [];
   }
 
   /// Adds instance in collection
   /// Also calls [initialize] for this isntance
-  void add(String type, Map<String, dynamic>? params, {int? index}) {
+  void add(String type, DefaultInputType? params, {int? index}) {
+    return addWithParams<DefaultInputType>(type, params);
+  }
+
+  /// Adds instance in collection
+  /// Also calls [initialize] for this isntance
+  void addWithParams<InputState>(
+    String type,
+    InputState? params, {
+    int? index,
+  }) {
     final id = type;
 
     if (_instances[id] != null && index == null) {
@@ -159,7 +186,13 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Adds existing instance in collection
   /// Also calls [initialize] for this instance
-  void addExisting(T instance, Map<String, dynamic>? params) {
+  void addExisting(T instance, DefaultInputType? params) {
+    return addExistingWithParams<DefaultInputType>(instance, params);
+  }
+
+  /// Adds existing instance in collection
+  /// Also calls [initialize] for this instance
+  void addExistingWithParams<InputState>(T instance, InputState? params) {
     final id = instance.runtimeType.toString();
 
     if (_instances[id] == null) {
@@ -182,8 +215,7 @@ class InstanceCollection<T extends MvvmInstance> {
   /// Adds test instance for given instance type
   /// Used only for tests
   @visibleForTesting
-  void addTest<Instance extends T>(T instance,
-      {Map<String, dynamic>? params}) {
+  void addTest<Instance extends T>(T instance, {Map<String, dynamic>? params}) {
     final id = Instance.toString();
 
     if (_instances[id] == null) {
@@ -200,5 +232,43 @@ class InstanceCollection<T extends MvvmInstance> {
   /// Utility method to clear collection
   void clear() {
     _instances.clear();
+  }
+
+  Instance _constructInstance<Instance>(
+    String id, {
+    dynamic params,
+  }) {
+    final builder = _builders[id];
+
+    final instance = builder!();
+
+    instance.initialize(params);
+
+    return instance;
+  }
+
+  Instance _getInstanceFromCache<Instance extends T, InputState>(
+    String id, {
+    dynamic params,
+    int? index,
+  }) {
+    if (!_instances.containsKey(id)) {
+      final instance = getUniqueWithParams<Instance, InputState?>(
+        params: params,
+      );
+
+      _instances[id] = [instance];
+
+      return instance;
+    }
+
+    final instances = _instances[id];
+    final instance = instances![index ?? 0] as Instance;
+
+    if (!instance.initialized) {
+      instance.initialize(params);
+    }
+
+    return instance;
   }
 }

@@ -8,7 +8,8 @@ import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 import 'post_state.dart';
 
 @defaultInteractor
-class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
+class PostInteractor extends BaseInteractor<PostState, Post>
+    with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
     updateState(state.copyWith(post: StatefulData.loading()));
 
@@ -35,8 +36,8 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
   }
 
   @override
-  PostState initialState(Map<String, dynamic>? input) => PostState(
-        post: StatefulData.result(input?['post']),
+  PostState initialState(Post input) => PostState(
+        post: StatefulData.result(input),
       );
 
   @override
@@ -49,3 +50,5 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
         }),
       ];
 }
+
+class PostInteractorConnector extends ConnectorCall<PostInteractor, Post> {}

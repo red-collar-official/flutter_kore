@@ -11,15 +11,15 @@ import 'mvvm_instance.dart';
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
+abstract class BaseService<Instance, Input> extends MvvmInstance<Input> {
   /// actual object instance
-  late T Function() _instanceCreator;
-  T? _instance;
+  late Instance Function() _instanceCreator;
+  Instance? _instance;
 
   /// Inititalizes service
   @mustCallSuper
   @override
-  void initialize(Map<String, dynamic>? input) {
+  void initialize(Input input) {
     super.initialize(input);
 
     _instanceCreator = () => provideInstance(input);
@@ -28,8 +28,20 @@ abstract class BaseService<T> extends MvvmInstance<Map<String, dynamic>?> {
   }
 
   /// Creates actual object instance
-  T provideInstance(Map<String, dynamic>? params);
+  Instance provideInstance(Input params);
 
   /// actual object instance
-  T get instance => _instance ??= _instanceCreator();
+  Instance get instance => _instance ??= _instanceCreator();
 }
+
+/// Base class that creates and holds some third party instance
+///
+/// @singletonService
+/// class StripeService extends BaseService<Stripe> {
+///   @override
+///   Stripe provideInstance(Map<String, dynamic>? params) {
+///     return Stripe.instance;
+///   }
+/// }
+abstract class DefaultService<T>
+    extends BaseService<T, Map<String, dynamic>?> {}

@@ -11,21 +11,21 @@ abstract class BaseDependentElement<State, Input>
   /// Does not hold singleton instances
   final interactors = InteractorCollection.newInstance();
 
-  late List<Connector> _dependsOn;
+  late List<BaseConnector> _dependsOn;
 
   /// Dependencies for this view model
   /// Does not hold singleton instances
-  List<Connector> dependsOn(Input input) => [];
+  List<BaseConnector> dependsOn(Input input) => [];
 
   /// Local services
   /// Does not hold singleton instances
   final services = ServiceCollection.newInstance();
 
-  late List<Connector> _usesServices;
+  late List<BaseConnector> _usesServices;
 
   /// Services for this interactor
   /// Does not hold singleton instances
-  List<Connector> usesServices(Input input) => [];
+  List<BaseConnector> usesServices(Input input) => [];
 
   /// Creates [Store], subscribes to [EventBus] events and restores cached state if needed
   @mustCallSuper
@@ -73,32 +73,38 @@ abstract class BaseDependentElement<State, Input>
 
   /// Adds interactors to local collection
   void _addInteractors() {
+    if (!_dependsOn.isEmpty) {
+      print('1231231232132131aaaa ${_dependsOn.first.type}');
+    }
     _dependsOn.forEach((element) {
+      print('1231231232132131bbbbb  ${element.type.toString()}');
       if (element.count != 1) {
         for (var i = 0; i < element.count; i++) {
           final interactor =
-              InteractorCollection.instance.getUniqueByTypeString(
+              InteractorCollection.instance.getUniqueByTypeStringWithParams(
             element.type.toString(),
-            params: element.params,
+            params: element.input,
           );
 
-          interactors.addExisting(interactor, element.params);
+          interactors.addExistingWithParams(interactor, element.input);
         }
       } else if (element.unique) {
-        final interactor = InteractorCollection.instance.getUniqueByTypeString(
+        final interactor =
+            InteractorCollection.instance.getUniqueByTypeStringWithParams(
           element.type.toString(),
-          params: element.params,
+          params: element.input,
         );
 
-        interactors.addExisting(interactor, element.params);
+        interactors.addExistingWithParams(interactor, element.input);
       } else {
-        final interactor = InteractorCollection.instance.getByTypeString(
+        final interactor =
+            InteractorCollection.instance.getByTypeStringWithParams(
           element.type.toString(),
-          element.params,
+          element.input,
           null,
         );
 
-        interactors.addExisting(interactor, element.params);
+        interactors.addExistingWithParams(interactor, element.input);
       }
     });
   }
@@ -108,28 +114,30 @@ abstract class BaseDependentElement<State, Input>
     _usesServices.forEach((element) {
       if (element.count != 1) {
         for (var i = 0; i < element.count; i++) {
-          final service = ServiceCollection.instance.getUniqueByTypeString(
+          final service =
+              ServiceCollection.instance.getUniqueByTypeStringWithParams(
             element.type.toString(),
-            params: element.params,
+            params: element.input,
           );
 
-          services.addExisting(service, element.params);
+          services.addExistingWithParams(service, element.input);
         }
       } else if (element.unique) {
-        final service = ServiceCollection.instance.getUniqueByTypeString(
+        final service =
+            ServiceCollection.instance.getUniqueByTypeStringWithParams(
           element.type.toString(),
-          params: element.params,
+          params: element.input,
         );
 
-        services.addExisting(service, element.params);
+        services.addExistingWithParams(service, element.input);
       } else {
-        final service = ServiceCollection.instance.getByTypeString(
+        final service = ServiceCollection.instance.getByTypeStringWithParams(
           element.type.toString(),
-          element.params,
+          element.input,
           null,
         );
 
-        services.addExisting(service, element.params);
+        services.addExistingWithParams(service, element.input);
       }
     });
   }
@@ -179,9 +187,9 @@ abstract class BaseDependentElement<State, Input>
         return;
       }
 
-      InteractorCollection.instance.add(
+      InteractorCollection.instance.addWithParams(
         element.type.toString(),
-        element.params,
+        element.input,
       );
     });
   }
@@ -193,7 +201,10 @@ abstract class BaseDependentElement<State, Input>
         return;
       }
 
-      ServiceCollection.instance.add(element.type.toString(), element.params);
+      ServiceCollection.instance.addWithParams(
+        element.type.toString(),
+        element.input,
+      );
     });
   }
 
