@@ -24,7 +24,7 @@ class Response<ItemType> {
   bool fromDatabase;
 
   /// Checks that error is not null and status code is less than 400
-  bool get isSuccessful => error == null && code < 400;
+  bool get isSuccessful => error == null && code >= 200 && code < 400;
 
   /// Checks that result is not null and was obtained from database
   bool get isSuccessfulFromDatabase => result != null && fromDatabase;

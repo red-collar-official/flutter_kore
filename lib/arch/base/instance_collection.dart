@@ -215,7 +215,7 @@ class InstanceCollection<T extends MvvmInstance> {
   /// Adds test instance for given instance type
   /// Used only for tests
   @visibleForTesting
-  void addTest<Instance extends T>(T instance, {Map<String, dynamic>? params}) {
+  void addTest<Instance extends T>(T instance, {dynamic params}) {
     final id = Instance.toString();
 
     if (_instances[id] == null) {
