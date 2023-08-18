@@ -113,7 +113,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         );
       } catch (e, trace) {
         exceptionPrint(e, trace);
-        
+
         return Response<T>(
           code: 0,
           error: 'not_recognized_error',
@@ -141,7 +141,16 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     if (parser == null) {
       result = responseBody.data;
     } else {
-      result = await parser!(responseBody.data, responseBody.headers.map);
+      try {
+        result = await parser!(responseBody.data, responseBody.headers.map);
+      } catch (e, trace) {
+        exceptionPrint(e, trace);
+
+        return Response<T>(
+          code: 0,
+          error: 'not_recognized_error',
+        );
+      }
     }
 
     if (result != null) {
@@ -217,7 +226,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       return await constructRequest(client, method, data);
     } catch (e, trace) {
       exceptionPrint(e, trace);
-      
+
       return error;
     }
   }
