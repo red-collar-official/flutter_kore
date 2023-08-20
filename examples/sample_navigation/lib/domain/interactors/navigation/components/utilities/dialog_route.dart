@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class DialogRoute<T> extends PopupRoute<T> {
@@ -5,7 +6,7 @@ class DialogRoute<T> extends PopupRoute<T> {
     required RoutePageBuilder pageBuilder,
     bool barrierDismissible = true,
     String? barrierLabel,
-    Color barrierColor = const Color(0x80000000),
+    Color barrierColor = const Color(0x66000000),
     Duration transitionDuration = const Duration(milliseconds: 200),
     RouteTransitionsBuilder? transitionBuilder,
     RouteSettings? settings,
@@ -52,11 +53,12 @@ class DialogRoute<T> extends PopupRoute<T> {
       Animation<double> secondaryAnimation, Widget child) {
     if (_transitionBuilder == null) {
       return FadeTransition(
-          opacity: CurvedAnimation(
-            parent: animation,
-            curve: Curves.linear,
-          ),
-          child: child);
+        opacity: CurvedAnimation(
+          parent: animation,
+          curve: Curves.linear,
+        ),
+        child: child,
+      );
     }
 
     return _transitionBuilder!(context, animation, secondaryAnimation, child);

@@ -290,7 +290,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
 
     final correctedMap = {
-      for (var value in queryParameters.keys)
+      for (final value in queryParameters.keys)
         value.toString(): queryParameters[value] is List
             ? queryParameters[value].map((value) => value?.toString())
             : queryParameters[value]?.toString(),

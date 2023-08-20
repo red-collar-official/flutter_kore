@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const Duration _bottomSheetDuration = Duration(milliseconds: 200);
-
 class ModalBottomSheetRoute<T> extends PopupRoute<T> {
   ModalBottomSheetRoute({
     required this.builder,
@@ -12,7 +10,6 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
     this.elevation,
     this.shape,
     this.enableDrag = true,
-    this.onClosed,
     RouteSettings? settings,
     this.dismissible,
   }) : super(settings: settings);
@@ -22,12 +19,11 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
   final Color? backgroundColor;
   final double? elevation;
   final ShapeBorder? shape;
-  final Function? onClosed;
   final bool? enableDrag;
   final bool? dismissible;
 
   @override
-  Duration get transitionDuration => _bottomSheetDuration;
+  Duration get transitionDuration => const Duration(milliseconds: 200);
 
   @override
   bool get barrierDismissible => dismissible ?? true;
@@ -36,7 +32,7 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
   final String? barrierLabel;
 
   @override
-  Color get barrierColor => Colors.black54;
+  Color get barrierColor => Colors.black.withOpacity(0.5);
 
   AnimationController? _animationController;
 
@@ -58,9 +54,13 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
         route: this,
         backgroundColor: backgroundColor,
         elevation: elevation,
-        shape: shape,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+          ),
+        ),
         enableDrag: enableDrag,
-        onClosed: onClosed,
       ),
     );
 
@@ -81,47 +81,58 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
     final localizations = MaterialLocalizations.of(context);
     final routeLabel = _getRouteLabel(localizations);
 
-    return AnimatedBuilder(
-      animation: widget.route.animation!,
-      builder: (BuildContext context, Widget? child) {
-        final animationValue = mediaQuery.accessibleNavigation
-            ? 1.0
-            : widget.route.animation?.value;
+    return Theme(
+      data: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              surface: Colors.transparent,
+            ),
+      ),
+      child: AnimatedBuilder(
+        animation: widget.route.animation!,
+        builder: (BuildContext context, Widget? child) {
+          final animationValue = mediaQuery.accessibleNavigation
+              ? 1.0
+              : widget.route.animation?.value;
 
-        return Semantics(
-          scopesRoute: true,
-          namesRoute: true,
-          label: routeLabel,
-          explicitChildNodes: true,
-          child: ClipRect(
-            child: CustomSingleChildLayout(
-              delegate: _ModalBottomSheetLayout(
-                animationValue ?? 0.0,
-                0,
-                MediaQuery.of(context).size.height +
-                    MediaQuery.of(context).viewInsets.bottom,
+          return Semantics(
+            scopesRoute: true,
+            namesRoute: true,
+            label: routeLabel,
+            explicitChildNodes: true,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8),
+                topRight: Radius.circular(8),
               ),
-              child: BottomSheet(
-                animationController: widget.route._animationController,
-                enableDrag: widget.enableDrag ?? true,
-                onClosing: () async {
-                  if (widget.route.isCurrent) {
-                    if (widget.onClosed != null) {
-                      await widget.onClosed!(true);
-                    }
-                  }
-                },
-                builder: widget.route.builder,
-                backgroundColor: widget.backgroundColor,
-                elevation: widget.elevation,
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
+              child: CustomSingleChildLayout(
+                delegate: _ModalBottomSheetLayout(
+                  animationValue ?? 0.0,
+                  0,
+                  MediaQuery.of(context).size.height +
+                      MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: BottomSheet(
+                  animationController: widget.route._animationController,
+                  enableDrag: widget.enableDrag ?? true,
+                  onClosing: () async {
+                    // ignore
+                  },
+                  builder: widget.route.builder,
+                  backgroundColor: widget.backgroundColor,
+                  elevation: widget.elevation,
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
@@ -151,14 +162,12 @@ class _ModalBottomSheet<T> extends StatefulWidget {
     this.elevation,
     this.shape,
     this.enableDrag = true,
-    this.onClosed,
   }) : super(key: key);
 
   final ModalBottomSheetRoute<T> route;
   final Color? backgroundColor;
   final double? elevation;
   final ShapeBorder? shape;
-  final Function? onClosed;
   final bool? enableDrag;
 
   @override

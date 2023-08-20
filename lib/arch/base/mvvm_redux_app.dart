@@ -43,12 +43,18 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// }
 /// ```
 abstract class MvvmReduxApp {
+  /// Main app interactors collection
   final interactors = InteractorCollection.instance;
+
+  /// Main app services collection
   final services = ServiceCollection.instance;
 
+  /// Main app event bus
   EventBus get eventBus => EventBus.instance;
 
   bool _initialized = false;
+
+  /// Flag indicating that all mvvm instances are created and registered
   bool get initialized => _initialized;
 
   @mustCallSuper
@@ -56,7 +62,7 @@ abstract class MvvmReduxApp {
     registerServices();
     registerInteractors();
     registerSingletons();
-
+    
     _initialized = true;
   }
 

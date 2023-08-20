@@ -1,5 +1,5 @@
 import 'package:sample_database/domain/data/app_tab.dart';
-import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_database/domain/interactors/navigation/components/screens/route_names.dart';
 
 // Interface for managing navigation stack
 abstract class BaseNavigationStack {
@@ -14,6 +14,7 @@ abstract class BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   });
 
@@ -28,16 +29,18 @@ abstract class BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   });
 
   /// Replaces whole stack with given route
-  /// Route can be only screen route therefore routeName defined as [Routes]
+  /// Route can be only screen route therefore routeName defined as [RouteNames]
   void replaceStack({
-    required Routes routeName,
+    required RouteNames routeName,
     AppTab? currentTab,
     required bool global,
     required bool uniqueInStack,
+    required bool fullScreenDialog,
     Object? id,
   });
 

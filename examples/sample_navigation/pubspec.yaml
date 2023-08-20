@@ -13,9 +13,10 @@ dependencies:
   mvvm_redux:
     path: ../../
 
-  dio: ^5.2.0
-  freezed_annotation: ^2.1.0
-  shared_preferences: ^2.0.15
+  dio: ^5.3.2
+  freezed_annotation: ^2.4.1
+  shared_preferences: ^2.2.0
+  back_button_interceptor: ^7.0.0
 
 dev_dependencies:
   flutter_test:
@@ -25,10 +26,10 @@ dev_dependencies:
     sdk: flutter
 
   json_serializable:
-  build: ^2.3.1
+  build: ^2.4.1
   build_config: ^1.1.1
-  build_runner: ^2.2.2
-  freezed: ^2.1.0+1
+  build_runner: ^2.4.6
+  freezed: ^2.4.1
   test:
 
 flutter:

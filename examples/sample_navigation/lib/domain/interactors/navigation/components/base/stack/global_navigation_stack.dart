@@ -1,7 +1,7 @@
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/route_model.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/screens/route_names.dart';
 
 import 'base_navigation_stack.dart';
 
@@ -17,14 +17,18 @@ class GlobalNavigationStack extends BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     routeStack.add(
-      RouteModel(
+      UIRouteModel(
         name: routeName,
-        dismissable: dismissable,
-        uniqueInStack: uniqueInStack,
-        needToEnsureClose: needToEnsureClose,
+        settings: UIRouteSettings(
+          dismissable: dismissable,
+          uniqueInStack: uniqueInStack,
+          needToEnsureClose: needToEnsureClose,
+          fullScreenDialog: fullScreenDialog,
+        ),
         id: id,
       ),
     );
@@ -38,13 +42,17 @@ class GlobalNavigationStack extends BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
-    routeStack[routeStack.length - 1] = RouteModel(
+    routeStack[routeStack.length - 1] = UIRouteModel(
       name: routeName,
-      dismissable: dismissable,
-      uniqueInStack: uniqueInStack,
-      needToEnsureClose: needToEnsureClose,
+      settings: UIRouteSettings(
+        dismissable: dismissable,
+        uniqueInStack: uniqueInStack,
+        needToEnsureClose: needToEnsureClose,
+        fullScreenDialog: fullScreenDialog,
+      ),
       id: id,
     );
   }
@@ -60,19 +68,23 @@ class GlobalNavigationStack extends BaseNavigationStack {
 
   @override
   void replaceStack({
-    required Routes routeName,
+    required RouteNames routeName,
     AppTab? currentTab,
     required bool global,
     required bool uniqueInStack,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     routeStack
       ..clear()
       ..add(
-        RouteModel(
+        UIRouteModel(
           name: routeName,
-          dismissable: false,
-          uniqueInStack: uniqueInStack,
+          settings: UIRouteSettings(
+            dismissable: false,
+            uniqueInStack: uniqueInStack,
+            fullScreenDialog: fullScreenDialog,
+          ),
           id: id,
         ),
       );

@@ -4,9 +4,9 @@ import 'dependent_element.dart';
 /// Interactors contain business logic for given state type
 ///  ```dart
 /// @defaultInteractor
-/// class TestInteractor extends BaseInteractor<int> {
+/// class TestInteractor extends BaseInteractor<int, String> {
 ///   @override
-///   int initialState(Map<String, dynamic>? input) => 1;
+///   int initialState(String? input) => 1;
 /// }
 /// ```
 abstract class BaseInteractor<State, Input>

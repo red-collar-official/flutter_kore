@@ -5,9 +5,9 @@ import 'mvvm_instance.dart';
 /// Base class that creates and holds some third party instance
 ///
 /// @singletonService
-/// class StripeService extends BaseService<Stripe> {
+/// class StripeService extends BaseService<Stripe, String> {
 ///   @override
-///   Stripe provideInstance(Map<String, dynamic>? params) {
+///   Stripe provideInstance(String? params) {
 ///     return Stripe.instance;
 ///   }
 /// }
@@ -28,7 +28,7 @@ abstract class BaseService<Instance, Input> extends MvvmInstance<Input?> {
   }
 
   /// Creates actual object instance
-  Instance provideInstance(Input? params);
+  Instance provideInstance(Input? input);
 
   /// actual object instance
   Instance get instance => _instance ??= _instanceCreator();

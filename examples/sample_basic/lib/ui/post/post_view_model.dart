@@ -9,7 +9,7 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<BaseConnector> dependsOn(PostView input) => [
+  List<Connector> dependsOn(PostView input) => [
         app.connectors.postInteractorConnector(
           unique: true,
           input: input.post,

@@ -2,7 +2,7 @@
 
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/stack/base_navigation_stack.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/screens/route_names.dart';
 
 import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';
@@ -26,6 +26,7 @@ class NavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     final stack = _getStack(global);
@@ -38,6 +39,7 @@ class NavigationStack {
       dismissable: dismissable,
       needToEnsureClose: needToEnsureClose,
       id: id,
+      fullScreenDialog: fullScreenDialog,
     );
   }
 
@@ -52,6 +54,7 @@ class NavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     final stack = _getStack(global);
@@ -63,17 +66,19 @@ class NavigationStack {
       uniqueInStack: uniqueInStack,
       dismissable: dismissable,
       needToEnsureClose: needToEnsureClose,
+      fullScreenDialog: fullScreenDialog,
       id: id,
     );
   }
 
   /// Replaces whole stack with given route
-  /// Route can be only screen route therefore routeName defined as [Routes]
+  /// Route can be only screen route therefore routeName defined as [RouteNames]
   void replaceStack({
-    required Routes routeName,
+    required RouteNames routeName,
     AppTab? currentTab,
     required bool global,
     required bool uniqueInStack,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     final stack = _getStack(global);
@@ -83,6 +88,7 @@ class NavigationStack {
       global: global,
       uniqueInStack: uniqueInStack,
       id: id,
+      fullScreenDialog: fullScreenDialog,
     );
   }
 

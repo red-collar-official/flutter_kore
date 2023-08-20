@@ -158,7 +158,9 @@ This layer contains <b>Interactor</b> and <b>Service</b> classes.
 
 Interactors contain state and subscription to <b>EventBus</b> events (EventBus will be described later). 
 
-State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updatesFor</b> or <b>changesFor</b>.
+You can also specify input type for this interactor
+
+State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>.
 
 Interactors must be annotated with <b>defaultInteractor</b> or <b>singletonInteractor</b>.
 
@@ -181,14 +183,14 @@ Typical example would be:
 
 ```dart
 @defaultInteractor
-class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
+class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMixin {
   @override
-  List<Connector> dependsOn(Map<String, dynamic>? input) => [
+  List<Connector> dependsOn(String? input) => [
         Connector(type: SupportInteractor, unique: true),
       ];
 
   @override
-  List<Connector> usesServices(Map<String, dynamic>? input) => [
+  List<Connector> usesServices(String? input) => [
         Connector(type: ReactionsService),
       ];
 
@@ -224,14 +226,14 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
   }
 
   @override
-  PostsState initialState(Map<String, dynamic>? params) => PostsState();
+  PostsState initialState(String? input) => PostsState();
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {
-        Events.eventPostLiked: (payload) {
-          _onPostLiked(payload);
-        }
-      };
+  List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
 }
 ```
 
@@ -239,7 +241,7 @@ Or singleton interactor:
 
 ```dart
 @singletonInteractor
-class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(UserDefaultsState.fromJson(savedStateObject));
@@ -250,7 +252,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   }
 
   @override
-  UserDefaultsState initialState(Map<String, dynamic>? params) => UserDefaultsState();
+  UserDefaultsState initialState(String? input) => UserDefaultsState();
   
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
@@ -259,7 +261,11 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   bool get isRestores => true;
   
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {};
+  List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
 }
 
 ```
@@ -282,9 +288,9 @@ Typical example would be:
 
 ```dart
 @defaultService
-class StringService extends BaseService<String> {
+class StringService extends BaseService<String, String> {
   @override
-  String provideInstance(Map<String, dynamic>? params) {
+  String provideInstance(String? input) {
     return '';
   }
 }
@@ -295,9 +301,9 @@ or singleton service:
 
 ```dart
 @singletonService
-class StringService extends BaseService<String> {
+class StringService extends BaseService<String, String> {
   @override
-  String provideInstance(Map<String, dynamic>? params) {
+  String provideInstance(String? input) {
     return '';
   }
 }
@@ -331,21 +337,33 @@ List<Connector> usesServices(Map<String, dynamic>? input) => [
     ];
 ```
 
+Library creates connectors for every single service and interactor 
+This way you dont need to write <b>Connector</b> classes for every interactor and just use predefined ones as follows:
+
+```dart
+@override
+List<Connector> dependsOn(PostView input) => [
+      app.connectors.postInteractorConnector(
+        unique: true,
+        input: input.post,
+      ),
+    ];
+```
 
 ### EventBus
 
 View models and interactors have access to <b>EventBus</b> events.
-Events can be subscribed to with <b>subscribeTo</b> getter.
+Events can be subscribed to with <b>subscribe</b> method.
 
 An example:
 
 ```dart
 @override
-Map<String, EventBusSubscriber> get subscribeTo => {
-      Events.eventPostLiked: (payload) {
-        _onPostLiked(payload);
-      }
-    };
+List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
 ```
 
 To send events you need to access <b>EventBus</b> instance.
@@ -353,7 +371,14 @@ To send events you need to access <b>EventBus</b> instance.
 An example:
 
 ```dart
-app.eventBus.send(Events.eventPostLiked, payload: id);
+app.eventBus.send(PostLikedEvent(id: id));
+```
+
+You also can create separate instance of EventBus to handle specific operation - for example file uploading
+While we upload file we may want to send progress events in separate event bus
+
+```dart
+final fileUploadEventBus = EventBus.newSeparateInstance();
 ```
 
 ### MainApp and Apis
@@ -387,7 +412,7 @@ And here is definition of Apis class:
 class Apis with ApisGen {}
 ```
 
-App class holds instances to global <b>InteractorCollection</b>, <b>SharedPreferences</b>, <b>Apis</b> and <b>ObjectBox</b>(if needed)
+App class holds instances to global <b>InteractorCollection</b>, <b>ServiceCollection</b>, <b>SharedPreferences</b>, <b>Apis</b> and <b>ObjectBox</b>(if needed)
 We define global variable for app class and initialize it before calling <b>runApp</b>.
 
 ## Presentation Layer
@@ -454,11 +479,12 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
 
-  Map<String, EventBusSubscriber> get subscribeTo => {
-      Events.testEvent: (payload) {
-        // ...
-      }
-    };
+  @override
+  List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
 }
 ```
 

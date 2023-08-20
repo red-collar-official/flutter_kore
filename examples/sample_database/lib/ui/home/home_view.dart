@@ -61,7 +61,7 @@ class _HomeViewWidgetState
       offstage: current?.index != appTab.index,
       child: WillPopScope(
         onWillPop: () async {
-          return false;
+          return viewModel.onWillPop();
         },
         child: Navigator(
           initialRoute: appTab.name,

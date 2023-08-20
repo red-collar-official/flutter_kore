@@ -1,5 +1,15 @@
-class Events {
-  static const String eventPostLiked = 'eventPostLiked';
-  static const String ensureCloseRequested = 'ensureCloseRequested';
-  static const String globalRoutePushed = 'globalRoutePushed';
+class PostLikedEvent {
+  final int id;
+
+  const PostLikedEvent({required this.id});
+}
+
+class EnsureCloseRequestedEvent {}
+
+class GlobalRoutePushedEvent {
+  final bool replace;
+
+  const GlobalRoutePushedEvent({
+    this.replace = false,
+  });
 }

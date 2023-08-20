@@ -1,15 +1,47 @@
-class RouteModel {
+class UIRouteSettings {
   final bool dismissable;
   final bool uniqueInStack;
-  final Object name;
   final bool needToEnsureClose;
-  final Object? id;
+  final bool fullScreenDialog;
+  final bool forceGlobal;
 
-  const RouteModel({
+  const UIRouteSettings({
     this.dismissable = true,
     this.uniqueInStack = false,
-    required this.name,
     this.needToEnsureClose = false,
+    this.fullScreenDialog = false,
+    this.forceGlobal = false,
+  });
+}
+
+class UIBottomSheetRouteSettings extends UIRouteSettings {
+  const UIBottomSheetRouteSettings({
+    super.dismissable = true,
+    super.uniqueInStack = true,
+    super.needToEnsureClose = false,
+    super.fullScreenDialog = false,
+    super.forceGlobal = true,
+  });
+}
+
+class UIDialogRouteSettings extends UIRouteSettings {
+  const UIDialogRouteSettings({
+    super.dismissable = true,
+    super.uniqueInStack = true,
+    super.needToEnsureClose = false,
+    super.fullScreenDialog = false,
+    super.forceGlobal = true,
+  });
+}
+
+class UIRouteModel {
+  final Object name;
+  final UIRouteSettings settings;
+  final Object? id;
+
+  const UIRouteModel({
+    required this.name,
+    required this.settings,
     this.id,
   });
 }

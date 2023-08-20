@@ -1,7 +1,7 @@
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/route_model.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/screens/route_names.dart';
 
 import 'base_navigation_stack.dart';
 
@@ -17,14 +17,18 @@ class TabNavigationStack extends BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     try {
-      tabRouteStack[currentTab]!.add(RouteModel(
+      tabRouteStack[currentTab]!.add(UIRouteModel(
         name: routeName,
-        dismissable: dismissable,
-        uniqueInStack: uniqueInStack,
-        needToEnsureClose: needToEnsureClose,
+        settings: UIRouteSettings(
+          dismissable: dismissable,
+          uniqueInStack: uniqueInStack,
+          needToEnsureClose: needToEnsureClose,
+          fullScreenDialog: fullScreenDialog,
+        ),
         id: id,
       ));
     } catch (e) {
@@ -40,16 +44,20 @@ class TabNavigationStack extends BaseNavigationStack {
     required bool uniqueInStack,
     required bool dismissable,
     required bool needToEnsureClose,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     try {
       final stack = tabRouteStack[currentTab]!;
 
-      stack[stack.length - 1] = RouteModel(
+      stack[stack.length - 1] = UIRouteModel(
         name: routeName,
-        dismissable: dismissable,
-        uniqueInStack: uniqueInStack,
-        needToEnsureClose: needToEnsureClose,
+        settings: UIRouteSettings(
+          dismissable: dismissable,
+          uniqueInStack: uniqueInStack,
+          needToEnsureClose: needToEnsureClose,
+          fullScreenDialog: fullScreenDialog,
+        ),
         id: id,
       );
     } catch (e) {
@@ -67,17 +75,18 @@ class TabNavigationStack extends BaseNavigationStack {
       return false;
     }
 
-    return tabRouteStack[currentTab.name]!
+    return tabRouteStack[currentTab]!
             .indexWhere((element) => element.name == routeName) ==
         -1;
   }
 
   @override
   void replaceStack({
-    required Routes routeName,
+    required RouteNames routeName,
     AppTab? currentTab,
     required bool global,
     required bool uniqueInStack,
+    required bool fullScreenDialog,
     Object? id,
   }) {
     if (currentTab == null) {
@@ -85,10 +94,13 @@ class TabNavigationStack extends BaseNavigationStack {
     }
 
     tabRouteStack[currentTab] = [
-      RouteModel(
+      UIRouteModel(
         name: routeName,
-        dismissable: false,
-        uniqueInStack: uniqueInStack,
+        settings: UIRouteSettings(
+          dismissable: false,
+          uniqueInStack: uniqueInStack,
+          fullScreenDialog: fullScreenDialog,
+        ),
         id: id,
       ),
     ];

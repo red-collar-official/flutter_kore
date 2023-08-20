@@ -6,6 +6,6 @@ part 'navigation_state.freezed.dart';
 @freezed
 class NavigationState with _$NavigationState {
   factory NavigationState({
-    AppTab? currentTab,
+    required AppTab currentTab,
   }) = _NavigationState;
 }

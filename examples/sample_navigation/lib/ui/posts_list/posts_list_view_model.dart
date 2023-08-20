@@ -13,7 +13,7 @@ class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
   List<Connector> dependsOn(PostsListView input) => [
-        Connector(type: PostsInteractor),
+        app.connectors.postsInteractorConnector(),
       ];
 
   @override
@@ -26,9 +26,12 @@ class PostsListViewModel
   }
 
   void openPost(Post post) {
-    app.interactors.get<NavigationInteractor>().routeTo(Routes.post, payload: {
-      'post': post,
-    });
+    app.interactors.get<NavigationInteractor>().routeTo(
+          Routes.post(
+            post: post,
+          ),
+          forceGlobal: true,
+        );
   }
 
   Stream<StatefulData<List<Post>>?> get postsStream =>

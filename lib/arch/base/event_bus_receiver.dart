@@ -11,11 +11,11 @@ abstract class EventBusReceiver {
   ///
   /// ```dart
   /// @override
-  /// Map<String, EventBusSubscriber> get subscribeTo => {
-  ///       Events.eventPostLiked: (payload) {
-  ///         _onPostLiked(payload);
-  ///       }
-  ///     };
+  /// List<EventBusSubscriber> subscribe() => [
+  ///       on<PostLikedEvent>((event) {
+  ///         _onPostLiked(event.id);
+  ///       }),
+  ///     ];
   /// ```
   List<EventBusSubscriber> subscribe() => [];
 
@@ -25,7 +25,7 @@ abstract class EventBusReceiver {
   StreamSubscription? _eventsSubscription;
 
   /// Creates stream subscription for [EventBus] events.
-  /// If [subscribeTo] is empty does nothing
+  /// If [subscribe] is empty does nothing
   @protected
   void _subscribeToEvents() {
     subscribe();
@@ -52,6 +52,8 @@ abstract class EventBusReceiver {
     _eventsSubscription?.cancel();
   }
 
+  /// Subscribes to event of given type
+  /// Adds subscriber to local subscribers collection
   EventBusSubscriber on<T>(EventBusSubscriber<T> processor) {
     void dynamicProcessor(event) {
       processor(event as T);

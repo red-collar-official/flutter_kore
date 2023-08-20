@@ -11,21 +11,21 @@ abstract class BaseDependentElement<State, Input>
   /// Does not hold singleton instances
   final interactors = InteractorCollection.newInstance();
 
-  late List<BaseConnector> _dependsOn;
+  late List<Connector> _dependsOn;
 
   /// Dependencies for this view model
   /// Does not hold singleton instances
-  List<BaseConnector> dependsOn(Input input) => [];
+  List<Connector> dependsOn(Input input) => [];
 
   /// Local services
   /// Does not hold singleton instances
   final services = ServiceCollection.newInstance();
 
-  late List<BaseConnector> _usesServices;
+  late List<Connector> _usesServices;
 
   /// Services for this interactor
   /// Does not hold singleton instances
-  List<BaseConnector> usesServices(Input input) => [];
+  List<Connector> usesServices(Input input) => [];
 
   /// Creates [Store], subscribes to [EventBus] events and restores cached state if needed
   @mustCallSuper

@@ -11,9 +11,15 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
   @override
   List<Connector> dependsOn(HomeView input) => [];
 
+  final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
+    AppTabs.posts: GlobalKey<NavigatorState>(),
+    AppTabs.likedPosts: GlobalKey<NavigatorState>(),
+  };
+
   @override
   void onLaunch(HomeView widget) {
-    // ignore
+    app.interactors.get<NavigationInteractor>().currentTabKeys =
+        tabNavigatorKeys;
   }
 
   GlobalKey<NavigatorState> getNavigatorKey(AppTab tab) {
@@ -24,8 +30,16 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
     app.interactors.get<NavigationInteractor>().setCurrentTab(tab);
   }
 
+  Future<bool> onWillPop() async {
+    await app.interactors
+        .get<NavigationInteractor>()
+        .homeBackButtonGlobalCallback();
+
+    return false;
+  }
+
   AppTab get initialTab =>
-      app.interactors.get<NavigationInteractor>().state.currentTab!;
+      app.interactors.get<NavigationInteractor>().state.currentTab;
 
   Stream<AppTab?> get currentTabStream => app.interactors
       .get<NavigationInteractor>()

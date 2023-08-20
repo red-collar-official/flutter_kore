@@ -5,9 +5,10 @@ import 'package:sample_navigation/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
+import '../services/navigation_service.dart';
 import 'apis.dart';
 
-part 'global_store.g.dart';
+part 'global_store.mvvm.dart';
 
 @mainApp
 class App extends MvvmReduxApp with AppGen {
@@ -17,11 +18,8 @@ class App extends MvvmReduxApp with AppGen {
   @override
   Future<void> initialize() async {
     await super.initialize();
-  }
 
-  @override
-  void registerServices() {
-    // ignore
+    app.interactors.get<NavigationInteractor>().initStack();
   }
 }
 

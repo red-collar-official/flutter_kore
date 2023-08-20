@@ -8,13 +8,14 @@ import 'package:sample_database/domain/interactors/mixins/like_post_mixin.dart';
 import 'post_state.dart';
 
 @defaultInteractor
-class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
+class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
+    with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
     updateState(state.copyWith(post: StatefulData.loading()));
 
     final response = await app.apis.posts.getPost(id).execute();
 
-    if (response.isSuccessful || response.isSuccessfulFromDatabase) {
+    if (response.isSuccessful) {
       updateState(state.copyWith(post: StatefulData.result(response.result!)));
     } else {
       updateState(state.copyWith(post: StatefulData.error(response.error)));
@@ -38,12 +39,12 @@ class PostInteractor extends BaseInteractor<PostState> with LikePostMixin {
   PostState initialState(Map<String, dynamic>? input) => PostState();
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {
-        Events.eventPostLiked: (payload) {
+  List<EventBusSubscriber> subscribe() => [
+        on<PostLikedEvent>((event) {
           if (state.post is ResultData<Post> &&
-              payload == (state.post as ResultData<Post>).result.id) {
+              event.id == (state.post as ResultData<Post>).result.id) {
             _onPostLiked();
           }
-        }
-      };
+        }),
+      ];
 }

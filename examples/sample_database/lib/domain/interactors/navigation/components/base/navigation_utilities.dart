@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute, DialogRoute;
 import 'package:sample_database/domain/global/global_store.dart';
 import 'package:sample_database/domain/interactors/interactors.dart';
-import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:sample_database/domain/interactors/navigation/components/screens/route_names.dart';
 import 'package:sample_database/domain/interactors/navigation/components/utilities/bottom_sheet_route.dart';
 import 'package:sample_database/domain/interactors/navigation/components/utilities/dialog_route.dart';
 import 'package:sample_database/domain/interactors/navigation/components/utilities/willpop_cupertino_page_route.dart';
+import 'package:flutter/material.dart' hide DialogRoute, ModalBottomSheetRoute;
 
 class NavigationUtilities {
   static Future<Object?>? pushDialogRoute({
@@ -23,84 +23,36 @@ class NavigationUtilities {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) {
-            return Builder(
-              builder: (BuildContext context) {
-                return GestureDetector(
-                  onTap: () {
-                    if (dismissable) {
-                      app.interactors.get<NavigationInteractor>().pop();
-                    }
-                  },
-                  child: WillPopScope(
-                    onWillPop: () async {
-                      if (dismissable) {
-                        app.interactors.get<NavigationInteractor>().pop();
-                      }
-
-                      return false;
-                    },
-                    child: child,
-                  ),
-                );
-              },
+            return _overlayRouteContainer(
+              dismissable: dismissable,
+              child: child,
             );
           },
         ),
       );
 
-  static Future<void> pushBottomSheetRoute({
+  static Future? pushBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required Function onClosed,
-  }) async {
-    final completer = Completer<void>();
-
-    unawaited(
-      navigator.currentState
-          ?.push(
+  }) =>
+      navigator.currentState?.push(
         ModalBottomSheetRoute(
           builder: (BuildContext buildContext) {
-            return Builder(
-              builder: (BuildContext context) {
-                return WillPopScope(
-                  onWillPop: () {
-                    return Future.value(dismissable);
-                  },
-                  child: child,
-                );
-              },
+            return _overlayRouteContainer(
+              dismissable: dismissable,
+              child: child,
             );
-          },
-          onClosed: (_) {
-            onClosed();
-
-            // this case means user swiped away bottom sheet so we close completer
-            if (!completer.isCompleted) {
-              completer.complete();
-            }
           },
           dismissible: dismissable,
           enableDrag: dismissable,
         ),
-      )
-          .then(
-        (value) {
-          // this means that bottom sheet was popped or system back button was pressed
-          if (!completer.isCompleted) {
-            completer.complete();
-          }
-        },
-      ),
-    );
-
-    return completer.future;
-  }
+      );
 
   static PageRoute buildPageRoute(
     Widget child,
     bool fullScreenDialog,
-    Routes routeName,
+    RouteNames routeName,
     VoidCallback? onClosed,
     Future<void> Function()? onWillPop,
   ) {
@@ -141,5 +93,32 @@ class NavigationUtilities {
         onClosedCallback: onClosed, // triggers only when used ios back gesture
       );
     }
+  }
+
+  static Widget _overlayRouteContainer({
+    required bool dismissable,
+    required Widget child,
+  }) {
+    return Builder(
+      builder: (BuildContext context) {
+        return GestureDetector(
+          onTap: () {
+            if (dismissable) {
+              app.interactors.get<NavigationInteractor>().pop();
+            }
+          },
+          child: WillPopScope(
+            onWillPop: () async {
+              if (dismissable) {
+                app.interactors.get<NavigationInteractor>().pop();
+              }
+
+              return false;
+            },
+            child: child,
+          ),
+        );
+      },
+    );
   }
 }

@@ -8,7 +8,7 @@ import 'package:sample_navigation/domain/interactors/mixins/like_post_mixin.dart
 import 'posts_state.dart';
 
 @defaultInteractor
-class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> with LikePostMixin {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: StatefulData.loading()));
 
@@ -45,9 +45,9 @@ class PostsInteractor extends BaseInteractor<PostsState> with LikePostMixin {
   PostsState initialState(Map<String, dynamic>? input) => PostsState();
 
   @override
-  Map<String, EventBusSubscriber> get subscribeTo => {
-        Events.eventPostLiked: (payload) {
-          _onPostLiked(payload);
-        }
-      };
+  List<EventBusSubscriber> subscribe() => [
+        on<PostLikedEvent>((event) {
+          _onPostLiked(event.id);
+        }),
+      ];
 }

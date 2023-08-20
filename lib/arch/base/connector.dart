@@ -9,14 +9,14 @@
 ///       ];
 /// }
 /// ```
-class BaseConnector {
+class Connector {
   final Type type;
   final bool unique;
   final dynamic input;
   final dynamic Function(int)? inputForIndex;
   final int count;
 
-  BaseConnector({
+  const Connector({
     required this.type,
     this.unique = false,
     this.input,
@@ -25,14 +25,15 @@ class BaseConnector {
   });
 }
 
+/// Callable proxy class for [BaseConnector]
 class ConnectorCall<InstanceType, InputStateType> {
-  BaseConnector call({
+  Connector call({
     bool unique = false,
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
   }) =>
-      BaseConnector(
+      Connector(
         unique: unique,
         input: input,
         inputForIndex: inputForIndex,
