@@ -19,7 +19,6 @@ import 'navigation_state.dart';
 @singletonInteractor
 class NavigationInteractor
     extends BaseInteractor<NavigationState, Map<String, dynamic>> {
-
   late final navigationStack = app.services.get<NavigationService>().instance;
 
   Map<AppTab, GlobalKey<NavigatorState>> currentTabKeys = {};
@@ -55,14 +54,6 @@ class NavigationInteractor
   }
 
   GlobalKey<NavigatorState> getNavigator({bool forceGlobal = false}) {
-    final routeStack = navigationStack.globalNavigationStack.routeStack;
-
-    if (routeStack.isNotEmpty &&
-        (routeStack.last.name is DialogNames ||
-            routeStack.last.name is BottomSheetNames)) {
-      return bottomSheetDialogNavigatorKey;
-    }
-
     if (isInGlobalStack() || forceGlobal) {
       return globalNavigatorKey;
     }
@@ -83,20 +74,24 @@ class NavigationInteractor
   }) {
     final bool isInGlobal = isInGlobalStack();
 
-    if (!isInGlobal) {
-      final tabStack =
-          navigationStack.tabNavigationStack.tabRouteStack[state.currentTab]!;
+    final isInBottomSheetApp = isInBottomSheetDialogScope;
 
-      if (tabStack.length == 1) {
-        // preventing close of first page in tab stack
-        return;
-      }
-    } else {
-      final globalStack = navigationStack.globalNavigationStack.routeStack;
+    if (!isInBottomSheetApp) {
+      if (!isInGlobal) {
+        final tabStack =
+            navigationStack.tabNavigationStack.tabRouteStack[state.currentTab]!;
 
-      if (globalStack.length == 1) {
-        // preventing close of first page in tab stack
-        return;
+        if (tabStack.length == 1) {
+          // preventing close of first page in tab stack
+          return;
+        }
+      } else {
+        final globalStack = navigationStack.globalNavigationStack.routeStack;
+
+        if (globalStack.length == 1) {
+          // preventing close of first page in tab stack
+          return;
+        }
       }
     }
 
@@ -106,9 +101,10 @@ class NavigationInteractor
       return;
     }
 
-    final navigator = getNavigator();
+    final navigator =
+        isInBottomSheetApp ? bottomSheetDialogNavigatorKey : getNavigator();
 
-    navigationStack.pop(state.currentTab, isInGlobal);
+    navigationStack.pop(state.currentTab, isInGlobal || isInBottomSheetApp);
 
     navigator.currentState?.pop(payload);
   }
@@ -269,10 +265,23 @@ class NavigationInteractor
     UIRoute<DialogNames> dialog, {
     bool? forceGlobal,
     bool? dismissable,
+    bool? uniqueInStack,
     Object? id,
   }) async {
     final forceGlobalInput = forceGlobal ?? dialog.defaultSettings.forceGlobal;
     final dismissableInput = dismissable ?? dialog.defaultSettings.dismissable;
+
+    final uniqueInStackInput =
+        uniqueInStack ?? dialog.defaultSettings.uniqueInStack;
+
+    if (uniqueInStackInput &&
+        !navigationStack.checkUnique(
+          routeName: dialog,
+          currentTab: state.currentTab,
+          global: true,
+        )) {
+      return;
+    }
 
     final dialogName = dialog.name;
 
@@ -280,7 +289,7 @@ class NavigationInteractor
 
     final navigator = global
         ? bottomSheetDialogNavigatorKey
-        : getNavigator(forceGlobal: global);
+        : currentTabKeys[state.currentTab]!;
 
     navigationStack.addRoute(
       routeName: dialogName,
@@ -308,6 +317,7 @@ class NavigationInteractor
     UIRoute<BottomSheetNames> bottomSheet, {
     bool? forceGlobal,
     bool? dismissable,
+    bool? uniqueInStack,
     Object? id,
   }) async {
     final forceGlobalInput =
@@ -315,13 +325,25 @@ class NavigationInteractor
     final dismissableInput =
         dismissable ?? bottomSheet.defaultSettings.dismissable;
 
+    final uniqueInStackInput =
+        uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack;
+
+    if (uniqueInStackInput &&
+        !navigationStack.checkUnique(
+          routeName: bottomSheet,
+          currentTab: state.currentTab,
+          global: true,
+        )) {
+      return;
+    }
+
     final bottomSheetName = bottomSheet.name;
 
     final bool global = _checkGlobalNavigatorNeeded(forceGlobalInput);
 
     final navigator = global
         ? bottomSheetDialogNavigatorKey
-        : getNavigator(forceGlobal: global);
+        : currentTabKeys[state.currentTab]!;
 
     navigationStack.addRoute(
       routeName: bottomSheetName,
@@ -351,14 +373,19 @@ class NavigationInteractor
 
   bool canPop({bool global = true}) {
     if (global) {
-      return latestGlobalRoute().name != defaultRouteStack()[0].name;
+      return navigationStack.globalNavigationStack.routeStack.length > 1 &&
+          latestGlobalRoute().settings.dismissable;
     } else {
-      return latestTabRoute().name !=
-          defaultTabRouteStack()[state.currentTab]![0].name;
+      return navigationStack
+                  .tabNavigationStack.tabRouteStack[state.currentTab]!.length >
+              1 &&
+          latestTabRoute().settings.dismissable;
     }
   }
 
   void popGlobalToFirst() {
+    popAllDialogsAndBottomSheets();
+
     final navigator = getNavigator(forceGlobal: true);
 
     navigator.currentState?.popUntil((route) => route.isFirst);
@@ -460,8 +487,12 @@ class NavigationInteractor
     }
   }
 
+  bool get isInBottomSheetDialogScope {
+    return latestGlobalRoute().name is BottomSheetNames ||
+        latestGlobalRoute().name is DialogNames;
+  }
+
   Future<void> homeBackButtonGlobalCallback({bool global = false}) async {
-    
     if (latestGlobalRoute().name is BottomSheetNames ||
         latestGlobalRoute().name is DialogNames) {
       pop();
