@@ -1,5 +1,4 @@
-import 'package:sample_navigation/domain/interactors/navigation/components/route.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/route_model.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/ui/bottom_sheets/test_bottom_sheet.dart';
 
 import 'bottom_sheet_names.dart';

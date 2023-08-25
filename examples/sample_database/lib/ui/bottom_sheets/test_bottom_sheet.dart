@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sample_database/domain/global/global_store.dart';
-import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 class TestBottomSheet extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class TestBottomSheet extends StatelessWidget {
           const Text('Test bottom sheet'),
           TextButton(
               onPressed: () {
-                app.interactors.get<NavigationInteractor>().pop();
+                app.navigation.pop();
               },
               child: const Text('Close'))
         ],

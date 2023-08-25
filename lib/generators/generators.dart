@@ -9,7 +9,7 @@ import 'package:mvvm_redux/collectors/collectors.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:mvvm_redux/generators/main_app_visitor.dart';
 
-class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
+class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
   String generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
@@ -81,7 +81,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainAppAnnotation> {
 
     // ignore: cascade_invocations
     classBuffer
-      ..writeln('mixin $className on MvvmReduxApp {')
+      ..writeln(
+          'mixin $className on MvvmReduxApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {')
       ..writeln('final connectors = Connectors();')
       ..writeln()
       ..writeln('@override')

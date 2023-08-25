@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base/interactor_collection.dart';
-import 'package:mvvm_redux/arch/base/service_collection.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
@@ -42,7 +40,8 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 ///   await app.initialize();
 /// }
 /// ```
-abstract class MvvmReduxApp {
+abstract class MvvmReduxApp<
+    NavigationInteractorType extends BaseNavigationInteractor> {
   /// Main app interactors collection
   final interactors = InteractorCollection.instance;
 
@@ -51,6 +50,12 @@ abstract class MvvmReduxApp {
 
   /// Main app event bus
   EventBus get eventBus => EventBus.instance;
+
+  static final navigationInteractor =
+      InteractorCollection.instance.find<BaseNavigationInteractor>();
+
+  late final NavigationInteractorType navigation =
+      navigationInteractor! as NavigationInteractorType;
 
   bool _initialized = false;
 
@@ -62,7 +67,7 @@ abstract class MvvmReduxApp {
     registerServices();
     registerInteractors();
     registerSingletons();
-    
+
     _initialized = true;
   }
 

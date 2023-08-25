@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
-import 'package:sample_navigation/domain/data/stateful_data.dart';
 import 'package:sample_navigation/ui/posts_list/components/post_card.dart';
 
 import 'posts_list_view_model.dart';

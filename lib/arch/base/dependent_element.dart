@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base/interactor_collection.dart';
-import 'package:mvvm_redux/arch/base/service_collection.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-
-import 'scope_stack.dart';
 
 abstract class BaseDependentElement<State, Input>
     extends MvvmElement<State, Input> {

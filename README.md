@@ -466,7 +466,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   }
 
   void openPost(Post post) {
-    app.interactors.get<NavigationInteractor>().routeTo(Routes.post, payload: {
+    app.navigation.routeTo(Routes.post, payload: {
       'post': post,
     });
   }

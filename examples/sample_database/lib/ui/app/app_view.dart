@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-import 'package:sample_database/domain/interactors/navigation/components/base/navigation_defaults.dart';
 import 'package:sample_database/ui/home/home_view.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'app_view_model.dart';
 import 'app_view_state.dart';
 
@@ -17,28 +15,12 @@ class AppView extends StatefulWidget {
   }
 }
 
-class _AppViewWidgetState extends BaseView<AppView, AppViewState, AppViewModel> {
-  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(interceptor);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    BackButtonInterceptor.remove(interceptor);
-  }
-
-  bool interceptor(bool stopDefaultButtonEvent, RouteInfo info) {
-    return viewModel.backButtonInterceptor();
-  }
-
+class _AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      navigatorKey: globalNavigatorKey,
+      navigatorKey: viewModel.navigationInteractor.globalNavigatorKey,
       home: HomeView(),
     );
   }

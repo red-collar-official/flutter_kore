@@ -1,7 +1,4 @@
-import 'package:mvvm_redux/arch/base/instance_collection.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
-
-import 'base_service.dart';
 
 /// Main class to store instances of services
 /// Contains internal methods to manage services

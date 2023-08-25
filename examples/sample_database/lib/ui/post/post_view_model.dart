@@ -1,6 +1,5 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_database/domain/data/post.dart';
-import 'package:sample_database/domain/data/stateful_data.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 import 'package:sample_database/domain/interactors/navigation/components/bottom_sheets/bottom_sheets.dart';
 import 'package:sample_database/domain/interactors/navigation/components/dialogs/dialogs.dart';
@@ -38,9 +37,8 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   }
 
   void openTestBottomSheet() {
-    app.interactors.get<NavigationInteractor>().showBottomSheet(
-        BottomSheets.autharization(),
-        dismissable: false);
+    app.navigation
+        .showBottomSheet(BottomSheets.autharization(), dismissable: false);
   }
 
   Stream<StatefulData<Post>?> get postStream =>

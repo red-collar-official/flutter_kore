@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/data/stateful_data.dart';
 
 part 'post_state.freezed.dart';
 

@@ -7,12 +7,11 @@ import 'package:sample_database/domain/global/apis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
-import '../services/navigation_service.dart';
 
 part 'global_store.mvvm.dart';
 
-@mainApp
-class App extends MvvmReduxApp with AppGen {
+@MainApp(navigationInteractorType: NavigationInteractor)
+class App extends MvvmReduxApp<NavigationInteractor> with AppGen {
   late SharedPreferences prefs;
   late ObjectBox objectBox;
   final apis = Apis();
@@ -21,7 +20,7 @@ class App extends MvvmReduxApp with AppGen {
   Future<void> initialize() async {
     await super.initialize();
 
-    app.interactors.get<NavigationInteractor>().initStack();
+    navigation.initStack();
   }
 }
 

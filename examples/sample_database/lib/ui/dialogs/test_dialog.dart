@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sample_database/domain/global/global_store.dart';
-import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 class TestDialog extends StatelessWidget {
   @override
@@ -15,7 +14,7 @@ class TestDialog extends StatelessWidget {
             const Text('Test dialog'),
             TextButton(
                 onPressed: () {
-                  app.interactors.get<NavigationInteractor>().pop();
+                  app.navigation.pop();
                 },
                 child: const Text('Close'))
           ],

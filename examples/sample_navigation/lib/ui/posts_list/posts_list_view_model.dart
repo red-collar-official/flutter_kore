@@ -1,9 +1,7 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
-import 'package:sample_navigation/domain/data/stateful_data.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
-import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart';
 
 import 'posts_list_view.dart';
@@ -26,12 +24,12 @@ class PostsListViewModel
   }
 
   void openPost(Post post) {
-    app.interactors.get<NavigationInteractor>().routeTo(
-          Routes.post(
-            post: post,
-          ),
-          forceGlobal: true,
-        );
+    app.navigation.routeTo(
+      Routes.post(
+        post: post,
+      ),
+      forceGlobal: true,
+    );
   }
 
   Stream<StatefulData<List<Post>>?> get postsStream =>

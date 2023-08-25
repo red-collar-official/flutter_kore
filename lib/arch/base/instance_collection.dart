@@ -271,4 +271,16 @@ class InstanceCollection<T extends MvvmInstance> {
 
     return instance;
   }
+
+  InstanceType? find<InstanceType>() {
+    for (final entry in _instances.entries) {
+      for (final instance in entry.value) {
+        if (instance is InstanceType) {
+          return instance as InstanceType;
+        }
+      }
+    }
+
+    return null;
+  }
 }

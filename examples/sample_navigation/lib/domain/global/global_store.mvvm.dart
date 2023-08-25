@@ -21,9 +21,6 @@ class PostsInteractorConnector
 class PostInteractorConnector
     extends ConnectorCall<PostInteractor, Map<String, dynamic>?> {}
 
-class NavigationServiceConnector
-    extends ConnectorCall<NavigationService, Map<String, dynamic>?> {}
-
 class Connectors {
   late final userDefaultsInteractorConnector =
       UserDefaultsInteractorConnector();
@@ -32,10 +29,9 @@ class Connectors {
   late final navigationInteractorConnector = NavigationInteractorConnector();
   late final postsInteractorConnector = PostsInteractorConnector();
   late final postInteractorConnector = PostInteractorConnector();
-  late final navigationServiceConnector = NavigationServiceConnector();
 }
 
-mixin AppGen on MvvmReduxApp {
+mixin AppGen on MvvmReduxApp<NavigationInteractor> {
   final connectors = Connectors();
 
   @override
@@ -56,12 +52,8 @@ mixin AppGen on MvvmReduxApp {
   }
 
   @override
-  List<Type> get singletonServices => [
-        NavigationService,
-      ];
+  List<Type> get singletonServices => [];
 
   @override
-  void registerServices() {
-    services.addBuilder<NavigationService>(() => NavigationService());
-  }
+  void registerServices() {}
 }

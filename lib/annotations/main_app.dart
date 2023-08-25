@@ -1,7 +1,3 @@
-class MainAppAnnotation {
-  const MainAppAnnotation();
-}
-
 /// Annotate main app class
 ///  ```dart
 ///  import '../interactors/interactors.dart';
@@ -12,4 +8,10 @@ class MainAppAnnotation {
 ///  class App extends MvvmReduxApp with AppGen {
 ///  }
 /// ```
-const mainApp = MainAppAnnotation();
+class MainApp {
+  final Type? navigationInteractorType;
+
+  const MainApp({
+    this.navigationInteractorType,
+  });
+}

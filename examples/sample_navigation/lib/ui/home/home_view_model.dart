@@ -18,16 +18,15 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
 
   @override
   void onLaunch(HomeView widget) {
-    app.interactors.get<NavigationInteractor>().currentTabKeys =
-        tabNavigatorKeys;
+    app.navigation.currentTabKeys = tabNavigatorKeys;
   }
 
   GlobalKey<NavigatorState> getNavigatorKey(AppTab tab) {
-    return app.interactors.get<NavigationInteractor>().getNavigatorForTab(tab);
+    return app.navigation.getNavigatorForTab(tab);
   }
 
   void changeTab(AppTab tab) {
-    app.interactors.get<NavigationInteractor>().setCurrentTab(tab);
+    app.navigation.setCurrentTab(tab);
   }
 
   Future<bool> onWillPop() async {
@@ -38,8 +37,7 @@ class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
     return false;
   }
 
-  AppTab get initialTab =>
-      app.interactors.get<NavigationInteractor>().state.currentTab;
+  AppTab get initialTab => app.navigation.state.currentTab;
 
   Stream<AppTab?> get currentTabStream => app.interactors
       .get<NavigationInteractor>()

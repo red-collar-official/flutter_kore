@@ -1,6 +1,5 @@
 import 'package:mvvm_redux/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
-import 'package:sample_navigation/domain/data/stateful_data.dart';
 import 'package:sample_navigation/domain/global/events.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/mixins/like_post_mixin.dart';

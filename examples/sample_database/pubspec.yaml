@@ -30,7 +30,6 @@ dev_dependencies:
   build: ^2.4.1
   build_config: ^1.1.1
   build_runner: ^2.4.6
-  back_button_interceptor: ^7.0.0
   freezed: ^2.4.1
   objectbox_generator: any
   test:

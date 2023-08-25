@@ -12,7 +12,7 @@ import 'apis.dart';
 
 part 'global_store.mvvm.dart';
 
-@mainApp
+@MainApp()
 class App extends MvvmReduxApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
