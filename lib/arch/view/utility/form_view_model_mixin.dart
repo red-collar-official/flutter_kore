@@ -70,7 +70,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   @mustCallSuper
   void prefillFields() {
     for (final key in validators.keys) {
-      fieldStates[key] = Observable.initial(FieldValidationState.ignored());
+      fieldStates[key] = Observable.initial(IgnoredFieldState());
 
       _actualValidators[key] = () => validators[key]!().then((value) {
             fieldStates[key]!.update(value);

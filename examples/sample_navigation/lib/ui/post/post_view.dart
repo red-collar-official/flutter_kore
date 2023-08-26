@@ -48,27 +48,20 @@ class _PostViewWidgetState
   }
 
   Widget buildPost(StatefulData<Post> data) {
-    return data.when(
-      result: (Post value) {
-        return PostCard(
+    return switch (data) {
+      ResultData(result: final result) => PostCard(
           onTap: () {},
-          title: value.title ?? '',
-          body: value.body ?? '',
-          isLiked: value.isLiked,
+          title: result.title ?? '',
+          body: result.body ?? '',
+          isLiked: result.isLiked,
           onLikeTap: () {
-            viewModel
-              ..like(value.id ?? 0)
-              ..openTestDialog();
+            viewModel.like(result.id ?? 0);
+            //viewModel.openTestBottomSheet();
           },
-        );
-      },
-      loading: () {
-        return const Center(child: CircularProgressIndicator());
-      },
-      error: (dynamic message) {
-        return Text(message.toString());
-      },
-    );
+        ),
+      LoadingData() => const Center(child: CircularProgressIndicator()),
+      ErrorData(error: final error) => Text(error.toString()),
+    };
   }
 
   @override

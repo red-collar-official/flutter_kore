@@ -33,7 +33,7 @@ class Store<State> {
   ///
   /// ```dart
   /// Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
-  ///   updateState(state.copyWith(posts: StatefulData.loading()));
+  ///   updateState(state.copyWith(posts: LoadingData()));
   ///
   ///   late Response<List<Post>> response;
   ///
@@ -44,9 +44,9 @@ class Store<State> {
   ///   }
   ///
   ///   if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-  ///     updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
+  ///     updateState(state.copyWith(posts: ResultData(response.result ?? [])));
   ///   } else {
-  ///     updateState(state.copyWith(posts: StatefulData.error(response.error)));
+  ///     updateState(state.copyWith(posts: ErrorData(response.error)));
   ///   }
   /// }
   /// ```
@@ -85,6 +85,7 @@ class Store<State> {
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
-    return _state.stream.map((event) => StoreChange(mapper(event.previous ?? event.next!), mapper(event.next!)));
+    return _state.stream.map((event) => StoreChange(
+        mapper(event.previous ?? event.next!), mapper(event.next!)));
   }
 }

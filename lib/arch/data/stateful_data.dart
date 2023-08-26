@@ -1,16 +1,25 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'stateful_data.freezed.dart';
-
-@freezed
-class StatefulData<T> with _$StatefulData<T> {
-  factory StatefulData.result(T result) = ResultData<T>;
-  factory StatefulData.loading() = LoadingData<T>;
-  factory StatefulData.error(dynamic error) = ErrorData<T>;
-
-  const StatefulData._();
-
+sealed class StatefulData<T> {
   T unwrap() {
     return (this as ResultData<T>).result;
   }
+
+  const StatefulData();
+}
+
+class LoadingData<T> extends StatefulData<T> {
+  const LoadingData();
+}
+
+class ResultData<T> extends StatefulData<T> {
+  final T result;
+
+  const ResultData({
+    required this.result,
+  });
+}
+
+class ErrorData<T> extends StatefulData<T> {
+  final dynamic error;
+
+  const ErrorData({this.error});
 }

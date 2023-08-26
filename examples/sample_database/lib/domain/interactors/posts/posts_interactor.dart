@@ -10,7 +10,7 @@ import 'posts_state.dart';
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
     with LikePostMixin {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
-    updateState(state.copyWith(posts: StatefulData.loading()));
+    updateState(state.copyWith(posts: const LoadingData()));
 
     late Response<List<Post>> response;
 
@@ -22,9 +22,10 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
 
     if (response.isSuccessful) {
       updateState(
-          state.copyWith(posts: StatefulData.result(response.result ?? [])));
+        state.copyWith(posts: ResultData(result: response.result ?? [])),
+      );
     } else {
-      updateState(state.copyWith(posts: StatefulData.error(response.error)));
+      updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
   }
 
@@ -38,7 +39,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
 
     posts[index] = posts[index].copyWith(isLiked: !posts[index].isLiked);
 
-    updateState(state.copyWith(posts: StatefulData.result(posts)));
+    updateState(state.copyWith(posts: ResultData(result: posts)));
   }
 
   @override

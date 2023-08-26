@@ -132,7 +132,7 @@ After you initialized all request fields you can use it as follows:
 
 ```dart
 Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
-    updateState(state.copyWith(posts: StatefulData.loading()));
+    updateState(state.copyWith(posts: LoadingData()));
 
     late Response<List<Post>> response;
 
@@ -143,9 +143,9 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-      updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
+      updateState(state.copyWith(posts: ResultData(response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: StatefulData.error(response.error)));
+      updateState(state.copyWith(posts: ErrorData(response.error)));
     }
 }
 ```
@@ -195,7 +195,7 @@ class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMi
       ];
 
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
-    updateState(state.copyWith(posts: StatefulData.loading()));
+    updateState(state.copyWith(posts: LoadingData()));
 
     late Response<List<Post>> response;
 
@@ -206,9 +206,9 @@ class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMi
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-      updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
+      updateState(state.copyWith(posts: ResultData(response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: StatefulData.error(response.error)));
+      updateState(state.copyWith(posts: ErrorData(response.error)));
     }
   }
 
@@ -222,7 +222,7 @@ class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMi
 
     posts[index] = posts[index].copyWith(isLiked: !posts[index].isLiked);
 
-    updateState(state.copyWith(posts: StatefulData.result(posts)));
+    updateState(state.copyWith(posts: ResultData(posts)));
   }
 
   @override

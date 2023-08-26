@@ -36,11 +36,13 @@ class _PostsListViewWidgetState
   }
 
   Widget buildList(StatefulData<List<Post>> data) {
-    return data.when(
-      result: (List<Post> value) {
+    switch (data) {
+      case LoadingData():
+        return const Center(child: CircularProgressIndicator());
+      case ResultData<List<Post>>(:final result):
         return ListView.builder(
           itemBuilder: (context, index) {
-            final item = value[index];
+            final item = result[index];
 
             return PostCard(
               onTap: () {
@@ -54,16 +56,11 @@ class _PostsListViewWidgetState
               isLiked: item.isLiked,
             );
           },
-          itemCount: value.length,
+          itemCount: result.length,
         );
-      },
-      loading: () {
-        return const Center(child: CircularProgressIndicator());
-      },
-      error: (dynamic message) {
-        return Text(message.toString());
-      },
-    );
+      case ErrorData<List<Post>>(:final error):
+        return Text(error.toString());
+    }
   }
 
   @override

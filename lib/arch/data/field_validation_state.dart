@@ -1,10 +1,11 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+sealed class FieldValidationState {}
 
-part 'field_validation_state.freezed.dart';
+class ValidFieldState extends FieldValidationState {}
 
-@freezed
-class FieldValidationState with _$FieldValidationState {
-  factory FieldValidationState.valid() = ValidFieldState;
-  factory FieldValidationState.ignored() = IgnoredFieldState;
-  factory FieldValidationState.invalid(String error) = ErrorFieldState;
+class IgnoredFieldState extends FieldValidationState {}
+
+class ErrorFieldState extends FieldValidationState {
+  final String error;
+
+  ErrorFieldState(this.error);
 }

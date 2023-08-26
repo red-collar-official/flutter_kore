@@ -10,28 +10,27 @@ import 'post_state.dart';
 class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
     with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
-    updateState(state.copyWith(post: StatefulData.loading()));
+    updateState(state.copyWith(post: const LoadingData()));
 
     final response = await app.apis.posts.getPost(id).execute();
 
     if (response.isSuccessful) {
-      updateState(state.copyWith(post: StatefulData.result(response.result!)));
+      updateState(state.copyWith(post: ResultData(result: response.result!)));
     } else {
-      updateState(state.copyWith(post: StatefulData.error(response.error)));
+      updateState(state.copyWith(post: ErrorData(error: response.error)));
     }
   }
 
   void useExistingPost(Post post) {
-    updateState(state.copyWith(post: StatefulData.result(post)));
+    updateState(state.copyWith(post: ResultData(result: post)));
   }
 
   void _onPostLiked() {
-    final currentLike = (state.post as ResultData<Post?>).result!.isLiked;
+    final post = state.post!.unwrap();
+    final currentLike = post.isLiked;
 
-    final newPost = StatefulData.result((state.post as ResultData<Post?>)
-        .result!
-        .copyWith(isLiked: !currentLike));
-    updateState(state.copyWith(post: newPost));
+    final newPost = post.copyWith(isLiked: !currentLike);
+    updateState(state.copyWith(post: ResultData(result: newPost)));
   }
 
   @override

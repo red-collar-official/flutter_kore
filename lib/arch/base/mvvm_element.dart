@@ -106,14 +106,14 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// @defaultInteractor
   /// class PostsInteractor extends BaseInteractor<PostsState> {
   ///   Future<void> loadPosts({bool refresh = false}) async {
-  ///     updateState(state.copyWith(posts: StatefulData.loading()));
+  ///     updateState(state.copyWith(posts: LoadingData()));
   ///
   ///     final response = await Apis.posts.getPosts().execute();
   ///
   ///     if (response.error == null) {
-  ///       updateState(state.copyWith(posts: StatefulData.result(response.result ?? [])));
+  ///       updateState(state.copyWith(posts: ResultData(response.result ?? [])));
   ///     } else {
-  ///       updateState(state.copyWith(posts: StatefulData.error(response.error)));
+  ///       updateState(state.copyWith(posts: ErrorData(response.error)));
   ///     }
   ///   }
   /// }
