@@ -5,7 +5,7 @@ class ValidFieldState extends FieldValidationState {}
 class IgnoredFieldState extends FieldValidationState {}
 
 class ErrorFieldState extends FieldValidationState {
-  final String error;
+  final String? error;
 
-  ErrorFieldState(this.error);
+  ErrorFieldState({this.error});
 }
