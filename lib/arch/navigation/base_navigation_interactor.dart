@@ -197,6 +197,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       id: id,
       replace: replace,
       replacePrevious: replacePrevious,
+      name: routeData.name.toString()
     );
 
     final routeName = routeData.name;
@@ -310,6 +311,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       dismissable: dismissable ?? dialog.defaultSettings.dismissable,
       id: id,
       fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
+      name: dialog.name.toString()
     );
 
     if (dialogSettings.uniqueInStack &&
@@ -366,6 +368,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
       id: id,
       fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
+      name: bottomSheet.name.toString()
     );
 
     if (bottomSheetSettings.uniqueInStack &&

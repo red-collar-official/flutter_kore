@@ -7,6 +7,7 @@ class UIRouteSettings {
   final Object? id;
   final bool replace;
   final bool replacePrevious;
+  final String? name;
 
   const UIRouteSettings({
     this.dismissable = true,
@@ -17,6 +18,7 @@ class UIRouteSettings {
     this.id,
     this.replace = false,
     this.replacePrevious = false,
+    this.name,
   });
 }
 
@@ -30,6 +32,7 @@ class UIBottomSheetRouteSettings extends UIRouteSettings {
     super.id,
     super.replace = false,
     super.replacePrevious = false,
+    super.name,
   });
 }
 
@@ -43,6 +46,7 @@ class UIDialogRouteSettings extends UIRouteSettings {
     super.id,
     super.replace = false,
     super.replacePrevious = false,
+    super.name,
   });
 }
 
