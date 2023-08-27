@@ -15,8 +15,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewWidgetState
-    extends BaseView<HomeView, HomeViewState, HomeViewModel> {
-  late final Map<AppTab, Widget> tabs = {
+    extends TabNavigationRootView<HomeView, HomeViewState, HomeViewModel> {
+  late final Map<AppTab, Widget> tabViews = {
     AppTabs.posts: PostsListView(),
     AppTabs.likedPosts: PostsListView(),
   };
@@ -31,7 +31,12 @@ class _HomeViewWidgetState
         builder: (context, snapshot) {
           return Stack(
             children: AppTabs.tabs
-                .map((tab) => _buildOffstageNavigator(tab, snapshot.data))
+                .map((tab) => tabNavigationContainer(
+                      offstage: snapshot.data?.index != tab.index,
+                      navigationKey: viewModel.getNavigatorKey(tab),
+                      view: tabViews[tab]!,
+                      name: tab.name,
+                    ))
                 .toList(),
           );
         },
@@ -47,35 +52,11 @@ class _HomeViewWidgetState
           return BottomNavigation(
             currentTab: snapshot.data!,
             onTabChanged: viewModel.changeTab,
-            items: tabs.keys.map((tab) {
+            items: tabViews.keys.map((tab) {
               return BottomNavigationItemData(tab);
             }).toList(),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildOffstageNavigator(AppTab appTab, AppTab? current) {
-    return Offstage(
-      offstage: current?.index != appTab.index,
-      child: WillPopScope(
-        onWillPop: () async {
-          return viewModel.onWillPop();
-        },
-        child: Navigator(
-          initialRoute: appTab.name,
-          key: viewModel.getNavigatorKey(appTab),
-          onGenerateRoute: (settings) {
-            if (settings.name == appTab.name) {
-              return MaterialPageRoute(
-                builder: (context) => tabs[appTab]!,
-              );
-            }
-
-            return null;
-          },
-        ),
       ),
     );
   }

@@ -9,7 +9,7 @@ import 'package:sample_database/domain/interactors/post/post_interactor.dart';
 import 'post_view.dart';
 import 'post_view_state.dart';
 
-class PostViewModel extends BaseViewModel<PostView, PostViewState> {
+class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
   List<Connector> dependsOn(PostView input) => [
         app.connectors.postInteractorConnector(unique: true),

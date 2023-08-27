@@ -6,12 +6,25 @@ import 'package:mvvm_redux/arch/navigation/base/navigation_stack.dart';
 import 'package:mvvm_redux/arch/navigation/base/navigation_utilities.dart';
 import 'package:mvvm_redux/mvvm_redux.dart';
 
+/// Base class for navigation interactor
+/// Contains state and input parameters as every other interactor
+/// Also you need to specify type parameters for tabs, routes, dialogs and bottom sheets
 abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     DialogType, BottomSheetType> extends BaseInteractor<State, Input> {
+  /// Global key for main app global navigator
+  /// You need to pass it to instance of MaterialApp
   final globalNavigatorKey = GlobalKey<NavigatorState>();
-  final bottomSheetDialogNavigatorKey = GlobalKey<NavigatorState>();
-  final routeObserver = RouteObserver<ModalRoute<void>>();
 
+  /// Global key for main app bottom sheets and dialogs navigator
+  /// if [bottomSheetsAndDialogsUsingSameNavigator] is true then it is [globalNavigatorKey]
+  late final bottomSheetDialogNavigatorKey =
+      bottomSheetsAndDialogsUsingSameNavigator
+          ? globalNavigatorKey
+          : GlobalKey<NavigatorState>();
+
+  /// main route observer for app
+  final routeObserver = RouteObserver<ModalRoute<void>>();
+  
   UIRouteModel _defailtRouteModelFor(RouteType route) => UIRouteModel(
         name: route,
         settings: const UIRouteSettings(
@@ -30,36 +43,60 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
         (key, value) => MapEntry(key, [_defailtRouteModelFor(value)]),
       );
 
+  /// Contains global keys for every tab in app
   Map<AppTabType, GlobalKey<NavigatorState>> currentTabKeys = {};
 
+  /// Initial route of whole app
+  /// Used to initialize [navigationStack]
   RouteType get initialRoute;
+
+  /// Initial route of every tab in app
   Map<AppTabType, RouteType> get initialTabRoutes => {};
 
+  /// Name of route that contains tab view for tab navigators
   RouteType? get tabViewHomeRoute => null;
 
+  /// Currently selected tab
   AppTabType? get currentTab => null;
 
+  /// List of all tabs in app
   List<AppTabType>? get tabs => null;
 
+  /// Flag indicating that app contains tab views with inner navigators
   bool get appContainsTabNavigation => true;
 
+  /// Flag indicating that app dialogs and botttom sheets 
+  /// using [globalNavigatorKey] instead of separate [bottomSheetDialogNavigatorKey]
+  /// Set it to false if you want separate navigator for bottom sheets and dialogs
+  bool get bottomSheetsAndDialogsUsingSameNavigator => true;
+
+  /// Callback for new route in any navigation stack
   Future<void> onRouteOpened(Widget child, UIRouteSettings route);
+
+  /// Callback for new dialog
   Future<void> onDialogOpened(Widget child, UIRouteSettings route);
+
+  /// Callback for new bottom sheet
   Future<void> onBottomSheetOpened(
     Widget child,
     UIRouteSettings route,
   );
 
+  /// Main navigation stack that holds navigation history for every navigator
   late final navigationStack = NavigationStack<AppTabType>(
     routeStack: defaultRouteStack,
     tabRouteStack: defaultTabRouteStack,
   );
 
+  /// Latest route in global stack
   UIRouteModel latestGlobalRoute() =>
       navigationStack.globalNavigationStack.stack.last;
+
+  /// Latest route in current tab
   UIRouteModel latestTabRoute() =>
       navigationStack.tabNavigationStack.stack[currentTab]!.last;
 
+  /// Initializes stack with [initialRoute]
   void initStack() {
     navigationStack.replaceStack(
       routeName: initialRoute,
@@ -70,6 +107,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     );
   }
 
+  /// Checks if navigator now in global stack or in tab stack 
   bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true}) {
     if (!appContainsTabNavigation) {
       return true;
@@ -97,6 +135,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     return forceGlobal ? forceGlobal : isInGlobalStack();
   }
 
+  /// Returns navigator key based on current navigation state
   GlobalKey<NavigatorState> getNavigator({bool forceGlobal = false}) {
     if (isInGlobalStack() || forceGlobal) {
       return globalNavigatorKey;
@@ -106,10 +145,14 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     return currentTabKeys[currentTab]!;
   }
 
+  /// Returns global key of navigator for given tab
   GlobalKey<NavigatorState> getNavigatorForTab(AppTabType tab) {
     return currentTabKeys[tab]!;
   }
 
+  /// Pops latest route from current navigation stack
+  /// if [onlyInternalStack] is true than only removes route data from navigation stack
+  /// Navigator state stays the same in this case
   void pop({
     dynamic payload,
     bool onlyInternalStack = false,
@@ -149,7 +192,10 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
     navigator.currentState?.pop(payload);
   }
-
+  
+  /// Pops latest route in given tab
+  /// if [onlyInternalStack] is true than only removes route data from navigation stack
+  /// Navigator state stays the same in this case
   void popInTab(
     AppTabType tab, {
     dynamic payload,
@@ -175,6 +221,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     navigator?.currentState?.pop(payload);
   }
 
+  /// Opens new route
   Future<void> routeTo(
     UIRoute<RouteType> routeData, {
     bool? fullScreenDialog,
@@ -187,18 +234,17 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     Object? id,
   }) async {
     final routeSettings = UIRouteSettings(
-      fullScreenDialog:
-          fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
-      global: forceGlobal ?? routeData.defaultSettings.global,
-      uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
-      needToEnsureClose:
-          needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
-      dismissable: dismissable ?? routeData.defaultSettings.dismissable,
-      id: id,
-      replace: replace,
-      replacePrevious: replacePrevious,
-      name: routeData.name.toString()
-    );
+        fullScreenDialog:
+            fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
+        global: forceGlobal ?? routeData.defaultSettings.global,
+        uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
+        needToEnsureClose:
+            needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
+        dismissable: dismissable ?? routeData.defaultSettings.dismissable,
+        id: id,
+        replace: replace,
+        replacePrevious: replacePrevious,
+        name: routeData.name.toString());
 
     final routeName = routeData.name;
 
@@ -298,6 +344,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     }
   }
 
+  // Opens new dialog
   Future<dynamic> showDialog(
     UIRoute<DialogType> dialog, {
     bool? forceGlobal,
@@ -306,13 +353,12 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     Object? id,
   }) async {
     final dialogSettings = UIRouteSettings(
-      global: forceGlobal ?? dialog.defaultSettings.global,
-      uniqueInStack: uniqueInStack ?? dialog.defaultSettings.uniqueInStack,
-      dismissable: dismissable ?? dialog.defaultSettings.dismissable,
-      id: id,
-      fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-      name: dialog.name.toString()
-    );
+        global: forceGlobal ?? dialog.defaultSettings.global,
+        uniqueInStack: uniqueInStack ?? dialog.defaultSettings.uniqueInStack,
+        dismissable: dismissable ?? dialog.defaultSettings.dismissable,
+        id: id,
+        fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
+        name: dialog.name.toString());
 
     if (dialogSettings.uniqueInStack &&
         !navigationStack.checkUnique(
@@ -355,6 +401,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     return result;
   }
 
+  /// Opens new bottom sheet
   Future<dynamic> showBottomSheet(
     UIRoute<BottomSheetType> bottomSheet, {
     bool? forceGlobal,
@@ -363,13 +410,13 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     Object? id,
   }) async {
     final bottomSheetSettings = UIRouteSettings(
-      global: forceGlobal ?? bottomSheet.defaultSettings.global,
-      uniqueInStack: uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack,
-      dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
-      id: id,
-      fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-      name: bottomSheet.name.toString()
-    );
+        global: forceGlobal ?? bottomSheet.defaultSettings.global,
+        uniqueInStack:
+            uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack,
+        dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
+        id: id,
+        fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
+        name: bottomSheet.name.toString());
 
     if (bottomSheetSettings.uniqueInStack &&
         !navigationStack.checkUnique(
@@ -412,8 +459,12 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     return result;
   }
 
+  /// Sets current tab for this navigator
   void setCurrentTab(AppTabType tab);
 
+  /// Checks if route can be popped
+  /// The route cant be popped if it is root route in navigator
+  /// or if latest route is not dismissable
   bool canPop({bool global = true}) {
     if (global) {
       return navigationStack.globalNavigationStack.stack.length > 1 &&
@@ -424,6 +475,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     }
   }
 
+  /// Pops all dialogs bottom sheets and global routes
   void popGlobalToFirst() {
     popAllDialogsAndBottomSheets();
 
@@ -440,6 +492,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     );
   }
 
+  /// Pops all dialogs bottom sheets and global routes in given tab
   void popInTabToFirst(AppTabType appTab, {bool clearStack = true}) {
     final navigator = currentTabKeys[appTab];
 
@@ -464,16 +517,19 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     );
   }
 
+  /// Pops all dialogs bottom sheets and global routes and opens given tab
   void popToTab(AppTabType tab) {
     popGlobalToFirst();
     setCurrentTab(tab);
   }
 
+  /// Pops every route in every navigator to root view
   void popAllNavigatiorsToFirst() {
     popGlobalToFirst();
     popAllTabsToFirst();
   }
 
+  /// Pops all dialogs bottom sheets
   void popAllDialogsAndBottomSheets() {
     while (isInBottomSheetDialogScope) {
       navigationStack.pop(currentTab, true);
@@ -484,6 +540,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     );
   }
 
+  /// Pops every route dialog and bottom sheet until current route name is [routeName]
   void popUntil(Object routeName, {bool forceGlobal = false}) {
     if (forceGlobal || isInGlobalStack()) {
       popGlobalUntil(routeName);
@@ -492,18 +549,21 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     }
   }
 
+  /// Pops every global route dialog and bottom sheet until current route name is [routeName]
   void popGlobalUntil(Object routeName) {
     while (canPop() && latestGlobalRoute().name != routeName) {
       pop();
     }
   }
 
+  /// Pops every tab route dialog and bottom sheet until current route name is [routeName] in given tab
   void popInTabUntil(Object routeName) {
     while (canPop(global: false) && latestTabRoute().name != routeName) {
       pop();
     }
   }
 
+  /// Pops all tabs to root view
   void popAllTabsToFirst() {
     // ignore: prefer_foreach
     for (final element in tabs ?? []) {
@@ -513,16 +573,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     navigationStack.clearTabNavigationStack();
   }
 
-  void popGlobalToPage(Object routeName, {bool navigateBefore = false}) {
-    while (latestGlobalRoute().name != routeName) {
-      pop();
-    }
-
-    if (navigateBefore) {
-      pop();
-    }
-  }
-
+  /// Handles system back button events
   Future<void> homeBackButtonGlobalCallback({bool global = false}) async {
     if (isInBottomSheetDialogScope) {
       pop();
@@ -533,11 +584,13 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     }
   }
 
+  /// Checks if latest route is bottom sheet or dialog
   bool get isInBottomSheetDialogScope {
     return latestGlobalRoute().name is BottomSheetType ||
         latestGlobalRoute().name is DialogType;
   }
 
+  /// Checks if global navigator contains given route
   bool containsGlobalRoute(Object routeName) {
     return navigationStack.globalNavigationStack.stack
             .indexWhere((element) => element.name == routeName) !=

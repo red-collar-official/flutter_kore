@@ -8,7 +8,7 @@ import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
 class PostsListViewModel
-    extends BaseViewModel<PostsListView, PostsListViewState> {
+    extends NavigationViewModel<PostsListView, PostsListViewState> {
   @override
   List<Connector> dependsOn(PostsListView input) => [
         app.connectors.postsInteractorConnector(),

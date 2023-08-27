@@ -7,7 +7,7 @@ import 'package:sample_navigation/domain/interactors/navigation/navigation_inter
 import 'home_view.dart';
 import 'home_view_state.dart';
 
-class HomeViewModel extends BaseViewModel<HomeView, HomeViewState> {
+class HomeViewModel extends TabNavigationRootViewModel<HomeView, HomeViewState> {
   @override
   List<Connector> dependsOn(HomeView input) => [];
 

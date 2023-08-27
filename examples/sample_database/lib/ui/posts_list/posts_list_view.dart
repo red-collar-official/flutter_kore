@@ -14,7 +14,7 @@ class PostsListView extends StatefulWidget {
 }
 
 class _PostsListViewWidgetState
-    extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
+    extends NavigationView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(

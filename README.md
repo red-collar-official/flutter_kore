@@ -183,7 +183,7 @@ Typical example would be:
 
 ```dart
 @defaultInteractor
-class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMixin {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> with LikePostMixin {
   @override
   List<Connector> dependsOn(String? input) => [
         Connector(type: SupportInteractor, unique: true),
@@ -226,7 +226,7 @@ class PostsInteractor extends BaseInteractor<PostsState, String> with LikePostMi
   }
 
   @override
-  PostsState initialState(String? input) => PostsState();
+  PostsState initialState(Map<String, dynamic>? input) => PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [
@@ -241,6 +241,44 @@ Or singleton interactor:
 
 ```dart
 @singletonInteractor
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
+  @override
+  void onRestore(Map<String, dynamic> savedStateObject) {
+    updateState(UserDefaultsState.fromJson(savedStateObject));
+  }
+
+  void saveFirstAppLaunch() {
+    updateState(state.copyWith(firstAppLaunch: true));
+  }
+
+  @override
+  UserDefaultsState initialState(Map<String, dynamic>? input) => UserDefaultsState();
+  
+  @override
+  Map<String, dynamic> get savedStateObject => state.toJson();
+
+  @override
+  bool get isRestores => true;
+  
+  @override
+  List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
+}
+
+```
+
+In the last example we also can see that every interactor also has <b>savedStateObject</b>.
+
+When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider
+It later can be restored with <b>onRestore</b>. It also has <b>isRestores</b> flag - that is false by default.
+
+You can also specify input type for every interactor in annotation:
+
+```dart
+@SingletonInteractor(inputType: String)
 class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
@@ -270,11 +308,6 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
 
 ```
 
-In the last example we also can see that every interactor also has <b>savedStateObject</b>.
-
-When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider
-It later can be restored with <b>onRestore</b>. It also has <b>isRestores</b> flag - that is false by default.
-
 ### Services
 
 Services hold instances of third party dependencies
@@ -287,7 +320,7 @@ Services unlike interactors don`t have state, but they also can receive <b>Event
 Typical example would be:
 
 ```dart
-@defaultService
+@DefaultService(inputType: String)
 class StringService extends BaseService<String, String> {
   @override
   String provideInstance(String? input) {
@@ -301,9 +334,9 @@ or singleton service:
 
 ```dart
 @singletonService
-class StringService extends BaseService<String, String> {
+class StringService extends BaseService<String, Map<String, dynamic>> {
   @override
-  String provideInstance(String? input) {
+  String provideInstance(Map<String, dynamic>? input) {
     return '';
   }
 }
@@ -561,6 +594,365 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
     return PostsListViewModel();
   }
 }
+```
+
+## Navigation
+
+Package also contains default way to handle navigation
+
+To use this feature you need to subclass <b>BaseNavigationInteractor</b>
+
+If your app contains tab navigation than NavigationInteractor will look like this:
+
+```dart
+@singletonInteractor
+class NavigationInteractor extends BaseNavigationInteractor<
+    NavigationState,
+    Map<String, dynamic>,
+    AppTab,
+    RouteNames,
+    DialogNames,
+    BottomSheetNames> {
+  @override
+  RouteNames get initialRoute => RouteNames.splash;
+
+  @override
+  AppTab? get currentTab => state.currentTab;
+
+  @override
+  Map<AppTab, RouteNames> get initialTabRoutes => {
+        AppTabs.feed: RouteNames.feed,
+        AppTabs.search: RouteNames.search,
+        AppTabs.gallery: RouteNames.myGallery,
+      };
+
+  @override
+  List<AppTab>? get tabs => AppTabs.tabs;
+
+  @override
+  RouteNames? get tabViewHomeRoute => RouteNames.home;
+
+  @override
+  bool get bottomSheetsAndDialogsUsingSameNavigator => false;
+
+  @override
+  Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+  }
+
+  @override
+  Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+  }
+
+  @override
+  Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+
+    if (route.global) {
+      app.eventBus.send(GlobalRoutePushedEvent(replace: route.replace));
+    }
+  }
+
+  @override
+  void setCurrentTab(AppTab tab) {
+    updateState(state.copyWith(currentTab: tab));
+  }
+
+  @override
+  List<EventBusSubscriber> subscribe() => [
+      ];
+
+  @override
+  NavigationState initialState(Map<String, dynamic>? input) =>
+      NavigationState(currentTab: AppTabs.feed);
+}
+```
+
+If app does not contains tab navigation than you can skip tab related methods:
+
+```dart
+@singletonInteractor
+class NavigationInteractor extends BaseNavigationInteractor<
+    NavigationState,
+    Map<String, dynamic>,
+    AppTab,
+    RouteNames,
+    DialogNames,
+    BottomSheetNames> {
+  @override
+  RouteNames get initialRoute => RouteNames.splash;
+
+  @override
+  bool get bottomSheetsAndDialogsUsingSameNavigator => false;
+
+  @override
+  Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+  }
+
+  @override
+  Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+  }
+
+  @override
+  Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
+    unawaited(analyticsService.logScreenView(
+      child.runtimeType.toString(),
+      route.name ?? '',
+    ));
+
+    if (route.global) {
+      app.eventBus.send(GlobalRoutePushedEvent(replace: route.replace));
+    }
+  }
+
+  @override
+  List<EventBusSubscriber> subscribe() => [
+      ];
+
+  @override
+  NavigationState initialState(Map<String, dynamic>? input) =>
+      NavigationState();
+}
+```
+
+Last flag that describes navigation flow in app is <b>bottomSheetsAndDialogsUsingSameNavigator</b>
+
+If this flag is false than you need to create separate navigator for bottom sheets and dialogs - usefull if you have some overlay views for app
+
+If you created your custom <b>BaseNavigationInteractor</b> than you need to specify it in main app annotation
+
+```dart
+@MainApp(navigationInteractorType: NavigationInteractor)
+class App extends MvvmReduxApp<NavigationInteractor> with AppGen {
+}
+```
+
+You can see how routes are specified in <b>example_navigation</b> example
+
+And here is also list of methods in <b>BaseNavigationInteractor</b>
+
+```dart
+bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true});
+void pop({
+  dynamic payload,
+  bool onlyInternalStack = false,
+});
+
+void popInTab(
+  AppTabType tab, {
+  dynamic payload,
+  bool onlyInternalStack = false,
+});
+
+Future<void> routeTo(
+  UIRoute<RouteType> routeData, {
+  bool? fullScreenDialog,
+  bool replace = false,
+  bool replacePrevious = false,
+  bool? uniqueInStack,
+  bool? forceGlobal,
+  bool? needToEnsureClose,
+  bool? dismissable,
+  Object? id,
+});
+
+Future<dynamic> showDialog(
+  UIRoute<DialogType> dialog, {
+  bool? forceGlobal,
+  bool? dismissable,
+  bool? uniqueInStack,
+  Object? id,
+});
+
+Future<dynamic> showBottomSheet(
+  UIRoute<BottomSheetType> bottomSheet, {
+  bool? forceGlobal,
+  bool? dismissable,
+  bool? uniqueInStack,
+  Object? id,
+});
+
+void setCurrentTab(AppTabType tab);
+bool canPop({bool global = true});
+void popGlobalToFirst();
+void popInTabToFirst(AppTabType appTab, {bool clearStack = true});
+void popToTab(AppTabType tab);
+void popAllNavigatiorsToFirst();
+void popAllDialogsAndBottomSheets();
+void popUntil(Object routeName, {bool forceGlobal = false});
+void popGlobalUntil(Object routeName);
+void popInTabUntil(Object routeName);
+void popAllTabsToFirst();
+bool containsGlobalRoute(Object routeName);
+```
+
+To complete navigation initialization you also need to provide root views for global and tab navigation(if present)
+
+For global navigation there are <b>GlobalNavigationRootViewModel</b> and <b>GlobalNavigationRootView</b>
+
+For tab navigation there are <b>TabNavigationRootViewModel</b> and <b>TabNavigationRootView</b>
+
+It is also recommended to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for yout views and view models
+since it ensures that navigation is handled in correct navigation scope (tab or global)
+
+Examples how to use it is also in <b>example_navigation</b> example
+
+## Utility
+
+Package contains small utility classes
+
+The first two are just sealed classes for network requests and field validation:
+
+```dart
+sealed class StatefulData<T> {
+  T unwrap() {
+    return (this as ResultData<T>).result;
+  }
+
+  const StatefulData();
+}
+
+class LoadingData<T> extends StatefulData<T> {
+  const LoadingData();
+}
+
+class ResultData<T> extends StatefulData<T> {
+  final T result;
+
+  const ResultData({
+    required this.result,
+  });
+}
+
+class ErrorData<T> extends StatefulData<T> {
+  final dynamic error;
+
+  const ErrorData({this.error});
+}
+```
+
+Stateful data can be unwrapped to get result value if it is present
+
+```dart
+sealed class FieldValidationState {}
+
+class ValidFieldState extends FieldValidationState {}
+
+class IgnoredFieldState extends FieldValidationState {}
+
+class ErrorFieldState extends FieldValidationState {
+  final String? error;
+
+  ErrorFieldState({this.error});
+}
+```
+
+There are also two helper mixins that you can apply to your view models
+
+First is <b>UseDisposableViewModelMixin</b>
+
+It provides methods to initialize disposable objects like <b>TextEditingController</b>
+
+Here is full list of supported initializers:
+
+```dart
+TextEditingController useTextEditingController({String? text});
+ScrollController useScrollController();
+Debouncer useDebouncer({required Duration delay});
+CancellationToken useCancelToken();
+```
+
+Here is usecase example:
+
+```dart
+class SupportViewModel
+    extends NavigationViewModel<SupportView, SupportViewState>
+    with UseDisposableViewModelMixin {
+  late final descriptionController = useTextEditingController();
+  late final emailController = useTextEditingController();
+}
+```
+
+Using this method to initialize disposable objects you dont need to actually dispose them - it will be done automatically
+
+Second usefull mixin is <b>FormViewModelMixin</b>
+
+It helps to manage form views where you need to validate user input
+
+Here you can see the example:
+
+```dart
+class SupportViewModel
+    extends NavigationViewModel<SupportView, SupportViewState>
+    with FormViewModelMixin, UseDisposableViewModelMixin {
+  late final descriptionController = useTextEditingController();
+  late final emailController = useTextEditingController();
+
+  final descriptionKey = GlobalKey();
+  final emailKey = GlobalKey();
+
+  @override
+  Future<void> submit() async {
+    await sendSupportRequest();
+  }
+
+  @override
+  ValidatorsMap get validators => {
+        descriptionKey: () {
+          return Future.value(validateSupportTicket(descriptionController));
+        },
+        emailKey: () {
+          return Future.value(validateEmail(emailController, []));
+        }
+      };
+
+  @override
+  SupportViewState initialState(SupportView input) => SupportViewState();
+}
+```
+
+Using this mixin gives you 2 methods:
+
+Firstly you can call <b>executeSubmitAction</b> method to handle form validation
+Secondly you can use streams of validation states for fields that you specified
+
+
+```dart
+WhatHappenedField(
+  key: viewModel.descriptionKey,
+  controller: viewModel.descriptionController,
+  stateStream:
+      viewModel.fieldStateStream(viewModel.descriptionKey),
+  initialState: () =>
+      viewModel.currentFieldState(viewModel.descriptionKey),
+  validator: () =>
+      viewModel.validatorForKey(viewModel.descriptionKey),
+),
+
+Button(
+  onTap: () async {
+    await viewModel.executeSubmitAction();
+  },
+);
+
 ```
 
 Important note:
