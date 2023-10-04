@@ -79,10 +79,18 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln('}')
       ..writeln();
 
+    if (annotation.peek('navigationInteractorType') == null) {
+      classBuffer.writeln(
+        'mixin $className on UMvvmApp {',
+      );
+    } else {
+      classBuffer.writeln(
+        'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {',
+      );
+    }
+
     // ignore: cascade_invocations
     classBuffer
-      ..writeln(
-          'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {')
       ..writeln('final connectors = Connectors();')
       ..writeln()
       ..writeln('@override')

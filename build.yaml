@@ -17,8 +17,7 @@ builders:
   collectors:
     import: "package:umvvm/collectors/builders.dart"
     builder_factories: ["generateInstanceCollector"]
-    build_extensions: { ".dart": [".main_app_generator.g.part", ".main_api_generator.g.part"] }
+    build_extensions: { ".dart": [".temp.part"] }
     auto_apply: dependents
     build_to: source
-    applies_builders: ["source_gen:combining_builder"]
-    runs_before: ["generators|generators"]
+    runs_before: [":generators"]
