@@ -221,7 +221,10 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   /// Function to retry request
   Future<dynamic> _retryRequest(
-      dio.Dio client, dynamic data, dio.DioException error) async {
+    dio.Dio client,
+    dynamic data,
+    dio.DioException error,
+  ) async {
     try {
       return await constructRequest(client, method, data);
     } catch (e, trace) {
@@ -248,7 +251,10 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   /// Adds data to dio, adds autharization headers if needed and returns [Future] with request results
   Future<dio.Response> constructRequest(
-      dio.Dio dio, RequestMethod method, dynamic encodedData) async {
+    dio.Dio dio,
+    RequestMethod method,
+    dynamic encodedData,
+  ) async {
     dynamic data;
 
     if (encodedData != null && encodedData is File) {
