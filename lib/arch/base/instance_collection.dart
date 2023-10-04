@@ -3,8 +3,8 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base/mvvm_instance.dart';
-import 'package:mvvm_redux/arch/base/scope_stack.dart';
+import 'package:umvvm/arch/base/mvvm_instance.dart';
+import 'package:umvvm/arch/base/scope_stack.dart';
 
 typedef DefaultInputType = Map<String, dynamic>;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_basic/domain/flavors/base/flavor.dart';
 import 'package:sample_basic/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';

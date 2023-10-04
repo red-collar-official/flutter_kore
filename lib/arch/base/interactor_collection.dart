@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:mvvm_redux/arch/base/base_interactor.dart';
+import 'package:umvvm/arch/base/base_interactor.dart';
 
 import 'instance_collection.dart';
 

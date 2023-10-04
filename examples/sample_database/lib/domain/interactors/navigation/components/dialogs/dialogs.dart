@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_database/ui/dialogs/test_dialog.dart';
 
 import 'dialog_names.dart';

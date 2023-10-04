@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mvvm_redux/arch/base/dependent_element.dart';
+import 'package:umvvm/arch/base/dependent_element.dart';
 
 /// Main class to extend to create view models
 ///

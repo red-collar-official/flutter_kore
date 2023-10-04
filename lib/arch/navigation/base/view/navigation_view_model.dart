@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 abstract class NavigationViewModel<Widget extends StatefulWidget, State>
     extends BaseViewModel<Widget, State> {

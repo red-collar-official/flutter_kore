@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:mvvm_redux/arch/http/base_request.dart';
+import 'package:umvvm/arch/http/base_request.dart';
 import 'package:sample_navigation/domain/apis/base/request.dart';
 import 'package:sample_navigation/domain/apis/posts_api.dart';
 import 'package:sample_navigation/domain/data/post.dart';

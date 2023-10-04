@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 import 'user_defaults_state.dart';
 

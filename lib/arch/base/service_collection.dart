@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 /// Main class to store instances of services
 /// Contains internal methods to manage services

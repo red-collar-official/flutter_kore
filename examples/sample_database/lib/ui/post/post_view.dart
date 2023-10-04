@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/ui/posts_list/components/post_card.dart';
 

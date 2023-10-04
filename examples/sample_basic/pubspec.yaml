@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  mvvm_redux:
+  umvvm:
     path: ../../
 
   dio: ^5.3.2

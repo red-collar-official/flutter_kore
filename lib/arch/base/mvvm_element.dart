@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base/mvvm_instance.dart';
+import 'package:umvvm/arch/base/mvvm_instance.dart';
 
 import 'event_bus.dart';
 import 'mvvm_redux_app.dart';

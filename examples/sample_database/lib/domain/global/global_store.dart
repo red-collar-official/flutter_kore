@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_database/domain/database/objectbox.dart';
 import 'package:sample_database/domain/flavors/base/flavor.dart';
 import 'package:sample_database/domain/flavors/test_flavor.dart';

@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/arch/navigation/base/model/route_model.dart';
+import 'package:umvvm/arch/navigation/base/model/route_model.dart';
 
 import 'base_navigation_stack.dart';
 

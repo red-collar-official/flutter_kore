@@ -2,11 +2,11 @@ import 'dart:async';
 
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
-import 'package:mvvm_redux/annotations/api.dart';
-import 'package:mvvm_redux/annotations/default_interactor.dart';
-import 'package:mvvm_redux/annotations/service.dart';
-import 'package:mvvm_redux/annotations/singleton_interactor.dart';
-import 'package:mvvm_redux/annotations/singleton_service.dart';
+import 'package:umvvm/annotations/api.dart';
+import 'package:umvvm/annotations/default_interactor.dart';
+import 'package:umvvm/annotations/service.dart';
+import 'package:umvvm/annotations/singleton_interactor.dart';
+import 'package:umvvm/annotations/singleton_service.dart';
 import 'package:source_gen/source_gen.dart';
 
 class InstancesCollectorGenerator extends Generator {
@@ -24,8 +24,7 @@ class InstancesCollectorGenerator extends Generator {
         TypeChecker.fromRuntime(SingletonInteractor);
     const defaultInteractorAnnotation =
         TypeChecker.fromRuntime(DefaultInteractor);
-    const defaultServiceAnnotation =
-        TypeChecker.fromRuntime(DefaultService);
+    const defaultServiceAnnotation = TypeChecker.fromRuntime(DefaultService);
     const singletonServiceAnnotation =
         TypeChecker.fromRuntime(SingletonService);
     const apiAnnotation = TypeChecker.fromRuntime(ApiAnnotation);

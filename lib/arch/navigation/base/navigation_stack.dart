@@ -1,7 +1,7 @@
 // ignore_for_file: cascade_invocations
 
-import 'package:mvvm_redux/arch/navigation/base/model/route_model.dart';
-import 'package:mvvm_redux/arch/navigation/base/stack/base_navigation_stack.dart';
+import 'package:umvvm/arch/navigation/base/model/route_model.dart';
+import 'package:umvvm/arch/navigation/base/stack/base_navigation_stack.dart';
 
 import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';

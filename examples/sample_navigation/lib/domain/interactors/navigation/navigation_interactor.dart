@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/global/events.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
@@ -12,13 +12,8 @@ import 'package:sample_navigation/domain/interactors/navigation/components/scree
 import 'navigation_state.dart';
 
 @singletonInteractor
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames> {
+class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
+    Map<String, dynamic>, AppTab, RouteNames, DialogNames, BottomSheetNames> {
   @override
   RouteNames get initialRoute => RouteNames.home;
 

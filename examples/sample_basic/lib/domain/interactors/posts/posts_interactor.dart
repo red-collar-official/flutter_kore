@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/events.dart';
 import 'package:sample_basic/domain/global/global_store.dart';
@@ -7,7 +7,8 @@ import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 import 'posts_state.dart';
 
 @defaultInteractor
-class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> with LikePostMixin {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
+    with LikePostMixin {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 

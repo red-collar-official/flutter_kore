@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
@@ -7,7 +7,8 @@ import 'package:sample_database/domain/interactors/navigation/navigation_interac
 import 'home_view.dart';
 import 'home_view_state.dart';
 
-class HomeViewModel extends TabNavigationRootViewModel<HomeView, HomeViewState> {
+class HomeViewModel
+    extends TabNavigationRootViewModel<HomeView, HomeViewState> {
   @override
   List<Connector> dependsOn(HomeView input) => [];
 

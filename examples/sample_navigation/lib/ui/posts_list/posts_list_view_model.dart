@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';

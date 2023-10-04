@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_navigation/ui/home/home_view.dart';
 import 'app_view_model.dart';
 import 'app_view_state.dart';
@@ -15,7 +15,8 @@ class AppView extends StatefulWidget {
   }
 }
 
-class _AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
+class _AppViewWidgetState
+    extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
@@ -29,6 +30,4 @@ class _AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState
   AppViewModel createViewModel() {
     return AppViewModel();
   }
-}   
-
-	
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/navigation/base/view/navigation_view_model.dart';
+import 'package:umvvm/arch/navigation/base/view/navigation_view_model.dart';
 
 abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
     extends NavigationViewModel<Widget, State> {

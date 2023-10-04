@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart' hide DialogRoute, ModalBottomSheetRoute;
-import 'package:mvvm_redux/arch/navigation/settings.dart';
-import 'package:mvvm_redux/arch/navigation/utilities/bottom_sheet_route.dart';
-import 'package:mvvm_redux/arch/navigation/utilities/dialog_route.dart';
-import 'package:mvvm_redux/arch/navigation/utilities/willpop_cupertino_page_route.dart';
+import 'package:umvvm/arch/navigation/settings.dart';
+import 'package:umvvm/arch/navigation/utilities/bottom_sheet_route.dart';
+import 'package:umvvm/arch/navigation/utilities/dialog_route.dart';
+import 'package:umvvm/arch/navigation/utilities/willpop_cupertino_page_route.dart';
 
 class NavigationUtilities {
   static Future<Object?>? pushDialogRoute({

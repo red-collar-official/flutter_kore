@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_database/domain/apis/base/request.dart';
 import 'package:sample_database/domain/apis/posts_api.dart';
 import 'package:sample_database/domain/data/post.dart';

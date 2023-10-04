@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
 typedef LocaleCachePutDelegate = Future<bool> Function(

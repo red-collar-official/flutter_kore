@@ -1,4 +1,4 @@
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/mvvm_redux.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/events.dart';
 import 'package:sample_basic/domain/global/global_store.dart';

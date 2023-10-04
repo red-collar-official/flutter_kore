@@ -1,13 +1,13 @@
-import 'package:mvvm_redux/arch/navigation/base/model/route_model.dart';
+import 'package:umvvm/arch/navigation/base/model/route_model.dart';
 
 import 'base_navigation_stack.dart';
 
-class GlobalNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
+class GlobalNavigationStack<AppTabType>
+    extends BaseNavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
   final List<UIRouteModel> Function() routeStack;
 
-  late final List<UIRouteModel> _routeStack =
-      routeStack();
+  late final List<UIRouteModel> _routeStack = routeStack();
 
   GlobalNavigationStack({
     required this.routeStack,

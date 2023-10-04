@@ -3,11 +3,11 @@
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
 import 'package:analyzer/dart/element/element.dart';
-import 'package:mvvm_redux/annotations/main_api.dart';
-import 'package:mvvm_redux/annotations/main_app.dart';
-import 'package:mvvm_redux/collectors/collectors.dart';
+import 'package:umvvm/annotations/main_api.dart';
+import 'package:umvvm/annotations/main_app.dart';
+import 'package:umvvm/collectors/collectors.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:mvvm_redux/generators/main_app_visitor.dart';
+import 'package:umvvm/generators/main_app_visitor.dart';
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override

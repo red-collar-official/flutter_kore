@@ -1,7 +1,7 @@
 import 'package:cancellation_token_hoc081098/cancellation_token_hoc081098.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/utility/debouncer.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/arch/utility/debouncer.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
     on BaseViewModel<Widget, State> {

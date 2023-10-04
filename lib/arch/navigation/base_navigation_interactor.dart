@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mvvm_redux/arch/base_events.dart';
-import 'package:mvvm_redux/arch/navigation/base/navigation_stack.dart';
-import 'package:mvvm_redux/arch/navigation/base/navigation_utilities.dart';
-import 'package:mvvm_redux/mvvm_redux.dart';
+import 'package:umvvm/arch/base_events.dart';
+import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
+import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
+import 'package:umvvm/mvvm_redux.dart';
 
 /// Base class for navigation interactor
 /// Contains state and input parameters as every other interactor
@@ -24,7 +24,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
   /// main route observer for app
   final routeObserver = RouteObserver<ModalRoute<void>>();
-  
+
   UIRouteModel _defailtRouteModelFor(RouteType route) => UIRouteModel(
         name: route,
         settings: const UIRouteSettings(
@@ -65,7 +65,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   /// Flag indicating that app contains tab views with inner navigators
   bool get appContainsTabNavigation => true;
 
-  /// Flag indicating that app dialogs and botttom sheets 
+  /// Flag indicating that app dialogs and botttom sheets
   /// using [globalNavigatorKey] instead of separate [bottomSheetDialogNavigatorKey]
   /// Set it to false if you want separate navigator for bottom sheets and dialogs
   bool get bottomSheetsAndDialogsUsingSameNavigator => true;
@@ -107,7 +107,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     );
   }
 
-  /// Checks if navigator now in global stack or in tab stack 
+  /// Checks if navigator now in global stack or in tab stack
   bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true}) {
     if (!appContainsTabNavigation) {
       return true;
@@ -192,7 +192,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
     navigator.currentState?.pop(payload);
   }
-  
+
   /// Pops latest route in given tab
   /// if [onlyInternalStack] is true than only removes route data from navigation stack
   /// Navigator state stays the same in this case

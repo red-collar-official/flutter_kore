@@ -1,6 +1,6 @@
-name: mvvm_redux
+name: umvvm
 
-description: Mvvm-Redux base classes
+description: UMvvm base classes
 
 version: 2.2.0
 
