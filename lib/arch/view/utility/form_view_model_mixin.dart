@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 
 typedef ValidatorsMap = Map<GlobalKey, Future<FieldValidationState> Function()>;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'base_view_model.dart';
 
-/// Main class for mvvm redux view
+/// Main class for umvvm view
 /// It holds reference to view model, receives [WidgetsBinding]
 /// post frame callback and manages [AutomaticKeepAliveClientMixin] for this view
 ///

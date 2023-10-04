@@ -1,4 +1,4 @@
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 
 @singletonService
 class StringService extends BaseService<String, Map<String, dynamic>?> {

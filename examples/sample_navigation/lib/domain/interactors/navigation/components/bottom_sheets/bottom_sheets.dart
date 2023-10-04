@@ -1,4 +1,4 @@
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/ui/bottom_sheets/test_bottom_sheet.dart';
 
 import 'bottom_sheet_names.dart';

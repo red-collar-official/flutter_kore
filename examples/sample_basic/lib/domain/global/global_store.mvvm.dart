@@ -30,7 +30,7 @@ class Connectors {
   late final stringServiceConnector = StringServiceConnector();
 }
 
-mixin AppGen on MvvmReduxApp {
+mixin AppGen on UMvvmApp {
   final connectors = Connectors();
 
   @override

@@ -82,7 +82,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     // ignore: cascade_invocations
     classBuffer
       ..writeln(
-          'mixin $className on MvvmReduxApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {')
+          'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {')
       ..writeln('final connectors = Connectors();')
       ..writeln()
       ..writeln('@override')

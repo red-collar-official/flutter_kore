@@ -1,6 +1,6 @@
 // ignore_for_file: cascade_invocations, invalid_use_of_visible_for_testing_member
 
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/apis/base/apis.dart';
 import 'package:sample_database/domain/apis/base/request.dart';
 import 'package:sample_database/domain/data/post.dart';

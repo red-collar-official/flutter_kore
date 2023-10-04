@@ -5,7 +5,7 @@
 ///  part 'global_store.g.dart';
 ///
 ///  @mainApp
-///  class App extends MvvmReduxApp with AppGen {
+///  class App extends UMvvmApp with AppGen {
 ///  }
 /// ```
 class MainApp {

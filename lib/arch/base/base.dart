@@ -8,7 +8,7 @@ export 'instance_collection.dart';
 export 'interactor_collection.dart';
 export 'mvvm_element.dart';
 export 'mvvm_instance.dart';
-export 'mvvm_redux_app.dart';
+export 'umvvm_app.dart';
 export 'observable.dart';
 export 'scope_stack.dart';
 export 'service_collection.dart';

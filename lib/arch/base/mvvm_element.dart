@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/arch/base/mvvm_instance.dart';
 
 import 'event_bus.dart';
-import 'mvvm_redux_app.dart';
+import 'umvvm_app.dart';
 import 'store.dart';
 
 /// Base class for storing test data
@@ -86,7 +86,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
     }
 
     final stateId = state.runtimeType.toString();
-    final stateFromCacheJsonString = MvvmReduxApp.cacheGetDelegate(stateId);
+    final stateFromCacheJsonString = UMvvmApp.cacheGetDelegate(stateId);
 
     if (stateFromCacheJsonString.isEmpty) {
       return;
@@ -131,7 +131,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   }
 
   /// Creates stream subscription for store updates
-  /// if [savedStateObject] is not empty listens to state updates and puts it to cache using [MvvmReduxApp.cachePutDelegate]
+  /// if [savedStateObject] is not empty listens to state updates and puts it to cache using [UMvvmApp.cachePutDelegate]
   /// If [savedStateObject] is empty does nothing
   void _subscribeToStoreUpdates() {
     if (!isRestores) {
@@ -140,8 +140,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
 
     _storeSaveSubscription = _store.stream.listen((_) async {
       final stateId = state.runtimeType.toString();
-      await MvvmReduxApp.cachePutDelegate(
-          stateId, json.encode(savedStateObject));
+      await UMvvmApp.cachePutDelegate(stateId, json.encode(savedStateObject));
     });
   }
 

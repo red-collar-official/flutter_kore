@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 
 part 'posts_state.freezed.dart';

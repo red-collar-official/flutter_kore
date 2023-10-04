@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
 typedef LocaleCachePutDelegate = Future<bool> Function(
     String name, String data);
 
-/// Main class for MvvmRedux application
+/// Main class for UMvvm application
 /// It contains global [InteractorCollection] and [EventBus]
 /// It performs initial setup for interactors and view models
 /// (register builders for interactors and register singletons)
 ///
-/// Do not forget to setup [MvvmReduxApp.cacheGetDelegate] and [MvvmReduxApp.cachePutDelegate]
+/// Do not forget to setup [UMvvmApp.cacheGetDelegate] and [UMvvmApp.cachePutDelegate]
 /// before calling [initialize]
 ///
 /// ```dart
 /// @mainApp
-/// class App extends MvvmReduxApp with AppGen {
+/// class App extends UMvvmApp with AppGen {
 ///   static late SharedPreferences prefs;
 ///
 ///   @override
@@ -29,18 +29,18 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// Future<void> initApp() async {
 ///   App.prefs = await SharedPreferences.getInstance();
 ///
-///   MvvmReduxApp.cacheGetDelegate = (key) {
+///   UMvvmApp.cacheGetDelegate = (key) {
 ///     return App.prefs.getString(key) ?? '';
 ///   };
 ///
-///   MvvmReduxApp.cachePutDelegate = (key, value) async {
+///   UMvvmApp.cachePutDelegate = (key, value) async {
 ///     return App.prefs.setString(key, value);
 ///   };
 ///
 ///   await app.initialize();
 /// }
 /// ```
-abstract class MvvmReduxApp<
+abstract class UMvvmApp<
     NavigationInteractorType extends BaseNavigationInteractor> {
   /// Main app interactors collection
   final interactors = InteractorCollection.instance;

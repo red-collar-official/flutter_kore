@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_basic/domain/flavors/base/flavor.dart';
 import 'package:sample_basic/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +13,7 @@ import 'apis.dart';
 part 'global_store.mvvm.dart';
 
 @MainApp()
-class App extends MvvmReduxApp with AppGen {
+class App extends UMvvmApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
 
@@ -38,11 +38,11 @@ Future<void> initApp({bool testMode = false}) async {
 
   app.prefs = await SharedPreferences.getInstance();
 
-  MvvmReduxApp.cacheGetDelegate = (key) {
+  UMvvmApp.cacheGetDelegate = (key) {
     return app.prefs.getString(key) ?? '';
   };
 
-  MvvmReduxApp.cachePutDelegate = (key, value) async {
+  UMvvmApp.cachePutDelegate = (key, value) async {
     return app.prefs.setString(key, value);
   };
 

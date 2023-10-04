@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
@@ -27,6 +27,7 @@ class HomeViewModel
     updateState(HomeViewState.fromJson(savedStateObject));
   }
 
+  @override
   Future<bool> onWillPop() async {
     await app.interactors
         .get<NavigationInteractor>()

@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 
 abstract class NavigationViewModel<Widget extends StatefulWidget, State>
     extends BaseViewModel<Widget, State> {
   dynamic screenTab;
 
-  late final navigationInteractor = MvvmReduxApp.navigationInteractor!;
+  late final navigationInteractor = UMvvmApp.navigationInteractor!;
 
   void pop() {
     if (navigationInteractor.isInGlobalStack()) {

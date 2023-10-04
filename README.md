@@ -1,4 +1,4 @@
-# MVVM-Redux library
+# UMVVM library
 
 ## Data Layer
 
@@ -425,7 +425,7 @@ For example here is definition of main app class:
 
 ```dart
 @mainApp
-class App extends MvvmReduxApp with AppGen {
+class App extends UMvvmApp with AppGen {
   late SharedPreferences prefs;
   late ObjectBox objectBox;
   final apis = Apis();
@@ -741,7 +741,7 @@ If you created your custom <b>BaseNavigationInteractor</b> than you need to spec
 
 ```dart
 @MainApp(navigationInteractorType: NavigationInteractor)
-class App extends MvvmReduxApp<NavigationInteractor> with AppGen {
+class App extends UMvvmApp<NavigationInteractor> with AppGen {
 }
 ```
 
@@ -957,5 +957,5 @@ Button(
 
 Important note:
 
-If you using VSCode then to quickly generate files for this architecture use [Mvvm-Redux-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/mvvm-redux-vs-code-gen-plugin/)
+If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/)
 

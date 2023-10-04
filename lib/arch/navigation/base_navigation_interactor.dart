@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/arch/base_events.dart';
 import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
 import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Base class for navigation interactor
 /// Contains state and input parameters as every other interactor

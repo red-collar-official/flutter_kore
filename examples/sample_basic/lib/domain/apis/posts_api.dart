@@ -1,6 +1,6 @@
 // ignore_for_file: cascade_invocations
 
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_basic/domain/apis/base/apis.dart';
 import 'package:sample_basic/domain/apis/base/request.dart';
 import 'package:sample_basic/domain/data/post.dart';

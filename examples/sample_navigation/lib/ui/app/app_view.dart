@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/ui/home/home_view.dart';
 import 'app_view_model.dart';
 import 'app_view_state.dart';

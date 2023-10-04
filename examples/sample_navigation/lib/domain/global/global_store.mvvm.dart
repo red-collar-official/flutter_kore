@@ -31,7 +31,7 @@ class Connectors {
   late final postInteractorConnector = PostInteractorConnector();
 }
 
-mixin AppGen on MvvmReduxApp<NavigationInteractor> {
+mixin AppGen on UMvvmApp<NavigationInteractor> {
   final connectors = Connectors();
 
   @override

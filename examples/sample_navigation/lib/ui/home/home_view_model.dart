@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/mvvm_redux.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
 import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
@@ -30,6 +30,7 @@ class HomeViewModel
     app.navigation.setCurrentTab(tab);
   }
 
+  @override
   Future<bool> onWillPop() async {
     await app.interactors
         .get<NavigationInteractor>()
