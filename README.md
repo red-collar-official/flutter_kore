@@ -187,7 +187,7 @@ class StringWrapper extends BaseWrapper<String, String> {
 or basic instance wrapper:
 
 ```dart
-@singleton
+@basicInstance
 class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
