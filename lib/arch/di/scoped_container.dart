@@ -98,10 +98,9 @@ final class ScopedContainer<T> {
 
     if (index == null) {
       _instances[scopeId]!.remove(type);
-      return;
+    } else {
+      _instances[scopeId]![type]?.removeAt(index);
     }
-
-    _instances[scopeId]![type]?.removeAt(index);
 
     if (_instances[scopeId]!.isEmpty) {
       _instances.remove(scopeId);
