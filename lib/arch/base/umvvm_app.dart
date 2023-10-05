@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/di/base_scopes.dart';
 import 'package:umvvm/umvvm.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);

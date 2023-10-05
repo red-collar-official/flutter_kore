@@ -6,7 +6,7 @@ import 'package:sample_navigation/domain/interactors/mixins/like_post_mixin.dart
 
 import 'post_state.dart';
 
-@instance
+@basicInstance
 class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
     with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {

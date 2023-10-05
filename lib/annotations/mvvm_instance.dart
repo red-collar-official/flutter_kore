@@ -29,7 +29,7 @@ class Instance {
 ///   }
 /// }
 /// ```
-const instance = Instance();
+const basicInstance = Instance();
 
 /// Annotate class as singleton mvvm instance
 /// ```dart
