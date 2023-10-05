@@ -2,42 +2,21 @@ import 'dart:async';
 
 // ignore: implementation_imports
 import 'package:build/src/builder/build_step.dart';
-import 'package:umvvm/annotations/api.dart';
-import 'package:umvvm/annotations/default_interactor.dart';
-import 'package:umvvm/annotations/service.dart';
-import 'package:umvvm/annotations/singleton_interactor.dart';
-import 'package:umvvm/annotations/singleton_service.dart';
 import 'package:source_gen/source_gen.dart';
+import 'package:umvvm/annotations/api.dart';
+import 'package:umvvm/annotations/mvvm_instance.dart';
 
 class InstancesCollectorGenerator extends Generator {
-  static List<AnnotatedElement> singletonAnnotatedInteractors = [];
-  static List<AnnotatedElement> defaultAnnotatedInteractors = [];
-
-  static List<AnnotatedElement> singletonAnnotatedServices = [];
-  static List<AnnotatedElement> defaultAnnotatedServices = [];
-
-  static List<AnnotatedElement> apiAnnotated = [];
+  static List<AnnotatedElement> instances = [];
+  static List<AnnotatedElement> api = [];
 
   @override
   FutureOr<String?> generate(LibraryReader library, BuildStep buildStep) async {
-    const singletonInteractorAnnotation =
-        TypeChecker.fromRuntime(SingletonInteractor);
-    const defaultInteractorAnnotation =
-        TypeChecker.fromRuntime(DefaultInteractor);
-    const defaultServiceAnnotation = TypeChecker.fromRuntime(DefaultService);
-    const singletonServiceAnnotation =
-        TypeChecker.fromRuntime(SingletonService);
+    const instancesAnnotation = TypeChecker.fromRuntime(Instance);
     const apiAnnotation = TypeChecker.fromRuntime(ApiAnnotation);
 
-    singletonAnnotatedInteractors
-        .addAll(library.annotatedWith(singletonInteractorAnnotation));
-    defaultAnnotatedInteractors
-        .addAll(library.annotatedWith(defaultInteractorAnnotation));
-    defaultAnnotatedServices
-        .addAll(library.annotatedWith(defaultServiceAnnotation));
-    singletonAnnotatedServices
-        .addAll(library.annotatedWith(singletonServiceAnnotation));
-    apiAnnotated.addAll(library.annotatedWith(apiAnnotation));
+    instances.addAll(library.annotatedWith(instancesAnnotation));
+    api.addAll(library.annotatedWith(apiAnnotation));
 
     return super.generate(library, buildStep);
   }

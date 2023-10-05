@@ -29,7 +29,7 @@ class HomeViewModel
 
   @override
   Future<bool> onWillPop() async {
-    await app.interactors
+    await app.instances
         .get<NavigationInteractor>()
         .homeBackButtonGlobalCallback();
 
@@ -46,7 +46,7 @@ class HomeViewModel
 
   AppTab get initialTab => app.navigation.state.currentTab;
 
-  Stream<AppTab?> get currentTabStream => app.interactors
+  Stream<AppTab?> get currentTabStream => app.instances
       .get<NavigationInteractor>()
       .updates((state) => state.currentTab);
 

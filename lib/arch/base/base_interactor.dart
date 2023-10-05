@@ -1,4 +1,4 @@
-import 'dependent_element.dart';
+import '../di/dependent_element.dart';
 
 /// Main class to extend to create interactor
 /// Interactors contain business logic for given state type

@@ -1,3 +1,5 @@
+import 'package:umvvm/arch/di/base_scopes.dart';
+
 /// Class containing interactor type to connect to given view model
 ///
 /// ```dart
@@ -5,41 +7,46 @@
 ///   @override
 ///   List<Connector> dependsOn(PostView widget) => [
 ///         Connector(interactor: ShareInteractor),
-///         Connector(interactor: PostInteractor, unique: true),
+///         Connector(interactor: PostInteractor, scope: BaseScopes.unique),
 ///       ];
 /// }
 /// ```
 class Connector {
   final Type type;
-  final bool unique;
   final dynamic input;
   final dynamic Function(int)? inputForIndex;
   final int count;
+  final String scope;
 
   const Connector({
     required this.type,
-    this.unique = false,
     this.input,
     this.inputForIndex,
     this.count = 1,
+    this.scope = BaseScopes.weak,
   });
 }
 
 /// Callable proxy class for [BaseConnector]
 class ConnectorCall<InstanceType, InputStateType> {
   Connector call({
-    bool unique = false,
+    String scope = BaseScopes.weak,
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
-  }) =>
-      Connector(
-        unique: unique,
-        input: input,
-        inputForIndex: inputForIndex,
-        count: count,
-        type: InstanceType,
-      );
+  }) {
+    if (scope == BaseScopes.global) {
+      throw Exception('Cant connect global instance');
+    }
+
+    return Connector(
+      scope: scope,
+      input: input,
+      inputForIndex: inputForIndex,
+      count: count,
+      type: InstanceType,
+    );
+  }
 }
 
 class DefaultConnector<T> extends ConnectorCall<T, Map<String, dynamic>?> {}

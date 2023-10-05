@@ -2,7 +2,7 @@ import 'package:umvvm/umvvm.dart';
 
 import 'autharization_state.dart';
 
-@singletonInteractor
+@singleton
 class AutharizationInteractor
     extends BaseInteractor<AutharizationState, Map<String, dynamic>?> {
   @override

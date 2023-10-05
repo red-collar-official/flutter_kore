@@ -25,7 +25,7 @@ void main() {
     app.apis.posts = MockPostsApi();
 
     final postInteractor = PostInteractor();
-    app.interactors.addTest<PostInteractor>(postInteractor);
+    app.instances.addTest<PostInteractor>(BaseScopes.global, postInteractor);
 
     await postInteractor.loadPost(1);
 

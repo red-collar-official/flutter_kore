@@ -2,7 +2,7 @@ import 'package:umvvm/umvvm.dart';
 
 import 'user_defaults_state.dart';
 
-@singletonInteractor
+@singleton
 class UserDefaultsInteractor
     extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
   @override

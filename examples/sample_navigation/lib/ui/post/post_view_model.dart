@@ -12,12 +12,12 @@ import 'post_view_state.dart';
 class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
   List<Connector> dependsOn(PostView input) => [
-        app.connectors.postInteractorConnector(unique: true),
+        app.connectors.postInteractorConnector(scope: BaseScopes.unique),
       ];
 
   @override
   void onLaunch(PostView widget) {
-    final postInteractor = interactors.get<PostInteractor>();
+    final postInteractor = getLocalInstance<PostInteractor>();
 
     if (widget.post == null) {
       postInteractor.loadPost(widget.id!);
@@ -27,26 +27,26 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   }
 
   void like(int id) {
-    interactors.get<PostInteractor>().likePost(id);
+    getLocalInstance<PostInteractor>().likePost(id);
   }
 
   void openTestDialog() {
-    app.interactors
+    app.instances
         .get<NavigationInteractor>()
         .showDialog(Dialogs.error(), dismissable: false);
   }
 
   void openTestBottomSheet() {
-    app.interactors
+    app.instances
         .get<NavigationInteractor>()
         .showBottomSheet(BottomSheets.autharization(), dismissable: false);
   }
 
   Stream<StatefulData<Post>?> get postStream =>
-      interactors.get<PostInteractor>().updates((state) => state.post);
+      getLocalInstance<PostInteractor>().updates((state) => state.post);
 
   StatefulData<Post>? get initialPost =>
-      interactors.get<PostInteractor>().state.post;
+      getLocalInstance<PostInteractor>().state.post;
 
   @override
   PostViewState initialState(PostView input) => PostViewState();

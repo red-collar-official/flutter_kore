@@ -35,44 +35,15 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     generateConnectorsForInstanceType(
       classBuffer,
-      InstancesCollectorGenerator.singletonAnnotatedInteractors,
+      InstancesCollectorGenerator.instances,
     );
 
-    generateConnectorsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.defaultAnnotatedInteractors,
-    );
-
-    generateConnectorsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.singletonAnnotatedServices,
-    );
-
-    generateConnectorsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.defaultAnnotatedServices,
-    );
-
+    // ignore: cascade_invocations
     classBuffer.writeln('class Connectors {');
 
     generateConnectorCallsForInstanceType(
       classBuffer,
-      InstancesCollectorGenerator.singletonAnnotatedInteractors,
-    );
-
-    generateConnectorCallsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.defaultAnnotatedInteractors,
-    );
-
-    generateConnectorCallsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.singletonAnnotatedServices,
-    );
-
-    generateConnectorCallsForInstanceType(
-      classBuffer,
-      InstancesCollectorGenerator.defaultAnnotatedServices,
+      InstancesCollectorGenerator.instances,
     );
 
     classBuffer
@@ -94,12 +65,12 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln('final connectors = Connectors();')
       ..writeln()
       ..writeln('@override')
-      ..writeln('List<Type> get singletonInteractors => [');
+      ..writeln('List<Type> get singletonInstances => [');
 
     // ignore: prefer_foreach
-    for (final element
-        in InstancesCollectorGenerator.singletonAnnotatedInteractors) {
-      if (element.element.name != null) {
+    for (final element in InstancesCollectorGenerator.instances) {
+      if ((element.annotation.peek('singleton')?.boolValue ?? false) &&
+          element.element.name != null) {
         classBuffer.writeln(element.element.name! + ', ');
       }
     }
@@ -119,69 +90,17 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln('  ];')
       ..writeln()
       ..writeln('@override')
-      ..writeln('void registerInteractors() {');
-
-    if (InstancesCollectorGenerator.singletonAnnotatedInteractors.isNotEmpty ||
-        InstancesCollectorGenerator.defaultAnnotatedInteractors.isNotEmpty) {
-      classBuffer.writeln('interactors');
+      ..writeln('void registerInstances() {');
+    if (InstancesCollectorGenerator.instances.isNotEmpty) {
+      classBuffer.writeln('instances');
     }
 
-    InstancesCollectorGenerator.singletonAnnotatedInteractors
-        .forEach((element) {
+    InstancesCollectorGenerator.instances.forEach((element) {
       classBuffer.writeln(
           '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
     });
 
-    InstancesCollectorGenerator.defaultAnnotatedInteractors.forEach((element) {
-      classBuffer.writeln(
-          '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
-    });
-
-    if (InstancesCollectorGenerator.singletonAnnotatedInteractors.isNotEmpty ||
-        InstancesCollectorGenerator.defaultAnnotatedInteractors.isNotEmpty) {
-      classBuffer.writeln(';');
-    }
-
-    classBuffer
-      ..writeln('}')
-      ..writeln();
-
-    // ignore: cascade_invocations
-    classBuffer
-      ..writeln('@override')
-      ..writeln('List<Type> get singletonServices => [');
-
-    // ignore: prefer_foreach
-    for (final element
-        in InstancesCollectorGenerator.singletonAnnotatedServices) {
-      if (element.element.name != null) {
-        classBuffer.writeln(element.element.name! + ', ');
-      }
-    }
-
-    classBuffer
-      ..writeln('  ];')
-      ..writeln()
-      ..writeln('@override')
-      ..writeln('void registerServices() {');
-
-    if (InstancesCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
-        InstancesCollectorGenerator.defaultAnnotatedServices.isNotEmpty) {
-      classBuffer.writeln('services');
-    }
-
-    InstancesCollectorGenerator.singletonAnnotatedServices.forEach((element) {
-      classBuffer.writeln(
-          '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
-    });
-
-    InstancesCollectorGenerator.defaultAnnotatedServices.forEach((element) {
-      classBuffer.writeln(
-          '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
-    });
-
-    if (InstancesCollectorGenerator.singletonAnnotatedServices.isNotEmpty ||
-        InstancesCollectorGenerator.defaultAnnotatedServices.isNotEmpty) {
+    if (InstancesCollectorGenerator.instances.isNotEmpty) {
       classBuffer.writeln(';');
     }
 
@@ -194,15 +113,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     printMessage += 'Generated Mvvm app\n\n';
 
     printMessage +=
-        'Singleton interactors count: ${InstancesCollectorGenerator.singletonAnnotatedInteractors.length}\n';
-    printMessage +=
-        'Default interactors count: ${InstancesCollectorGenerator.defaultAnnotatedInteractors.length}\n';
-    printMessage +=
-        'Singleton services count: ${InstancesCollectorGenerator.singletonAnnotatedServices.length}\n';
-    printMessage +=
-        'Default services count: ${InstancesCollectorGenerator.defaultAnnotatedServices.length}\n';
-    printMessage +=
-        'Apis count: ${InstancesCollectorGenerator.apiAnnotated.length}';
+        'Instances count: ${InstancesCollectorGenerator.instances.length}\n';
+    printMessage += 'Apis count: ${InstancesCollectorGenerator.api.length}';
 
     print(printMessage);
 
@@ -283,7 +195,7 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
     classBuffer.writeln('mixin $className {');
 
     // ignore: prefer_foreach
-    for (final element in InstancesCollectorGenerator.apiAnnotated) {
+    for (final element in InstancesCollectorGenerator.api) {
       if (element.element.name != null) {
         final elementName = element.element.name!;
         final elementShortName = elementName.toLowerCase().split('api')[0];

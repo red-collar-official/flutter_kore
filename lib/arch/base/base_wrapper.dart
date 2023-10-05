@@ -11,7 +11,7 @@ import 'mvvm_instance.dart';
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class BaseService<Instance, Input> extends MvvmInstance<Input?> {
+abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
   /// actual object instance
   late Instance Function() _instanceCreator;
   Instance? _instance;

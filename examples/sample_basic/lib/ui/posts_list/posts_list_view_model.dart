@@ -16,10 +16,10 @@ class PostsListViewModel
         app.connectors.postsInteractorConnector(),
       ];
 
-  late final postsInteractor = interactors.get<PostsInteractor>();
+  late final postsInteractor = getLocalInstance<PostsInteractor>();
 
   late final userDefaultsInteractor =
-      app.interactors.get<UserDefaultsInteractor>();
+      app.instances.get<UserDefaultsInteractor>();
 
   @override
   void onLaunch(PostsListView widget) {

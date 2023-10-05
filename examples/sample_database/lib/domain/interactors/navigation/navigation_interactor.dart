@@ -11,7 +11,7 @@ import 'package:sample_database/domain/interactors/navigation/components/screens
 
 import 'navigation_state.dart';
 
-@singletonInteractor
+@singleton
 class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
     Map<String, dynamic>, AppTab, RouteNames, DialogNames, BottomSheetNames> {
   @override

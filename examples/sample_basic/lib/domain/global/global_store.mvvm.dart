@@ -6,6 +6,9 @@ part of 'global_store.dart';
 // MainAppGenerator
 // **************************************************************************
 
+class StringWrapperConnector
+    extends ConnectorCall<StringWrapper, Map<String, dynamic>?> {}
+
 class UserDefaultsInteractorConnector
     extends ConnectorCall<UserDefaultsInteractor, Map<String, dynamic>?> {}
 
@@ -17,44 +20,33 @@ class PostsInteractorConnector
 
 class PostInteractorConnector extends ConnectorCall<PostInteractor, Post?> {}
 
-class StringServiceConnector
-    extends ConnectorCall<StringService, Map<String, dynamic>?> {}
-
 class Connectors {
+  late final stringWrapperConnector = StringWrapperConnector();
   late final userDefaultsInteractorConnector =
       UserDefaultsInteractorConnector();
   late final autharizationInteractorConnector =
       AutharizationInteractorConnector();
   late final postsInteractorConnector = PostsInteractorConnector();
   late final postInteractorConnector = PostInteractorConnector();
-  late final stringServiceConnector = StringServiceConnector();
 }
 
 mixin AppGen on UMvvmApp {
   final connectors = Connectors();
 
   @override
-  List<Type> get singletonInteractors => [
+  List<Type> get singletonInstances => [
+        StringWrapper,
         UserDefaultsInteractor,
         AutharizationInteractor,
       ];
 
   @override
-  void registerInteractors() {
-    interactors
+  void registerInstances() {
+    instances
+      ..addBuilder<StringWrapper>(() => StringWrapper())
       ..addBuilder<UserDefaultsInteractor>(() => UserDefaultsInteractor())
       ..addBuilder<AutharizationInteractor>(() => AutharizationInteractor())
       ..addBuilder<PostsInteractor>(() => PostsInteractor())
       ..addBuilder<PostInteractor>(() => PostInteractor());
-  }
-
-  @override
-  List<Type> get singletonServices => [
-        StringService,
-      ];
-
-  @override
-  void registerServices() {
-    services.addBuilder<StringService>(() => StringService());
   }
 }

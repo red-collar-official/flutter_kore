@@ -28,8 +28,7 @@ void main() {
       await initApp(testMode: true);
 
       app
-        ..registerInteractors()
-        ..registerServices()
+        ..registerInstances()
         ..registerSingletons();
 
       app.apis.posts = MockPostsApi();

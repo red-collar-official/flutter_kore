@@ -4,66 +4,61 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/base/mvvm_instance.dart';
-import 'package:umvvm/arch/base/scope_stack.dart';
+import 'package:umvvm/arch/di/base_scopes.dart';
+import 'package:umvvm/arch/di/scoped_container.dart';
 
 typedef DefaultInputType = Map<String, dynamic>;
 
 /// Main class to store instances of mvvm elements
 /// Contains internal methods to manage instances
-class InstanceCollection<T extends MvvmInstance> {
-  final HashMap<String, List<T>> _instances = HashMap();
-  final HashMap<String, Function> _builders = HashMap();
+class InstanceCollection {
+  final container = ScopedContainer<MvvmInstance>();
 
-  /// Utility method to print instances map
-  void debugPrintMap() {
-    print('Current instance map count: ${_instances.length}');
-    print('Current intances: $_instances');
-  }
+  final _builders = HashMap<String, Function>();
 
-  List<T> all() {
-    final result = <T>[];
-
-    _instances.values.forEach((element) {
-      result.addAll(element);
-    });
-
-    return result;
-  }
+  List<MvvmInstance> all(String scope) => container.all(scope);
 
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
   void proone() {
-    ScopeStack.instance.references.forEach((key, value) {
-      if (value == 0) {
-        remove(key.toString());
-      }
+    container.proone((object) {
+      object.dispose();
     });
   }
 
   /// Removes instance from collection
   /// Also calls [dispose] for this instance
-  void remove(String type, {int? index}) {
+  void remove(String scope, String type, {int? index}) {
     if (index == null) {
-      final instances = _instances[type];
-      _instances.remove(type);
+      final instances = container.getObjectsInScope(
+        type: type,
+        scopeId: scope,
+      );
 
       instances?.forEach((element) {
         element.dispose();
       });
 
+      container.removeObjectInScope(type: type, scopeId: scope);
+
       return;
     }
 
-    final instance = _instances[type]?[index];
+    final instance = container.getObjectInScope(
+      type: type,
+      scopeId: scope,
+      index: index,
+    );
 
-    _instances[type]?.removeAt(index);
+    container.removeObjectInScope(type: type, scopeId: scope, index: index);
 
     instance?.dispose();
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  Instance getUnique<Instance extends T>({DefaultInputType? params}) {
+  Instance getUnique<Instance extends MvvmInstance>(
+      {DefaultInputType? params}) {
     return getUniqueWithParams<Instance, DefaultInputType?>(
       params: params,
     );
@@ -71,7 +66,7 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  Instance getUniqueWithParams<Instance extends T, InputState>({
+  Instance getUniqueWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
   }) {
     final id = Instance.toString();
@@ -81,7 +76,8 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
-  Instance get<Instance extends T>({DefaultInputType? params, int? index}) {
+  Instance get<Instance extends MvvmInstance>(
+      {DefaultInputType? params, int? index}) {
     return getWithParams<Instance, DefaultInputType?>(
       params: params,
       index: index,
@@ -90,7 +86,7 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
-  Instance getWithParams<Instance extends T, InputState>({
+  Instance getWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
   }) {
@@ -105,7 +101,7 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  T getUniqueByTypeStringWithParams<InputState>(
+  MvvmInstance getUniqueByTypeStringWithParams<InputState>(
     String type, {
     InputState? params,
   }) {
@@ -116,7 +112,7 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  T getUniqueByTypeString(String type, {DefaultInputType? params}) {
+  MvvmInstance getUniqueByTypeString(String type, {DefaultInputType? params}) {
     return getUniqueByTypeStringWithParams<DefaultInputType?>(
       type,
       params: params,
@@ -125,10 +121,11 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Similar to get
   /// Also calls [initialize] for this instance
-  T getByTypeStringWithParams<InputState>(
+  MvvmInstance getByTypeStringWithParams<InputState>(
     String type,
     InputState? params,
     int? index,
+    String scope,
   ) {
     final runtimeType = type;
 
@@ -136,24 +133,40 @@ class InstanceCollection<T extends MvvmInstance> {
       runtimeType,
       params: params,
       index: index,
+      scopeId: scope,
     );
   }
 
   /// Similar to get
   /// Also calls [initialize] for this instance
-  T getByTypeString(String type, DefaultInputType? params, int? index) {
-    return getByTypeStringWithParams<DefaultInputType>(type, params, index);
+  MvvmInstance getByTypeString(
+    String type,
+    DefaultInputType? params,
+    int? index,
+    String scope,
+  ) {
+    return getByTypeStringWithParams<DefaultInputType>(
+      type,
+      params,
+      index,
+      scope,
+    );
   }
 
   /// Similar to get
-  List<T> getAllByTypeString(String type) {
-    return _instances[type] ?? [];
+  List<MvvmInstance> getAllByTypeString(String scope, String type) {
+    return container.getAllByTypeString(scope, type);
   }
 
   /// Adds instance in collection
   /// Also calls [initialize] for this isntance
-  void add(String type, DefaultInputType? params, {int? index}) {
-    return addWithParams<DefaultInputType>(type, params);
+  void add(
+    String type,
+    DefaultInputType? params, {
+    int? index,
+    String? scope,
+  }) {
+    return addWithParams<DefaultInputType>(type, params, scope: scope);
   }
 
   /// Adds instance in collection
@@ -162,10 +175,12 @@ class InstanceCollection<T extends MvvmInstance> {
     String type,
     InputState? params, {
     int? index,
+    String? scope,
   }) {
     final id = type;
+    final scopeId = scope ?? BaseScopes.global;
 
-    if (_instances[id] != null && index == null) {
+    if (container.contains(scopeId, id) && index == null) {
       return;
     }
 
@@ -173,11 +188,11 @@ class InstanceCollection<T extends MvvmInstance> {
 
     final newInstance = builder!();
 
-    if (_instances[id] == null) {
-      _instances[id] = [newInstance];
-    } else {
-      _instances[id]!.add(newInstance);
-    }
+    container.addObjectInScope(
+      object: newInstance,
+      type: type,
+      scopeId: scopeId,
+    );
 
     if (!newInstance.initialized) {
       newInstance.initialize(params);
@@ -186,20 +201,28 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Adds existing instance in collection
   /// Also calls [initialize] for this instance
-  void addExisting(T instance, DefaultInputType? params) {
-    return addExistingWithParams<DefaultInputType>(instance, params);
+  void addExisting(
+    String scope,
+    MvvmInstance instance,
+    DefaultInputType? params,
+  ) {
+    return addExistingWithParams<DefaultInputType>(scope, instance, params);
   }
 
   /// Adds existing instance in collection
   /// Also calls [initialize] for this instance
-  void addExistingWithParams<InputState>(T instance, InputState? params) {
+  void addExistingWithParams<InputState>(
+    String scope,
+    MvvmInstance instance,
+    InputState? params,
+  ) {
     final id = instance.runtimeType.toString();
 
-    if (_instances[id] == null) {
-      _instances[id] = [instance];
-    } else {
-      _instances[id]!.add(instance);
-    }
+    container.addObjectInScope(
+      object: instance,
+      type: id,
+      scopeId: scope,
+    );
 
     if (!instance.initialized) {
       instance.initialize(params);
@@ -207,7 +230,7 @@ class InstanceCollection<T extends MvvmInstance> {
   }
 
   /// Adds builder for given instance type
-  void addBuilder<Instance extends T>(Function builder) {
+  void addBuilder<Instance extends MvvmInstance>(Function builder) {
     final id = Instance.toString();
     _builders[id] = builder;
   }
@@ -215,14 +238,18 @@ class InstanceCollection<T extends MvvmInstance> {
   /// Adds test instance for given instance type
   /// Used only for tests
   @visibleForTesting
-  void addTest<Instance extends T>(T instance, {dynamic params}) {
+  void addTest<Instance extends MvvmInstance>(
+    String scope,
+    MvvmInstance instance, {
+    dynamic params,
+  }) {
     final id = Instance.toString();
 
-    if (_instances[id] == null) {
-      _instances[id] = [instance];
-    } else {
-      _instances[id]!.add(instance);
-    }
+    container.addObjectInScope(
+      object: instance,
+      type: id,
+      scopeId: scope,
+    );
 
     if (!instance.initialized) {
       instance.initialize(params);
@@ -231,7 +258,7 @@ class InstanceCollection<T extends MvvmInstance> {
 
   /// Utility method to clear collection
   void clear() {
-    _instances.clear();
+    container.clear();
   }
 
   Instance _constructInstance<Instance>(
@@ -247,23 +274,33 @@ class InstanceCollection<T extends MvvmInstance> {
     return instance;
   }
 
-  Instance _getInstanceFromCache<Instance extends T, InputState>(
+  Instance _getInstanceFromCache<Instance extends MvvmInstance, InputState>(
     String id, {
     dynamic params,
     int? index,
+    String? scopeId,
   }) {
-    if (!_instances.containsKey(id)) {
+    final scope = scopeId ?? BaseScopes.global;
+
+    if (!container.contains(scope, id)) {
       final instance = getUniqueWithParams<Instance, InputState?>(
         params: params,
       );
 
-      _instances[id] = [instance];
+      container.addObjectInScope(
+        object: instance,
+        type: id,
+        scopeId: scope,
+      );
 
       return instance;
     }
 
-    final instances = _instances[id];
-    final instance = instances![index ?? 0] as Instance;
+    final instance = container.getObjectInScope(
+      type: id,
+      scopeId: scope,
+      index: index ?? 0,
+    ) as Instance;
 
     if (!instance.initialized) {
       instance.initialize(params);
@@ -272,15 +309,25 @@ class InstanceCollection<T extends MvvmInstance> {
     return instance;
   }
 
-  InstanceType? find<InstanceType>() {
-    for (final entry in _instances.entries) {
-      for (final instance in entry.value) {
-        if (instance is InstanceType) {
-          return instance as InstanceType;
-        }
-      }
-    }
-
-    return null;
+  void print() {
+    container.debugPrintMap();
   }
+
+  InstanceType? find<InstanceType>(String scope) {
+    return container.find<InstanceType>(scope);
+  }
+
+  static final InstanceCollection _singletonInteractorCollection =
+      InstanceCollection._internal();
+
+  static InstanceCollection get instance {
+    return _singletonInteractorCollection;
+  }
+
+  // ignore: prefer_constructors_over_static_methods
+  static InstanceCollection newInstance() {
+    return InstanceCollection._internal();
+  }
+
+  InstanceCollection._internal();
 }

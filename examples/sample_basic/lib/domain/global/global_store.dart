@@ -5,7 +5,7 @@ import 'package:sample_basic/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
-import '../services/services.dart';
+import '../wrappers/wrappers.dart';
 import '../data/post.dart';
 
 import 'apis.dart';

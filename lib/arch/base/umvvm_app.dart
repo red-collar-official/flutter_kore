@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:umvvm/arch/di/base_scopes.dart';
 import 'package:umvvm/umvvm.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
@@ -42,17 +43,16 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// ```
 abstract class UMvvmApp<
     NavigationInteractorType extends BaseNavigationInteractor> {
-  /// Main app interactors collection
-  final interactors = InteractorCollection.instance;
-
-  /// Main app services collection
-  final services = ServiceCollection.instance;
+  /// Main app instances collection
+  final instances = InstanceCollection.instance;
 
   /// Main app event bus
   EventBus get eventBus => EventBus.instance;
 
   static final navigationInteractor =
-      InteractorCollection.instance.find<BaseNavigationInteractor>();
+      InstanceCollection.instance.find<BaseNavigationInteractor>(
+    BaseScopes.global,
+  );
 
   late final NavigationInteractorType navigation =
       navigationInteractor! as NavigationInteractorType;
@@ -64,8 +64,7 @@ abstract class UMvvmApp<
 
   @mustCallSuper
   Future<void> initialize() async {
-    registerServices();
-    registerInteractors();
+    registerInstances();
     registerSingletons();
 
     _initialized = true;
@@ -74,20 +73,16 @@ abstract class UMvvmApp<
   @visibleForTesting
   void registerSingletons() {
     // no need to count references for singletons
-    for (final element in singletonInteractors) {
-      interactors.add(element.toString(), null);
-    }
-
-    for (final element in singletonServices) {
-      services.add(element.toString(), null);
+    for (final element in singletonInstances) {
+      instances.add(element.toString(), null, scope: BaseScopes.global);
     }
   }
 
-  /// Collection of singletion interactors
+  /// Collection of singletion instances
   ///
   /// ```dart
   ///  @override
-  ///  void registerInteractors() {
+  ///  void registerInstances() {
   ///    interactors
   ///      ..addBuilder<UserDefaultsInteractor>(() => UserDefaultsInteractor())
   ///      ..addBuilder<AutharizationInteractor>(() => AutharizationInteractor())
@@ -97,33 +92,19 @@ abstract class UMvvmApp<
   ///      ..addBuilder<ShareInteractor>(() => ShareInteractor());
   ///  }
   /// ```
-  void registerInteractors();
+  void registerInstances();
 
-  /// Collection of service objects
-  void registerServices();
-
-  /// Collection of singletion interactors
+  /// Collection of singletion instances
   ///
   /// ```dart
   ///   @override
-  ///   List<Type> get singletonInteractors => [
+  ///   List<Type> get singletonInstances => [
   ///         UserDefaultsInteractor,
   ///         AutharizationInteractor,
   ///         NavigationInteractor,
   ///       ];
   /// ```
-  List<Type> get singletonInteractors;
-
-  /// Collection of singletion services
-  ///
-  /// ```dart
-  ///   @override
-  ///   List<Type> get singletonServices => [
-  ///         UserDefaultsService,
-  ///         DbService,
-  ///       ];
-  /// ```
-  List<Type> get singletonServices;
+  List<Type> get singletonInstances;
 
   /// Delegate function to get data from [SharedPreferences]
   static LocaleCacheGetDelegate cacheGetDelegate = (key) {

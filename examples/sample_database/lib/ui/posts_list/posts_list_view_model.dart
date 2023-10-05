@@ -16,11 +16,11 @@ class PostsListViewModel
 
   @override
   void onLaunch(PostsListView widget) {
-    interactors.get<PostsInteractor>().loadPosts(0, 30);
+    getLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }
 
   void like(int id) {
-    interactors.get<PostsInteractor>().likePost(id);
+    getLocalInstance<PostsInteractor>().likePost(id);
   }
 
   void openPost(Post post) {
@@ -28,7 +28,7 @@ class PostsListViewModel
   }
 
   Stream<StatefulData<List<Post>>?> get postsStream =>
-      interactors.get<PostsInteractor>().updates((state) => state.posts);
+      getLocalInstance<PostsInteractor>().updates((state) => state.posts);
 
   @override
   PostsListViewState initialState(PostsListView input) => PostsListViewState();
