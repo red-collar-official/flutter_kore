@@ -68,7 +68,7 @@ class Store<State> {
   /// Using mapper you can select values you want to listen
   ///
   /// ```dart
-  /// Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
+  /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
   /// ```
   Stream<Value> updates<Value>(StoreMapper<Value, State> mapper) {
     return _state.stream.where((element) {
@@ -82,7 +82,7 @@ class Store<State> {
   /// new state and previous state, so you can easily compare them if needed
   ///
   /// ```dart
-  /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
+  /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
     return _state.stream.map((event) => StoreChange(

@@ -152,7 +152,7 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 
 ## Business Logic Layer
 
-This layer contains <b>Interactor</b> and <b>Service</b> classes.
+This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.
 
 ### Interactors
 
@@ -162,36 +162,30 @@ You can also specify input type for this interactor
 
 State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>.
 
-Interactors must be annotated with <b>defaultInteractor</b> or <b>singletonInteractor</b>.
+Interactors must be annotated with <b>basicInstance</b> or <b>singleton</b>.
 
-When interactor is annotated with <b>singletonInteractor</b> it belongs to global interactors collection.
+When interactor is annotated with <b>singleton</b> it belongs to global interactors collection.
 
 We dont need to write dependencies in our view models for singleton interactors (view model dependencies will be explained below) 
-and we can access it with <b>app.interactors</b>.
+and we can access it with <b>app.instances</b>.
 
-When interactor is annotated with <b>defaultInteractor</b> we need to write dependency for it in our view model (view model dependencies will be explained below).
+When interactor is annotated with <b>basicInstance</b> we need to write dependency for it in our view model (view model dependencies will be explained below).
 
 This interactors can be disposed when dependent element is disposed.
 
-Interactors also can depend on other interactors via <b>dependsOn</b> override
-
-Interactors also can use services via <b>usesServices</b> override
+Interactors also can depend on other interactors and wrappers via <b>dependsOn</b> override
 
 They are connected with <b>Connector</b> objects that will be discussed below
 
 Typical example would be:
 
 ```dart
-@defaultInteractor
+@basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> with LikePostMixin {
   @override
   List<Connector> dependsOn(String? input) => [
         Connector(type: SupportInteractor, unique: true),
-      ];
-
-  @override
-  List<Connector> usesServices(String? input) => [
-        Connector(type: ReactionsService),
+        Connector(type: ReactionsWrapper),
       ];
 
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
@@ -240,7 +234,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 Or singleton interactor:
 
 ```dart
-@singletonInteractor
+@singleton
 class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
@@ -278,7 +272,7 @@ It later can be restored with <b>onRestore</b>. It also has <b>isRestores</b> fl
 You can also specify input type for every interactor in annotation:
 
 ```dart
-@SingletonInteractor(inputType: String)
+@Instance(inputType: String)
 class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
@@ -308,20 +302,20 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
 
 ```
 
-### Services
+### Wrappers
 
-Services hold instances of third party dependencies
-Service can be just used as instance holders or contain logic for working with third party api
+Wrappers hold instances of third party dependencies
+Wrapper can be just used as instance holders or contain logic for working with third party api
 
-Services also can be singleton or default
+Wrappers also can be singleton or default
 
-Services unlike interactors don`t have state, but they also can receive <b>EventBus</b> events (EventBus will be described later). 
+Wrappers unlike interactors don`t have state, but they also can receive <b>EventBus</b> events (EventBus will be described later). 
 
 Typical example would be:
 
 ```dart
-@DefaultService(inputType: String)
-class StringService extends BaseService<String, String> {
+@Instance(inputType: String)
+class StringWrapper extends BaseWrapper<String, String> {
   @override
   String provideInstance(String? input) {
     return '';
@@ -330,11 +324,11 @@ class StringService extends BaseService<String, String> {
 
 ```
 
-or singleton service:
+or singleton wrapper:
 
 ```dart
-@singletonService
-class StringService extends BaseService<String, Map<String, dynamic>> {
+@singleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';
@@ -343,13 +337,13 @@ class StringService extends BaseService<String, Map<String, dynamic>> {
 
 ```
 
-Instances can be then obtained using <b>app.services.get<T>()</b>
+Instances can be then obtained using <b>app.instances.get<T>()</b>
 
 ### Connectors
 
-Connectors are objects that describe dependency for interactor or service
+Connectors are objects that describe dependency for interactor or wrapper
 
-We can specify a type of object(interactor or service) we want to depend on.
+We can specify a type of object(interactor or wrapper) we want to depend on.
 
 We can also specify if we want to get unique instance or shared instance
 
@@ -362,15 +356,11 @@ Examples would be:
 List<Connector> dependsOn(Map<String, dynamic>? input) => [
       Connector(type: SupportInteractor, unique: true), // unique instance
       Connector(type: ShareInteractor, count: 5), // 5 unique instances
-    ];
-
-@override
-List<Connector> usesServices(Map<String, dynamic>? input) => [
-      Connector(type: ReactionsService), // shared instance
+      Connector(type: ReactionsWrapper), // shared instance
     ];
 ```
 
-Library creates connectors for every single service and interactor 
+Library creates connectors for every single wrapper and interactor 
 This way you dont need to write <b>Connector</b> classes for every interactor and just use predefined ones as follows:
 
 ```dart
@@ -385,7 +375,7 @@ List<Connector> dependsOn(PostView input) => [
 
 ### EventBus
 
-View models and interactors have access to <b>EventBus</b> events.
+View models, interactors and wrappers have access to <b>EventBus</b> events.
 Events can be subscribed to with <b>subscribe</b> method.
 
 An example:
@@ -419,7 +409,7 @@ final fileUploadEventBus = EventBus.newSeparateInstance();
 There are also utility classes to connect all components of architecture.
 This classes are generated using <b>builder</b> package.
 
-Main app class contains instances of interactor collection and service locator
+Main app class contains instances of interactor collection and wrapper locator
 
 For example here is definition of main app class:
 
@@ -445,7 +435,7 @@ And here is definition of Apis class:
 class Apis with ApisGen {}
 ```
 
-App class holds instances to global <b>InteractorCollection</b>, <b>ServiceCollection</b>, <b>SharedPreferences</b>, <b>Apis</b> and <b>ObjectBox</b>(if needed)
+App class holds instances to global <b>InstanceCollection</b>, <b>SharedPreferences</b>, <b>Apis</b> and <b>ObjectBox</b>(if needed) and whatever you define
 We define global variable for app class and initialize it before calling <b>runApp</b>.
 
 ## Presentation Layer
@@ -456,12 +446,13 @@ Presentation layer consists of view model and view classes that are connected to
 
 View models contain logic for view classes
 
-It also contains local <b>InteractorCollection</b>, <b>ServiceCollection</b> and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
+It also contains local map of instances, and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
 We also can listen to state changes with <b>updatesFor</b> or <b>changesFor</b>
-We add interactors to view model using <b>dependsOn</b> getter.
-We add services to view model using <b>usesServices</b> getter.
+We add interactors and wrappers to view model using <b>dependsOn</b> getter.
 Using this getter we can connect default interactors to view model.
-View models like interactors and services can receive <b>EventBus</b> events using <b>subscribeTo</b> getter.
+View models like interactors and wrappers can receive <b>EventBus</b> events using <b>subscribe</b> method.
+
+To get local instances connected to view model use <b>getLocalInstance</b>
 
 View models also can override <b>onLaunch</b> method that is called on first frame of corresponding view.
 
@@ -471,17 +462,13 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   List<Connector> dependsOn(PostsListView widget) => [
         Connector(interactor: PostsInteractor),
         Connector(interactor: PostInteractor, unique: true),
-      ];
-  
-  @override
-  List<Connector> usesServices(Map<String, dynamic>? input) => [
-        Connector(type: ReactionsService), // shared instance
-      ];    
+        Connector(type: ReactionsWrapper),
+      ]; 
 
   @override
   void onLaunch(PostsListView widget) {
     // called with initState
-    interactors.get<PostsInteractor>().loadPosts(0, 30);
+    getLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }
 
   @override
@@ -495,7 +482,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   }
 
   void like(int id) {
-    interactors.get<PostsInteractor>().likePost(id);
+    getLocalInstance<PostsInteractor>().likePost(id);
   }
 
   void openPost(Post post) {
@@ -504,7 +491,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     });
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
@@ -605,7 +592,7 @@ To use this feature you need to subclass <b>BaseNavigationInteractor</b>
 If your app contains tab navigation than NavigationInteractor will look like this:
 
 ```dart
-@singletonInteractor
+@singleton
 class NavigationInteractor extends BaseNavigationInteractor<
     NavigationState,
     Map<String, dynamic>,
@@ -637,7 +624,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -645,7 +632,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -653,7 +640,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -681,7 +668,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 If app does not contains tab navigation than you can skip tab related methods:
 
 ```dart
-@singletonInteractor
+@singleton
 class NavigationInteractor extends BaseNavigationInteractor<
     NavigationState,
     Map<String, dynamic>,
@@ -697,7 +684,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -705,7 +692,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -713,7 +700,7 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsService.logScreenView(
+    unawaited(analyticsWrapper.logScreenView(
       child.runtimeType.toString(),
       route.name ?? '',
     ));
@@ -751,6 +738,7 @@ And here is also list of methods in <b>BaseNavigationInteractor</b>
 
 ```dart
 bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true});
+
 void pop({
   dynamic payload,
   bool onlyInternalStack = false,

@@ -33,5 +33,5 @@ class PostsListViewModel
   @override
   PostsListViewState initialState(PostsListView input) => PostsListViewState();
 
-  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
+  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
 }

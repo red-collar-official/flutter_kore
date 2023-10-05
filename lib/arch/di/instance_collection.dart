@@ -76,11 +76,15 @@ class InstanceCollection {
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
-  Instance get<Instance extends MvvmInstance>(
-      {DefaultInputType? params, int? index}) {
+  Instance get<Instance extends MvvmInstance>({
+    DefaultInputType? params,
+    int? index,
+    String scope = BaseScopes.global,
+  }) {
     return getWithParams<Instance, DefaultInputType?>(
       params: params,
       index: index,
+      scope: scope,
     );
   }
 
@@ -89,6 +93,7 @@ class InstanceCollection {
   Instance getWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
+    required String scope,
   }) {
     final runtimeType = Instance.toString();
 
@@ -96,6 +101,7 @@ class InstanceCollection {
       runtimeType,
       params: params,
       index: index,
+      scopeId: scope,
     );
   }
 
@@ -317,11 +323,11 @@ class InstanceCollection {
     return container.find<InstanceType>(scope);
   }
 
-  static final InstanceCollection _singletonInteractorCollection =
+  static final InstanceCollection _singletonInstanceCollection =
       InstanceCollection._internal();
 
   static InstanceCollection get instance {
-    return _singletonInteractorCollection;
+    return _singletonInstanceCollection;
   }
 
   // ignore: prefer_constructors_over_static_methods

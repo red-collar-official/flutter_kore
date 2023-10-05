@@ -13,7 +13,7 @@ import 'package:umvvm/arch/di/dependent_element.dart';
 ///
 ///   @override
 ///   void onLaunch(PostsListView widget) {
-///     interactors.get<PostsInteractor>().loadPosts(0, 30);
+///     getLocalInstance<PostsInteractor>().loadPosts(0, 30);
 ///   }
 /// }
 /// ```

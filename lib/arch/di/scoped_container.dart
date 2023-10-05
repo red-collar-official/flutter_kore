@@ -39,6 +39,7 @@ final class ScopedContainer<T> {
     }
   }
 
+  /// Adds object to given scoped collection
   void addObjectInScope({
     required T object,
     required String type,
@@ -47,7 +48,11 @@ final class ScopedContainer<T> {
     if (_instances.containsKey(scopeId)) {
       final scope = _instances[scopeId]!;
 
-      scope[type]?.add(object);
+      if (scope[type] == null) {
+        _instances[scopeId]![type] = [object];
+      } else {
+        _instances[scopeId]![type]?.add(object);
+      }
     } else {
       _instances[scopeId] = HashMap.from({
         type: [object],
@@ -55,6 +60,7 @@ final class ScopedContainer<T> {
     }
   }
 
+  /// Returns object in given scope with given index
   T? getObjectInScope({
     required String type,
     required String scopeId,
@@ -67,6 +73,7 @@ final class ScopedContainer<T> {
     }
   }
 
+  /// Returns all objects in given scope
   List<T>? getObjectsInScope({
     required String type,
     required String scopeId,
@@ -78,6 +85,7 @@ final class ScopedContainer<T> {
     }
   }
 
+  /// Removes object in given scope
   void removeObjectInScope({
     required String type,
     required String scopeId,
@@ -93,6 +101,7 @@ final class ScopedContainer<T> {
     }
   }
 
+  /// Returns all objects in scope
   List<T> all(String scope) {
     final result = <T>[];
 
@@ -125,6 +134,7 @@ final class ScopedContainer<T> {
     });
   }
 
+  /// Returns first found instance of type in given scope
   InstanceType? find<InstanceType>(String scope) {
     if (!_instances.containsKey(scope)) {
       return null;

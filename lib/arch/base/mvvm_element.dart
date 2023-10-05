@@ -27,7 +27,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// Stream of values for given [State] mapper
   ///
   /// ```dart
-  /// Stream<StatefulData<List<Post>>?> get postsStream => interactors.get<PostsInteractor>().updates((state) => state.posts);
+  /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
   /// ```
   Stream<Value> updates<Value>(Value Function(State state) mapper) =>
       _store.updates(mapper);
@@ -35,7 +35,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
   ///
   /// ```dart
-  /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => interactors.get<PostsInteractor>().changes((state) => state.posts);
+  /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(
           Value Function(State state) mapper) =>
@@ -47,7 +47,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// Model as json to be saved to cache
   ///
   /// ```dart
-  /// @singletonInteractor
+  /// @singleton
   /// class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   ///   @override
   ///   void onRestore(Map<String, dynamic> savedStateObject) {
@@ -63,7 +63,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// Flag indicating that this interactor needs to save state to user defaults
   ///
   /// ```dart
-  /// @singletonInteractor
+  /// @singleton
   /// class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState> {
   ///   @override
   ///   void onRestore(Map<String, dynamic> savedStateObject) {
@@ -103,7 +103,7 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
   /// Updates state in underlying [Store]
   ///
   /// ```dart
-  /// @defaultInteractor
+  /// @basicInstance
   /// class PostsInteractor extends BaseInteractor<PostsState> {
   ///   Future<void> loadPosts({bool refresh = false}) async {
   ///     updateState(state.copyWith(posts: LoadingData()));
