@@ -150,6 +150,85 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 }
 ```
 
+## DI
+
+Library contains simple DI container
+
+You can access it with <b>app.instances</b>
+
+DI container can hold any MvvmInstance child class
+
+There are two ways to annotate mvvm instances to use in di container <b>singleton</b> and <b>basicInstance</b>
+Or you can also use full <b>Instance</b> annotation
+
+Singleton instances belong to global scope
+
+There are several predefined scopes - global, unique and weak
+
+Global scope holds singleton instances
+Weak scope holds objects that can be accessed from anywhere as long as some mvvm instance connected to it
+Unique scope always create new instance
+
+You can define your own scopes
+
+Here are some examples:
+
+```dart
+@Instance(inputType: String)
+class StringWrapper extends BaseWrapper<String, String> {
+  @override
+  String provideInstance(String? input) {
+    return '';
+  }
+}
+
+```
+
+or basic instance wrapper:
+
+```dart
+@singleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+or singleton wrapper:
+
+```dart
+@singleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+Two specify scope that you want object from you can pass scope param to <b>get</b> method
+
+```dart
+app.instances
+  .get<NavigationInteractor>(scope: CustomScopes.userProfileScope('1'));
+```
+
+You can also specify scope in connector objects that discussed below
+
+```dart
+@override
+List<Connector> dependsOn(OtherUserProfileView input) => [
+      app.connectors.userInteractorConnector(
+        scope: CustomScopes.userProfileScope(input.user?.id ?? ''),
+        input: UserInteractorInput(username: input.user?.username),
+      ),
+    ];
+```
+
 ## Business Logic Layer
 
 This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.
@@ -349,6 +428,8 @@ We can also specify if we want to get unique instance or shared instance
 
 We also can define count of objects that we want to connect
 
+We also can specify scope of object
+
 Examples would be:
 
 ```dart
@@ -357,6 +438,7 @@ List<Connector> dependsOn(Map<String, dynamic>? input) => [
       Connector(type: SupportInteractor, unique: true), // unique instance
       Connector(type: ShareInteractor, count: 5), // 5 unique instances
       Connector(type: ReactionsWrapper), // shared instance
+      Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
     ];
 ```
 

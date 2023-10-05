@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:developer';
 
 import 'package:umvvm/arch/di/base_scopes.dart';
 
@@ -168,6 +169,7 @@ final class ScopedContainer<T> {
     _references.clear();
   }
 
+  /// Checks if container contains object for type in given scope
   bool contains(String scopeId, String id) {
     return _instances[scopeId] != null &&
         (_instances[scopeId]![id]?.isNotEmpty ?? false);
@@ -175,10 +177,7 @@ final class ScopedContainer<T> {
 
   /// Utility method to print instances map
   void debugPrintMap() {
-    // ignore: avoid_print
-    print('Current instance map count: ${_instances.length}');
-
-    // ignore: avoid_print
-    print('Current intances: $_instances');
+    log('Current instance map count: ${_instances.length}');
+    log('Current intances: $_instances');
   }
 }

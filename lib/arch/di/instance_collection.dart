@@ -315,6 +315,7 @@ class InstanceCollection {
     return instance;
   }
 
+  /// Utility method to print instances map
   void print() {
     container.debugPrintMap();
   }
