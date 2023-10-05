@@ -91,13 +91,19 @@ final class ScopedContainer<T> {
     required String scopeId,
     int? index,
   }) {
-    if (index == null) {
-      _instances[scopeId]?.remove(type);
+    if (!_instances.containsKey(scopeId)) {
       return;
     }
 
-    if (_instances.containsKey(scopeId)) {
-      _instances[scopeId]![type]?.removeAt(index);
+    if (index == null) {
+      _instances[scopeId]!.remove(type);
+      return;
+    }
+
+    _instances[scopeId]![type]?.removeAt(index);
+
+    if (_instances[scopeId]!.isEmpty) {
+      _instances.remove(scopeId);
     }
   }
 
@@ -115,7 +121,7 @@ final class ScopedContainer<T> {
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
   void proone(void Function(T) onRemove) {
-    _references.forEach((key, refs) {
+    _references.forEach((scope, refs) {
       refs.forEach((key, value) {
         if (value == 0) {
           final objects = getObjectsInScope(
@@ -127,7 +133,7 @@ final class ScopedContainer<T> {
 
           removeObjectInScope(
             type: key.toString(),
-            scopeId: BaseScopes.global,
+            scopeId: scope,
           );
         }
       });
