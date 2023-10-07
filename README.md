@@ -171,7 +171,7 @@ Unique scope always create new instance
 
 You can define your own scopes
 
-If you annotate class as <b>lazySingleton</> it will be created only when accessed first time
+If you annotate class as <b>lazySingleton</b> it will be created only when accessed first time
 
 Here are some examples:
 
@@ -243,6 +243,8 @@ List<Connector> dependsOn(OtherUserProfileView input) => [
       ),
     ];
 ```
+
+Then you can get instance with <b>getLocalInstance</b> method
 
 ## Business Logic Layer
 
