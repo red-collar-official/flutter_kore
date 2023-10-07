@@ -8,14 +8,16 @@
 ///   }
 /// }
 /// ```
-/// 
+///
 class Instance {
   final Type inputType;
   final bool singleton;
+  final bool lazy;
 
   const Instance({
     this.inputType = Map<String, dynamic>,
     this.singleton = false,
+    this.lazy = false,
   });
 }
 
@@ -42,3 +44,15 @@ const basicInstance = Instance();
 /// }
 /// ```
 const singleton = Instance(singleton: true);
+
+/// Annotate class as lazy singleton mvvm instance
+/// ```dart
+/// @lazySingleton
+/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+///   @override
+///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///     return NavigationStack();
+///   }
+/// }
+/// ```
+const lazySingleton = Instance(singleton: true, lazy: true);

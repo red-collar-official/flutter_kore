@@ -70,6 +70,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     // ignore: prefer_foreach
     for (final element in InstancesCollectorGenerator.instances) {
       if ((element.annotation.peek('singleton')?.boolValue ?? false) &&
+          !(element.annotation.peek('lazy')?.boolValue ?? false) &&
           element.element.name != null) {
         classBuffer.writeln(element.element.name! + ', ');
       }

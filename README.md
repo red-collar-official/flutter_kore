@@ -171,6 +171,8 @@ Unique scope always create new instance
 
 You can define your own scopes
 
+If you annotate class as <b>lazySingleton</> it will be created only when accessed first time
+
 Here are some examples:
 
 ```dart
@@ -201,6 +203,19 @@ or singleton wrapper:
 
 ```dart
 @singleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+or lazy singleton wrapper:
+
+```dart
+@lazySingleton
 class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
