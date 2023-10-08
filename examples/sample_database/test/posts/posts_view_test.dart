@@ -36,7 +36,7 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      await tester.pumpWidget(MaterialApp(
+      await tester.pumpWidget(const MaterialApp(
         home: Material(child: PostsListView()),
       ));
 

@@ -22,8 +22,8 @@ class HomeView extends BaseWidget {
 class _HomeViewWidgetState
     extends TabNavigationRootView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabViews = {
-    AppTabs.posts: PostsListView(),
-    AppTabs.likedPosts: PostsListView(),
+    AppTabs.posts: const PostsListView(),
+    AppTabs.likedPosts: const PostsListView(),
   };
 
   @override

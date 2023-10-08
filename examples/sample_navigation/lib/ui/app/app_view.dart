@@ -23,7 +23,7 @@ class _AppViewWidgetState
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: viewModel.navigationInteractor.globalNavigatorKey,
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 
