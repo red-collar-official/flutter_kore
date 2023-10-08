@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:umvvm/arch/view/base_widget.dart';
 import 'base_view_model.dart';
 
 /// Main class for umvvm view
@@ -26,7 +27,7 @@ import 'base_view_model.dart';
 ///   }
 /// }
 /// ```
-abstract class BaseView<View extends StatefulWidget, ScreenState,
+abstract class BaseView<View extends BaseWidget, ScreenState,
         ViewModel extends BaseViewModel<View, ScreenState>> extends State<View>
     with AutomaticKeepAliveClientMixin<View>, WidgetsBindingObserver {
   /// View model for this view
@@ -53,7 +54,12 @@ abstract class BaseView<View extends StatefulWidget, ScreenState,
 
   /// Initializes view model
   void initializeViewModel() {
-    _viewModel = createViewModel();
+    if (widget.viewModel != null) {
+      _viewModel = widget.viewModel as ViewModel;
+    } else {
+      _viewModel = createViewModel();
+    }
+
     _viewModel.initialize(widget);
   }
 

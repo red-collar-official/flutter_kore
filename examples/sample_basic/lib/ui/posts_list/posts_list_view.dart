@@ -6,7 +6,12 @@ import 'package:sample_basic/ui/posts_list/components/post_card.dart';
 import 'posts_list_view_model.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListView extends StatefulWidget {
+class PostsListView extends BaseWidget {
+  const PostsListView({
+    Key? key,
+    super.viewModel,
+  }) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _PostsListViewWidgetState();

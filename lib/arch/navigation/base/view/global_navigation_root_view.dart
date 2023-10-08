@@ -1,6 +1,7 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flutter/widgets.dart';
 import 'package:umvvm/arch/navigation/base/view/navigation_view_model.dart';
+import 'package:umvvm/arch/view/base_widget.dart';
 
 abstract class GlobalNavigationRootViewModel<Widget extends StatefulWidget,
     State> extends NavigationViewModel<Widget, State> {
@@ -16,7 +17,7 @@ abstract class GlobalNavigationRootViewModel<Widget extends StatefulWidget,
 }
 
 abstract class GlobalNavigationRootView<
-        View extends StatefulWidget,
+        View extends BaseWidget,
         ScreenState,
         ViewModel extends GlobalNavigationRootViewModel<View, ScreenState>>
     extends NavigationView<View, ScreenState, ViewModel> {

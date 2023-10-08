@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/view/navigation_view_model.dart';
+import 'package:umvvm/arch/view/base_widget.dart';
 
 abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
     extends NavigationViewModel<Widget, State> {
@@ -10,7 +11,7 @@ abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
   }
 }
 
-abstract class TabNavigationRootView<View extends StatefulWidget, ScreenState,
+abstract class TabNavigationRootView<View extends BaseWidget, ScreenState,
         ViewModel extends TabNavigationRootViewModel<View, ScreenState>>
     extends NavigationView<View, ScreenState, ViewModel> {
   Widget tabNavigationContainer({

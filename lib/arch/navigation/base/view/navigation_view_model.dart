@@ -18,7 +18,7 @@ abstract class NavigationViewModel<Widget extends StatefulWidget, State>
   }
 }
 
-abstract class NavigationView<View extends StatefulWidget, ScreenState,
+abstract class NavigationView<View extends BaseWidget, ScreenState,
         ViewModel extends NavigationViewModel<View, ScreenState>>
     extends BaseView<View, ScreenState, ViewModel> {
   dynamic screenTab;

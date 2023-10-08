@@ -6,7 +6,7 @@ import 'package:sample_navigation/ui/posts_list/components/post_card.dart';
 import 'post_view_model.dart';
 import 'post_view_state.dart';
 
-class PostView extends StatefulWidget {
+class PostView extends BaseWidget {
   final Post? post;
   final int? id;
 
@@ -14,6 +14,7 @@ class PostView extends StatefulWidget {
     Key? key,
     this.post,
     this.id,
+    super.viewModel,
   }) : super(key: key);
 
   @override

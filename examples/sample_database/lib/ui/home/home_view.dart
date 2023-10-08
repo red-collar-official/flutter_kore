@@ -7,7 +7,12 @@ import 'components/bottom_navigation.dart';
 import 'home_view_model.dart';
 import 'home_view_state.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends BaseWidget {
+  const HomeView({
+    Key? key,
+    super.viewModel,
+  }) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _HomeViewWidgetState();

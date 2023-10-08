@@ -616,7 +616,12 @@ The last class is view. View has a reference to view model and getter for initia
 Example: 
 
 ```dart
-class PostsListView extends StatefulWidget {
+class PostsListView extends BaseWidget {
+  const PostsListView({
+    super.key,
+    super.viewModel,
+  });
+
   @override
   State<StatefulWidget> createState() {
     return _PostsListViewWidgetState();
@@ -681,6 +686,8 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
   }
 }
 ```
+
+You can pass mocked view model view <b>viewModel</b> input parameter of <b>BaseWidget</b>
 
 ## Navigation
 

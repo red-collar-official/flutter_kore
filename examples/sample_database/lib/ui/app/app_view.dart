@@ -4,9 +4,10 @@ import 'package:sample_database/ui/home/home_view.dart';
 import 'app_view_model.dart';
 import 'app_view_state.dart';
 
-class AppView extends StatefulWidget {
+class AppView extends BaseWidget {
   const AppView({
     super.key,
+    super.viewModel,
   });
 
   @override

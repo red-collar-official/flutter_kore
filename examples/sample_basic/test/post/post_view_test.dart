@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:sample_basic/ui/post/post_view_model.dart';
 import 'package:umvvm/arch/http/base_request.dart';
 import 'package:sample_basic/domain/apis/base/request.dart';
 import 'package:sample_basic/domain/apis/posts_api.dart';
@@ -20,6 +21,8 @@ class MockPostsApi extends PostsApi {
         ));
 }
 
+class MockViewModel extends PostViewModel {}
+
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
@@ -35,15 +38,18 @@ void main() {
 
       await tester.pumpAndSettle();
 
+      final widget = PostView(
+        post: Post(
+          title: 'TestTitle',
+          body: 'TestBody',
+          id: 1,
+        ),
+        viewModel: MockViewModel(),
+      );
+
       await tester.pumpWidget(MaterialApp(
         home: Material(
-          child: PostView(
-            post: Post(
-              title: 'TestTitle',
-              body: 'TestBody',
-              id: 1,
-            ),
-          ),
+          child: widget,
         ),
       ));
 
