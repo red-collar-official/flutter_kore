@@ -253,6 +253,8 @@ Or you can use predefined default annotations
 
 You must mark instances as async if they depend on other async instances
 
+Then you can get async instances with <b>getAsync</b> method
+
 Here are some examples:
 
 ```dart
@@ -330,6 +332,38 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 ```
 
 You dont need to override <b>isAsync</b> flag if you use async dependencies, this is done automatically
+
+Async instances also have method to handle dependency ready status
+
+```dart
+@asyncSingleton
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
+  @override
+  UserDefaultsState initialState(Map<String, dynamic>? input) => UserDefaultsState();
+
+  @override
+  bool isAsync(Map<String, dynamic>? input) => true;
+
+  @override
+  Future<void> initializeAsync(T input) async {
+    // ...
+  }
+
+  @override
+  Future<void> disposeAsync() async {
+    // ...
+  }
+
+  @override
+  void onAsyncInstanceReady(Type type, {int? index}) {
+    switch (type) {
+      case value:
+        
+        break;
+      default:
+    }
+  }
+}
 
 ## Business Logic Layer
 
