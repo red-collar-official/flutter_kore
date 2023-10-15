@@ -1,10 +1,12 @@
 class ResultState<T extends Object> {
-  final T? error;
+  final Object? error;
+  final T? result;
   final String? messageToDisplay;
 
   const ResultState._({
-    required this.error,
-    required this.messageToDisplay,
+    this.error,
+    this.messageToDisplay,
+    this.result,
   });
 
   bool get isSuccessfull => this.error == null && this.messageToDisplay == null;
@@ -13,13 +15,15 @@ class ResultState<T extends Object> {
     return error! as ErrorType;
   }
 
-  factory ResultState.success() => const ResultState._(
-        error: null,
-        messageToDisplay: null,
+  factory ResultState.success({
+    T? result,
+  }) =>
+      ResultState._(
+        result: result,
       );
 
   factory ResultState.check({
-    T? error,
+    Object? error,
     String? messageToDisplay,
   }) =>
       ResultState._(
@@ -28,7 +32,7 @@ class ResultState<T extends Object> {
       );
 
   factory ResultState.error({
-    required T error,
+    required Object error,
     String? messageToDisplay,
   }) =>
       ResultState._(

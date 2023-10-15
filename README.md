@@ -959,6 +959,8 @@ class ErrorFieldState extends FieldValidationState {
 }
 ```
 
+There is also <b>ResultState</b> class to hold function execution result
+
 There are also two helper mixins that you can apply to your view models
 
 First is <b>UseDisposableViewModelMixin</b>
