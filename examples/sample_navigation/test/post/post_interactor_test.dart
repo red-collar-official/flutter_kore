@@ -29,6 +29,6 @@ void main() {
 
     await postInteractor.loadPost(1);
 
-    expect((postInteractor.state.post! as ResultData).result.id, 1);
+    expect((postInteractor.state.post! as SuccessData).result.id, 1);
   });
 }

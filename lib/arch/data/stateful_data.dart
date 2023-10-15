@@ -1,6 +1,6 @@
 sealed class StatefulData<T> {
   T unwrap() {
-    return (this as ResultData<T>).result;
+    return (this as SuccessData<T>).result;
   }
 
   const StatefulData();
@@ -10,10 +10,10 @@ class LoadingData<T> extends StatefulData<T> {
   const LoadingData();
 }
 
-class ResultData<T> extends StatefulData<T> {
+class SuccessData<T> extends StatefulData<T> {
   final T result;
 
-  const ResultData({
+  const SuccessData({
     required this.result,
   });
 }

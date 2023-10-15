@@ -50,7 +50,7 @@ class _PostViewWidgetState
 
   Widget buildPost(StatefulData<Post> data) {
     return switch (data) {
-      ResultData(result: final result) => PostCard(
+      SuccessData(result: final result) => PostCard(
           onTap: () {},
           title: result.title ?? '',
           body: result.body ?? '',

@@ -22,7 +22,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
 
     if (response.isSuccessful) {
       updateState(
-        state.copyWith(posts: ResultData(result: response.result ?? [])),
+        state.copyWith(posts: SuccessData(result: response.result ?? [])),
       );
     } else {
       updateState(state.copyWith(posts: ErrorData(error: response.error)));
@@ -30,7 +30,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
   }
 
   void _onPostLiked(int id) {
-    final posts = (state.posts as ResultData<List<Post>>).result.toList();
+    final posts = (state.posts as SuccessData<List<Post>>).result.toList();
     final index = posts.indexWhere((element) => element.id == id);
 
     if (index == -1) {
@@ -39,7 +39,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
 
     posts[index] = posts[index].copyWith(isLiked: !posts[index].isLiked);
 
-    updateState(state.copyWith(posts: ResultData(result: posts)));
+    updateState(state.copyWith(posts: SuccessData(result: posts)));
   }
 
   @override

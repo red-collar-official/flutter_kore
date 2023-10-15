@@ -15,14 +15,14 @@ class PostInteractor extends BaseInteractor<PostState, Post>
     final response = await app.apis.posts.getPost(id).execute();
 
     if (response.isSuccessful) {
-      updateState(state.copyWith(post: ResultData(result: response.result!)));
+      updateState(state.copyWith(post: SuccessData(result: response.result!)));
     } else {
       updateState(state.copyWith(post: ErrorData(error: response.error)));
     }
   }
 
   void useExistingPost(Post post) {
-    updateState(state.copyWith(post: ResultData(result: post)));
+    updateState(state.copyWith(post: SuccessData(result: post)));
   }
 
   void _onPostLiked() {
@@ -30,19 +30,19 @@ class PostInteractor extends BaseInteractor<PostState, Post>
     final currentLike = post.isLiked;
 
     final newPost = post.copyWith(isLiked: !currentLike);
-    updateState(state.copyWith(post: ResultData(result: newPost)));
+    updateState(state.copyWith(post: SuccessData(result: newPost)));
   }
 
   @override
   PostState initialState(Post? input) => PostState(
-        post: input == null ? null : ResultData(result: input),
+        post: input == null ? null : SuccessData(result: input),
       );
 
   @override
   List<EventBusSubscriber> subscribe() => [
         on<PostLikedEvent>((event) {
-          if (state.post is ResultData<Post> &&
-              event.id == (state.post as ResultData<Post>).result.id) {
+          if (state.post is SuccessData<Post> &&
+              event.id == (state.post as SuccessData<Post>).result.id) {
             _onPostLiked();
           }
         }),

@@ -30,6 +30,6 @@ void main() {
 
     await postsInteractor.loadPosts(0, 30);
 
-    expect((postsInteractor.state.posts! as ResultData).result[0].id, 1);
+    expect((postsInteractor.state.posts! as SuccessData).result[0].id, 1);
   });
 }

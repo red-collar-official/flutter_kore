@@ -44,7 +44,7 @@ class _PostsListViewWidgetState extends NavigationView<PostsListView,
     switch (data) {
       case LoadingData():
         return const Center(child: CircularProgressIndicator());
-      case ResultData<List<Post>>(:final result):
+      case SuccessData<List<Post>>(:final result):
         return ListView.builder(
           itemBuilder: (context, index) {
             final item = result[index];
