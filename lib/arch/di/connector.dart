@@ -17,6 +17,8 @@ class Connector {
   final dynamic Function(int)? inputForIndex;
   final int count;
   final String scope;
+  final bool async;
+  final int? initializationOrder;
 
   const Connector({
     required this.type,
@@ -24,27 +26,50 @@ class Connector {
     this.inputForIndex,
     this.count = 1,
     this.scope = BaseScopes.weak,
+    this.async = false,
+    this.initializationOrder,
   });
 }
 
 /// Callable proxy class for [BaseConnector]
 class ConnectorCall<InstanceType, InputStateType> {
+  int? get order => null;
+
   Connector call({
     String scope = BaseScopes.weak,
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
   }) {
-    if (scope == BaseScopes.global) {
-      throw Exception('Cant connect global instance');
-    }
-
     return Connector(
       scope: scope,
       input: input,
       inputForIndex: inputForIndex,
       count: count,
       type: InstanceType,
+      initializationOrder: order,
+    );
+  }
+}
+
+/// Async callable proxy class for [BaseConnector]
+class AsyncConnectorCall<InstanceType, InputStateType> {
+  int? get order => null;
+
+  Connector call({
+    String scope = BaseScopes.weak,
+    InputStateType? input,
+    InputStateType? Function(int)? inputForIndex,
+    int count = 1,
+  }) {
+    return Connector(
+      scope: scope,
+      input: input,
+      inputForIndex: inputForIndex,
+      count: count,
+      type: InstanceType,
+      async: true,
+      initializationOrder: order,
     );
   }
 }

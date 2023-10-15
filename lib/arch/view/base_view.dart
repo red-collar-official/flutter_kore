@@ -60,12 +60,17 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
       _viewModel = createViewModel();
     }
 
-    _viewModel.initialize(widget);
+    if (_viewModel.isAsync(widget)) {
+      _viewModel.initializeAsync(widget);
+    } else {
+      _viewModel.initialize(widget);
+    }
   }
 
   @override
   void dispose() {
     super.dispose();
+
     _viewModel.dispose();
   }
 

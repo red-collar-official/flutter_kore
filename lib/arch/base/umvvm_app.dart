@@ -64,16 +64,48 @@ abstract class UMvvmApp<
   @mustCallSuper
   Future<void> initialize() async {
     registerInstances();
-    registerSingletons();
+    await createSingletons();
 
     _initialized = true;
   }
 
   @visibleForTesting
-  void registerSingletons() {
+  Future<void> createSingletons() async {
     // no need to count references for singletons
-    for (final element in singletonInstances) {
-      instances.add(element.toString(), null, scope: BaseScopes.global);
+
+    Future<void> addInstance(Connector element) async {
+      if (element.async) {
+        await instances.addAsync(
+          element.type.toString(),
+          null,
+          scope: BaseScopes.global,
+        );
+      } else {
+        instances.add(
+          element.type.toString(),
+          null,
+          scope: BaseScopes.global,
+        );
+      }
+    }
+
+    final unorderedInstances = singletonInstances
+        .where((element) => element.initializationOrder == null);
+
+    final orderedInstances = singletonInstances
+        .where((element) => element.initializationOrder != null)
+        .toList()
+      ..sort((first, second) {
+        return first.initializationOrder!
+            .compareTo(second.initializationOrder!);
+      });
+
+    for (final element in orderedInstances) {
+      await addInstance(element);
+    }
+
+    for (final element in unorderedInstances) {
+      await addInstance(element);
     }
   }
 
@@ -103,7 +135,7 @@ abstract class UMvvmApp<
   ///         NavigationInteractor,
   ///       ];
   /// ```
-  List<Type> get singletonInstances;
+  List<Connector> get singletonInstances;
 
   /// Delegate function to get data from [SharedPreferences]
   static LocaleCacheGetDelegate cacheGetDelegate = (key) {

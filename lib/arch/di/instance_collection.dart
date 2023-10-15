@@ -22,7 +22,7 @@ class InstanceCollection {
   /// Called every time [dispose] called for view model
   void proone() {
     container.proone((object) {
-      object.dispose();
+      object.disposeAsync();
     });
   }
 
@@ -71,7 +71,18 @@ class InstanceCollection {
   }) {
     final id = Instance.toString();
 
-    return _constructInstance<Instance>(id, params: params);
+    return _constructAndInitializeInstance<Instance>(id, params: params);
+  }
+
+  /// Similar to get, but create new instance every time
+  /// Also calls [initialize] for this instance
+  Future<Instance>
+      getUniqueWithParamsAsync<Instance extends MvvmInstance, InputState>({
+    InputState? params,
+  }) {
+    final id = Instance.toString();
+
+    return _constructAndInitializeInstanceAsync<Instance>(id, params: params);
   }
 
   /// Return instance for given type
@@ -82,6 +93,20 @@ class InstanceCollection {
     String scope = BaseScopes.global,
   }) {
     return getWithParams<Instance, DefaultInputType?>(
+      params: params,
+      index: index,
+      scope: scope,
+    );
+  }
+
+  /// Return instance for given type
+  /// Also calls [initialize] for this instance
+  Future<Instance> getAsync<Instance extends MvvmInstance>({
+    DefaultInputType? params,
+    int? index,
+    String scope = BaseScopes.global,
+  }) {
+    return getWithParamsAsync<Instance, DefaultInputType?>(
       params: params,
       index: index,
       scope: scope,
@@ -105,6 +130,24 @@ class InstanceCollection {
     );
   }
 
+  /// Return instance for given type
+  /// Also calls [initialize] for this instance
+  Future<Instance>
+      getWithParamsAsync<Instance extends MvvmInstance, InputState>({
+    InputState? params,
+    int? index,
+    required String scope,
+  }) {
+    final runtimeType = Instance.toString();
+
+    return _getInstanceFromCacheAsync<Instance, InputState>(
+      runtimeType,
+      params: params,
+      index: index,
+      scopeId: scope,
+    );
+  }
+
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
   MvvmInstance getUniqueByTypeStringWithParams<InputState>(
@@ -113,7 +156,18 @@ class InstanceCollection {
   }) {
     final id = type;
 
-    return _constructInstance(id, params: params);
+    return _constructAndInitializeInstance(id, params: params);
+  }
+
+  /// Similar to get, but create new instance every time
+  /// Also calls [initialize] for this instance
+  Future<MvvmInstance> getUniqueByTypeStringWithParamsAsync<InputState>(
+    String type, {
+    InputState? params,
+  }) async {
+    final id = type;
+
+    return _constructAndInitializeInstanceAsync(id, params: params);
   }
 
   /// Similar to get, but create new instance every time
@@ -136,6 +190,24 @@ class InstanceCollection {
     final runtimeType = type;
 
     return _getInstanceFromCache(
+      runtimeType,
+      params: params,
+      index: index,
+      scopeId: scope,
+    );
+  }
+
+  /// Similar to get
+  /// Also calls [initialize] for this instance
+  Future<MvvmInstance> getByTypeStringWithParamsAsync<InputState>(
+    String type,
+    InputState? params,
+    int? index,
+    String scope,
+  ) {
+    final runtimeType = type;
+
+    return _getInstanceFromCacheAsync(
       runtimeType,
       params: params,
       index: index,
@@ -177,6 +249,17 @@ class InstanceCollection {
 
   /// Adds instance in collection
   /// Also calls [initialize] for this isntance
+  Future<void> addAsync(
+    String type,
+    DefaultInputType? params, {
+    int? index,
+    String? scope,
+  }) {
+    return addWithParamsAsync<DefaultInputType>(type, params, scope: scope);
+  }
+
+  /// Adds instance in collection
+  /// Also calls [initialize] for this isntance
   void addWithParams<InputState>(
     String type,
     InputState? params, {
@@ -205,6 +288,36 @@ class InstanceCollection {
     }
   }
 
+  /// Adds instance in collection
+  /// Also calls [initialize] for this isntance
+  Future<void> addWithParamsAsync<InputState>(
+    String type,
+    InputState? params, {
+    int? index,
+    String? scope,
+  }) async {
+    final id = type;
+    final scopeId = scope ?? BaseScopes.global;
+
+    if (container.contains(scopeId, id) && index == null) {
+      return;
+    }
+
+    final builder = _builders[id];
+
+    final newInstance = builder!();
+
+    container.addObjectInScope(
+      object: newInstance,
+      type: type,
+      scopeId: scopeId,
+    );
+
+    if (!newInstance.initialized) {
+      await newInstance.initializeAsync(params);
+    }
+  }
+
   /// Adds existing instance in collection
   /// Also calls [initialize] for this instance
   void addExisting(
@@ -229,10 +342,6 @@ class InstanceCollection {
       type: id,
       scopeId: scope,
     );
-
-    if (!instance.initialized) {
-      instance.initialize(params);
-    }
   }
 
   /// Adds builder for given instance type
@@ -267,7 +376,15 @@ class InstanceCollection {
     container.clear();
   }
 
-  Instance _constructInstance<Instance>(
+  Instance constructInstance<Instance extends MvvmInstance>(String id) {
+    final builder = _builders[id];
+
+    final instance = builder!();
+
+    return instance;
+  }
+
+  Instance _constructAndInitializeInstance<Instance extends MvvmInstance>(
     String id, {
     dynamic params,
   }) {
@@ -276,6 +393,20 @@ class InstanceCollection {
     final instance = builder!();
 
     instance.initialize(params);
+
+    return instance;
+  }
+
+  Future<Instance>
+      _constructAndInitializeInstanceAsync<Instance extends MvvmInstance>(
+    String id, {
+    dynamic params,
+  }) async {
+    final builder = _builders[id];
+
+    final instance = builder!();
+
+    await instance.initializeAsync(params);
 
     return instance;
   }
@@ -289,7 +420,8 @@ class InstanceCollection {
     final scope = scopeId ?? BaseScopes.global;
 
     if (!container.contains(scope, id)) {
-      final instance = getUniqueWithParams<Instance, InputState?>(
+      final instance = _constructAndInitializeInstance<Instance>(
+        id,
         params: params,
       );
 
@@ -315,11 +447,49 @@ class InstanceCollection {
     return instance;
   }
 
+  Future<Instance>
+      _getInstanceFromCacheAsync<Instance extends MvvmInstance, InputState>(
+    String id, {
+    dynamic params,
+    int? index,
+    String? scopeId,
+  }) async {
+    final scope = scopeId ?? BaseScopes.global;
+
+    if (!container.contains(scope, id)) {
+      final instance = await _constructAndInitializeInstanceAsync<Instance>(
+        id,
+        params: params,
+      );
+
+      container.addObjectInScope(
+        object: instance,
+        type: id,
+        scopeId: scope,
+      );
+
+      return instance;
+    }
+
+    final instance = container.getObjectInScope(
+      type: id,
+      scopeId: scope,
+      index: index ?? 0,
+    ) as Instance;
+
+    if (!instance.initialized) {
+      await instance.initializeAsync(params);
+    }
+
+    return instance;
+  }
+
   /// Utility method to print instances map
-  void print() {
+  void printMap() {
     container.debugPrintMap();
   }
 
+  /// Tries to find object in scope
   InstanceType? find<InstanceType>(String scope) {
     return container.find<InstanceType>(scope);
   }

@@ -15,6 +15,11 @@ abstract class BaseDependentElement<State, Input>
   /// Does not hold singleton instances
   List<Connector> dependsOn(Input input) => [];
 
+  @override
+  bool isAsync(Input input) {
+    return dependsOn(input).indexWhere((element) => element.async) != -1;
+  }
+
   /// Creates [Store], subscribes to [EventBus] events
   /// and restores cached state if needed
   @mustCallSuper
@@ -30,13 +35,25 @@ abstract class BaseDependentElement<State, Input>
 
     initializeStore(initialState(input));
 
-    _ensureInstancesAreLoaded();
     _increaseReferences();
-    _addInstances();
+    _addInstancesSync();
 
     restoreCachedState();
 
     initialized = true;
+  }
+
+  @override
+  Future<void> initializeAsync(Input input) async {
+    if (initialized) {
+      return;
+    }
+
+    await super.initializeAsync(input);
+
+    initialize(input);
+
+    await _addInstancesAsync();
   }
 
   @override
@@ -55,8 +72,8 @@ abstract class BaseDependentElement<State, Input>
   }
 
   /// Adds interactors to local collection
-  void _addInstances() {
-    _dependsOn.forEach((element) {
+  void _addInstancesSync() async {
+    _dependsOn.where((element) => !element.async).forEach((element) {
       if (element.count != 1) {
         _instances[element.type] = List.empty(growable: true);
 
@@ -92,6 +109,61 @@ abstract class BaseDependentElement<State, Input>
     });
   }
 
+  /// Adds interactors to local collection
+  Future<void> _addInstancesAsync() async {
+    await Future.wait(
+      _dependsOn
+          .where((element) => element.async)
+          .map((e) => _addAsyncInstance(e)),
+    );
+  }
+
+  Future<void> _addAsyncInstance(Connector element) async {
+    if (element.count != 1) {
+      _instances[element.type] = List.empty(growable: true);
+
+      final list = _instances[element.type]!;
+
+      Future<void> add(int index) async {
+        final instance = await InstanceCollection.instance
+            .getUniqueByTypeStringWithParamsAsync(
+          element.type.toString(),
+          params: element.input,
+        );
+
+        list.add(instance);
+
+        onAsyncInstanceReady(element.type, index: index);
+      }
+
+      await Future.wait([
+        for (var i = 0; i < element.count; i++) add(i),
+      ]);
+    } else if (element.scope == BaseScopes.unique) {
+      final instance = await InstanceCollection.instance
+          .getUniqueByTypeStringWithParamsAsync(
+        element.type.toString(),
+        params: element.input,
+      );
+
+      _instances[element.type] = [instance];
+
+      onAsyncInstanceReady(element.type);
+    } else {
+      final instance =
+          await InstanceCollection.instance.getByTypeStringWithParamsAsync(
+        element.type.toString(),
+        element.input,
+        null,
+        element.scope,
+      );
+
+      _instances[element.type] = [instance];
+
+      onAsyncInstanceReady(element.type);
+    }
+  }
+
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {
     _dependsOn.forEach((element) {
@@ -120,21 +192,6 @@ abstract class BaseDependentElement<State, Input>
     });
   }
 
-  /// Function to check if every interactor is loaded
-  void _ensureInstancesAreLoaded() {
-    _dependsOn.forEach((element) {
-      if (element.scope == BaseScopes.unique || element.count > 1) {
-        return;
-      }
-
-      InstanceCollection.instance.addWithParams(
-        element.type.toString(),
-        element.input,
-        scope: element.scope,
-      );
-    });
-  }
-
   /// Disposes unique interactors in [interactors]
   void _disposeUniqueInteractors() {
     _dependsOn.forEach((element) {
@@ -142,21 +199,16 @@ abstract class BaseDependentElement<State, Input>
         return;
       }
 
-      if (element.count != 1) {
-        return;
-      }
-
-      // ignore: cascade_invocations
-      _instances.values.forEach((element) {
-        element.forEach((element) {
-          element.dispose();
-        });
+      _instances[element.type]?.forEach((element) {
+        element.disposeAsync();
       });
     });
   }
 
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) =>
       _instances[T]![0] as T;
+
+  void onAsyncInstanceReady(Type type, {int? index}) {}
 
   State initialState(Input input);
 }

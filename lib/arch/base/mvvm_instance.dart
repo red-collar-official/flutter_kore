@@ -7,6 +7,8 @@ import 'package:umvvm/arch/base/event_bus_receiver.dart';
 abstract class MvvmInstance<T> extends EventBusReceiver {
   bool initialized = false;
 
+  bool isAsync(T input) => false;
+
   @mustCallSuper
   void initialize(T input) {
     initializeSub();
@@ -15,5 +17,19 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   @mustCallSuper
   void dispose() {
     disposeSub();
+  }
+
+  @mustCallSuper
+  Future<void> initializeAsync(T input) async {
+    if (!isAsync(input)) {
+      initialize(input);
+    } else {
+      initializeSub();
+    }
+  }
+
+  @mustCallSuper
+  Future<void> disposeAsync() async {
+    dispose();
   }
 }

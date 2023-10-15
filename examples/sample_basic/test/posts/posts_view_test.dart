@@ -28,9 +28,8 @@ void main() {
     testWidgets('PostsListViewTest InitialLoadTest', (tester) async {
       await initApp(testMode: true);
 
-      app
-        ..registerInstances()
-        ..registerSingletons();
+      app.registerInstances();
+      await app.createSingletons();
 
       app.apis.posts = MockPostsApi();
 

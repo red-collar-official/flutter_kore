@@ -34,10 +34,10 @@ mixin AppGen on UMvvmApp {
   final connectors = Connectors();
 
   @override
-  List<Type> get singletonInstances => [
-        StringWrapper,
-        UserDefaultsInteractor,
-        AutharizationInteractor,
+  List<Connector> get singletonInstances => [
+        connectors.stringWrapperConnector(),
+        connectors.userDefaultsInteractorConnector(),
+        connectors.autharizationInteractorConnector(),
       ];
 
   @override

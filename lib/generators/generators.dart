@@ -65,14 +65,13 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln('final connectors = Connectors();')
       ..writeln()
       ..writeln('@override')
-      ..writeln('List<Type> get singletonInstances => [');
-
+      ..writeln('List<Connector> get singletonInstances => [');
     // ignore: prefer_foreach
     for (final element in InstancesCollectorGenerator.instances) {
       if ((element.annotation.peek('singleton')?.boolValue ?? false) &&
           !(element.annotation.peek('lazy')?.boolValue ?? false) &&
           element.element.name != null) {
-        classBuffer.writeln(element.element.name! + ', ');
+        classBuffer.writeln('connectors.${uncapitalize(element.element.name!)}Connector(),');
       }
     }
 
@@ -141,9 +140,26 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
           ?.typeValue
           .getDisplayString(withNullability: false);
 
+      final asyncValue = element.annotation.peek('async')?.boolValue ?? false;
+
+      final orderValue = element.annotation
+          .peek(
+            'initializationOrder',
+          )
+          ?.intValue;
+
+      String orderString = '';
+
+      if (orderValue != null) {
+        orderString = '''
+  @override
+  int? get order => $orderValue;
+''';
+      }
+
       classBuffer
         ..writeln(
-          'class ${nameOfElementClass}Connector extends ConnectorCall<$nameOfElementClass, $nameOfInputType?> {}',
+          'class ${nameOfElementClass}Connector extends ${asyncValue ? 'AsyncConnectorCall' : 'ConnectorCall'}<$nameOfElementClass, $nameOfInputType?> {$orderString}',
         )
         ..writeln();
     }

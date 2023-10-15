@@ -246,6 +246,61 @@ List<Connector> dependsOn(OtherUserProfileView input) => [
 
 Then you can get instance with <b>getLocalInstance</b> method
 
+### Async initialization
+
+If you want to create instance that is initialized asynchronously you can pass <b>async</b> param to <b>Instance</b> annotation
+Or you can use predefined default annotations
+
+You must mark instances as async if they depend on other async instances
+
+Here are some examples:
+
+```dart
+@asyncLazySingleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+```dart
+@asyncSingleton
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+```dart
+@asyncBasicInstance
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+```dart
+@Instance(async: true, initializationOrder: 1)
+class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+}
+
+```
+
+In last example there is also <b>initializationOrder</b> field that is used to specify the order of singleton initialization
+
 ## Business Logic Layer
 
 This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.

@@ -26,8 +26,6 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
 
   void like(int id) {
     getLocalInstance<PostInteractor>().likePost(id);
-
-    app.instances.print();
   }
 
   Stream<StatefulData<Post>?> get postStream =>
