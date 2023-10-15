@@ -257,7 +257,7 @@ Here are some examples:
 
 ```dart
 @asyncLazySingleton
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';
@@ -268,7 +268,7 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 
 ```dart
 @asyncSingleton
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';
@@ -279,7 +279,7 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 
 ```dart
 @asyncBasicInstance
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';
@@ -290,7 +290,7 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 
 ```dart
 @Instance(async: true, initializationOrder: 1)
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';
@@ -300,6 +300,36 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 ```
 
 In last example there is also <b>initializationOrder</b> field that is used to specify the order of singleton initialization
+
+You also need to specify <b>isAsync</b> flag for async instance
+
+You can also implement <b>initializeAsync</b> method and <b>disposeAsync</b> methods for async instances
+
+Here is example of async instance:
+
+```dart
+@asyncSingleton
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
+  @override
+  UserDefaultsState initialState(Map<String, dynamic>? input) => UserDefaultsState();
+
+  @override
+  bool isAsync(Map<String, dynamic>? input) => true;
+
+  @override
+  Future<void> initializeAsync(T input) async {
+    // ...
+  }
+
+  @override
+  Future<void> disposeAsync() async {
+    // ...
+  }
+}
+
+```
+
+You dont need to override <b>isAsync</b> flag if you use async dependencies, this is done automatically
 
 ## Business Logic Layer
 

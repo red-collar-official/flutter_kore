@@ -38,10 +38,10 @@ abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
 /// Base class that creates and holds some third party instance
 /// and provides methods to work with it
 ///
-/// @singleton
+/// @asyncSingleton
 /// class StripeWrapper extends AsyncBaseWrapper<Stripe, String> {
 ///   @override
-///   Stripe provideInstance(String? params) {
+///   Future<Stripe> provideInstance(String? params) async {
 ///     return Stripe.instance;
 ///   }
 /// }
