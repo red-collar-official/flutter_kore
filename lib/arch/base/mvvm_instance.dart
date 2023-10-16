@@ -19,14 +19,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     disposeSub();
   }
 
-  @mustCallSuper
-  Future<void> initializeAsync(T input) async {
-    if (!isAsync(input)) {
-      initialize(input);
-    } else {
-      initializeSub();
-    }
-  }
+  Future<void> initializeAsync(T input) async {}
 
   @mustCallSuper
   Future<void> disposeAsync() async {

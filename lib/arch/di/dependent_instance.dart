@@ -26,8 +26,6 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   Future<void> initializeDependenciesAsync(Input input) async {
-    initializeDependencies(input);
-
     await _addInstancesAsync();
   }
 

@@ -60,14 +60,6 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
   @override
   Future<void> initializeAsync(Widget input) async {
-    if (initialized) {
-      return;
-    }
-
-    await super.initializeAsync(input);
-
-    initialize(input);
-
     await initializeDependenciesAsync(input);
   }
 }

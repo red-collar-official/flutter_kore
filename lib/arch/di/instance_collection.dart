@@ -314,6 +314,7 @@ class InstanceCollection {
     );
 
     if (!newInstance.initialized) {
+      newInstance.initialize(params);
       await newInstance.initializeAsync(params);
     }
   }
@@ -406,6 +407,7 @@ class InstanceCollection {
 
     final instance = builder!();
 
+    instance.initialize(params);
     await instance.initializeAsync(params);
 
     return instance;
@@ -478,6 +480,7 @@ class InstanceCollection {
     ) as Instance;
 
     if (!instance.initialized) {
+      instance.initialize(params);
       await instance.initializeAsync(params);
     }
 

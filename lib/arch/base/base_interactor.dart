@@ -36,14 +36,6 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
 
   @override
   Future<void> initializeAsync(Input? input) async {
-    if (initialized) {
-      return;
-    }
-
-    await super.initializeAsync(input);
-
-    initialize(input);
-
     await initializeDependenciesAsync(input);
   }
 }
