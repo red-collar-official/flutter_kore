@@ -14,6 +14,7 @@ class Instance {
   final bool singleton;
   final bool lazy;
   final int? initializationOrder;
+  final bool awaitInitialization;
   final bool async;
 
   const Instance({
@@ -22,6 +23,7 @@ class Instance {
     this.lazy = false,
     this.initializationOrder,
     this.async = false,
+    this.awaitInitialization = false,
   });
 }
 

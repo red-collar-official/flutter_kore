@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:umvvm/arch/di/dependent_element.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create view models
 ///
@@ -18,7 +18,8 @@ import 'package:umvvm/arch/di/dependent_element.dart';
 /// }
 /// ```
 abstract class BaseViewModel<Widget extends StatefulWidget, State>
-    extends BaseDependentElement<State, Widget> {
+    extends MvvmInstance<Widget>
+    with StatefulMvvmInstance<State, Widget>, DependentMvvmInstance<Widget> {
   /// Function to be executed after initState
   void onLaunch(Widget widget);
 
@@ -34,5 +35,39 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   void removeInputFocus() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     FocusManager.instance.primaryFocus?.unfocus();
+  }
+
+  @override
+  void initialize(Widget input) {
+    super.initialize(input);
+
+    initializeStore(initialState(input));
+
+    initializeDependencies(input);
+
+    restoreCachedState();
+
+    initialized = true;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    disposeStore();
+    disposeDependencies();
+  }
+
+  @override
+  Future<void> initializeAsync(Widget input) async {
+    if (initialized) {
+      return;
+    }
+
+    await super.initializeAsync(input);
+
+    initialize(input);
+
+    await initializeDependenciesAsync(input);
   }
 }

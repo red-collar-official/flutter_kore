@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
-
-import 'mvvm_instance.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Base class that creates and holds some third party instance
 /// and provides methods to work with it
@@ -12,7 +11,8 @@ import 'mvvm_instance.dart';
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
+abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?>
+    with DependentMvvmInstance<Input?> {
   /// actual object instance
   late Instance Function() _instanceCreator;
   Instance? _instance;
@@ -25,7 +25,18 @@ abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
 
     _instanceCreator = () => provideInstance(input);
 
+    initializeDependencies(input);
+
     initialized = true;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    disposeDependencies();
+
+    initialized = false;
   }
 
   /// Creates actual object instance
@@ -45,7 +56,8 @@ abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class AsyncBaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
+abstract class AsyncBaseWrapper<Instance, Input> extends MvvmInstance<Input?>
+    with DependentMvvmInstance<Input?> {
   /// actual object instance
   late Future<Instance> Function() _instanceCreator;
   Instance? _instance;
@@ -61,7 +73,18 @@ abstract class AsyncBaseWrapper<Instance, Input> extends MvvmInstance<Input?> {
 
     _instanceCreator = () => provideInstance(input);
 
+    await initializeDependenciesAsync(input);
+
     initialized = true;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    disposeDependencies();
+
+    initialized = false;
   }
 
   /// Creates actual object instance

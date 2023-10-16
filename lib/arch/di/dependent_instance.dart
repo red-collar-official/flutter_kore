@@ -1,10 +1,8 @@
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
-abstract class BaseDependentElement<State, Input>
-    extends MvvmElement<State, Input> {
+mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Local interactors
   /// Does not hold singleton instances
   final _instances = HashMap<Type, List<MvvmInstance>>();
@@ -20,46 +18,20 @@ abstract class BaseDependentElement<State, Input>
     return dependsOn(input).indexWhere((element) => element.async) != -1;
   }
 
-  /// Creates [Store], subscribes to [EventBus] events
-  /// and restores cached state if needed
-  @mustCallSuper
-  @override
-  void initialize(Input input) {
-    if (initialized) {
-      return;
-    }
-
-    super.initialize(input);
-
+  void initializeDependencies(Input input) {
     _dependsOn = dependsOn(input);
-
-    initializeStore(initialState(input));
 
     _increaseReferences();
     _addInstancesSync();
-
-    restoreCachedState();
-
-    initialized = true;
   }
 
-  @override
-  Future<void> initializeAsync(Input input) async {
-    if (initialized) {
-      return;
-    }
-
-    await super.initializeAsync(input);
-
-    initialize(input);
+  Future<void> initializeDependenciesAsync(Input input) async {
+    initializeDependencies(input);
 
     await _addInstancesAsync();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-
+  void disposeDependencies() {
     _disposeUniqueInteractors();
 
     _decreaseReferences();
@@ -67,8 +39,6 @@ abstract class BaseDependentElement<State, Input>
     InstanceCollection.instance.proone();
 
     _instances.clear();
-
-    initialized = false;
   }
 
   /// Adds interactors to local collection
@@ -209,6 +179,4 @@ abstract class BaseDependentElement<State, Input>
       _instances[T]![0] as T;
 
   void onAsyncInstanceReady(Type type, {int? index}) {}
-
-  State initialState(Input input);
 }

@@ -19,6 +19,7 @@ class Connector {
   final String scope;
   final bool async;
   final int? initializationOrder;
+  final bool awaitInitialization;
 
   const Connector({
     required this.type,
@@ -28,12 +29,14 @@ class Connector {
     this.scope = BaseScopes.weak,
     this.async = false,
     this.initializationOrder,
+    this.awaitInitialization = false,
   });
 }
 
 /// Callable proxy class for [BaseConnector]
 class ConnectorCall<InstanceType, InputStateType> {
   int? get order => null;
+  bool get awaitInitialization => false;
 
   Connector call({
     String scope = BaseScopes.weak,
@@ -48,14 +51,14 @@ class ConnectorCall<InstanceType, InputStateType> {
       count: count,
       type: InstanceType,
       initializationOrder: order,
+      awaitInitialization: awaitInitialization,
     );
   }
 }
 
 /// Async callable proxy class for [BaseConnector]
-class AsyncConnectorCall<InstanceType, InputStateType> {
-  int? get order => null;
-
+class AsyncConnectorCall<InstanceType, InputStateType> extends ConnectorCall<InstanceType, InputStateType> {
+  @override
   Connector call({
     String scope = BaseScopes.weak,
     InputStateType? input,

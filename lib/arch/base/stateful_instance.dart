@@ -11,7 +11,7 @@ import 'store.dart';
 /// Base class for storing test data
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
-abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
+mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// [Store] instance containg [State] object
   late Store<State> _store;
 
@@ -146,11 +146,10 @@ abstract class MvvmElement<State, Input> extends MvvmInstance<Input> {
 
   /// Closes underlying stream subscriptions for [Store] and [EventBus]
   @mustCallSuper
-  @override
-  void dispose() {
-    super.dispose();
-
+  void disposeStore() {
     _storeSaveSubscription?.cancel();
     _store.dispose();
   }
+
+  State initialState(Input input);
 }

@@ -71,7 +71,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       if ((element.annotation.peek('singleton')?.boolValue ?? false) &&
           !(element.annotation.peek('lazy')?.boolValue ?? false) &&
           element.element.name != null) {
-        classBuffer.writeln('connectors.${uncapitalize(element.element.name!)}Connector(),');
+        classBuffer.writeln(
+            'connectors.${uncapitalize(element.element.name!)}Connector(),');
       }
     }
 
@@ -141,6 +142,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
           .getDisplayString(withNullability: false);
 
       final asyncValue = element.annotation.peek('async')?.boolValue ?? false;
+      final awaitInitializationValue =
+          element.annotation.peek('awaitInitialization')?.boolValue ?? false;
 
       final orderValue = element.annotation
           .peek(
@@ -148,18 +151,25 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
           )
           ?.intValue;
 
-      String orderString = '';
+      String overridesString = '';
 
       if (orderValue != null) {
-        orderString = '''
+        overridesString = '''
   @override
   int? get order => $orderValue;
 ''';
       }
 
+      if (awaitInitializationValue || orderValue != null) {
+        overridesString = '''
+  @override
+  bool get awaitInitialization => $awaitInitializationValue;
+''';
+      }
+
       classBuffer
         ..writeln(
-          'class ${nameOfElementClass}Connector extends ${asyncValue ? 'AsyncConnectorCall' : 'ConnectorCall'}<$nameOfElementClass, $nameOfInputType?> {$orderString}',
+          'class ${nameOfElementClass}Connector extends ${asyncValue ? 'AsyncConnectorCall' : 'ConnectorCall'}<$nameOfElementClass, $nameOfInputType?> {$overridesString}',
         )
         ..writeln();
     }

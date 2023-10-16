@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
@@ -73,22 +75,6 @@ abstract class UMvvmApp<
   Future<void> createSingletons() async {
     // no need to count references for singletons
 
-    Future<void> addInstance(Connector element) async {
-      if (element.async) {
-        await instances.addAsync(
-          element.type.toString(),
-          null,
-          scope: BaseScopes.global,
-        );
-      } else {
-        instances.add(
-          element.type.toString(),
-          null,
-          scope: BaseScopes.global,
-        );
-      }
-    }
-
     final unorderedInstances = singletonInstances
         .where((element) => element.initializationOrder == null);
 
@@ -101,11 +87,35 @@ abstract class UMvvmApp<
       });
 
     for (final element in orderedInstances) {
-      await addInstance(element);
+      await _addInstance(element);
     }
 
-    for (final element in unorderedInstances) {
-      await addInstance(element);
+    await Future.wait(
+      [for (final element in unorderedInstances) _addInstance(element)],
+    );
+  }
+
+  Future<void> _addInstance(Connector element) async {
+    if (element.async) {
+      if (element.awaitInitialization) {
+        await instances.addAsync(
+          element.type.toString(),
+          null,
+          scope: BaseScopes.global,
+        );
+      } else {
+        unawaited(instances.addAsync(
+          element.type.toString(),
+          null,
+          scope: BaseScopes.global,
+        ));
+      }
+    } else {
+      instances.add(
+        element.type.toString(),
+        null,
+        scope: BaseScopes.global,
+      );
     }
   }
 
