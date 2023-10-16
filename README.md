@@ -261,7 +261,7 @@ Here are some examples:
 @asyncLazySingleton
 class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  Future<String> provideInstance(Map<String, dynamic>? input) async {
     return '';
   }
 }
@@ -272,7 +272,7 @@ class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
 @asyncSingleton
 class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  Future<String> provideInstance(Map<String, dynamic>? input) async {
     return '';
   }
 }
@@ -283,7 +283,7 @@ class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
 @asyncBasicInstance
 class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  Future<String> provideInstance(Map<String, dynamic>? input) async {
     return '';
   }
 }
@@ -294,7 +294,7 @@ class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
 @Instance(async: true, initializationOrder: 1)
 class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  Future<String> provideInstance(Map<String, dynamic>? input) async {
     return '';
   }
 }
@@ -364,6 +364,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
     }
   }
 }
+```
 
 ## Business Logic Layer
 
