@@ -335,6 +335,8 @@ You dont need to override <b>isAsync</b> flag if you use async dependencies, thi
 
 Async instances also have method to handle dependency ready status
 
+You can also specify if app needs to await instance initialization with <b>awaitInitialization</b> flag
+
 ```dart
 @asyncSingleton
 class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
