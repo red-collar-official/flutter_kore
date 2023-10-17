@@ -75,7 +75,7 @@ class GlobalNavigationStack<AppTabType>
   @override
   void replaceStack({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
     required bool uniqueInStack,
     required bool fullScreenDialog,

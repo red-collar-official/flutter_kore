@@ -89,17 +89,17 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   @override
   void replaceStack({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
     required bool uniqueInStack,
     required bool fullScreenDialog,
     Object? id,
   }) {
-    if (currentTab == null) {
+    if (tab == null) {
       return;
     }
 
-    _tabRouteStack[currentTab] = [
+    _tabRouteStack[tab] = [
       UIRouteModel(
         name: routeName,
         settings: UIRouteSettings(

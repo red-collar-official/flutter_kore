@@ -34,7 +34,7 @@ abstract class BaseNavigationStack<AppTabType> {
   /// Route can be only screen route therefore routeName defined as [RouteNames]
   void replaceStack({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
     required bool uniqueInStack,
     required bool fullScreenDialog,

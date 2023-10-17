@@ -90,7 +90,7 @@ class NavigationStack<AppTabType> {
   /// Route can be only screen route therefore routeName defined as [RouteNames]
   void replaceStack({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
     required bool uniqueInStack,
     required bool fullScreenDialog,
@@ -99,7 +99,7 @@ class NavigationStack<AppTabType> {
     final stack = _getStack(global);
     stack.replaceStack(
       routeName: routeName,
-      currentTab: currentTab,
+      tab: tab,
       global: global,
       uniqueInStack: uniqueInStack,
       id: id,

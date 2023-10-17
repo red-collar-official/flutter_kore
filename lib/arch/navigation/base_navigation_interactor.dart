@@ -100,7 +100,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   void initStack() {
     navigationStack.replaceStack(
       routeName: initialRoute,
-      currentTab: currentTab,
+      tab: currentTab,
       global: true,
       uniqueInStack: true,
       fullScreenDialog: false,
@@ -510,7 +510,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
     navigationStack.tabNavigationStack.replaceStack(
       routeName: firstRoute.name as RouteType,
-      currentTab: currentTab,
+      tab: appTab,
       global: false,
       uniqueInStack: true,
       fullScreenDialog: false,
