@@ -185,14 +185,6 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     dio.Dio client,
     dynamic data,
   ) async {
-    if (exception.type == dio.DioExceptionType.cancel) {
-      if (requestCollection.cancelReasonProcessingCompleter != null) {
-        await RequestCollection
-            .instance.cancelReasonProcessingCompleter!.future;
-        return _retryRequest(client, data, exception) as Response<T>;
-      }
-    }
-
     final databaseData = await databaseGetDelegate?.call(headers);
 
     return Response<T>(
@@ -297,10 +289,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
             null) {
           await RequestCollection
               .instance.cancelReasonProcessingCompleter!.future;
-          return onError(
-            error,
-            () => _retryRequest(_buildClient(), data, error),
-          );
+
+          return _retryRequest(client, data, error);
         }
       }
 
