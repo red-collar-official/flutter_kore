@@ -23,7 +23,7 @@ class PostsListViewModel
 
   @override
   void onLaunch(PostsListView widget) {
-    postsInteractor.loadPosts(0, 30);
+    postsInteractor.loadPosts(0, 30, refresh: true);
     userDefaultsInteractor.saveFirstAppLaunch();
   }
 

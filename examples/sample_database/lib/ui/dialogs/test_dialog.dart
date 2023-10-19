@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 
 class TestDialog extends StatelessWidget {
+  const TestDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(

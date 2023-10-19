@@ -50,6 +50,10 @@ class HttpRequest<T> extends RequestImplementation<T> {
 
   @override
   Future onError(DioException error, RetryHandler retry) async {
-    await retry();
+    if (error.type == DioExceptionType.cancel) {
+      return error;
+    }
+
+    return retry();
   }
 }

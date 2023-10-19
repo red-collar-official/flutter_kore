@@ -7,7 +7,7 @@ class Dialogs {
   static UIRoute<DialogNames> error() {
     return UIRoute<DialogNames>(
       name: DialogNames.error,
-      child: TestDialog(),
+      child: const TestDialog(),
       defaultSettings: const UIDialogRouteSettings(),
     );
   }

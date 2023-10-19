@@ -11,9 +11,9 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
     this.elevation,
     this.shape,
     this.enableDrag = true,
-    RouteSettings? settings,
+    super.settings,
     this.dismissible,
-  }) : super(settings: settings);
+  });
 
   final WidgetBuilder builder;
   final ThemeData? theme;
@@ -148,13 +148,13 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
 
 class _ModalBottomSheet<T> extends StatefulWidget {
   const _ModalBottomSheet({
-    Key? key,
+    super.key,
     required this.route,
     this.backgroundColor,
     this.elevation,
     this.shape,
     this.enableDrag = true,
-  }) : super(key: key);
+  });
 
   final ModalBottomSheetRoute<T> route;
   final Color? backgroundColor;

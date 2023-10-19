@@ -25,4 +25,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   Future<void> disposeAsync() async {
     dispose();
   }
+
+  void initializeWithoutConnections(T input) {}
+
+  Future<void> initializeWithoutConnectionsAsync(T input) async {}
 }

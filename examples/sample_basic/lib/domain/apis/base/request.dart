@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
@@ -44,12 +44,16 @@ class HttpRequest<T> extends RequestImplementation<T> {
   }
 
   @override
-  void onAuthorization(Dio dio) {
+  void onAuthorization(dio.Dio dio) {
     // ignore
   }
 
   @override
-  Future onError(DioException error, RetryHandler retry) async {
-    await retry();
+  Future onError(dio.DioException error, RetryHandler retry) async {
+    if (error.type == dio.DioExceptionType.cancel) {
+      return error;
+    }
+
+    return retry();
   }
 }

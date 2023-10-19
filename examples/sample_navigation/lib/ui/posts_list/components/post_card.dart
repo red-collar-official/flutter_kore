@@ -8,13 +8,13 @@ class PostCard extends StatelessWidget {
   final VoidCallback onLikeTap;
 
   const PostCard({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.title,
     required this.body,
     required this.isLiked,
     required this.onLikeTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

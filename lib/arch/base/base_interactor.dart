@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create interactor
@@ -11,6 +12,7 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     with StatefulMvvmInstance<State, Input?>, DependentMvvmInstance<Input?> {
+  @mustCallSuper
   @override
   void initialize(Input? input) {
     super.initialize(input);
@@ -19,11 +21,16 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
 
     initializeDependencies(input);
 
-    restoreCachedState();
+    if (syncRestore) {
+      restoreCachedStateSync();
+    } else {
+      restoreCachedStateAsync();
+    }
 
     initialized = true;
   }
 
+  @mustCallSuper
   @override
   void dispose() {
     super.dispose();
@@ -34,8 +41,27 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     initialized = false;
   }
 
+  @mustCallSuper
   @override
   Future<void> initializeAsync(Input? input) async {
     await initializeDependenciesAsync(input);
   }
+
+  @mustCallSuper
+  @override
+  void initializeWithoutConnections(Input? input) {
+    initializeStore(initialState(input));
+
+    initialized = true;
+  }
+
+  @mustCallSuper
+  @override
+  Future<void> initializeWithoutConnectionsAsync(Input? input) async {
+    initializeStore(initialState(input));
+
+    initialized = true;
+  }
+
+  bool get syncRestore => true;
 }

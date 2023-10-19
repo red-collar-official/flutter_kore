@@ -52,6 +52,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
               InstanceCollection.instance.getUniqueByTypeStringWithParams(
             element.type.toString(),
             params: element.input,
+            withNoConnections: element.withoutConnections,
           );
 
           list.add(instance);
@@ -61,6 +62,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
             InstanceCollection.instance.getUniqueByTypeStringWithParams(
           element.type.toString(),
           params: element.input,
+          withNoConnections: element.withoutConnections,
         );
 
         _instances[element.type] = [instance];
@@ -97,6 +99,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
             .getUniqueByTypeStringWithParamsAsync(
           element.type.toString(),
           params: element.input,
+          withNoConnections: element.withoutConnections,
         );
 
         list.add(instance);
@@ -112,6 +115,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
           .getUniqueByTypeStringWithParamsAsync(
         element.type.toString(),
         params: element.input,
+        withNoConnections: element.withoutConnections,
       );
 
       _instances[element.type] = [instance];
@@ -134,43 +138,43 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Increases reference count for every interactor in [dependsOn]
   void _increaseReferences() {
-    _dependsOn.forEach((element) {
+    for (final element in _dependsOn) {
       if (element.scope == BaseScopes.unique || element.count > 1) {
-        return;
+        continue;
       }
 
       InstanceCollection.instance.container.increaseReferencesInScope(
         element.scope,
         element.type,
       );
-    });
+    }
   }
 
   /// Decreases reference count for every interactor in [dependsOn]
   void _decreaseReferences() {
-    _dependsOn.forEach((element) {
+    for (final element in _dependsOn) {
       if (element.scope == BaseScopes.unique || element.count > 1) {
-        return;
+        continue;
       }
 
       InstanceCollection.instance.container.decreaseReferences(
         element.scope,
         element.type,
       );
-    });
+    }
   }
 
   /// Disposes unique interactors in [interactors]
   void _disposeUniqueInteractors() {
-    _dependsOn.forEach((element) {
+    for (final element in _dependsOn) {
       if (element.scope != BaseScopes.unique && element.count == 1) {
-        return;
+        continue;
       }
 
       _instances[element.type]?.forEach((element) {
         element.disposeAsync();
       });
-    });
+    }
   }
 
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) =>

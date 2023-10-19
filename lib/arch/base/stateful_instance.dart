@@ -80,7 +80,15 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// If cached state is empty does nothing
   /// if cached state is not empty calls [onRestore]
   @protected
-  void restoreCachedState() {
+  Future<void> restoreCachedStateAsync() async {
+    restoreCachedStateSync();
+  }
+
+  /// Tries to restore cached state
+  /// If cached state is empty does nothing
+  /// if cached state is not empty calls [onRestore]
+  @protected
+  void restoreCachedStateSync() {
     if (!isRestores) {
       return;
     }

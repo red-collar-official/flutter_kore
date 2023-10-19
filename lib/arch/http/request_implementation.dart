@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:umvvm/arch/http/requests_collection.dart';
 
 import 'base_request.dart';
 
@@ -35,13 +36,15 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///  }
 ///
 ///  @override
-///  Future onError(DioError error, RetryHandler retry) async {
-///    await retry();
+///  Future onError(DioError error, RetryHandler retry) {
+///    return retry();
 ///  }
 ///
 ///}
 /// ```
 abstract class RequestImplementation<T> extends BaseRequest<T> {
+  var cancelToken = dio.CancelToken();
+
   RequestImplementation() : super();
 
   /// Default headers to be added to every instance
@@ -67,22 +70,20 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   @override
   Future<Response<T>> execute() async {
-    if (onPrefetchFromDatabase != null) {
-      try {
-        final databaseData = await databaseGetDelegate?.call(headers);
+    requestCollection.addRequest(this);
 
-        onPrefetchFromDatabase!(databaseData);
-      } catch (e, trace) {
-        exceptionPrint(e, trace);
-      }
+    await getFromDatabase();
+
+    final simulationResult = await simulateResultStep();
+
+    if (simulationResult != null) {
+      return simulationResult;
     }
 
-    if (simulateResult != null) {
-      if (simulateResult!.result != null) {
-        await databasePutDelegate?.call(simulateResult!.result!);
-      }
+    if (simulateResponse != null) {
+      requestCollection.removeRequest(this);
 
-      return simulateResult!;
+      return _simulateServerResponse();
     }
 
     final client = _buildClient();
@@ -95,43 +96,18 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       data = file ?? body;
     }
 
-    if (simulateResponse != null) {
-      return _simulateServerResponse();
-    }
-
     final response = simulateResponse ?? (await _startRequest(client, data));
 
     if (response == null) {
-      try {
-        final databaseData = await databaseGetDelegate?.call(headers);
-
-        return Response<T>(
-          code: 0,
-          error: 'not_recognized_error',
-          result: databaseData,
-          fromDatabase: databaseData != null,
-        );
-      } catch (e, trace) {
-        exceptionPrint(e, trace);
-
-        return Response<T>(
-          code: 0,
-          error: 'not_recognized_error',
-        );
-      }
+      requestCollection.removeRequest(this);
+      
+      return processNoResponse();
     }
 
     if (response is dio.DioException) {
-      final databaseData = await databaseGetDelegate?.call(headers);
+      requestCollection.removeRequest(this);
 
-      return Response<T>(
-        code: response.response?.statusCode ?? 0,
-        headers: response.response?.headers.map,
-        error:
-            response.response?.data ?? response.response?.statusMessage ?? '',
-        result: databaseData,
-        fromDatabase: databaseData != null,
-      );
+      return processDioException(response, client, data);
     }
 
     dynamic result;
@@ -145,6 +121,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         result = await parser!(responseBody.data, responseBody.headers.map);
       } catch (e, trace) {
         exceptionPrint(e, trace);
+
+        requestCollection.removeRequest(this);
 
         return Response<T>(
           code: 0,
@@ -161,11 +139,82 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       }
     }
 
+    requestCollection.removeRequest(this);
+
     return Response<T>(
       code: responseBody.statusCode ?? 0,
       headers: responseBody.headers.map,
       result: result,
     );
+  }
+
+  Future<void> getFromDatabase() async {
+    if (onPrefetchFromDatabase != null) {
+      try {
+        final databaseData = await databaseGetDelegate?.call(headers);
+
+        onPrefetchFromDatabase!(databaseData);
+      } catch (e, trace) {
+        exceptionPrint(e, trace);
+      }
+    }
+  }
+
+  Future<Response<T>> processNoResponse() async {
+    try {
+      final databaseData = await databaseGetDelegate?.call(headers);
+
+      return Response<T>(
+        code: 0,
+        error: 'not_recognized_error',
+        result: databaseData,
+        fromDatabase: databaseData != null,
+      );
+    } catch (e, trace) {
+      exceptionPrint(e, trace);
+
+      return Response<T>(
+        code: 0,
+        error: 'not_recognized_error',
+      );
+    }
+  }
+
+  Future<Response<T>> processDioException(
+    dio.DioException exception,
+    dio.Dio client,
+    dynamic data,
+  ) async {
+    if (exception.type == dio.DioExceptionType.cancel) {
+      if (requestCollection.cancelReasonProcessingCompleter != null) {
+        await RequestCollection
+            .instance.cancelReasonProcessingCompleter!.future;
+        return _retryRequest(client, data, exception) as Response<T>;
+      }
+    }
+
+    final databaseData = await databaseGetDelegate?.call(headers);
+
+    return Response<T>(
+      code: exception.response?.statusCode ?? 0,
+      headers: exception.response?.headers.map,
+      error:
+          exception.response?.data ?? exception.response?.statusMessage ?? '',
+      result: databaseData,
+      fromDatabase: databaseData != null,
+    );
+  }
+
+  Future<Response<T>?> simulateResultStep() async {
+    if (simulateResult != null) {
+      if (simulateResult!.result != null) {
+        await databasePutDelegate?.call(simulateResult!.result as T);
+      }
+
+      return simulateResult!;
+    }
+
+    return null;
   }
 
   /// For tests: constructs simulated server response
@@ -243,6 +292,18 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     } on dio.DioException catch (error, trace) {
       exceptionPrint(error, trace);
 
+      if (error.type == dio.DioExceptionType.cancel) {
+        if (requestCollection.cancelReasonProcessingCompleter !=
+            null) {
+          await RequestCollection
+              .instance.cancelReasonProcessingCompleter!.future;
+          return onError(
+            error,
+            () => _retryRequest(_buildClient(), data, error),
+          );
+        }
+      }
+
       return onError(error, () => _retryRequest(client, data, error));
     }
 
@@ -251,7 +312,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   /// Adds data to dio, adds autharization headers if needed and returns [Future] with request results
   Future<dio.Response> constructRequest(
-    dio.Dio dio,
+    dio.Dio client,
     RequestMethod method,
     dynamic encodedData,
   ) async {
@@ -264,26 +325,46 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
 
     if (requiresLogin) {
-      onAuthorization(dio);
+      onAuthorization(client);
     }
+
+    cancelToken = dio.CancelToken();
 
     switch (method) {
       case RequestMethod.get:
-        return dio.getUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''));
+        return client.getUri(
+          _fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+          cancelToken: cancelToken,
+        );
       case RequestMethod.post:
-        return dio.postUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
-            data: data);
+        return client.postUri(
+          _fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+          data: data,
+          cancelToken: cancelToken,
+        );
       case RequestMethod.put:
-        return dio.putUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
-            data: data);
+        return client.putUri(
+          _fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+          data: data,
+          cancelToken: cancelToken,
+        );
       case RequestMethod.delete:
-        return dio.deleteUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
-            data: data);
+        return client.deleteUri(
+          _fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+          data: data,
+          cancelToken: cancelToken,
+        );
       case RequestMethod.patch:
-        return dio.patchUri(_fixDioUrlForQueryUri(query ?? {}, url ?? ''),
-            data: data);
+        return client.patchUri(
+          _fixDioUrlForQueryUri(query ?? {}, url ?? ''),
+          data: data,
+          cancelToken: cancelToken,
+        );
       default:
-        return dio.get(Uri.encodeFull(url ?? ''));
+        return client.get(
+          Uri.encodeFull(url ?? ''),
+          cancelToken: cancelToken,
+        );
     }
   }
 
@@ -311,5 +392,14 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         queryParameters: correctedMap.isEmpty ? null : correctedMap);
 
     return resultUri;
+  }
+
+  @override
+  void cancel() {
+    try {
+      cancelToken.cancel();
+    } catch (e) {
+      // ignore
+    }
   }
 }

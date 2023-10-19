@@ -8,14 +8,13 @@ class DialogRoute<T> extends PopupRoute<T> {
     required Color barrierColor,
     required Duration transitionDuration,
     RouteTransitionsBuilder? transitionBuilder,
-    RouteSettings? settings,
+    super.settings,
   })  : _pageBuilder = pageBuilder,
         _barrierDismissible = barrierDismissible,
         _barrierLabel = barrierLabel ?? '',
         _barrierColor = barrierColor,
         _transitionDuration = transitionDuration,
-        _transitionBuilder = transitionBuilder,
-        super(settings: settings);
+        _transitionBuilder = transitionBuilder;
 
   final RoutePageBuilder _pageBuilder;
 

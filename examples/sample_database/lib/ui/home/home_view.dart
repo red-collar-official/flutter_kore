@@ -9,9 +9,9 @@ import 'home_view_state.dart';
 
 class HomeView extends BaseWidget {
   const HomeView({
-    Key? key,
+    super.key,
     super.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {

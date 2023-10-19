@@ -17,11 +17,11 @@ class BottomNavigation extends StatelessWidget {
   final List<BottomNavigationItemData> items;
 
   const BottomNavigation({
-    Key? key,
+    super.key,
     required this.currentTab,
     required this.onTabChanged,
     required this.items,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +67,10 @@ class BottomNavigationItem extends StatelessWidget {
   final AppTab appTab;
 
   const BottomNavigationItem({
-    Key? key,
+    super.key,
     required this.appTab,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

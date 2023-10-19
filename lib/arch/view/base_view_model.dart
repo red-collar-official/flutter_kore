@@ -37,6 +37,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     FocusManager.instance.primaryFocus?.unfocus();
   }
 
+  @mustCallSuper
   @override
   void initialize(Widget input) {
     super.initialize(input);
@@ -45,11 +46,12 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
     initializeDependencies(input);
 
-    restoreCachedState();
+    restoreCachedStateAsync();
 
     initialized = true;
   }
 
+  @mustCallSuper
   @override
   void dispose() {
     super.dispose();
@@ -58,8 +60,25 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     disposeDependencies();
   }
 
+  @mustCallSuper
   @override
   Future<void> initializeAsync(Widget input) async {
     await initializeDependenciesAsync(input);
+  }
+
+  @mustCallSuper
+  @override
+  void initializeWithoutConnections(Widget input) {
+    initializeStore(initialState(input));
+
+    initialized = true;
+  }
+
+  @mustCallSuper
+  @override
+  Future<void> initializeDependenciesAsync(Widget input) async {
+    initializeStore(initialState(input));
+
+    initialized = true;
   }
 }

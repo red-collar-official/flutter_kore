@@ -1,7 +1,8 @@
 // ignore_for_file: avoid_print
 
-// ignore: implementation_imports
+// ignore: implementation_imports, depend_on_referenced_packages
 import 'package:build/src/builder/build_step.dart';
+// ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
@@ -96,10 +97,10 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       classBuffer.writeln('instances');
     }
 
-    InstancesCollectorGenerator.instances.forEach((element) {
+    for (final element in InstancesCollectorGenerator.instances) {
       classBuffer.writeln(
           '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
-    });
+    }
 
     if (InstancesCollectorGenerator.instances.isNotEmpty) {
       classBuffer.writeln(';');

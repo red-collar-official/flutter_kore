@@ -11,11 +11,11 @@ class PostView extends BaseWidget {
   final int? id;
 
   const PostView({
-    Key? key,
+    super.key,
     this.post,
     this.id,
     super.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {

@@ -7,7 +7,7 @@ class BottomSheets {
   static UIRoute<BottomSheetNames> autharization() {
     return UIRoute<BottomSheetNames>(
       name: BottomSheetNames.autharization,
-      child: TestBottomSheet(),
+      child: const TestBottomSheet(),
       defaultSettings: const UIBottomSheetRouteSettings(),
     );
   }

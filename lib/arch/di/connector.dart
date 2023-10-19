@@ -20,6 +20,7 @@ class Connector {
   final bool async;
   final int? initializationOrder;
   final bool awaitInitialization;
+  final bool withoutConnections;
 
   const Connector({
     required this.type,
@@ -30,6 +31,7 @@ class Connector {
     this.async = false,
     this.initializationOrder,
     this.awaitInitialization = false,
+    this.withoutConnections = false,
   });
 }
 
@@ -43,6 +45,7 @@ class ConnectorCall<InstanceType, InputStateType> {
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
+    bool withoutConnections = false,
   }) {
     return Connector(
       scope: scope,
@@ -52,18 +55,21 @@ class ConnectorCall<InstanceType, InputStateType> {
       type: InstanceType,
       initializationOrder: order,
       awaitInitialization: awaitInitialization,
+      withoutConnections: withoutConnections,
     );
   }
 }
 
 /// Async callable proxy class for [BaseConnector]
-class AsyncConnectorCall<InstanceType, InputStateType> extends ConnectorCall<InstanceType, InputStateType> {
+class AsyncConnectorCall<InstanceType, InputStateType>
+    extends ConnectorCall<InstanceType, InputStateType> {
   @override
   Connector call({
     String scope = BaseScopes.weak,
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
+    bool withoutConnections = false,
   }) {
     return Connector(
       scope: scope,
@@ -73,6 +79,7 @@ class AsyncConnectorCall<InstanceType, InputStateType> extends ConnectorCall<Ins
       type: InstanceType,
       async: true,
       initializationOrder: order,
+      withoutConnections: withoutConnections,
     );
   }
 }

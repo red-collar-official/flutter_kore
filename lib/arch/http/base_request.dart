@@ -3,8 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import 'simulate_response.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Main class to hold [Dio] response
 class Response<ItemType> {
@@ -144,4 +143,8 @@ abstract class BaseRequest<T> {
 
   /// Executes this request and returns [Response] value
   Future<Response<T>> execute();
+
+  void cancel();
+
+  RequestCollection get requestCollection => RequestCollection.instance;
 }

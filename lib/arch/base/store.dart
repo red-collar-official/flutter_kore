@@ -72,8 +72,8 @@ class Store<State> {
   /// ```
   Stream<Value> updates<Value>(StoreMapper<Value, State> mapper) {
     return _state.stream.where((element) {
-      return mapper(element.previous ?? element.next!) != mapper(element.next!);
-    }).map((event) => mapper(event.next!));
+      return mapper(element.previous ?? element.next!) != mapper(element.next as State);
+    }).map((event) => mapper(event.next as State));
   }
 
   /// Stream of changes of values [state]
@@ -86,6 +86,6 @@ class Store<State> {
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
     return _state.stream.map((event) => StoreChange(
-        mapper(event.previous ?? event.next!), mapper(event.next!)));
+        mapper(event.previous ?? event.next!), mapper(event.next as State)));
   }
 }
