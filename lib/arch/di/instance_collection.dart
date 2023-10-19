@@ -5,6 +5,9 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+export 'components/async_instance_collection_extension.dart';
+export 'components/sync_instance_collecton_extension.dart';
+
 typedef DefaultInputType = Map<String, dynamic>;
 
 /// Main class to store instances of mvvm elements

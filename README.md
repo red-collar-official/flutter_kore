@@ -150,6 +150,78 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 }
 ```
 
+To process errors and retry requests if you override onError method
+
+Using instance of <b>requestsCollection</b> you can cancel all current requests and retry all of them
+
+Here is an example:
+
+```dart
+class HttpRequest<T> extends RequestImplementation<T> {
+  @override
+  Map<String, dynamic> get defaultHeaders => {};
+
+  @override
+  String get defaultBaseUrl => Flavor.dev.baseUrl;
+
+  @override
+  int get defaultTimeoutInSeconds => AppSettings.defaultRequestTimeoutInSeconds;
+
+  @override
+  void logPrint(Object obj) {
+    LogUtility.printMessage(obj.toString());
+  }
+
+  @override
+  void exceptionPrint(Object error, StackTrace trace) {
+    LogUtility.e(error, trace);
+  }
+
+  @override
+  void onAuthorization(Dio dio) {
+    if (!requiresLogin) {
+      return;
+    }
+
+    final token = app.instances
+        .get<AuthorizationInteractor>()
+        .state
+        .token;
+
+    if (token != null) {
+      dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+  }
+
+  @override
+  Future onError(DioException error, RetryHandler retry) async {
+    if (error.type == DioExceptionType.cancel) {
+      return error;
+    }
+
+    if (error.response?.statusCode == 401) {
+      final authorizationInteractor =
+          app.instances.get<AuthorizationInteractor>();
+
+      await requestCollection.cancelAllRequests(
+        retryRequestsAfterProcessing: true,
+        cancelReasonProcessor: () async {
+          await authorizationInteractor.requestNewToken(reAuth: true);
+        },
+      );
+
+      if (!authorizationInteractor.isAuthorized) {
+        return error;
+      }
+
+      return retry();
+    }
+
+    return error;
+  }
+}
+```
+
 ## DI
 
 Library contains simple DI container
@@ -569,14 +641,20 @@ We also can define count of objects that we want to connect
 
 We also can specify scope of object
 
+We can also specify if we want to connect object without dependencies - 
+in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected
+It is usefull if you just want to use some method of small instance
+
 Examples would be:
 
 ```dart
 @override
 List<Connector> dependsOn(Map<String, dynamic>? input) => [
-      Connector(type: SupportInteractor, unique: true), // unique instance
+      Connector(type: SupportInteractor, scope: BaseScopes.unique), // unique instance
       Connector(type: ShareInteractor, count: 5), // 5 unique instances
       Connector(type: ReactionsWrapper), // shared instance
+      // instance without connections, only works for unique instances
+      Connector(type: ReactionsWrapper, withoutConnections: true, scope: BaseScopes.unique),
       Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
     ];
 ```
