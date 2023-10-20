@@ -155,14 +155,14 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       String overridesString = '';
 
       if (orderValue != null) {
-        overridesString = '''
+        overridesString += '''
   @override
   int? get order => $orderValue;
 ''';
       }
 
       if (awaitInitializationValue || orderValue != null) {
-        overridesString = '''
+        overridesString += '''
   @override
   bool get awaitInitialization => $awaitInitializationValue;
 ''';
