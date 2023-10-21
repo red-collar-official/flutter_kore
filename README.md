@@ -25,6 +25,9 @@ this.databasePutDelegate,
 this.simulateResponse,
 this.simulateResult,
 this.formData,
+this.ignoreCancelations = false,
+this.onPrefetchFromDatabase,
+this.additionalInterceptors = const [],
 ```
 
 Important notes here:
@@ -150,7 +153,7 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 }
 ```
 
-To process errors and retry requests if you override onError method
+To process errors and retry requests override onError method
 
 Using instance of <b>requestsCollection</b> you can cancel all current requests and retry all of them
 
@@ -812,6 +815,7 @@ View models also have <b>savedStateObject</b> and it also later can be restored 
 ### View
 
 The last class is view. View has a reference to view model and getter for initial state for view model.
+If you need to pass test view model extend <b>BaseWidget</b> instead of <b>StatefulWidget</b>
 
 Example: 
 
@@ -1163,9 +1167,10 @@ There is also <b>ResultState</b> class to hold function execution result
 
 There are also two helper mixins that you can apply to your view models
 
-First is <b>UseDisposableViewModelMixin</b>
+First is <b>UseDisposableMixin</b>
 
 It provides methods to initialize disposable objects like <b>TextEditingController</b>
+They will be disposed authomatically
 
 Here is full list of supported initializers:
 

@@ -5,6 +5,7 @@ import 'package:umvvm/umvvm.dart';
 
 typedef ValidatorsMap = Map<GlobalKey, Future<FieldValidationState> Function()>;
 
+/// Mixin with helper methods to create form views
 mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     on BaseViewModel<Widget, State> {
   final Map<GlobalKey, Observable<FieldValidationState>> fieldStates = {};
@@ -13,25 +14,32 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
   final _disable = Observable.initial(false);
 
+  /// Stream of disable flags
   Stream<bool> get disableStream =>
       _disable.stream.map((event) => event.next ?? false);
 
+  /// Returns true if form is currently disabled
   bool get isFormDisabled => _disable.current ?? false;
 
+  /// Map of validators for current form
   ValidatorsMap get validators;
 
+  /// Stream of [FieldValidationState] for given field key
   Stream<FieldValidationState?> fieldStateStream(GlobalKey key) {
     return fieldStates[key]!.stream.map((event) => event.next);
   }
 
+  /// Current value of [FieldValidationState] for given field key
   FieldValidationState? currentFieldState(GlobalKey key) {
     return fieldStates[key]!.current;
   }
 
+  /// Returns validator for given field key
   Future<FieldValidationState> validatorForKey(GlobalKey key) {
     return _actualValidators[key]!();
   }
 
+  /// Runs all registered validators for this form
   Future<bool> validateAllFields() async {
     var result = true;
 
@@ -47,6 +55,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     return result;
   }
 
+  /// Updates [FieldValidationState] for given field key
   void updateFieldState(GlobalKey key, FieldValidationState state) {
     fieldStates[key]!.update(state);
   }
@@ -67,25 +76,33 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     });
   }
 
+  /// Prefills all field in form
+  /// This is run when view model is created
   @mustCallSuper
   void prefillFields() {
     for (final key in validators.keys) {
       fieldStates[key] = Observable.initial(IgnoredFieldState());
 
-      _actualValidators[key] = () => validators[key]!().then((value) {
-            fieldStates[key]!.update(value);
+      _actualValidators[key] = () => validators[key]!().then(
+            (value) {
+              fieldStates[key]!.update(value);
 
-            return value;
-          });
+              return value;
+            },
+          );
     }
   }
 
+  /// Runs action when submitting form
   Future<void> submit();
 
+  /// Function where you can add additional checks to form 
+  /// besides of registered validators
   Future<bool> additionalCheck() async {
     return true;
   }
 
+  /// Runs action when submitting form
   Future<void> executeSubmitAction() async {
     removeInputFocus();
 
@@ -112,12 +129,13 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     _disable.update(false);
   }
 
-  void ensureVisible(GlobalKey key) async {
+  /// Brings view to the center of the screen
+  void ensureVisible(GlobalKey key, {double alignment = 0.3}) async {
     try {
       await Scrollable.ensureVisible(
         key.currentContext!,
         duration: UINavigationSettings.transitionDuration,
-        alignment: 0.3,
+        alignment: alignment,
       );
     } catch (e) {
       // ignore

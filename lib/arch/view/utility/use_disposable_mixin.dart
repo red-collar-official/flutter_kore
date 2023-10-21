@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/arch/utility/debouncer.dart';
 import 'package:umvvm/umvvm.dart';
 
-mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
-    on BaseViewModel<Widget, State> {
+/// Mixin with methods to create disposable instances that will be disposed
+/// when instance is disposed
+mixin UseDisposableMixin<Widget extends StatefulWidget>
+    on MvvmInstance<Widget> {
   final _textEditingControllers = <TextEditingController>[];
   final _scrollControllers = <ScrollController>[];
   final _debouncers = <Debouncer>[];
@@ -32,6 +34,8 @@ mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
     }
   }
 
+  /// Creates text editing controller and keeps reference
+  /// It will be disposed when instance is disposed
   TextEditingController useTextEditingController({String? text}) {
     final controller = TextEditingController(text: text);
 
@@ -40,6 +44,8 @@ mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
     return controller;
   }
 
+  /// Creates scroll controller and keeps reference
+  /// It will be disposed when instance is disposed
   ScrollController useScrollController() {
     final controller = ScrollController();
 
@@ -47,7 +53,9 @@ mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
 
     return controller;
   }
-
+  
+  /// Creates debouncer and keeps reference
+  /// It will be disposed when instance is disposed
   Debouncer useDebouncer({required Duration delay}) {
     final debouncer = Debouncer(delay);
 
@@ -56,6 +64,8 @@ mixin UseDisposableViewModelMixin<Widget extends StatefulWidget, State>
     return debouncer;
   }
 
+  /// Creates cancel token and keeps reference
+  /// It will be canceled when instance is disposed
   CancellationToken useCancelToken() {
     final cancellationToken = CancellationToken();
 

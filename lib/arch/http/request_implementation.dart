@@ -56,6 +56,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   /// Default timeout if [timeout] is not provided
   int get defaultTimeoutInSeconds => 10;
 
+  /// Default timeout if [timeout] is not provided
+  Iterable<dio.Interceptor> get defaultInterceptors => [];
+
   /// Print function for [Dio] logger
   void logPrint(Object obj);
 
@@ -100,7 +103,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     if (response == null) {
       requestCollection.removeRequest(this);
-      
+
       return processNoResponse();
     }
 
@@ -255,6 +258,14 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       ),
     ]);
 
+    if (additionalInterceptors.isNotEmpty) {
+      client.interceptors.addAll(additionalInterceptors);
+    }
+
+    if (defaultInterceptors.isNotEmpty) {
+      client.interceptors.addAll(defaultInterceptors);
+    }
+
     client.transformer = dio.BackgroundTransformer();
 
     return client;
@@ -285,8 +296,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       exceptionPrint(error, trace);
 
       if (error.type == dio.DioExceptionType.cancel) {
-        if (requestCollection.cancelReasonProcessingCompleter !=
-            null) {
+        if (requestCollection.cancelReasonProcessingCompleter != null) {
           await RequestCollection
               .instance.cancelReasonProcessingCompleter!.future;
 
@@ -386,6 +396,10 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   @override
   void cancel() {
+    if (ignoreCancelations) {
+      return;
+    }
+
     try {
       cancelToken.cancel();
     } catch (e) {

@@ -47,7 +47,9 @@ enum RequestMethod {
 }
 
 typedef ResponseParser<ItemType> = Future<ItemType> Function(
-    dynamic result, Map? headers);
+  dynamic result,
+  Map? headers,
+);
 typedef DatabasePutDelegate<ItemType> = Future Function(ItemType parsedItem);
 typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 
@@ -69,6 +71,9 @@ abstract class BaseRequest<T> {
     this.simulateResponse,
     this.simulateResult,
     this.formData,
+    this.ignoreCancelations = false,
+    this.onPrefetchFromDatabase,
+    this.additionalInterceptors = const [],
   });
 
   /// Http request method
@@ -139,12 +144,20 @@ abstract class BaseRequest<T> {
   /// Form data for this request
   Future<FormData>? formData;
 
+  /// Flag indicating that this request cant be canceled from [RequestCollection]
+  bool ignoreCancelations;
+
+  /// Aditional interceptors for [Dio] instance
+  Iterable<Interceptor> additionalInterceptors;
+
   void Function(T?)? onPrefetchFromDatabase;
 
   /// Executes this request and returns [Response] value
   Future<Response<T>> execute();
 
+  /// Cancels current request if it is still executing
   void cancel();
 
+  /// Collection of all running requests
   RequestCollection get requestCollection => RequestCollection.instance;
 }

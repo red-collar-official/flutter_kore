@@ -30,7 +30,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   void disposeDependencies() {
-    _disposeUniqueInteractors();
+    _disposeUniqueInstances();
 
     _decreaseReferences();
 
@@ -39,7 +39,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     _instances.clear();
   }
 
-  /// Adds interactors to local collection
+  /// Adds instances to local collection
   void _addInstancesSync() async {
     _dependsOn.where((element) => !element.async).forEach((element) {
       if (element.count != 1) {
@@ -79,7 +79,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     });
   }
 
-  /// Adds interactors to local collection
+  /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
     await Future.wait(
       _dependsOn
@@ -88,6 +88,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     );
   }
 
+  /// Adds instance to local collection
   Future<void> _addAsyncInstance(Connector element) async {
     if (element.count != 1) {
       _instances[element.type] = List.empty(growable: true);
@@ -165,7 +166,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Disposes unique interactors in [interactors]
-  void _disposeUniqueInteractors() {
+  void _disposeUniqueInstances() {
     for (final element in _dependsOn) {
       if (element.scope != BaseScopes.unique && element.count == 1) {
         continue;
@@ -177,8 +178,10 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
+  /// Returns connected instance of given type
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) =>
       _instances[T]![0] as T;
 
+  /// Runs for every async instance when it is initialized
   void onAsyncInstanceReady(Type type, {int? index}) {}
 }

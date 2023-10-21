@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:umvvm/umvvm.dart';
 
+/// Collection of currently running requests
 class RequestCollection {
   RequestCollection._internal();
 
@@ -14,6 +15,9 @@ class RequestCollection {
   final List<BaseRequest> requests = [];
   Completer? cancelReasonProcessingCompleter;
 
+  /// Cancels all requests in collection.
+  /// If [retryRequestsAfterProcessing] is true then every request
+  /// will be retried after [cancelReasonProcessor] is finished
   Future<void> cancelAllRequests({
     Future Function()? cancelReasonProcessor,
     bool retryRequestsAfterProcessing = false,

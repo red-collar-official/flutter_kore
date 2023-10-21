@@ -76,7 +76,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
   @mustCallSuper
   @override
-  Future<void> initializeDependenciesAsync(Widget input) async {
+  Future<void> initializeWithoutConnectionsAsync(Widget input) async {
     initializeStore(initialState(input));
 
     initialized = true;
