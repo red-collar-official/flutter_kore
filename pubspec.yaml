@@ -2,7 +2,7 @@ name: umvvm
 
 description: UMvvm base classes
 
-version: 3.3.0
+version: 3.3.1
 
 publish_to: none
 
@@ -19,6 +19,7 @@ dependencies:
   back_button_interceptor: ^7.0.0
   source_gen: ^1.4.0
   cancellation_token_hoc081098: ^1.0.0
+  glob: ^2.1.2
 
 dev_dependencies:
   build_runner: ^2.4.6

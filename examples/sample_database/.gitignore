@@ -21,6 +21,8 @@
 #Dart generated file
 **/*.g.dart
 **/*.freezed.dart
+lib/**/*.mvvm.dart
+lib/**/*.api.dart
 
 # Flutter/Dart/Pub related
 **/doc/api/

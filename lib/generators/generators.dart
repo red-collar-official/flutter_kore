@@ -1,25 +1,47 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
+import 'dart:convert';
 // ignore: implementation_imports, depend_on_referenced_packages
 import 'package:build/src/builder/build_step.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
+import 'package:glob/glob.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
-import 'package:umvvm/collectors/collectors.dart';
 import 'package:source_gen/source_gen.dart';
+import 'package:umvvm/collectors/models/api_json_model.dart';
+import 'package:umvvm/collectors/models/instance_json_model.dart';
 import 'package:umvvm/generators/main_app_visitor.dart';
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
-  String generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
+  FutureOr<String> generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
     final visitor = MainAppVisitor();
 
     element.visitChildren(visitor);
 
     final className = '${getClassName(element)}Gen';
     final classBuffer = StringBuffer();
+
+    final instanceJsons = Glob('lib/**.mvvm.json');
+
+    final jsonData = <Map>[];
+
+    await for (final id in buildStep.findAssets(instanceJsons)) {
+      final json = jsonDecode(await buildStep.readAsString(id));
+      jsonData.addAll([...json]);
+    }
+
+    final instances = <InstanceJsonModel>[];
+
+    for (final json in jsonData) {
+      instances.add(InstanceJsonModel.fromJson(json));
+    }
 
     // @override
     // List<Type> get singletons => [
@@ -28,15 +50,9 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     //     NavigationInteractor,
     //   ];
 
-    // for (final element in singletonAnnotated) {
-    //   if (element.source != null) {
-    //     classBuffer.writeln("import '${element.source!.uri.toString()}';");
-    //   }
-    // }
-
     generateConnectorsForInstanceType(
       classBuffer,
-      InstancesCollectorGenerator.instances,
+      instances,
     );
 
     // ignore: cascade_invocations
@@ -44,7 +60,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     generateConnectorCallsForInstanceType(
       classBuffer,
-      InstancesCollectorGenerator.instances,
+      instances,
     );
 
     classBuffer
@@ -67,13 +83,13 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln()
       ..writeln('@override')
       ..writeln('List<Connector> get singletonInstances => [');
+
     // ignore: prefer_foreach
-    for (final element in InstancesCollectorGenerator.instances) {
-      if ((element.annotation.peek('singleton')?.boolValue ?? false) &&
-          !(element.annotation.peek('lazy')?.boolValue ?? false) &&
-          element.element.name != null) {
+    for (final element in instances) {
+      if (element.singleton && !element.lazy) {
         classBuffer.writeln(
-            'connectors.${uncapitalize(element.element.name!)}Connector(),');
+          'connectors.${uncapitalize(element.name)}Connector(),',
+        );
       }
     }
 
@@ -93,16 +109,16 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       ..writeln()
       ..writeln('@override')
       ..writeln('void registerInstances() {');
-    if (InstancesCollectorGenerator.instances.isNotEmpty) {
+    if (instances.isNotEmpty) {
       classBuffer.writeln('instances');
     }
 
-    for (final element in InstancesCollectorGenerator.instances) {
-      classBuffer.writeln(
-          '..addBuilder<${element.element.name}>(() => ${element.element.name}())');
+    for (final element in instances) {
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     }
 
-    if (InstancesCollectorGenerator.instances.isNotEmpty) {
+    if (instances.isNotEmpty) {
       classBuffer.writeln(';');
     }
 
@@ -113,11 +129,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     String printMessage = '';
 
     printMessage += 'Generated Mvvm app\n\n';
-
-    printMessage +=
-        'Instances count: ${InstancesCollectorGenerator.instances.length}\n';
-    printMessage += 'Apis count: ${InstancesCollectorGenerator.api.length}';
-
+    printMessage += 'Instances count: ${instances.length}';
     print(printMessage);
 
     return classBuffer.toString();
@@ -133,24 +145,14 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
   void generateConnectorsForInstanceType(
     StringBuffer classBuffer,
-    List<AnnotatedElement> collection,
+    List<InstanceJsonModel> instances,
   ) {
-    for (final element in collection) {
-      final nameOfElementClass = getClassName(element.element);
-      final nameOfInputType = element.annotation
-          .peek('inputType')
-          ?.typeValue
-          .getDisplayString(withNullability: false);
-
-      final asyncValue = element.annotation.peek('async')?.boolValue ?? false;
-      final awaitInitializationValue =
-          element.annotation.peek('awaitInitialization')?.boolValue ?? false;
-
-      final orderValue = element.annotation
-          .peek(
-            'initializationOrder',
-          )
-          ?.intValue;
+    for (final element in instances) {
+      final nameOfElementClass = element.name;
+      final nameOfInputType = element.inputType;
+      final asyncValue = element.async;
+      final awaitInitializationValue = element.awaitInitialization;
+      final orderValue = element.initializationOrder;
 
       String overridesString = '';
 
@@ -178,7 +180,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
   void generateConnectorCallsForInstanceType(
     StringBuffer classBuffer,
-    List<AnnotatedElement> collection,
+    List<InstanceJsonModel> collection,
   ) {
     for (final element in collection) {
       generateConnectorCallForElement(classBuffer, element);
@@ -187,9 +189,9 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
   void generateConnectorCallForElement(
     StringBuffer classBuffer,
-    AnnotatedElement element,
+    InstanceJsonModel element,
   ) {
-    final nameOfElementClass = getClassName(element.element);
+    final nameOfElementClass = element.name;
 
     classBuffer.writeln(
       'late final ${uncapitalize(nameOfElementClass)}Connector = ${nameOfElementClass}Connector();',
@@ -203,8 +205,11 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
 class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
   @override
-  String generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
+  FutureOr<String> generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
     final visitor = MainAppVisitor();
 
     element.visitChildren(visitor);
@@ -222,23 +227,43 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
     // ignore: cascade_invocations
     classBuffer.writeln('mixin $className {');
 
-    // ignore: prefer_foreach
-    for (final element in InstancesCollectorGenerator.api) {
-      if (element.element.name != null) {
-        final elementName = element.element.name!;
-        final elementShortName = elementName.toLowerCase().split('api')[0];
+    final apisJsons = Glob('lib/**.api.json');
 
-        classBuffer
-          ..writeln('$elementName? _$elementShortName;')
-          ..writeln(
-              '$elementName get $elementShortName => _$elementShortName ??= $elementName();')
-          ..writeln('@visibleForTesting')
-          ..writeln(
-              'set $elementShortName(value) => _$elementShortName = value;');
-      }
+    final jsonData = <Map>[];
+
+    await for (final id in buildStep.findAssets(apisJsons)) {
+      final json = jsonDecode(await buildStep.readAsString(id));
+      jsonData.addAll([...json]);
+    }
+
+    final apis = <ApiJsonModel>[];
+
+    for (final json in jsonData) {
+      apis.add(ApiJsonModel.fromJson(json));
+    }
+
+    // ignore: prefer_foreach
+    for (final element in apis) {
+      final elementName = element.name;
+      final elementShortName = elementName.toLowerCase().split('api')[0];
+
+      classBuffer
+        ..writeln('$elementName? _$elementShortName;')
+        ..writeln(
+            '$elementName get $elementShortName => _$elementShortName ??= $elementName();')
+        ..writeln('@visibleForTesting')
+        ..writeln(
+            'set $elementShortName(value) => _$elementShortName = value;');
     }
 
     classBuffer.writeln('}');
+
+    String printMessage = '';
+
+    printMessage += 'Generated Apis for app\n\n';
+    printMessage += 'Apis count: ${apis.length}';
+
+    print(printMessage);
 
     return classBuffer.toString();
   }
