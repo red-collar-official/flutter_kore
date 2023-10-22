@@ -1034,12 +1034,23 @@ Last flag that describes navigation flow in app is <b>bottomSheetsAndDialogsUsin
 
 If this flag is false than you need to create separate navigator for bottom sheets and dialogs - usefull if you have some overlay views for app
 
-If you created your custom <b>BaseNavigationInteractor</b> than you need to specify it in main app annotation
+You also need to specify navigation interactor in main app annotation
 
 ```dart
 @MainApp(navigationInteractorType: NavigationInteractor)
 class App extends UMvvmApp<NavigationInteractor> with AppGen {
 }
+```
+
+You also need to initialize default values
+
+```dart
+UINavigationSettings.transitionDuration = kAnimationDuration;
+UINavigationSettings.barrierColor = UIColors.surfaceDarkSemitransparent;
+UINavigationSettings.bottomSheetBorderRadius = BorderRadius.only(
+  topLeft: UIDimentions.defaultWidgetBorderRadius.topLeft,
+  topRight: UIDimentions.defaultWidgetBorderRadius.topRight,
+);
 ```
 
 You can see how routes are specified in <b>example_navigation</b> example
@@ -1108,7 +1119,7 @@ For global navigation there are <b>GlobalNavigationRootViewModel</b> and <b>Glob
 
 For tab navigation there are <b>TabNavigationRootViewModel</b> and <b>TabNavigationRootView</b>
 
-It is also recommended to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for yout views and view models
+It is also recommended to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for your views and view models
 since it ensures that navigation is handled in correct navigation scope (tab or global)
 
 Examples how to use it is also in <b>example_navigation</b> example

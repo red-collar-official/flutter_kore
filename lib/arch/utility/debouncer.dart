@@ -1,5 +1,6 @@
 import 'dart:async';
 
+/// Utility class to debounce actions
 class Debouncer {
   Duration delay;
   Timer? _timer;
@@ -28,6 +29,7 @@ class Debouncer {
     _currentCallback = null;
   }
 
+  /// Executes callback immediately
   void processPendingImmediately() {
     _timer?.cancel();
 

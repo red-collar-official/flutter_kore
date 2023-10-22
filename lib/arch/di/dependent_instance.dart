@@ -18,6 +18,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     return dependsOn(input).indexWhere((element) => element.async) != -1;
   }
 
+  /// Initializes all dependencies and increase reference count in [ScopedStack]
   void initializeDependencies(Input input) {
     _dependsOn = dependsOn(input);
 
@@ -29,6 +30,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     await _addInstancesAsync();
   }
 
+  /// Disposes all dependencies
   void disposeDependencies() {
     _disposeUniqueInstances();
 
@@ -40,7 +42,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Adds instances to local collection
-  void _addInstancesSync() async {
+  void _addInstancesSync() {
     _dependsOn.where((element) => !element.async).forEach((element) {
       if (element.count != 1) {
         _instances[element.type] = List.empty(growable: true);
@@ -86,6 +88,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
           .where((element) => element.async)
           .map((e) => _addAsyncInstance(e)),
     );
+
+    onAllDependenciesReady();
   }
 
   /// Adds instance to local collection
@@ -184,4 +188,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Runs for every async instance when it is initialized
   void onAsyncInstanceReady(Type type, {int? index}) {}
+
+  /// Runs after every async instance is initialized
+  void onAllDependenciesReady() {}
 }
