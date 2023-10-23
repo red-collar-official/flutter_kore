@@ -112,7 +112,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     await Future.wait(
       _dependsOn
           .where((element) => element.async)
-          .map((e) => _addAsyncInstance(e)),
+          .map(_addAsyncInstance),
     );
 
     onAllDependenciesReady();

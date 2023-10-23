@@ -111,9 +111,7 @@ final class ScopedContainer<T> {
   List<T> all(String scope) {
     final result = <T>[];
 
-    _instances[scope]?.values.forEach((element) {
-      result.addAll(element);
-    });
+    _instances[scope]?.values.forEach(result.addAll);
 
     return result;
   }

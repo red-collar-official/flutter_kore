@@ -77,12 +77,6 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
     _viewModel.dispose();
   }
 
-  @override
-  void deactivate() {
-    // TODO: implement deactivate
-    super.deactivate();
-  }
-
   /// Factory method for view model for this view
   ViewModel createViewModel();
 

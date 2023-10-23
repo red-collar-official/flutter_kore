@@ -13,7 +13,7 @@ abstract class NavigationViewModel<Widget extends StatefulWidget, State>
     } else if (screenTab == null) {
       navigationInteractor.pop();
     } else {
-      navigationInteractor.popInTab(screenTab!);
+      navigationInteractor.popInTab(screenTab);
     }
   }
 }

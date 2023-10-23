@@ -696,11 +696,9 @@ class _CupertinoEdgeShadowPainter extends BoxPainter {
       case TextDirection.rtl:
         start = offset.dx + configuration.size!.width;
         shadowDirection = 1;
-        break;
       case TextDirection.ltr:
         start = offset.dx;
         shadowDirection = -1;
-        break;
     }
 
     int bandColorIndex = 0;

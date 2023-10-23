@@ -2,10 +2,14 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   errors:
-    todo: ignore
+    todo: info
+    unused_element: info
   exclude:
     - lib/**.g.dart
     - lib/**.freezed.dart
+    - lib/**.mvvm.dart
+    - lib/**.api.dart
+    - image_crop/**.*
 
 linter:
   rules:
@@ -132,4 +136,24 @@ linter:
     - use_string_buffers
     - use_to_and_as_if_applicable
     - valid_regexps
+    - unnecessary_breaks
+    - use_super_parameters
     - void_checks
+    - use_if_null_to_convert_nulls_to_bools
+    - use_is_even_rather_than_modulo
+    - use_key_in_widget_constructors
+    - use_late_for_private_fields_and_variables
+    - use_named_constants
+    - use_build_context_synchronously
+    - use_colored_box
+    - use_decorated_box
+    - use_enums
+    - unnecessary_to_list_in_spreads
+    - unnecessary_null_aware_operator_on_extension_on_nullable
+    - unnecessary_null_checks
+    - unnecessary_lambdas
+    - unnecessary_late
+    - unnecessary_library_directive
+    - secure_pubspec_urls
+    - sized_box_for_whitespace
+    - sized_box_shrink_expand

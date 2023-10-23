@@ -24,7 +24,7 @@ class PostsApi {
         }
         ..databaseGetDelegate =
             ((headers) => PostsBox.getPostsDelegate(offset, limit, headers))
-        ..databasePutDelegate = ((result) => PostsBox.putPostsDelegate(result));
+        ..databasePutDelegate = (PostsBox.putPostsDelegate);
 
   HttpRequest<Post?> likePost(int id) => HttpRequest<Post?>()
     ..method = RequestMethod.post
@@ -74,5 +74,5 @@ class PostsApi {
       ),
     )
     ..databaseGetDelegate = ((headers) => PostsBox.getPostDelegate(id))
-    ..databasePutDelegate = ((result) => PostsBox.putPostDelegate(result));
+    ..databasePutDelegate = (PostsBox.putPostDelegate);
 }
