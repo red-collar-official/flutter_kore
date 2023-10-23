@@ -81,16 +81,18 @@ abstract class EventBusReceiver {
   }
 
   @mustCallSuper
-  void pause() {
+  void pauseEventBusSubscription() {
     _paused = true;
   }
 
   @mustCallSuper
-  void resume({bool sendAllEventsReceivedWhilePause = true}) {
+  void resumeEventBusSubscription({
+    bool sendAllEventsReceivedWhilePause = true,
+  }) {
     if (!_paused) {
       return;
     }
-    
+
     _paused = false;
 
     if (sendAllEventsReceivedWhilePause) {

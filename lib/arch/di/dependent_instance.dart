@@ -19,25 +19,25 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   @override
-  void pause() {
-    super.pause();
+  void pauseEventBusSubscription() {
+    super.pauseEventBusSubscription();
 
     for (final element in _instances.values) {
       for (final instance in element) {
-        instance.pause();
+        instance.pauseEventBusSubscription();
       }
     }
   }
 
   @override
-  void resume({bool sendAllEventsReceivedWhilePause = true}) {
-    super.resume(
+  void resumeEventBusSubscription({bool sendAllEventsReceivedWhilePause = true}) {
+    super.resumeEventBusSubscription(
       sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
     );
 
     for (final element in _instances.values) {
       for (final instance in element) {
-        instance.resume(
+        instance.resumeEventBusSubscription(
           sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
         );
       }

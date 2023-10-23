@@ -100,10 +100,10 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
       return OnBecomeVisible(
         detectorKey: _visibilityDetectorKey,
         onBecameVisible: () {
-          viewModel.resume();
+          viewModel.resumeEventBusSubscription();
         },
         onBecameInvisible: () {
-          viewModel.pause();
+          viewModel.pauseEventBusSubscription();
         },
         child: buildView(context),
       );
