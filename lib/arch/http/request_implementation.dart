@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -75,7 +76,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   Future<Response<T>> execute() async {
     requestCollection.addRequest(this);
 
-    await getFromDatabase();
+    unawaited(getFromDatabase());
 
     final simulationResult = await simulateResultStep();
 
@@ -97,6 +98,13 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       data = await formData;
     } else {
       data = file ?? body;
+    }
+
+    if (cancelToken.isCancelled) {
+      if (requestCollection.cancelReasonProcessingCompleter != null) {
+        await RequestCollection
+            .instance.cancelReasonProcessingCompleter!.future;
+      }
     }
 
     final response = simulateResponse ?? (await _startRequest(client, data));

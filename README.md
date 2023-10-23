@@ -225,6 +225,13 @@ class HttpRequest<T> extends RequestImplementation<T> {
 }
 ```
 
+View models interactors and wrappers cancels all running requests when they are disposed
+To enable this behaviour run requests with <b>executeRequest</b> method
+
+```dart
+response = await executeRequest(app.apis.posts.getPosts(0, limit));
+```
+
 ## DI
 
 Library contains simple DI container
@@ -705,6 +712,26 @@ While we upload file we may want to send progress events in separate event bus
 ```dart
 final fileUploadEventBus = EventBus.newSeparateInstance();
 ```
+
+Reactions to events for every mvvm instance can be paused and resuming with corresponding methods
+By default events do not react to pauses
+To enable this you can subscribe to events with follows:
+
+```dart
+@override
+List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>(
+        (event) {
+          _onPostLiked(event.id);
+        },
+        reactsToPause: true,
+        // flag indicating if instance need to 'replay' events that was received while instance was paused
+        firesAfterResume: false,
+      ),
+    ];
+```
+
+Views by default pause view models when view become invisible
 
 ### MainApp and Apis
 

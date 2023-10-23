@@ -11,7 +11,10 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
-    with StatefulMvvmInstance<State, Input?>, DependentMvvmInstance<Input?> {
+    with
+        StatefulMvvmInstance<State, Input?>,
+        DependentMvvmInstance<Input?>,
+        ApiCaller<Input?> {
   @mustCallSuper
   @override
   void initialize(Input? input) {
@@ -37,6 +40,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
 
     disposeStore();
     disposeDependencies();
+    cancelAllRequests();
 
     initialized = false;
   }

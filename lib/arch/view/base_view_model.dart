@@ -19,7 +19,10 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 abstract class BaseViewModel<Widget extends StatefulWidget, State>
     extends MvvmInstance<Widget>
-    with StatefulMvvmInstance<State, Widget>, DependentMvvmInstance<Widget> {
+    with
+        StatefulMvvmInstance<State, Widget>,
+        DependentMvvmInstance<Widget>,
+        ApiCaller<Widget> {
   /// Function to be executed after initState
   void onLaunch(Widget widget);
 
@@ -58,6 +61,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
     disposeStore();
     disposeDependencies();
+    cancelAllRequests();
   }
 
   @mustCallSuper

@@ -7,3 +7,4 @@ export 'mvvm_instance.dart';
 export 'umvvm_app.dart';
 export 'observable.dart';
 export 'store.dart';
+export 'apis_caller.dart';

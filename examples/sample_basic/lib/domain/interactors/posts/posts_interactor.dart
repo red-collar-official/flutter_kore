@@ -15,7 +15,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
     late Response<List<Post>> response;
 
     if (refresh) {
-      response = await app.apis.posts.getPosts(0, limit).execute();
+      response = await executeRequest(app.apis.posts.getPosts(0, limit));
     } else {
       response = await app.apis.posts.getPosts(offset, limit).execute();
     }
@@ -46,8 +46,12 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
 
   @override
   List<EventBusSubscriber> subscribe() => [
-        on<PostLikedEvent>((event) {
-          _onPostLiked(event.id);
-        }),
+        on<PostLikedEvent>(
+          (event) {
+            _onPostLiked(event.id);
+          },
+          reactsToPause: true,
+          firesAfterResume: false,
+        ),
       ];
 }

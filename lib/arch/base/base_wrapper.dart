@@ -12,7 +12,7 @@ import 'package:umvvm/umvvm.dart';
 ///   }
 /// }
 abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?>
-    with DependentMvvmInstance<Input?> {
+    with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// actual object instance
   late Instance Function() _instanceCreator;
   Instance? _instance;
@@ -35,6 +35,7 @@ abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?>
     super.dispose();
 
     disposeDependencies();
+    cancelAllRequests();
 
     initialized = false;
   }

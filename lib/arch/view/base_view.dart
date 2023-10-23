@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/view/base_widget.dart';
+import 'package:umvvm/arch/view/utility/on_become_visible.dart';
 import 'base_view_model.dart';
 
 /// Main class for umvvm view
@@ -30,6 +31,8 @@ import 'base_view_model.dart';
 abstract class BaseView<View extends BaseWidget, ScreenState,
         ViewModel extends BaseViewModel<View, ScreenState>> extends State<View>
     with AutomaticKeepAliveClientMixin<View>, WidgetsBindingObserver {
+  final _visibilityDetectorKey = UniqueKey();
+
   /// View model for this view
   late ViewModel _viewModel;
 
@@ -74,6 +77,12 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
     _viewModel.dispose();
   }
 
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+
   /// Factory method for view model for this view
   ViewModel createViewModel();
 
@@ -81,9 +90,24 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
 
   bool get isInnerView => false;
 
+  bool get pauseViewModelWhenViewBecomeInvisible => true;
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    if (pauseViewModelWhenViewBecomeInvisible) {
+      return OnBecomeVisible(
+        detectorKey: _visibilityDetectorKey,
+        onBecameVisible: () {
+          viewModel.resume();
+        },
+        onBecameInvisible: () {
+          viewModel.pause();
+        },
+        child: buildView(context),
+      );
+    }
 
     return buildView(context);
   }

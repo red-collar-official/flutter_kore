@@ -18,6 +18,32 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     return dependsOn(input).indexWhere((element) => element.async) != -1;
   }
 
+  @override
+  void pause() {
+    super.pause();
+
+    for (final element in _instances.values) {
+      for (final instance in element) {
+        instance.pause();
+      }
+    }
+  }
+
+  @override
+  void resume({bool sendAllEventsReceivedWhilePause = true}) {
+    super.resume(
+      sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
+    );
+
+    for (final element in _instances.values) {
+      for (final instance in element) {
+        instance.resume(
+          sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
+        );
+      }
+    }
+  }
+
   /// Initializes all dependencies and increase reference count in [ScopedStack]
   void initializeDependencies(Input input) {
     _dependsOn = dependsOn(input);

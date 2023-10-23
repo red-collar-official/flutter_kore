@@ -21,6 +21,9 @@ abstract class EventBusReceiver {
 
   final Map<Type, EventBusSubscriber> _subscribers = {};
 
+  bool _paused = false;
+  final _eventsReceivedWhilePaused = [];
+
   /// Underlying stream subsription for [EventBus] events
   StreamSubscription? _eventsSubscription;
 
@@ -54,13 +57,48 @@ abstract class EventBusReceiver {
 
   /// Subscribes to event of given type
   /// Adds subscriber to local subscribers collection
-  EventBusSubscriber on<T>(EventBusSubscriber<T> processor) {
+  @mustCallSuper
+  EventBusSubscriber on<T>(
+    EventBusSubscriber<T> processor, {
+    bool reactsToPause = false,
+    bool firesAfterResume = true,
+  }) {
     void dynamicProcessor(event) {
+      if (reactsToPause && _paused) {
+        if (firesAfterResume) {
+          _eventsReceivedWhilePaused.add(event);
+        }
+
+        return;
+      }
+
       processor(event as T);
     }
 
     _subscribers[T] = dynamicProcessor;
 
     return dynamicProcessor;
+  }
+
+  @mustCallSuper
+  void pause() {
+    _paused = true;
+  }
+
+  @mustCallSuper
+  void resume({bool sendAllEventsReceivedWhilePause = true}) {
+    if (!_paused) {
+      return;
+    }
+    
+    _paused = false;
+
+    if (sendAllEventsReceivedWhilePause) {
+      for (final element in _eventsReceivedWhilePaused) {
+        _subscribers[element.runtimeType]?.call(element);
+      }
+    }
+
+    _eventsReceivedWhilePaused.clear();
   }
 }
