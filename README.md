@@ -639,7 +639,9 @@ Instances can be then obtained using <b>app.instances.get<T>()</b>
 ### Parts
 
 To split logic in large instances you can create <b>parts</b>
+
 Part is instance type that has reference to parent mvvm instance
+
 Part can receive events and can't have separate state or dependencies
 
 Here is an example:
