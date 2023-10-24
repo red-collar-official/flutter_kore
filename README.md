@@ -604,8 +604,10 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
 
 ### Wrappers
 
-Wrappers hold instances of third party dependencies
+Wrappers contain logic for working this third party dependencies
 Wrapper can be just used as instance holders or contain logic for working with third party api
+
+If wrapper holds object instance extend <b>BaseHolderWrapper</b>, overwise use <b>BaseWrapper</b>
 
 Wrappers also can be singleton or default
 
@@ -614,21 +616,16 @@ Wrappers unlike interactors don`t have state, but they also can receive <b>Event
 Typical example would be:
 
 ```dart
-@Instance(inputType: String)
-class StringWrapper extends BaseWrapper<String, String> {
-  @override
-  String provideInstance(String? input) {
-    return '';
-  }
+@singleton
+class StripeWrapper extends BaseWrapper<String> {
 }
-
 ```
 
 or singleton wrapper:
 
 ```dart
 @singleton
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance(Map<String, dynamic>? input) {
     return '';

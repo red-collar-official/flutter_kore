@@ -1,29 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
-/// Base class that creates and holds some third party instance
-/// and provides methods to work with it
+/// Base class that wraps logic for working with third party dependency
 ///
 /// @singleton
-/// class StripeWrapper extends BaseWrapper<Stripe, String> {
-///   @override
-///   Stripe provideInstance(String? params) {
-///     return Stripe.instance;
-///   }
+/// class StripeWrapper extends BaseWrapper<String> {
 /// }
-abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?>
+abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
-  /// actual object instance
-  late Instance Function() _instanceCreator;
-  Instance? _instance;
-
   /// Inititalizes wrapper
   @mustCallSuper
   @override
   void initialize(Input? input) {
     super.initialize(input);
-
-    _instanceCreator = () => provideInstance(input);
 
     initializeDependencies(input);
 
@@ -40,41 +29,39 @@ abstract class BaseWrapper<Instance, Input> extends MvvmInstance<Input?>
     initialized = false;
   }
 
-  /// Creates actual object instance
-  Instance provideInstance(Input? input);
-
-  /// actual object instance
-  Instance get instance => _instance ??= _instanceCreator();
+  @mustCallSuper
+  @override
+  Future<void> initializeAsync(Input? input) async {
+    await initializeDependenciesAsync(input);
+  }
 }
 
 /// Base class that creates and holds some third party instance
 /// and provides methods to work with it
 ///
 /// @asyncSingleton
-/// class StripeWrapper extends AsyncBaseWrapper<Stripe, String> {
+/// class StripeWrapper extends BaseHolderWrapper<Stripe, String> {
 ///   @override
 ///   Future<Stripe> provideInstance(String? params) async {
 ///     return Stripe.instance;
 ///   }
 /// }
-abstract class AsyncBaseWrapper<Instance, Input> extends MvvmInstance<Input?>
-    with DependentMvvmInstance<Input?> {
+abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
+    with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// actual object instance
-  late Future<Instance> Function() _instanceCreator;
+  late Instance Function() _instanceCreator;
   Instance? _instance;
 
-  @override
-  bool isAsync(Input? input) => true;
-
-  /// Inititalizes wrapper
   @mustCallSuper
   @override
-  Future<void> initializeAsync(Input? input) async {
-    await super.initializeAsync(input);
+  void initialize(Input? input) {
+    super.initialize(input);
 
-    _instanceCreator = () => provideInstance(input);
+    _instanceCreator = () {
+      return provideInstance(input);
+    };
 
-    await initializeDependenciesAsync(input);
+    initializeDependencies(input);
 
     initialized = true;
   }
@@ -84,17 +71,21 @@ abstract class AsyncBaseWrapper<Instance, Input> extends MvvmInstance<Input?>
     super.dispose();
 
     disposeDependencies();
+    cancelAllRequests();
 
     initialized = false;
   }
 
+  /// Inititalizes wrapper
+  @mustCallSuper
+  @override
+  Future<void> initializeAsync(Input? input) async {
+    await initializeDependenciesAsync(input);
+  }
+
   /// Creates actual object instance
-  Future<Instance> provideInstance(Input? input);
+  Instance provideInstance(Input? input);
 
   /// actual object instance
-  Future<Instance> get instance =>
-      _instance == null ? _instanceCreator() : Future.value(_instance);
-
-  /// actual object instance
-  Instance unwrapInstance() => _instance!;
+  Instance get instance => _instance == null ? _instanceCreator() : _instance!;
 }
