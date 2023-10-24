@@ -623,7 +623,7 @@ class StripeWrapper extends BaseWrapper<String> {
 
 or singleton wrapper:
 
-```dart
+```t
 @singleton
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
@@ -635,6 +635,36 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
 ```
 
 Instances can be then obtained using <b>app.instances.get<T>()</b>
+
+### Parts
+
+To split logic in large instances you can create <b>parts</b>
+Part is instance type that has reference to parent mvvm instance
+Part can receive events and can't have separate state or dependencies
+
+Here is an example:
+
+```dart
+@instancePart
+class TestInteractorPart extends BaseInstancePart<PostsInteractor> {
+  void testUpdate() {
+    parentInstance.updateState(parentInstance.state.copyWith(
+      active: false,
+    ));
+  }
+}
+
+@basicInstance
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
+    with LikePostMixin {
+  @override
+  List<Type> parts(Map<String, dynamic>? input) => [
+        TestInteractorPart,
+      ];
+
+  late final testPart = useInstancePart<TestInteractorPart>();
+}
+```
 
 ### Connectors
 
@@ -835,6 +865,8 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 ```
 
 View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>.
+
+To split logic in large view model you can also create <b>parts</b> for this view model
 
 ### View
 

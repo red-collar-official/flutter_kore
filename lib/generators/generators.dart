@@ -86,7 +86,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     // ignore: prefer_foreach
     for (final element in instances) {
-      if (element.singleton && !element.lazy) {
+      if (element.singleton && !element.lazy && !element.part) {
         classBuffer.writeln(
           'connectors.${uncapitalize(element.name)}Connector(),',
         );
@@ -148,6 +148,10 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     List<InstanceJsonModel> instances,
   ) {
     for (final element in instances) {
+      if (element.part) {
+        continue;
+      }
+
       final nameOfElementClass = element.name;
       final nameOfInputType = element.inputType;
       final asyncValue = element.async;
@@ -183,6 +187,10 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     List<InstanceJsonModel> collection,
   ) {
     for (final element in collection) {
+      if (element.part) {
+        continue;
+      }
+
       generateConnectorCallForElement(classBuffer, element);
     }
   }

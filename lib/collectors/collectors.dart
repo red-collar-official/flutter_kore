@@ -28,6 +28,7 @@ class InstancesCollectorGenerator extends Generator {
           ?.typeValue
           .getDisplayString(withNullability: false);
       final asyncValue = element.annotation.peek('async')?.boolValue ?? false;
+      final partValue = element.annotation.peek('part')?.boolValue ?? false;
       final awaitInitialization =
           element.annotation.peek('awaitInitialization')?.boolValue ?? false;
       final order = element.annotation
@@ -47,6 +48,7 @@ class InstancesCollectorGenerator extends Generator {
         awaitInitialization: awaitInitialization,
         initializationOrder: order,
         async: asyncValue,
+        part: partValue,
       ));
     }
 

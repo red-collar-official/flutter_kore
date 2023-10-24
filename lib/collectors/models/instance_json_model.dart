@@ -6,6 +6,7 @@ class InstanceJsonModel {
   final bool awaitInitialization;
   final int? initializationOrder;
   final bool async;
+  final bool part;
 
   InstanceJsonModel({
     required this.name,
@@ -15,12 +16,14 @@ class InstanceJsonModel {
     required this.awaitInitialization,
     required this.initializationOrder,
     required this.async,
+    required this.part,
   });
 
   factory InstanceJsonModel.fromJson(Map<dynamic, dynamic> json) {
     return InstanceJsonModel(
       name: json['name'],
       async: json['async'],
+      part: json['part'],
       singleton: json['singleton'],
       lazy: json['lazy'],
       inputType: json['inputType'],
@@ -33,6 +36,7 @@ class InstanceJsonModel {
         'name': name,
         'singleton': singleton,
         'lazy': lazy,
+        'part': part,
         'async': async,
         'inputType': inputType,
         'awaitInitialization': awaitInitialization,

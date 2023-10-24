@@ -157,3 +157,4 @@ linter:
     - secure_pubspec_urls
     - sized_box_for_whitespace
     - sized_box_shrink_expand
+    - avoid_type_to_string

@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
-import 'event_bus.dart';
-import 'store.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Base class that subscribe to event bus events
 abstract class EventBusReceiver {
@@ -20,6 +18,7 @@ abstract class EventBusReceiver {
   List<EventBusSubscriber> subscribe() => [];
 
   final Map<Type, EventBusSubscriber> _subscribers = {};
+  final List<Type> _receivedEvents = [];
 
   bool _paused = false;
   final _eventsReceivedWhilePaused = [];
@@ -72,6 +71,10 @@ abstract class EventBusReceiver {
         return;
       }
 
+      if (UMvvmApp.isInTestMode) {
+        _receivedEvents.add(event.runtimeType);
+      }
+
       processor(event as T);
     }
 
@@ -102,5 +105,11 @@ abstract class EventBusReceiver {
     }
 
     _eventsReceivedWhilePaused.clear();
+  }
+
+  /// Returns true if underlying events list contains given event name
+  @visibleForTesting
+  bool checkEventWasReceived(Type event) {
+    return _receivedEvents.contains(event);
   }
 }

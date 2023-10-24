@@ -16,6 +16,7 @@ class Instance {
   final int? initializationOrder;
   final bool awaitInitialization;
   final bool async;
+  final bool part;
 
   const Instance({
     this.inputType = Map<String, dynamic>,
@@ -24,6 +25,7 @@ class Instance {
     this.initializationOrder,
     this.async = false,
     this.awaitInitialization = false,
+    this.part = false,
   });
 }
 
@@ -38,6 +40,13 @@ class Instance {
 /// }
 /// ```
 const basicInstance = Instance();
+
+/// Annotate class as mvvm instance part
+/// ```dart
+/// @instancePart
+/// class NavigationPart extends BaseInstancePart<NavigationInteractor> {
+/// ```
+const instancePart = Instance(part: true);
 
 /// Annotate class as singleton mvvm instance
 /// ```dart

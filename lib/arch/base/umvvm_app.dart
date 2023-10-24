@@ -156,4 +156,6 @@ abstract class UMvvmApp<
   static LocaleCachePutDelegate cachePutDelegate = (key, value) async {
     return true;
   };
+
+  static bool isInTestMode = false;
 }

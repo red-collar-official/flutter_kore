@@ -8,3 +8,4 @@ export 'umvvm_app.dart';
 export 'observable.dart';
 export 'store.dart';
 export 'apis_caller.dart';
+export 'base_instance_part.dart';

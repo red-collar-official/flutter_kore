@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Basic Event bus implementation
 /// You can [send] events and [streamOf] to stream of event callbacks or collection of events callbacks with [streamOfCollection]
@@ -52,7 +53,7 @@ class EventBus {
 
   /// Sends event to stream controller
   void send(dynamic event) {
-    if (kDebugMode) {
+    if (UMvvmApp.isInTestMode) {
       _events.add(event);
     }
 
