@@ -1338,7 +1338,6 @@ UMvvmApp.isInTestMode = true;
 Also you need to register instances if they are used in test
 
 ```dart
-UMvvmApp.isInTestMode = true;
 setUp(() async {
   UMvvmApp.isInTestMode = true;
 
