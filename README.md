@@ -1325,6 +1325,55 @@ Button(
 
 ```
 
+## Tests
+
+There are several helper methods for tests
+
+Before tests you need set test mode flag
+
+```dart
+UMvvmApp.isInTestMode = true;
+```
+
+Also you need to register instances if they are used in test
+
+```dart
+UMvvmApp.isInTestMode = true;
+setUp(() async {
+  UMvvmApp.isInTestMode = true;
+
+  app.registerInstances();
+  await app.createSingletons();
+});
+```
+
+Mock instances can be registered with instance collection
+
+```dart
+app.instances.addTest<PostInteractor>(BaseScopes.global, postInteractor);
+```
+
+Test view models can be passed as params to mvvm widgets:
+
+```dart
+final widget = PostView(
+  post: Post(
+    title: 'TestTitle',
+    body: 'TestBody',
+    id: 1,
+  ),
+  viewModel: MockViewModel(),
+);
+```
+
+To check that event was sent and received you can use following methods:
+
+```dart
+app.eventBus.checkEventWasSent(EnsureCloseRequestedEvent);
+
+postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent);
+```
+
 Important note:
 
 If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/)
