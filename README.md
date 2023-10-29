@@ -1,6 +1,6 @@
 # UMVVM library
 
-[![Tests code coverage status](coverage/coverage_badge.svg)]
+![Tests code coverage status](coverage/coverage_badge.svg)
 
 Set of classes for Flutter app architecture
 
