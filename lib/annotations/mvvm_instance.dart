@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Annotate class as custom mvvm instance
 /// ```dart
 /// @Instance(inputType: String, singleton: true)
@@ -44,9 +46,16 @@ const basicInstance = Instance();
 /// Annotate class as mvvm instance part
 /// ```dart
 /// @instancePart
-/// class NavigationPart extends BaseInstancePart<NavigationInteractor> {
+/// class NavigationPart extends BaseInstancePart<int, NavigationInteractor> {
 /// ```
 const instancePart = Instance(part: true);
+
+/// Annotate class as async mvvm instance part
+/// ```dart
+/// @asyncInstancePart
+/// class NavigationPart extends BaseInstancePart<int, NavigationInteractor> {
+/// ```
+const asyncInstancePart = Instance(part: true, async: true);
 
 /// Annotate class as singleton mvvm instance
 /// ```dart

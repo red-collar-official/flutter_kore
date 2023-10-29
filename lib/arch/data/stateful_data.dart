@@ -1,5 +1,11 @@
+import 'package:umvvm/umvvm.dart';
+
 sealed class StatefulData<T> {
   T unwrap() {
+    if (this is! SuccessData<T>) {
+      throw IllegalStateException(message: 'Not a success data');
+    }
+
     return (this as SuccessData<T>).result;
   }
 

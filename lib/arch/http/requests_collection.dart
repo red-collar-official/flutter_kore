@@ -54,6 +54,10 @@ class RequestCollection {
   }
 
   void removeAllRequests() {
-    requests.removeRange(0, requests.length - 1);
+    if (requests.isEmpty) {
+      return;
+    }
+
+    requests.removeRange(0, requests.length);
   }
 }

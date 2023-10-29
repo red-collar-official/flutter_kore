@@ -24,6 +24,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
         DependentMvvmInstance<Widget>,
         ApiCaller<Widget> {
   /// Function to be executed after initState
+  // coverage:ignore-start
   void onLaunch(Widget widget);
 
   /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
@@ -39,6 +40,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     FocusManager.instance.primaryFocus?.unfocus();
   }
+  // coverage:ignore-end
 
   @mustCallSuper
   @override
@@ -46,9 +48,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     super.initialize(input);
 
     initializeStore(initialState(input));
-
     initializeDependencies(input);
-
     restoreCachedStateAsync();
 
     initialized = true;
@@ -67,6 +67,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @mustCallSuper
   @override
   Future<void> initializeAsync(Widget input) async {
+    await super.initializeAsync(input);
     await initializeDependenciesAsync(input);
   }
 
@@ -74,6 +75,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @override
   void initializeWithoutConnections(Widget input) {
     initializeStore(initialState(input));
+    initializeDependenciesWithoutConnections(input);
 
     initialized = true;
   }
@@ -82,6 +84,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @override
   Future<void> initializeWithoutConnectionsAsync(Widget input) async {
     initializeStore(initialState(input));
+    await initializeDependenciesWithoutConnectionsAsync(input);
 
     initialized = true;
   }

@@ -18,6 +18,7 @@ abstract class NavigationViewModel<Widget extends StatefulWidget, State>
   }
 }
 
+// coverage:ignore-start
 abstract class NavigationView<View extends BaseWidget, ScreenState,
         ViewModel extends NavigationViewModel<View, ScreenState>>
     extends BaseView<View, ScreenState, ViewModel> {
@@ -44,3 +45,4 @@ abstract class NavigationView<View extends BaseWidget, ScreenState,
     }
   }
 }
+// coverage:ignore-end

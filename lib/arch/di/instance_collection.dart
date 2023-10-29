@@ -9,7 +9,7 @@ typedef DefaultInputType = Map<String, dynamic>;
 
 /// Main class to store instances of mvvm elements
 /// Contains internal methods to manage instances
-class InstanceCollection {
+class InstanceCollection extends InstanceCollectionInterface {
   final container = ScopedContainer<MvvmInstance>();
 
   final builders = HashMap<String, Function>();
@@ -18,9 +18,12 @@ class InstanceCollection {
 
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
+  @override
   void proone() {
     container.proone((object) {
-      object.disposeAsync();
+      if (!object.isDisposed) {
+        object.dispose();
+      }
     });
   }
 
@@ -34,17 +37,6 @@ class InstanceCollection {
   void addExisting(
     String scope,
     MvvmInstance instance,
-    DefaultInputType? params,
-  ) {
-    return addExistingWithParams<DefaultInputType>(scope, instance, params);
-  }
-
-  /// Adds existing instance in collection
-  /// Also calls [initialize] for this instance
-  void addExistingWithParams<InputState>(
-    String scope,
-    MvvmInstance instance,
-    InputState? params,
   ) {
     final id = instance.runtimeType.toString();
 
@@ -56,14 +48,17 @@ class InstanceCollection {
   }
 
   /// Adds builder for given instance type
+  @override
   void addBuilder<Instance extends MvvmInstance>(Function builder) {
     final id = Instance.toString();
+
     builders[id] = builder;
   }
 
   /// Adds test instance for given instance type
   /// Used only for tests
   @visibleForTesting
+  @override
   void addTest<Instance extends MvvmInstance>(
     String scope,
     MvvmInstance instance, {
@@ -96,11 +91,14 @@ class InstanceCollection {
   }
 
   /// Utility method to print instances map
+  // coverage:ignore-start
   void printMap() {
     container.debugPrintMap();
   }
+  // coverage:ignore-end
 
   /// Tries to find object in scope
+  @override
   InstanceType? find<InstanceType>(String scope) {
     return container.find<InstanceType>(scope);
   }
@@ -108,12 +106,18 @@ class InstanceCollection {
   static final InstanceCollection _singletonInstanceCollection =
       InstanceCollection._internal();
 
-  static InstanceCollection get instance {
+  // coverage:ignore-start
+  static InstanceCollectionInterface get instance {
+    return _singletonInstanceCollection;
+  }
+  // coverage:ignore-end
+
+  static InstanceCollection get implementationInstance {
     return _singletonInstanceCollection;
   }
 
   // ignore: prefer_constructors_over_static_methods
-  static InstanceCollection newInstance() {
+  static InstanceCollectionInterface newInstance() {
     return InstanceCollection._internal();
   }
 
@@ -123,44 +127,61 @@ class InstanceCollection {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
-  Future<Instance> getUniqueAsync<Instance extends MvvmInstance>() {
+  @override
+  Future<Instance> getUniqueAsync<Instance extends MvvmInstance>({
+    bool withoutConnections = false,
+  }) {
     final id = Instance.toString();
 
-    return constructAndInitializeInstanceAsync<Instance>(id);
+    return constructAndInitializeInstanceAsync<Instance>(
+      id,
+      withNoConnections: withoutConnections,
+    );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   Future<Instance>
       getUniqueWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
+    bool withoutConnections = false,
   }) {
     final id = Instance.toString();
 
-    return constructAndInitializeInstanceAsync<Instance>(id, params: params);
-  }
-
-  /// Return instance for given type
-  /// Also calls [initialize] for this instance
-  Future<Instance> getAsync<Instance extends MvvmInstance>({
-    DefaultInputType? params,
-    int? index,
-    String scope = BaseScopes.global,
-  }) {
-    return getWithParamsAsync<Instance, DefaultInputType?>(
+    return constructAndInitializeInstanceAsync<Instance>(
+      id,
       params: params,
-      index: index,
-      scope: scope,
+      withNoConnections: withoutConnections,
     );
   }
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
+  @override
+  Future<Instance> getAsync<Instance extends MvvmInstance>({
+    DefaultInputType? params,
+    int? index,
+    String scope = BaseScopes.global,
+    bool withoutConnections = false,
+  }) {
+    return getWithParamsAsync<Instance, DefaultInputType?>(
+      params: params,
+      index: index,
+      scope: scope,
+      withoutConnections: withoutConnections,
+    );
+  }
+
+  /// Return instance for given type
+  /// Also calls [initialize] for this instance
+  @override
   Future<Instance>
       getWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
-    required String scope,
+    String scope = BaseScopes.global,
+    bool withoutConnections = false,
   }) {
     final runtimeType = Instance.toString();
 
@@ -169,32 +190,36 @@ class InstanceCollection {
       params: params,
       index: index,
       scopeId: scope,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   Future<MvvmInstance> getUniqueByTypeStringWithParamsAsync<InputState>(
     String type, {
     InputState? params,
-    bool withNoConnections = false,
+    bool withoutConnections = false,
   }) async {
     final id = type;
 
     return constructAndInitializeInstanceAsync(
       id,
       params: params,
-      withNoConnections: withNoConnections,
+      withNoConnections: withoutConnections,
     );
   }
 
   /// Similar to get
   /// Also calls [initialize] for this instance
+  @override
   Future<MvvmInstance> getByTypeStringWithParamsAsync<InputState>(
     String type,
     InputState? params,
     int? index,
     String scope,
+    bool withoutConnections,
   ) {
     final runtimeType = type;
 
@@ -203,11 +228,13 @@ class InstanceCollection {
       params: params,
       index: index,
       scopeId: scope,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Adds instance in collection
   /// Also calls [initialize] for this isntance
+  @override
   Future<void> addAsync(
     String type,
     DefaultInputType? params, {
@@ -275,6 +302,7 @@ class InstanceCollection {
     dynamic params,
     int? index,
     String? scopeId,
+    bool withoutConnections = false,
   }) async {
     final scope = scopeId ?? BaseScopes.global;
 
@@ -300,8 +328,13 @@ class InstanceCollection {
     ) as Instance;
 
     if (!instance.initialized) {
-      instance.initialize(params);
-      await instance.initializeAsync(params);
+      if (withoutConnections) {
+        instance.initializeWithoutConnections(params);
+        await instance.initializeWithoutConnectionsAsync(params);
+      } else {
+        instance.initialize(params);
+        await instance.initializeAsync(params);
+      }
     }
 
     return instance;
@@ -311,51 +344,72 @@ class InstanceCollection {
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   Instance getUnique<Instance extends MvvmInstance>({
     DefaultInputType? params,
-    bool withNoConnections = false,
+    bool withoutConnections = false,
   }) {
     return getUniqueWithParams<Instance, DefaultInputType?>(
       params: params,
-      withNoConnections: withNoConnections,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   Instance getUniqueWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
-    bool withNoConnections = false,
+    bool withoutConnections = false,
   }) {
     final id = Instance.toString();
 
     return constructAndInitializeInstance<Instance>(
       id,
       params: params,
-      withNoConnections: withNoConnections,
+      withNoConnections: withoutConnections,
     );
+  }
+
+  /// Forcibly tries to get instance for type
+  @visibleForTesting
+  @override
+  Instance forceGet<Instance extends MvvmInstance>({
+    int? index,
+    String scope = BaseScopes.global,
+  }) {
+    return container.getObjectInScope(
+      type: Instance.toString(),
+      scopeId: scope,
+      index: index ?? 0,
+    ) as Instance;
   }
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
+  @override
   Instance get<Instance extends MvvmInstance>({
     DefaultInputType? params,
     int? index,
     String scope = BaseScopes.global,
+    bool withoutConnections = false,
   }) {
     return getWithParams<Instance, DefaultInputType?>(
       params: params,
       index: index,
       scope: scope,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Return instance for given type
   /// Also calls [initialize] for this instance
+  @override
   Instance getWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
-    required String scope,
+    String scope = BaseScopes.global,
+    bool withoutConnections = false,
   }) {
     final runtimeType = Instance.toString();
 
@@ -364,46 +418,51 @@ class InstanceCollection {
       params: params,
       index: index,
       scopeId: scope,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   MvvmInstance getUniqueByTypeStringWithParams<InputState>(
     String type, {
     InputState? params,
-    bool withNoConnections = false,
+    bool withoutConnections = false,
   }) {
     final id = type;
 
     return constructAndInitializeInstance(
       id,
       params: params,
-      withNoConnections: withNoConnections,
+      withNoConnections: withoutConnections,
     );
   }
 
   /// Similar to get, but create new instance every time
   /// Also calls [initialize] for this instance
+  @override
   MvvmInstance getUniqueByTypeString(
     String type, {
     DefaultInputType? params,
-    bool withNoConnections = false,
+    bool withoutConnections = false,
   }) {
     return getUniqueByTypeStringWithParams<DefaultInputType?>(
       type,
       params: params,
-      withNoConnections: withNoConnections,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Similar to get
   /// Also calls [initialize] for this instance
+  @override
   MvvmInstance getByTypeStringWithParams<InputState>(
     String type,
     InputState? params,
     int? index,
     String scope,
+    bool withoutConnections,
   ) {
     final runtimeType = type;
 
@@ -412,27 +471,32 @@ class InstanceCollection {
       params: params,
       index: index,
       scopeId: scope,
+      withoutConnections: withoutConnections,
     );
   }
 
   /// Similar to get
   /// Also calls [initialize] for this instance
+  @override
   MvvmInstance getByTypeString(
     String type,
     DefaultInputType? params,
     int? index,
     String scope,
+    bool withoutConnections,
   ) {
     return getByTypeStringWithParams<DefaultInputType>(
       type,
       params,
       index,
       scope,
+      withoutConnections,
     );
   }
 
   /// Adds instance in collection
   /// Also calls [initialize] for this isntance
+  @override
   void add(
     String type,
     DefaultInputType? params, {
@@ -440,6 +504,30 @@ class InstanceCollection {
     String? scope,
   }) {
     return addWithParams<DefaultInputType>(type, params, scope: scope);
+  }
+
+  /// Adds instance in collection
+  /// Also calls [initialize] for this isntance
+  @override
+  @visibleForTesting
+  void addUninitialized<InputState>(
+    String type,
+    InputState? params, {
+    int? index,
+    String? scope,
+  }) {
+    final id = type;
+    final scopeId = scope ?? BaseScopes.global;
+
+    final builder = builders[id];
+
+    final newInstance = builder!();
+
+    container.addObjectInScope(
+      object: newInstance,
+      type: type,
+      scopeId: scopeId,
+    );
   }
 
   /// Adds instance in collection
@@ -495,6 +583,7 @@ class InstanceCollection {
     dynamic params,
     int? index,
     String? scopeId,
+    bool withoutConnections = false,
   }) {
     final scope = scopeId ?? BaseScopes.global;
 
@@ -520,9 +609,23 @@ class InstanceCollection {
     ) as Instance;
 
     if (!instance.initialized) {
-      instance.initialize(params);
+      if (withoutConnections) {
+        instance.initializeWithoutConnections(params);
+      } else {
+        instance.initialize(params);
+      }
     }
 
     return instance;
+  }
+
+  @override
+  void decreaseReferencesInScope(String scope, Type type, {int index = 0}) {
+    container.decreaseReferences(scope, type, index: index);
+  }
+
+  @override
+  void increaseReferencesInScope(String scope, Type type, {int index = 0}) {
+    container.increaseReferencesInScope(scope, type, index: index);
   }
 }

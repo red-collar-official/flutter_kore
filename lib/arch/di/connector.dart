@@ -1,13 +1,15 @@
+// coverage:ignore-file
+
 import 'package:umvvm/arch/di/base_scopes.dart';
 
-/// Class containing interactor type to connect to given view model
+/// Class containing instance type to connect to given instance
 ///
 /// ```dart
 /// class PostViewModel extends BaseViewModel<PostView, PostViewState> {
 ///   @override
 ///   List<Connector> dependsOn(PostView widget) => [
-///         Connector(interactor: ShareInteractor),
-///         Connector(interactor: PostInteractor, scope: BaseScopes.unique),
+///         Connector(type: ShareInteractor),
+///         Connector(type: PostInteractor, scope: BaseScopes.unique),
 ///       ];
 /// }
 /// ```
@@ -85,3 +87,66 @@ class AsyncConnectorCall<InstanceType, InputStateType>
 }
 
 class DefaultConnector<T> extends ConnectorCall<T, Map<String, dynamic>?> {}
+
+/// Class containing instance part type to connect to given instance
+///
+/// ```dart
+/// class PostViewModel extends BaseViewModel<PostView, PostViewState> {
+///   @override
+///   List<PartConnector> parts(PostView widget) => [
+///         PartConnector(type: ShareInteractorPart),
+///         PartConnector(type: PostInteractorPart, input: 1),
+///       ];
+/// }
+/// ```
+class PartConnector extends Connector {
+  const PartConnector({
+    required super.type,
+    super.input,
+    super.inputForIndex,
+    super.count = 1,
+    super.async = false,
+    super.awaitInitialization = false,
+    super.withoutConnections = false,
+  }) : super(
+          scope: BaseScopes.unique,
+          initializationOrder: null,
+        );
+}
+
+/// Callable proxy class for [PartConnector]
+class PartConnectorCall<InstanceType, InputStateType> {
+  PartConnector call({
+    InputStateType? input,
+    InputStateType? Function(int)? inputForIndex,
+    int count = 1,
+    bool withoutConnections = false,
+  }) {
+    return PartConnector(
+      input: input,
+      inputForIndex: inputForIndex,
+      count: count,
+      type: InstanceType,
+      withoutConnections: withoutConnections,
+    );
+  }
+}
+
+/// Callable proxy class for [PartConnector]
+class AsyncPartConnectorCall<InstanceType, InputStateType> {
+  PartConnector call({
+    InputStateType? input,
+    InputStateType? Function(int)? inputForIndex,
+    int count = 1,
+    bool withoutConnections = false,
+  }) {
+    return PartConnector(
+      input: input,
+      inputForIndex: inputForIndex,
+      count: count,
+      type: InstanceType,
+      async: true,
+      withoutConnections: withoutConnections,
+    );
+  }
+}

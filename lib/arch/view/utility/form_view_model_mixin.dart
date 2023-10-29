@@ -96,7 +96,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   /// Runs action when submitting form
   Future<void> submit();
 
-  /// Function where you can add additional checks to form 
+  /// Function where you can add additional checks to form
   /// besides of registered validators
   Future<bool> additionalCheck() async {
     return true;
@@ -130,6 +130,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   }
 
   /// Brings view to the center of the screen
+  // coverage:ignore-start
   void ensureVisible(GlobalKey key, {double alignment = 0.3}) async {
     try {
       await Scrollable.ensureVisible(
@@ -141,4 +142,5 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
       // ignore
     }
   }
+  // coverage:ignore-end
 }

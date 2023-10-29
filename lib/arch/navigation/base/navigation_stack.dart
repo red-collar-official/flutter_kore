@@ -19,11 +19,11 @@ class NavigationStack<AppTabType> {
   });
 
   late final globalNavigationStack = GlobalNavigationStack<AppTabType>(
-    routeStack: routeStack,
+    routeStackBuilder: routeStack,
   );
 
   late final tabNavigationStack = TabNavigationStack<AppTabType>(
-    tabRouteStack: tabRouteStack,
+    tabRouteStackBuilder: tabRouteStack,
   );
 
   BaseNavigationStack _getStack(bool global) {
@@ -97,6 +97,7 @@ class NavigationStack<AppTabType> {
     Object? id,
   }) {
     final stack = _getStack(global);
+    
     stack.replaceStack(
       routeName: routeName,
       tab: tab,

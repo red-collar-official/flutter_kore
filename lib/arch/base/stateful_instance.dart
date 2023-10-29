@@ -93,7 +93,6 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
       return;
     }
 
-    final stateId = state.runtimeType.toString();
     final stateFromCacheJsonString = UMvvmApp.cacheGetDelegate(stateId);
 
     if (stateFromCacheJsonString.isEmpty) {
@@ -159,5 +158,10 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
     _store.dispose();
   }
 
+  /// Stream of all state updates
+  Stream<State> get stateStream => _store.stream;
+
   State initialState(Input input);
+
+  String get stateId => state.runtimeType.toString();
 }

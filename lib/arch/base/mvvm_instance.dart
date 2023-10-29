@@ -9,12 +9,31 @@ import 'package:umvvm/umvvm.dart';
 abstract class MvvmInstance<T> extends EventBusReceiver {
   bool initialized = false;
 
-  final _parts = HashMap<Type, BaseInstancePart>();
+  /// Flag indicating that this instance is disposed
+  /// Store can't be used if this flag is true
+  bool _isDisposed = false;
 
-  bool isAsync(T input) => false;
+  /// Flag indicating that this instance is disposed
+  /// Store can't be used if this flag is true
+  bool get isDisposed => _isDisposed;
 
-  List<Type> parts(T input) => [];
+  final _parts = HashMap<Type, List<BaseInstancePart>>();
+  late List<PartConnector> _partsConnectors;
 
+  /// Function that returns true if instance contains async parts
+  /// or require async initialization
+  /// If you override this method always use super.isAsync
+  /// if you not always returning true
+  // coverage:ignore-start
+  bool isAsync(T input) {
+    return parts(input).indexWhere((element) => element.async) != -1;
+  }
+  // coverage:ignore-end
+
+  List<PartConnector> parts(T input) => [];
+
+  /// Base method for instance initialization
+  /// After you call this method set [initialized] flag to true
   @mustCallSuper
   void initialize(T input) {
     initializeSub();
@@ -22,46 +41,161 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     initializeInstanceParts(input);
   }
 
+  /// Base method for instance dispose
+  /// After you call this method set [initialized] flag to false
   @mustCallSuper
   void dispose() {
     disposeSub();
 
-    _parts.forEach((key, value) {
-      value.dispose();
+    _parts.forEach((key, partsList) {
+      for (final value in partsList) {
+        value.dispose();
+      }
     });
+
+    _isDisposed = true;
   }
 
-  Future<void> initializeAsync(T input) async {}
-
+  /// Base method for async instance initialization
   @mustCallSuper
-  Future<void> disposeAsync() async {
-    dispose();
+  Future<void> initializeAsync(T input) async {
+    await _initializeInstancePartsAsync(input);
   }
 
-  void initializeWithoutConnections(T input) {}
+  /// Base method for lightweight instance initialization
+  // coverage:ignore-start
+  void initializeWithoutConnections(T input) {
+    _partsConnectors = parts(input);
+  }
+  // coverage:ignore-end
 
-  Future<void> initializeWithoutConnectionsAsync(T input) async {}
+  /// Base method for lightweight async instance initialization
+  // coverage:ignore-start
+  Future<void> initializeWithoutConnectionsAsync(T input) async {
+    _partsConnectors = parts(input);
+  }
+  // coverage:ignore-end
 
-  InstancePartType
-      useInstancePart<InstancePartType extends BaseInstancePart>() {
-    return _parts[InstancePartType] as InstancePartType;
+  /// Returns initialized instance part for given type
+  InstancePartType useInstancePart<InstancePartType extends BaseInstancePart>({
+    int index = 0,
+  }) {
+    if (_parts[InstancePartType] == null) {
+      throw IllegalStateException(
+        message: 'Part $InstancePartType is not connected.',
+      );
+    }
+
+    if (index < 0 || index >= _parts[InstancePartType]!.length) {
+      throw IllegalArgumentException(
+        message:
+            'The [index] value must be non-negative and less than count of parts of [type].',
+      );
+    }
+
+    return _parts[InstancePartType]![index] as InstancePartType;
   }
 
+  /// Adds parts to local collection
   void initializeInstanceParts(T input) {
-    parts(input).forEach((element) {
-      final part = InstanceCollection.instance.getUniqueByTypeString(
-        element.toString(),
+    _partsConnectors = parts(input);
+
+    for (final element in _partsConnectors) {
+      if (element.count != 1) {
+        _parts[element.type] = List.empty(growable: true);
+
+        final list = _parts[element.type]!;
+
+        for (var i = 0; i < element.count; i++) {
+          final part =
+              InstanceCollection.instance.getUniqueByTypeStringWithParams(
+            element.type.toString(),
+            params: element.inputForIndex != null
+                ? element.inputForIndex!(i)
+                : element.input,
+            withoutConnections: element.withoutConnections,
+          ) as BaseInstancePart;
+
+          // ignore: cascade_invocations
+          part.parentInstance = this;
+
+          list.add(part);
+        }
+
+        _parts.addAll({
+          element.type: list,
+        });
+      } else {
+        final part =
+            InstanceCollection.instance.getUniqueByTypeStringWithParams(
+          element.type.toString(),
+          params: element.input,
+          withoutConnections: element.withoutConnections,
+        ) as BaseInstancePart;
+
+        // ignore: cascade_invocations
+        part.parentInstance = this;
+
+        _parts.addAll({
+          element.type: [part],
+        });
+      }
+    }
+  }
+
+  /// Adds parts to local collection
+  Future<void> _initializeInstancePartsAsync(T input) async {
+    _partsConnectors = parts(input);
+
+    await Future.wait(
+      _partsConnectors.where((element) => element.async).map(_addAsyncPart),
+    );
+
+    onAllPartReady();
+  }
+
+  /// Adds parts to local collection
+  Future<void> _addAsyncPart(PartConnector element) async {
+    if (element.count != 1) {
+      _parts[element.type] = List.empty(growable: true);
+
+      final list = _parts[element.type]!;
+
+      Future<void> add(int index) async {
+        final part = await InstanceCollection.instance
+            .getUniqueByTypeStringWithParamsAsync(
+          element.type.toString(),
+          params: element.inputForIndex != null
+              ? element.inputForIndex!(index)
+              : element.input,
+          withoutConnections: element.withoutConnections,
+        ) as BaseInstancePart;
+
+        list.add(part);
+
+        onAsyncPartReady(element.type, index: index);
+      }
+
+      await Future.wait([
+        for (var i = 0; i < element.count; i++) add(i),
+      ]);
+    } else {
+      final instance = await InstanceCollection.instance
+          .getUniqueByTypeStringWithParamsAsync(
+        element.type.toString(),
+        params: element.input,
+        withoutConnections: element.withoutConnections,
       ) as BaseInstancePart;
 
-      // ignore: cascade_invocations
-      part
-        ..parentInstance = this
-        // ignore: void_checks
-        ..initialize(input);
+      _parts[element.type] = [instance];
 
-      _parts.addAll({
-        element: part,
-      });
-    });
+      onAsyncPartReady(element.type);
+    }
   }
+
+  /// Runs for every async part when it is initialized
+  void onAsyncPartReady(Type type, {int? index}) {}
+
+  /// Runs for every async part when it is initialized
+  void onAllPartReady() {}
 }

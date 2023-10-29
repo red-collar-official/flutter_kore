@@ -4,13 +4,13 @@ import 'base_navigation_stack.dart';
 
 class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
-  final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStack;
+  final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStackBuilder;
 
   late final Map<AppTabType, List<UIRouteModel>> _tabRouteStack =
-      tabRouteStack();
+      tabRouteStackBuilder();
 
   TabNavigationStack({
-    required this.tabRouteStack,
+    required this.tabRouteStackBuilder,
   });
 
   Map<AppTabType, List<UIRouteModel>> get stack => _tabRouteStack;
@@ -120,6 +120,6 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   void reset() {
     _tabRouteStack
       ..clear()
-      ..addAll(tabRouteStack());
+      ..addAll(tabRouteStackBuilder());
   }
 }

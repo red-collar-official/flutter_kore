@@ -1,13 +1,11 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:umvvm/arch/http/requests_collection.dart';
-
-import 'base_request.dart';
+import 'package:flutter/foundation.dart';
+import 'package:umvvm/umvvm.dart';
 
 typedef RetryHandler = Future<dynamic> Function();
 typedef AuthHandler = void Function(dio.Dio dio);
@@ -45,6 +43,10 @@ typedef AuthHandler = void Function(dio.Dio dio);
 /// ```
 abstract class RequestImplementation<T> extends BaseRequest<T> {
   var cancelToken = dio.CancelToken();
+  late final _dio = _buildClient();
+
+  @visibleForTesting
+  bool forceReturnNullFromRequest = false;
 
   RequestImplementation() : super();
 
@@ -74,6 +76,14 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
   @override
   Future<Response<T>> execute() async {
+    if (baseUrl?.isEmpty ?? true) {
+      throw IllegalArgumentException(message: 'Base url not set');
+    }
+
+    if (url?.isEmpty ?? true) {
+      throw IllegalArgumentException(message: 'Path url not set');
+    }
+
     requestCollection.addRequest(this);
 
     unawaited(getFromDatabase());
@@ -90,7 +100,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       return _simulateServerResponse();
     }
 
-    final client = _buildClient();
+    final client = _dio;
 
     dynamic data;
 
@@ -109,7 +119,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     final response = simulateResponse ?? (await _startRequest(client, data));
 
-    if (response == null) {
+    if (response == null || forceReturnNullFromRequest) {
       requestCollection.removeRequest(this);
 
       return processNoResponse();
@@ -137,7 +147,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
         return Response<T>(
           code: 0,
-          error: 'not_recognized_error',
+          error: NotRecognizedHttpException(message: 'Unknown error'),
         );
       }
     }
@@ -177,7 +187,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
       return Response<T>(
         code: 0,
-        error: 'not_recognized_error',
+        error: NotRecognizedHttpException(message: 'Unknown error'),
         result: databaseData,
         fromDatabase: databaseData != null,
       );
@@ -186,7 +196,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
       return Response<T>(
         code: 0,
-        error: 'not_recognized_error',
+        error: NotRecognizedHttpException(message: 'Unknown error'),
       );
     }
   }
@@ -196,16 +206,24 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     dio.Dio client,
     dynamic data,
   ) async {
-    final databaseData = await databaseGetDelegate?.call(headers);
+    try {
+      final databaseData = await databaseGetDelegate?.call(headers);
 
-    return Response<T>(
-      code: exception.response?.statusCode ?? 0,
-      headers: exception.response?.headers.map,
-      error:
-          exception.response?.data ?? exception.response?.statusMessage ?? '',
-      result: databaseData,
-      fromDatabase: databaseData != null,
-    );
+      return Response<T>(
+        code: exception.response?.statusCode ?? 0,
+        headers: exception.response?.headers.map,
+        error: exception,
+        result: databaseData,
+        fromDatabase: databaseData != null,
+      );
+    } catch (e, trace) {
+      exceptionPrint(e, trace);
+
+      return Response<T>(
+        code: 0,
+        error: NotRecognizedHttpException(message: 'Unknown error'),
+      );
+    }
   }
 
   Future<Response<T>?> simulateResultStep() async {
@@ -225,10 +243,12 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     dynamic result;
 
     if (parser == null) {
-      result = jsonDecode(simulateResponse!.data);
+      result = simulateResponse!.data;
     } else {
       result = await parser!(
-          jsonDecode(simulateResponse!.data), simulateResponse!.headers);
+        simulateResponse!.data,
+        simulateResponse!.headers,
+      );
     }
 
     await databasePutDelegate?.call(result);
@@ -307,7 +327,6 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
           await RequestCollection
               .instance.cancelReasonProcessingCompleter!.future;
-
           return _retryRequest(client, data, error);
         }
       }
@@ -368,11 +387,13 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
           data: data,
           cancelToken: cancelToken,
         );
+      // coverage:ignore-start
       default:
         return client.get(
           Uri.encodeFull(url ?? ''),
           cancelToken: cancelToken,
         );
+      // coverage:ignore-end
     }
   }
 
@@ -414,4 +435,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       // ignore
     }
   }
+
+  @override
+  dio.Dio? get dioInstance => _dio;
 }

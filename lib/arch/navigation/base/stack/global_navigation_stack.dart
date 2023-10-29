@@ -5,12 +5,12 @@ import 'base_navigation_stack.dart';
 class GlobalNavigationStack<AppTabType>
     extends BaseNavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
-  final List<UIRouteModel> Function() routeStack;
+  final List<UIRouteModel> Function() routeStackBuilder;
 
-  late final List<UIRouteModel> _routeStack = routeStack();
+  late final List<UIRouteModel> _routeStack = routeStackBuilder();
 
   GlobalNavigationStack({
-    required this.routeStack,
+    required this.routeStackBuilder,
   });
 
   List<UIRouteModel> get stack => _routeStack;

@@ -1,12 +1,9 @@
 import 'dart:async';
 
-import 'event_bus.dart';
-import 'observable.dart';
+import 'package:umvvm/umvvm.dart';
 
 typedef StateUpdater<State> = void Function(State state);
 typedef StoreMapper<Value, State> = Value Function(State state);
-
-typedef EventBusSubscriber<T> = void Function(T event);
 
 /// Class to hold store change
 class StoreChange<Value> {
@@ -23,7 +20,17 @@ class StoreChange<Value> {
 class Store<State> {
   /// Observable for [State] that belongs to this store
   late Observable<State> _state;
+
+  /// Flag indicating that this store is disposed
+  /// Store can't be used if this flag is true
+  bool _isDisposed = false;
+
+  /// Current state in store
   State get state => _state.current!;
+
+  /// Flag indicating that this store is disposed
+  /// Store can't be used if this flag is true
+  bool get isDisposed => _isDisposed;
 
   /// Main stream for all store values
   Stream<State> get stream => _state.stream.map((event) => event.next!);
@@ -51,6 +58,12 @@ class Store<State> {
   /// }
   /// ```
   void updateState(State update) {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call updateState after dispose.',
+      );
+    }
+    
     _state.update(update);
   }
 
@@ -61,7 +74,15 @@ class Store<State> {
 
   /// Disposes [Observable]
   void dispose() {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call dispose if store is already disposed.',
+      );
+    }
+
     _state.dispose();
+
+    _isDisposed = true;
   }
 
   /// Stream of new values in [state]
@@ -71,8 +92,15 @@ class Store<State> {
   /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
   /// ```
   Stream<Value> updates<Value>(StoreMapper<Value, State> mapper) {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call updates after dispose.',
+      );
+    }
+
     return _state.stream.where((element) {
-      return mapper(element.previous ?? element.next!) != mapper(element.next as State);
+      return mapper(element.previous ?? element.next!) !=
+          mapper(element.next as State);
     }).map((event) => mapper(event.next as State));
   }
 
@@ -85,6 +113,12 @@ class Store<State> {
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call changes after dispose.',
+      );
+    }
+
     return _state.stream.map((event) => StoreChange(
         mapper(event.previous ?? event.next!), mapper(event.next as State)));
   }

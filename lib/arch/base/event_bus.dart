@@ -20,8 +20,20 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 class EventBus {
+  /// Underlying controller fot this event bus
   late final StreamController _streamController;
+
+  /// Collection of events sent through event bus 
+  /// only used in test mode
   final _events = [];
+
+  /// Flag indicating that this event bus is disposed
+  /// Event bus can't be used if this flag is true 
+  bool _isDisposed = false;
+
+  /// Flag indicating that this event bus is disposed
+  /// Event bus can't be used if this flag is true 
+  bool get isDisposed => _isDisposed;
 
   EventBus._internal() {
     _streamController = StreamController.broadcast();
@@ -42,17 +54,37 @@ class EventBus {
 
   /// Return dart stream of events with particular name
   Stream<T> streamOf<T>() {
-    return _streamController.stream.where((event) => event is T).map((event) => event as T);
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call streamOf after dispose.',
+      );
+    }
+
+    return _streamController.stream
+        .where((event) => event is T)
+        .map((event) => event as T);
   }
 
   /// Return dart stream of events with particular names
   Stream streamOfCollection(List<Type> events) {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call streamOfCollection after dispose.',
+      );
+    }
+
     return _streamController.stream
         .where((event) => events.contains(event.runtimeType));
   }
 
   /// Sends event to stream controller
   void send(dynamic event) {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call send after dispose.',
+      );
+    }
+
     if (UMvvmApp.isInTestMode) {
       _events.add(event);
     }
@@ -61,13 +93,21 @@ class EventBus {
   }
 
   /// Closes underlying stream controller
-  void close() {
+  void dispose() {
+    if (_isDisposed) {
+      throw IllegalStateException(
+        message: 'Can\'t call dispose if event bus is already disposed.',
+      );
+    }
+
     _streamController.close();
+
+    _isDisposed = true;
   }
 
   /// Returns true if underlying events list contains given event name
   @visibleForTesting
   bool checkEventWasSent(Type event) {
-    return _events.contains(event);
+    return _events.indexWhere((element) => element.runtimeType == event) != -1;
   }
 }

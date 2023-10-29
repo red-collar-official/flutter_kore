@@ -148,35 +148,48 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     List<InstanceJsonModel> instances,
   ) {
     for (final element in instances) {
-      if (element.part) {
-        continue;
-      }
-
       final nameOfElementClass = element.name;
       final nameOfInputType = element.inputType;
       final asyncValue = element.async;
       final awaitInitializationValue = element.awaitInitialization;
       final orderValue = element.initializationOrder;
+      final partValue = element.part;
 
       String overridesString = '';
 
-      if (orderValue != null) {
-        overridesString += '''
+      if (!partValue) {
+        if (orderValue != null) {
+          overridesString += '''
   @override
   int? get order => $orderValue;
 ''';
-      }
+        }
 
-      if (awaitInitializationValue || orderValue != null) {
-        overridesString += '''
+        if (awaitInitializationValue || orderValue != null) {
+          overridesString += '''
   @override
   bool get awaitInitialization => $awaitInitializationValue;
 ''';
+        }
+      }
+
+      String baseClassString = '';
+
+      if (partValue) {
+        if (asyncValue) {
+          baseClassString = 'AsyncPartConnectorCall';
+        } else {
+          baseClassString = 'PartConnectorCall';
+        }
+      } else if (asyncValue) {
+        baseClassString = 'AsyncConnectorCall';
+      } else {
+        baseClassString = 'ConnectorCall';
       }
 
       classBuffer
         ..writeln(
-          'class ${nameOfElementClass}Connector extends ${asyncValue ? 'AsyncConnectorCall' : 'ConnectorCall'}<$nameOfElementClass, $nameOfInputType?> {$overridesString}',
+          'class ${nameOfElementClass}Connector extends $baseClassString<$nameOfElementClass, $nameOfInputType?> {$overridesString}',
         )
         ..writeln();
     }
@@ -187,10 +200,6 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     List<InstanceJsonModel> collection,
   ) {
     for (final element in collection) {
-      if (element.part) {
-        continue;
-      }
-
       generateConnectorCallForElement(classBuffer, element);
     }
   }

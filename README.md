@@ -1,5 +1,11 @@
 # UMVVM library
 
+[![Tests code coverage status](coverage/coverage_badge.svg)]
+
+Set of classes for Flutter app architecture
+
+To generage test coverage report run sh coverage.sh
+
 ## Data Layer
 
 Data layer consists of <b>Api</b> and <b>Box</b> classes.
@@ -567,7 +573,10 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 In the last example we also can see that every interactor also has <b>savedStateObject</b>.
 
 When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider
+
 It later can be restored with <b>onRestore</b>. It also has <b>isRestores</b> flag - that is false by default.
+
+By default state key in saved object is equals to state runtime type, but you can override it with <b>stateId</b> getter
 
 You can also specify input type for every interactor in annotation:
 

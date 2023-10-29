@@ -88,4 +88,6 @@ ios/Podfile.lock
 **/android/app/.externalNativeBuild
 **/android/app/.cxx
 
-coverage/
+coverage/html/
+coverage/fixed_lcov.info
+coverage/lcov.info

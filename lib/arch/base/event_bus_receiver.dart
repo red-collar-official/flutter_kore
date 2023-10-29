@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+typedef EventBusSubscriber<T> = void Function(T event);
+
 /// Base class that subscribe to event bus events
 abstract class EventBusReceiver {
   /// [Map] of [EventBus] events and function to be executed for this events
@@ -66,6 +68,10 @@ abstract class EventBusReceiver {
       if (reactsToPause && _paused) {
         if (firesAfterResume) {
           _eventsReceivedWhilePaused.add(event);
+
+          if (UMvvmApp.isInTestMode) {
+            _receivedEvents.add(event.runtimeType);
+          }
         }
 
         return;

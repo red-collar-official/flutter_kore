@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 class ApiAnnotation {
   const ApiAnnotation();
 }

@@ -9,7 +9,6 @@ analyzer:
     - lib/**.freezed.dart
     - lib/**.mvvm.dart
     - lib/**.api.dart
-    - image_crop/**.*
 
 linter:
   rules:

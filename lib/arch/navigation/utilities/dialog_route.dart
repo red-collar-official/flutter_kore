@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:flutter/cupertino.dart';
 
 class DialogRoute<T> extends PopupRoute<T> {

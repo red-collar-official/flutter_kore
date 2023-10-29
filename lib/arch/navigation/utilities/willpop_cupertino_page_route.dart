@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'dart:math';
 import 'dart:ui' show lerpDouble, ImageFilter;
 

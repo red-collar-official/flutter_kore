@@ -2,7 +2,7 @@ name: umvvm
 
 description: UMvvm base classes
 
-version: 3.4.0
+version: 3.5.0
 
 publish_to: none
 
@@ -26,6 +26,14 @@ dev_dependencies:
   build_runner: ^2.4.6
   build_config: ^1.1.1
   flutter_lints: ^3.0.0
+  http_mock_adapter: ^0.6.0
+  cov_badge_gen: ^0.0.2
+
+  test: any
+  flutter_test: 
+    sdk: flutter
+  integration_test: 
+    sdk: flutter
 
 flutter:
 

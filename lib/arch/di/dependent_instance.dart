@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
@@ -13,12 +14,20 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Does not hold singleton instances
   List<Connector> dependsOn(Input input) => [];
 
+  /// Function that returns true if instance contains async parts
+  /// or require async initialization
+  /// If you override this method always use super.isAsync
+  /// if you not always returning true
+  // coverage:ignore-start
   @override
   bool isAsync(Input input) {
-    return dependsOn(input).indexWhere((element) => element.async) != -1;
+    return super.isAsync(input) ||
+        dependsOn(input).indexWhere((element) => element.async) != -1;
   }
+  // coverage:ignore-end
 
   @override
+  @mustCallSuper
   void pauseEventBusSubscription() {
     super.pauseEventBusSubscription();
 
@@ -30,7 +39,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   @override
-  void resumeEventBusSubscription({bool sendAllEventsReceivedWhilePause = true}) {
+  @mustCallSuper
+  void resumeEventBusSubscription(
+      {bool sendAllEventsReceivedWhilePause = true}) {
     super.resumeEventBusSubscription(
       sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
     );
@@ -45,6 +56,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Initializes all dependencies and increase reference count in [ScopedStack]
+  @mustCallSuper
   void initializeDependencies(Input input) {
     _dependsOn = dependsOn(input);
 
@@ -52,11 +64,26 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     _addInstancesSync();
   }
 
+  /// Base method for lightweight instance initialization
+  @mustCallSuper
+  void initializeDependenciesWithoutConnections(Input input) {
+    _dependsOn = dependsOn(input);
+  }
+
+  /// Base method for lightweight async instance initialization
+  @mustCallSuper
+  Future<void> initializeDependenciesWithoutConnectionsAsync(
+      Input input) async {
+    _dependsOn = dependsOn(input);
+  }
+
+  @mustCallSuper
   Future<void> initializeDependenciesAsync(Input input) async {
     await _addInstancesAsync();
   }
 
   /// Disposes all dependencies
+  @mustCallSuper
   void disposeDependencies() {
     _disposeUniqueInstances();
 
@@ -70,6 +97,12 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Adds instances to local collection
   void _addInstancesSync() {
     _dependsOn.where((element) => !element.async).forEach((element) {
+      if (_instances[element.type] != null) {
+        throw IllegalArgumentException(
+          message: 'Instance already dependent on ${element.type}',
+        );
+      }
+
       if (element.count != 1) {
         _instances[element.type] = List.empty(growable: true);
 
@@ -79,8 +112,10 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
           final instance =
               InstanceCollection.instance.getUniqueByTypeStringWithParams(
             element.type.toString(),
-            params: element.input,
-            withNoConnections: element.withoutConnections,
+            params: element.inputForIndex != null
+                ? element.inputForIndex!(i)
+                : element.input,
+            withoutConnections: element.withoutConnections,
           );
 
           list.add(instance);
@@ -90,7 +125,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
             InstanceCollection.instance.getUniqueByTypeStringWithParams(
           element.type.toString(),
           params: element.input,
-          withNoConnections: element.withoutConnections,
+          withoutConnections: element.withoutConnections,
         );
 
         _instances[element.type] = [instance];
@@ -100,6 +135,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
           element.input,
           null,
           element.scope,
+          element.withoutConnections,
         );
 
         _instances[element.type] = [instance];
@@ -110,9 +146,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
     await Future.wait(
-      _dependsOn
-          .where((element) => element.async)
-          .map(_addAsyncInstance),
+      _dependsOn.where((element) => element.async).map(_addAsyncInstance),
     );
 
     onAllDependenciesReady();
@@ -129,8 +163,10 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
         final instance = await InstanceCollection.instance
             .getUniqueByTypeStringWithParamsAsync(
           element.type.toString(),
-          params: element.input,
-          withNoConnections: element.withoutConnections,
+          params: element.inputForIndex != null
+              ? element.inputForIndex!(index)
+              : element.input,
+          withoutConnections: element.withoutConnections,
         );
 
         list.add(instance);
@@ -146,7 +182,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
           .getUniqueByTypeStringWithParamsAsync(
         element.type.toString(),
         params: element.input,
-        withNoConnections: element.withoutConnections,
+        withoutConnections: element.withoutConnections,
       );
 
       _instances[element.type] = [instance];
@@ -159,6 +195,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
         element.input,
         null,
         element.scope,
+        element.withoutConnections,
       );
 
       _instances[element.type] = [instance];
@@ -174,7 +211,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
         continue;
       }
 
-      InstanceCollection.instance.container.increaseReferencesInScope(
+      InstanceCollection.instance.increaseReferencesInScope(
         element.scope,
         element.type,
       );
@@ -188,7 +225,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
         continue;
       }
 
-      InstanceCollection.instance.container.decreaseReferences(
+      InstanceCollection.instance.decreaseReferencesInScope(
         element.scope,
         element.type,
       );
@@ -203,14 +240,28 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       }
 
       _instances[element.type]?.forEach((element) {
-        element.disposeAsync();
+        element.dispose();
       });
     }
   }
 
   /// Returns connected instance of given type
-  T getLocalInstance<T extends MvvmInstance>({int index = 0}) =>
-      _instances[T]![0] as T;
+  T getLocalInstance<T extends MvvmInstance>({int index = 0}) {
+    if (_instances[T] == null) {
+      throw IllegalStateException(
+        message: 'Instance $T is not connected.',
+      );
+    }
+
+    if (index < 0 || index >= _instances[T]!.length) {
+      throw IllegalArgumentException(
+        message:
+            'The [index] value must be non-negative and less than count of instances of [type].',
+      );
+    }
+
+    return _instances[T]![index] as T;
+  }
 
   /// Runs for every async instance when it is initialized
   void onAsyncInstanceReady(Type type, {int? index}) {}

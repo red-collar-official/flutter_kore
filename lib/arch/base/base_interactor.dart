@@ -48,6 +48,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @mustCallSuper
   @override
   Future<void> initializeAsync(Input? input) async {
+    await super.initializeAsync(input);
     await initializeDependenciesAsync(input);
   }
 
@@ -55,6 +56,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @override
   void initializeWithoutConnections(Input? input) {
     initializeStore(initialState(input));
+    initializeDependenciesWithoutConnections(input);
 
     initialized = true;
   }
@@ -63,6 +65,8 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @override
   Future<void> initializeWithoutConnectionsAsync(Input? input) async {
     initializeStore(initialState(input));
+    
+    await initializeDependenciesWithoutConnectionsAsync(input);
 
     initialized = true;
   }

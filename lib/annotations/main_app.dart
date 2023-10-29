@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Annotate main app class
 ///  ```dart
 ///  import '../interactors/interactors.dart';

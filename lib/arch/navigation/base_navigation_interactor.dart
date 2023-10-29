@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/base_events.dart';
 import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
 import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
 import 'package:umvvm/umvvm.dart';
@@ -50,6 +49,8 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   /// Used to initialize [navigationStack]
   RouteType get initialRoute;
 
+  // coverage:ignore-start
+
   /// Initial route of every tab in app
   Map<AppTabType, RouteType> get initialTabRoutes => {};
 
@@ -61,6 +62,8 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
   /// List of all tabs in app
   List<AppTabType>? get tabs => null;
+
+  // coverage:ignore-end
 
   /// Flag indicating that app contains tab views with inner navigators
   bool get appContainsTabNavigation => true;
@@ -105,6 +108,8 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       uniqueInStack: true,
       fullScreenDialog: false,
     );
+
+    navigationStack.tabNavigationStack.reset();
   }
 
   /// Checks if navigator now in global stack or in tab stack
@@ -132,7 +137,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   }
 
   bool _checkGlobalNavigatorNeeded(bool forceGlobal) {
-    return forceGlobal ? forceGlobal : isInGlobalStack();
+    return forceGlobal || isInGlobalStack();
   }
 
   /// Returns navigator key based on current navigation state
@@ -209,14 +214,14 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     }
 
     if (onlyInternalStack) {
-      navigationStack.pop(currentTab, false);
+      navigationStack.pop(tab, false);
 
       return;
     }
 
     final navigator = currentTabKeys[tab];
 
-    navigationStack.pop(currentTab, false);
+    navigationStack.pop(tab, false);
 
     navigator?.currentState?.pop(payload);
   }
@@ -234,17 +239,18 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     Object? id,
   }) async {
     final routeSettings = UIRouteSettings(
-        fullScreenDialog:
-            fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
-        global: forceGlobal ?? routeData.defaultSettings.global,
-        uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
-        needToEnsureClose:
-            needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
-        dismissable: dismissable ?? routeData.defaultSettings.dismissable,
-        id: id,
-        replace: replace,
-        replacePrevious: replacePrevious,
-        name: routeData.name.toString());
+      fullScreenDialog:
+          fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
+      global: forceGlobal ?? routeData.defaultSettings.global,
+      uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
+      needToEnsureClose:
+          needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
+      dismissable: dismissable ?? routeData.defaultSettings.dismissable,
+      id: id,
+      replace: replace,
+      replacePrevious: replacePrevious,
+      name: routeData.name.toString(),
+    );
 
     final routeName = routeData.name;
 
@@ -577,7 +583,9 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   Future<void> homeBackButtonGlobalCallback({bool global = false}) async {
     if (isInBottomSheetDialogScope) {
       pop();
-    } else if (latestGlobalRoute().settings.needToEnsureClose) {
+    } else if ((global ? latestGlobalRoute() : latestTabRoute())
+        .settings
+        .needToEnsureClose) {
       EventBus.instance.send(EnsureCloseRequestedEvent());
     } else if (canPop(global: global)) {
       pop();
