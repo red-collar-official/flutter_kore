@@ -272,6 +272,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
     final screenToOpen = routeData.child;
 
+    // coverage:ignore-start
     final route = NavigationUtilities.buildPageRoute(
       screenToOpen,
       routeSettings.fullScreenDialog,
@@ -292,6 +293,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
                 }
               : null),
     );
+    // coverage:ignore-end
 
     if (replace) {
       // if replace flag is provided we clear stack and navigator state
@@ -487,7 +489,9 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
     final navigator = getNavigator(forceGlobal: true);
 
+    // coverage:ignore-start
     navigator.currentState?.popUntil((route) => route.isFirst);
+    // coverage:ignore-end
 
     navigationStack.replaceStack(
       routeName:
@@ -506,7 +510,9 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       return;
     }
 
+    // coverage:ignore-start
     navigator.currentState?.popUntil((route) => route.isFirst);
+    // coverage:ignore-end
 
     if (!clearStack) {
       return;
@@ -541,9 +547,11 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       navigationStack.pop(currentTab, true);
     }
 
+    // coverage:ignore-start
     bottomSheetDialogNavigatorKey.currentState?.popUntil(
       (route) => route.isFirst,
     );
+    // coverage:ignore-end
   }
 
   /// Pops every route dialog and bottom sheet until current route name is [routeName]

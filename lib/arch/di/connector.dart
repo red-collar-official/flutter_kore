@@ -39,9 +39,6 @@ class Connector {
 
 /// Callable proxy class for [BaseConnector]
 class ConnectorCall<InstanceType, InputStateType> {
-  int? get order => null;
-  bool get awaitInitialization => false;
-
   Connector call({
     String scope = BaseScopes.weak,
     InputStateType? input,
@@ -55,8 +52,6 @@ class ConnectorCall<InstanceType, InputStateType> {
       inputForIndex: inputForIndex,
       count: count,
       type: InstanceType,
-      initializationOrder: order,
-      awaitInitialization: awaitInitialization,
       withoutConnections: withoutConnections,
     );
   }
@@ -65,6 +60,9 @@ class ConnectorCall<InstanceType, InputStateType> {
 /// Async callable proxy class for [BaseConnector]
 class AsyncConnectorCall<InstanceType, InputStateType>
     extends ConnectorCall<InstanceType, InputStateType> {
+  int? get order => null;
+  bool get awaitInitialization => false;
+
   @override
   Connector call({
     String scope = BaseScopes.weak,
@@ -82,6 +80,7 @@ class AsyncConnectorCall<InstanceType, InputStateType>
       async: true,
       initializationOrder: order,
       withoutConnections: withoutConnections,
+      awaitInitialization: awaitInitialization,
     );
   }
 }
@@ -134,6 +133,9 @@ class PartConnectorCall<InstanceType, InputStateType> {
 
 /// Callable proxy class for [PartConnector]
 class AsyncPartConnectorCall<InstanceType, InputStateType> {
+  int? get order => null;
+  bool get awaitInitialization => false;
+
   PartConnector call({
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
@@ -147,6 +149,7 @@ class AsyncPartConnectorCall<InstanceType, InputStateType> {
       type: InstanceType,
       async: true,
       withoutConnections: withoutConnections,
+      awaitInitialization: awaitInitialization,
     );
   }
 }

@@ -14,6 +14,7 @@ import '../mocks/navigation/components/dialogs/dialogs.dart';
 import '../mocks/navigation/components/screens/route_names.dart';
 import '../mocks/navigation/components/screens/routes.dart';
 import '../mocks/navigation/navigation_interactor.dart';
+import '../mocks/navigation/navigation_interactor_with_bottom_sheet_and_dialogs_key.dart';
 import '../mocks/test_interactors.dart';
 
 class TestApp extends UMvvmApp<NavigationInteractor> {
@@ -55,6 +56,19 @@ void main() {
 
     test('NavigationInteractor Initial setup test', () {
       expect(app.navigation.latestGlobalRoute().name, RouteNames.home);
+    });
+
+    test('NavigationInteractor with bottom sheets and dialogs key test', () {
+      final navigationInteractorWithBottomSheetsAndDialogsKey =
+          NavigationInteractorWithBottomSheetsAndDialogsKey();
+
+      expect(
+        navigationInteractorWithBottomSheetsAndDialogsKey
+                .bottomSheetDialogNavigatorKey !=
+            navigationInteractorWithBottomSheetsAndDialogsKey
+                .globalNavigatorKey,
+        true,
+      );
     });
 
     test('NavigationInteractor getNavigatorForTab test', () {
