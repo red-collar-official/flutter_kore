@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -5,6 +6,7 @@ import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:test/test.dart';
 import 'package:umvvm/umvvm.dart';
 
+import '../helpers/delay_utility.dart';
 import '../mocks/request.dart';
 
 const testMockPath = testBaseUrl + testPath;
@@ -15,6 +17,7 @@ const testParam = 'testParam';
 const testBody = 'testParam';
 final testFileBody = File('testPath');
 const testBodyMap = {'testParam': 1};
+final testFormData = dio.FormData();
 const testBodyMapWithList = {
   'testParam': [1, 2]
 };
@@ -161,6 +164,17 @@ void addTestResponsesForParamsToDio(dio.Dio dio) {
       delay: const Duration(milliseconds: 100),
     ),
     data: testBody,
+  );
+
+  // ignore: cascade_invocations
+  dioAdapter.onPut(
+    testMockPath,
+    (server) => server.reply(
+      200,
+      1,
+      delay: const Duration(milliseconds: 100),
+    ),
+    data: testFormData,
   );
 }
 
@@ -611,6 +625,52 @@ void main() {
 
       expect(result.isSuccessful, true);
       expect(result.result, 1);
+    });
+
+    test('Request put with form data test', () async {
+      final request = HttpRequest<int>()
+        ..method = RequestMethod.put
+        ..baseUrl = testBaseUrl
+        ..url = testPath
+        ..formData = Future.value(testFormData);
+
+      addTestResponsesForParamsToDio(request.dioInstance!);
+
+      final result = await request.execute();
+
+      expect(result.isSuccessful, true);
+      expect(result.result, 1);
+    });
+
+    test('Request cancel before execute test', () async {
+      final request = HttpRequest<int>()
+        ..method = RequestMethod.post
+        ..baseUrl = testBaseUrl
+        ..url = testPath
+        ..body = testBodyMap;
+
+      addTestResponsesForParamsToDio(request.dioInstance!);
+
+      RequestCollection.instance.cancelReasonProcessingCompleter = Completer();
+
+      request.cancel();
+
+      late Response<int> response;
+
+      unawaited(request.execute().then((value) {
+        response = value;
+      }));
+
+      unawaited(request.execute());
+
+      await DelayUtility.pause();
+
+      RequestCollection.instance.cancelReasonProcessingCompleter!.complete();
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(response.isSuccessful, true);
+      expect(response.result, 1);
     });
   });
 }

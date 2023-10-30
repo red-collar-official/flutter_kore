@@ -308,11 +308,13 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
         );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
-
+      
+      // coverage:ignore-start
       unawaited(navigator.currentState?.pushAndRemoveUntil(
         route,
         (route) => false,
       ));
+      // coverage:ignore-end
     } else if (replacePrevious) {
       // if replace flag is provided we clear stack and navigator state
       navigationStack.replaceLastRoute(

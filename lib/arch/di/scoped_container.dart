@@ -17,7 +17,7 @@ final class ScopedContainer<T> {
     if (_references[scopeId]?[type] == null) {
       return [];
     }
-    
+
     return _references[scopeId]![type]!;
   }
 
@@ -40,11 +40,7 @@ final class ScopedContainer<T> {
           typesCounts[type]![index] = typesCounts[type]![index] + 1;
         }
       } else {
-        if (typesCounts[type] != null) {
-          typesCounts[type]![index] = 1;
-        } else {
-          typesCounts[type] = [1];
-        }
+        typesCounts[type] = [1];
       }
     } else {
       _references[scopeId] = HashMap.from({

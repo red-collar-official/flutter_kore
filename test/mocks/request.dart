@@ -5,9 +5,6 @@ class HttpRequest<T> extends RequestImplementation<T> {
   HttpRequest() : super();
 
   @override
-  Map<String, dynamic> get defaultHeaders => {};
-
-  @override
   String get defaultBaseUrl => '';
 
   @override
