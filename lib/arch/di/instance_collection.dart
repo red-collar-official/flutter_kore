@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print, cascade_invocations
-
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
@@ -374,7 +372,7 @@ class InstanceCollection extends InstanceCollectionInterface {
   /// Forcibly tries to get instance for type
   @visibleForTesting
   @override
-  Instance forceGet<Instance extends MvvmInstance>({
+  Instance? forceGet<Instance extends MvvmInstance>({
     int? index,
     String scope = BaseScopes.global,
   }) {
@@ -382,7 +380,7 @@ class InstanceCollection extends InstanceCollectionInterface {
       type: Instance.toString(),
       scopeId: scope,
       index: index ?? 0,
-    ) as Instance;
+    ) as Instance?;
   }
 
   /// Return instance for given type
@@ -627,5 +625,35 @@ class InstanceCollection extends InstanceCollectionInterface {
   @override
   void increaseReferencesInScope(String scope, Type type, {int index = 0}) {
     container.increaseReferencesInScope(scope, type, index: index);
+  }
+
+  /// Unregisters instance in scope and
+  /// resets object reference counter in scope
+  @override
+  void unregisterInstance<T>({
+    String scope = BaseScopes.global,
+    int? index,
+  }) {
+    if (scope == BaseScopes.global) {
+      container.removeObjectInScope(
+        type: T.toString(),
+        scopeId: scope,
+        index: index,
+        onRemove: (instance) => instance.dispose(),
+      );
+    } else {
+      container
+        ..removeObjectInScope(
+          type: T.toString(),
+          scopeId: scope,
+          index: index,
+          onRemove: (instance) => instance.dispose(),
+        )
+        ..removeObjectReferenceInScope(
+          type: T,
+          scopeId: scope,
+          index: index,
+        );
+    }
   }
 }

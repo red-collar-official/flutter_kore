@@ -41,9 +41,9 @@ void main() {
 
       expect(app.initialized, true);
       expect(app.eventBus, EventBus.instance);
-      expect(app.instances.forceGet<TestInteractor3>().initialized, true);
-      expect(app.instances.forceGet<TestWrapper3>().initialized, true);
-      expect(app.instances.forceGet<TestWrapper4>().initialized, true);
+      expect(app.instances.forceGet<TestInteractor3>()!.initialized, true);
+      expect(app.instances.forceGet<TestWrapper3>()!.initialized, true);
+      expect(app.instances.forceGet<TestWrapper4>()!.initialized, true);
     });
   });
 }

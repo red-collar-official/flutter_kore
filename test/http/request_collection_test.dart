@@ -129,7 +129,6 @@ void main() {
 
       await DelayUtility.pause();
 
-      // ignore: cascade_invocations
       collection.removeAllRequests();
   
       expect(collection.requests.length, 0);

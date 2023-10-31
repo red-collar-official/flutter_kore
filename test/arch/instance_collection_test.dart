@@ -458,5 +458,35 @@ void main() {
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 2);
     });
+
+    test('Instance collection unregisterInstance test', () async {
+      instances.addWithParams(
+        testInstanceRuntimeType,
+        2,
+        scope: testScope,
+      );
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 2);
+
+      instances.unregisterInstance<TestMvvmInstance>(
+        scope: testScope,
+      );
+
+      expect(instances.forceGet<TestMvvmInstance>(scope: testScope), null);
+    });
+
+    test('Instance collection unregisterInstance global test', () async {
+      instances.addWithParams(
+        testInstanceRuntimeType,
+        2,
+        scope: BaseScopes.global,
+      );
+
+      expect(instances.get<TestMvvmInstance>().value, 2);
+
+      instances.unregisterInstance<TestMvvmInstance>();
+
+      expect(instances.forceGet<TestMvvmInstance>(), null);
+    });
   });
 }

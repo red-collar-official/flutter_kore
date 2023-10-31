@@ -126,7 +126,7 @@ abstract class InstanceCollectionInterface {
 
   /// Forcibly tries to get instance for type
   @visibleForTesting
-  Instance forceGet<Instance extends MvvmInstance>({
+  Instance? forceGet<Instance extends MvvmInstance>({
     int? index,
     String scope = BaseScopes.global,
   });
@@ -182,5 +182,12 @@ abstract class InstanceCollectionInterface {
     InputState? params, {
     int? index,
     String? scope,
+  });
+
+  /// Unregisters instance in scope and 
+  /// resets object reference counter in scope
+  void unregisterInstance<T>({
+    String scope = BaseScopes.global,
+    int? index,
   });
 }

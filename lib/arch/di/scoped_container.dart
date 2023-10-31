@@ -156,12 +156,17 @@ final class ScopedContainer<T> {
     required String type,
     required String scopeId,
     int? index,
+    required void Function(T) onRemove,
   }) {
     if (!_instances.containsKey(scopeId)) {
       return;
     }
 
     if (index == null) {
+      _instances[scopeId]!.forEach((key, value) {
+        value.forEach(onRemove);
+      });
+
       _instances[scopeId]!.remove(type);
     } else {
       final objects = _instances[scopeId]![type]!;
@@ -176,6 +181,8 @@ final class ScopedContainer<T> {
               'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
         );
       }
+
+      onRemove(objects[index]);
 
       objects.removeAt(index);
     }
@@ -235,22 +242,15 @@ final class ScopedContainer<T> {
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
   void proone(void Function(T) onRemove) {
-    final removeFunctionsForScope = <String, Map<Type, List<Function>>>{};
+    final removeFunctions = <Function>[];
 
     _references.forEach((scope, refs) {
-      if (scope == BaseScopes.global) {
+      if (scope == BaseScopes.global || scope == BaseScopes.unique) {
         return;
       }
-
-      if (scope == BaseScopes.unique) {
-        return;
-      }
-
-      final removeFunctionsForType = <Type, List<Function>>{};
 
       refs.forEach((key, value) {
         final indicesToRemove = <int>[];
-        final removeFunctions = <Function>[];
 
         for (final (index, element) in value.indexed) {
           if (element == 0) {
@@ -268,8 +268,6 @@ final class ScopedContainer<T> {
 
             removeFunctions.add(
               () {
-                onRemove(object);
-
                 if (value.isEmpty) {
                   removeObjectReferenceInScope(
                     scopeId: scope,
@@ -293,29 +291,18 @@ final class ScopedContainer<T> {
                   type: key.toString(),
                   scopeId: scope,
                   index: index,
+                  onRemove: onRemove,
                 );
               },
             );
           }
         }
-
-        removeFunctionsForType.addAll({
-          key: removeFunctions,
-        });
-      });
-
-      removeFunctionsForScope.addAll({
-        scope: removeFunctionsForType,
       });
     });
 
-    removeFunctionsForScope.forEach((key, scoped) {
-      scoped.forEach((key, typed) {
-        for (final element in typed) {
-          element.call();
-        }
-      });
-    });
+    for (final element in removeFunctions) {
+      element.call();
+    }
   }
 
   /// Returns first found instance of type in given scope

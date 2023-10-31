@@ -242,6 +242,7 @@ void main() {
         ..removeObjectInScope(
           scopeId: testScope,
           type: testObject.runtimeType.toString(),
+          onRemove: (instance) {},
         )
         ..decreaseReferences(
           testScope,
@@ -573,6 +574,7 @@ void main() {
           scopeId: testScope,
           type: testObject.runtimeType.toString(),
           index: 10,
+          onRemove: (instance) {},
         ),
         throwsA(isA<IllegalArgumentException>()),
       );
@@ -582,6 +584,7 @@ void main() {
           scopeId: testScope,
           type: testObject.runtimeType.toString(),
           index: -1,
+          onRemove: (instance) {},
         ),
         throwsA(isA<IllegalArgumentException>()),
       );

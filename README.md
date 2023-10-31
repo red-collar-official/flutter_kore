@@ -393,7 +393,7 @@ In last example there is also <b>initializationOrder</b> field that is used to s
 
 You also need to specify <b>isAsync</b> flag for async instance
 
-You can also implement <b>initializeAsync</b> method and <b>disposeAsync</b> methods for async instances
+You can also implement <b>initializeAsync</b> method for async instances
 
 Here is example of async instance:
 
@@ -412,7 +412,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   }
 
   @override
-  Future<void> disposeAsync() async {
+  Future<void> dispose() async {
     // ...
   }
 }
@@ -440,7 +440,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   }
 
   @override
-  Future<void> disposeAsync() async {
+  Future<void> dispose() async {
     // ...
   }
 
@@ -455,6 +455,8 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   }
 }
 ```
+
+You can unregister instances with <b>app.instances.unregisterInstance</b> method
 
 ## Business Logic Layer
 
@@ -662,6 +664,26 @@ class TestInteractorPart extends BaseInstancePart<PostsInteractor> {
     parentInstance.updateState(parentInstance.state.copyWith(
       active: false,
     ));
+  }
+
+  @override
+  Future<void> initializeAsync(T input) async {
+    // ...
+  }
+
+  @override
+  Future<void> dispose() async {
+    // ...
+  }
+
+  @override
+  void onAsyncPartReady(Type type, {int? index}) {
+    switch (type) {
+      case value:
+        
+        break;
+      default:
+    }
   }
 }
 
