@@ -22,21 +22,21 @@ class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
 
   @override
   List<AppTab>? get tabs => AppTabs.tabs;
-  
+
   @override
   RouteNames? get tabViewHomeRoute => RouteNames.home;
 
   @override
   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
-    AppTabs.posts: GlobalKey<NavigatorState>(),
-    AppTabs.likedPosts: GlobalKey<NavigatorState>(),
-  };
+        AppTabs.posts: GlobalKey<NavigatorState>(),
+        AppTabs.likedPosts: GlobalKey<NavigatorState>(),
+      };
 
   @override
   Map<AppTab, RouteNames> get initialTabRoutes => {
-    AppTabs.posts: RouteNames.posts,
-    AppTabs.likedPosts: RouteNames.likedPosts,
-  };
+        AppTabs.posts: RouteNames.posts,
+        AppTabs.likedPosts: RouteNames.likedPosts,
+      };
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
@@ -61,6 +61,7 @@ class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
   }
 
   @override
-  NavigationState initialState(Map<String, dynamic>? input) =>
-      NavigationState(currentTab: AppTabs.posts);
+  NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+        currentTab: AppTabs.posts,
+      );
 }

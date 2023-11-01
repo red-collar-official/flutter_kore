@@ -837,8 +837,8 @@ View models contain logic for view classes
 
 It also contains local map of instances, and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
 We also can listen to state changes with <b>updatesFor</b> or <b>changesFor</b>
-We add interactors and wrappers to view model using <b>dependsOn</b> getter.
-Using this getter we can connect default interactors to view model.
+We add interactors and wrappers to view model using <b>dependsOn</b> method.
+Using this method we can connect default interactors to view model.
 View models like interactors and wrappers can receive <b>EventBus</b> events using <b>subscribe</b> method.
 
 To get local instances connected to view model use <b>getLocalInstance</b>
