@@ -8,11 +8,17 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Does not hold singleton instances
   final _instances = HashMap<Type, List<MvvmInstance>>();
 
+  /// Observable holding value of successfull dependencies initialization
+  final allDependenciesReady = Observable<bool>.initial(false);
+
   late List<Connector> _dependsOn;
 
-  /// Dependencies for this view model
+  /// Dependencies for this instance
   /// Does not hold singleton instances
   List<Connector> dependsOn(Input input) => [];
+
+  /// List of modules that are required for this instance
+  List<InstancesModule> belongsToModules(Input input) => [];
 
   /// Function that returns true if instance contains async parts
   /// or require async initialization
@@ -22,7 +28,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   @override
   bool isAsync(Input input) {
     return super.isAsync(input) ||
-        dependsOn(input).indexWhere((element) => element.async) != -1;
+        getFullConnectorsList(input).indexWhere((element) => element.async) !=
+            -1;
   }
   // coverage:ignore-end
 
@@ -55,26 +62,41 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
+  List<Connector> getFullConnectorsList(Input input) {
+    final concreteDependencies = dependsOn(input);
+
+    belongsToModules(input).forEach((element) {
+      concreteDependencies.addAll(element.scopedDependencies());
+    });
+
+    return concreteDependencies;
+  }
+
   /// Initializes all dependencies and increase reference count in [ScopedStack]
   @mustCallSuper
   void initializeDependencies(Input input) {
-    _dependsOn = dependsOn(input);
+    _dependsOn = getFullConnectorsList(input);
 
     _increaseReferences();
     _addInstancesSync();
+
+    if (!isAsync(input)) {
+      allDependenciesReady.update(true);
+    }
   }
 
   /// Base method for lightweight instance initialization
   @mustCallSuper
   void initializeDependenciesWithoutConnections(Input input) {
-    _dependsOn = dependsOn(input);
+    _dependsOn = getFullConnectorsList(input);
   }
 
   /// Base method for lightweight async instance initialization
   @mustCallSuper
   Future<void> initializeDependenciesWithoutConnectionsAsync(
-      Input input) async {
-    _dependsOn = dependsOn(input);
+    Input input,
+  ) async {
+    _dependsOn = getFullConnectorsList(input);
   }
 
   @mustCallSuper
@@ -148,6 +170,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     await Future.wait(
       _dependsOn.where((element) => element.async).map(_addAsyncInstance),
     );
+
+    allDependenciesReady.update(true);
 
     onAllDependenciesReady();
   }

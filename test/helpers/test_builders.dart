@@ -13,6 +13,8 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestInteractor4>(TestInteractor4.new)
     ..addBuilder<TestInteractor5>(TestInteractor5.new)
     ..addBuilder<TestInteractor6>(TestInteractor6.new)
+    ..addBuilder<TestInteractor7>(TestInteractor7.new)
+    ..addBuilder<TestInteractor8>(TestInteractor8.new)
     ..addBuilder<TestInteractorWithRequest>(TestInteractorWithRequest.new)
     ..addBuilder<NavigationInteractor>(NavigationInteractor.new)
     ..addBuilder<TestInteractorError>(TestInteractorError.new)

@@ -120,6 +120,9 @@ void main() {
       expect(interactor3.testInteractorAsync4.state, 2);
       expect(interactor3.testInteractorAsync4.initialized, true);
 
+      expect(interactor3.testInteractor7.initialized, true);
+      expect(interactor3.testInteractor8.initialized, true);
+
       interactor1.dispose();
       interactor2.dispose();
       interactor3.dispose();

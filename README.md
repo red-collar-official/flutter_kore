@@ -458,6 +458,44 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 
 You can unregister instances with <b>app.instances.unregisterInstance</b> method
 
+### Modules
+
+Modules are simple classes that helps orginize dependencies
+
+If your class depend on similar set of scoped instances you can combine them using <b>InstanceModule</b>.
+
+Here is an example
+
+```dart
+class TestModule extends InstancesModule {
+  @override
+  List<Connector> get dependencies => [
+        app.connectors.postInteractorConnector(),
+        app.connectors.postsInteractorConnector(),
+      ];
+
+  @override
+  String get id => 'test';
+}
+
+class Modules {
+  static final test = TestModule();
+}
+
+@singleton
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
+  @override
+  String provideInstance(Map<String, dynamic>? input) {
+    return '';
+  }
+
+  @override
+  List<InstancesModule> belongsToModules(Map<String, dynamic>? input) => [
+    Modules.test,
+  ];
+}
+```
+
 ## Business Logic Layer
 
 This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.

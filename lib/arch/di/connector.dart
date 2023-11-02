@@ -35,6 +35,20 @@ class Connector {
     this.awaitInitialization = false,
     this.withoutConnections = false,
   });
+
+  Connector copyWithScope(String scope) {
+    return Connector(
+      type: type,
+      input: input,
+      inputForIndex: inputForIndex,
+      count: count,
+      scope: scope,
+      async: async,
+      initializationOrder: initializationOrder,
+      awaitInitialization: awaitInitialization,
+      withoutConnections: withoutConnections,
+    );
+  }
 }
 
 /// Callable proxy class for [BaseConnector]

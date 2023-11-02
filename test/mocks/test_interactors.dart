@@ -5,6 +5,21 @@ import 'request.dart';
 import 'test_event.dart';
 import 'test_parts.dart';
 
+class TestModule extends InstancesModule {
+  @override
+  List<Connector> get dependencies => [
+        const Connector(type: TestInteractor7, scope: BaseScopes.unique),
+        const Connector(type: TestInteractor8),
+      ];
+
+  @override
+  String get id => 'test';
+}
+
+class Modules {
+  static final test = TestModule();
+}
+
 class TestInteractor1 extends BaseInteractor<int, int?> {
   @override
   int initialState(int? input) => input ?? 0;
@@ -21,6 +36,16 @@ class TestInteractor4 extends BaseInteractor<int, int?> {
 }
 
 class TestInteractor5 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractor7 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractor8 extends BaseInteractor<int, int?> {
   @override
   int initialState(int? input) => input ?? 0;
 }
@@ -173,6 +198,11 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
         ),
       ];
 
+  @override
+  List<InstancesModule> belongsToModules(int? input) => [
+    Modules.test,
+  ];
+
   late final testInteractor1 = getLocalInstance<TestInteractor1>();
   late final testInteractor2 = getLocalInstance<TestInteractor2>();
   late final testInteractorAsync = getLocalInstance<TestInteractorAsync>();
@@ -188,6 +218,8 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   late final testInteractorAsync3_1 = getLocalInstance<TestInteractorAsync3>();
   late final testInteractorAsync3_2 =
       getLocalInstance<TestInteractorAsync3>(index: 1);
+  late final testInteractor7 = getLocalInstance<TestInteractor7>();
+  late final testInteractor8 = getLocalInstance<TestInteractor8>();
 
   late final testInstancePart3 = useInstancePart<TestInstancePart3>();
   late final testInstancePart2_1 = useInstancePart<TestInstancePart2>();
