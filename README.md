@@ -496,6 +496,8 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
 }
 ```
 
+You also can enable runtime check for cyclic dependencies with <b>instances.checkForCyclicDependencies</b> flag
+
 ## Business Logic Layer
 
 This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.
@@ -749,6 +751,9 @@ We also can define count of objects that we want to connect
 
 We also can specify scope of object
 
+If you mark connector as lazy instance will be connected when addressed first time
+with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>
+
 We can also specify if we want to connect object without dependencies - 
 in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected
 It is usefull if you just want to use some method of small instance
@@ -764,6 +769,7 @@ List<Connector> dependsOn(Map<String, dynamic>? input) => [
       // instance without connections, only works for unique instances
       Connector(type: ReactionsWrapper, withoutConnections: true, scope: BaseScopes.unique),
       Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
+      Connector(type: ReactionsWrapper, scope: CustomScopes.test, lazy: true), // lazy scoped instance
     ];
 ```
 
