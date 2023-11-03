@@ -199,7 +199,20 @@ void main() {
       );
 
       expect(
-        testContainer.contains(testScope, testObject.runtimeType.toString()),
+        testContainer.contains(
+          testScope,
+          testObject.runtimeType.toString(),
+          null,
+        ),
+        true,
+      );
+
+      expect(
+        testContainer.contains(
+          testScope,
+          testObject.runtimeType.toString(),
+          0,
+        ),
         true,
       );
     });

@@ -32,7 +32,29 @@ void main() {
 
     test('Interactor initialization error test', () async {
       expect(
-        () async => instances.getUniqueAsync<TestInteractorError>(),
+        () => instances.getUnique<TestInteractorError>(),
+        throwsA(isA<IllegalArgumentException>()),
+      );
+    });
+
+    test('Interactor initialization error with lazy deps test', () async {
+      expect(
+        () => instances.getUnique<TestInteractorErrorWithLazyDeps>(),
+        throwsA(isA<IllegalArgumentException>()),
+      );
+    });
+
+    test('Interactor initialization error with async lazy deps test', () async {
+      expect(
+        () async =>
+            instances.getUniqueAsync<TestInteractorErrorWithAsyncLazyDeps>(),
+        throwsA(isA<IllegalArgumentException>()),
+      );
+    });
+
+    test('Interactor initialization error with async deps test', () async {
+      expect(
+        () async => instances.getUniqueAsync<TestInteractorErrorAsync>(),
         throwsA(isA<IllegalArgumentException>()),
       );
     });
@@ -122,6 +144,81 @@ void main() {
 
       expect(interactor3.testInteractor7.initialized, true);
       expect(interactor3.testInteractor8.initialized, true);
+
+      expect(interactor3.testInteractor9_1.state, 1);
+      expect(interactor3.testInteractor9_1.initialized, true);
+
+      expect(interactor3.testInteractor9_2.state, 2);
+      expect(interactor3.testInteractor9_2.initialized, true);
+
+      expect((await interactor3.testInteractorAsync5_1).state, 1);
+      expect((await interactor3.testInteractorAsync5_1).initialized, true);
+
+      expect((await interactor3.testInteractorAsync5_2).state, 2);
+      expect((await interactor3.testInteractorAsync5_2).initialized, true);
+
+      expect(interactor3.testInteractor10.state, 2);
+      expect(interactor3.testInteractor10.initialized, true);
+
+      expect((await interactor3.testInteractorAsync6).state, 2);
+      expect((await interactor3.testInteractorAsync6).initialized, true);
+
+      expect(interactor3.testInteractor11.state, 2);
+      expect(interactor3.testInteractor11.initialized, true);
+
+      expect((await interactor3.testInteractorAsync7).state, 2);
+      expect((await interactor3.testInteractorAsync7).initialized, true);
+
+      // check again cached instances
+
+      expect(interactor3.getLazyLocalInstance<TestInteractor11>().state, 2);
+      expect(
+        interactor3.getLazyLocalInstance<TestInteractor11>().initialized,
+        true,
+      );
+
+      expect(
+        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>())
+            .state,
+        2,
+      );
+      expect(
+        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>())
+            .initialized,
+        true,
+      );
+
+      expect(
+        () => interactor3.testInteractor9_error_1,
+        throwsA(isA<IllegalArgumentException>()),
+      );
+
+      expect(
+        () => interactor3.testInteractor10_error_2,
+        throwsA(isA<IllegalArgumentException>()),
+      );
+
+      expect(
+        () async => interactor3.testInteractorAsync5_error_1,
+        throwsA(isA<IllegalArgumentException>()),
+      );
+
+      expect(
+        () async => interactor3.testInteractorAsync6_error_2,
+        throwsA(isA<IllegalArgumentException>()),
+      );
+
+      expect(interactor3.testInteractor12_1.state, 2);
+      expect(interactor3.testInteractor12_1.initialized, true);
+
+      expect(interactor3.testInteractor12_2.state, 2);
+      expect(interactor3.testInteractor12_2.initialized, true);
+
+      expect((await interactor3.testInteractorAsync8_1).state, 2);
+      expect((await interactor3.testInteractorAsync8_1).initialized, true);
+
+      expect((await interactor3.testInteractorAsync8_2).state, 2);
+      expect((await interactor3.testInteractorAsync8_2).initialized, true);
 
       interactor1.dispose();
       interactor2.dispose();
@@ -426,6 +523,39 @@ void main() {
       );
 
       interactor3.dispose();
+    });
+
+    test('Interactor cyclic dependency test', () async {
+      instances.checkForCyclicDependencies = true;
+
+      expect(
+        () => instances.getWithParams<TestInteractorCyclic, int>(
+          params: 1,
+          scope: BaseScopes.weak,
+        ),
+        throwsA(isA<IllegalArgumentException>()),
+      );
+
+      instances.checkForCyclicDependencies = false;
+
+      expect(
+        () => instances.getWithParams<TestInteractorCyclic, int>(
+          params: 1,
+          scope: BaseScopes.weak,
+        ),
+        throwsA(isA<StackOverflowError>()),
+      );
+    });
+
+    test('Interactor cyclic dependency success test', () async {
+      instances.checkForCyclicDependencies = true;
+
+      final instance = await instances.getWithParamsAsync<TestInteractor3, int>(
+        params: 1,
+        scope: BaseScopes.weak,
+      );
+
+      expect(instance.state, 1);
     });
 
     tearDownAll(eventBus.dispose);

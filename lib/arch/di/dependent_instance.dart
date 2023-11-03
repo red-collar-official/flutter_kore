@@ -1,12 +1,17 @@
+import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
-  /// Local interactors
+  /// Local instances
   /// Does not hold singleton instances
   final _instances = HashMap<Type, List<MvvmInstance>>();
+
+  /// Local lazy instances
+  /// Does not hold singleton instances
+  final _lazyInstancesBuilders = HashMap<Type, List>();
 
   /// Observable holding value of successfull dependencies initialization
   final allDependenciesReady = Observable<bool>.initial(false);
@@ -118,17 +123,26 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   void _addInstancesSync() {
-    _dependsOn.where((element) => !element.async).forEach((element) {
-      if (_instances[element.type] != null) {
+    _dependsOn
+        .where((element) => !element.async && element.lazy)
+        .forEach(_addLazyInstanceSync);
+
+    _dependsOn
+        .where((element) => element.async && element.lazy)
+        .forEach(_addLazyInstanceAsync);
+
+    _dependsOn
+        .where((element) => !element.async && !element.lazy)
+        .forEach((element) {
+      if (_instances[element.type] != null ||
+          _lazyInstancesBuilders[element.type] != null) {
         throw IllegalArgumentException(
           message: 'Instance already dependent on ${element.type}',
         );
       }
 
       if (element.count != 1) {
-        _instances[element.type] = List.empty(growable: true);
-
-        final list = _instances[element.type]!;
+        final list = List<MvvmInstance>.empty(growable: true);
 
         for (var i = 0; i < element.count; i++) {
           final instance =
@@ -142,6 +156,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
           list.add(instance);
         }
+
+        _instances[element.type] = list;
       } else if (element.scope == BaseScopes.unique) {
         final instance =
             InstanceCollection.instance.getUniqueByTypeStringWithParams(
@@ -167,8 +183,22 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
+    final asyncDeps =
+        _dependsOn.where((element) => element.async && !element.lazy);
+
+    for (final element in asyncDeps) {
+      if (_dependsOn
+              .where((dependency) => dependency.type == element.type)
+              .length >
+          1) {
+        throw IllegalArgumentException(
+          message: 'Instance already dependent on ${element.type}',
+        );
+      }
+    }
+
     await Future.wait(
-      _dependsOn.where((element) => element.async).map(_addAsyncInstance),
+      asyncDeps.map(_addAsyncInstance),
     );
 
     allDependenciesReady.update(true);
@@ -179,9 +209,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Adds instance to local collection
   Future<void> _addAsyncInstance(Connector element) async {
     if (element.count != 1) {
-      _instances[element.type] = List.empty(growable: true);
-
-      final list = _instances[element.type]!;
+      final list = List<MvvmInstance>.empty(growable: true);
 
       Future<void> add(int index) async {
         final instance = await InstanceCollection.instance
@@ -201,6 +229,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       await Future.wait([
         for (var i = 0; i < element.count; i++) add(i),
       ]);
+
+      _instances[element.type] = list;
     } else if (element.scope == BaseScopes.unique) {
       final instance = await InstanceCollection.instance
           .getUniqueByTypeStringWithParamsAsync(
@@ -209,9 +239,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
         withoutConnections: element.withoutConnections,
       );
 
-      _instances[element.type] = [instance];
-
       onAsyncInstanceReady(element.type);
+
+      _instances[element.type] = [instance];
     } else {
       final instance =
           await InstanceCollection.instance.getByTypeStringWithParamsAsync(
@@ -225,6 +255,118 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       _instances[element.type] = [instance];
 
       onAsyncInstanceReady(element.type);
+    }
+  }
+
+  /// Adds instance to local collection
+  void _addLazyInstanceAsync(Connector element) {
+    if (_instances[element.type] != null ||
+        _lazyInstancesBuilders[element.type] != null) {
+      throw IllegalArgumentException(
+        message: 'Instance already dependent on ${element.type}',
+      );
+    }
+
+    if (element.count != 1) {
+      _lazyInstancesBuilders[element.type] = List.empty(growable: true);
+
+      final list = _lazyInstancesBuilders[element.type]!;
+
+      void add(int index) {
+        // ignore: prefer_function_declarations_over_variables
+        final instanceBuilder = () async =>
+            InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
+              element.type.toString(),
+              params: element.inputForIndex != null
+                  ? element.inputForIndex!(index)
+                  : element.input,
+              withoutConnections: element.withoutConnections,
+            );
+
+        list.add(instanceBuilder);
+      }
+
+      for (var i = 0; i < element.count; i++) {
+        add(i);
+      }
+    } else if (element.scope == BaseScopes.unique) {
+      // ignore: prefer_function_declarations_over_variables
+      final instanceBuilder = () async =>
+          InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
+            element.type.toString(),
+            params: element.input,
+            withoutConnections: element.withoutConnections,
+          );
+
+      _lazyInstancesBuilders[element.type] = [instanceBuilder];
+    } else {
+      // ignore: prefer_function_declarations_over_variables
+      final instanceBuilder = () async =>
+          InstanceCollection.instance.getByTypeStringWithParamsAsync(
+            element.type.toString(),
+            element.input,
+            null,
+            element.scope,
+            element.withoutConnections,
+          );
+
+      _lazyInstancesBuilders[element.type] = [instanceBuilder];
+    }
+  }
+
+  /// Adds instance to local collection
+  void _addLazyInstanceSync(Connector element) {
+    if (_instances[element.type] != null ||
+        _lazyInstancesBuilders[element.type] != null) {
+      throw IllegalArgumentException(
+        message: 'Instance already dependent on ${element.type}',
+      );
+    }
+
+    if (element.count != 1) {
+      _lazyInstancesBuilders[element.type] = List.empty(growable: true);
+
+      final list = _lazyInstancesBuilders[element.type]!;
+
+      void add(int index) {
+        // ignore: prefer_function_declarations_over_variables
+        final instanceBuilder =
+            () => InstanceCollection.instance.getUniqueByTypeStringWithParams(
+                  element.type.toString(),
+                  params: element.inputForIndex != null
+                      ? element.inputForIndex!(index)
+                      : element.input,
+                  withoutConnections: element.withoutConnections,
+                );
+
+        list.add(instanceBuilder);
+      }
+
+      for (var i = 0; i < element.count; i++) {
+        add(i);
+      }
+    } else if (element.scope == BaseScopes.unique) {
+      // ignore: prefer_function_declarations_over_variables
+      final instanceBuilder =
+          () => InstanceCollection.instance.getUniqueByTypeStringWithParams(
+                element.type.toString(),
+                params: element.input,
+                withoutConnections: element.withoutConnections,
+              );
+
+      _lazyInstancesBuilders[element.type] = [instanceBuilder];
+    } else {
+      // ignore: prefer_function_declarations_over_variables
+      final instanceBuilder =
+          () => InstanceCollection.instance.getByTypeStringWithParams(
+                element.type.toString(),
+                element.input,
+                null,
+                element.scope,
+                element.withoutConnections,
+              );
+
+      _lazyInstancesBuilders[element.type] = [instanceBuilder];
     }
   }
 
@@ -285,6 +427,62 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
 
     return _instances[T]![index] as T;
+  }
+
+  /// Returns connected instance of given type
+  T getLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
+    final typedInstances = _instances[T];
+    final typedBuilders = _lazyInstancesBuilders[T];
+
+    if (index < 0 || index >= typedBuilders!.length) {
+      throw IllegalArgumentException(
+        message:
+            'The [index] value must be non-negative and less than count of instances of [type].',
+      );
+    }
+
+    if (typedInstances == null || index >= typedInstances.length) {
+      final object = typedBuilders[index]();
+
+      if (typedInstances == null) {
+        _instances[T] = [object];
+      } else {
+        typedInstances.insert(index, object);
+      }
+
+      return object;
+    }
+
+    return typedInstances[index] as T;
+  }
+
+  /// Returns connected instance of given type
+  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({
+    int index = 0,
+  }) async {
+    final typedInstances = _instances[T];
+    final typedBuilders = _lazyInstancesBuilders[T];
+
+    if (index < 0 || index >= typedBuilders!.length) {
+      throw IllegalArgumentException(
+        message:
+            'The [index] value must be non-negative and less than count of instances of [type].',
+      );
+    }
+
+    if (typedInstances == null || index >= typedInstances.length) {
+      final object = await typedBuilders[index]();
+
+      if (typedInstances == null) {
+        _instances[T] = [object];
+      } else {
+        typedInstances.insert(index, object);
+      }
+
+      return object;
+    }
+
+    return typedInstances[index] as T;
   }
 
   /// Runs for every async instance when it is initialized

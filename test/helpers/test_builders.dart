@@ -15,13 +15,29 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestInteractor6>(TestInteractor6.new)
     ..addBuilder<TestInteractor7>(TestInteractor7.new)
     ..addBuilder<TestInteractor8>(TestInteractor8.new)
+    ..addBuilder<TestInteractor9>(TestInteractor9.new)
+    ..addBuilder<TestInteractor10>(TestInteractor10.new)
+    ..addBuilder<TestInteractor11>(TestInteractor11.new)
+    ..addBuilder<TestInteractor12>(TestInteractor12.new)
+    ..addBuilder<TestInteractorCyclic>(TestInteractorCyclic.new)
     ..addBuilder<TestInteractorWithRequest>(TestInteractorWithRequest.new)
     ..addBuilder<NavigationInteractor>(NavigationInteractor.new)
     ..addBuilder<TestInteractorError>(TestInteractorError.new)
+    ..addBuilder<TestInteractorErrorAsync>(TestInteractorErrorAsync.new)
+    ..addBuilder<TestInteractorErrorWithLazyDeps>(
+      TestInteractorErrorWithLazyDeps.new,
+    )
+    ..addBuilder<TestInteractorErrorWithAsyncLazyDeps>(
+      TestInteractorErrorWithAsyncLazyDeps.new,
+    )
     ..addBuilder<TestInteractorAsync>(TestInteractorAsync.new)
     ..addBuilder<TestInteractorAsync2>(TestInteractorAsync2.new)
     ..addBuilder<TestInteractorAsync3>(TestInteractorAsync3.new)
     ..addBuilder<TestInteractorAsync4>(TestInteractorAsync4.new)
+    ..addBuilder<TestInteractorAsync5>(TestInteractorAsync5.new)
+    ..addBuilder<TestInteractorAsync6>(TestInteractorAsync6.new)
+    ..addBuilder<TestInteractorAsync7>(TestInteractorAsync7.new)
+    ..addBuilder<TestInteractorAsync8>(TestInteractorAsync8.new)
     ..addBuilder<TestInteractorWithDefaultRestore>(
       TestInteractorWithDefaultRestore.new,
     )

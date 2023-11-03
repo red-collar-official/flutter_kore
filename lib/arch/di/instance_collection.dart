@@ -12,6 +12,9 @@ class InstanceCollection extends InstanceCollectionInterface {
 
   final builders = HashMap<String, Function>();
 
+  var checkForCyclicDependencies = false;
+  final buildingInstances = HashMap<String, List<int>>();
+
   List<MvvmInstance> all(String scope) => container.all(scope);
 
   /// Method to remove instances that is no longer used
@@ -253,7 +256,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     final id = type;
     final scopeId = scope ?? BaseScopes.global;
 
-    if (container.contains(scopeId, id) && index == null) {
+    if (container.contains(scopeId, id, index) && index == null) {
       return;
     }
 
@@ -304,7 +307,9 @@ class InstanceCollection extends InstanceCollectionInterface {
   }) async {
     final scope = scopeId ?? BaseScopes.global;
 
-    if (!container.contains(scope, id)) {
+    if (!container.contains(scope, id, index)) {
+      performCheckForCyclicDependencies(id, index);
+
       final instance = await constructAndInitializeInstanceAsync<Instance>(
         id,
         params: params,
@@ -315,6 +320,8 @@ class InstanceCollection extends InstanceCollectionInterface {
         type: id,
         scopeId: scope,
       );
+
+      finishBuildingInstance(id, index);
 
       return instance;
     }
@@ -539,7 +546,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     final id = type;
     final scopeId = scope ?? BaseScopes.global;
 
-    if (container.contains(scopeId, id) && index == null) {
+    if (container.contains(scopeId, id, index) && index == null) {
       return;
     }
 
@@ -585,7 +592,9 @@ class InstanceCollection extends InstanceCollectionInterface {
   }) {
     final scope = scopeId ?? BaseScopes.global;
 
-    if (!container.contains(scope, id)) {
+    if (!container.contains(scope, id, index)) {
+      performCheckForCyclicDependencies(id, index);
+
       final instance = constructAndInitializeInstance<Instance>(
         id,
         params: params,
@@ -596,6 +605,8 @@ class InstanceCollection extends InstanceCollectionInterface {
         type: id,
         scopeId: scope,
       );
+
+      finishBuildingInstance(id, index);
 
       return instance;
     }
@@ -654,6 +665,40 @@ class InstanceCollection extends InstanceCollectionInterface {
           scopeId: scope,
           index: index,
         );
+    }
+  }
+
+  void performCheckForCyclicDependencies(String typeId, int? index) {
+    if (checkForCyclicDependencies) {
+      final currentlyBuildingInstances = buildingInstances[typeId];
+
+      if (currentlyBuildingInstances == null) {
+        buildingInstances[typeId] = [index ?? 0];
+      } else {
+        if (currentlyBuildingInstances.contains(index ?? 0)) {
+          throw IllegalArgumentException(
+            message: 'Detected cyclic dependency on $typeId',
+          );
+        }
+
+        // this can happen only in testing, 
+        // cause countable instances are connected sequentially
+        // coverage:ignore-start
+        currentlyBuildingInstances.add(index ?? 0);
+        // coverage:ignore-end
+      }
+    }
+  }
+
+  void finishBuildingInstance(String typeId, int? index) {
+    if (checkForCyclicDependencies) {
+      final currentlyBuildingInstances = buildingInstances[typeId];
+
+      if (currentlyBuildingInstances == null) {
+        return;
+      } else {
+        currentlyBuildingInstances.remove(index ?? 0);
+      }
     }
   }
 }

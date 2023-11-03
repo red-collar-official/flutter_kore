@@ -50,6 +50,35 @@ class TestInteractor8 extends BaseInteractor<int, int?> {
   int initialState(int? input) => input ?? 0;
 }
 
+class TestInteractor9 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractor11 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractorCyclic extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+
+  @override
+  List<Connector> dependsOn(int? input) =>
+      [const Connector(type: TestInteractorCyclic)];
+}
+
+class TestInteractor10 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractor12 extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
 class TestInteractorAsync2 extends BaseInteractor<int, int?> {
   @override
   bool isAsync(int? input) => true;
@@ -85,6 +114,74 @@ class TestInteractorAsync3 extends BaseInteractor<int, int?> {
 }
 
 class TestInteractorAsync4 extends BaseInteractor<int, int?> {
+  @override
+  bool isAsync(int? input) => true;
+
+  @override
+  Future<void> initializeAsync(int? input) async {
+    await super.initializeAsync(input);
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    updateState(input ?? 0);
+  }
+
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractorAsync5 extends BaseInteractor<int, int?> {
+  @override
+  bool isAsync(int? input) => true;
+
+  @override
+  Future<void> initializeAsync(int? input) async {
+    await super.initializeAsync(input);
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    updateState(input ?? 0);
+  }
+
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractorAsync6 extends BaseInteractor<int, int?> {
+  @override
+  bool isAsync(int? input) => true;
+
+  @override
+  Future<void> initializeAsync(int? input) async {
+    await super.initializeAsync(input);
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    updateState(input ?? 0);
+  }
+
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractorAsync7 extends BaseInteractor<int, int?> {
+  @override
+  bool isAsync(int? input) => true;
+
+  @override
+  Future<void> initializeAsync(int? input) async {
+    await super.initializeAsync(input);
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    updateState(input ?? 0);
+  }
+
+  @override
+  int initialState(int? input) => input ?? 0;
+}
+
+class TestInteractorAsync8 extends BaseInteractor<int, int?> {
   @override
   bool isAsync(int? input) => true;
 
@@ -169,6 +266,56 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
         count: 2,
         async: true,
       ),
+      Connector(
+        type: TestInteractor9,
+        inputForIndex: (index) => index + 1,
+        count: 2,
+        lazy: true,
+      ),
+      Connector(
+        type: TestInteractorAsync5,
+        inputForIndex: (index) => index + 1,
+        count: 2,
+        lazy: true,
+        async: true,
+      ),
+      const Connector(
+        type: TestInteractorAsync8,
+        input: 2,
+        count: 2,
+        lazy: true,
+        async: true,
+      ),
+      const Connector(
+        type: TestInteractor12,
+        input: 2,
+        count: 2,
+        lazy: true,
+      ),
+      const Connector(
+        type: TestInteractor10,
+        lazy: true,
+        input: 2,
+      ),
+      const Connector(
+        type: TestInteractorAsync6,
+        lazy: true,
+        input: 2,
+        async: true,
+      ),
+      const Connector(
+        type: TestInteractor11,
+        lazy: true,
+        input: 2,
+        scope: BaseScopes.unique,
+      ),
+      const Connector(
+        type: TestInteractorAsync7,
+        lazy: true,
+        input: 2,
+        async: true,
+        scope: BaseScopes.unique,
+      ),
     ];
   }
 
@@ -200,8 +347,8 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
 
   @override
   List<InstancesModule> belongsToModules(int? input) => [
-    Modules.test,
-  ];
+        Modules.test,
+      ];
 
   late final testInteractor1 = getLocalInstance<TestInteractor1>();
   late final testInteractor2 = getLocalInstance<TestInteractor2>();
@@ -256,6 +403,60 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   // ignore: non_constant_identifier_names
   late final testPart_error_no_object = useInstancePart<TestInstancePart6>();
 
+  late final testInteractor9_1 = getLazyLocalInstance<TestInteractor9>();
+  late final testInteractor9_2 = getLazyLocalInstance<TestInteractor9>(
+    index: 1,
+  );
+
+  late final testInteractor10 = getLazyLocalInstance<TestInteractor10>();
+  late final testInteractor11 = getLazyLocalInstance<TestInteractor11>();
+
+  late final testInteractorAsync5_1 =
+      getAsyncLazyLocalInstance<TestInteractorAsync5>();
+  late final testInteractorAsync5_2 =
+      getAsyncLazyLocalInstance<TestInteractorAsync5>(
+    index: 1,
+  );
+
+  late final testInteractorAsync6 =
+      getAsyncLazyLocalInstance<TestInteractorAsync6>();
+  late final testInteractorAsync7 =
+      getAsyncLazyLocalInstance<TestInteractorAsync7>();
+
+  // ignore: non_constant_identifier_names
+  late final testInteractor9_error_1 = getLazyLocalInstance<TestInteractor9>(
+    index: -1,
+  );
+
+  // ignore: non_constant_identifier_names
+  late final testInteractor10_error_2 = getLazyLocalInstance<TestInteractor10>(
+    index: 10,
+  );
+
+  // ignore: non_constant_identifier_names
+  late final testInteractorAsync5_error_1 =
+      getAsyncLazyLocalInstance<TestInteractorAsync5>(
+    index: -1,
+  );
+
+  // ignore: non_constant_identifier_names
+  late final testInteractorAsync6_error_2 =
+      getAsyncLazyLocalInstance<TestInteractorAsync6>(
+    index: 10,
+  );
+
+  late final testInteractor12_1 = getLazyLocalInstance<TestInteractor12>();
+  late final testInteractor12_2 = getLazyLocalInstance<TestInteractor12>(
+    index: 1,
+  );
+
+  late final testInteractorAsync8_1 =
+      getAsyncLazyLocalInstance<TestInteractorAsync8>();
+  late final testInteractorAsync8_2 =
+      getAsyncLazyLocalInstance<TestInteractorAsync8>(
+    index: 1,
+  );
+
   @override
   List<EventBusSubscriber> subscribe() => [
         on<TestEvent>((event) {
@@ -284,8 +485,6 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
 }
 
 class TestInteractorError extends BaseInteractor<int, int?> {
-  bool eventProcessed = false;
-
   @override
   int initialState(int? input) => input ?? 0;
 
@@ -308,6 +507,87 @@ class TestInteractorError extends BaseInteractor<int, int?> {
         input: 3,
         scope: BaseScopes.unique,
         async: true,
+      ),
+    ];
+  }
+}
+
+class TestInteractorErrorAsync extends BaseInteractor<int, int?> {
+  @override
+  int initialState(int? input) => input ?? 0;
+
+  @override
+  List<Connector> dependsOn(int? input) {
+    return [
+      const Connector(
+        type: TestInteractorAsync,
+        input: 3,
+        async: true,
+      ),
+      const Connector(
+        type: TestInteractorAsync,
+        input: 3,
+        scope: BaseScopes.unique,
+        async: true,
+      ),
+    ];
+  }
+}
+
+class TestInteractorErrorWithLazyDeps extends BaseInteractor<int, int?> {
+  bool eventProcessed = false;
+
+  @override
+  int initialState(int? input) => input ?? 0;
+
+  @override
+  List<Connector> dependsOn(int? input) {
+    return [
+      const Connector(type: TestInteractor1, input: 2, lazy: true),
+      const Connector(
+        type: TestInteractor2,
+        input: 3,
+        scope: BaseScopes.unique,
+        lazy: true,
+      ),
+      const Connector(
+        type: TestInteractor2,
+        input: 4,
+        scope: Constants.testScope,
+        lazy: true,
+      ),
+      const Connector(
+        type: TestInteractorAsync,
+        input: 3,
+        scope: BaseScopes.unique,
+        async: true,
+        lazy: true,
+      ),
+    ];
+  }
+}
+
+class TestInteractorErrorWithAsyncLazyDeps extends BaseInteractor<int, int?> {
+  bool eventProcessed = false;
+
+  @override
+  int initialState(int? input) => input ?? 0;
+
+  @override
+  List<Connector> dependsOn(int? input) {
+    return [
+      const Connector(
+        type: TestInteractorAsync,
+        input: 3,
+        async: true,
+        lazy: true,
+      ),
+      const Connector(
+        type: TestInteractorAsync,
+        input: 3,
+        scope: BaseScopes.unique,
+        async: true,
+        lazy: true,
       ),
     ];
   }

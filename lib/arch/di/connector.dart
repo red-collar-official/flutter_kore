@@ -23,6 +23,7 @@ class Connector {
   final int? initializationOrder;
   final bool awaitInitialization;
   final bool withoutConnections;
+  final bool lazy;
 
   const Connector({
     required this.type,
@@ -34,6 +35,7 @@ class Connector {
     this.initializationOrder,
     this.awaitInitialization = false,
     this.withoutConnections = false,
+    this.lazy = false,
   });
 
   Connector copyWithScope(String scope) {
@@ -47,6 +49,7 @@ class Connector {
       initializationOrder: initializationOrder,
       awaitInitialization: awaitInitialization,
       withoutConnections: withoutConnections,
+      lazy: lazy,
     );
   }
 }
@@ -59,6 +62,7 @@ class ConnectorCall<InstanceType, InputStateType> {
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
     bool withoutConnections = false,
+    bool lazy = false,
   }) {
     return Connector(
       scope: scope,
@@ -67,6 +71,7 @@ class ConnectorCall<InstanceType, InputStateType> {
       count: count,
       type: InstanceType,
       withoutConnections: withoutConnections,
+      lazy: lazy,
     );
   }
 }
@@ -84,6 +89,7 @@ class AsyncConnectorCall<InstanceType, InputStateType>
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
     bool withoutConnections = false,
+    bool lazy = false,
   }) {
     return Connector(
       scope: scope,
@@ -95,6 +101,7 @@ class AsyncConnectorCall<InstanceType, InputStateType>
       initializationOrder: order,
       withoutConnections: withoutConnections,
       awaitInitialization: awaitInitialization,
+      lazy: lazy,
     );
   }
 }

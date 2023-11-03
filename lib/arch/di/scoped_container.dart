@@ -118,25 +118,20 @@ final class ScopedContainer<T> {
     required String scopeId,
     int index = 0,
   }) {
-    if (_instances.containsKey(scopeId) &&
-        _instances[scopeId]!.containsKey(type)) {
-      final objects = _instances[scopeId]![type]!;
+    final objects = _instances[scopeId]?[type] ?? [];
 
-      if (objects.isEmpty) {
-        return null;
-      }
-
-      if (index < 0 || index >= objects.length) {
-        throw IllegalArgumentException(
-          message:
-              'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
-        );
-      }
-
-      return objects[index];
-    } else {
+    if (objects.isEmpty) {
       return null;
     }
+
+    if (index < 0 || index >= objects.length) {
+      throw IllegalArgumentException(
+        message:
+            'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+      );
+    }
+
+    return objects[index];
   }
 
   /// Returns all objects in given scope
@@ -144,11 +139,7 @@ final class ScopedContainer<T> {
     required String type,
     required String scopeId,
   }) {
-    if (_instances.containsKey(scopeId)) {
-      return _instances[scopeId]![type];
-    } else {
-      return null;
-    }
+    return _instances[scopeId]?[type];
   }
 
   /// Removes object in given scope
@@ -158,18 +149,16 @@ final class ScopedContainer<T> {
     int? index,
     required void Function(T) onRemove,
   }) {
-    if (!_instances.containsKey(scopeId)) {
-      return;
-    }
+    final scopedInstances = _instances[scopeId];
 
     if (index == null) {
-      _instances[scopeId]!.forEach((key, value) {
+      scopedInstances?.forEach((key, value) {
         value.forEach(onRemove);
       });
 
-      _instances[scopeId]!.remove(type);
+      scopedInstances?.remove(type);
     } else {
-      final objects = _instances[scopeId]![type]!;
+      final objects = _instances[scopeId]?[type] ?? [];
 
       if (objects.isEmpty) {
         return;
@@ -187,7 +176,7 @@ final class ScopedContainer<T> {
       objects.removeAt(index);
     }
 
-    if (_instances[scopeId]!.isEmpty) {
+    if (scopedInstances?.isEmpty ?? true) {
       _instances.remove(scopeId);
     }
   }
@@ -198,14 +187,12 @@ final class ScopedContainer<T> {
     required String scopeId,
     int? index,
   }) {
-    if (!_references.containsKey(scopeId)) {
-      return;
-    }
+    final scopedReferences = _references[scopeId];
 
     if (index == null) {
-      _references[scopeId]!.remove(type);
+      scopedReferences?.remove(type);
     } else {
-      final refs = _references[scopeId]![type]!;
+      final refs = scopedReferences?[type] ?? [];
 
       if (refs.isEmpty) {
         return;
@@ -221,11 +208,11 @@ final class ScopedContainer<T> {
       refs.removeAt(index);
 
       if (refs.isEmpty) {
-        _references[scopeId]!.remove(type);
+        scopedReferences?.remove(type);
       }
     }
 
-    if (_references[scopeId]!.isEmpty) {
+    if (scopedReferences?.isEmpty ?? true) {
       _references.remove(scopeId);
     }
   }
@@ -351,9 +338,14 @@ final class ScopedContainer<T> {
   }
 
   /// Checks if container contains object for type in given scope
-  bool contains(String scopeId, String id) {
-    return _instances[scopeId] != null &&
-        (_instances[scopeId]![id]?.isNotEmpty ?? false);
+  bool contains(String scopeId, String id, int? index) {
+    if (index == null) {
+      return _instances[scopeId] != null &&
+          (_instances[scopeId]![id]?.isNotEmpty ?? false);
+    } else {
+      return _instances[scopeId] != null &&
+          ((_instances[scopeId]![id]?.length ?? 0) >= index);
+    }
   }
 
   /// Checks if container contains object for type
