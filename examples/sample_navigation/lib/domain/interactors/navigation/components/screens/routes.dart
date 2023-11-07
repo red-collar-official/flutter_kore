@@ -43,7 +43,10 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    paths: ['posts/:{id}/:{type}'],
+    paths: [
+      'posts/:{id}/:{type}',
+      'posts/:{id}/test/test',
+    ],
     query: [
       'filter=qwerty1|qwerty2',
     ],

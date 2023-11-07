@@ -345,8 +345,12 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
     );
 
     methodsVisitor.annotatedMethods.forEach((key, value) {
-      final paths =
-          value.peek('paths')?.listValue.map((e) => e.toStringValue()) ?? [];
+      final paths = value
+              .peek('paths')
+              ?.listValue
+              .map((e) => e.toStringValue())
+              .toList() ??
+          [];
       final regexes = value.peek('regexes')?.listValue;
 
       if (paths.isNotEmpty && regexes != null) {
@@ -432,7 +436,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         }
 
         if (path == null || customHandler != null) {
-          return;
+          continue;
         }
 
         final uriPath = Uri.parse(path);

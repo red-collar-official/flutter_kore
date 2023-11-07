@@ -36,7 +36,6 @@ class TestMapper extends LinkMapper {
   }
 }
 
-
 class TestHandler extends LinkHandler {
   @override
   Future<UIRoute?> parseLinkToRoute(String url) async {
@@ -76,7 +75,10 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    paths: ['posts/:{id}/:{type}'],
+    paths: [
+      'posts/:{id}/:{type}',
+      'posts/:{id}/test/test',
+    ],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -194,12 +196,13 @@ class Routes extends RoutesBase with RoutesGen {
       defaultSettings: UIRouteSettings(
         global: pathParams != null,
       ),
-
       child: Container(),
     );
   }
 
-  @Link(paths: ['posts'], query: [
+  @Link(paths: [
+    'posts'
+  ], query: [
     'filter',
   ])
   UIRoute<RouteNames> posts2({
@@ -215,7 +218,9 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(paths: ['stub'], query: [
+  @Link(paths: [
+    'stub'
+  ], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({
@@ -308,7 +313,6 @@ class Routes extends RoutesBase with RoutesGen {
         id: state,
       ),
       child: Container(),
-      
     );
   }
 }
