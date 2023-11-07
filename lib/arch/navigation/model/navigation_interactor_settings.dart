@@ -13,9 +13,6 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
   /// Name of route that contains tab view for tab navigators
   final RouteType? tabViewHomeRoute;
 
-  /// Base url for links generated to routes
-  final String? baseLinkUrl;
-
   /// List of all tabs in app
   final List<AppTabType>? tabs;
 
@@ -33,7 +30,6 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     required this.initialRoute,
     this.initialTabRoutes,
     this.tabViewHomeRoute,
-    this.baseLinkUrl,
     this.tabs,
     this.appContainsTabNavigation = false,
     this.bottomSheetsAndDialogsUsingSameNavigator = true,
