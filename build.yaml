@@ -9,8 +9,8 @@ targets:
 builders:
   generators:
     import: "package:umvvm/generators/builders.dart"
-    builder_factories: ["generateMainApp", "generateMainApi"]
-    build_extensions: { ".dart": [".mvvm.dart", ".api.dart"] }
+    builder_factories: ["generateMainApp", "generateMainApi", "generateNavigation"]
+    build_extensions: { ".dart": [".mvvm.dart", ".api.dart", ".navigation.dart"] }
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen:combining_builder"]

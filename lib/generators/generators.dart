@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_string_buffers
 
 import 'dart:async';
 import 'dart:convert';
@@ -7,11 +7,13 @@ import 'package:build/src/builder/build_step.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
 import 'package:glob/glob.dart';
+import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
-import 'package:source_gen/source_gen.dart';
+import 'package:umvvm/arch/navigation/annotations/routes.dart';
 import 'package:umvvm/collectors/models/api_json_model.dart';
 import 'package:umvvm/collectors/models/instance_json_model.dart';
+import 'package:umvvm/generators/annotated_function_visitor.dart';
 import 'package:umvvm/generators/main_app_visitor.dart';
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
@@ -217,6 +219,363 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
   String uncapitalize(String input) {
     return '${input[0].toLowerCase()}${input.substring(1)}';
+  }
+}
+
+class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
+  String capitalize(String input) {
+    return '${input[0].toUpperCase()}${input.substring(1)}';
+  }
+
+  void addLinkHandlerToMap(
+    String routeKey,
+    Map pathsMap,
+    Map queryMap,
+    String newParser,
+  ) {
+    if (!routeKey.contains('/')) {
+      if (pathsMap[routeKey] == null) {
+        pathsMap[routeKey] = {
+          '': queryMap.isEmpty ? newParser : queryMap,
+        };
+      } else if (pathsMap[routeKey][''] == null) {
+        pathsMap[routeKey][''] = queryMap.isEmpty ? newParser : queryMap;
+      } else {
+        if (pathsMap[routeKey][''] is String) {
+          if (queryMap.isNotEmpty) {
+            pathsMap[routeKey][''] = {
+              '': pathsMap[routeKey][''],
+              ...queryMap,
+            };
+          }
+        } else {
+          if (queryMap.isEmpty) {
+            pathsMap[routeKey][''].addAll({
+              '': newParser,
+            });
+          } else {
+            pathsMap[routeKey][''].addAll({
+              ...queryMap,
+            });
+          }
+        }
+      }
+
+      return;
+    }
+
+    var correctedPathsMap = pathsMap;
+    final segments = routeKey.split('/');
+
+    for (final segment in segments) {
+      if (correctedPathsMap[segment] == null) {
+        correctedPathsMap[segment] = {};
+      } else if (correctedPathsMap[segment] is String) {
+        correctedPathsMap[segment] = {
+          '': correctedPathsMap[segment],
+        };
+      }
+
+      correctedPathsMap = correctedPathsMap[segment];
+    }
+
+    if (correctedPathsMap[''] is String) {
+      if (queryMap.isNotEmpty) {
+        correctedPathsMap[''] = {
+          '': correctedPathsMap[''],
+          ...queryMap,
+        };
+      }
+    } else if (correctedPathsMap[''] is Map) {
+      if (queryMap.isEmpty) {
+        correctedPathsMap[''].addAll({
+          '': newParser,
+        });
+      } else {
+        correctedPathsMap[''].addAll({
+          ...queryMap,
+        });
+      }
+    } else {
+      correctedPathsMap[''] = queryMap.isEmpty ? newParser : queryMap;
+    }
+  }
+
+  @override
+  FutureOr<String> generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
+    String? getParameterInitializationCode(String valueString) {
+      return '$valueString;';
+    }
+
+    final visitor = MainAppVisitor();
+    final methodsVisitor = AnnotatedFunctionVisitor();
+
+    element
+      ..visitChildren(visitor)
+      ..visitChildren(methodsVisitor);
+
+    final isDialog = annotation.peek('dialogs')?.boolValue ?? false;
+    final isBottomSheet = annotation.peek('bottomSheets')?.boolValue ?? false;
+
+    final className = visitor.className;
+    final classBuffer = StringBuffer();
+
+    var linkHandlerBaseClass = 'RouteLinkHandler';
+    var namesEnumClass = 'RouteNames';
+    var routesBaseClass = 'routes';
+
+    if (isDialog) {
+      linkHandlerBaseClass = 'DialogLinkHandler';
+      namesEnumClass = 'DialogNames';
+      routesBaseClass = 'dialogs';
+    } else if (isBottomSheet) {
+      linkHandlerBaseClass = 'BottomSheetLinkHandler';
+      namesEnumClass = 'BottomSheetNames';
+      routesBaseClass = 'bottomSheets';
+    }
+
+    final linkHandlersMap = {};
+
+    classBuffer.writeln(
+      '// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment',
+    );
+
+    methodsVisitor.annotatedMethods.forEach((key, value) {
+      final path = value.peek('path')?.stringValue;
+
+      final customHandler = value
+          .peek('customHandler')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
+      final query =
+          value.peek('query')?.listValue.map((e) => e.toStringValue()) ?? [];
+
+      if (path != null) {
+        final codedPath = path.replaceAll(RegExp(':{.+?(?=})}'), '*');
+
+        final queryHandlersMap = {};
+
+        if (query.isNotEmpty) {
+          var resultRule = '';
+
+          for (final element in query) {
+            if (element!.contains('=') && element.contains('|')) {
+              final splittedByKeyValues = element.split('=');
+
+              final key = splittedByKeyValues[0];
+              final values = splittedByKeyValues[1].split('|');
+
+              for (final element in values) {
+                resultRule += '$key=$element|';
+              }
+            } else {
+              resultRule += '$element|';
+            }
+          }
+
+          resultRule = resultRule.substring(0, resultRule.length - 1);
+
+          if (customHandler != null) {
+            queryHandlersMap[resultRule] = customHandler;
+          } else {
+            queryHandlersMap[resultRule] = '${capitalize(key)}LinkHandler';
+          }
+        }
+
+        final pathsMap = linkHandlersMap;
+
+        String newParser;
+
+        if (customHandler != null) {
+          newParser = customHandler;
+        } else {
+          newParser = '${capitalize(key)}LinkHandler';
+        }
+
+        try {
+          addLinkHandlerToMap(
+            codedPath,
+            pathsMap,
+            queryHandlersMap,
+            newParser,
+          );
+        } catch (e, trace) {
+          print(e);
+          print(trace);
+        }
+      }
+
+      if (path == null || customHandler != null) {
+        return;
+      }
+
+      final uriPath = Uri.parse(path);
+      final segments = uriPath.pathSegments;
+
+      var pathUrlString =
+          r'''final resultUrl = (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') + (pathPrefix ?? '');var pathUrl = '$resultUrl';''';
+      var patternQueryString = 'final patternQuery = [\n';
+      var parseParamsUrlString = '';
+      var parseParamsQueryString = '';
+
+      var pathPrefix = '';
+
+      for (final element in segments) {
+        if (!element.contains(':{')) {
+          pathPrefix += '/$element';
+          continue;
+        }
+
+        final paramName = element.replaceAll(RegExp('[:{}]'), '');
+        pathUrlString += 'pathUrl +=\'/';
+        pathUrlString += r'''${paramsForLink![''';
+        pathUrlString += '\'$paramName\']}\';';
+        pathUrlString += '\n';
+
+        final paramInitialization = getParameterInitializationCode(
+          'segments[index]',
+        );
+
+        parseParamsUrlString += '''
+if (pathSegmentPattern == '$element') {
+  pathParams['$paramName'] = $paramInitialization
+}
+''';
+      }
+
+      bool firstQueryParamAdded = false;
+
+      for (final element in query) {
+        var queryElement = element!.replaceAll('?', '');
+
+        if (queryElement.contains('=')) {
+          queryElement = queryElement.split('=')[0];
+        }
+
+        pathUrlString +=
+            'pathUrl += \'${firstQueryParamAdded ? '&' : '?'}$queryElement=';
+
+        firstQueryParamAdded = true;
+
+        pathUrlString += r'''${paramsForQuery![''';
+        pathUrlString += '\'$queryElement\']}\';';
+        pathUrlString += '\n';
+
+        patternQueryString += '\'$queryElement\',';
+        patternQueryString += '\n';
+
+        final paramInitialization = getParameterInitializationCode(
+          'queryParams[queryParam] ?? []',
+        );
+
+        parseParamsQueryString += '''
+queryParamsForView['$queryElement'] = $paramInitialization
+''';
+      }
+
+      patternQueryString += '\n];';
+
+      classBuffer
+        ..writeln(
+          'class ${capitalize(key)}LinkHandler extends $linkHandlerBaseClass {',
+        )
+        ..writeln('@override')
+        ..writeln('Future<String> generateLinkForRoute() async {')
+        ..writeln(pathUrlString)
+        ..writeln('return pathUrl;')
+        ..writeln('}')
+        ..writeln(
+          '''
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('$path');
+    $patternQueryString
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      $parseParamsUrlString
+    }
+
+    for (var index = 0; index < patternQuery.length; index++) {
+      final queryParam = patternQuery[index];
+
+      $parseParamsQueryString
+    }
+
+    final route = app.navigation.$routesBaseClass.$key(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    ).copyWithLinkHandler(this
+      ..paramsForLink = pathParams
+      ..paramsForQuery = queryParamsForView
+      ..pathPrefix = '$pathPrefix'
+    );
+
+    return route;
+  }
+}
+''',
+        );
+    });
+
+    classBuffer
+      ..writeln()
+      ..writeln('enum $namesEnumClass {');
+
+    for (final method in methodsVisitor.allMethods) {
+      classBuffer.writeln('$method,');
+    }
+
+    classBuffer
+      ..writeln('}')
+      ..writeln()
+      ..writeln('mixin ${className}Gen on RoutesBase {')
+      ..writeln()
+      ..writeln('@override')
+      ..writeln('void initializeLinkHandlers() {')
+      ..writeln('routeLinkHandlers.addAll({')
+      ..writeln(generateLinksMap(linkHandlersMap))
+      ..writeln('});')
+      ..writeln('}')
+      ..writeln('}')
+      ..writeln();
+
+    return classBuffer.toString();
+  }
+
+  String generateLinksMap(Map linkHandlersMap) {
+    final classBuffer = StringBuffer();
+
+    if (linkHandlersMap.values.whereType<Map>().isNotEmpty) {
+      linkHandlersMap.forEach((key, value) {
+        if (value is Map) {
+          classBuffer.writeln(
+            '\'$key\': {${generateLinksMap(value)}},',
+          );
+        } else {
+          classBuffer.writeln('\'$key\': $value(),');
+        }
+      });
+    } else {
+      linkHandlersMap.forEach((key, value) {
+        classBuffer.writeln('\'$key\': $value(),');
+      });
+    }
+
+    return classBuffer.toString();
   }
 }
 

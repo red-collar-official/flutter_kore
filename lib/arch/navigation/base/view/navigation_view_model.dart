@@ -36,7 +36,11 @@ abstract class NavigationView<View extends BaseWidget, ScreenState,
               viewModel.navigationInteractor.globalNavigatorKey &&
           currentNavigatorKey !=
               viewModel.navigationInteractor.bottomSheetDialogNavigatorKey) {
-        viewModel.screenTab = viewModel.navigationInteractor.currentTab;
+        for (final entry in viewModel.navigationInteractor.currentTabKeys.entries) {
+          if (entry.value == currentNavigatorKey) {
+            viewModel.screenTab = entry.key;
+          }
+        }
       } else {
         viewModel.screenTab = null;
       }

@@ -13,3 +13,8 @@ Builder generateMainApi(BuilderOptions options) => PartBuilder(
       '.api.dart',
       allowSyntaxErrors: true,
     );
+Builder generateNavigation(BuilderOptions options) => PartBuilder(
+      [MainNavigationGenerator()],
+      '.navigation.dart',
+      allowSyntaxErrors: true,
+    );

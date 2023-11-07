@@ -1,3 +1,0 @@
-enum DialogNames {
-  stub,
-}

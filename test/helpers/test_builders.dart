@@ -1,5 +1,6 @@
 import 'package:umvvm/umvvm.dart';
 
+import '../mocks/deep_links/deep_links_interactor.dart';
 import '../mocks/navigation/navigation_interactor.dart';
 import '../mocks/test_interactors.dart';
 import '../mocks/test_parts.dart';
@@ -22,6 +23,7 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestInteractorCyclic>(TestInteractorCyclic.new)
     ..addBuilder<TestInteractorWithRequest>(TestInteractorWithRequest.new)
     ..addBuilder<NavigationInteractor>(NavigationInteractor.new)
+    ..addBuilder<TestDeepLinksInteractor>(TestDeepLinksInteractor.new)
     ..addBuilder<TestInteractorError>(TestInteractorError.new)
     ..addBuilder<TestInteractorErrorAsync>(TestInteractorErrorAsync.new)
     ..addBuilder<TestInteractorErrorWithLazyDeps>(

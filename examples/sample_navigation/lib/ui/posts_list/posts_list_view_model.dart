@@ -1,7 +1,6 @@
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart';
 
 import 'posts_list_view.dart';
@@ -25,7 +24,7 @@ class PostsListViewModel
 
   void openPost(Post post) {
     app.navigation.routeTo(
-      Routes.post(
+      app.navigation.routes.post(
         post: post,
       ),
       forceGlobal: true,

@@ -9,12 +9,14 @@ import 'post_view_state.dart';
 class PostView extends BaseWidget {
   final Post? post;
   final int? id;
+  final int? filter;
 
   const PostView({
     super.key,
     this.post,
     this.id,
     super.viewModel,
+    this.filter,
   });
 
   @override

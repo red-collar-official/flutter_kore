@@ -4,7 +4,6 @@ import 'package:umvvm/umvvm.dart';
 
 import '../helpers/test_builders.dart';
 import '../mocks/navigation/components/app_tab.dart';
-import '../mocks/navigation/components/screens/route_names.dart';
 import '../mocks/navigation/components/screens/routes.dart';
 import '../mocks/navigation/navigation_interactor.dart';
 import '../mocks/test_interactors.dart';
@@ -60,7 +59,7 @@ void main() {
       await viewModel.initializeAsync(const TestWidget());
       viewModel.onLaunch(const TestWidget());
 
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation.routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       viewModel.pop();
 
@@ -78,7 +77,7 @@ void main() {
       await viewModel.initializeAsync(const TestWidget());
       viewModel.onLaunch(const TestWidget());
 
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       viewModel.pop();
 
@@ -93,7 +92,7 @@ void main() {
       await viewModel.initializeAsync(const TestWidget());
       viewModel.onLaunch(const TestWidget());
 
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       viewModel.pop();
 

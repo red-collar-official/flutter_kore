@@ -1,9 +1,6 @@
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/global/global_store.dart';
-import 'package:sample_database/domain/interactors/navigation/components/bottom_sheets/bottom_sheets.dart';
-import 'package:sample_database/domain/interactors/navigation/components/dialogs/dialogs.dart';
-import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_database/domain/interactors/post/post_interactor.dart';
 
 import 'post_view.dart';
@@ -31,14 +28,17 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   }
 
   void openTestDialog() {
-    app.instances
-        .get<NavigationInteractor>()
-        .showDialog(Dialogs.error(), dismissable: false);
+    app.navigation.showDialog(
+      app.navigation.dialogs.post(),
+      dismissable: false,
+    );
   }
 
   void openTestBottomSheet() {
-    app.navigation
-        .showBottomSheet(BottomSheets.autharization(), dismissable: false);
+    app.navigation.showBottomSheet(
+      app.navigation.bottomSheets.post(),
+      dismissable: false,
+    );
   }
 
   Stream<StatefulData<Post>?> get postStream =>

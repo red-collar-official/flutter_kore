@@ -3,29 +3,34 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+import '../deep_links/deep_links_interactor.dart';
 import 'components/app_tab.dart';
-import 'components/bottom_sheets/bottom_sheet_names.dart';
-import 'components/dialogs/dialog_names.dart';
-import 'components/screens/route_names.dart';
+import 'components/bottom_sheets/bottom_sheets.dart';
+import 'components/dialogs/dialogs.dart';
+import 'components/screens/routes.dart';
 import 'navigation_state.dart';
 
 final postsNavigatorKey = GlobalKey<NavigatorState>();
 final likedPostsNavigatorKey = GlobalKey<NavigatorState>();
 
 @singleton
-class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
-    Map<String, dynamic>, AppTab, RouteNames, DialogNames, BottomSheetNames> {
-  @override
-  RouteNames get initialRoute => RouteNames.home;
+class NavigationInteractor extends BaseNavigationInteractor<
+    NavigationState,
+    Map<String, dynamic>,
+    AppTab,
+    Routes,
+    Dialogs,
+    BottomSheets,
+    RouteNames,
+    DialogNames,
+    BottomSheetNames,
+    TestDeepLinksInteractor> {
+  final _routes = Routes();
+  final _dialogs = Dialogs();
+  final _bottomSheets = BottomSheets();
 
   @override
   AppTab? get currentTab => state.currentTab;
-
-  @override
-  List<AppTab>? get tabs => AppTabs.tabs;
-
-  @override
-  RouteNames? get tabViewHomeRoute => RouteNames.home;
 
   @override
   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
@@ -34,10 +39,23 @@ class NavigationInteractor extends BaseNavigationInteractor<NavigationState,
       };
 
   @override
-  Map<AppTab, RouteNames> get initialTabRoutes => {
-        AppTabs.posts: RouteNames.posts,
-        AppTabs.likedPosts: RouteNames.likedPosts,
-      };
+  NavigationInteractorSettings get settings => NavigationInteractorSettings(
+        initialRoute: RouteNames.home,
+        tabs: AppTabs.tabs,
+        tabViewHomeRoute: RouteNames.home,
+        initialTabRoutes: {
+          AppTabs.posts: RouteNames.posts,
+          AppTabs.likedPosts: RouteNames.likedPosts,
+        },
+        appContainsTabNavigation: true,
+      );
+
+  @override
+  BottomSheets get bottomSheets => _bottomSheets;
+  @override
+  Dialogs get dialogs => _dialogs;
+  @override
+  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {

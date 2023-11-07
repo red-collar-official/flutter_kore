@@ -4,5 +4,11 @@ export 'base/view/global_navigation_root_view.dart';
 export 'base/view/navigation_view_model.dart';
 export 'base/view/tab_navigation_root_view.dart';
 
-export 'base/model/route.dart';
-export 'base/model/route_model.dart';
+export 'model/route.dart';
+export 'model/route_model.dart';
+export 'model/navigation_interactor_settings.dart';
+
+export 'deeplinks/link_handler.dart';
+export 'annotations/annotations.dart';
+
+export 'declaration/routes_base.dart';

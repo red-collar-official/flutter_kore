@@ -3,13 +3,28 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
 import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
+import 'package:umvvm/arch/navigation/deeplinks/base_deeplinks_interactor.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for navigation interactor
 /// Contains state and input parameters as every other interactor
 /// Also you need to specify type parameters for tabs, routes, dialogs and bottom sheets
-abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
-    DialogType, BottomSheetType> extends BaseInteractor<State, Input> {
+abstract class BaseNavigationInteractor<
+        State,
+        Input,
+        AppTabType,
+        RoutesClassType extends RoutesBase,
+        DialogClassType extends RoutesBase,
+        BottomSheetClassType extends RoutesBase,
+        RouteType,
+        DialogType,
+        BottomSheetType,
+        DeepLinksInteractorType extends BaseDeepLinksInteractor>
+    extends BaseInteractor<State, Input> {
+  late final deepLinks = InstanceCollection.instance
+          .find<DeepLinksInteractorType>(BaseScopes.global)
+      as DeepLinksInteractorType;
+
   /// Global key for main app global navigator
   /// You need to pass it to instance of MaterialApp
   final globalNavigatorKey = GlobalKey<NavigatorState>();
@@ -17,7 +32,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   /// Global key for main app bottom sheets and dialogs navigator
   /// if [bottomSheetsAndDialogsUsingSameNavigator] is true then it is [globalNavigatorKey]
   late final bottomSheetDialogNavigatorKey =
-      bottomSheetsAndDialogsUsingSameNavigator
+      settings.bottomSheetsAndDialogsUsingSameNavigator
           ? globalNavigatorKey
           : GlobalKey<NavigatorState>();
 
@@ -33,45 +48,40 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
   /// Default stack for global navigator
   List<UIRouteModel> defaultRouteStack() => [
-        _defailtRouteModelFor(initialRoute),
+        _defailtRouteModelFor(settings.initialRoute),
       ];
 
   /// Default stacks for every tab navigator
   Map<AppTabType, List<UIRouteModel>> defaultTabRouteStack() =>
-      initialTabRoutes.map(
+      settings.initialTabRoutes?.map(
         (key, value) => MapEntry(key, [_defailtRouteModelFor(value)]),
-      );
+      )
+      // coverage:ignore-start
+      ??
+      {};
+  // coverage:ignore-end
 
   /// Contains global keys for every tab in app
   Map<AppTabType, GlobalKey<NavigatorState>> currentTabKeys = {};
 
-  /// Initial route of whole app
-  /// Used to initialize [navigationStack]
-  RouteType get initialRoute;
+  /// Settings for app navigation
+  NavigationInteractorSettings get settings;
+
+  /// Settings for app navigation
+  RoutesClassType get routes;
+
+  /// Settings for app navigation
+  DialogClassType get dialogs;
+
+  /// Settings for app navigation
+  BottomSheetClassType get bottomSheets;
 
   // coverage:ignore-start
-
-  /// Initial route of every tab in app
-  Map<AppTabType, RouteType> get initialTabRoutes => {};
-
-  /// Name of route that contains tab view for tab navigators
-  RouteType? get tabViewHomeRoute => null;
 
   /// Currently selected tab
   AppTabType? get currentTab => null;
 
-  /// List of all tabs in app
-  List<AppTabType>? get tabs => null;
-
   // coverage:ignore-end
-
-  /// Flag indicating that app contains tab views with inner navigators
-  bool get appContainsTabNavigation => true;
-
-  /// Flag indicating that app dialogs and botttom sheets
-  /// using [globalNavigatorKey] instead of separate [bottomSheetDialogNavigatorKey]
-  /// Set it to false if you want separate navigator for bottom sheets and dialogs
-  bool get bottomSheetsAndDialogsUsingSameNavigator => true;
 
   /// Callback for new route in any navigation stack
   Future<void> onRouteOpened(Widget child, UIRouteSettings route);
@@ -99,10 +109,20 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   UIRouteModel latestTabRoute() =>
       navigationStack.tabNavigationStack.stack[currentTab]!.last;
 
+  @mustCallSuper
+  @override
+  void initialize(Input? input) {
+    super.initialize(input);
+
+    routes.initializeLinkHandlers();
+    dialogs.initializeLinkHandlers();
+    bottomSheets.initializeLinkHandlers();
+  }
+
   /// Initializes stack with [initialRoute]
   void initStack() {
     navigationStack.replaceStack(
-      routeName: initialRoute,
+      routeName: settings.initialRoute,
       tab: currentTab,
       global: true,
       uniqueInStack: true,
@@ -114,13 +134,13 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
 
   /// Checks if navigator now in global stack or in tab stack
   bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true}) {
-    if (!appContainsTabNavigation) {
+    if (!settings.appContainsTabNavigation) {
       return true;
     }
 
     final isHomePresentInStack =
         navigationStack.globalNavigationStack.stack.indexWhere(
-              (element) => element.name == tabViewHomeRoute,
+              (element) => element.name == settings.tabViewHomeRoute,
             ) !=
             -1;
 
@@ -308,7 +328,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
         );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
-      
+
       // coverage:ignore-start
       unawaited(navigator.currentState?.pushAndRemoveUntil(
         route,
@@ -335,6 +355,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
       ));
     } else {
       // otherwise we just add route and push it to navigator
+
       navigationStack.addRoute(
         routeName: routeName,
         currentTab: currentTab,
@@ -582,7 +603,7 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
   /// Pops all tabs to root view
   void popAllTabsToFirst() {
     // ignore: prefer_foreach
-    for (final element in tabs ?? []) {
+    for (final element in settings.tabs ?? []) {
       popInTabToFirst(element, clearStack: false);
     }
 
@@ -613,5 +634,23 @@ abstract class BaseNavigationInteractor<State, Input, AppTabType, RouteType,
     return navigationStack.globalNavigationStack.stack
             .indexWhere((element) => element.name == routeName) !=
         -1;
+  }
+
+  Future<void> openLink(String link) async {
+    var routeHandler = routes.handlerForLink(link);
+
+    if (routeHandler == null) {
+      routeHandler = dialogs.handlerForLink(link);
+
+      routeHandler ??= bottomSheets.handlerForLink(link);
+
+      if (routeHandler == null) {
+        return;
+      }
+    }
+
+    final route = await routeHandler.parseLinkToRoute(link);
+
+    await routeHandler.processRoute(route);
   }
 }

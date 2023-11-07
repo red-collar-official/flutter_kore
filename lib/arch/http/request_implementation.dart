@@ -415,10 +415,11 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     final uri = Uri.parse((baseUrl ?? '') + finalUrl);
 
     final resultUri = Uri(
-        scheme: uri.scheme,
-        host: uri.host,
-        path: uri.path.substring(1),
-        queryParameters: correctedMap.isEmpty ? null : correctedMap);
+      scheme: uri.scheme,
+      host: uri.host,
+      path: uri.path.substring(1),
+      queryParameters: correctedMap.isEmpty ? null : correctedMap,
+    );
 
     return resultUri;
   }

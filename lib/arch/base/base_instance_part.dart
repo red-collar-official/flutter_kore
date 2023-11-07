@@ -1,7 +1,7 @@
 import 'package:umvvm/umvvm.dart';
 
 abstract class BaseInstancePart<Input, T extends MvvmInstance>
-    extends MvvmInstance<Input> {
+    extends MvvmInstance<Input> with ApiCaller<Input> {
   late T parentInstance;
 
   @override

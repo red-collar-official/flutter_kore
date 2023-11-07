@@ -7,11 +7,8 @@ import 'package:umvvm/umvvm.dart';
 import '../helpers/delay_utility.dart';
 import '../helpers/test_builders.dart';
 import '../mocks/navigation/components/app_tab.dart';
-import '../mocks/navigation/components/bottom_sheets/bottom_sheet_names.dart';
 import '../mocks/navigation/components/bottom_sheets/bottom_sheets.dart';
-import '../mocks/navigation/components/dialogs/dialog_names.dart';
 import '../mocks/navigation/components/dialogs/dialogs.dart';
-import '../mocks/navigation/components/screens/route_names.dart';
 import '../mocks/navigation/components/screens/routes.dart';
 import '../mocks/navigation/navigation_interactor.dart';
 import '../mocks/navigation/navigation_interactor_with_bottom_sheet_and_dialogs_key.dart';
@@ -58,7 +55,9 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, RouteNames.home);
     });
 
-    test('NavigationInteractor with bottom sheets and dialogs key test', () {
+    test(
+        'NavigationInteractor with bottom sheets and app.navigation.dialogs key test',
+        () {
       final navigationInteractorWithBottomSheetsAndDialogsKey =
           NavigationInteractorWithBottomSheetsAndDialogsKey();
 
@@ -79,20 +78,21 @@ void main() {
     });
 
     test('NavigationInteractor Add route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.stub);
     });
 
     test('NavigationInteractor Add unique route test', () async {
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         forceGlobal: true,
         uniqueInStack: true,
       );
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         forceGlobal: true,
         uniqueInStack: true,
       );
@@ -105,12 +105,12 @@ void main() {
 
     test('NavigationInteractor Add unique route in tab test', () async {
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
       );
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
       );
 
@@ -123,12 +123,12 @@ void main() {
       app.navigation.setCurrentTab(AppTabs.likedPosts);
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
       );
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
       );
 
@@ -140,21 +140,23 @@ void main() {
     });
 
     test('NavigationInteractor Add route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.stub);
     });
 
     test('NavigationInteractor isInGlobalStack test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.showDialog(Dialogs.stub());
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
 
       expect(app.navigation.isInGlobalStack(), true);
 
       app.navigation.pop();
       app.navigation.pop();
 
-      await app.navigation.showDialog(Dialogs.stub());
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
 
       expect(app.navigation.isInGlobalStack(), true);
       expect(
@@ -164,18 +166,20 @@ void main() {
     });
 
     test('NavigationInteractor contains global route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(app.navigation.containsGlobalRoute(RouteNames.stub), true);
     });
 
     test('NavigationInteractor can pop test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(app.navigation.canPop(), true);
 
       await app.navigation.routeTo(
-        Routes.home(),
+        app.navigation.routes.home(),
         forceGlobal: true,
         replace: true,
       );
@@ -185,16 +189,19 @@ void main() {
       expect(app.navigation.canPop(global: false), false);
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
       );
 
       expect(app.navigation.canPop(global: false), true);
     });
 
     test('NavigationInteractor pop global to first test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       app.navigation.popGlobalToFirst();
 
@@ -206,15 +213,16 @@ void main() {
     });
 
     test('NavigationInteractor home back button callback test', () async {
-      await app.navigation.routeTo(Routes.post(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.post(), forceGlobal: true);
 
       await app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         forceGlobal: true,
         needToEnsureClose: true,
       );
 
-      await app.navigation.showDialog(Dialogs.stub());
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
 
       await app.navigation.homeBackButtonGlobalCallback(global: true);
 
@@ -253,9 +261,9 @@ void main() {
     });
 
     test('NavigationInteractor pop in tab to first test', () async {
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       app.navigation.popInTabToFirst(app.navigation.currentTab!);
 
@@ -266,9 +274,9 @@ void main() {
         1,
       );
 
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       app.navigation.popInTabToFirst(
         app.navigation.currentTab!,
@@ -285,9 +293,12 @@ void main() {
     });
 
     test('NavigationInteractor pop to tab test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       app.navigation.popToTab(AppTabs.likedPosts);
 
@@ -299,8 +310,10 @@ void main() {
     });
 
     test('NavigationInteractor pop until test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.post(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.post(), forceGlobal: true);
 
       app.navigation.popUntil(RouteNames.stub);
 
@@ -311,8 +324,8 @@ void main() {
 
       app.navigation.popAllNavigatiorsToFirst();
 
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.post());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.post());
 
       app.navigation.popUntil(RouteNames.stub);
 
@@ -323,13 +336,13 @@ void main() {
     });
 
     test('NavigationInteractor pop all tabs to first test', () async {
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.post());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.post());
 
       app.navigation.setCurrentTab(AppTabs.likedPosts);
 
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.post());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.post());
 
       app.navigation.popAllTabsToFirst();
 
@@ -347,13 +360,16 @@ void main() {
     });
 
     test('NavigationInteractor popAllNavigatiorsToFirst test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       app.navigation.popToTab(AppTabs.likedPosts);
 
@@ -371,14 +387,14 @@ void main() {
     });
 
     test('NavigationInteractor show dialog test', () async {
-      await app.navigation.showDialog(Dialogs.stub());
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
 
       expect(app.navigation.latestGlobalRoute().name, DialogNames.stub);
     });
 
     test('NavigationInteractor popAllDialogsAndBottomSheets test', () async {
-      await app.navigation.showDialog(Dialogs.stub());
-      await app.navigation.showDialog(Dialogs.stub());
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
+      await app.navigation.showDialog(app.navigation.dialogs.stub());
 
       app.navigation.popAllDialogsAndBottomSheets();
 
@@ -386,21 +402,23 @@ void main() {
     });
 
     test('NavigationInteractor show bottom sheet test', () async {
-      await app.navigation.showBottomSheet(BottomSheets.stub());
+      await app.navigation.showBottomSheet(app.navigation.bottomSheets.stub());
 
       expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.stub);
     });
 
     test('NavigationInteractor Add route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.stub);
     });
 
     test('NavigationInteractor replace previous route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
       await app.navigation.routeTo(
-        Routes.post(),
+        app.navigation.routes.post(),
         forceGlobal: true,
         replacePrevious: true,
       );
@@ -413,9 +431,9 @@ void main() {
     });
 
     test('NavigationInteractor replace previous route in tab test', () async {
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
       await app.navigation.routeTo(
-        Routes.post(),
+        app.navigation.routes.post(),
         replacePrevious: true,
       );
 
@@ -428,9 +446,10 @@ void main() {
     });
 
     test('NavigationInteractor replace route test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
       await app.navigation.routeTo(
-        Routes.post(),
+        app.navigation.routes.post(),
         forceGlobal: true,
         replace: true,
       );
@@ -444,13 +463,13 @@ void main() {
 
     test('NavigationInteractor Add unique test', () async {
       unawaited(app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
         forceGlobal: true,
       ));
 
       unawaited(app.navigation.routeTo(
-        Routes.stub(),
+        app.navigation.routes.stub(),
         uniqueInStack: true,
         forceGlobal: true,
       ));
@@ -466,15 +485,15 @@ void main() {
     });
 
     test('NavigationInteractor Replace stack test', () async {
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.stub());
-      await app.navigation.routeTo(Routes.home(), replace: true);
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.home(), replace: true);
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.home);
     });
 
     test('NavigationInteractor Pop any view test', () {
-      unawaited(app.navigation.routeTo(Routes.stub()));
+      unawaited(app.navigation.routeTo(app.navigation.routes.stub()));
       app.navigation.pop();
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.home);
@@ -483,7 +502,7 @@ void main() {
     test('NavigationInteractor Add route in tab test', () async {
       expect(app.navigation.state.currentTab, AppTabs.posts);
 
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       expect(app.navigation.latestTabRoute().name, RouteNames.stub);
     });
@@ -491,7 +510,7 @@ void main() {
     test('NavigationInteractor Add route set current tab test', () async {
       expect(app.navigation.state.currentTab, AppTabs.posts);
 
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       expect(app.navigation.latestTabRoute().name, RouteNames.stub);
 
@@ -501,15 +520,15 @@ void main() {
 
       expect(app.navigation.latestTabRoute().name, RouteNames.likedPosts);
 
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
 
       expect(app.navigation.latestTabRoute().name, RouteNames.stub);
     });
 
     test('NavigationInteractor Pop in tab test', () async {
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
       app.navigation.setCurrentTab(AppTabs.likedPosts);
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
       app.navigation.popInTab(AppTabs.posts);
 
       expect(
@@ -526,9 +545,9 @@ void main() {
     });
 
     test('NavigationInteractor Pop in tab internal test', () async {
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
       app.navigation.setCurrentTab(AppTabs.likedPosts);
-      await app.navigation.routeTo(Routes.stub());
+      await app.navigation.routeTo(app.navigation.routes.stub());
       app.navigation.popInTab(AppTabs.posts, onlyInternalStack: true);
 
       expect(
@@ -547,7 +566,8 @@ void main() {
     });
 
     test('NavigationInteractor Pop extra test', () async {
-      await app.navigation.routeTo(Routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       expect(
         app.navigation.navigationStack.globalNavigationStack.stack.length,
@@ -570,7 +590,8 @@ void main() {
     });
 
     test('NavigationInteractor Pop internal test', () async {
-      unawaited(app.navigation.routeTo(Routes.stub(), forceGlobal: true));
+      unawaited(app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true));
 
       await DelayUtility.pause(millis: 200);
 
