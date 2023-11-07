@@ -363,7 +363,11 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         return;
       }
 
+      var handlerIndex = 0;
+
       for (final path in paths) {
+        handlerIndex++;
+
         final customHandler = value
             .peek('customHandler')
             ?.typeValue
@@ -399,7 +403,8 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             if (customHandler != null) {
               queryHandlersMap[resultRule] = customHandler;
             } else {
-              queryHandlersMap[resultRule] = '${capitalize(key)}LinkHandler';
+              queryHandlersMap[resultRule] =
+                  '${capitalize(key)}LinkHandler$handlerIndex';
             }
           }
 
@@ -410,7 +415,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
           if (customHandler != null) {
             newParser = customHandler;
           } else {
-            newParser = '${capitalize(key)}LinkHandler';
+            newParser = '${capitalize(key)}LinkHandler$handlerIndex';
           }
 
           try {
@@ -478,7 +483,7 @@ queryParamsForView['$queryElement'] = $paramInitialization
 
         classBuffer
           ..writeln(
-            'class ${capitalize(key)}LinkHandler extends $linkHandlerBaseClass {',
+            'class ${capitalize(key)}LinkHandler$handlerIndex extends $linkHandlerBaseClass {',
           )
           ..writeln(
             '''
@@ -507,12 +512,12 @@ queryParamsForView['$queryElement'] = $paramInitialization
       $parseParamsQueryString
     }
 
-    ${requiresState ? 'final anchor = uriPath.fragment;': ''}
+    ${requiresState ? 'final anchor = uriPath.fragment;' : ''}
 
     final route = app.navigation.$routesBaseClass.$key(
       pathParams: pathParams,
       queryParams: queryParamsForView,
-      ${requiresState ? 'state: anchor,': ''}
+      ${requiresState ? 'state: anchor,' : ''}
     );
 
     return route;
