@@ -2,12 +2,17 @@ import 'dart:async';
 
 import 'package:umvvm/umvvm.dart';
 
+/// Class describing parser for link and mapping to route
 abstract class LinkHandler {
+  /// Maps given url to navigation [UIRoute]
+  /// if you want to skip this url return null
   Future<UIRoute?> parseLinkToRoute(String url);
 
+  /// Opens constructed route
   Future<void> processRoute(UIRoute? route);
 }
 
+/// Generic link handler used for regexes parsing
 class GenericLinkHandler extends LinkHandler {
   final LinkMapper mapper;
 
@@ -19,7 +24,7 @@ class GenericLinkHandler extends LinkHandler {
   Future<UIRoute> parseLinkToRoute(String url) async {
     final params = mapper.mapParamsFromUrl(url);
 
-    return mapper.constructRoute(params.$1, params.$2);
+    return mapper.constructRoute(params.$1, params.$2, params.$3);
   }
 
   @override
@@ -32,6 +37,7 @@ class GenericLinkHandler extends LinkHandler {
   }
 }
 
+/// Link handler for routes
 abstract class RouteLinkHandler extends LinkHandler {
   @override
   Future<void> processRoute(UIRoute? route) async {
@@ -43,6 +49,7 @@ abstract class RouteLinkHandler extends LinkHandler {
   }
 }
 
+/// Link handler for dialogs
 abstract class DialogLinkHandler extends LinkHandler {
   @override
   Future<void> processRoute(UIRoute? route) async {
@@ -54,6 +61,7 @@ abstract class DialogLinkHandler extends LinkHandler {
   }
 }
 
+/// Link handler for bottom sheets
 abstract class BottomSheetLinkHandler extends LinkHandler {
   @override
   Future<void> processRoute(UIRoute? route) async {

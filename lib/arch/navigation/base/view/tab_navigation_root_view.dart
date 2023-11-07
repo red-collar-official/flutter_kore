@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/view/navigation_view_model.dart';
 import 'package:umvvm/arch/view/base_widget.dart';
 
+/// View model for root tab navigation view
+/// Must be extended by view containing [bottomNavigationBar] 
 abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
     extends NavigationViewModel<Widget, State> {
   Future<bool> onWillPop() async {
@@ -11,6 +13,8 @@ abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
   }
 }
 
+/// Base view state for root tab navigation view
+/// Must be extended by view containing [bottomNavigationBar] 
 abstract class TabNavigationRootView<View extends BaseWidget, ScreenState,
         ViewModel extends TabNavigationRootViewModel<View, ScreenState>>
     extends NavigationView<View, ScreenState, ViewModel> {

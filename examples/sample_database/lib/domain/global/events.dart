@@ -4,8 +4,6 @@ class PostLikedEvent {
   const PostLikedEvent({required this.id});
 }
 
-class EnsureCloseRequestedEvent {}
-
 class GlobalRoutePushedEvent {
   final bool replace;
 

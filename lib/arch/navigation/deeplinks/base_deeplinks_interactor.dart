@@ -3,17 +3,25 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Base interactor for handling links in app
 abstract class BaseDeepLinksInteractor<State>
     extends BaseInteractor<State, Map<String, dynamic>> {
+  /// Flag indicating if initial route is received
   bool _initialLinkReceived = false;
+
+  /// [StreamSubscription] for deeplinks stream
   StreamSubscription? _deepLinksSubscription;
 
+  /// Returns initial deeplink that app was opened with
   Future<String?> getInitialLink();
 
+  /// Stream of deeplinks
   Stream<String?> linkStream();
 
+  /// Handler for deeplink that is not defined in app routes
   Future<void> defaultLinkHandler();
 
+  /// Receives initial link and sends event
   Future<void> receiveInitialLink() async {
     if (_initialLinkReceived) {
       return;
@@ -28,6 +36,9 @@ abstract class BaseDeepLinksInteractor<State>
     }
   }
 
+  /// Starts to listen for deeplinks
+  /// You can call it after app initialization 
+  /// so navigation is handled correctly
   void listenToDeeplinks() {
     if (_deepLinksSubscription != null) {
       return;
@@ -41,6 +52,7 @@ abstract class BaseDeepLinksInteractor<State>
     );
   }
 
+  /// Callback for deeplinks received while app is opened
   Future<void> onLinkReceived(String? link) async {
     if (link == null) {
       return;

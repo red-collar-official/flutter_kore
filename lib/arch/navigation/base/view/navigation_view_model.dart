@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Base view model if app uses navigation
+/// Must be extended by any view if navigation used
 abstract class NavigationViewModel<Widget extends StatefulWidget, State>
     extends BaseViewModel<Widget, State> {
   dynamic screenTab;
@@ -18,6 +20,8 @@ abstract class NavigationViewModel<Widget extends StatefulWidget, State>
   }
 }
 
+/// Base view state if app uses navigation
+/// Must be extended by any view if navigation used
 // coverage:ignore-start
 abstract class NavigationView<View extends BaseWidget, ScreenState,
         ViewModel extends NavigationViewModel<View, ScreenState>>

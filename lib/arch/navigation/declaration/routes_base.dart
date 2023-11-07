@@ -4,7 +4,6 @@ import 'package:umvvm/umvvm.dart';
 abstract class RoutesBase {
   final routeLinkHandlers = <String, dynamic>{};
   final regexHandlers = <String, LinkMapper>{};
-  final anchorRestrictions = <String, LinkMapper>{};
 
   void initializeLinkHandlers();
 
@@ -24,7 +23,7 @@ abstract class RoutesBase {
     }
   }
 
-  GenericLinkHandler? handlerForRegex(String url) {
+  LinkHandler? handlerForRegex(String url) {
     if (regexHandlers.isNotEmpty) {
       for (final regexValue in regexHandlers.entries) {
         final regex = RegExp(regexValue.key);
