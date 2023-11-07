@@ -416,25 +416,16 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       final uriPath = Uri.parse(path);
       final segments = uriPath.pathSegments;
 
-      var pathUrlString =
-          r'''final resultUrl = (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') + (pathPrefix ?? '');var pathUrl = '$resultUrl';''';
       var patternQueryString = 'final patternQuery = [\n';
       var parseParamsUrlString = '';
       var parseParamsQueryString = '';
 
-      var pathPrefix = '';
-
       for (final element in segments) {
         if (!element.contains(':{')) {
-          pathPrefix += '/$element';
           continue;
         }
 
         final paramName = element.replaceAll(RegExp('[:{}]'), '');
-        pathUrlString += 'pathUrl +=\'/';
-        pathUrlString += r'''${paramsForLink![''';
-        pathUrlString += '\'$paramName\']}\';';
-        pathUrlString += '\n';
 
         final paramInitialization = getParameterInitializationCode(
           'segments[index]',
@@ -447,23 +438,12 @@ if (pathSegmentPattern == '$element') {
 ''';
       }
 
-      bool firstQueryParamAdded = false;
-
       for (final element in query) {
         var queryElement = element!.replaceAll('?', '');
 
         if (queryElement.contains('=')) {
           queryElement = queryElement.split('=')[0];
         }
-
-        pathUrlString +=
-            'pathUrl += \'${firstQueryParamAdded ? '&' : '?'}$queryElement=';
-
-        firstQueryParamAdded = true;
-
-        pathUrlString += r'''${paramsForQuery![''';
-        pathUrlString += '\'$queryElement\']}\';';
-        pathUrlString += '\n';
 
         patternQueryString += '\'$queryElement\',';
         patternQueryString += '\n';
@@ -483,11 +463,6 @@ queryParamsForView['$queryElement'] = $paramInitialization
         ..writeln(
           'class ${capitalize(key)}LinkHandler extends $linkHandlerBaseClass {',
         )
-        ..writeln('@override')
-        ..writeln('Future<String> generateLinkForRoute() async {')
-        ..writeln(pathUrlString)
-        ..writeln('return pathUrl;')
-        ..writeln('}')
         ..writeln(
           '''
   @override
@@ -518,11 +493,7 @@ queryParamsForView['$queryElement'] = $paramInitialization
     final route = app.navigation.$routesBaseClass.$key(
       pathParams: pathParams,
       queryParams: queryParamsForView,
-    ).copyWithLinkHandler(this
-      ..paramsForLink = pathParams
-      ..paramsForQuery = queryParamsForView
-      ..pathPrefix = '$pathPrefix'
-    );
+    ).copyWithLinkHandler(this);
 
     return route;
   }

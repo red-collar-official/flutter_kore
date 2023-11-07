@@ -7,11 +7,6 @@ part 'bottom_sheets.navigation.dart';
 
 class TestHandler extends LinkHandler {
   @override
-  Future<String> generateLinkForRoute() async {
-    return 'testlink';
-  }
-
-  @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     return UIRoute(
       name: 'test',

@@ -4,11 +4,6 @@ import 'package:umvvm/umvvm.dart';
 
 abstract class LinkHandler {
   Future<UIRoute> parseLinkToRoute(String url);
-  Future<String> generateLinkForRoute();
-
-  Map? paramsForLink;
-  Map? paramsForQuery;
-  String? pathPrefix;
 
   Future<void> processRoute(UIRoute route);
 }

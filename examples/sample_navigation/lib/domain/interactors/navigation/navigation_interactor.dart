@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/navigation/deeplinks/base_deeplinks_interactor.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/global/events.dart';

@@ -7,11 +7,6 @@ part 'routes.navigation.dart';
 
 class TestHandler extends LinkHandler {
   @override
-  Future<String> generateLinkForRoute() async {
-    return 'testlink';
-  }
-
-  @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     return UIRoute<RouteNames>(
       name: RouteNames.stub,

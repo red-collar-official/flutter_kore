@@ -22,6 +22,7 @@
 **/*.g.dart
 **/*.freezed.dart
 lib/**/*.mvvm.dart
+lib/**/*.navigation.dart
 lib/**/*.api.dart
 
 # Flutter/Dart/Pub related

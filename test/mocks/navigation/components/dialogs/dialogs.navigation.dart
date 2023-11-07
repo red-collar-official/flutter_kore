@@ -9,18 +9,6 @@ part of 'dialogs.dart';
 // ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment
 class PostLinkHandler extends DialogLinkHandler {
   @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '/${paramsForLink!['id']}';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-
-    return pathUrl;
-  }
-
-  @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
     final segments = uriPath.pathSegments;
@@ -54,28 +42,13 @@ class PostLinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class Post2LinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '/${paramsForLink!['id']}';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -110,29 +83,13 @@ class Post2LinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class Post3LinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '/${paramsForLink!['id']}';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-    pathUrl += '&query=${paramsForQuery!['query']}';
-
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -169,29 +126,13 @@ class Post3LinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class Post4LinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '/${paramsForLink!['id']}';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-    pathUrl += '&query=${paramsForQuery!['query']}';
-
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -228,25 +169,13 @@ class Post4LinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts/test');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class PostsLinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -273,27 +202,13 @@ class PostsLinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class Posts2LinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -324,27 +239,13 @@ class Posts2LinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/posts');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class StubLinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    pathUrl += '?filter=${paramsForQuery!['filter']}';
-
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -375,25 +276,13 @@ class StubLinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/stub');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class HomeLinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -420,25 +309,13 @@ class HomeLinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/home');
+        .copyWithLinkHandler(this);
 
     return route;
   }
 }
 
 class LikedPostsLinkHandler extends DialogLinkHandler {
-  @override
-  Future<String> generateLinkForRoute() async {
-    final resultUrl =
-        (UMvvmApp.navigationInteractor!.settings.baseLinkUrl ?? '') +
-            (pathPrefix ?? '');
-    var pathUrl = '$resultUrl';
-    return pathUrl;
-  }
-
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -465,10 +342,7 @@ class LikedPostsLinkHandler extends DialogLinkHandler {
           pathParams: pathParams,
           queryParams: queryParamsForView,
         )
-        .copyWithLinkHandler(this
-          ..paramsForLink = pathParams
-          ..paramsForQuery = queryParamsForView
-          ..pathPrefix = '/likedPosts');
+        .copyWithLinkHandler(this);
 
     return route;
   }

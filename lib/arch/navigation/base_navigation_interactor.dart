@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
 import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
-import 'package:umvvm/arch/navigation/deeplinks/base_deeplinks_interactor.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for navigation interactor
