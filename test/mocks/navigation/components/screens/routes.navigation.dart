@@ -512,7 +512,7 @@ mixin RoutesGen on RoutesBase {
       },
     });
     regexHandlers.addAll({
-      '(.*?)': TestMapper(),
+      r'\bhttp:\/\/qwerty.com\b(.*?)': TestMapper(),
     });
   }
 }

@@ -273,7 +273,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    regexes: ['(.*?)'],
+    regexes: [r'\bhttp:\/\/qwerty.com\b(.*?)'],
     customParamsMapper: TestMapper,
   )
   UIRoute<RouteNames> postsRegex({

@@ -193,6 +193,14 @@ void main() {
         app.navigation.latestGlobalRoute().id,
         'state',
       );
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl15);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.deepLinks.defaultLinkHandlerCalled, true);
     });
 
     test('DeepLinkInteractor test various links for dialogs test', () async {

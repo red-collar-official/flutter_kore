@@ -373,7 +373,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
     final linkHandlersMap = {};
 
     classBuffer.writeln(
-      '// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment',
+      '// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment, unnecessary_raw_strings',
     );
 
     methodsVisitor.annotatedMethods.forEach((key, value) {
@@ -629,7 +629,7 @@ queryParamsForView['$queryElement'] = $paramInitialization
       if (regexes != null) {
         for (final regex in regexes) {
           classBuffer.writeln(
-            '\'$regex\': $customMapperType(),',
+            'r\'$regex\': $customMapperType(),',
           );
         }
       }
