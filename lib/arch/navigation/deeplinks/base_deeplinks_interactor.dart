@@ -37,7 +37,7 @@ abstract class BaseDeepLinksInteractor<State>
   }
 
   /// Starts to listen for deeplinks
-  /// You can call it after app initialization 
+  /// You can call it after app initialization
   /// so navigation is handled correctly
   void listenToDeeplinks() {
     if (_deepLinksSubscription != null) {
@@ -58,7 +58,9 @@ abstract class BaseDeepLinksInteractor<State>
       return;
     }
 
-    await UMvvmApp.navigationInteractor!.openLink(link);
+    if (!await UMvvmApp.navigationInteractor!.openLink(link)) {
+      await defaultLinkHandler();
+    }
   }
 
   @override

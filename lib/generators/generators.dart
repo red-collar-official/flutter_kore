@@ -249,12 +249,28 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             };
           }
         } else {
+          final currentMap = pathsMap[routeKey][''] as Map;
+
           if (queryMap.isEmpty) {
-            pathsMap[routeKey][''].addAll({
+            if (currentMap.containsKey('')) {
+              throw Exception(
+                'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
+              );
+            }
+
+            currentMap.addAll({
               '': newParser,
             });
           } else {
-            pathsMap[routeKey][''].addAll({
+            for (final entry in queryMap.entries) {
+              if (currentMap.containsKey(entry.key)) {
+                throw Exception(
+                  'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
+                );
+              }
+            }
+
+            currentMap.addAll({
               ...queryMap,
             });
           }
@@ -287,12 +303,28 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         };
       }
     } else if (correctedPathsMap[''] is Map) {
+      final currentMap = correctedPathsMap[''] as Map;
+
       if (queryMap.isEmpty) {
-        correctedPathsMap[''].addAll({
+        if (currentMap.containsKey('')) {
+          throw Exception(
+            'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
+          );
+        }
+
+        currentMap.addAll({
           '': newParser,
         });
       } else {
-        correctedPathsMap[''].addAll({
+        for (final entry in queryMap.entries) {
+          if (currentMap.containsKey(entry.key)) {
+            throw Exception(
+              'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
+            );
+          }
+        }
+
+        currentMap.addAll({
           ...queryMap,
         });
       }
@@ -422,17 +454,12 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             newParser = '${capitalize(key)}LinkHandler$handlerIndex';
           }
 
-          try {
-            addLinkHandlerToMap(
-              codedPath,
-              pathsMap,
-              queryHandlersMap,
-              newParser,
-            );
-          } catch (e, trace) {
-            print(e);
-            print(trace);
-          }
+          addLinkHandlerToMap(
+            codedPath,
+            pathsMap,
+            queryHandlersMap,
+            newParser,
+          );
         }
 
         if (path == null || customHandler != null) {

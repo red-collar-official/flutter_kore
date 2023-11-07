@@ -636,20 +636,22 @@ abstract class BaseNavigationInteractor<
         -1;
   }
 
-  Future<void> openLink(String link) async {
+  Future<bool> openLink(String link) async {
     var routeHandler = _findHandlerForLink(link);
 
     if (routeHandler == null) {
       routeHandler = _findRegexHandlerForLink(link);
 
       if (routeHandler == null) {
-        return;
+        return false;
       }
     }
 
     final route = await routeHandler.parseLinkToRoute(link);
 
     await routeHandler.processRoute(route);
+
+    return true;
   }
 
   LinkHandler? _findHandlerForLink(String link) {
