@@ -22,6 +22,8 @@ abstract class BaseDeepLinksInteractor<State>
   Future<void> defaultLinkHandler();
 
   /// Receives initial link and sends event
+  
+  @mustCallSuper
   Future<void> receiveInitialLink() async {
     if (_initialLinkReceived) {
       return;
@@ -39,6 +41,7 @@ abstract class BaseDeepLinksInteractor<State>
   /// Starts to listen for deeplinks
   /// You can call it after app initialization
   /// so navigation is handled correctly
+  @mustCallSuper
   void listenToDeeplinks() {
     if (_deepLinksSubscription != null) {
       return;
@@ -53,6 +56,7 @@ abstract class BaseDeepLinksInteractor<State>
   }
 
   /// Callback for deeplinks received while app is opened
+  @mustCallSuper
   Future<void> onLinkReceived(String? link) async {
     if (link == null) {
       return;
@@ -63,6 +67,7 @@ abstract class BaseDeepLinksInteractor<State>
     }
   }
 
+  @mustCallSuper
   @override
   void dispose() {
     super.dispose();
@@ -70,6 +75,7 @@ abstract class BaseDeepLinksInteractor<State>
     _deepLinksSubscription?.cancel();
   }
 
+  /// Resets initialLinkReceived flag
   @visibleForTesting
   void reset() {
     _initialLinkReceived = false;

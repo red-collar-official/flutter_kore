@@ -5,7 +5,10 @@ class RoutesAnnotation {
     this.dialogs = false,
   });
 
+  /// Flag indicating bottom sheet routes collection
   final bool bottomSheets;
+
+  /// Flag indicating dialog routes collection
   final bool dialogs;
 }
 

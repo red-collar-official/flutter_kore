@@ -1199,6 +1199,9 @@ UINavigationSettings.bottomSheetBorderRadius = BorderRadius.only(
 );
 ```
 
+If you need to specify custom transition builder you can specify <b>routeBuilder</b> in navigation settings object 
+or you can specify <b>customRouteBuilder</b> for specific route
+
 You can see how routes are specified in <b>example_navigation</b> example
 
 And here is also list of methods in <b>BaseNavigationInteractor</b>

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
-import 'package:umvvm/arch/navigation/base/navigation_utilities.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for navigation interactor
@@ -256,6 +255,7 @@ abstract class BaseNavigationInteractor<
     bool? needToEnsureClose,
     bool? dismissable,
     Object? id,
+    NavigationRouteBuilder? customRouteBuilder,
   }) async {
     final routeSettings = UIRouteSettings(
       fullScreenDialog:
@@ -292,16 +292,18 @@ abstract class BaseNavigationInteractor<
 
     final screenToOpen = routeData.child;
 
+    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+
     // coverage:ignore-start
-    final route = NavigationUtilities.buildPageRoute(
-      screenToOpen,
-      routeSettings.fullScreenDialog,
-      routeSettings.replace
+    final route = routeBuilder.buildPageRoute(
+      child: screenToOpen,
+      fullScreenDialog: routeSettings.fullScreenDialog,
+      onClosed: routeSettings.replace
           ? null
           : () {
               pop(onlyInternalStack: true);
             },
-      routeSettings.needToEnsureClose
+      onWillPop: routeSettings.needToEnsureClose
           ? () {
               EventBus.instance.send(EnsureCloseRequestedEvent());
 
@@ -382,6 +384,7 @@ abstract class BaseNavigationInteractor<
     bool? dismissable,
     bool? uniqueInStack,
     Object? id,
+    NavigationRouteBuilder? customRouteBuilder,
   }) async {
     final dialogSettings = UIRouteSettings(
         global: forceGlobal ?? dialog.defaultSettings.global,
@@ -422,7 +425,9 @@ abstract class BaseNavigationInteractor<
 
     unawaited(onDialogOpened(dialogToOpen, dialogSettings));
 
-    final result = await NavigationUtilities.pushDialogRoute(
+    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+
+    final result = await routeBuilder.pushDialogRoute(
       navigator: navigator,
       dismissable: dialogSettings.dismissable,
       child: dialogToOpen,
@@ -439,6 +444,7 @@ abstract class BaseNavigationInteractor<
     bool? dismissable,
     bool? uniqueInStack,
     Object? id,
+    NavigationRouteBuilder? customRouteBuilder,
   }) async {
     final bottomSheetSettings = UIRouteSettings(
         global: forceGlobal ?? bottomSheet.defaultSettings.global,
@@ -480,7 +486,9 @@ abstract class BaseNavigationInteractor<
 
     unawaited(onBottomSheetOpened(bottomSheetToOpen, bottomSheetSettings));
 
-    final result = await NavigationUtilities.pushBottomSheetRoute(
+    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+
+    final result = await routeBuilder.pushBottomSheetRoute(
       navigator: navigator,
       dismissable: bottomSheetSettings.dismissable,
       child: bottomSheetToOpen,
@@ -636,6 +644,8 @@ abstract class BaseNavigationInteractor<
         -1;
   }
 
+  /// Tries to open link based on routes declaration and open mapped route
+  /// Returns false if no possible link handler found
   Future<bool> openLink(String link) async {
     var routeHandler = _findHandlerForLink(link);
 
@@ -654,6 +664,7 @@ abstract class BaseNavigationInteractor<
     return true;
   }
 
+  /// Tries to open link based on routes declaration
   LinkHandler? _findHandlerForLink(String link) {
     var routeHandler = routes.handlerForLink(link);
 
@@ -676,6 +687,7 @@ abstract class BaseNavigationInteractor<
     return routeHandler;
   }
 
+  /// Tries to open link based on route's regex declaration
   LinkHandler? _findRegexHandlerForLink(String link) {
     var routeHandler = routes.handlerForRegex(link);
 

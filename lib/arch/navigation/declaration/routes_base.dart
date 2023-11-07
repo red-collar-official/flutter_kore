@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Base class for route declarations
+/// Must be extented by [Routes], [Dialogs], [BottomSheets] 
+/// or any custom route container
 abstract class RoutesBase {
+  /// Handlers for url paths and queries
   final routeLinkHandlers = <String, dynamic>{};
+
+  /// Map of regex link mappers
+  /// Used if no [LinkHandler] found in [routeLinkHandlers]
   final regexHandlers = <String, LinkMapper>{};
 
+  /// Adds all routes to [routeLinkHandlers] and [regexHandlers]
   void initializeLinkHandlers();
 
+  /// Checks if subroute matches given rule
   bool _checkSubroute(String rule, String paramKey, List<String> paramValue) {
     final correctedRule = rule.replaceAll(' ', '');
 
@@ -23,6 +32,7 @@ abstract class RoutesBase {
     }
   }
 
+  /// Finds handler given url in [regexHandlers]
   LinkHandler? handlerForRegex(String url) {
     if (regexHandlers.isNotEmpty) {
       for (final regexValue in regexHandlers.entries) {
@@ -39,6 +49,7 @@ abstract class RoutesBase {
     return null;
   }
 
+  /// Tries to find [LinkHandler] in [routeLinkHandlers]
   LinkHandler? handlerForLink(String url) {
     final uriPath = Uri.parse(
       url.endsWith('/') ? url.substring(0, url.length - 1) : url,
@@ -72,6 +83,7 @@ abstract class RoutesBase {
     }
   }
 
+  /// Finds best match for given rule in possible subroutes
   dynamic findBestMatch(
     Map selectedRule,
     Map<String, dynamic> decisionSubroutes,
@@ -107,7 +119,8 @@ abstract class RoutesBase {
 
     return latestSelected;
   }
-
+  
+  /// Finds declaration of query mappers for given segments list
   dynamic findDeclarationObject(List<String> segments) {
     Map currentMapOfSubRoutes = routeLinkHandlers;
 
@@ -130,6 +143,8 @@ abstract class RoutesBase {
     return currentMapOfSubRoutes[''];
   }
 
+  /// Rates all route handlers for given query and possible subroutes
+  /// More matches for query params -> bigger rate value
   Map<String, int> findPossibleRoutes(
     Map<String, List<String>> query,
     Map possibleSubroutes,

@@ -9,8 +9,13 @@ import 'package:umvvm/arch/navigation/utilities/bottom_sheet_route.dart';
 import 'package:umvvm/arch/navigation/utilities/dialog_route.dart';
 import 'package:umvvm/arch/navigation/utilities/willpop_cupertino_page_route.dart';
 
-class NavigationUtilities {
-  static Future<Object?>? pushDialogRoute({
+import 'navigation_route_builder.dart';
+
+class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
+  const DefaultNavigationRouteBuilder();
+
+  @override
+  Future<Object?>? pushDialogRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
@@ -35,7 +40,8 @@ class NavigationUtilities {
         ),
       );
 
-  static Future? pushBottomSheetRoute({
+  @override
+  Future? pushBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
@@ -55,12 +61,13 @@ class NavigationUtilities {
         ),
       );
 
-  static PageRoute buildPageRoute(
-    Widget child,
-    bool fullScreenDialog,
-    VoidCallback? onClosed,
-    Future<void> Function()? onWillPop,
-  ) {
+  @override
+  PageRoute buildPageRoute({
+    required Widget child,
+    required bool fullScreenDialog,
+    required VoidCallback? onClosed,
+    required Future<void> Function()? onWillPop,
+  }) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
         builder: (BuildContext context) => onClosed == null

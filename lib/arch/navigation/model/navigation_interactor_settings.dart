@@ -1,3 +1,6 @@
+import 'package:umvvm/arch/navigation/base/default_navigation_route_builder.dart';
+import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
+
 /// Class describing app navigation settings
 class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     BottomSheetType> {
@@ -26,6 +29,9 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
   /// Set it to false if you want separate navigator for bottom sheets and dialogs
   final bool bottomSheetsAndDialogsUsingSameNavigator;
 
+  /// Route builder for navigation interactor
+  final NavigationRouteBuilder routeBuilder;
+
   NavigationInteractorSettings({
     required this.initialRoute,
     this.initialTabRoutes,
@@ -33,5 +39,6 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     this.tabs,
     this.appContainsTabNavigation = false,
     this.bottomSheetsAndDialogsUsingSameNavigator = true,
+    this.routeBuilder = const DefaultNavigationRouteBuilder(),
   });
 }
