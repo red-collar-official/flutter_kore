@@ -8,7 +8,7 @@ part 'routes.navigation.dart';
 
 class TestHandler extends LinkHandler {
   @override
-  Future<UIRoute> parseLinkToRoute(String url) async {
+  Future<UIRoute?> parseLinkToRoute(String url) async {
     return UIRoute(
       name: 'test',
       defaultSettings: const UIRouteSettings(),
@@ -17,7 +17,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {}
+  Future<void> processRoute(UIRoute? route) async {}
 }
 
 @routes

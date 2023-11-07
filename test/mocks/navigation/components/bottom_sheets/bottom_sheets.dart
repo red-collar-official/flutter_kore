@@ -7,7 +7,7 @@ part 'bottom_sheets.navigation.dart';
 
 class TestHandler extends LinkHandler {
   @override
-  Future<UIRoute> parseLinkToRoute(String url) async {
+  Future<UIRoute?> parseLinkToRoute(String url) async {
     return UIRoute(
       name: 'test',
       defaultSettings: const UIBottomSheetRouteSettings(),
@@ -16,7 +16,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {}
+  Future<void> processRoute(UIRoute? route) async {}
 }
 
 @bottomSheets

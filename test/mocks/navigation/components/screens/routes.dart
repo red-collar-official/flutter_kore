@@ -39,7 +39,7 @@ class TestMapper extends LinkMapper {
 
 class TestHandler extends LinkHandler {
   @override
-  Future<UIRoute> parseLinkToRoute(String url) async {
+  Future<UIRoute?> parseLinkToRoute(String url) async {
     return UIRoute(
       name: 'test',
       defaultSettings: const UIRouteSettings(global: true),
@@ -48,7 +48,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {}
+  Future<void> processRoute(UIRoute? route) async {}
 }
 
 @routes

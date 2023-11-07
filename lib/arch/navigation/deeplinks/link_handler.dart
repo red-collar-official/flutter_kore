@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:umvvm/umvvm.dart';
 
 abstract class LinkHandler {
-  Future<UIRoute> parseLinkToRoute(String url);
+  Future<UIRoute?> parseLinkToRoute(String url);
 
-  Future<void> processRoute(UIRoute route);
+  Future<void> processRoute(UIRoute? route);
 }
 
 class GenericLinkHandler extends LinkHandler {
@@ -23,28 +23,44 @@ class GenericLinkHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {
+  Future<void> processRoute(UIRoute? route) async {
+    if (route == null) {
+      return;
+    }
+
     await mapper.openRoute(route);
   }
 }
 
 abstract class RouteLinkHandler extends LinkHandler {
   @override
-  Future<void> processRoute(UIRoute route) async {
+  Future<void> processRoute(UIRoute? route) async {
+    if (route == null) {
+      return;
+    }
+
     await UMvvmApp.navigationInteractor?.routeTo(route);
   }
 }
 
 abstract class DialogLinkHandler extends LinkHandler {
   @override
-  Future<void> processRoute(UIRoute route) async {
+  Future<void> processRoute(UIRoute? route) async {
+    if (route == null) {
+      return;
+    }
+
     await UMvvmApp.navigationInteractor?.showDialog(route);
   }
 }
 
 abstract class BottomSheetLinkHandler extends LinkHandler {
   @override
-  Future<void> processRoute(UIRoute route) async {
+  Future<void> processRoute(UIRoute? route) async {
+    if (route == null) {
+      return;
+    }
+    
     await UMvvmApp.navigationInteractor?.showBottomSheet(route);
   }
 }
