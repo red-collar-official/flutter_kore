@@ -5,26 +5,56 @@ import '../../../global_app/app.dart';
 
 part 'routes.navigation.dart';
 
+class TestMapper extends LinkMapper {
+  @override
+  UIRoute constructRoute(
+    Map<String, String> pathParams,
+    Map<String, String> queryParams,
+  ) {
+    return UIRoute<RouteNames>(
+      name: RouteNames.postsRegex,
+      defaultSettings: const UIRouteSettings(
+        global: true,
+      ),
+      child: Container(),
+    );
+  }
+
+  @override
+  (Map<String, String>, Map<String, String>) mapParamsFromUrl(String url) {
+    return (
+      {
+        'testParam': 'qwerty',
+      },
+      {},
+    );
+  }
+
+  @override
+  Future<void> openRoute(UIRoute route) async {
+    await app.navigation.routeTo(route as UIRoute<RouteNames>);
+  }
+}
+
+
 class TestHandler extends LinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
-    return UIRoute<RouteNames>(
-      name: RouteNames.stub,
+    return UIRoute(
+      name: 'test',
       defaultSettings: const UIRouteSettings(global: true),
       child: Container(),
     );
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {
-    await app.navigation.routeTo(route as UIRoute<RouteNames>);
-  }
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @routes
 class Routes extends RoutesBase with RoutesGen {
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter',
     ],
@@ -46,27 +76,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
-    query: [
-      'filter=[qwerty1,qwerty2]',
-    ],
-  )
-  UIRoute<RouteNames> postArray({
-    int? post,
-    int? id,
-    int? filter,
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
-  }) {
-    return UIRoute(
-      name: RouteNames.postArray,
-      defaultSettings: const UIRouteSettings(),
-      child: Container(),
-    );
-  }
-
-  @Link(
-    path: 'posts/:{id}/:{type}',
+    paths: ['posts/:{id}/:{type}'],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -89,7 +99,29 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
+    query: [
+      'filter=[qwerty1,qwerty2]',
+    ],
+  )
+  UIRoute<RouteNames> postArray({
+    int? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postArray,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}'],
     query: [
       'filter=qwerty',
     ],
@@ -111,7 +143,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post3({
@@ -131,7 +163,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}/test',
+    paths: ['posts/:{id}/test'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post4({
@@ -151,7 +183,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts',
+    paths: ['posts'],
   )
   UIRoute<RouteNames> posts({
     Map<String, dynamic>? pathParams,
@@ -162,11 +194,12 @@ class Routes extends RoutesBase with RoutesGen {
       defaultSettings: UIRouteSettings(
         global: pathParams != null,
       ),
+
       child: Container(),
     );
   }
 
-  @Link(path: 'posts', query: [
+  @Link(paths: ['posts'], query: [
     'filter',
   ])
   UIRoute<RouteNames> posts2({
@@ -182,7 +215,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(path: 'stub', query: [
+  @Link(paths: ['stub'], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({
@@ -199,7 +232,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'home',
+    paths: ['home'],
   )
   UIRoute<RouteNames> home({
     Map<String, dynamic>? pathParams,
@@ -215,7 +248,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'likedPosts',
+    paths: ['likedPosts'],
   )
   UIRoute<RouteNames> likedPosts({
     Map<String, dynamic>? pathParams,
@@ -227,6 +260,55 @@ class Routes extends RoutesBase with RoutesGen {
         global: pathParams != null,
       ),
       child: Container(),
+    );
+  }
+
+  @Link(
+    regexes: ['(.*?)'],
+    customParamsMapper: TestMapper,
+  )
+  UIRoute<RouteNames> postsRegex({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsRegex,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithPrefix({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithPrefix,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/test/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithAnchor({
+    String? state,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithAnchor,
+      defaultSettings: UIRouteSettings(
+        id: state,
+      ),
+      child: Container(),
+      
     );
   }
 }

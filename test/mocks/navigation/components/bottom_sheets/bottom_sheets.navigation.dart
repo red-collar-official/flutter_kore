@@ -37,12 +37,10 @@ class PostLinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .post(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.post(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -78,12 +76,10 @@ class Post2LinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .post2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.post2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -121,12 +117,10 @@ class Post3LinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['query'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .post3(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.post3(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -164,12 +158,10 @@ class Post4LinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['query'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .post4(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.post4(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -197,12 +189,10 @@ class PostsLinkHandler extends BottomSheetLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.bottomSheets
-        .posts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.posts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -234,12 +224,10 @@ class Posts2LinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .posts2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.posts2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -271,12 +259,10 @@ class StubLinkHandler extends BottomSheetLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.bottomSheets
-        .stub(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.stub(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -304,12 +290,10 @@ class HomeLinkHandler extends BottomSheetLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.bottomSheets
-        .home(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.home(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -337,12 +321,10 @@ class LikedPostsLinkHandler extends BottomSheetLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.bottomSheets
-        .likedPosts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.bottomSheets.likedPosts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -359,6 +341,7 @@ enum BottomSheetNames {
   stub,
   home,
   likedPosts,
+  postsRegex,
 }
 
 mixin BottomSheetsGen on RoutesBase {
@@ -399,6 +382,9 @@ mixin BottomSheetsGen on RoutesBase {
       'likedPosts': {
         '': LikedPostsLinkHandler(),
       },
+    });
+    regexHandlers.addAll({
+      '(.*?)': TestMapper(),
     });
   }
 }

@@ -10,6 +10,7 @@ export 'model/route_model.dart';
 export 'model/navigation_interactor_settings.dart';
 
 export 'deeplinks/link_handler.dart';
+export 'deeplinks/link_mapper.dart';
 export 'deeplinks/base_deeplinks_interactor.dart';
 
 export 'annotations/annotations.dart';

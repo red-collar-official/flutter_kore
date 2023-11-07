@@ -3,6 +3,8 @@ import 'package:umvvm/umvvm.dart';
 
 abstract class RoutesBase {
   final routeLinkHandlers = <String, dynamic>{};
+  final regexHandlers = <String, LinkMapper>{};
+  final anchorRestrictions = <String, LinkMapper>{};
 
   void initializeLinkHandlers();
 
@@ -20,6 +22,22 @@ abstract class RoutesBase {
     } else {
       return paramKey == correctedRule || correctedRule == '$paramKey?';
     }
+  }
+
+  GenericLinkHandler? handlerForRegex(String url) {
+    if (regexHandlers.isNotEmpty) {
+      for (final regexValue in regexHandlers.entries) {
+        final regex = RegExp(regexValue.key);
+
+        if (regex.hasMatch(url)) {
+          return GenericLinkHandler(mapper: regexHandlers[regexValue.key]!);
+        }
+      }
+    } else {
+      return null;
+    }
+
+    return null;
   }
 
   LinkHandler? handlerForLink(String url) {
@@ -41,7 +59,7 @@ abstract class RoutesBase {
     if (decisionSubroutes.isEmpty) {
       return selectedRule[''];
     } else {
-      final latestSelected = finaBestMatch(selectedRule, decisionSubroutes);
+      final latestSelected = findBestMatch(selectedRule, decisionSubroutes);
 
       if (latestSelected is LinkHandler) {
         return latestSelected;
@@ -55,9 +73,9 @@ abstract class RoutesBase {
     }
   }
 
-  dynamic finaBestMatch(
+  dynamic findBestMatch(
     Map selectedRule,
-    Map<String, dynamic>  decisionSubroutes,
+    Map<String, dynamic> decisionSubroutes,
   ) {
     final entries = decisionSubroutes.entries.toList();
 

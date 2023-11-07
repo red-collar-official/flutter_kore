@@ -345,126 +345,143 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
     );
 
     methodsVisitor.annotatedMethods.forEach((key, value) {
-      final path = value.peek('path')?.stringValue;
+      final paths =
+          value.peek('paths')?.listValue.map((e) => e.toStringValue()) ?? [];
+      final regexes = value.peek('regexes')?.listValue;
 
-      final customHandler = value
-          .peek('customHandler')
-          ?.typeValue
-          .getDisplayString(withNullability: false);
-      final query =
-          value.peek('query')?.listValue.map((e) => e.toStringValue()) ?? [];
-
-      if (path != null) {
-        final codedPath = path.replaceAll(RegExp(':{.+?(?=})}'), '*');
-
-        final queryHandlersMap = {};
-
-        if (query.isNotEmpty) {
-          var resultRule = '';
-
-          for (final element in query) {
-            if (element!.contains('=') && element.contains('|')) {
-              final splittedByKeyValues = element.split('=');
-
-              final key = splittedByKeyValues[0];
-              final values = splittedByKeyValues[1].split('|');
-
-              for (final element in values) {
-                resultRule += '$key=$element|';
-              }
-            } else {
-              resultRule += '$element|';
-            }
-          }
-
-          resultRule = resultRule.substring(0, resultRule.length - 1);
-
-          if (customHandler != null) {
-            queryHandlersMap[resultRule] = customHandler;
-          } else {
-            queryHandlersMap[resultRule] = '${capitalize(key)}LinkHandler';
-          }
-        }
-
-        final pathsMap = linkHandlersMap;
-
-        String newParser;
-
-        if (customHandler != null) {
-          newParser = customHandler;
-        } else {
-          newParser = '${capitalize(key)}LinkHandler';
-        }
-
-        try {
-          addLinkHandlerToMap(
-            codedPath,
-            pathsMap,
-            queryHandlersMap,
-            newParser,
-          );
-        } catch (e, trace) {
-          print(e);
-          print(trace);
-        }
+      if (paths.isNotEmpty && regexes != null) {
+        throw Exception('Cant add paths and regexes to the same route $key');
       }
 
-      if (path == null || customHandler != null) {
+      final requiresState = (methodsVisitor
+                  .annotatedMethodsData[key]?.parameters
+                  .where((element) => element.name == 'state') ??
+              [])
+          .isNotEmpty;
+
+      if (regexes != null) {
         return;
       }
 
-      final uriPath = Uri.parse(path);
-      final segments = uriPath.pathSegments;
+      for (final path in paths) {
+        final customHandler = value
+            .peek('customHandler')
+            ?.typeValue
+            .getDisplayString(withNullability: false);
+        final query =
+            value.peek('query')?.listValue.map((e) => e.toStringValue()) ?? [];
 
-      var patternQueryString = 'final patternQuery = [\n';
-      var parseParamsUrlString = '';
-      var parseParamsQueryString = '';
+        if (path != null) {
+          final codedPath = path.replaceAll(RegExp(':{.+?(?=})}'), '*');
 
-      for (final element in segments) {
-        if (!element.contains(':{')) {
-          continue;
+          final queryHandlersMap = {};
+
+          if (query.isNotEmpty) {
+            var resultRule = '';
+
+            for (final element in query) {
+              if (element!.contains('=') && element.contains('|')) {
+                final splittedByKeyValues = element.split('=');
+
+                final key = splittedByKeyValues[0];
+                final values = splittedByKeyValues[1].split('|');
+
+                for (final element in values) {
+                  resultRule += '$key=$element|';
+                }
+              } else {
+                resultRule += '$element|';
+              }
+            }
+
+            resultRule = resultRule.substring(0, resultRule.length - 1);
+
+            if (customHandler != null) {
+              queryHandlersMap[resultRule] = customHandler;
+            } else {
+              queryHandlersMap[resultRule] = '${capitalize(key)}LinkHandler';
+            }
+          }
+
+          final pathsMap = linkHandlersMap;
+
+          String newParser;
+
+          if (customHandler != null) {
+            newParser = customHandler;
+          } else {
+            newParser = '${capitalize(key)}LinkHandler';
+          }
+
+          try {
+            addLinkHandlerToMap(
+              codedPath,
+              pathsMap,
+              queryHandlersMap,
+              newParser,
+            );
+          } catch (e, trace) {
+            print(e);
+            print(trace);
+          }
         }
 
-        final paramName = element.replaceAll(RegExp('[:{}]'), '');
+        if (path == null || customHandler != null) {
+          return;
+        }
 
-        final paramInitialization = getParameterInitializationCode(
-          'segments[index]',
-        );
+        final uriPath = Uri.parse(path);
+        final segments = uriPath.pathSegments;
 
-        parseParamsUrlString += '''
+        var patternQueryString = 'final patternQuery = [\n';
+        var parseParamsUrlString = '';
+        var parseParamsQueryString = '';
+
+        for (final element in segments) {
+          if (!element.contains(':{')) {
+            continue;
+          }
+
+          final paramName = element.replaceAll(RegExp('[:{}]'), '');
+
+          final paramInitialization = getParameterInitializationCode(
+            'segments[index]',
+          );
+
+          parseParamsUrlString += '''
 if (pathSegmentPattern == '$element') {
   pathParams['$paramName'] = $paramInitialization
 }
 ''';
-      }
-
-      for (final element in query) {
-        var queryElement = element!.replaceAll('?', '');
-
-        if (queryElement.contains('=')) {
-          queryElement = queryElement.split('=')[0];
         }
 
-        patternQueryString += '\'$queryElement\',';
-        patternQueryString += '\n';
+        for (final element in query) {
+          var queryElement = element!.replaceAll('?', '');
 
-        final paramInitialization = getParameterInitializationCode(
-          'queryParams[queryParam] ?? []',
-        );
+          if (queryElement.contains('=')) {
+            queryElement = queryElement.split('=')[0];
+          }
 
-        parseParamsQueryString += '''
+          patternQueryString += '\'$queryElement\',';
+          patternQueryString += '\n';
+
+          final paramInitialization = getParameterInitializationCode(
+            'queryParams[queryParam] ?? []',
+          );
+
+          parseParamsQueryString += '''
 queryParamsForView['$queryElement'] = $paramInitialization
 ''';
-      }
+        }
 
-      patternQueryString += '\n];';
+        patternQueryString += '\n];';
 
-      classBuffer
-        ..writeln(
-          'class ${capitalize(key)}LinkHandler extends $linkHandlerBaseClass {',
-        )
-        ..writeln(
-          '''
+        classBuffer
+          ..writeln(
+            'class ${capitalize(key)}LinkHandler extends $linkHandlerBaseClass {',
+          )
+          ..writeln(
+            '''
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -490,16 +507,20 @@ queryParamsForView['$queryElement'] = $paramInitialization
       $parseParamsQueryString
     }
 
+    ${requiresState ? 'final anchor = uriPath.fragment;': ''}
+
     final route = app.navigation.$routesBaseClass.$key(
       pathParams: pathParams,
       queryParams: queryParamsForView,
-    ).copyWithLinkHandler(this);
+      ${requiresState ? 'state: anchor,': ''}
+    );
 
     return route;
   }
 }
 ''',
-        );
+          );
+      }
     });
 
     classBuffer
@@ -520,9 +541,18 @@ queryParamsForView['$queryElement'] = $paramInitialization
       ..writeln('routeLinkHandlers.addAll({')
       ..writeln(generateLinksMap(linkHandlersMap))
       ..writeln('});')
+      ..writeln('regexHandlers.addAll({')
+      ..writeln(generateRegexMapper(methodsVisitor.annotatedMethods.values))
+      ..writeln('});')
       ..writeln('}')
       ..writeln('}')
       ..writeln();
+
+    String printMessage = '';
+
+    printMessage += 'Generated Navigation for app\n\n';
+    printMessage += '$className count: ${methodsVisitor.allMethods.length}';
+    print(printMessage);
 
     return classBuffer.toString();
   }
@@ -544,6 +574,29 @@ queryParamsForView['$queryElement'] = $paramInitialization
       linkHandlersMap.forEach((key, value) {
         classBuffer.writeln('\'$key\': $value(),');
       });
+    }
+
+    return classBuffer.toString();
+  }
+
+  String generateRegexMapper(Iterable<ConstantReader> annotatedMethods) {
+    final classBuffer = StringBuffer();
+
+    for (final method in annotatedMethods) {
+      final regexes =
+          method.peek('regexes')?.listValue.map((e) => e.toStringValue());
+      final customMapperType = method
+          .peek('customParamsMapper')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
+
+      if (regexes != null) {
+        for (final regex in regexes) {
+          classBuffer.writeln(
+            '\'$regex\': $customMapperType(),',
+          );
+        }
+      }
     }
 
     return classBuffer.toString();

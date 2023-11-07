@@ -22,7 +22,7 @@ class TestHandler extends LinkHandler {
 @dialogs
 class Dialogs extends RoutesBase with DialogsGen {
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter',
     ],
@@ -42,7 +42,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts/:{id}/:{type}',
+    paths: ['posts/:{id}/:{type}'],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -63,7 +63,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=qwerty',
     ],
@@ -83,7 +83,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: ['filter', 'query?'],
   )
   UIRoute<DialogNames> post3({
@@ -101,7 +101,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts/:{id}/test',
+    paths: ['posts/:{id}/test'],
     query: ['filter', 'query?'],
   )
   UIRoute<DialogNames> post4({
@@ -119,7 +119,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts',
+    paths: ['posts'],
   )
   UIRoute<DialogNames> posts({
     Map<String, dynamic>? pathParams,
@@ -132,7 +132,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(path: 'posts', query: [
+  @Link(paths: ['posts'], query: [
     'filter',
   ])
   UIRoute<DialogNames> posts2({
@@ -146,7 +146,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(path: 'stub', query: [
+  @Link(paths: ['stub'], query: [
     'filter',
   ])
   UIRoute<DialogNames> stub({
@@ -161,7 +161,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'home',
+    paths: ['home'],
   )
   UIRoute<DialogNames> home({
     Map<String, dynamic>? pathParams,
@@ -175,7 +175,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'likedPosts',
+    paths: ['likedPosts'],
   )
   UIRoute<DialogNames> likedPosts({
     Map<String, dynamic>? pathParams,

@@ -8,6 +8,26 @@ abstract class LinkHandler {
   Future<void> processRoute(UIRoute route);
 }
 
+class GenericLinkHandler extends LinkHandler {
+  final LinkMapper mapper;
+
+  GenericLinkHandler({
+    required this.mapper,
+  });
+
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final params = mapper.mapParamsFromUrl(url);
+
+    return mapper.constructRoute(params.$1, params.$2);
+  }
+
+  @override
+  Future<void> processRoute(UIRoute route) async {
+    await mapper.openRoute(route);
+  }
+}
+
 abstract class RouteLinkHandler extends LinkHandler {
   @override
   Future<void> processRoute(UIRoute route) async {

@@ -37,12 +37,10 @@ class PostLinkHandler extends RouteLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .post(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.post(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -78,12 +76,10 @@ class PostArrayLinkHandler extends RouteLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .postArray(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.postArray(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -119,12 +115,10 @@ class Post2LinkHandler extends RouteLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .post2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.post2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -162,12 +156,10 @@ class Post3LinkHandler extends RouteLinkHandler {
       queryParamsForView['query'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .post3(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.post3(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -205,12 +197,10 @@ class Post4LinkHandler extends RouteLinkHandler {
       queryParamsForView['query'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .post4(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.post4(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -238,12 +228,10 @@ class PostsLinkHandler extends RouteLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.routes
-        .posts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.posts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -275,12 +263,10 @@ class Posts2LinkHandler extends RouteLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .posts2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.posts2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -312,12 +298,10 @@ class StubLinkHandler extends RouteLinkHandler {
       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
     }
 
-    final route = app.navigation.routes
-        .stub(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.stub(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -345,12 +329,10 @@ class HomeLinkHandler extends RouteLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.routes
-        .home(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.home(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -378,12 +360,83 @@ class LikedPostsLinkHandler extends RouteLinkHandler {
       final queryParam = patternQuery[index];
     }
 
-    final route = app.navigation.routes
-        .likedPosts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+    final route = app.navigation.routes.likedPosts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
+
+    return route;
+  }
+}
+
+class PostsWithPrefixLinkHandler extends RouteLinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('*/posts/:{id}');
+    final patternQuery = [];
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      if (pathSegmentPattern == ':{id}') {
+        pathParams['id'] = segments[index];
+      }
+    }
+
+    for (var index = 0; index < patternQuery.length; index++) {
+      final queryParam = patternQuery[index];
+    }
+
+    final route = app.navigation.routes.postsWithPrefix(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
+
+    return route;
+  }
+}
+
+class PostsWithAnchorLinkHandler extends RouteLinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('*/posts/test/:{id}');
+    final patternQuery = [];
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      if (pathSegmentPattern == ':{id}') {
+        pathParams['id'] = segments[index];
+      }
+    }
+
+    for (var index = 0; index < patternQuery.length; index++) {
+      final queryParam = patternQuery[index];
+    }
+
+    final anchor = uriPath.fragment;
+
+    final route = app.navigation.routes.postsWithAnchor(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+      state: anchor,
+    );
 
     return route;
   }
@@ -401,6 +454,9 @@ enum RouteNames {
   stub,
   home,
   likedPosts,
+  postsRegex,
+  postsWithPrefix,
+  postsWithAnchor,
 }
 
 mixin RoutesGen on RoutesBase {
@@ -442,6 +498,21 @@ mixin RoutesGen on RoutesBase {
       'likedPosts': {
         '': LikedPostsLinkHandler(),
       },
+      '*': {
+        'posts': {
+          '*': {
+            '': PostsWithPrefixLinkHandler(),
+          },
+          'test': {
+            '*': {
+              '': PostsWithAnchorLinkHandler(),
+            },
+          },
+        },
+      },
+    });
+    regexHandlers.addAll({
+      '(.*?)': TestMapper(),
     });
   }
 }

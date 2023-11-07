@@ -1040,54 +1040,57 @@ class NavigationInteractor extends BaseNavigationInteractor<
     NavigationState,
     Map<String, dynamic>,
     AppTab,
+    Routes,
+    Dialogs,
+    BottomSheets,
     RouteNames,
     DialogNames,
-    BottomSheetNames> {
-  @override
-  RouteNames get initialRoute => RouteNames.splash;
+    BottomSheetNames,
+    BaseDeepLinksInteractor> {
+  final _routes = Routes();
+  final _dialogs = Dialogs();
+  final _bottomSheets = BottomSheets();
 
   @override
   AppTab? get currentTab => state.currentTab;
 
   @override
-  Map<AppTab, RouteNames> get initialTabRoutes => {
-        AppTabs.feed: RouteNames.feed,
-        AppTabs.search: RouteNames.search,
-        AppTabs.gallery: RouteNames.myGallery,
+  Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
+        AppTabs.posts: GlobalKey<NavigatorState>(),
+        AppTabs.likedPosts: GlobalKey<NavigatorState>(),
       };
 
   @override
-  List<AppTab>? get tabs => AppTabs.tabs;
+  NavigationInteractorSettings get settings => NavigationInteractorSettings(
+        initialRoute: RouteNames.home,
+        tabs: AppTabs.tabs,
+        tabViewHomeRoute: RouteNames.home,
+        initialTabRoutes: {
+          AppTabs.posts: RouteNames.posts,
+          AppTabs.likedPosts: RouteNames.likedPosts,
+        },
+        appContainsTabNavigation: true,
+      );
 
   @override
-  RouteNames? get tabViewHomeRoute => RouteNames.home;
-
+  BottomSheets get bottomSheets => _bottomSheets;
   @override
-  bool get bottomSheetsAndDialogsUsingSameNavigator => false;
+  Dialogs get dialogs => _dialogs;
+  @override
+  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsWrapper.logScreenView(
-      child.runtimeType.toString(),
-      route.name ?? '',
-    ));
+    // ignore
   }
 
   @override
   Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsWrapper.logScreenView(
-      child.runtimeType.toString(),
-      route.name ?? '',
-    ));
+    // ignore
   }
 
   @override
   Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
-    unawaited(analyticsWrapper.logScreenView(
-      child.runtimeType.toString(),
-      route.name ?? '',
-    ));
-
     if (route.global) {
       app.eventBus.send(GlobalRoutePushedEvent(replace: route.replace));
     }
@@ -1099,12 +1102,9 @@ class NavigationInteractor extends BaseNavigationInteractor<
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      ];
-
-  @override
-  NavigationState initialState(Map<String, dynamic>? input) =>
-      NavigationState(currentTab: AppTabs.feed);
+  NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+        currentTab: AppTabs.posts,
+      );
 }
 ```
 
@@ -1119,11 +1119,24 @@ class NavigationInteractor extends BaseNavigationInteractor<
     RouteNames,
     DialogNames,
     BottomSheetNames> {
-  @override
-  RouteNames get initialRoute => RouteNames.splash;
+  final _routes = Routes();
+  final _dialogs = Dialogs();
+  final _bottomSheets = BottomSheets();
 
   @override
-  bool get bottomSheetsAndDialogsUsingSameNavigator => false;
+  AppTab? get currentTab => state.currentTab;
+
+  @override
+  NavigationInteractorSettings get settings => NavigationInteractorSettings(
+        initialRoute: RouteNames.home,
+      );
+
+  @override
+  BottomSheets get bottomSheets => _bottomSheets;
+  @override
+  Dialogs get dialogs => _dialogs;
+  @override
+  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
@@ -1256,6 +1269,347 @@ It is also recommended to use <b>NavigationViewModel</b> and <b>NavigationView</
 since it ensures that navigation is handled in correct navigation scope (tab or global)
 
 Examples how to use it is also in <b>example_navigation</b> example
+
+### Deep links
+
+Navigation supports deeplinks with <b>BaseDeepLinksInteractor</b>
+
+You need to provide methods to get initial link and get stream of deep links
+To respond to deep links define routes with <b>@Link</b> annotation
+Example for this will be in next section
+
+Here is example of deep links interactor
+
+```dart
+class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
+  bool defaultLinkHandlerCalled = false;
+  bool dialogs = false;
+  bool bottomSheets = false;
+
+  final linkStreamController = StreamController<String>.broadcast();
+
+  @override
+  Future<void> defaultLinkHandler() async {
+    defaultLinkHandlerCalled = true;
+  }
+
+  @override
+  Future<String> getInitialLink() async {
+    return testUrl6;
+  }
+
+  @override
+  int initialState(Map<String, dynamic>? input) => 1;
+
+  @override
+  Stream<String> linkStream() {
+    return linkStreamController.stream;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    linkStreamController.close();
+  }
+}
+```
+
+### Defining routes and deep links
+
+To define routes you need to specify 3 classes - <b>Routes</b>, <b>Dialogs</b> and <b>BottomSheets</b>
+
+Routes can respond to links with <b>@Link</b> annotation
+By defining link you can specify link filters for specific screen
+
+Here is an examples of possible links
+
+```dart
+class TestMapper extends LinkMapper {
+  @override
+  UIRoute constructRoute(
+    Map<String, String> pathParams,
+    Map<String, String> queryParams,
+  ) {
+    return UIRoute<RouteNames>(
+      name: RouteNames.postsRegex,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @override
+  (Map<String, String>, Map<String, String>) mapParamsFromUrl(String url) {
+    return (
+      {
+        'testParam': 'qwerty',
+      },
+      {},
+    );
+  }
+
+  @override
+  Future<void> openRoute(UIRoute route) async {
+    await app.navigation.routeTo(route as UIRoute<RouteNames>);
+  }
+}
+
+class TestHandler extends LinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    return UIRoute(
+      name: 'test',
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @override
+  Future<void> processRoute(UIRoute route) async {}
+}
+
+@routes
+class Routes extends RoutesBase with RoutesGen {
+  @Link(
+    paths: ['posts/:{id}'],
+    query: [
+      'filter',
+    ],
+  )
+  UIRoute<RouteNames> post({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.post,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}/:{type}'],
+    query: [
+      'filter=qwerty1|qwerty2',
+    ],
+    customHandler: TestHandler,
+  )
+  UIRoute<RouteNames> postCustom({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postCustom,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}'],
+    query: [
+      'filter=[qwerty1,qwerty2]',
+    ],
+  )
+  UIRoute<RouteNames> postArray({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postArray,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}'],
+    query: [
+      'filter=qwerty',
+    ],
+  )
+  UIRoute<RouteNames> post2({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.post2,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}'],
+    query: ['filter', 'query?'],
+  )
+  UIRoute<RouteNames> post3({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.post3,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts/:{id}/test'],
+    query: ['filter', 'query?'],
+  )
+  UIRoute<RouteNames> post4({
+    Post? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.post4,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['posts'],
+  )
+  UIRoute<RouteNames> posts({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.posts,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(paths: ['posts'], query: [
+    'filter',
+  ])
+  UIRoute<RouteNames> posts2({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.posts2,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(paths: ['stub'], query: [
+    'filter',
+  ])
+  UIRoute<RouteNames> stub({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.stub,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['home'],
+  )
+  UIRoute<RouteNames> home({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.home,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['likedPosts'],
+  )
+  UIRoute<RouteNames> likedPosts({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.likedPosts,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    regexes: ['(.*?)'],
+    customParamsMapper: TestMapper,
+  )
+  UIRoute<RouteNames> postsRegex({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsRegex,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithPrefix({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithPrefix,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/test/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithAnchor({
+    String? state,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithAnchor,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+}
+```
+
+You can also execute link yourself with <b>openLink</b> method of <b>NavigationInteractor</b>
+
+Parameters from link will be available in <b>pathParams</b> and <b>queryParams</b>
+
+If you need to access url fragment add <b>String? state</b> to function declaration
+
+Construction of link is up to developer
 
 ## Utility
 

@@ -1,11 +1,15 @@
 class Link {
-  final String? path;
+  final List<String>? paths;
+  final List<String>? regexes;
   final List<String> query;
   final Type? customHandler;
+  final Type? customParamsMapper;
 
   const Link({
-    this.path,
+    this.paths,
     this.query = const [],
     this.customHandler,
+    this.regexes,
+    this.customParamsMapper,
   });
 }

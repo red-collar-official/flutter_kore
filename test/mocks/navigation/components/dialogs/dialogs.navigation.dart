@@ -41,8 +41,7 @@ class PostLinkHandler extends DialogLinkHandler {
         .post(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -82,8 +81,7 @@ class Post2LinkHandler extends DialogLinkHandler {
         .post2(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -125,8 +123,7 @@ class Post3LinkHandler extends DialogLinkHandler {
         .post3(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -168,8 +165,7 @@ class Post4LinkHandler extends DialogLinkHandler {
         .post4(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -201,8 +197,7 @@ class PostsLinkHandler extends DialogLinkHandler {
         .posts(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -238,8 +233,7 @@ class Posts2LinkHandler extends DialogLinkHandler {
         .posts2(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -275,8 +269,7 @@ class StubLinkHandler extends DialogLinkHandler {
         .stub(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -308,8 +301,7 @@ class HomeLinkHandler extends DialogLinkHandler {
         .home(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -341,8 +333,7 @@ class LikedPostsLinkHandler extends DialogLinkHandler {
         .likedPosts(
           pathParams: pathParams,
           queryParams: queryParamsForView,
-        )
-        .copyWithLinkHandler(this);
+        );
 
     return route;
   }
@@ -359,6 +350,7 @@ enum DialogNames {
   stub,
   home,
   likedPosts,
+  postsRegex,
 }
 
 mixin DialogsGen on RoutesBase {
@@ -399,6 +391,9 @@ mixin DialogsGen on RoutesBase {
       'likedPosts': {
         '': LikedPostsLinkHandler(),
       },
+    });
+    regexHandlers.addAll({
+      '(.*?)': TestMapper(),
     });
   }
 }

@@ -28,7 +28,7 @@ dev_dependencies:
   build: ^2.4.1
   build_config: ^1.1.1
   build_runner: ^2.4.6
-  flutter_lints: ^3.0.0
+  flutter_lints: ^3.0.1
   freezed: ^2.4.1
   test:
 

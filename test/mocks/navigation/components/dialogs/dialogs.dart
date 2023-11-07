@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 import '../../../global_app/app.dart';
+import '../screens/routes.dart';
 
 part 'dialogs.navigation.dart';
 
@@ -22,7 +23,7 @@ class TestHandler extends LinkHandler {
 @dialogs
 class Dialogs extends RoutesBase with DialogsGen {
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter',
     ],
@@ -42,7 +43,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'posts/:{id}/:{type}',
+    paths: ['posts/:{id}/:{type}'],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -56,14 +57,14 @@ class Dialogs extends RoutesBase with DialogsGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: DialogNames.post,
+      name: DialogNames.postCustom,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=qwerty',
     ],
@@ -76,14 +77,14 @@ class Dialogs extends RoutesBase with DialogsGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: DialogNames.post,
+      name: DialogNames.post2,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: ['filter', 'query?'],
   )
   UIRoute<DialogNames> post3({
@@ -94,14 +95,14 @@ class Dialogs extends RoutesBase with DialogsGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: DialogNames.post,
+      name: DialogNames.post3,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}/test',
+    paths: ['posts/:{id}/test'],
     query: ['filter', 'query?'],
   )
   UIRoute<DialogNames> post4({
@@ -112,14 +113,14 @@ class Dialogs extends RoutesBase with DialogsGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: DialogNames.post,
+      name: DialogNames.post4,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts',
+    paths: ['posts'],
   )
   UIRoute<DialogNames> posts({
     Map<String, dynamic>? pathParams,
@@ -132,7 +133,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(path: 'posts', query: [
+  @Link(paths: ['posts'], query: [
     'filter',
   ])
   UIRoute<DialogNames> posts2({
@@ -140,13 +141,13 @@ class Dialogs extends RoutesBase with DialogsGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: DialogNames.posts,
+      name: DialogNames.posts2,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );
   }
 
-  @Link(path: 'stub', query: [
+  @Link(paths: ['stub'], query: [
     'filter',
   ])
   UIRoute<DialogNames> stub({
@@ -161,7 +162,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'home',
+    paths: ['home'],
   )
   UIRoute<DialogNames> home({
     Map<String, dynamic>? pathParams,
@@ -175,7 +176,7 @@ class Dialogs extends RoutesBase with DialogsGen {
   }
 
   @Link(
-    path: 'likedPosts',
+    paths: ['likedPosts'],
   )
   UIRoute<DialogNames> likedPosts({
     Map<String, dynamic>? pathParams,
@@ -184,6 +185,23 @@ class Dialogs extends RoutesBase with DialogsGen {
     return UIRoute(
       name: DialogNames.likedPosts,
       defaultSettings: const UIDialogRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    regexes: ['(.*?)'],
+    customParamsMapper: TestMapper,
+  )
+  UIRoute<DialogNames> postsRegex({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: DialogNames.postsRegex,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
       child: Container(),
     );
   }

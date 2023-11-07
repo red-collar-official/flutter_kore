@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_navigation/domain/interactors/navigation/components/mappers/test_mapper.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/global_store.dart';
@@ -22,7 +23,7 @@ class TestHandler extends LinkHandler {
 @routes
 class Routes extends RoutesBase with RoutesGen {
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter',
     ],
@@ -42,7 +43,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}/:{type}',
+    paths: ['posts/:{id}/:{type}'],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -56,14 +57,14 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.post,
+      name: RouteNames.postCustom,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=[qwerty1,qwerty2]',
     ],
@@ -83,7 +84,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=qwerty',
     ],
@@ -96,14 +97,14 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.post,
+      name: RouteNames.post2,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post3({
@@ -114,14 +115,14 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.post,
+      name: RouteNames.post3,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts/:{id}/test',
+    paths: ['posts/:{id}/test'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post4({
@@ -132,14 +133,14 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.post,
+      name: RouteNames.post4,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
   @Link(
-    path: 'posts',
+    paths: ['posts'],
   )
   UIRoute<RouteNames> posts({
     Map<String, dynamic>? pathParams,
@@ -152,7 +153,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(path: 'posts', query: [
+  @Link(paths: ['posts'], query: [
     'filter',
   ])
   UIRoute<RouteNames> posts2({
@@ -160,13 +161,13 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.posts,
+      name: RouteNames.posts2,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
-  @Link(path: 'stub', query: [
+  @Link(paths: ['stub'], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({
@@ -181,7 +182,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'home',
+    paths: ['home'],
   )
   UIRoute<RouteNames> home({
     Map<String, dynamic>? pathParams,
@@ -195,7 +196,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'likedPosts',
+    paths: ['likedPosts'],
   )
   UIRoute<RouteNames> likedPosts({
     Map<String, dynamic>? pathParams,
@@ -203,6 +204,50 @@ class Routes extends RoutesBase with RoutesGen {
   }) {
     return UIRoute(
       name: RouteNames.likedPosts,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    regexes: ['(.*?)'],
+    customParamsMapper: TestMapper,
+  )
+  UIRoute<RouteNames> postsRegex({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsRegex,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithPrefix({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithPrefix,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/test/:{id}'],
+  )
+  UIRoute<RouteNames> postsWithAnchor({
+    String? state,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithAnchor,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );

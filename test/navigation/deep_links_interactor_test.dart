@@ -102,6 +102,10 @@ void main() {
       app.navigation.bottomSheets.routeLinkHandlers.clear();
       app.navigation.routes.routeLinkHandlers.clear();
 
+      app.navigation.dialogs.regexHandlers.clear();
+      app.navigation.bottomSheets.regexHandlers.clear();
+      app.navigation.routes.regexHandlers.clear();
+
       app.navigation.deepLinks.reset();
       app.navigation.deepLinks.listenToDeeplinks();
 
@@ -123,7 +127,8 @@ void main() {
 
       // this means nothing opened cause this pattern
       // is not matched in navigation declaration
-      expect(app.navigation.latestGlobalRoute().name, RouteNames.posts);
+      // but we have regex matching any url
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
 
       DelayUtility.withDelay(() {
         app.navigation.deepLinks.linkStreamController.add(testUrl8);
@@ -149,13 +154,15 @@ void main() {
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.posts);
 
+      // this means nothing opened cause this pattern
+      // is not matched in navigation declaration
       DelayUtility.withDelay(() {
         app.navigation.deepLinks.linkStreamController.add(testUrl11);
       });
 
       await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, RouteNames.stub);
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.posts);
 
       DelayUtility.withDelay(() {
         app.navigation.deepLinks.linkStreamController.add(testUrl12);
@@ -164,6 +171,165 @@ void main() {
       await DelayUtility.pause(millis: 100);
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.postArray);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl13);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().name,
+        RouteNames.postsWithPrefix,
+      );
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl14);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().id,
+        'state',
+      );
+    });
+
+    test('DeepLinkInteractor test various links for dialogs test', () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.dialogs.regexHandlers.clear();
+      app.navigation.bottomSheets.regexHandlers.clear();
+      app.navigation.routes.regexHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+      app.navigation.deepLinks.listenToDeeplinks();
+
+      app.navigation.dialogs.initializeLinkHandlers();
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl6);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl7);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      // this means nothing opened cause this pattern
+      // is not matched in navigation declaration
+      // but we have regex matching any url
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl8);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.post);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl9);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.post2);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl10);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
+
+      // this means nothing opened cause this pattern
+      // is not matched in navigation declaration
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl11);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
+    });
+
+    test('DeepLinkInteractor test various links for bottom sheets test',
+        () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.dialogs.regexHandlers.clear();
+      app.navigation.bottomSheets.regexHandlers.clear();
+      app.navigation.routes.regexHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+      app.navigation.deepLinks.listenToDeeplinks();
+
+      app.navigation.bottomSheets.initializeLinkHandlers();
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl6);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl7);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      // this means nothing opened cause this pattern
+      // is not matched in navigation declaration
+      // but we have regex matching any url
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl8);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl9);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post2);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl10);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+
+      // this means nothing opened cause this pattern
+      // is not matched in navigation declaration
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl11);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
     });
 
     test('DeepLinkInteractor dispose test', () async {

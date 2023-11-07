@@ -8,9 +8,9 @@ abstract class BaseDeepLinksInteractor<State>
   bool _initialLinkReceived = false;
   StreamSubscription? _deepLinksSubscription;
 
-  Future<String> getInitialLink();
+  Future<String?> getInitialLink();
 
-  Stream<String> linkStream();
+  Stream<String?> linkStream();
 
   Future<void> defaultLinkHandler();
 

@@ -249,8 +249,8 @@ abstract class BaseNavigationInteractor<
   Future<void> routeTo(
     UIRoute<RouteType> routeData, {
     bool? fullScreenDialog,
-    bool replace = false,
-    bool replacePrevious = false,
+    bool? replace,
+    bool? replacePrevious,
     bool? uniqueInStack,
     bool? forceGlobal,
     bool? needToEnsureClose,
@@ -265,9 +265,10 @@ abstract class BaseNavigationInteractor<
       needToEnsureClose:
           needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
       dismissable: dismissable ?? routeData.defaultSettings.dismissable,
-      id: id,
-      replace: replace,
-      replacePrevious: replacePrevious,
+      id: id ?? routeData.defaultSettings.id,
+      replace: replace ?? routeData.defaultSettings.replace,
+      replacePrevious:
+          replacePrevious ?? routeData.defaultSettings.replacePrevious,
       name: routeData.name.toString(),
     );
 
@@ -283,7 +284,7 @@ abstract class BaseNavigationInteractor<
           currentTab: currentTab,
           global: global,
         ) &&
-        !replace) {
+        !routeSettings.replace) {
       return;
     }
 
@@ -295,7 +296,7 @@ abstract class BaseNavigationInteractor<
     final route = NavigationUtilities.buildPageRoute(
       screenToOpen,
       routeSettings.fullScreenDialog,
-      replace
+      routeSettings.replace
           ? null
           : () {
               pop(onlyInternalStack: true);
@@ -314,7 +315,7 @@ abstract class BaseNavigationInteractor<
     );
     // coverage:ignore-end
 
-    if (replace) {
+    if (routeSettings.replace) {
       // if replace flag is provided we clear stack and navigator state
       navigationStack
         ..clearTabNavigationStack()
@@ -322,7 +323,7 @@ abstract class BaseNavigationInteractor<
           routeName: routeName,
           global: global,
           uniqueInStack: routeSettings.uniqueInStack,
-          id: id,
+          id: routeSettings.id,
           fullScreenDialog: routeSettings.fullScreenDialog,
         );
 
@@ -334,7 +335,7 @@ abstract class BaseNavigationInteractor<
         (route) => false,
       ));
       // coverage:ignore-end
-    } else if (replacePrevious) {
+    } else if (routeSettings.replacePrevious) {
       // if replace flag is provided we clear stack and navigator state
       navigationStack.replaceLastRoute(
         routeName: routeName,
@@ -344,7 +345,7 @@ abstract class BaseNavigationInteractor<
         dismissable: routeSettings.dismissable,
         needToEnsureClose: routeSettings.needToEnsureClose,
         fullScreenDialog: routeSettings.fullScreenDialog,
-        id: id,
+        id: routeSettings.id,
       );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
@@ -363,7 +364,7 @@ abstract class BaseNavigationInteractor<
         dismissable: routeSettings.dismissable,
         needToEnsureClose: routeSettings.needToEnsureClose,
         fullScreenDialog: routeSettings.fullScreenDialog,
-        id: id,
+        id: routeSettings.id,
       );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
@@ -636,12 +637,10 @@ abstract class BaseNavigationInteractor<
   }
 
   Future<void> openLink(String link) async {
-    var routeHandler = routes.handlerForLink(link);
+    var routeHandler = _findHandlerForLink(link);
 
     if (routeHandler == null) {
-      routeHandler = dialogs.handlerForLink(link);
-
-      routeHandler ??= bottomSheets.handlerForLink(link);
+      routeHandler = _findRegexHandlerForLink(link);
 
       if (routeHandler == null) {
         return;
@@ -651,5 +650,49 @@ abstract class BaseNavigationInteractor<
     final route = await routeHandler.parseLinkToRoute(link);
 
     await routeHandler.processRoute(route);
+  }
+
+  LinkHandler? _findHandlerForLink(String link) {
+    var routeHandler = routes.handlerForLink(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    routeHandler = dialogs.handlerForLink(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    routeHandler = bottomSheets.handlerForLink(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    return routeHandler;
+  }
+
+  LinkHandler? _findRegexHandlerForLink(String link) {
+    var routeHandler = routes.handlerForRegex(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    routeHandler = dialogs.handlerForRegex(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    routeHandler = bottomSheets.handlerForRegex(link);
+
+    if (routeHandler != null) {
+      return routeHandler;
+    }
+
+    return routeHandler;
   }
 }

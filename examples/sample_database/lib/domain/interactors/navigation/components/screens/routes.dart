@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/post.dart';
+import 'package:sample_database/domain/interactors/navigation/components/mappers/test_mapper.dart';
+import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 
 part 'routes.navigation.dart';
@@ -22,7 +23,7 @@ class TestHandler extends LinkHandler {
 @routes
 class Routes extends RoutesBase with RoutesGen {
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter',
     ],
@@ -42,7 +43,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}/:{type}',
+    paths: ['posts/:{id}/:{type}'],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -63,7 +64,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=[qwerty1,qwerty2]',
     ],
@@ -83,7 +84,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: [
       'filter=qwerty',
     ],
@@ -103,7 +104,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}',
+    paths: ['posts/:{id}'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post3({
@@ -121,7 +122,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts/:{id}/test',
+    paths: ['posts/:{id}/test'],
     query: ['filter', 'query?'],
   )
   UIRoute<RouteNames> post4({
@@ -139,7 +140,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'posts',
+    paths: ['posts'],
   )
   UIRoute<RouteNames> posts({
     Map<String, dynamic>? pathParams,
@@ -152,7 +153,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(path: 'posts', query: [
+  @Link(paths: ['posts'], query: [
     'filter',
   ])
   UIRoute<RouteNames> posts2({
@@ -166,7 +167,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(path: 'stub', query: [
+  @Link(paths: ['stub'], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({
@@ -181,7 +182,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'home',
+    paths: ['home'],
   )
   UIRoute<RouteNames> home({
     Map<String, dynamic>? pathParams,
@@ -195,7 +196,7 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    path: 'likedPosts',
+    paths: ['likedPosts'],
   )
   UIRoute<RouteNames> likedPosts({
     Map<String, dynamic>? pathParams,
@@ -203,6 +204,21 @@ class Routes extends RoutesBase with RoutesGen {
   }) {
     return UIRoute(
       name: RouteNames.likedPosts,
+      defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    regexes: ['(.*?)'],
+    customParamsMapper: TestMapper,
+  )
+  UIRoute<RouteNames> postsRegex({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsRegex,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
