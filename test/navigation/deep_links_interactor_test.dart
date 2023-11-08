@@ -367,5 +367,71 @@ void main() {
 
       expect(app.navigation.deepLinks.isDisposed, true);
     });
+
+    test('DeepLinkInteractor open link prefer dialogs test', () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+
+      app.navigation.routes.initializeLinkHandlers();
+      app.navigation.bottomSheets.initializeLinkHandlers();
+      app.navigation.dialogs.initializeLinkHandlers();
+
+      await app.navigation.openLink(testUrl10, preferDialogs: true);
+
+      expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
+    });
+
+    test('DeepLinkInteractor open link prefer bottom sheets test',
+        () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+
+      app.navigation.routes.initializeLinkHandlers();
+      app.navigation.bottomSheets.initializeLinkHandlers();
+      app.navigation.dialogs.initializeLinkHandlers();
+
+      await app.navigation.openLink(testUrl10, preferBottomSheets: true);
+
+      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+    });
+
+    test('DeepLinkInteractor open link prefer dialogs not found test', () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+
+      app.navigation.routes.initializeLinkHandlers();
+      app.navigation.bottomSheets.initializeLinkHandlers();
+      app.navigation.dialogs.initializeLinkHandlers();
+
+      await app.navigation.openLink(testUrl7, preferDialogs: true);
+
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+    });
+
+    test('DeepLinkInteractor open link prefer bottom sheets not found test',
+        () async {
+      app.navigation.dialogs.routeLinkHandlers.clear();
+      app.navigation.bottomSheets.routeLinkHandlers.clear();
+      app.navigation.routes.routeLinkHandlers.clear();
+
+      app.navigation.deepLinks.reset();
+
+      app.navigation.routes.initializeLinkHandlers();
+      app.navigation.bottomSheets.initializeLinkHandlers();
+      app.navigation.dialogs.initializeLinkHandlers();
+
+      await app.navigation.openLink(testUrl7, preferBottomSheets: true);
+
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+    });
   });
 }

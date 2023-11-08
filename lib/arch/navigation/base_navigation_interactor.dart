@@ -7,27 +7,27 @@ import 'package:umvvm/umvvm.dart';
 /// Base class for navigation interactor
 /// Contains state and input parameters as every other interactor
 /// Also you need to specify type parameters for tabs, routes, dialogs and bottom sheets
-/// 
-/// You need to specify custom route builder or provide 
+///
+/// You need to specify custom route builder or provide
 /// [UINavigationSettings] values at app startup
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// @singleton
 /// @AppNavigation(tabs: AppTab)
 /// class NavigationInteractor
 ///     extends NavigationInteractorDeclaration<NavigationState> {
-/// 
+///
 ///   @override
 ///   AppTab? get currentTab => state.currentTab;
-/// 
+///
 ///   @override
 ///   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
 ///         AppTabs.posts: GlobalKey<NavigatorState>(),
 ///         AppTabs.likedPosts: GlobalKey<NavigatorState>(),
 ///       };
-/// 
+///
 ///   @override
 ///   NavigationInteractorSettings get settings => NavigationInteractorSettings(
 ///         initialRoute: RouteNames.home,
@@ -39,29 +39,29 @@ import 'package:umvvm/umvvm.dart';
 ///         },
 ///         appContainsTabNavigation: true,
 ///       );
-/// 
+///
 ///   @override
 ///   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
 ///     // ignore
 ///   }
-/// 
+///
 ///   @override
 ///   Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
 ///     // ignore
 ///   }
-/// 
+///
 ///   @override
 ///   Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
 ///     if (route.global) {
 ///       app.eventBus.send(GlobalRoutePushedEvent(replace: route.replace));
 ///     }
 ///   }
-/// 
+///
 ///   @override
 ///   void setCurrentTab(AppTab tab) {
 ///     updateState(state.copyWith(currentTab: tab));
 ///   }
-/// 
+///
 ///   @override
 ///   NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
 ///         currentTab: AppTabs.posts,
@@ -709,11 +709,23 @@ abstract class BaseNavigationInteractor<
 
   /// Tries to open link based on routes declaration and open mapped route
   /// Returns false if no possible link handler found
-  Future<bool> openLink(String link) async {
-    var routeHandler = _findHandlerForLink(link);
+  Future<bool> openLink(
+    String link, {
+    bool preferDialogs = false,
+    bool preferBottomSheets = false,
+  }) async {
+    var routeHandler = _findHandlerForLink(
+      link,
+      preferBottomSheets: preferBottomSheets,
+      preferDialogs: preferDialogs,
+    );
 
     if (routeHandler == null) {
-      routeHandler = _findRegexHandlerForLink(link);
+      routeHandler = _findRegexHandlerForLink(
+        link,
+        preferBottomSheets: preferBottomSheets,
+        preferDialogs: preferDialogs,
+      );
 
       if (routeHandler == null) {
         return false;
@@ -728,48 +740,52 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Tries to open link based on routes declaration
-  LinkHandler? _findHandlerForLink(String link) {
-    var routeHandler = routes.handlerForLink(link);
+  LinkHandler? _findHandlerForLink(
+    String link, {
+    bool preferDialogs = false,
+    bool preferBottomSheets = false,
+  }) {
+    final matchers = <RoutesBase>[
+      if (preferDialogs) dialogs,
+      if (preferBottomSheets) bottomSheets,
+      routes,
+      if (!preferDialogs) dialogs,
+      if (!preferBottomSheets) bottomSheets,
+    ];
 
-    if (routeHandler != null) {
-      return routeHandler;
+    for (final matcher in matchers) {
+      final routeHandler = matcher.handlerForLink(link);
+
+      if (routeHandler != null) {
+        return routeHandler;
+      }
     }
 
-    routeHandler = dialogs.handlerForLink(link);
-
-    if (routeHandler != null) {
-      return routeHandler;
-    }
-
-    routeHandler = bottomSheets.handlerForLink(link);
-
-    if (routeHandler != null) {
-      return routeHandler;
-    }
-
-    return routeHandler;
+    return null;
   }
 
   /// Tries to open link based on route's regex declaration
-  LinkHandler? _findRegexHandlerForLink(String link) {
-    var routeHandler = routes.handlerForRegex(link);
+  LinkHandler? _findRegexHandlerForLink(
+    String link, {
+    bool preferDialogs = false,
+    bool preferBottomSheets = false,
+  }) {
+    final matchers = <RoutesBase>[
+      if (preferDialogs) dialogs,
+      if (preferBottomSheets) bottomSheets,
+      routes,
+      if (!preferDialogs) dialogs,
+      if (!preferBottomSheets) bottomSheets,
+    ];
 
-    if (routeHandler != null) {
-      return routeHandler;
+    for (final matcher in matchers) {
+      final routeHandler = matcher.handlerForRegex(link);
+
+      if (routeHandler != null) {
+        return routeHandler;
+      }
     }
 
-    routeHandler = dialogs.handlerForRegex(link);
-
-    if (routeHandler != null) {
-      return routeHandler;
-    }
-
-    routeHandler = bottomSheets.handlerForRegex(link);
-
-    if (routeHandler != null) {
-      return routeHandler;
-    }
-
-    return routeHandler;
+    return null;
   }
 }
