@@ -308,7 +308,7 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Opens new route
-  Future<void> routeTo(
+  Future<dynamic> routeTo(
     UIRoute<RouteType> routeData, {
     bool? fullScreenDialog,
     bool? replace,
@@ -415,9 +415,7 @@ abstract class BaseNavigationInteractor<
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
 
-      unawaited(navigator.currentState?.pushReplacement(
-        route,
-      ));
+      return await navigator.currentState?.pushReplacement(route);
     } else {
       // otherwise we just add route and push it to navigator
 
@@ -434,7 +432,7 @@ abstract class BaseNavigationInteractor<
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
 
-      await navigator.currentState?.push(
+      return await navigator.currentState?.push(
         route,
       );
     }
