@@ -1,9 +1,9 @@
 import 'package:umvvm/umvvm.dart';
 
 /// Class describing mapper of url parameters to route
-/// 
+///
 /// Example
-/// 
+///
 /// ```dart
 /// class TestMapper extends LinkMapper {
 ///   @override
@@ -20,7 +20,7 @@ import 'package:umvvm/umvvm.dart';
 ///       child: Container(),
 ///     );
 ///   }
-/// 
+///
 ///   @override
 ///   (Map<String, String>?, Map<String, String>?, String?) mapParamsFromUrl(
 ///     String url,
@@ -33,7 +33,7 @@ import 'package:umvvm/umvvm.dart';
 ///       null,
 ///     );
 ///   }
-/// 
+///
 ///   @override
 ///   Future<void> openRoute(UIRoute route) async {
 ///     await app.navigation.routeTo(route as UIRoute<RouteNames>);
@@ -41,6 +41,8 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class LinkMapper {
+  const LinkMapper();
+
   /// Maps url to params
   /// returns record where:
   /// first map is path params

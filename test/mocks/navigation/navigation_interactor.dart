@@ -39,7 +39,8 @@ class NavigationInteractor extends BaseNavigationInteractor<
       };
 
   @override
-  NavigationInteractorSettings get settings => NavigationInteractorSettings(
+  NavigationInteractorSettings get settings =>
+      const NavigationInteractorSettings(
         initialRoute: RouteNames.home,
         tabs: AppTabs.tabs,
         tabViewHomeRoute: RouteNames.home,

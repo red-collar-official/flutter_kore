@@ -15,7 +15,7 @@ class UIRoute<T> {
   /// View to open with this route
   final Widget child;
 
-  UIRoute({
+  const UIRoute({
     required this.name,
     required this.defaultSettings,
     required this.child,

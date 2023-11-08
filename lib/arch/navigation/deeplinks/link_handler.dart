@@ -47,6 +47,8 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class LinkHandler {
+  const LinkHandler();
+  
   /// Maps given url to navigation [UIRoute]
   /// if you want to skip this url return null
   Future<UIRoute?> parseLinkToRoute(String url);
@@ -59,7 +61,7 @@ abstract class LinkHandler {
 class GenericLinkHandler extends LinkHandler {
   final LinkMapper mapper;
 
-  GenericLinkHandler({
+  const GenericLinkHandler({
     required this.mapper,
   });
 

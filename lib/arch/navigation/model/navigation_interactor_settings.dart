@@ -47,7 +47,7 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
   /// Route builder for navigation interactor
   final NavigationRouteBuilder routeBuilder;
 
-  NavigationInteractorSettings({
+  const NavigationInteractorSettings({
     required this.initialRoute,
     this.initialTabRoutes,
     this.tabViewHomeRoute,
