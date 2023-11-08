@@ -10,7 +10,7 @@ import 'package:glob/glob.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
-import 'package:umvvm/arch/navigation/annotations/routes.dart';
+import 'package:umvvm/arch/navigation/annotations/annotations.dart';
 import 'package:umvvm/collectors/models/api_json_model.dart';
 import 'package:umvvm/collectors/models/instance_json_model.dart';
 import 'package:umvvm/generators/annotated_function_visitor.dart';
@@ -649,6 +649,69 @@ queryParamsForView['$queryElement'] = $paramInitialization
         }
       }
     }
+
+    return classBuffer.toString();
+  }
+}
+
+class MainNavigationInteractorGenerator
+    extends GeneratorForAnnotation<AppNavigation> {
+  @override
+  FutureOr<String> generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
+    final visitor = MainAppVisitor();
+
+    element.visitChildren(visitor);
+
+    final classBuffer = StringBuffer();
+
+    var appTabValue = 'void';
+
+    final tabsValue = annotation.peek('tabs')?.typeValue.getDisplayString(
+          withNullability: false,
+        );
+
+    if (tabsValue != null) {
+      appTabValue = tabsValue;
+    }
+
+    var deeplinkValue = 'BaseDeepLinksInteractor';
+
+    final deeplink = annotation.peek('deepLinks')?.typeValue.getDisplayString(
+          withNullability: false,
+        );
+
+    if (deeplink != null) {
+      deeplinkValue = deeplink;
+    }
+
+    classBuffer.writeln('''
+abstract class ${visitor.className?.split("<")[0]}Declaration<NavigationState> extends BaseNavigationInteractor<
+    NavigationState,
+    Map<String, dynamic>,
+    $appTabValue,
+    Routes,
+    Dialogs,
+    BottomSheets,
+    RouteNames,
+    DialogNames,
+    BottomSheetNames,
+    $deeplinkValue> {
+  final _routes = Routes();
+  final _dialogs = Dialogs();
+  final _bottomSheets = BottomSheets();
+
+  @override
+  BottomSheets get bottomSheets => _bottomSheets;
+  @override
+  Dialogs get dialogs => _dialogs;
+  @override
+  Routes get routes => _routes;
+}
+''');
 
     return classBuffer.toString();
   }

@@ -11,22 +11,12 @@ import 'components/dialogs/dialogs.dart';
 import 'components/screens/routes.dart';
 import 'navigation_state.dart';
 
-@singleton
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    Routes,
-    Dialogs,
-    BottomSheets,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames,
-    BaseDeepLinksInteractor> {
-  final _routes = Routes();
-  final _dialogs = Dialogs();
-  final _bottomSheets = BottomSheets();
+part 'navigation_interactor.app_navigation.dart';
 
+@singleton
+@AppNavigation(tabs: AppTab)
+class NavigationInteractor
+    extends NavigationInteractorDeclaration<NavigationState> {
   @override
   AppTab? get currentTab => state.currentTab;
 
@@ -47,13 +37,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
         },
         appContainsTabNavigation: true,
       );
-
-  @override
-  BottomSheets get bottomSheets => _bottomSheets;
-  @override
-  Dialogs get dialogs => _dialogs;
-  @override
-  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {

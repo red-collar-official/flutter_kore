@@ -10,5 +10,9 @@ class MainAppVisitor extends SimpleElementVisitor<void> {
   void visitConstructorElement(ConstructorElement element) {
     final elementReturnType = element.type.returnType.toString();
     className = elementReturnType.replaceFirst('*', '');
+
+    if (elementReturnType.contains('<')) {
+      className = className!.split('<')[0];
+    }
   }
 }

@@ -1032,24 +1032,15 @@ Package also contains default way to handle navigation
 
 To use this feature you need to subclass <b>BaseNavigationInteractor</b>
 
+Or you can mark class with <b>AppNavigation</b> annotation
+
 If your app contains tab navigation than NavigationInteractor will look like this:
 
 ```dart
 @singleton
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    Routes,
-    Dialogs,
-    BottomSheets,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames,
-    BaseDeepLinksInteractor> {
-  final _routes = Routes();
-  final _dialogs = Dialogs();
-  final _bottomSheets = BottomSheets();
+@AppNavigation(tabs: AppTab)
+class NavigationInteractor
+     extends NavigationInteractorDeclaration<NavigationState> {
 
   @override
   AppTab? get currentTab => state.currentTab;
@@ -1071,13 +1062,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
         },
         appContainsTabNavigation: true,
       );
-
-  @override
-  BottomSheets get bottomSheets => _bottomSheets;
-  @override
-  Dialogs get dialogs => _dialogs;
-  @override
-  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
@@ -1112,16 +1096,9 @@ If app does not contains tab navigation than you can skip tab related methods:
 
 ```dart
 @singleton
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames> {
-  final _routes = Routes();
-  final _dialogs = Dialogs();
-  final _bottomSheets = BottomSheets();
+@AppNavigation()
+class NavigationInteractor
+     extends NavigationInteractorDeclaration<NavigationState> {
 
   @override
   AppTab? get currentTab => state.currentTab;
@@ -1130,13 +1107,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
   NavigationInteractorSettings get settings => NavigationInteractorSettings(
         initialRoute: RouteNames.home,
       );
-
-  @override
-  BottomSheets get bottomSheets => _bottomSheets;
-  @override
-  Dialogs get dialogs => _dialogs;
-  @override
-  Routes get routes => _routes;
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
@@ -1276,6 +1246,8 @@ Examples how to use it is also in <b>example_navigation</b> example
 ### Deep links
 
 Navigation supports deeplinks with <b>BaseDeepLinksInteractor</b>
+
+Then you need to specify it in <b>AppNavigation</b> annotation <b>deepLinks</b> argiments
 
 You need to provide methods to get initial link and get stream of deep links
 To respond to deep links define routes with <b>@Link</b> annotation

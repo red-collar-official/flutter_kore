@@ -18,3 +18,8 @@ Builder generateNavigation(BuilderOptions options) => PartBuilder(
       '.navigation.dart',
       allowSyntaxErrors: true,
     );
+Builder generateNavigationInteractor(BuilderOptions options) => PartBuilder(
+      [MainNavigationInteractorGenerator()],
+      '.app_navigation.dart',
+      allowSyntaxErrors: true,
+    );
