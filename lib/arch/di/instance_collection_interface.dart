@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Main interface for mvvm instance collections
+/// Usually can be obtained with [app.instances] getter
+/// or with singleton interface
 abstract class InstanceCollectionInterface {
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for view model
@@ -184,10 +186,23 @@ abstract class InstanceCollectionInterface {
     String? scope,
   });
 
-  /// Unregisters instance in scope and 
+  /// Unregisters instance in scope and
   /// resets object reference counter in scope
   void unregisterInstance<T>({
     String scope = BaseScopes.global,
     int? index,
   });
+
+  /// Helper method to get unique instance and
+  /// dispose it automatically after body is finished
+  Future useAndDisposeInstance<T extends MvvmInstance>(
+    Future Function(T) body,
+  );
+
+  /// Helper method to get unique instance and
+  /// dispose it automatically after body is finished
+  Future useAndDisposeInstanceWithParams<T extends MvvmInstance, Input>(
+    Input? params,
+    Future Function(T) body,
+  );
 }

@@ -2,6 +2,7 @@ import 'package:test/test.dart';
 import 'package:umvvm/umvvm.dart';
 
 import '../helpers/constants.dart';
+import '../helpers/delay_utility.dart';
 
 final class TestMvvmInstance extends MvvmInstance<int?> {
   int value = 1;
@@ -487,6 +488,32 @@ void main() {
       instances.unregisterInstance<TestMvvmInstance>();
 
       expect(instances.forceGet<TestMvvmInstance>(), null);
+    });
+
+    test('Instance collection use and dispose instance test', () async {
+      await instances.useAndDisposeInstance<TestMvvmInstance>((instance) async {
+        await DelayUtility.pause();
+      });
+
+      expect(
+        instances.forceGet<TestMvvmInstance>(),
+        null,
+      );
+    });
+
+    test('Instance collection use and dispose instance with params test',
+        () async {
+      await instances.useAndDisposeInstanceWithParams<TestMvvmInstance, int>(
+        1,
+        (instance) async {
+          await DelayUtility.pause();
+        },
+      );
+
+      expect(
+        instances.forceGet<TestMvvmInstance>(),
+        null,
+      );
     });
   });
 }

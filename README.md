@@ -498,6 +498,9 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
 
 You also can enable runtime check for cyclic dependencies with <b>instances.checkForCyclicDependencies</b> flag
 
+You also can quickly get and use instance and dispose it after automatically 
+with <b>app.instances.useAndDisposeInstance</b> and <b>app.instances.useAndDisposeInstanceWithParams</b>
+
 ## Business Logic Layer
 
 This layer contains <b>Interactor</b> and <b>Wrapper</b> classes.

@@ -628,11 +628,13 @@ class InstanceCollection extends InstanceCollectionInterface {
     return instance;
   }
 
+  /// Decreases reference count in given scope for given type
   @override
   void decreaseReferencesInScope(String scope, Type type, {int index = 0}) {
     container.decreaseReferences(scope, type, index: index);
   }
 
+  /// Increases reference count in given scope for given type
   @override
   void increaseReferencesInScope(String scope, Type type, {int index = 0}) {
     container.increaseReferencesInScope(scope, type, index: index);
@@ -668,6 +670,8 @@ class InstanceCollection extends InstanceCollectionInterface {
     }
   }
 
+  /// Checks if object with type id is currently 
+  /// building and throws exception if so
   void performCheckForCyclicDependencies(String typeId, int? index) {
     if (checkForCyclicDependencies) {
       final currentlyBuildingInstances = buildingInstances[typeId];
@@ -690,6 +694,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     }
   }
 
+  /// Marks instance and built for cyclic check
   void finishBuildingInstance(String typeId, int? index) {
     if (checkForCyclicDependencies) {
       final currentlyBuildingInstances = buildingInstances[typeId];
@@ -700,5 +705,38 @@ class InstanceCollection extends InstanceCollectionInterface {
         currentlyBuildingInstances.remove(index ?? 0);
       }
     }
+  }
+
+  /// Helper method to get unique instance and 
+  /// dispose it automatically after body is finished
+  @override
+  Future useAndDisposeInstance<T extends MvvmInstance>(
+    Future Function(T) body,
+  ) async {
+    final instance = getUnique<T>();
+
+    final result = await body(instance);
+
+    instance.dispose();
+
+    return result;
+  }
+
+  /// Helper method to get unique instance and 
+  /// dispose it automatically after body is finished
+  @override
+  Future useAndDisposeInstanceWithParams<T extends MvvmInstance, Input>(
+    Input? params,
+    Future Function(T) body,
+  ) async {
+    final instance = getUniqueWithParams<T, Input>(
+      params: params,
+    );
+
+    final result = await body(instance);
+
+    instance.dispose();
+
+    return result;
   }
 }
