@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+/// Widget to detect view visibility changes
 class OnBecomeVisible extends StatefulWidget {
   const OnBecomeVisible({
     super.key,

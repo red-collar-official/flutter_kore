@@ -4,10 +4,46 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base interactor for handling links in app
+/// Contains methods to get initial app deeplink and deeplink stream
+/// 
+/// Example
+/// 
+/// ```dart
+/// class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
+///   bool defaultLinkHandlerCalled = false;
+/// 
+///   final linkStreamController = StreamController<String>.broadcast();
+/// 
+///   @override
+///   Future<void> defaultLinkHandler() async {
+///     defaultLinkHandlerCalled = true;
+///   }
+/// 
+///   @override
+///   Future<String> getInitialLink() async {
+///     return 'test';
+///   }
+/// 
+///   @override
+///   int initialState(Map<String, dynamic>? input) => 1;
+/// 
+///   @override
+///   Stream<String> linkStream() {
+///     return linkStreamController.stream;
+///   }
+/// 
+///   @override
+///   void dispose() {
+///     super.dispose();
+/// 
+///     linkStreamController.close();
+///   }
+/// }
+/// ```
 abstract class BaseDeepLinksInteractor<State>
     extends BaseInteractor<State, Map<String, dynamic>> {
   /// Flag indicating if initial route is received
-  bool _initialLinkReceived = false;
+  bool initialLinkReceived = false;
 
   /// [StreamSubscription] for deeplinks stream
   StreamSubscription? _deepLinksSubscription;
@@ -25,11 +61,11 @@ abstract class BaseDeepLinksInteractor<State>
   
   @mustCallSuper
   Future<void> receiveInitialLink() async {
-    if (_initialLinkReceived) {
+    if (initialLinkReceived) {
       return;
     }
 
-    _initialLinkReceived = true;
+    initialLinkReceived = true;
 
     try {
       await onLinkReceived(await getInitialLink());
@@ -78,6 +114,6 @@ abstract class BaseDeepLinksInteractor<State>
   /// Resets initialLinkReceived flag
   @visibleForTesting
   void reset() {
-    _initialLinkReceived = false;
+    initialLinkReceived = false;
   }
 }

@@ -7,6 +7,85 @@ import 'package:umvvm/umvvm.dart';
 /// Base class for navigation interactor
 /// Contains state and input parameters as every other interactor
 /// Also you need to specify type parameters for tabs, routes, dialogs and bottom sheets
+/// 
+/// You need to specify custom route builder or provide 
+/// [UINavigationSettings] values at app startup
+/// 
+/// Example:
+/// 
+/// ```dart
+/// @singleton
+/// class NavigationInteractor extends BaseNavigationInteractor<
+///     NavigationState,
+///     Map<String, dynamic>,
+///     AppTab,
+///     Routes,
+///     Dialogs,
+///     BottomSheets,
+///     RouteNames,
+///     DialogNames,
+///     BottomSheetNames,
+///     BaseDeepLinksInteractor> {
+///   final _routes = Routes();
+///   final _dialogs = Dialogs();
+///   final _bottomSheets = BottomSheets();
+/// 
+///   @override
+///   AppTab? get currentTab => state.currentTab;
+/// 
+///   @override
+///   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
+///         AppTabs.posts: GlobalKey<NavigatorState>(),
+///         AppTabs.likedPosts: GlobalKey<NavigatorState>(),
+///       };
+/// 
+///   @override
+///   NavigationInteractorSettings get settings => NavigationInteractorSettings(
+///         initialRoute: RouteNames.home,
+///         tabs: AppTabs.tabs,
+///         tabViewHomeRoute: RouteNames.home,
+///         initialTabRoutes: {
+///           AppTabs.posts: RouteNames.posts,
+///           AppTabs.likedPosts: RouteNames.likedPosts,
+///         },
+///         appContainsTabNavigation: true,
+///       );
+/// 
+///   @override
+///   BottomSheets get bottomSheets => _bottomSheets;
+///   @override
+///   Dialogs get dialogs => _dialogs;
+///   @override
+///   Routes get routes => _routes;
+/// 
+///   @override
+///   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
+///     // ignore
+///   }
+/// 
+///   @override
+///   Future<void> onDialogOpened(Widget child, UIRouteSettings route) async {
+///     // ignore
+///   }
+/// 
+///   @override
+///   Future<void> onRouteOpened(Widget child, UIRouteSettings route) async {
+///     if (route.global) {
+///       app.eventBus.send(GlobalRoutePushedEvent(replace: route.replace));
+///     }
+///   }
+/// 
+///   @override
+///   void setCurrentTab(AppTab tab) {
+///     updateState(state.copyWith(currentTab: tab));
+///   }
+/// 
+///   @override
+///   NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+///         currentTab: AppTabs.posts,
+///       );
+/// }
+/// ```
 abstract class BaseNavigationInteractor<
         State,
         Input,
@@ -19,6 +98,8 @@ abstract class BaseNavigationInteractor<
         BottomSheetType,
         DeepLinksInteractorType extends BaseDeepLinksInteractor>
     extends BaseInteractor<State, Input> {
+  /// Deeplinks interactor for global app
+  /// throws exception if deeplinks interactor not used
   late final deepLinks = InstanceCollection.instance
           .find<DeepLinksInteractorType>(BaseScopes.global)
       as DeepLinksInteractorType;

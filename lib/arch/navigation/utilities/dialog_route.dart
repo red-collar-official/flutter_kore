@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 
+/// Default dialog route implementation
 class DialogRoute<T> extends PopupRoute<T> {
   DialogRoute({
     required RoutePageBuilder pageBuilder,

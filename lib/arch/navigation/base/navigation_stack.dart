@@ -6,6 +6,7 @@ import 'package:umvvm/arch/navigation/base/stack/base_navigation_stack.dart';
 import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';
 
+/// Class that holds navigation history for Navigation interactors
 class NavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
   final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStack;
@@ -18,10 +19,12 @@ class NavigationStack<AppTabType> {
     required this.routeStack,
   });
 
+  /// Global navigation history
   late final globalNavigationStack = GlobalNavigationStack<AppTabType>(
     routeStackBuilder: routeStack,
   );
 
+  /// Tab navigation history
   late final tabNavigationStack = TabNavigationStack<AppTabType>(
     tabRouteStackBuilder: tabRouteStack,
   );
@@ -131,6 +134,7 @@ class NavigationStack<AppTabType> {
     return stack.pop(currentTab);
   }
 
+  /// Clears tab navigation stack
   void clearTabNavigationStack() {
     tabNavigationStack.reset();
   }

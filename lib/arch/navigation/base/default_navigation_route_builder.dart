@@ -11,9 +11,11 @@ import 'package:umvvm/arch/navigation/utilities/willpop_cupertino_page_route.dar
 
 import 'navigation_route_builder.dart';
 
+/// Default route builder used by navigation interactor
 class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   const DefaultNavigationRouteBuilder();
 
+  /// Pushes dialog route to [Navigator]
   @override
   Future<Object?>? pushDialogRoute({
     required GlobalKey<NavigatorState> navigator,
@@ -40,6 +42,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
         ),
       );
 
+  /// Pushes bottom sheet route to [Navigator]
   @override
   Future? pushBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
@@ -61,6 +64,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
         ),
       );
 
+  /// Pushes route to [Navigator]
   @override
   PageRoute buildPageRoute({
     required Widget child,

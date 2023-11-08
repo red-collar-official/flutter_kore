@@ -1286,8 +1286,6 @@ Here is example of deep links interactor
 ```dart
 class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
   bool defaultLinkHandlerCalled = false;
-  bool dialogs = false;
-  bool bottomSheets = false;
 
   final linkStreamController = StreamController<String>.broadcast();
 
@@ -1298,7 +1296,7 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 
   @override
   Future<String> getInitialLink() async {
-    return testUrl6;
+    return 'test';
   }
 
   @override

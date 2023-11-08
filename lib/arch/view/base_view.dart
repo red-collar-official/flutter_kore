@@ -6,10 +6,15 @@ import 'base_view_model.dart';
 /// Main class for umvvm view
 /// It holds reference to view model, receives [WidgetsBinding]
 /// post frame callback and manages [AutomaticKeepAliveClientMixin] for this view
-///
+/// 
+/// Example:
+/// 
 /// ```dart
-/// class PostView extends StatefulWidget {
-///
+/// const PostView({
+///     super.key,
+///     super.viewModel,
+///   });
+/// 
 ///   @override
 ///   State<StatefulWidget> createState() {
 ///     return _PostViewWidgetState();

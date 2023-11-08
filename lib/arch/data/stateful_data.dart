@@ -1,6 +1,8 @@
 import 'package:umvvm/umvvm.dart';
 
+/// Sealed class that holds either loading state, some typed data or error 
 sealed class StatefulData<T> {
+  /// returns success data or throws exception
   T unwrap() {
     if (this is! SuccessData<T>) {
       throw IllegalStateException(message: 'Not a success data');
@@ -12,11 +14,15 @@ sealed class StatefulData<T> {
   const StatefulData();
 }
 
+/// [StatefulData] indicating loading state for underlying object
 class LoadingData<T> extends StatefulData<T> {
   const LoadingData();
 }
 
+/// [StatefulData] indicating success state for underlying object
+/// holds result or null
 class SuccessData<T> extends StatefulData<T> {
+  /// Successfull result for this [StatefulData]
   final T result;
 
   const SuccessData({
@@ -24,7 +30,10 @@ class SuccessData<T> extends StatefulData<T> {
   });
 }
 
+/// [StatefulData] indicating error state for underlying object
+/// holds error object or null
 class ErrorData<T> extends StatefulData<T> {
+  /// Reason object for this error state
   final dynamic error;
 
   const ErrorData({this.error});

@@ -38,6 +38,7 @@ class Connector {
     this.lazy = false,
   });
 
+  /// Returns copy if this connector with overriden scope value
   Connector copyWithScope(String scope) {
     return Connector(
       type: type,

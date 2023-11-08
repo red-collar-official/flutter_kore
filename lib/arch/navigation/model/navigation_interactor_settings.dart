@@ -2,6 +2,21 @@ import 'package:umvvm/arch/navigation/base/default_navigation_route_builder.dart
 import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
 
 /// Class describing app navigation settings
+/// 
+/// Example:
+/// 
+/// ```dart
+/// NavigationInteractorSettings(
+///   initialRoute: RouteNames.home,
+///   tabs: AppTabs.tabs,
+///   tabViewHomeRoute: RouteNames.home,
+///   initialTabRoutes: {
+///      AppTabs.posts: RouteNames.posts,
+///      AppTabs.likedPosts: RouteNames.likedPosts,
+///   },
+///   appContainsTabNavigation: true,
+/// );
+/// ```
 class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     BottomSheetType> {
   /// Initial route of whole app

@@ -3,6 +3,49 @@ import 'dart:async';
 import 'package:umvvm/umvvm.dart';
 
 /// Class describing parser for link and mapping to route
+/// 
+/// Example
+/// 
+/// ```dart
+/// class PostLinkHandler extends BottomSheetLinkHandler {
+///   @override
+///   Future<UIRoute> parseLinkToRoute(String url) async {
+///     final uriPath = Uri.parse(url);
+///     final segments = uriPath.pathSegments;
+///     final queryParams = uriPath.queryParametersAll;
+/// 
+///     final patternUriPath = Uri.parse('posts/:{id}');
+///     final patternQuery = [
+///       'filter',
+///     ];
+///     final patternSegments = patternUriPath.pathSegments;
+/// 
+///     Map<String, dynamic> queryParamsForView = {};
+///     Map<String, dynamic> pathParams = {};
+/// 
+///     for (var index = 0; index < patternSegments.length; index++) {
+///       final pathSegmentPattern = patternSegments[index];
+/// 
+///       if (pathSegmentPattern == ':{id}') {
+///         pathParams['id'] = segments[index];
+///       }
+///     }
+/// 
+///     for (var index = 0; index < patternQuery.length; index++) {
+///       final queryParam = patternQuery[index];
+/// 
+///       queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+///     }
+/// 
+///     final route = app.navigation.bottomSheets.post(
+///       pathParams: pathParams,
+///       queryParams: queryParamsForView,
+///     );
+/// 
+///     return route;
+///   }
+/// }
+/// ```
 abstract class LinkHandler {
   /// Maps given url to navigation [UIRoute]
   /// if you want to skip this url return null

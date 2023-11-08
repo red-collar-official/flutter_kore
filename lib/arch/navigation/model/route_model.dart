@@ -1,4 +1,12 @@
 /// Class describing route settings
+/// 
+/// Example:
+/// 
+/// ```dart
+/// UIRouteSettings(
+///   global: pathParams != null,
+/// ),
+/// ```
 class UIRouteSettings {
   /// Flag indicating if route can be popped 
   /// with system back gestures or back buttons

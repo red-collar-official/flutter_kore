@@ -7,7 +7,10 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Function that handles retry for given [BaseRequest]
 typedef RetryHandler = Future<dynamic> Function();
+
+/// Function that handles authorization for given [BaseRequest]
 typedef AuthHandler = void Function(dio.Dio dio);
 
 /// Main implementation for Http requests using [Dio]
@@ -42,9 +45,14 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///}
 /// ```
 abstract class RequestImplementation<T> extends BaseRequest<T> {
+  /// Dio cancel token for this request
+  /// changes after every [execute] call 
   var cancelToken = dio.CancelToken();
+
+  /// Underlying [Dio] instance
   late final _dio = _buildClient();
 
+  /// Test flag to return null response
   @visibleForTesting
   bool forceReturnNullFromRequest = false;
 
@@ -169,6 +177,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     );
   }
 
+  /// Gets cached data from database if prefetch handler provided to request
   Future<void> getFromDatabase() async {
     if (onPrefetchFromDatabase != null) {
       try {
@@ -181,6 +190,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
   }
 
+  /// Processes empty dio response
   Future<Response<T>> processNoResponse() async {
     try {
       final databaseData = await databaseGetDelegate?.call(headers);
@@ -201,6 +211,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
   }
 
+  /// Processes generic [DioException]
   Future<Response<T>> processDioException(
     dio.DioException exception,
     dio.Dio client,
@@ -226,6 +237,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
   }
 
+  /// Returns simulated result for dio request 
+  /// if simulate result value is provided
   Future<Response<T>?> simulateResultStep() async {
     if (simulateResult != null) {
       if (simulateResult!.result != null) {
@@ -423,7 +436,9 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     return resultUri;
   }
-
+  
+  /// Cancels current request if it is still executing
+  @mustCallSuper
   @override
   void cancel() {
     if (ignoreCancelations) {
@@ -437,6 +452,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
   }
 
+  /// Underlying [Dio] instance
   @override
   dio.Dio? get dioInstance => _dio;
 }

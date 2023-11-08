@@ -4,6 +4,8 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Mixin that contains declarations of instance dependencies
+/// Contains methods to declare, initialize and get them
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Local instances
   /// Does not hold singleton instances
@@ -67,6 +69,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
+  /// Returns list of dependencies from every module 
+  /// and combines it with local dependencies
   List<Connector> getFullConnectorsList(Input input) {
     final concreteDependencies = dependsOn(input);
 

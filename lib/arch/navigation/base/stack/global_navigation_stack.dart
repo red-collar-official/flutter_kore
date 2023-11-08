@@ -2,6 +2,7 @@ import 'package:umvvm/arch/navigation/model/route_model.dart';
 
 import 'base_navigation_stack.dart';
 
+/// Navigation stack implementation for global navigation hisrory
 class GlobalNavigationStack<AppTabType>
     extends BaseNavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs

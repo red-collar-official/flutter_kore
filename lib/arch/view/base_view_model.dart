@@ -4,6 +4,8 @@ import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create view models
 ///
+/// Example:
+/// 
 /// ```dart
 /// class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
 ///   @override

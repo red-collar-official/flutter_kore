@@ -185,8 +185,6 @@ abstract class RoutesBase {
                 }
               }
 
-               
-
               if (!ruleIsSatisfied) {
                 canBeSelectedQueryParams = 0;
                 break;

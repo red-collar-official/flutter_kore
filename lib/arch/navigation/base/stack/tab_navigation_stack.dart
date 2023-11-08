@@ -2,6 +2,7 @@ import 'package:umvvm/arch/navigation/model/route_model.dart';
 
 import 'base_navigation_stack.dart';
 
+/// Navigation stack implementation for tab navigation hisrory
 class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
   final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStackBuilder;

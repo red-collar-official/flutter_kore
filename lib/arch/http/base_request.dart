@@ -161,5 +161,6 @@ abstract class BaseRequest<T> {
   /// Collection of all running requests
   RequestCollection get requestCollection => RequestCollection.instance;
 
+  /// Underlying [Dio] instance
   Dio? get dioInstance;
 }

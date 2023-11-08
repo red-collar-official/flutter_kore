@@ -3,6 +3,16 @@ import 'dart:async';
 import 'package:umvvm/umvvm.dart';
 
 /// Utility class to debounce actions
+/// /// 
+/// Example:
+/// 
+/// ```dart
+/// final debouncer = Debouncer(const Duration(milliseconds: 200));
+/// 
+/// debouncer(() {
+///   // do something
+/// });
+/// ```
 class Debouncer {
   Duration delay;
   Timer? _timer;
