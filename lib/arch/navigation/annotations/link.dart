@@ -32,11 +32,15 @@ class Link {
   /// Must be specified if [regexes] is not null
   final Type? customParamsMapper;
 
+  /// List of fragments supported by this link
+  final List<String>? possibleFragments;
+
   const Link({
     this.paths,
     this.query = const [],
     this.customHandler,
     this.regexes,
     this.customParamsMapper,
+    this.possibleFragments,
   });
 }

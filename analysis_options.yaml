@@ -7,6 +7,7 @@ analyzer:
   exclude:
     - lib/**.g.dart
     - lib/**.freezed.dart
+    - lib/**.navigation.dart
     - lib/**.mvvm.dart
     - lib/**.api.dart
 

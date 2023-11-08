@@ -5,7 +5,9 @@ import 'package:umvvm/umvvm.dart';
 
 typedef LocaleCacheGetDelegate = String Function(String name);
 typedef LocaleCachePutDelegate = Future<bool> Function(
-    String name, String data);
+  String name,
+  String data,
+);
 
 /// Main class for UMvvm application
 /// It contains global [InteractorCollection] and [EventBus]
@@ -50,11 +52,13 @@ abstract class UMvvmApp<
   /// Main app event bus
   EventBus get eventBus => EventBus.instance;
 
+  /// Navigation interactor for this app
   static final navigationInteractor =
       InstanceCollection.instance.find<BaseNavigationInteractor>(
     BaseScopes.global,
   );
 
+  /// Navigation interactor for this app
   late final NavigationInteractorType navigation =
       navigationInteractor! as NavigationInteractorType;
 
@@ -157,5 +161,7 @@ abstract class UMvvmApp<
     return true;
   };
 
+  /// Flag indicating test mode
+  /// Set it to true before any tests
   static bool isInTestMode = false;
 }

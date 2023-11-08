@@ -105,6 +105,57 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
+    paths: [
+      'posts/:{id}',
+    ],
+    query: [
+      'filter=qwerty1|qwerty2',
+    ],
+  )
+  UIRoute<RouteNames> postFilterMultiplePossibleValues({
+    int? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postFilterMultiplePossibleValues,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: [
+      'posts/:{id}',
+    ],
+    query: [
+      'filter=qwerty1|qwerty2',
+    ],
+    possibleFragments: [
+      'state',
+    ],
+  )
+  UIRoute<RouteNames> postFilterMultiplePossibleValuesWithAnchor({
+    int? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postFilterMultiplePossibleValuesWithAnchor,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
     paths: ['posts/:{id}'],
     query: [
       'filter=[qwerty1,qwerty2]',

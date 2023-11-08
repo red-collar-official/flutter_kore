@@ -6,8 +6,8 @@ part of 'routes.dart';
 // MainNavigationGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment
-class PostLinkHandler extends RouteLinkHandler {
+// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment, unnecessary_raw_strings
+class PostLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -46,7 +46,89 @@ class PostLinkHandler extends RouteLinkHandler {
   }
 }
 
-class PostArrayLinkHandler extends RouteLinkHandler {
+class PostFilterMultiplePossibleValuesLinkHandler1 extends RouteLinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('posts/:{id}');
+    final patternQuery = [
+      'filter',
+    ];
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      if (pathSegmentPattern == ':{id}') {
+        pathParams['id'] = segments[index];
+      }
+    }
+
+    for (var index = 0; index < patternQuery.length; index++) {
+      final queryParam = patternQuery[index];
+
+      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+    }
+
+    final route = app.navigation.routes.postFilterMultiplePossibleValues(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
+
+    return route;
+  }
+}
+
+class PostFilterMultiplePossibleValuesWithAnchorLinkHandler1
+    extends RouteLinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('posts/:{id}');
+    final patternQuery = [
+      'filter',
+      '#',
+    ];
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      if (pathSegmentPattern == ':{id}') {
+        pathParams['id'] = segments[index];
+      }
+    }
+
+    for (var index = 0; index < patternQuery.length; index++) {
+      final queryParam = patternQuery[index];
+
+      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      queryParamsForView['#'] = queryParams[queryParam] ?? [];
+    }
+
+    final route =
+        app.navigation.routes.postFilterMultiplePossibleValuesWithAnchor(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
+
+    return route;
+  }
+}
+
+class PostArrayLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -85,7 +167,7 @@ class PostArrayLinkHandler extends RouteLinkHandler {
   }
 }
 
-class Post2LinkHandler extends RouteLinkHandler {
+class Post2LinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -124,7 +206,7 @@ class Post2LinkHandler extends RouteLinkHandler {
   }
 }
 
-class Post3LinkHandler extends RouteLinkHandler {
+class Post3LinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -165,7 +247,7 @@ class Post3LinkHandler extends RouteLinkHandler {
   }
 }
 
-class Post4LinkHandler extends RouteLinkHandler {
+class Post4LinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -206,7 +288,7 @@ class Post4LinkHandler extends RouteLinkHandler {
   }
 }
 
-class PostsLinkHandler extends RouteLinkHandler {
+class PostsLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -237,7 +319,7 @@ class PostsLinkHandler extends RouteLinkHandler {
   }
 }
 
-class Posts2LinkHandler extends RouteLinkHandler {
+class Posts2LinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -272,7 +354,7 @@ class Posts2LinkHandler extends RouteLinkHandler {
   }
 }
 
-class StubLinkHandler extends RouteLinkHandler {
+class StubLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -307,7 +389,7 @@ class StubLinkHandler extends RouteLinkHandler {
   }
 }
 
-class HomeLinkHandler extends RouteLinkHandler {
+class HomeLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -338,7 +420,7 @@ class HomeLinkHandler extends RouteLinkHandler {
   }
 }
 
-class LikedPostsLinkHandler extends RouteLinkHandler {
+class LikedPostsLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -369,7 +451,7 @@ class LikedPostsLinkHandler extends RouteLinkHandler {
   }
 }
 
-class PostsWithPrefixLinkHandler extends RouteLinkHandler {
+class PostsWithPrefixLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -404,7 +486,7 @@ class PostsWithPrefixLinkHandler extends RouteLinkHandler {
   }
 }
 
-class PostsWithAnchorLinkHandler extends RouteLinkHandler {
+class PostsWithAnchorLinkHandler1 extends RouteLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -445,6 +527,8 @@ class PostsWithAnchorLinkHandler extends RouteLinkHandler {
 enum RouteNames {
   post,
   postCustom,
+  postFilterMultiplePossibleValues,
+  postFilterMultiplePossibleValuesWithAnchor,
   postArray,
   post2,
   post3,
@@ -466,10 +550,14 @@ mixin RoutesGen on RoutesBase {
       'posts': {
         '*': {
           '': {
-            'filter': PostLinkHandler(),
-            'filter=[qwerty1,qwerty2]': PostArrayLinkHandler(),
-            'filter=qwerty': Post2LinkHandler(),
-            'filter|query?': Post3LinkHandler(),
+            'filter': PostLinkHandler1(),
+            'filter=qwerty1|filter=qwerty2':
+                PostFilterMultiplePossibleValuesLinkHandler1(),
+            'filter=qwerty1|filter=qwerty2|#=state':
+                PostFilterMultiplePossibleValuesWithAnchorLinkHandler1(),
+            'filter=[qwerty1,qwerty2]': PostArrayLinkHandler1(),
+            'filter=qwerty': Post2LinkHandler1(),
+            'filter|query?': Post3LinkHandler1(),
           },
           '*': {
             '': {
@@ -477,35 +565,40 @@ mixin RoutesGen on RoutesBase {
             },
           },
           'test': {
+            'test': {
+              '': {
+                'filter=qwerty1|filter=qwerty2': TestHandler(),
+              },
+            },
             '': {
-              'filter|query?': Post4LinkHandler(),
+              'filter|query?': Post4LinkHandler1(),
             },
           },
         },
         '': {
-          '': PostsLinkHandler(),
-          'filter': Posts2LinkHandler(),
+          '': PostsLinkHandler1(),
+          'filter': Posts2LinkHandler1(),
         },
       },
       'stub': {
         '': {
-          'filter': StubLinkHandler(),
+          'filter': StubLinkHandler1(),
         },
       },
       'home': {
-        '': HomeLinkHandler(),
+        '': HomeLinkHandler1(),
       },
       'likedPosts': {
-        '': LikedPostsLinkHandler(),
+        '': LikedPostsLinkHandler1(),
       },
       '*': {
         'posts': {
           '*': {
-            '': PostsWithPrefixLinkHandler(),
+            '': PostsWithPrefixLinkHandler1(),
           },
           'test': {
             '*': {
-              '': PostsWithAnchorLinkHandler(),
+              '': PostsWithAnchorLinkHandler1(),
             },
           },
         },

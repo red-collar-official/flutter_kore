@@ -201,6 +201,28 @@ void main() {
       await DelayUtility.pause(millis: 100);
 
       expect(app.navigation.deepLinks.defaultLinkHandlerCalled, true);
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl16);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().name,
+        RouteNames.postFilterMultiplePossibleValues,
+      );
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl17);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().name,
+        RouteNames.postFilterMultiplePossibleValuesWithAnchor,
+      );
     });
 
     test('DeepLinkInteractor test various links for dialogs test', () async {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for route declarations
-/// Must be extented by [Routes], [Dialogs], [BottomSheets] 
+/// Must be extented by [Routes], [Dialogs], [BottomSheets]
 /// or any custom route container
 abstract class RoutesBase {
   /// Handlers for url paths and queries
@@ -63,6 +63,7 @@ abstract class RoutesBase {
 
     final decisionSubroutes = findPossibleRoutes(
       uriPath.queryParametersAll,
+      uriPath.fragment,
       selectedRule,
     );
 
@@ -119,7 +120,7 @@ abstract class RoutesBase {
 
     return latestSelected;
   }
-  
+
   /// Finds declaration of query mappers for given segments list
   dynamic findDeclarationObject(List<String> segments) {
     Map currentMapOfSubRoutes = routeLinkHandlers;
@@ -147,6 +148,7 @@ abstract class RoutesBase {
   /// More matches for query params -> bigger rate value
   Map<String, int> findPossibleRoutes(
     Map<String, List<String>> query,
+    String fragment,
     Map possibleSubroutes,
   ) {
     final decisionSubroutes = <String, int>{};
@@ -161,16 +163,96 @@ abstract class RoutesBase {
           final rules = subroute.split('|');
 
           for (final rule in rules) {
-            for (final queryParam in query.entries) {
-              if (alreadyChecked.contains(queryParam.key)) {
+            var queryCheckResult = 0;
+
+            if (rule.startsWith('#')) {
+              final ruleKey = rule.split('=')[0];
+
+              if (alreadyChecked.contains(ruleKey)) {
                 continue;
               }
 
-              if (_checkSubroute(rule, queryParam.key, queryParam.value)) {
+              final requiredRules = rules.where(
+                (element) => element.contains('$ruleKey='),
+              );
+
+              var ruleIsSatisfied = false;
+
+              for (final requiredRule in requiredRules) {
+                if (requiredRule.substring(2) == fragment) {
+                  ruleIsSatisfied = true;
+                  break;
+                }
+              }
+
+               
+
+              if (!ruleIsSatisfied) {
+                canBeSelectedQueryParams = 0;
+                break;
+              } else {
                 canBeSelectedQueryParams++;
-                alreadyChecked.add(queryParam.key);
+                alreadyChecked.add(ruleKey);
+              }
+            } else if (rule.contains('=')) {
+              final ruleKey = rule.split('=')[0];
+
+              if (alreadyChecked.contains(ruleKey)) {
+                continue;
+              }
+
+              final requiredRules = rules.where(
+                (element) => element.contains('$ruleKey='),
+              );
+
+              var ruleIsSatisfied = false;
+
+              for (final requiredRule in requiredRules) {
+                if (query.entries.where((element) {
+                  final formattedQuery = element.value.length != 1
+                      ? '${element.key}=${element.value}'
+                      : '${element.key}=${element.value[0]}';
+
+                  return requiredRule == formattedQuery;
+                }).isNotEmpty) {
+                  ruleIsSatisfied = true;
+                  break;
+                }
+              }
+
+              if (!ruleIsSatisfied) {
+                canBeSelectedQueryParams = 0;
+                break;
+              } else {
+                canBeSelectedQueryParams++;
+                alreadyChecked.add(ruleKey);
+              }
+            } else {
+              for (final queryParam in query.entries) {
+                if (alreadyChecked.contains(queryParam.key)) {
+                  continue;
+                }
+
+                final routeCheckResult = _checkSubroute(
+                  rule,
+                  queryParam.key,
+                  queryParam.value,
+                );
+
+                if (routeCheckResult) {
+                  queryCheckResult++;
+                  canBeSelectedQueryParams++;
+                  alreadyChecked.add(queryParam.key);
+                }
+              }
+
+              if (queryCheckResult == 0 && !rule.contains('?')) {
+                canBeSelectedQueryParams = 0;
+                break;
               }
             }
+
+            queryCheckResult = 0;
           }
 
           return MapEntry(subroute, canBeSelectedQueryParams);

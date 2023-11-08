@@ -1359,7 +1359,7 @@ class TestMapper extends LinkMapper {
 
 class TestHandler extends LinkHandler {
   @override
-  Future<UIRoute> parseLinkToRoute(String url) async {
+  Future<UIRoute?> parseLinkToRoute(String url) async {
     return UIRoute(
       name: 'test',
       defaultSettings: const UIRouteSettings(),
@@ -1368,7 +1368,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute route) async {}
+  Future<void> processRoute(UIRoute? route) async {}
 }
 
 @routes
@@ -1394,7 +1394,10 @@ class Routes extends RoutesBase with RoutesGen {
   }
 
   @Link(
-    paths: ['posts/:{id}/:{type}'],
+    paths: [
+      'posts/:{id}/:{type}',
+      'posts/:{id}/test/test',
+    ],
     query: [
       'filter=qwerty1|qwerty2',
     ],
@@ -1410,6 +1413,57 @@ class Routes extends RoutesBase with RoutesGen {
     return UIRoute(
       name: RouteNames.postCustom,
       defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: [
+      'posts/:{id}',
+    ],
+    query: [
+      'filter=qwerty1|qwerty2',
+    ],
+  )
+  UIRoute<RouteNames> postFilterMultiplePossibleValues({
+    int? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postFilterMultiplePossibleValues,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: [
+      'posts/:{id}',
+    ],
+    query: [
+      'filter=qwerty1|qwerty2',
+    ],
+    possibleFragments: [
+      'state',
+    ],
+  )
+  UIRoute<RouteNames> postFilterMultiplePossibleValuesWithAnchor({
+    int? post,
+    int? id,
+    int? filter,
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postFilterMultiplePossibleValuesWithAnchor,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
       child: Container(),
     );
   }

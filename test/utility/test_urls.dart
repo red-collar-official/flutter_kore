@@ -14,3 +14,5 @@ const testUrl12 = 'http://qwerty.com/posts/1?filter=qwerty1&filter=qwerty2';
 const testUrl13 = 'http://qwerty.com/en/posts/1/';
 const testUrl14 = 'http://qwerty.com/en/posts/test/1#state';
 const testUrl15 = 'http://qwerty1.com/en/postsbroken/';
+const testUrl16 = 'http://qwerty.com/posts/1?filter=qwerty1';
+const testUrl17 = 'http://qwerty.com/posts/1?filter=qwerty1#state';

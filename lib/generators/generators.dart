@@ -408,17 +408,32 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             .peek('customHandler')
             ?.typeValue
             .getDisplayString(withNullability: false);
-        final query =
-            value.peek('query')?.listValue.map((e) => e.toStringValue()) ?? [];
+        final query = value
+                .peek('query')
+                ?.listValue
+                .map((e) => e.toStringValue())
+                .toList() ??
+            [];
+        final possibleFragments = value
+                .peek('possibleFragments')
+                ?.listValue
+                .map((e) => e.toStringValue()) ??
+            [];
 
         if (path != null) {
           final codedPath = path.replaceAll(RegExp(':{.+?(?=})}'), '*');
 
           final queryHandlersMap = {};
 
-          if (query.isNotEmpty) {
-            var resultRule = '';
+          var resultRule = '';
 
+          if (possibleFragments.isNotEmpty) {
+            for (final fragment in possibleFragments) {
+              query.add('#=$fragment');
+            }
+          }
+
+          if (query.isNotEmpty) {
             for (final element in query) {
               if (element!.contains('=') && element.contains('|')) {
                 final splittedByKeyValues = element.split('=');
