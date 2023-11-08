@@ -1292,6 +1292,8 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 
 To define routes you need to specify 3 classes - <b>Routes</b>, <b>Dialogs</b> and <b>BottomSheets</b>
 
+Names must be exact.
+
 Routes can respond to links with <b>@Link</b> annotation
 By defining link you can specify link filters for specific screen
 
