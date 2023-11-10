@@ -199,8 +199,6 @@ Learn about components:
 * [Widgets and view states](./docs/widget.md);
 * [Custom Mvvm instances](./docs/custom_instances.md).
 
-To generage test coverage report run sh coverage.sh
-
 #### Utility
 
 * [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](./docs/utility.md).
