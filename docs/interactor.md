@@ -1,25 +1,23 @@
 # Interactors
 
-Interactors contain state and subscription to <b>EventBus</b> events.
-
-More information about <b>EventBus</b> can be found [here](./event_bus.md).
+Interactors contain state and subscription to <b>EventBus</b> events.(more information about <b>EventBus</b> can be found [here](./event_bus.md)).
 
 You need also specify input type for interactors, by default it is <b>Map<String, dynamic></b>.
 
 Interactor state can be any immutable object. You can use <b>dart-mappable</b> or <b>freezed</b> libraries (or any other object generation libraries).
 
-State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>.
+State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>(<b>changes</b> returns stream of old and new value in object, <b>updates</b> returns stream of new object values).
 
 Interactors must be annotated with <b>basicInstance</b>, <b>singleton</b> or full <b>Instance</b> annotation.
 
-When interactor is annotated as singletons it belongs to global instance collection.
+When interactor is annotated as singleton it belongs to global instance collection.
 
-We dont need to write dependencies in our instances for singleton interactors 
+We don't need to write dependencies in our instances for singleton interactors 
 and we can access it with <b>app.instances</b>.
 
-This interactors can be disposed when dependent element is disposed.
+Interactors can be disposed when dependent element is disposed.
 
-Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependsOn</b> override.
+Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependsOn</b> override.
 
 Interactors also can contain [parts](./instance_part.md) via <b>parts</b> override.
 
@@ -156,6 +154,9 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   bool get isRestores => true;
 
   @override
+  bool get syncRestore => false;
+
+  @override
   String get stateId => 'test';
   
   @override
@@ -165,10 +166,12 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
       }),
     ];
 }
-
 ```
 
-Here is example if declaration of all types of dependencies:
+In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.
+Otherwise it will be restored asynchronously.
+
+And here is example if declaration of all types of dependencies:
 
 ```dart
 @basicInstance

@@ -8,7 +8,7 @@ Or you can mark class with <b>AppNavigation</b> annotation.
 
 Then it will be available via <b>app.navigation</b>.
 
-If your app contains tab navigation than NavigationInteractor will look like this:
+If your app contains tab navigation then NavigationInteractor will look like this:
 
 ```dart
 @singleton
@@ -69,15 +69,15 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
 }
 ```
 
-<b>AppTab</b> here can be any immutable model class - it will be used as a key to map of keys for tab navigation.
+<b>AppTab</b> here can be any immutable model class - it will be used as a key to map of <b>GlobalKey</b> objects for tab navigation.
 
 You also need to override navigation interactor settings to set default values for required fields.
 You can see all needed values in the example above.
 
 Also you need to override <b>setCurrentTab</b> method to keep current tab value in state.
-State can be any immutable object like any other interactor.
+State can be any immutable object like in any other interactor.
 
-If app does not contains tab navigation than you can skip tab related methods:
+If app does not contains tab navigation then you can skip tab related methods:
 
 ```dart
 @singleton
@@ -129,7 +129,7 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
 
 Last flag that describes navigation flow in app is <b>bottomSheetsAndDialogsUsingSameNavigator</b>.
 
-If this flag is false than you need to create separate navigator for bottom sheets and dialogs - usefull if you have some overlay views for app.
+If this flag is false (like in last code snippet) then you need to create separate navigator for bottom sheets and dialogs - useful if you have some overlay views for app.
 
 You also need to specify navigation interactor in main app annotation.
 

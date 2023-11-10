@@ -20,10 +20,11 @@ Every scope can contain one or list of objects of given type. If scope contains 
 
 ### Defining instances
 
-There are three ways to annotate mvvm instances to use in di container <b>singleton</b> and <b>basicInstance</b>
+There are three ways to annotate mvvm instances to use in di container <b>singleton</b> and <b>basicInstance</b>.
+
 Or you can also use full <b>Instance</b> annotation.
 
-It is required to define input type for instances. By default <b>Map<String, dynamic></b> used.
+It is required to define input type for instances. By default <b>Map<String, dynamic>?</b> is used.
 
 Singleton instances belong to global scope.
 
@@ -108,7 +109,7 @@ List<Connector> dependsOn(OtherUserProfileView input) => [
     ];
 ```
 
-Then you can get instance with <b>getLocalInstance</b> method.
+Then you can get instance with <b>getLocalInstance</b> method. This method is discussed below.
 
 ### Async initialization
 
@@ -240,14 +241,15 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 }
 ```
 
-You can unregister instances with <b>app.instances.unregisterInstance</b> method.
+You can unregister instances with <b>app.instances.unregisterInstance</b> method. This is useful when you need sigleton instance but only for some time.
+This way after instance is used you can unregister and dispose it.
 
 ### Accessing instances with global instances interface
 
 Instance collection ensures that object is initialized before you accessing it
 
 When you trying to get instance from collection instance will be initialized first, 
-than all dependencies of this instance will be initialized, and etc. At the end you will get fully initialized object and every dependency in dependency tree of this object also will be initialized.
+then all dependencies of this instance will be initialized, and etc. At the end you will get fully initialized object and every dependency in dependency tree of this object also will be initialized.
 
 If you want to skip initialization of instance dependencies (for example if you need to just call some method from instance that do not require any of dependencies to be processed) you can pass <b>withoutConnections</b> flag to <b>app.instances.get<T>()</b>.
 
@@ -308,7 +310,7 @@ Instance getWithParams<Instance extends MvvmInstance, InputState>({
 ### Accessing instances inside dependent instances
 
 When you are inside of any <b>DependentInstance</b> (interactors, wrappers, view models and any custom mvvm instance that mix <b>DependentInstance</b>)
-then you can write dependecies and they will be connected automatically when instance is initialized. Also when instance is disposed every dependency will be disposed automatically.
+then you can write dependecies and they will be connected automatically when instance is initialized. Also when instance is disposed every dependency will be disposed automatically (more information about <b>DependentInstance</b> can be found [here](./custom_instances.md)).
 
 To enable this behaviour you need to override <b>dependsOn</b> method
 
@@ -316,6 +318,8 @@ This method returns list of connector objects that describe how dependency need 
 More information about connectors can be found [here](./connectors.md)
 
 Then you need to access object with <b>getLocalInstance</b> rather than <b>app.instances.get<T>()</b>.
+
+Singleton instances are always accessed with <b>app.instances.get<T>()</b>. And you do not need to write them in dependencies list.
 
 Here is example:
 
@@ -330,6 +334,8 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 
   late final supportInteractor = getLocalInstance<SupportInteractor>();
   late final reactionsWrapper = getLocalInstance<ReactionsWrapper>();
+
+  late final authorizationWrapper = app.instances.get<AuthorizationWrapper>();
 
   // more info about modules below
   @override
@@ -417,6 +423,8 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
   ];
 }
 ```
+
+You do not need to write singleton dependencies in module dependencies list.
 
 ### Utility functions
 

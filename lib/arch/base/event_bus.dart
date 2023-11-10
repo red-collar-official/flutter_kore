@@ -46,7 +46,7 @@ class EventBus {
   }
 
   /// Creates separate instance of event bus
-  /// Usefull when you need eventbus specificaly for one task, for example file upload
+  /// Useful when you need eventbus specificaly for one task, for example file upload
   // ignore: prefer_constructors_over_static_methods
   static EventBus newSeparateInstance() {
     return EventBus._internal();

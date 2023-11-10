@@ -1,10 +1,10 @@
 # ViewModel
 
-View models contain logic for view classes
+View models contain logic for view classes.
 
-It also contains local map of instances, and local state that we like <b>Interactor</b> can update with <b>updateState</b>.
+It also contains local state that we like <b>Interactor</b> can update with <b>updateState</b>.
 
-We also can listen to state changes with <b>updatesFor</b> or <b>changesFor</b>
+We also can listen to state changes with <b>updates</b> or <b>changes</b>
 
 View models also can depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependsOn</b> override.
 
@@ -14,9 +14,11 @@ View models also can belong to modules via <b>belongsToModules</b> override (inf
 
 They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
 
-View models like interactors and wrappers can receive <b>EventBus</b> events using <b>subscribe</b> method.
+View models like every mvvm instance can receive <b>EventBus</b> events using <b>subscribe</b> method.
 
-To get local instances connected to view model use <b>getLocalInstance</b>
+To get local instances connected to view model use <b>getLocalInstance<T>()</b>.
+
+To get part use <b>useInstancePart<T>()</b> method.
 
 View models also can override <b>onLaunch</b> method that is called on initState 
 and <b>onFirstFrame</b> that is called on first frame of corresponding view.
@@ -78,6 +80,15 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
+  bool get isRestores => true;
+
+  @override
+  bool get syncRestore => false;
+
+  @override
+  String get stateId => 'test';
+
+  @override
   List<EventBusSubscriber> subscribe() => [
       on<PostLikedEvent>((event) {
         _onPostLiked(event.id);
@@ -87,3 +98,10 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 ```
 
 View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>.
+
+By default state key in saved object is equals to state runtime type, but you can override it with <b>stateId</b> getter.
+
+If app uses obfuscation this is <b>required</b>.
+
+In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.
+Otherwise it will be restored asynchronously.

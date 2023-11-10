@@ -2,7 +2,9 @@
 
 View state has a reference to view model and method to create view model.
 
-If you need to pass test view model extend <b>BaseWidget</b> instead of <b>StatefulWidget</b>.
+If you need to pass mocked view model extend <b>BaseWidget</b> instead of <b>StatefulWidget</b>.
+
+If view model is passed to <b>BaseWidget</b> child class it will be provided to view state and default one won't be created.
 
 Example: 
 
@@ -78,4 +80,4 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 }
 ```
 
-You can pass mocked view model view <b>viewModel</b> input parameter of <b>BaseWidget</b>.
+You can pass mocked view model in <b>viewModel</b> input parameter of <b>BaseWidget</b>.

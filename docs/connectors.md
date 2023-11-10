@@ -15,7 +15,7 @@ with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>
 
 We can also specify if we want to connect object without dependencies - 
 in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected
-It is usefull if you just want to use some method of small instance
+It is useful if you just want to use some method of small instance
 
 Examples would be:
 
@@ -59,7 +59,7 @@ const PartConnector(type: ReactionsWrapper, withoutConnections: true),
 ```
 
 Library creates connectors for every part too.
-This way you dont need to write <b>Connector</b> classes for every part and just use predefined ones as follows:
+This way you dont need to write <b>PartConnector</b> classes for every part and just use predefined ones as follows:
 
 ```dart
 @override

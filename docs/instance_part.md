@@ -4,6 +4,8 @@ To split logic in large instances you can create <b>parts</b>.
 
 Part is instance type that has reference to parent mvvm instance.
 
+You must annotate parts with <b>instancePart</b> annotation.
+
 Part can receive events and can't have state or dependencies.
 
 Part can contain other parts.

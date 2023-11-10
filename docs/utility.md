@@ -21,7 +21,7 @@ statefulData.unwrap(); // valid
 
 Stateful data can be unwrapped to get result value if it is present.
 
-And here is class for field validation: it contains valid, error and ignored state.
+And here is sealed class for field validation: it contains valid, error and ignored state.
 
 ```dart
 sealed class FieldValidationState {}
@@ -37,13 +37,15 @@ class ErrorFieldState extends FieldValidationState {
 }
 ```
 
+This values used by <b>FormViewModelMixin</b>. More info about <b>FormViewModelMixin</b> below.
+
 There is also <b>ResultState</b> class to hold function execution result
 
 There are also two helper mixins that you can apply to your view models or instances
 
-First is <b>UseDisposableMixin</b>
+#### UseDisposableMixin
 
-It can be applied to any <b>MvvmInstance</b>.
+UseDisposableMixin can be applied to any <b>MvvmInstance</b>.
 
 It provides methods to initialize disposable objects like <b>TextEditingController</b>
 They will be disposed authomatically
@@ -60,25 +62,31 @@ CancellationToken useCancelToken();
 Here is usecase example:
 
 ```dart
-class SupportViewModel
-    extends NavigationViewModel<SupportView, SupportViewState>
+class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState>
     with UseDisposableViewModelMixin {
   late final descriptionController = useTextEditingController();
   late final emailController = useTextEditingController();
 }
 ```
 
-Using this method to initialize disposable objects you dont need to actually dispose them - it will be done automatically
+Using this method to initialize disposable objects you dont need to actually dispose them - it will be done automatically.
 
-Second usefull mixin is <b>FormViewModelMixin</b>
+#### FormViewModelMixin
 
-It can be applied only to view models.
+FormViewModelMixin can be applied only to view models.
 
 It helps to manage form views where you need to validate user input.
 
-It contains map of validators (keys of map are <b>GlobalKey</b> so for can autpmatically scroll to error field if user trying to submit form) and <b>executeSubmitAction</b> method to call form validation process.
+It contains map of validators (keys of map are <b>GlobalKey</b> so form can autpmatically scroll to error field if user trying to submit form) and <b>executeSubmitAction</b> method to call form validation process. You need to pass this keys as parameters to your field widgets. Field widget implementation is up do developer.
 
-Validators can be manually updated.
+Validators can be manually updated:
+
+```dart
+updateFieldState(
+  passwordKey,
+  ErrorFieldState(error: result.messageToDisplay),
+);
+```
 
 You can also override <b>additionalCheck</b> method if you need to check some additional fields. It will be run after validators check.
 
@@ -142,5 +150,4 @@ Button(
     await viewModel.executeSubmitAction();
   },
 );
-
 ```

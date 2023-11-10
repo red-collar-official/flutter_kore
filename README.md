@@ -4,11 +4,15 @@
 
 Set of classes for Flutter app architecture.
 
-Here is small example demonstrating all components:
-
 ### Installing
 
 Info about installing here.
+
+### Examples
+
+Examples can be found [here](./examples).
+
+There is small basic example with all basic components, example on using navigation and example of connecting database.
 
 ### Docs
 
@@ -205,8 +209,8 @@ Learn about components:
 
 #### Other materials
 
-* [Testing](./docs/testing.md).
-* [Migration](./docs/migration.md).
+* [Testing](./docs/testing.md);
+* [Migration tips](./docs/migration.md);
 * [Disabling components](./docs/disabling_components.md).
 
 #### Important note

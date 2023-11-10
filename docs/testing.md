@@ -1,8 +1,9 @@
 # Testing
 
 All components of architecture except for view states can be unit tested.
+View states require widget tests.
 
-Before tests you need set test mode flag.
+Before tests you always need set test mode flag.
 
 ```dart
 UMvvmApp.isInTestMode = true;
@@ -21,7 +22,7 @@ setUp(() async {
 
 There are several helper methods for tests.
 
-For DI there are also <b>forceGet</b> and <b>addTest</b> methods. 
+For DI there are <b>forceGet</b> and <b>addTest</b> methods. 
 
 Mock instances can be registered with instance collection.
 
@@ -243,3 +244,5 @@ test('DeepLinkInteractor Initial link route test', () async {
   expect(app.navigation.latestGlobalRoute().name, RouteNames.posts);
 });
 ```
+
+Examples of tests can be found [here](././examples).

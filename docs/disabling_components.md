@@ -1,6 +1,6 @@
 # Disabling components
 
-You can not use at all most of components of Umvvm.
+You can disable most of components of Umvvm at all.
 
 If you don't want to use navigation component just don't pass it to global app initializztion:
 
@@ -35,14 +35,14 @@ class App extends UMvvmApp with AppGen {
 final app = App();
 ```
 
-You can not use DI container at all and inject dependencies your own way.
+You can disable DI container at all and inject dependencies your own way.
 
 It is also true that you can bypass domain layer and just use <b>ViewState</b> and <b>ViewModel</b> components as state management.
 You can also safely call <b>Apis</b> (if you use them) in view models cause view models mix <b>ApiCaller</b> mixin (more information about <b>ApiCaller</b> [here](./custom_instances.md)).
 
 This way you can impelement your own domain design.
 
-It is also usefull for small projects cause you can just use state management and split it to <b>InstanceParts</b> if code start to grow.
+It is also useful for small projects cause you can just use state management and split it to <b>InstanceParts</b> if code start to grow (more information about <b>InstanceParts</b> [here](./instance_part.md)).
 
 You can also use your own state management and use this package for domain, DI, or http. With <b>app.instances</b> you can always get objects from container - just don't forget to dispose them manually.
 

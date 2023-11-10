@@ -1,17 +1,18 @@
 # Wrappers
 
-Wrappers contain logic for working this third party dependencies
-Wrapper can be just used as instance holders or contain logic for working with third party api
+Wrappers contain logic for working this third party dependencies.
 
-If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseWrapper</b>
+Wrapper can be just used as instance holder or contain logic for working with third party api.
 
-Wrappers also can be singleton or default instances
+If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseWrapper</b>.
 
-Wrappers unlike interactors don`t have state, but they also can receive <b>EventBus</b> events
+Wrappers also can be singleton or default instances.
+
+Wrappers unlike interactors don`t have state, but they also can receive <b>EventBus</b> events.
 
 More information about <b>EventBus</b> can be found [here](./event_bus.md).
 
-We dont need to write dependencies in our instances for singleton wrappers 
+We dont need to write dependencies in our instances for singleton wrappers
 and we can access it with <b>app.instances</b>.
 
 This wrapper can be disposed when dependent element is disposed.

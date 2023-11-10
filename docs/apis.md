@@ -261,7 +261,7 @@ class HttpRequest<T> extends RequestImplementation<T> {
 }
 ```
 
-### Cncelation in ApiCallers
+### Cancelation in ApiCallers
 
 To cancel request after execution you can call <b>cancel</b> method.
 
