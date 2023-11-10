@@ -12,7 +12,7 @@ Info about installing here.
 
 Examples can be found [here](./examples).
 
-There is small basic example with all basic components, example on using navigation and example of connecting database.
+There are small basic example with all basic components, example on using navigation and example of connecting database.
 
 ### Docs
 
