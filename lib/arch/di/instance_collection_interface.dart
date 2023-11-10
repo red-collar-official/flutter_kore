@@ -89,6 +89,7 @@ abstract class InstanceCollectionInterface {
     String type, {
     InputState? params,
     bool withoutConnections = false,
+    void Function(dynamic)? beforeInitialize,
   });
 
   /// Similar to get
@@ -148,6 +149,7 @@ abstract class InstanceCollectionInterface {
     String type, {
     InputState? params,
     bool withoutConnections = false,
+    void Function(dynamic)? beforeInitialize,
   });
 
   /// Similar to get, but create new instance every time

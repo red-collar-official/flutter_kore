@@ -3,7 +3,14 @@ import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create interactor
 /// Interactors contain business logic for given state type
-///  ```dart
+/// Interactors can contain dependencies and receive events
+/// They also can contain parts
+/// You also can execute requests and cancel them automatically when interactor will be disposed
+/// with [executeRequest] method
+///
+/// Example:
+///
+/// ```dart
 /// @basicInstance
 /// class TestInteractor extends BaseInteractor<int, String> {
 ///   @override
@@ -20,15 +27,8 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   void initialize(Input? input) {
     super.initialize(input);
 
-    initializeStore(initialState(input));
-
     initializeDependencies(input);
-
-    if (syncRestore) {
-      restoreCachedStateSync();
-    } else {
-      restoreCachedStateAsync();
-    }
+    initializeStatefullInstance(input);
 
     initialized = true;
   }
@@ -65,11 +65,9 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @override
   Future<void> initializeWithoutConnectionsAsync(Input? input) async {
     initializeStore(initialState(input));
-    
+
     await initializeDependenciesWithoutConnectionsAsync(input);
 
     initialized = true;
   }
-
-  bool get syncRestore => true;
 }

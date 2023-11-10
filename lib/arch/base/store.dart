@@ -51,7 +51,7 @@ class Store<State> {
   ///   }
   ///
   ///   if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-  ///     updateState(state.copyWith(posts: ResultData(response.result ?? [])));
+  ///     updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
   ///   } else {
   ///     updateState(state.copyWith(posts: ErrorData(response.error)));
   ///   }

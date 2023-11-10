@@ -49,9 +49,8 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   void initialize(Widget input) {
     super.initialize(input);
 
-    initializeStore(initialState(input));
     initializeDependencies(input);
-    restoreCachedStateAsync();
+    initializeStatefullInstance(input);
 
     initialized = true;
   }

@@ -2,10 +2,18 @@ import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class that wraps logic for working with third party dependency
-///
+/// Wrappers can contain dependencies and receive events
+/// They also can contain parts
+/// You also can execute requests and cancel them automatically when wrapper will be disposed
+/// with [executeRequest] method
+/// 
+/// Example: 
+/// 
+/// ```dart
 /// @singleton
 /// class StripeWrapper extends BaseWrapper<String> {
 /// }
+/// ```
 abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// Inititalizes wrapper
@@ -55,7 +63,14 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 
 /// Base class that creates and holds some third party instance
 /// and provides methods to work with it
-///
+/// Wrappers can contain dependencies and receive events
+/// They also can contain parts
+/// You also can execute requests and cancel them automatically when wrapper will be disposed
+/// with [executeRequest] method
+/// 
+/// Example: 
+/// 
+/// ```dart
 /// @asyncSingleton
 /// class StripeWrapper extends BaseHolderWrapper<Stripe, String> {
 ///   @override
@@ -63,6 +78,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 ///     return Stripe.instance;
 ///   }
 /// }
+/// ```
 abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// actual object instance
@@ -104,6 +120,6 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   /// Creates actual object instance
   Instance provideInstance(Input? input);
 
-  /// actual object instance
+  /// Actual object instance
   Instance get instance => _instance == null ? _instanceCreator() : _instance!;
 }

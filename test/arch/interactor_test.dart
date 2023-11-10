@@ -97,6 +97,13 @@ void main() {
       expect(interactor3.testInstancePart3.testInstancePart2.value, 6);
       expect(interactor3.testInstancePart3.testInstancePart2.initialized, true);
 
+      expect(
+        (interactor3.testInstancePart3.testInstancePart2.rootParentInstance
+                as TestInteractor3)
+            .state,
+        0,
+      );
+
       expect(interactor3.testInstancePart2_1.value, 10);
       expect(interactor3.testInstancePart2_1.initialized, true);
 

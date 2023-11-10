@@ -35,8 +35,15 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class InstancesModule {
+  // coverage:ignore-start
+
   /// List of all dependencies required in this module
-  List<Connector> get dependencies;
+  List<Connector> get dependencies => [];
+
+  /// List of all parts required in this module
+  List<PartConnector> get parts => [];
+
+  // coverage:ignore-end
 
   /// Unique module id
   String get id;

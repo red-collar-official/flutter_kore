@@ -7,6 +7,11 @@ import 'package:umvvm/arch/view/base_widget.dart';
 /// Must be extended by root app view is navigation is used
 abstract class GlobalNavigationRootViewModel<Widget extends StatefulWidget,
     State> extends NavigationViewModel<Widget, State> {
+  @mustCallSuper
+  @override
+  void onLaunch(Widget widget) {
+    navigationInteractor.initStack();
+  }
   
   /// Callback for system android back button
   bool backButtonInterceptor() {

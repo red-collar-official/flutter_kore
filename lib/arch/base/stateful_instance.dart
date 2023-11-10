@@ -19,7 +19,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   ///
   /// ```dart
   /// void _onPostLiked(int id) {
-  ///   final posts = (state.posts as ResultData<List<Post>>).result.toList();
+  ///   final posts = (state.posts as SuccessData<List<Post>>).result.toList();
   /// }
   /// ```
   State get state => _store.state;
@@ -118,7 +118,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   ///     final response = await Apis.posts.getPosts().execute();
   ///
   ///     if (response.error == null) {
-  ///       updateState(state.copyWith(posts: ResultData(response.result ?? [])));
+  ///       updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
   ///     } else {
   ///       updateState(state.copyWith(posts: ErrorData(response.error)));
   ///     }
@@ -135,6 +135,17 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
     _store.initialize(initialState);
 
     _subscribeToStoreUpdates();
+  }
+
+  /// Initializes underlying [Store] for given [State]
+  void initializeStatefullInstance(Input input) {
+    initializeStore(initialState(input));
+
+    if (syncRestore) {
+      restoreCachedStateSync();
+    } else {
+      restoreCachedStateAsync();
+    }
   }
 
   /// Creates stream subscription for store updates
@@ -161,7 +172,13 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// Stream of all state updates
   Stream<State> get stateStream => _store.stream;
 
+  /// Initial state for this interactor
   State initialState(Input input);
 
+  /// State id for this interactor - 
+  /// used as key in cache storage
   String get stateId => state.runtimeType.toString();
+
+  /// Flag indicating that cached state should be awaited
+  bool get syncRestore => true;
 }

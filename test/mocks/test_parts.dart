@@ -7,10 +7,10 @@ class TestInstancePart extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  void initialize(int input) {
+  void initialize(int? input) {
     super.initialize(input);
 
-    value = input;
+    value = input ?? 0;
   }
 
   @override
@@ -28,15 +28,15 @@ class TestInstancePart2 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  bool isAsync(int input) => true;
+  bool isAsync(int? input) => true;
 
   @override
-  Future<void> initializeAsync(int input) async {
+  Future<void> initializeAsync(int? input) async {
     await super.initializeAsync(input);
 
     await Future.delayed(const Duration(milliseconds: 100));
 
-    value = input;
+    value = input ?? 0;
   }
 
   @override
@@ -54,17 +54,17 @@ class TestInstancePart3 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  List<PartConnector> parts(int input) => [
+  List<PartConnector> parts(int? input) => [
         const PartConnector(type: TestInstancePart2, async: true, input: 6),
       ];
 
   late final testInstancePart2 = useInstancePart<TestInstancePart2>();
 
   @override
-  void initialize(int input) {
+  void initialize(int? input) {
     super.initialize(input);
 
-    value = input;
+    value = input ?? 0;
   }
 
   @override
@@ -81,15 +81,15 @@ class TestInstancePart4 extends UniversalInstancePart<int> {
   int value = 0;
 
   @override
-  bool isAsync(int input) => true;
+  bool isAsync(int? input) => true;
 
   @override
-  Future<void> initializeAsync(int input) async {
+  Future<void> initializeAsync(int? input) async {
     await super.initializeAsync(input);
 
     await Future.delayed(const Duration(milliseconds: 100));
 
-    value = input;
+    value = input ?? 0;
   }
 }
 

@@ -26,8 +26,18 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// if you not always returning true
   // coverage:ignore-start
   bool isAsync(T input) {
-    return parts(input).indexWhere((element) => element.async) != -1;
+    return getFullPartConnectorsList(input)
+            .indexWhere((element) => element.async) !=
+        -1;
   }
+
+  /// Returns list of parts
+  List<Connector> getFullPartConnectorsList(T input) {
+    final concreteParts = parts(input);
+
+    return concreteParts;
+  }
+
   // coverage:ignore-end
 
   List<PartConnector> parts(T input) => [];
@@ -114,10 +124,12 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
                 ? element.inputForIndex!(i)
                 : element.input,
             withoutConnections: element.withoutConnections,
+            beforeInitialize: (part) {
+              part.parentInstance = this;
+            },
           ) as BaseInstancePart;
 
-          // ignore: cascade_invocations
-          part.parentInstance = this;
+          _setPartParentInstance(part);
 
           list.add(part);
         }
@@ -131,15 +143,23 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
           element.type.toString(),
           params: element.input,
           withoutConnections: element.withoutConnections,
+          beforeInitialize: (part) {
+            part.parentInstance = this;
+          },
         ) as BaseInstancePart;
 
-        // ignore: cascade_invocations
-        part.parentInstance = this;
+        _setPartParentInstance(part);
 
         _parts.addAll({
           element.type: [part],
         });
       }
+    }
+  }
+
+  void _setPartParentInstance(BaseInstancePart part) {
+    if (this is BaseInstancePart) {
+      part.rootParentInstance = (this as BaseInstancePart).parentInstance;
     }
   }
 
@@ -169,7 +189,12 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
               ? element.inputForIndex!(index)
               : element.input,
           withoutConnections: element.withoutConnections,
+          beforeInitialize: (part) {
+            part.parentInstance = this;
+          },
         ) as BaseInstancePart;
+
+        _setPartParentInstance(part);
 
         list.add(part);
 
@@ -180,14 +205,19 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
         for (var i = 0; i < element.count; i++) add(i),
       ]);
     } else {
-      final instance = await InstanceCollection.instance
+      final part = await InstanceCollection.instance
           .getUniqueByTypeStringWithParamsAsync(
         element.type.toString(),
         params: element.input,
         withoutConnections: element.withoutConnections,
+        beforeInitialize: (part) {
+          part.parentInstance = this;
+        },
       ) as BaseInstancePart;
 
-      _parts[element.type] = [instance];
+      _setPartParentInstance(part);
+
+      _parts[element.type] = [part];
 
       onAsyncPartReady(element.type);
     }

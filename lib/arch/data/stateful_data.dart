@@ -2,7 +2,7 @@ import 'package:umvvm/umvvm.dart';
 
 /// Sealed class that holds either loading state, some typed data or error 
 sealed class StatefulData<T> {
-  /// returns success data or throws exception
+  /// Returns success data or throws exception if value is not [SuccessData]
   T unwrap() {
     if (this is! SuccessData<T>) {
       throw IllegalStateException(message: 'Not a success data');

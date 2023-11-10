@@ -17,8 +17,6 @@ class App extends UMvvmApp<NavigationInteractor> with AppGen {
   @override
   Future<void> initialize() async {
     await super.initialize();
-
-    app.navigation.initStack();
   }
 }
 

@@ -202,6 +202,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     String type, {
     InputState? params,
     bool withoutConnections = false,
+    void Function(dynamic)? beforeInitialize,
   }) async {
     final id = type;
 
@@ -209,6 +210,7 @@ class InstanceCollection extends InstanceCollectionInterface {
       id,
       params: params,
       withNoConnections: withoutConnections,
+      beforeInitialize: beforeInitialize,
     );
   }
 
@@ -281,10 +283,15 @@ class InstanceCollection extends InstanceCollectionInterface {
     String id, {
     dynamic params,
     bool withNoConnections = false,
+    void Function(dynamic)? beforeInitialize,
   }) async {
     final builder = builders[id];
 
     final instance = builder!();
+
+    if (beforeInitialize != null) {
+      beforeInitialize(instance);
+    }
 
     if (withNoConnections) {
       instance.initializeWithoutConnections(params);
@@ -434,6 +441,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     String type, {
     InputState? params,
     bool withoutConnections = false,
+    void Function(dynamic)? beforeInitialize,
   }) {
     final id = type;
 
@@ -441,6 +449,7 @@ class InstanceCollection extends InstanceCollectionInterface {
       id,
       params: params,
       withNoConnections: withoutConnections,
+      beforeInitialize: beforeInitialize,
     );
   }
 
@@ -569,10 +578,15 @@ class InstanceCollection extends InstanceCollectionInterface {
     String id, {
     dynamic params,
     bool withNoConnections = false,
+    void Function(dynamic)? beforeInitialize,
   }) {
     final builder = builders[id];
 
     final instance = builder!();
+
+    if (beforeInitialize != null) {
+      beforeInitialize(instance);
+    }
 
     if (withNoConnections) {
       instance.initializeWithoutConnections(params);
@@ -670,7 +684,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     }
   }
 
-  /// Checks if object with type id is currently 
+  /// Checks if object with type id is currently
   /// building and throws exception if so
   void performCheckForCyclicDependencies(String typeId, int? index) {
     if (checkForCyclicDependencies) {
@@ -685,7 +699,7 @@ class InstanceCollection extends InstanceCollectionInterface {
           );
         }
 
-        // this can happen only in testing, 
+        // this can happen only in testing,
         // cause countable instances are connected sequentially
         // coverage:ignore-start
         currentlyBuildingInstances.add(index ?? 0);
@@ -707,7 +721,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     }
   }
 
-  /// Helper method to get unique instance and 
+  /// Helper method to get unique instance and
   /// dispose it automatically after body is finished
   @override
   Future useAndDisposeInstance<T extends MvvmInstance>(
@@ -722,7 +736,7 @@ class InstanceCollection extends InstanceCollectionInterface {
     return result;
   }
 
-  /// Helper method to get unique instance and 
+  /// Helper method to get unique instance and
   /// dispose it automatically after body is finished
   @override
   Future useAndDisposeInstanceWithParams<T extends MvvmInstance, Input>(

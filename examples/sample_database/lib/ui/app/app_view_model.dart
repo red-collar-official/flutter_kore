@@ -9,8 +9,5 @@ class AppViewModel
   List<Connector> dependsOn(AppView input) => [];
 
   @override
-  void onLaunch(AppView widget) {}
-
-  @override
   AppViewState initialState(AppView input) => AppViewState();
 }

@@ -81,6 +81,19 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     return concreteDependencies;
   }
 
+  /// Returns list of parts from every module
+  /// and combines it with local parts
+  @override
+  List<Connector> getFullPartConnectorsList(Input input) {
+    final concreteParts = parts(input);
+
+    belongsToModules(input).forEach((element) {
+      concreteParts.addAll(element.parts);
+    });
+
+    return concreteParts;
+  }
+
   /// Initializes all dependencies and increase reference count in [ScopedStack]
   @mustCallSuper
   void initializeDependencies(Input input) {

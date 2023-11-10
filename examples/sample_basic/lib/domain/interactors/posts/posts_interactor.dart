@@ -15,22 +15,12 @@ class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {
   }
 }
 
-@asyncInstancePart
-class TestInteractorPart2 extends BaseInstancePart<void, PostsInteractor> {
-  void testUpdate() {
-    parentInstance.updateState(parentInstance.state.copyWith(
-      active: false,
-    ));
-  }
-}
-
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
     with LikePostMixin {
   @override
   List<PartConnector> parts(Map<String, dynamic>? input) => [
         app.connectors.testInteractorPartConnector(),
-        app.connectors.testInteractorPart2Connector(),
       ];
 
   late final testPart = useInstancePart<TestInteractorPart>();

@@ -33,8 +33,6 @@ void main() {
       app.registerInstances();
       await app.createSingletons();
 
-      app.apis.posts = MockPostsApi();
-
       await tester.pumpAndSettle();
 
       final widget = PostView(

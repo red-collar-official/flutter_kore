@@ -15,24 +15,23 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
         ),
       ];
 
+  late final postInteractor = getLocalInstance<PostInteractor>();
+
   @override
   void onLaunch(PostView widget) {
-    final postInteractor = getLocalInstance<PostInteractor>();
-
     if (widget.post == null) {
       postInteractor.loadPost(widget.id!);
     }
   }
 
   void like(int id) {
-    getLocalInstance<PostInteractor>().likePost(id);
+    postInteractor.likePost(id);
   }
 
   Stream<StatefulData<Post>?> get postStream =>
-      getLocalInstance<PostInteractor>().updates((state) => state.post);
+      postInteractor.updates((state) => state.post);
 
-  StatefulData<Post>? get currentPost =>
-      getLocalInstance<PostInteractor>().state.post;
+  StatefulData<Post>? get currentPost => postInteractor.state.post;
 
   @override
   PostViewState initialState(PostView input) => PostViewState();
