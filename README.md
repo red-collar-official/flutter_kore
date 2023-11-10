@@ -8,6 +8,21 @@ Set of classes for Flutter app architecture.
 
 Info about installing here.
 
+You also need dependency for build_runner if you don't have it yet.
+
+```yaml
+dev_dependencies: 
+  build: ^<latest version>
+  build_config: ^<latest version>
+  build_runner: ^<latest version>
+```
+
+To build/rebuild generated files use:
+
+```shell
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
 ### Examples
 
 Examples can be found [here](./examples).
