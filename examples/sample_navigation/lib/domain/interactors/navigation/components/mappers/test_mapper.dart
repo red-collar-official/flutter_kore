@@ -5,11 +5,7 @@ import 'package:umvvm/umvvm.dart';
 
 class TestMapper extends LinkMapper {
   @override
-  UIRoute constructRoute(
-    Map<String, String>? pathParams,
-    Map<String, String>? queryParams,
-    String? state,
-  ) {
+  UIRoute constructRoute(LinkParams params) {
     return UIRoute<RouteNames>(
       name: RouteNames.postsRegex,
       defaultSettings: const UIRouteSettings(),
@@ -18,15 +14,15 @@ class TestMapper extends LinkMapper {
   }
 
   @override
-  (Map<String, String>?, Map<String, String>?, String?) mapParamsFromUrl(
+  LinkParams mapParamsFromUrl(
     String url,
   ) {
-    return (
-      {
+    return const LinkParams(
+      pathParams: {
         'testParam': 'qwerty',
       },
-      {},
-      null,
+      queryParams: {},
+      state: null,
     );
   }
 

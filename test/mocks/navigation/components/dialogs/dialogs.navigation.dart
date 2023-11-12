@@ -6,8 +6,8 @@ part of 'dialogs.dart';
 // MainNavigationGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment
-class PostLinkHandler extends DialogLinkHandler {
+// ignore_for_file: unnecessary_parenthesis, unused_local_variable, prefer_final_locals, unnecessary_string_interpolations, join_return_with_assignment, unnecessary_raw_strings
+class PostLinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -15,9 +15,6 @@ class PostLinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -31,23 +28,27 @@ class PostLinkHandler extends DialogLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .post(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.post(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class Post2LinkHandler extends DialogLinkHandler {
+class Post2LinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -55,9 +56,6 @@ class Post2LinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -71,23 +69,27 @@ class Post2LinkHandler extends DialogLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .post2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.post2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class Post3LinkHandler extends DialogLinkHandler {
+class Post3LinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -95,10 +97,6 @@ class Post3LinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -112,24 +110,27 @@ class Post3LinkHandler extends DialogLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
-      queryParamsForView['query'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .post3(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.post3(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class Post4LinkHandler extends DialogLinkHandler {
+class Post4LinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -137,10 +138,6 @@ class Post4LinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}/test');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -154,24 +151,27 @@ class Post4LinkHandler extends DialogLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
-      queryParamsForView['query'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .post4(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.post4(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class PostsLinkHandler extends DialogLinkHandler {
+class PostsLinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -179,7 +179,6 @@ class PostsLinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -189,21 +188,27 @@ class PostsLinkHandler extends DialogLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .posts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.posts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class Posts2LinkHandler extends DialogLinkHandler {
+class Posts2LinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -211,9 +216,6 @@ class Posts2LinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -223,23 +225,27 @@ class Posts2LinkHandler extends DialogLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .posts2(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.posts2(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class StubLinkHandler extends DialogLinkHandler {
+class StubLinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -247,9 +253,6 @@ class StubLinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('stub');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -259,23 +262,27 @@ class StubLinkHandler extends DialogLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .stub(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.stub(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class HomeLinkHandler extends DialogLinkHandler {
+class HomeLinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -283,7 +290,6 @@ class HomeLinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('home');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -293,21 +299,27 @@ class HomeLinkHandler extends DialogLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .home(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.home(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
 }
 
-class LikedPostsLinkHandler extends DialogLinkHandler {
+class LikedPostsLinkHandler1 extends DialogLinkHandler {
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {
     final uriPath = Uri.parse(url);
@@ -315,7 +327,6 @@ class LikedPostsLinkHandler extends DialogLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('likedPosts');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -325,15 +336,21 @@ class LikedPostsLinkHandler extends DialogLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
-    final route = app.navigation.dialogs
-        .likedPosts(
-          pathParams: pathParams,
-          queryParams: queryParamsForView,
-        );
+    final route = app.navigation.dialogs.likedPosts(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
+    );
 
     return route;
   }
@@ -360,9 +377,9 @@ mixin DialogsGen on RoutesBase {
       'posts': {
         '*': {
           '': {
-            'filter': PostLinkHandler(),
-            'filter=qwerty': Post2LinkHandler(),
-            'filter|query?': Post3LinkHandler(),
+            'filter': PostLinkHandler1(),
+            'filter=qwerty': Post2LinkHandler1(),
+            'filter|query?': Post3LinkHandler1(),
           },
           '*': {
             '': {
@@ -371,29 +388,29 @@ mixin DialogsGen on RoutesBase {
           },
           'test': {
             '': {
-              'filter|query?': Post4LinkHandler(),
+              'filter|query?': Post4LinkHandler1(),
             },
           },
         },
         '': {
-          '': PostsLinkHandler(),
-          'filter': Posts2LinkHandler(),
+          '': PostsLinkHandler1(),
+          'filter': Posts2LinkHandler1(),
         },
       },
       'stub': {
         '': {
-          'filter': StubLinkHandler(),
+          'filter': StubLinkHandler1(),
         },
       },
       'home': {
-        '': HomeLinkHandler(),
+        '': HomeLinkHandler1(),
       },
       'likedPosts': {
-        '': LikedPostsLinkHandler(),
+        '': LikedPostsLinkHandler1(),
       },
     });
     regexHandlers.addAll({
-      '(.*?)': TestMapper(),
+      r'(.*?)': TestMapper(),
     });
   }
 }

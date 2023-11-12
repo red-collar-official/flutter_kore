@@ -1,6 +1,6 @@
 # Migration tips
 
-It can be not that hard to migrate from other architecture since most of components can be disabled and not used.
+It can be easy to migrate from other architecture since most of components can be disabled and not be used. This way you can connect components one by one.
 
 More info about disabling components can be found [here](./disabling_components.md).
 
@@ -32,7 +32,7 @@ app.instances.get<ThirdPartyInstanceWrapper>().instance;
 More info about wrappers can be found [here](./wrapper.md).
 
 If you using other state management library based on events it is useful to know that you can do similar thing in Umvvm.
-Just create events for your operations - for example: <b>LoadUserRequest</b> and subscribe to this event in your view model or other mvvm instances.
+Just create events for your operations - for example: <b>LoadUserRequestEvent</b> and subscribe to this event in your view model or other mvvm instances.
 Events can be sent through global event bus instance avaliable via <b>app.eventBus</b> interface. 
 
 Here is an examle:
@@ -202,4 +202,6 @@ You only need to define stream bindings and use default <b>StreamBuilder</b> to 
 
 To learn more about event bus visit [this page](./event_bus.md).
 
-By using <b>InstancePart</b> you can split logic in two small use cases to implement clean architecture pattern.
+By using <b>InstancePart</b> you can split logic in several small use cases to implement clean architecture pattern.
+
+To learn more about instance parts visit [this page](./instance_part.md).

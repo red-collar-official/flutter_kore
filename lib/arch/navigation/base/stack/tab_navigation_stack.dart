@@ -20,23 +20,12 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   void addRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     try {
       _tabRouteStack[currentTab]!.add(UIRouteModel(
         name: routeName,
-        settings: UIRouteSettings(
-          dismissable: dismissable,
-          uniqueInStack: uniqueInStack,
-          needToEnsureClose: needToEnsureClose,
-          fullScreenDialog: fullScreenDialog,
-        ),
-        id: id,
+        settings: settings,
       ));
     } catch (e) {
       // ignore
@@ -47,25 +36,14 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   void replaceLastRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     try {
       final stack = _tabRouteStack[currentTab]!;
 
       stack[stack.length - 1] = UIRouteModel(
         name: routeName,
-        settings: UIRouteSettings(
-          dismissable: dismissable,
-          uniqueInStack: uniqueInStack,
-          needToEnsureClose: needToEnsureClose,
-          fullScreenDialog: fullScreenDialog,
-        ),
-        id: id,
+        settings: settings,
       );
     } catch (e) {
       // ignore
@@ -91,10 +69,7 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   void replaceStack({
     required dynamic routeName,
     AppTabType? tab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     if (tab == null) {
       return;
@@ -103,12 +78,7 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
     _tabRouteStack[tab] = [
       UIRouteModel(
         name: routeName,
-        settings: UIRouteSettings(
-          dismissable: false,
-          uniqueInStack: uniqueInStack,
-          fullScreenDialog: fullScreenDialog,
-        ),
-        id: id,
+        settings: settings,
       ),
     ];
   }

@@ -1,8 +1,15 @@
 # Parts
 
-To split logic in large instances you can create <b>parts</b>.
-
 Part is instance type that has reference to parent mvvm instance.
+It is usefull for splitting logic in large instances. 
+
+Parts extend <b>BaseInstancePart</b> or <b>UniversalInstancePart</b>.
+
+<b>UniversalInstancePart</b> is generic type that can be connected to any mvvm instance. 
+
+<b>BaseInstancePart</b> allows you to specify type of instance that it can be connected to via generic argument.
+
+You also need to specify input type for parts. It is passed as generic argument. Then input is available in all initialization methods.
 
 You must annotate parts with <b>instancePart</b> annotation.
 
@@ -66,14 +73,24 @@ class TestInteractorPart extends BaseInstancePart<Map<String, dynamic>, PostsInt
     ];
 }
 
+```dart
+@instancePart
+class TestUniversalInteractorPart extends UniversalInstancePart<Map<String, dynamic>> {
+  void testUpdate() {
+    // some update code
+  }
+}
+
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
     with LikePostMixin {
   @override
   List<Type> parts(Map<String, dynamic>? input) => [
-        TestInteractorPart,
+        app.connectors.testUniversalInteractorPartConnector(),
+        app.connectors.testInteractorPartConnector(input: input.id),
       ];
 
   late final testPart = useInstancePart<TestInteractorPart>();
+  late final testUniversalPart = useInstancePart<TestUniversalInteractorPart>();
 }
 ```

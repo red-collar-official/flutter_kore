@@ -16,7 +16,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute? route) async {}
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @dialogs

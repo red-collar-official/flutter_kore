@@ -28,7 +28,7 @@ abstract class RoutesBase {
 
       return correctedRule == '$paramKey=$correctedList';
     } else {
-      return paramKey == correctedRule || correctedRule == '$paramKey?';
+      return paramKey == correctedRule;
     }
   }
 

@@ -1,4 +1,6 @@
 // Interface for managing navigation stack
+import 'package:umvvm/umvvm.dart';
+
 abstract class BaseNavigationStack<AppTabType> {
   /// Adds specific route to stack
   /// Can be screen route, dialog route or bottom sheet route
@@ -7,12 +9,7 @@ abstract class BaseNavigationStack<AppTabType> {
   void addRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   });
 
   /// Replaces latest route in stack
@@ -22,12 +19,7 @@ abstract class BaseNavigationStack<AppTabType> {
   void replaceLastRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   });
 
   /// Replaces whole stack with given route
@@ -35,10 +27,7 @@ abstract class BaseNavigationStack<AppTabType> {
   void replaceStack({
     required dynamic routeName,
     AppTabType? tab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   });
 
   /// Checks if specific route is already in stack

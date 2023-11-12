@@ -42,7 +42,7 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
   /// Flag indicating that app dialogs and botttom sheets
   /// using [globalNavigatorKey] instead of separate [bottomSheetDialogNavigatorKey]
   /// Set it to false if you want separate navigator for bottom sheets and dialogs
-  final bool bottomSheetsAndDialogsUsingSameNavigator;
+  final bool bottomSheetsAndDialogsUsingGlobalNavigator;
 
   /// Route builder for navigation interactor
   final NavigationRouteBuilder routeBuilder;
@@ -53,7 +53,7 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     this.tabViewHomeRoute,
     this.tabs,
     this.appContainsTabNavigation = false,
-    this.bottomSheetsAndDialogsUsingSameNavigator = true,
+    this.bottomSheetsAndDialogsUsingGlobalNavigator = true,
     this.routeBuilder = const DefaultNavigationRouteBuilder(),
   });
 }

@@ -1,10 +1,99 @@
 # Apis
 
+Defining apis consists of implementing base http request class and defining api declaration.
+
+### Base request class
+
+Library contains default implementation of interface for [Dio](https://pub.dev/packages/dio).
+
+To use this method you need firstly to subclass <b>DioRequest</b>.
+
+Generic parameter here represents type of object to be returned from request after parsing.
+
+```dart
+class HttpRequest<T> extends DioRequest<T> {
+  @override
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {
+          if (kDebugMode) {
+            print(message);
+          }
+        },
+        exceptionPrint: (error, trace) {
+          if (kDebugMode) {
+            print(error);
+            print(trace);
+          }
+        },
+      );
+
+  @override
+  void onAuthorization(Dio dio) {
+    if (token != null) {
+      dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+  }
+
+  @override
+  Future onError(DioException error, RetryHandler retry) async {
+    return error;
+  }
+}
+```
+
+Here you can provide default settings for all requests.
+
+Besides parameters above you can spicify default base url, default headers and default additional interceptors for requests.
+
+You need to also specify authorization callback to add required headers to requests.
+
+And also you need to specify error callback, where you can return error, or call retry handler.
+
+You can then use this requests as follows:
+
+```dart
+Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
+    updateState(state.copyWith(posts: LoadingData()));
+
+    late Response<List<Post>> response;
+
+    if (refresh) {
+      response = await Apis.posts.getPosts(0, limit).execute();
+    } else {
+      response = await Apis.posts.getPosts(offset, limit).execute();
+    }
+
+    if (response.isSuccessful) {
+      updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+    } else {
+      updateState(state.copyWith(posts: ErrorData(response.error)));
+    }
+}
+```
+
+You can later cancel request with <b>cancel</b> method:
+
+```dart
+Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
+    updateState(state.copyWith(posts: LoadingData()));
+
+    late Response<List<Post>> response;
+
+    final request = Apis.posts.getPosts(0, limit);
+
+    unawaited(request.execute());
+
+    request.cancel();
+}
+```
+
+### Api declaration
+
 Api classes represent api declarations for this app.
 
 Tipically every api represents some service on backend.
 
-Api class contains getters or functions that return <b>HttpRequest</b>.
+Api class contains getters or functions that return <b>BaseRequest</b>.
 
 Api classes must be annotated with <b>api</b> annotation.
 
@@ -16,7 +105,7 @@ this.url,
 this.parser,
 this.file,
 this.query,
-this.timeout = const Duration(seconds: 20),
+this.timeout = const Duration(seconds: 20), // connectTimeout + receiveTimeout
 this.headers = const {},
 this.body,
 this.baseUrl,
@@ -33,9 +122,9 @@ this.additionalInterceptors = const [],
 
 Important notes here:
 
-1) <b>parser</b> is a function that takes server response body and headers
-2) <b>simulateResponse</b> lets you simulate unparsed server response body and headers so you can check parser function and database delegates
-3) <b>simulateResult</b> lets you simulate parsed server response, so you can check interactors and viewmodels
+1) <b>parser</b> is a function that takes server response body and headers;
+2) <b>simulateResponse</b> lets you simulate unparsed server response body and headers so you can check parser function and database delegates;
+3) <b>simulateResult</b> lets you simulate parsed server response, so you can check interactors and viewmodels.
 
 Typical example for Api class would be:
 
@@ -99,7 +188,7 @@ HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post
         final list = <Post>[];
 
         result?.forEach((data) {
-        list.add(Post.fromJson(data));
+          list.add(Post.fromJson(data));
         });
 
         return list;
@@ -160,22 +249,6 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
 }
 ```
 
-You can later cancel request with <b>cancel</b> method
-
-```dart
-Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
-    updateState(state.copyWith(posts: LoadingData()));
-
-    late Response<List<Post>> response;
-
-    final request = Apis.posts.getPosts(0, limit);
-
-    unawaited(request.execute());
-
-    request.cancel();
-}
-```
-
 ### Authorization and errors
 
 To process errors and retry requests override onError method.
@@ -196,25 +269,21 @@ You can pass cancel reason processor future and <b>retryRequestsAfterProcessing<
 Here is an example:
 
 ```dart
-class HttpRequest<T> extends RequestImplementation<T> {
+class HttpRequest<T> extends DioRequest<T> {
   @override
-  Map<String, dynamic> get defaultHeaders => {};
-
-  @override
-  String get defaultBaseUrl => Flavor.dev.baseUrl;
-
-  @override
-  int get defaultTimeoutInSeconds => AppSettings.defaultRequestTimeoutInSeconds;
-
-  @override
-  void logPrint(Object obj) {
-    LogUtility.printMessage(obj.toString());
-  }
-
-  @override
-  void exceptionPrint(Object error, StackTrace trace) {
-    LogUtility.e(error, trace);
-  }
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {
+          if (kDebugMode) {
+            print(message);
+          }
+        },
+        exceptionPrint: (error, trace) {
+          if (kDebugMode) {
+            print(error);
+            print(trace);
+          }
+        },
+      );
 
   @override
   void onAuthorization(Dio dio) {
@@ -263,18 +332,6 @@ class HttpRequest<T> extends RequestImplementation<T> {
 
 ### Cancelation in ApiCallers
 
-To cancel request after execution you can call <b>cancel</b> method.
-
-```dart
-final request = HttpRequest<int>()
-  ..method = RequestMethod.post
-  ..baseUrl = testBaseUrl
-  ..url = testPath
-  ..body = testBodyMap;
-
-request.cancel();
-```
-
 View models, interactors and wrappers cancel all running requests when they are disposed.
 
 This is because they contain <b>ApiCaller</b> mixin.
@@ -282,6 +339,10 @@ This is because they contain <b>ApiCaller</b> mixin.
 To enable this behaviour run requests with <b>executeRequest</b> method inside this instances or custom Api callers.
 
 ```dart
+// before
+response = await app.apis.posts.getPosts(0, limit).execute();
+
+//after
 response = await executeRequest(app.apis.posts.getPosts(0, limit));
 ```
 

@@ -190,7 +190,7 @@ void main() {
       await DelayUtility.pause(millis: 100);
 
       expect(
-        app.navigation.latestGlobalRoute().id,
+        app.navigation.latestGlobalRoute().settings.id,
         'state',
       );
 
@@ -222,6 +222,33 @@ void main() {
       expect(
         app.navigation.latestGlobalRoute().name,
         RouteNames.postFilterMultiplePossibleValuesWithAnchor,
+      );
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl4);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().name,
+        RouteNames.post4,
+      );
+
+      expect(
+        app.navigation.latestGlobalRoute().settings.id,
+        '5',
+      );
+
+      DelayUtility.withDelay(() {
+        app.navigation.deepLinks.linkStreamController.add(testUrl18);
+      });
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(
+        app.navigation.latestGlobalRoute().name,
+        RouteNames.postsWithQueriesForPath,
       );
     });
 

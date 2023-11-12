@@ -40,24 +40,14 @@ class NavigationStack<AppTabType> {
   void addRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
-    final stack = _getStack(global);
+    final stack = _getStack(settings.global);
 
     stack.addRoute(
       routeName: routeName,
       currentTab: currentTab,
-      global: global,
-      uniqueInStack: uniqueInStack,
-      dismissable: dismissable,
-      needToEnsureClose: needToEnsureClose,
-      id: id,
-      fullScreenDialog: fullScreenDialog,
+      settings: settings,
     );
   }
 
@@ -68,24 +58,14 @@ class NavigationStack<AppTabType> {
   void replaceLastRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
-    final stack = _getStack(global);
+    final stack = _getStack(settings.global);
 
     stack.replaceLastRoute(
       routeName: routeName,
       currentTab: currentTab,
-      global: global,
-      uniqueInStack: uniqueInStack,
-      dismissable: dismissable,
-      needToEnsureClose: needToEnsureClose,
-      fullScreenDialog: fullScreenDialog,
-      id: id,
+      settings: settings,
     );
   }
 
@@ -94,20 +74,14 @@ class NavigationStack<AppTabType> {
   void replaceStack({
     required dynamic routeName,
     AppTabType? tab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
-    final stack = _getStack(global);
+    final stack = _getStack(settings.global);
     
     stack.replaceStack(
       routeName: routeName,
       tab: tab,
-      global: global,
-      uniqueInStack: uniqueInStack,
-      id: id,
-      fullScreenDialog: fullScreenDialog,
+      settings: settings,
     );
   }
 

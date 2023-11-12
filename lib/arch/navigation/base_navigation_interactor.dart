@@ -91,9 +91,9 @@ abstract class BaseNavigationInteractor<
   final globalNavigatorKey = GlobalKey<NavigatorState>();
 
   /// Global key for main app bottom sheets and dialogs navigator
-  /// if [bottomSheetsAndDialogsUsingSameNavigator] is true then it is [globalNavigatorKey]
+  /// if [bottomSheetsAndDialogsUsingGlobalNavigator] is true then it is [globalNavigatorKey]
   late final bottomSheetDialogNavigatorKey =
-      settings.bottomSheetsAndDialogsUsingSameNavigator
+      settings.bottomSheetsAndDialogsUsingGlobalNavigator
           ? globalNavigatorKey
           : GlobalKey<NavigatorState>();
 
@@ -183,12 +183,9 @@ abstract class BaseNavigationInteractor<
   /// Initializes stack with [initialRoute]
   void initStack() {
     navigationStack.replaceStack(
-      routeName: settings.initialRoute,
-      tab: currentTab,
-      global: true,
-      uniqueInStack: true,
-      fullScreenDialog: false,
-    );
+        routeName: settings.initialRoute,
+        tab: currentTab,
+        settings: const UIRouteSettings(global: true, uniqueInStack: true));
 
     navigationStack.tabNavigationStack.reset();
   }
@@ -333,6 +330,8 @@ abstract class BaseNavigationInteractor<
       replacePrevious:
           replacePrevious ?? routeData.defaultSettings.replacePrevious,
       name: routeData.name.toString(),
+      customRouteBuilder:
+          customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
     );
 
     final routeName = routeData.name;
@@ -355,7 +354,8 @@ abstract class BaseNavigationInteractor<
 
     final screenToOpen = routeData.child;
 
-    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        routeSettings.customRouteBuilder ?? settings.routeBuilder;
 
     // coverage:ignore-start
     final route = routeBuilder.buildPageRoute(
@@ -386,10 +386,7 @@ abstract class BaseNavigationInteractor<
         ..clearTabNavigationStack()
         ..replaceStack(
           routeName: routeName,
-          global: global,
-          uniqueInStack: routeSettings.uniqueInStack,
-          id: routeSettings.id,
-          fullScreenDialog: routeSettings.fullScreenDialog,
+          settings: routeSettings,
         );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
@@ -405,12 +402,7 @@ abstract class BaseNavigationInteractor<
       navigationStack.replaceLastRoute(
         routeName: routeName,
         currentTab: currentTab,
-        global: global,
-        uniqueInStack: routeSettings.uniqueInStack,
-        dismissable: routeSettings.dismissable,
-        needToEnsureClose: routeSettings.needToEnsureClose,
-        fullScreenDialog: routeSettings.fullScreenDialog,
-        id: routeSettings.id,
+        settings: routeSettings,
       );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
@@ -422,12 +414,7 @@ abstract class BaseNavigationInteractor<
       navigationStack.addRoute(
         routeName: routeName,
         currentTab: currentTab,
-        global: global,
-        uniqueInStack: routeSettings.uniqueInStack,
-        dismissable: routeSettings.dismissable,
-        needToEnsureClose: routeSettings.needToEnsureClose,
-        fullScreenDialog: routeSettings.fullScreenDialog,
-        id: routeSettings.id,
+        settings: routeSettings,
       );
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
@@ -448,12 +435,14 @@ abstract class BaseNavigationInteractor<
     NavigationRouteBuilder? customRouteBuilder,
   }) async {
     final dialogSettings = UIRouteSettings(
-        global: forceGlobal ?? dialog.defaultSettings.global,
-        uniqueInStack: uniqueInStack ?? dialog.defaultSettings.uniqueInStack,
-        dismissable: dismissable ?? dialog.defaultSettings.dismissable,
-        id: id,
-        fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-        name: dialog.name.toString());
+      global: forceGlobal ?? dialog.defaultSettings.global,
+      uniqueInStack: uniqueInStack ?? dialog.defaultSettings.uniqueInStack,
+      dismissable: dismissable ?? dialog.defaultSettings.dismissable,
+      id: id ?? dialog.defaultSettings.id,
+      name: dialog.name.toString(),
+      customRouteBuilder:
+          customRouteBuilder ?? dialog.defaultSettings.customRouteBuilder,
+    );
 
     if (dialogSettings.uniqueInStack &&
         !navigationStack.checkUnique(
@@ -474,19 +463,15 @@ abstract class BaseNavigationInteractor<
     navigationStack.addRoute(
       routeName: dialogName,
       currentTab: currentTab,
-      global: global,
-      uniqueInStack: true,
-      dismissable: dialogSettings.dismissable,
-      needToEnsureClose: false,
-      fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-      id: id,
+      settings: dialogSettings,
     );
 
     final dialogToOpen = dialog.child;
 
     unawaited(onDialogOpened(dialogToOpen, dialogSettings));
 
-    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        dialogSettings.customRouteBuilder ?? settings.routeBuilder;
 
     final result = await routeBuilder.pushDialogRoute(
       navigator: navigator,
@@ -508,13 +493,14 @@ abstract class BaseNavigationInteractor<
     NavigationRouteBuilder? customRouteBuilder,
   }) async {
     final bottomSheetSettings = UIRouteSettings(
-        global: forceGlobal ?? bottomSheet.defaultSettings.global,
-        uniqueInStack:
-            uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack,
-        dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
-        id: id,
-        fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-        name: bottomSheet.name.toString());
+      global: forceGlobal ?? bottomSheet.defaultSettings.global,
+      uniqueInStack: uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack,
+      dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
+      id: id,
+      name: bottomSheet.name.toString(),
+      customRouteBuilder:
+          customRouteBuilder ?? bottomSheet.defaultSettings.customRouteBuilder,
+    );
 
     if (bottomSheetSettings.uniqueInStack &&
         !navigationStack.checkUnique(
@@ -535,19 +521,15 @@ abstract class BaseNavigationInteractor<
     navigationStack.addRoute(
       routeName: bottomSheetName,
       currentTab: currentTab,
-      global: global,
-      uniqueInStack: true,
-      dismissable: bottomSheetSettings.dismissable,
-      needToEnsureClose: false,
-      fullScreenDialog: latestGlobalRoute().settings.fullScreenDialog,
-      id: id,
+      settings: bottomSheetSettings,
     );
 
     final bottomSheetToOpen = bottomSheet.child;
 
     unawaited(onBottomSheetOpened(bottomSheetToOpen, bottomSheetSettings));
 
-    final routeBuilder = customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        bottomSheetSettings.customRouteBuilder ?? settings.routeBuilder;
 
     final result = await routeBuilder.pushBottomSheetRoute(
       navigator: navigator,
@@ -588,9 +570,7 @@ abstract class BaseNavigationInteractor<
     navigationStack.replaceStack(
       routeName:
           navigationStack.globalNavigationStack.stack.first.name as RouteType,
-      global: true,
-      uniqueInStack: true,
-      fullScreenDialog: false,
+      settings: const UIRouteSettings(global: true, uniqueInStack: true),
     );
   }
 
@@ -615,9 +595,7 @@ abstract class BaseNavigationInteractor<
     navigationStack.tabNavigationStack.replaceStack(
       routeName: firstRoute.name as RouteType,
       tab: appTab,
-      global: false,
-      uniqueInStack: true,
-      fullScreenDialog: false,
+      settings: const UIRouteSettings(uniqueInStack: true),
     );
   }
 
@@ -711,6 +689,15 @@ abstract class BaseNavigationInteractor<
     String link, {
     bool preferDialogs = false,
     bool preferBottomSheets = false,
+    bool? fullScreenDialog,
+    bool? replace,
+    bool? replacePrevious,
+    bool? uniqueInStack,
+    bool? forceGlobal,
+    bool? needToEnsureClose,
+    bool? dismissable,
+    Object? id,
+    NavigationRouteBuilder? customRouteBuilder,
   }) async {
     var routeHandler = _findHandlerForLink(
       link,
@@ -731,8 +718,30 @@ abstract class BaseNavigationInteractor<
     }
 
     final route = await routeHandler.parseLinkToRoute(link);
+    final routeData = route;
 
-    await routeHandler.processRoute(route);
+    if (routeData != null) {
+      final routeSettings = UIRouteSettings(
+        fullScreenDialog:
+            fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
+        global: forceGlobal ?? routeData.defaultSettings.global,
+        uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
+        needToEnsureClose:
+            needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
+        dismissable: dismissable ?? routeData.defaultSettings.dismissable,
+        id: id ?? routeData.defaultSettings.id,
+        replace: replace ?? routeData.defaultSettings.replace,
+        replacePrevious:
+            replacePrevious ?? routeData.defaultSettings.replacePrevious,
+        name: routeData.name.toString(),
+        customRouteBuilder:
+            customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
+      );
+
+      await routeHandler.processRoute(
+        routeData.copyWithDefaultSettings(routeSettings),
+      );
+    }
 
     return true;
   }

@@ -1,21 +1,19 @@
 # Connectors
 
-Connectors are objects that describe dependency for mvvm instance
+Connectors are objects that describe dependency for mvvm instance.
 
 We can specify a type of instance we want to depend on.
 
-We can also specify if we want to get unique instance or shared instance
+We also can define count of objects that we want to connect.
 
-We also can define count of objects that we want to connect
+We also can specify scope of object. If you want unique copy of object use <b>BaseScopes.unique</b> scope. By default <b>BaseScopes.weak</b> is used.
 
-We also can specify scope of object
-
-If you mark connector as lazy instance will be connected when addressed first time
-with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>
+If you mark connector as lazy - instance will be connected when addressed first time
+with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>.
 
 We can also specify if we want to connect object without dependencies - 
-in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected
-It is useful if you just want to use some method of small instance
+in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected.
+It is useful if you just want to use some method of small instance.
 
 Examples would be:
 
@@ -32,7 +30,7 @@ List<Connector> dependsOn(Map<String, dynamic>? input) => [
     ];
 ```
 
-Library creates connectors for every single instance
+Library creates connectors for every single instance.
 This way you dont need to write <b>Connector</b> classes for every instance and just use predefined ones as follows:
 
 ```dart
@@ -47,15 +45,15 @@ List<Connector> dependsOn(PostView input) => [
 
 ### Part connectors
 
-Parts (you can read about parts [here](./instance_part.md)) are connected with <b>PartConnector</b> that is lightweight version of base connector
+Parts (you can read about parts [here](./instance_part.md)) are connected with <b>PartConnector</b> that is lightweight version of base connector.
 This is because some settings of <b>Connector</b> are not needed for parts.
 
 ```dart
 const PartConnector(type: TestInstancePart, async: true, input: 6),
 const PartConnector(type: LoadUsersInstancePart),
-const PartConnector(type: ShareInteractor, count: 5), // 5 unique instances
-// instance without connections
-const PartConnector(type: ReactionsWrapper, withoutConnections: true),
+const PartConnector(type: SharePart, count: 5), // 5 unique parts
+// part without connections
+const PartConnector(type: LikeUserPart, withoutConnections: true),
 ```
 
 Library creates connectors for every part too.

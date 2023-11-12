@@ -401,24 +401,51 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
 
       var handlerIndex = 0;
 
-      for (final path in paths) {
+      final query = value
+              .peek('query')
+              ?.listValue
+              .map((e) => e.toStringValue())
+              .toList() ??
+          [];
+
+      final possibleFragments = value
+              .peek('possibleFragments')
+              ?.listValue
+              .map((e) => e.toStringValue()) ??
+          [];
+
+      final customHandler = value
+          .peek('customHandler')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
+
+      final queriesForPathValue = value.peek('queriesForPath')?.listValue;
+      final possibleFragmentsForPathValue =
+          value.peek('possibleFragmentsForPath')?.listValue;
+
+      for (int index = 0; index < paths.length; index++) {
+        final path = paths[index];
+
         handlerIndex++;
 
-        final customHandler = value
-            .peek('customHandler')
-            ?.typeValue
-            .getDisplayString(withNullability: false);
-        final query = value
-                .peek('query')
-                ?.listValue
-                .map((e) => e.toStringValue())
-                .toList() ??
-            [];
-        final possibleFragments = value
-                .peek('possibleFragments')
-                ?.listValue
-                .map((e) => e.toStringValue()) ??
-            [];
+        var queryForPath = query;
+        var possibleFragmentsForPath = possibleFragments;
+
+        if (queriesForPathValue != null) {
+          queryForPath = queriesForPathValue[index]
+                  .toListValue()
+                  ?.map((e) => e.toStringValue())
+                  .toList() ??
+              [];
+        }
+
+        if (possibleFragmentsForPathValue != null) {
+          possibleFragmentsForPath = possibleFragmentsForPathValue[index]
+                  .toListValue()
+                  ?.map((e) => e.toStringValue())
+                  .toList() ??
+              [];
+        }
 
         if (path != null) {
           final codedPath = path.replaceAll(RegExp(':{.+?(?=})}'), '*');
@@ -427,14 +454,14 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
 
           var resultRule = '';
 
-          if (possibleFragments.isNotEmpty) {
-            for (final fragment in possibleFragments) {
-              query.add('#=$fragment');
+          if (possibleFragmentsForPath.isNotEmpty) {
+            for (final fragment in possibleFragmentsForPath) {
+              queryForPath.add('#=$fragment');
             }
           }
 
-          if (query.isNotEmpty) {
-            for (final element in query) {
+          if (queryForPath.isNotEmpty) {
+            for (final element in queryForPath) {
               if (element!.contains('=') && element.contains('|')) {
                 final splittedByKeyValues = element.split('=');
 
@@ -484,9 +511,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         final uriPath = Uri.parse(path);
         final segments = uriPath.pathSegments;
 
-        var patternQueryString = 'final patternQuery = [\n';
         var parseParamsUrlString = '';
-        var parseParamsQueryString = '';
 
         for (final element in segments) {
           if (!element.contains(':{')) {
@@ -506,27 +531,6 @@ if (pathSegmentPattern == '$element') {
 ''';
         }
 
-        for (final element in query) {
-          var queryElement = element!.replaceAll('?', '');
-
-          if (queryElement.contains('=')) {
-            queryElement = queryElement.split('=')[0];
-          }
-
-          patternQueryString += '\'$queryElement\',';
-          patternQueryString += '\n';
-
-          final paramInitialization = getParameterInitializationCode(
-            'queryParams[queryParam] ?? []',
-          );
-
-          parseParamsQueryString += '''
-queryParamsForView['$queryElement'] = $paramInitialization
-''';
-        }
-
-        patternQueryString += '\n];';
-
         classBuffer
           ..writeln(
             'class ${capitalize(key)}LinkHandler$handlerIndex extends $linkHandlerBaseClass {',
@@ -540,7 +544,6 @@ queryParamsForView['$queryElement'] = $paramInitialization
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('$path');
-    $patternQueryString
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -552,10 +555,15 @@ queryParamsForView['$queryElement'] = $paramInitialization
       $parseParamsUrlString
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      $parseParamsQueryString
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     ${requiresState ? 'final anchor = uriPath.fragment;' : ''}

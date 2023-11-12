@@ -9,6 +9,8 @@ You must initialize app before <b>runApp</b> call.
 
 If you using apis then you can store <b>Apis</b> reference in main app.
 
+More info about http component can be found [here](./apis.md).
+
 For example here is definition of main app class:
 
 ```dart

@@ -5,6 +5,36 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Settings for [BaseRequest]
+class RequestSettings {
+  /// Default headers to be added to every instance
+  final Map<String, dynamic> defaultHeaders;
+
+  /// Default base url if [baseUrl] is not provided
+  final String defaultBaseUrl;
+
+  /// Default timeout if [timeout] is not provided
+  final int defaultTimeoutInSeconds;
+
+  /// Default timeout if [timeout] is not provided
+  final Iterable<Interceptor> defaultInterceptors;
+
+  /// Print function for [Dio] logger
+  final void Function(Object obj) logPrint;
+
+  /// Print function for [Dio] logger
+  final void Function(Object error, StackTrace trace) exceptionPrint;
+
+  const RequestSettings({
+    this.defaultHeaders = const {},
+    this.defaultBaseUrl = '',
+    this.defaultTimeoutInSeconds = 10,
+    this.defaultInterceptors = const [],
+    required this.logPrint,
+    required this.exceptionPrint,
+  });
+}
+
 /// Main class to hold [Dio] response
 class Response<ItemType> {
   /// Parsed result of request

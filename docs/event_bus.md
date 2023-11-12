@@ -1,9 +1,21 @@
 # EventBus
 
-Every mvvm instance have access to <b>EventBus</b> events.
+Event bus instance avaliable globally with <b>app.eventBus</b> or via <b>EventBus</b> singleton. 
+
+Every mvvm instance has access to <b>EventBus</b> events.
 Events can be subscribed to with <b>subscribe</b> method.
 
+Events are just model classes with needed fields.
+
 An example:
+
+```dart
+class PostLikedEvent {
+  final int id;
+
+  const PostLikedEvent({required this.id});
+}
+```
 
 ```dart
 @override
@@ -13,12 +25,6 @@ List<EventBusSubscriber> subscribe() => [
       }),
     ];
 ```
-
-Events are just model classes with needed fields.
-
-To send events you need to access <b>EventBus</b> instance.
-
-An example:
 
 ```dart
 app.eventBus.send(PostLikedEvent(id: id));
@@ -31,7 +37,7 @@ While we upload file we may want to send progress events in separate event bus.
 final fileUploadEventBus = EventBus.newSeparateInstance();
 ```
 
-Be aware that instances are not connected to this new instance and you need to write subscribe logic yourself.
+Be aware that instances are not connected to this new separate event bus and you need to write subscribe logic yourself.
 
 Do not forget to dispose event subscriptions in instance <b>dispose</b> method.
 
@@ -53,7 +59,7 @@ List<EventBusSubscriber> subscribe() => [
     ];
 ```
 
-By default view models pause events when view become invisible and pause them for all dependencies.
+By default view models pause event subscriptions when view become invisible and pause them for all dependencies.
 
 If you want to manually pause events for instance you can call <b>pauseEventBusSubscription</b>.
 
@@ -64,7 +70,6 @@ You can also manually subscribe for particular event of list of events anywere i
 Here is an example:
 
 ```dart
-@override
 final completer = Completer();
 
 final subscription = app.eventBus.streamOf<TestEvent>().listen((event) {

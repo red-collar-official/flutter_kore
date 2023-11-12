@@ -17,7 +17,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute? route) async {}
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @bottomSheets
@@ -85,7 +85,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
 
   @Link(
     paths: ['posts/:{id}'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<BottomSheetNames> post3({
     Post? post,
@@ -103,7 +103,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
 
   @Link(
     paths: ['posts/:{id}/test'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<BottomSheetNames> post4({
     Post? post,

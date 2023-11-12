@@ -19,29 +19,23 @@ import 'package:umvvm/umvvm.dart';
 ///       return list;
 ///     };
 /// ```
-class HttpRequest<T> extends RequestImplementation<T> {
+class HttpRequest<T> extends DioRequest<T> {
   HttpRequest() : super();
 
   @override
-  Map<String, dynamic> get defaultHeaders => {};
-
-  @override
-  String get defaultBaseUrl => '';
-
-  @override
-  void logPrint(Object obj) {
-    if (kDebugMode) {
-      print(obj);
-    }
-  }
-
-  @override
-  void exceptionPrint(Object error, StackTrace trace) {
-    if (kDebugMode) {
-      print(error);
-      print(trace);
-    }
-  }
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {
+          if (kDebugMode) {
+            print(message);
+          }
+        },
+        exceptionPrint: (error, trace) {
+          if (kDebugMode) {
+            print(error);
+            print(trace);
+          }
+        },
+      );
 
   @override
   void onAuthorization(dio.Dio dio) {

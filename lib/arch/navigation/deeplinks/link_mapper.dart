@@ -1,5 +1,17 @@
 import 'package:umvvm/umvvm.dart';
 
+class LinkParams {
+  final Map<String, String>? pathParams;
+  final Map<String, String>? queryParams;
+  final String? state;
+
+  const LinkParams({
+    required this.pathParams,
+    required this.queryParams,
+    required this.state,
+  });
+}
+
 /// Class describing mapper of url parameters to route
 ///
 /// Example
@@ -7,11 +19,7 @@ import 'package:umvvm/umvvm.dart';
 /// ```dart
 /// class TestMapper extends LinkMapper {
 ///   @override
-///   UIRoute constructRoute(
-///     Map<String, String>? pathParams,
-///     Map<String, String>? queryParams,
-///     String? state,
-///   ) {
+///   UIRoute constructRoute(LinkParams params) {
 ///     return UIRoute<RouteNames>(
 ///       name: RouteNames.posts,
 ///       defaultSettings: const UIRouteSettings(
@@ -21,18 +29,18 @@ import 'package:umvvm/umvvm.dart';
 ///     );
 ///   }
 ///
-///   @override
-///   (Map<String, String>?, Map<String, String>?, String?) mapParamsFromUrl(
-///     String url,
-///   ) {
-///     return (
-///       {
-///         'testParam': 'test',
-///       },
-///       {},
-///       null,
-///     );
-///   }
+///  @override
+///  LinkParams mapParamsFromUrl(
+///    String url,
+///  ) {
+///    return const LinkParams(
+///      pathParams: {
+///        'testParam': 'qwerty',
+///      },
+///      queryParams: {},
+///      state: null,
+///    );
+///  }
 ///
 ///   @override
 ///   Future<void> openRoute(UIRoute route) async {
@@ -48,16 +56,12 @@ abstract class LinkMapper {
   /// first map is path params
   /// second map is queryParams
   /// third parameter is achor value
-  (Map<String, String>?, Map<String, String>?, String?) mapParamsFromUrl(
+  LinkParams mapParamsFromUrl(
     String url,
   );
 
   /// Costructs route with given url params
-  UIRoute constructRoute(
-    Map<String, String>? pathParams,
-    Map<String, String>? queryParams,
-    String? state,
-  );
+  UIRoute constructRoute(LinkParams params);
 
   /// Opens consructed route
   Future<void> openRoute(UIRoute route);

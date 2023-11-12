@@ -15,9 +15,6 @@ class PostLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -31,10 +28,15 @@ class PostLinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.post(
@@ -54,9 +56,6 @@ class PostFilterMultiplePossibleValuesLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -70,10 +69,15 @@ class PostFilterMultiplePossibleValuesLinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.postFilterMultiplePossibleValues(
@@ -94,10 +98,6 @@ class PostFilterMultiplePossibleValuesWithAnchorLinkHandler1
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-      '#',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -111,11 +111,15 @@ class PostFilterMultiplePossibleValuesWithAnchorLinkHandler1
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
-      queryParamsForView['#'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route =
@@ -136,9 +140,6 @@ class PostArrayLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -152,10 +153,15 @@ class PostArrayLinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.postArray(
@@ -175,9 +181,6 @@ class Post2LinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -191,10 +194,15 @@ class Post2LinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.post2(
@@ -214,10 +222,6 @@ class Post3LinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -231,11 +235,15 @@ class Post3LinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
-      queryParamsForView['query'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.post3(
@@ -255,10 +263,6 @@ class Post4LinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}/test');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -272,11 +276,15 @@ class Post4LinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
-      queryParamsForView['query'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.post4(
@@ -296,7 +304,6 @@ class PostsLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -306,8 +313,15 @@ class PostsLinkHandler1 extends RouteLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.posts(
@@ -327,9 +341,6 @@ class Posts2LinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -339,10 +350,15 @@ class Posts2LinkHandler1 extends RouteLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.posts2(
@@ -362,9 +378,6 @@ class StubLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('stub');
-    final patternQuery = [
-      'filter',
-    ];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -374,10 +387,15 @@ class StubLinkHandler1 extends RouteLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
 
-      queryParamsForView['filter'] = queryParams[queryParam] ?? [];
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.stub(
@@ -397,7 +415,6 @@ class HomeLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('home');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -407,8 +424,15 @@ class HomeLinkHandler1 extends RouteLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.home(
@@ -428,7 +452,6 @@ class LikedPostsLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('likedPosts');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -438,8 +461,15 @@ class LikedPostsLinkHandler1 extends RouteLinkHandler {
       final pathSegmentPattern = patternSegments[index];
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.likedPosts(
@@ -459,7 +489,6 @@ class PostsWithPrefixLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('*/posts/:{id}');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -473,8 +502,15 @@ class PostsWithPrefixLinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final route = app.navigation.routes.postsWithPrefix(
@@ -494,7 +530,6 @@ class PostsWithAnchorLinkHandler1 extends RouteLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('*/posts/test/:{id}');
-    final patternQuery = [];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -508,8 +543,15 @@ class PostsWithAnchorLinkHandler1 extends RouteLinkHandler {
       }
     }
 
-    for (var index = 0; index < patternQuery.length; index++) {
-      final queryParam = patternQuery[index];
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
     }
 
     final anchor = uriPath.fragment;
@@ -518,6 +560,47 @@ class PostsWithAnchorLinkHandler1 extends RouteLinkHandler {
       pathParams: pathParams,
       queryParams: queryParamsForView,
       state: anchor,
+    );
+
+    return route;
+  }
+}
+
+class PostsWithQueriesForPathLinkHandler1 extends RouteLinkHandler {
+  @override
+  Future<UIRoute> parseLinkToRoute(String url) async {
+    final uriPath = Uri.parse(url);
+    final segments = uriPath.pathSegments;
+    final queryParams = uriPath.queryParametersAll;
+
+    final patternUriPath = Uri.parse('*/posts/test/:{id}');
+    final patternSegments = patternUriPath.pathSegments;
+
+    Map<String, dynamic> queryParamsForView = {};
+    Map<String, dynamic> pathParams = {};
+
+    for (var index = 0; index < patternSegments.length; index++) {
+      final pathSegmentPattern = patternSegments[index];
+
+      if (pathSegmentPattern == ':{id}') {
+        pathParams['id'] = segments[index];
+      }
+    }
+
+    for (final param in queryParams.entries) {
+      final queryParam = param.key;
+      dynamic queryValue = param.value;
+
+      if (queryValue.length == 1) {
+        queryParamsForView[queryParam] = queryValue[0];
+      } else if (queryValue.length > 1) {
+        queryParamsForView[queryParam] = queryValue;
+      }
+    }
+
+    final route = app.navigation.routes.postsWithQueriesForPath(
+      pathParams: pathParams,
+      queryParams: queryParamsForView,
     );
 
     return route;
@@ -541,6 +624,7 @@ enum RouteNames {
   postsRegex,
   postsWithPrefix,
   postsWithAnchor,
+  postsWithQueriesForPath,
 }
 
 mixin RoutesGen on RoutesBase {
@@ -557,7 +641,7 @@ mixin RoutesGen on RoutesBase {
                 PostFilterMultiplePossibleValuesWithAnchorLinkHandler1(),
             'filter=[qwerty1,qwerty2]': PostArrayLinkHandler1(),
             'filter=qwerty': Post2LinkHandler1(),
-            'filter|query?': Post3LinkHandler1(),
+            'filter|query': Post3LinkHandler1(),
           },
           '*': {
             '': {
@@ -571,7 +655,7 @@ mixin RoutesGen on RoutesBase {
               },
             },
             '': {
-              'filter|query?': Post4LinkHandler1(),
+              'filter|query': Post4LinkHandler1(),
             },
           },
         },
@@ -598,7 +682,10 @@ mixin RoutesGen on RoutesBase {
           },
           'test': {
             '*': {
-              '': PostsWithAnchorLinkHandler1(),
+              '': {
+                '': PostsWithAnchorLinkHandler1(),
+                'filter': PostsWithQueriesForPathLinkHandler1(),
+              },
             },
           },
         },

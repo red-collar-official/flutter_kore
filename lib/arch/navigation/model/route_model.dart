@@ -1,14 +1,16 @@
+import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
+
 /// Class describing route settings
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// UIRouteSettings(
 ///   global: pathParams != null,
 /// ),
 /// ```
 class UIRouteSettings {
-  /// Flag indicating if route can be popped 
+  /// Flag indicating if route can be popped
   /// with system back gestures or back buttons
   final bool dismissable;
 
@@ -37,6 +39,9 @@ class UIRouteSettings {
   /// Name for this route
   final String? name;
 
+  /// Custom route builder for this route
+  final NavigationRouteBuilder? customRouteBuilder;
+
   const UIRouteSettings({
     this.dismissable = true,
     this.uniqueInStack = false,
@@ -47,6 +52,7 @@ class UIRouteSettings {
     this.replace = false,
     this.replacePrevious = false,
     this.name,
+    this.customRouteBuilder,
   });
 }
 
@@ -89,12 +95,8 @@ class UIRouteModel {
   /// Route settings for this route
   final UIRouteSettings settings;
 
-  /// Id for this route
-  final Object? id;
-
   const UIRouteModel({
     required this.name,
     required this.settings,
-    this.id,
   });
 }

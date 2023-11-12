@@ -22,9 +22,9 @@ setUp(() async {
 
 There are several helper methods for tests.
 
-For DI there are <b>forceGet</b> and <b>addTest</b> methods. 
+Mock instances can be registered in instance collection with <b>addTest</b> method.
 
-Mock instances can be registered with instance collection.
+You also can force get instance (skipping initialization checks).
 
 ```dart
 app.instances.addTest<PostInteractor>(BaseScopes.global, mockPostInteractor);
@@ -42,7 +42,7 @@ app.instances.addBuilder<PostInteractor>(() => postInteractor);
 
 More info about DI can be found [here](./di.md).
 
-Test view models can be passed as params to mvvm widgets:
+Test view models can be passed as parameter to mvvm widgets:
 
 ```dart
 final widget = PostView(
@@ -67,6 +67,8 @@ postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent);
 ```
 
 <b>checkEventWasReceived</b> method available for every mvvm instance.
+
+More info about event bus can be found [here](./event_bus.md). 
 
 For apis you can mock api results with <b>simulateResponse</b> and <b>simulateResult</b>
 

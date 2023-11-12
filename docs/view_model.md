@@ -2,9 +2,9 @@
 
 View models contain logic for view classes.
 
-It also contains local state that we like <b>Interactor</b> can update with <b>updateState</b>.
+They also contain local state that we like <b>Interactor</b> can update with <b>updateState</b>.
 
-We also can listen to state changes with <b>updates</b> or <b>changes</b>
+We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
 
 View models also can depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependsOn</b> override.
 
@@ -16,12 +16,14 @@ They are connected with <b>Connector</b> objects (more information about connect
 
 View models like every mvvm instance can receive <b>EventBus</b> events using <b>subscribe</b> method.
 
+More information about event bus can be found [here](./event_bus.md).
+
 To get local instances connected to view model use <b>getLocalInstance<T>()</b>.
 
 To get part use <b>useInstancePart<T>()</b> method.
 
 View models also can override <b>onLaunch</b> method that is called on initState 
-and <b>onFirstFrame</b> that is called on first frame of corresponding view.
+and <b>onFirstFrame</b> that is called on first post frame callback of corresponding view.
 
 ```dart
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {

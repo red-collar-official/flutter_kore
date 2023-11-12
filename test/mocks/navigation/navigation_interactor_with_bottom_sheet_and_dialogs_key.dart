@@ -47,7 +47,7 @@ class NavigationInteractorWithBottomSheetsAndDialogsKey
           AppTabs.posts: RouteNames.posts,
           AppTabs.likedPosts: RouteNames.likedPosts,
         },
-        bottomSheetsAndDialogsUsingSameNavigator: false,
+        bottomSheetsAndDialogsUsingGlobalNavigator: false,
         appContainsTabNavigation: true,
       );
 

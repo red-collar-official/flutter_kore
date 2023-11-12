@@ -20,23 +20,12 @@ class GlobalNavigationStack<AppTabType>
   void addRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     _routeStack.add(
       UIRouteModel(
         name: routeName,
-        settings: UIRouteSettings(
-          dismissable: dismissable,
-          uniqueInStack: uniqueInStack,
-          needToEnsureClose: needToEnsureClose,
-          fullScreenDialog: fullScreenDialog,
-        ),
-        id: id,
+        settings: settings,
       ),
     );
   }
@@ -45,22 +34,11 @@ class GlobalNavigationStack<AppTabType>
   void replaceLastRoute({
     required dynamic routeName,
     AppTabType? currentTab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool dismissable,
-    required bool needToEnsureClose,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     _routeStack[_routeStack.length - 1] = UIRouteModel(
       name: routeName,
-      settings: UIRouteSettings(
-        dismissable: dismissable,
-        uniqueInStack: uniqueInStack,
-        needToEnsureClose: needToEnsureClose,
-        fullScreenDialog: fullScreenDialog,
-      ),
-      id: id,
+      settings: settings,
     );
   }
 
@@ -77,22 +55,14 @@ class GlobalNavigationStack<AppTabType>
   void replaceStack({
     required dynamic routeName,
     AppTabType? tab,
-    required bool global,
-    required bool uniqueInStack,
-    required bool fullScreenDialog,
-    Object? id,
+    required UIRouteSettings settings,
   }) {
     _routeStack
       ..clear()
       ..add(
         UIRouteModel(
           name: routeName,
-          settings: UIRouteSettings(
-            dismissable: false,
-            uniqueInStack: uniqueInStack,
-            fullScreenDialog: fullScreenDialog,
-          ),
-          id: id,
+          settings: settings,
         ),
       );
   }

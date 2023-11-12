@@ -30,6 +30,8 @@ abstract class BaseBox extends MvvmInstance<dynamic> {
   void initialize(dynamic input) {
     super.initialize(input);
 
+    // you must set this flag to true at the end of initialization
+    // if custom instance has no initialization just override initialize method and set value to true
     initialized = true;
   }
 
@@ -38,6 +40,8 @@ abstract class BaseBox extends MvvmInstance<dynamic> {
   void dispose() {
     super.dispose();
 
+    // you must set this flag to false at the end of dispose process
+    // if custom instance has no dispose actions just override dispose method and set value to false
     initialized = false;
   }
 }
@@ -73,6 +77,8 @@ class UsersBox extends BaseBox {
         withoutConnections: true,
     ),
   ];
+
+  late final testInstancePart1 = useInstancePart<TestInstancePart1>();
 
   @override
   List<EventBusSubscriber> subscribe() => [

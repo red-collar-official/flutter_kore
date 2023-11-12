@@ -1,21 +1,14 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:umvvm/umvvm.dart';
 
-class HttpRequest<T> extends RequestImplementation<T> {
+class HttpRequest<T> extends DioRequest<T> {
   HttpRequest() : super();
 
   @override
-  String get defaultBaseUrl => '';
-
-  @override
-  void logPrint(Object obj) {
-    // ignore
-  }
-
-  @override
-  void exceptionPrint(Object error, StackTrace trace) {
-    // ignore
-  }
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {},
+        exceptionPrint: (error, trace) {},
+      );
 
   @override
   void onAuthorization(dio.Dio dio) {
@@ -32,29 +25,14 @@ class HttpRequest<T> extends RequestImplementation<T> {
   }
 }
 
-class HttpRequest2<T> extends RequestImplementation<T> {
+class HttpRequest2<T> extends DioRequest<T> {
   HttpRequest2() : super();
 
   @override
-  Map<String, dynamic> get defaultHeaders => {};
-
-  @override
-  String get defaultBaseUrl => '';
-
-  @override
-  Iterable<dio.Interceptor> get defaultInterceptors => [
-    dio.LogInterceptor(),
-  ];
-
-  @override
-  void logPrint(Object obj) {
-    // ignore
-  }
-
-  @override
-  void exceptionPrint(Object error, StackTrace trace) {
-    // ignore
-  }
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {},
+        exceptionPrint: (error, trace) {},
+      );
 
   @override
   void onAuthorization(dio.Dio dio) {

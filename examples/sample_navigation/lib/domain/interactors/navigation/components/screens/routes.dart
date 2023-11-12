@@ -17,7 +17,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute? route) async {}
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @routes
@@ -159,7 +159,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   @Link(
     paths: ['posts/:{id}'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<RouteNames> post3({
     Post? post,
@@ -177,7 +177,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   @Link(
     paths: ['posts/:{id}/test'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<RouteNames> post4({
     Post? post,
@@ -303,6 +303,25 @@ class Routes extends RoutesBase with RoutesGen {
     return UIRoute(
       name: RouteNames.postsWithAnchor,
       defaultSettings: const UIRouteSettings(),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/test/:{id}'],
+    queriesForPath: [
+      ['filter'],
+    ],
+  )
+  UIRoute<RouteNames> postsWithQueriesForPath({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithQueriesForPath,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
       child: Container(),
     );
   }

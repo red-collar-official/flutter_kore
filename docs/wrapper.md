@@ -6,6 +6,8 @@ Wrapper can be just used as instance holder or contain logic for working with th
 
 If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseWrapper</b>.
 
+You also need to specify input type for wrappers. It is passed as generic argument. Then input is available in all initialization methods.
+
 Wrappers also can be singleton or default instances.
 
 Wrappers unlike interactors don`t have state, but they also can receive <b>EventBus</b> events.
@@ -109,4 +111,4 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
 }
 ```
 
-Instances can be then obtained using <b>app.instances.get<T>()</b> or <b>getLocalInstance</b> methods.
+Instances can be then obtained using <b>app.instances.get<T>()</b> or <b>getLocalInstance</b> methods. More information about this methods can be found [here](./di.md).

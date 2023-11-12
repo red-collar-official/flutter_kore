@@ -17,7 +17,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute? route) async {}
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @dialogs
@@ -85,7 +85,7 @@ class Dialogs extends RoutesBase with DialogsGen {
 
   @Link(
     paths: ['posts/:{id}'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<DialogNames> post3({
     int? post,
@@ -103,7 +103,7 @@ class Dialogs extends RoutesBase with DialogsGen {
 
   @Link(
     paths: ['posts/:{id}/test'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<DialogNames> post4({
     int? post,

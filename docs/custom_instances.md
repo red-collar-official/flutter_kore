@@ -2,6 +2,8 @@
 
 You can create custom instances by extending <b>MvvmInstance</b> class and mixing several mixins.
 
+You also need to specify input type for custom instances. It is passed as generic argument. Then input is available in all initialization methods.
+
 You can read about default methods of <b>MvvmInstance</b> [here](./mvvm_instance.md).
 
 Here we will discuss mixins.

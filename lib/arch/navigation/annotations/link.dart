@@ -1,5 +1,5 @@
 /// Annotation describing link parameters for given route
-/// 
+///
 /// Example:
 /// ```dart
 /// @Link(
@@ -21,11 +21,18 @@ class Link {
   /// Query params for this link
   /// Supported in the next formats
   /// 'name' - required query param
-  /// 'name?' - conditional query param
   /// 'name=test' - required query with given value
   /// 'name=test|test2' - required query that matches one of given values
   /// 'name=[test1, test2]' - required query param with list of values
   final List<String> query;
+
+  /// Query params for every link in [paths] array.
+  /// Supported in the next formats
+  /// 'name' - required query param
+  /// 'name=test' - required query with given value
+  /// 'name=test|test2' - required query that matches one of given values
+  /// 'name=[test1, test2]' - required query param with list of values
+  final List<List<String>>? queriesForPath;
 
   /// Custom handler for this route
   final Type? customHandler;
@@ -37,6 +44,9 @@ class Link {
   /// List of fragments supported by this link
   final List<String>? possibleFragments;
 
+  /// List of fragments supported by every link in [paths] array
+  final List<List<String>>? possibleFragmentsForPath;
+
   const Link({
     this.paths,
     this.query = const [],
@@ -44,5 +54,7 @@ class Link {
     this.regexes,
     this.customParamsMapper,
     this.possibleFragments,
+    this.queriesForPath,
+    this.possibleFragmentsForPath,
   });
 }

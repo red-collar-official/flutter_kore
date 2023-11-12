@@ -16,7 +16,7 @@ typedef AuthHandler = void Function(dio.Dio dio);
 /// Main implementation for Http requests using [Dio]
 ///
 /// ```dart
-/// class HttpRequest<T> extends RequestImplementation<T> {
+/// class HttpRequest<T> extends DioRequest<T> {
 ///   HttpRequest() : super();
 ///
 ///   @override
@@ -44,9 +44,9 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///
 ///}
 /// ```
-abstract class RequestImplementation<T> extends BaseRequest<T> {
+abstract class DioRequest<T> extends BaseRequest<T> {
   /// Dio cancel token for this request
-  /// changes after every [execute] call 
+  /// changes after every [execute] call
   var cancelToken = dio.CancelToken();
 
   /// Underlying [Dio] instance
@@ -56,25 +56,10 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   @visibleForTesting
   bool forceReturnNullFromRequest = false;
 
-  RequestImplementation() : super();
+  DioRequest() : super();
 
-  /// Default headers to be added to every instance
-  Map<String, dynamic> get defaultHeaders => {};
-
-  /// Default base url if [baseUrl] is not provided
-  String get defaultBaseUrl;
-
-  /// Default timeout if [timeout] is not provided
-  int get defaultTimeoutInSeconds => 10;
-
-  /// Default timeout if [timeout] is not provided
-  Iterable<dio.Interceptor> get defaultInterceptors => [];
-
-  /// Print function for [Dio] logger
-  void logPrint(Object obj);
-
-  /// Print function for [Dio] logger
-  void exceptionPrint(Object error, StackTrace trace);
+  /// Default settings for all requests
+  RequestSettings get defaultSettings;
 
   /// Function to retry error requests
   Future<dynamic> onError(dio.DioException error, RetryHandler retry);
@@ -149,7 +134,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       try {
         result = await parser!(responseBody.data, responseBody.headers.map);
       } catch (e, trace) {
-        exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint(e, trace);
 
         requestCollection.removeRequest(this);
 
@@ -164,7 +149,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       try {
         await databasePutDelegate?.call(result);
       } catch (e, trace) {
-        exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint(e, trace);
       }
     }
 
@@ -185,7 +170,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
         onPrefetchFromDatabase!(databaseData);
       } catch (e, trace) {
-        exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint(e, trace);
       }
     }
   }
@@ -202,7 +187,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         fromDatabase: databaseData != null,
       );
     } catch (e, trace) {
-      exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint(e, trace);
 
       return Response<T>(
         code: 0,
@@ -228,7 +213,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
         fromDatabase: databaseData != null,
       );
     } catch (e, trace) {
-      exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint(e, trace);
 
       return Response<T>(
         code: 0,
@@ -237,7 +222,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     }
   }
 
-  /// Returns simulated result for dio request 
+  /// Returns simulated result for dio request
   /// if simulate result value is provided
   Future<Response<T>?> simulateResultStep() async {
     if (simulateResult != null) {
@@ -277,13 +262,13 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
   dio.Dio _buildClient() {
     final client = dio.Dio();
 
-    client.options.baseUrl = baseUrl ?? defaultBaseUrl;
+    client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
-    final requestTimeout = timeout?.inSeconds ?? defaultTimeoutInSeconds;
+    final requestTimeout = timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
     client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
     client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
 
-    final resultHeaders = defaultHeaders;
+    final resultHeaders = defaultSettings.defaultHeaders;
 
     if (headers != null) {
       resultHeaders.addAll(headers!);
@@ -295,7 +280,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       dio.LogInterceptor(
         requestBody: true,
         responseBody: true,
-        logPrint: logPrint,
+        logPrint: defaultSettings.logPrint,
       ),
     ]);
 
@@ -303,8 +288,8 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
       client.interceptors.addAll(additionalInterceptors);
     }
 
-    if (defaultInterceptors.isNotEmpty) {
-      client.interceptors.addAll(defaultInterceptors);
+    if (defaultSettings.defaultInterceptors.isNotEmpty) {
+      client.interceptors.addAll(defaultSettings.defaultInterceptors);
     }
 
     client.transformer = dio.BackgroundTransformer();
@@ -321,7 +306,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     try {
       return await constructRequest(client, method, data);
     } catch (e, trace) {
-      exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint(e, trace);
 
       return error;
     }
@@ -334,7 +319,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
     try {
       response = await constructRequest(client, method, data);
     } on dio.DioException catch (error, trace) {
-      exceptionPrint(error, trace);
+      defaultSettings.exceptionPrint(error, trace);
 
       if (error.type == dio.DioExceptionType.cancel) {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
@@ -436,7 +421,7 @@ abstract class RequestImplementation<T> extends BaseRequest<T> {
 
     return resultUri;
   }
-  
+
   /// Cancels current request if it is still executing
   @mustCallSuper
   @override

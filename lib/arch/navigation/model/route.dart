@@ -20,4 +20,13 @@ class UIRoute<T> {
     required this.defaultSettings,
     required this.child,
   });
+
+  /// Returns copy of this object with changed default settings
+  UIRoute<T> copyWithDefaultSettings(UIRouteSettings settings) {
+    return UIRoute<T>(
+      name: name,
+      child: child,
+      defaultSettings: settings,
+    );
+  }
 }

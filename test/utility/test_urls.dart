@@ -1,7 +1,7 @@
 const testUrl = 'http://qwerty.com/test1';
 const testUrl2 = 'http://qwerty.com/test1?filter=1';
 const testUrl3 = 'http://qwerty.com/test1/testid?filter=1';
-const testUrl4 = 'http://qwerty.com/test1/testid?filter=1&query=5';
+const testUrl4 = 'http://qwerty.com/posts/1/test?filter=1&query=5';
 const testUrl5 = 'http://qwerty.com/test1/testid?filter=qwerty&query=5';
 
 const testUrl6 = 'http://qwerty.com/posts/';
@@ -16,3 +16,4 @@ const testUrl14 = 'http://qwerty.com/en/posts/test/1#state';
 const testUrl15 = 'http://qwerty1.com/en/postsbroken/';
 const testUrl16 = 'http://qwerty.com/posts/1?filter=qwerty1';
 const testUrl17 = 'http://qwerty.com/posts/1?filter=qwerty1#state';
+const testUrl18 = 'http://qwerty.com/en/posts/test/1?filter=qwerty1';

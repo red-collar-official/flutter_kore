@@ -7,11 +7,7 @@ part 'routes.navigation.dart';
 
 class TestMapper extends LinkMapper {
   @override
-  UIRoute constructRoute(
-    Map<String, String>? pathParams,
-    Map<String, String>? queryParams,
-    String? state,
-  ) {
+  UIRoute constructRoute(LinkParams params) {
     return UIRoute<RouteNames>(
       name: RouteNames.postsRegex,
       defaultSettings: const UIRouteSettings(
@@ -22,15 +18,15 @@ class TestMapper extends LinkMapper {
   }
 
   @override
-  (Map<String, String>?, Map<String, String>?, String?) mapParamsFromUrl(
+  LinkParams mapParamsFromUrl(
     String url,
   ) {
-    return (
-      {
+    return const LinkParams(
+      pathParams: {
         'testParam': 'qwerty',
       },
-      {},
-      null,
+      queryParams: {},
+      state: null,
     );
   }
 
@@ -51,7 +47,7 @@ class TestHandler extends LinkHandler {
   }
 
   @override
-  Future<void> processRoute(UIRoute? route) async {}
+  Future<void> processRoute(UIRoute route) async {}
 }
 
 @routes
@@ -201,7 +197,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   @Link(
     paths: ['posts/:{id}'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<RouteNames> post3({
     int? post,
@@ -221,7 +217,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   @Link(
     paths: ['posts/:{id}/test'],
-    query: ['filter', 'query?'],
+    query: ['filter', 'query'],
   )
   UIRoute<RouteNames> post4({
     int? post,
@@ -234,6 +230,7 @@ class Routes extends RoutesBase with RoutesGen {
       name: RouteNames.post4,
       defaultSettings: UIRouteSettings(
         global: pathParams != null,
+        id: queryParams!['query'],
       ),
       child: Container(),
     );
@@ -349,7 +346,9 @@ class Routes extends RoutesBase with RoutesGen {
   }) {
     return UIRoute(
       name: RouteNames.postsWithPrefix,
-      defaultSettings: const UIRouteSettings(),
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
+      ),
       child: Container(),
     );
   }
@@ -366,6 +365,26 @@ class Routes extends RoutesBase with RoutesGen {
       name: RouteNames.postsWithAnchor,
       defaultSettings: UIRouteSettings(
         id: state,
+        global: pathParams != null,
+      ),
+      child: Container(),
+    );
+  }
+
+  @Link(
+    paths: ['*/posts/test/:{id}'],
+    queriesForPath: [
+      ['filter'],
+    ],
+  )
+  UIRoute<RouteNames> postsWithQueriesForPath({
+    Map<String, dynamic>? pathParams,
+    Map<String, dynamic>? queryParams,
+  }) {
+    return UIRoute(
+      name: RouteNames.postsWithQueriesForPath,
+      defaultSettings: UIRouteSettings(
+        global: pathParams != null,
       ),
       child: Container(),
     );

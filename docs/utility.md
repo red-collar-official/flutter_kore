@@ -39,16 +39,48 @@ class ErrorFieldState extends FieldValidationState {
 
 This values used by <b>FormViewModelMixin</b>. More info about <b>FormViewModelMixin</b> below.
 
-There is also <b>ResultState</b> class to hold function execution result
+There is also <b>ResultState</b> class to hold function execution result:
 
-There are also two helper mixins that you can apply to your view models or instances
+```dart
+ResultState.success(result: 'test');
+ResultState.check(error: result.serverSideException);
+ResultState.error(
+  error: StandartEmptyException(),
+  messageToDisplay: app.localization.authorization('login_error'),
+);
+```
+
+You also can unwrap error with specific type with <b>unwrapError</b> method.
+
+```dart
+Future<ResultState> confirmEmail(String link) async {
+  final uri = Uri.parse(link);
+
+  // ...
+
+  if (error) {
+    return ResultState.error(
+      error: result.serverSideException!,
+      messageToDisplay: app.localization.global('something_went_wrong'),
+    );
+  }
+
+  return ResultState.success();
+}
+
+final confirmationResult = await confirmEmail(link);
+
+final error = confirmationResult.unwrapError<ServerSideException>();
+```
+
+There are also two helper mixins that you can apply to your view models or instances.
 
 #### UseDisposableMixin
 
-UseDisposableMixin can be applied to any <b>MvvmInstance</b>.
+<b>UseDisposableMixin</b> can be applied to any <b>MvvmInstance</b>.
 
-It provides methods to initialize disposable objects like <b>TextEditingController</b>
-They will be disposed authomatically
+It provides methods to initialize disposable objects like <b>TextEditingController</b>.
+They will be disposed authomatically when instance is disposed.
 
 Here is full list of supported initializers:
 
@@ -68,8 +100,6 @@ class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState
   late final emailController = useTextEditingController();
 }
 ```
-
-Using this method to initialize disposable objects you dont need to actually dispose them - it will be done automatically.
 
 #### FormViewModelMixin
 
