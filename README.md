@@ -55,6 +55,35 @@ Future<void> main() async {
   ));
 }
 
+class HttpRequest<T> extends DioRequest<T> {
+  @override
+  RequestSettings get defaultSettings => RequestSettings(
+        logPrint: (message) {
+          if (kDebugMode) {
+            print(message);
+          }
+        },
+        exceptionPrint: (error, trace) {
+          if (kDebugMode) {
+            print(error);
+            print(trace);
+          }
+        },
+      );
+
+  @override
+  void onAuthorization(Dio dio) {
+    if (token != null) {
+      dio.options.headers['Authorization'] = 'Bearer $token';
+    }
+  }
+
+  @override
+  Future onError(DioException error, RetryHandler retry) async {
+    return error;
+  }
+}
+
 @api
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
@@ -230,7 +259,7 @@ Learn about components:
 
 #### Important note
 
-To generage test coverage report run sh coverage.sh
+To generage test coverage report run sh coverage.sh.
 
-If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/)
+If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/).
 
