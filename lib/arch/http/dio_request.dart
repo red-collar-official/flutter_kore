@@ -257,11 +257,14 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
     client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
-    final requestTimeout = timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
+    final requestTimeout =
+        timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
     client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
     client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
 
-    final resultHeaders = defaultSettings.defaultHeaders;
+    final resultHeaders = Map<String, dynamic>.from(
+      defaultSettings.defaultHeaders,
+    );
 
     if (headers != null) {
       resultHeaders.addAll(headers!);
