@@ -1,5 +1,13 @@
 // coverage:ignore-file
 
+/// Annotate class as main Api holder
+///
+/// ```dart
+/// part 'apis.g.dart';
+///
+/// @mainApi
+/// class Apis with ApisGen {}
+/// ```
 class MainApiAnnotation {
   const MainApiAnnotation();
 }

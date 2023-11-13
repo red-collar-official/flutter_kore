@@ -11,6 +11,37 @@ import 'store.dart';
 /// Base class for storing test data
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
+/// 
+/// If used you need to call [initializeStatefullInstance] in [initialize] call
+/// And call [disposeStore] in [dispose] call 
+/// 
+/// ```dart
+/// abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmInstance<State, dynamic> {
+///   String get boxName;
+/// 
+///   late final hiveWrapper = app.instances.get<HiveWrapper>();
+/// 
+///   @mustCallSuper
+///   @override
+///   void initialize(Input? input) {
+///     super.initialize(input);
+/// 
+///     initializeStatefullInstance(input);
+/// 
+///     initialized = true;
+///   }
+/// 
+///   @mustCallSuper
+///   @override
+///   void dispose() {
+///     super.dispose();
+/// 
+///     disposeStore();
+/// 
+///     initialized = false;
+///   }
+/// }
+/// ```
 mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// [Store] instance containg [State] object
   late Store<State> _store;

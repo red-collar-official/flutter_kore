@@ -129,7 +129,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
             },
           ) as BaseInstancePart;
 
-          _setPartParentInstance(part);
+          _setPartRootParentInstance(part);
 
           list.add(part);
         }
@@ -148,7 +148,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
           },
         ) as BaseInstancePart;
 
-        _setPartParentInstance(part);
+        _setPartRootParentInstance(part);
 
         _parts.addAll({
           element.type: [part],
@@ -157,7 +157,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     }
   }
 
-  void _setPartParentInstance(BaseInstancePart part) {
+  /// Keeps part root parent instance in sync
+  void _setPartRootParentInstance(BaseInstancePart part) {
     if (this is BaseInstancePart) {
       part.rootParentInstance = (this as BaseInstancePart).parentInstance;
     }
@@ -194,7 +195,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
           },
         ) as BaseInstancePart;
 
-        _setPartParentInstance(part);
+        _setPartRootParentInstance(part);
 
         list.add(part);
 
@@ -215,7 +216,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
         },
       ) as BaseInstancePart;
 
-      _setPartParentInstance(part);
+      _setPartRootParentInstance(part);
 
       _parts[element.type] = [part];
 

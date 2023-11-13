@@ -45,7 +45,7 @@ abstract class InstancesModule {
 
   // coverage:ignore-end
 
-  /// Unique module id
+  /// Unique module id - this will be basically id of scope in DI container
   String get id;
 
   /// Returns list of connectors for this module for eventual dependent instance

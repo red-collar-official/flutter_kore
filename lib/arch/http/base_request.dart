@@ -137,7 +137,7 @@ abstract class BaseRequest<T> {
   /// ```
   ResponseParser<T>? parser;
 
-  /// body for this request - can be [Map] or [List]
+  /// body for this request
   dynamic body;
 
   /// Query for this request - will be added to the end of the [url]

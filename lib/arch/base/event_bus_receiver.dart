@@ -89,11 +89,13 @@ abstract class EventBusReceiver {
     return dynamicProcessor;
   }
 
+  /// Sets paused flag to false so events stop processing
   @mustCallSuper
   void pauseEventBusSubscription() {
     _paused = true;
   }
 
+  /// Resumes events processing
   @mustCallSuper
   void resumeEventBusSubscription({
     bool sendAllEventsReceivedWhilePause = true,

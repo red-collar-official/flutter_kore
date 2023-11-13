@@ -64,5 +64,6 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   // coverage:ignore-end
 }
 
+/// [BaseInstancePart] that applies to every [MvvmInstance] subtype
 abstract class UniversalInstancePart<Input>
     extends BaseInstancePart<Input, MvvmInstance> {}

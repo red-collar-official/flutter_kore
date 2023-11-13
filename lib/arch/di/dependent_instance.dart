@@ -6,6 +6,39 @@ import 'package:umvvm/umvvm.dart';
 
 /// Mixin that contains declarations of instance dependencies
 /// Contains methods to declare, initialize and get them
+/// 
+/// If used you need to call [initializeDependencies] in [initialize] call
+/// And call [disposeDependencies] in [dispose] call 
+/// 
+/// Example:
+/// 
+/// ```dart
+/// abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<dynamic> {
+///   String get boxName;
+///
+///   late final hiveWrapper = app.instances.get<HiveWrapper>();
+///
+///   @mustCallSuper
+///   @override
+///   void initialize(dynamic input) {
+///     super.initialize(input);
+///
+///     initializeDependencies(input);
+///
+///     initialized = true;
+///   }
+///
+///   @mustCallSuper
+///   @override
+///   void dispose() {
+///     super.dispose();
+///
+///     disposeDependencies();
+
+///     initialized = false;
+///   }
+/// }
+/// ```
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Local instances
   /// Does not hold singleton instances

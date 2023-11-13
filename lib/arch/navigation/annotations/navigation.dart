@@ -1,4 +1,12 @@
 /// Annotation to mark app navigation interactor
+///
+/// ```dart
+/// @singleton
+/// @AppNavigation(tabs: AppTab, deepLinks: DeepLinksInteractor)
+/// class NavigationInteractor extends NavigationInteractorDeclaration<NavigationState> {
+///   // navigation code...
+/// }
+/// ```
 class AppNavigation {
   const AppNavigation({
     this.deepLinks,
@@ -14,4 +22,12 @@ class AppNavigation {
 }
 
 /// Annotation to mark app navigation interactor
+/// 
+/// ```dart
+/// @singleton
+/// @AppNavigation(tabs: AppTab, deepLinks: DeepLinksInteractor)
+/// class NavigationInteractor extends NavigationInteractorDeclaration<NavigationState> {
+///   // navigation code...
+/// }
+/// ```
 const appNavigation = AppNavigation();

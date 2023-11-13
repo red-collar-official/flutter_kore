@@ -19,11 +19,11 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   @override
   void addRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     try {
-      _tabRouteStack[currentTab]!.add(UIRouteModel(
+      _tabRouteStack[tab]!.add(UIRouteModel(
         name: routeName,
         settings: settings,
       ));
@@ -35,11 +35,11 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   @override
   void replaceLastRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     try {
-      final stack = _tabRouteStack[currentTab]!;
+      final stack = _tabRouteStack[tab]!;
 
       stack[stack.length - 1] = UIRouteModel(
         name: routeName,
@@ -53,14 +53,14 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   @override
   bool checkUnique({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
   }) {
-    if (currentTab == null) {
+    if (tab == null) {
       return false;
     }
 
-    return _tabRouteStack[currentTab]!
+    return _tabRouteStack[tab]!
             .indexWhere((element) => element.name == routeName) ==
         -1;
   }

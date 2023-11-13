@@ -19,18 +19,11 @@ typedef AuthHandler = void Function(dio.Dio dio);
 /// class HttpRequest<T> extends DioRequest<T> {
 ///   HttpRequest() : super();
 ///
-///   @override
-///   Map<String, dynamic> get defaultHeaders => {};
-///
-///   @override
-///   String get defaultBaseUrl => '';
-///
-///   @override
-///   void logPrint(Object obj) {
-///     if (kDebugMode) {
-///       print(obj);
-///     }
-///   }
+///  @override
+///  RequestSettings get defaultSettings => RequestSettings(
+///        logPrint: (message) {},
+///        exceptionPrint: (error, trace) {},
+///      );
 ///
 ///  @override
 ///  void onAutharization(Dio dio) {

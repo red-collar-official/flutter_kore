@@ -19,7 +19,7 @@ class GlobalNavigationStack<AppTabType>
   @override
   void addRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     _routeStack.add(
@@ -33,7 +33,7 @@ class GlobalNavigationStack<AppTabType>
   @override
   void replaceLastRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     _routeStack[_routeStack.length - 1] = UIRouteModel(
@@ -45,7 +45,7 @@ class GlobalNavigationStack<AppTabType>
   @override
   bool checkUnique({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
   }) {
     return _routeStack.indexWhere((element) => element.name == routeName) == -1;

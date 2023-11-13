@@ -45,14 +45,17 @@ class RequestCollection {
     }
   }
 
+  /// Adds request to collection
   void addRequest(BaseRequest request) {
     requests.add(request);
   }
 
+  /// Removes request from collection
   void removeRequest(BaseRequest request) {
     requests.remove(request);
   }
 
+  /// /// Removes all requests from collection
   void removeAllRequests() {
     if (requests.isEmpty) {
       return;

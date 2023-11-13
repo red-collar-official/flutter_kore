@@ -1,9 +1,9 @@
 // coverage:ignore-file
 
 /// Default scopes for app
-/// Do not use ths predefined ids
+/// Do not use this predefined ids
 class BaseScopes {
-  /// Global scope for app level sigletons
+  /// Global scope for app level singletons
   static const global = 'global';
 
   /// Scope for global interactors that will be disposed 

@@ -408,7 +408,7 @@ class _PostsViewWidgetState extends NavigationView<HomeView, HomeViewState, Home
 }
 ```
 
-Do not for
+Inside <b>NavigationViewModel</b> you need to use <b>pop</b> method of view model instead of <b>app.navigation.pop()</b>.
 
 ### Deep links
 
@@ -417,6 +417,9 @@ Navigation supports deeplinks with <b>BaseDeepLinksInteractor</b>. Deep links in
 You need to specify it in <b>AppNavigation</b> annotation <b>deepLinks</b> arguments.
 
 You need to provide methods to get initial link and get stream of deep links.
+
+You also can override <b>onLinkReceived</b> to process some links that does not require route processing. Do not forget to call <b>super.onLinkReceived(link)</b>.
+
 To respond to deep links define routes with <b>@Link</b> annotation.
 Example for this will be in next section.
 
@@ -441,6 +444,19 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 
   @override
   int initialState(Map<String, dynamic>? input) => 1;
+
+  @override
+  Future<void> onLinkReceived(String? link) async {
+    if (link == null) {
+      return;
+    }
+
+    if (link.contains('test')) {
+      // do something
+    } else {
+      await super.onLinkReceived(link);
+    }
+  }
 
   @override
   Stream<String> linkStream() {

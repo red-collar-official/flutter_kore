@@ -168,11 +168,11 @@ class StringWrapper extends AsyncBaseWrapper<String, Map<String, dynamic>> {
 ```
 
 In last example there is also <b>initializationOrder</b> field that is used to specify the order of singleton initialization. 
-Only matters for singleton instances.
+Only matters for singleton async instances.
 
 If this field is specified <b>awaitInitialization</b> value is also must be set to true.
 
-This flag indicates that app creation process will await initialization of this instance. Only matters for singleton instances.
+This flag indicates that app creation process will await initialization of this instance. Only matters for async singleton instances.
 
 You also need to specify <b>isAsync</b> flag for async instance.
 

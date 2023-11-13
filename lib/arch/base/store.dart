@@ -63,16 +63,16 @@ class Store<State> {
         message: 'Can\'t call updateState after dispose.',
       );
     }
-    
+
     _state.update(update);
   }
 
-  /// Initializes internal [Observable]
+  /// Initializes internal state [Observable]
   void initialize(State state) {
     _state = Observable<State>.initial(state);
   }
 
-  /// Disposes [Observable]
+  /// Disposes internal state [Observable]
   void dispose() {
     if (_isDisposed) {
       throw IllegalStateException(
@@ -120,6 +120,8 @@ class Store<State> {
     }
 
     return _state.stream.map((event) => StoreChange(
-        mapper(event.previous ?? event.next!), mapper(event.next as State)));
+          mapper(event.previous ?? event.next!),
+          mapper(event.next as State),
+        ));
   }
 }

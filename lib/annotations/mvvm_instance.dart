@@ -12,12 +12,30 @@
 /// ```
 ///
 class Instance {
+  /// Input type for this instance. Map<String, dynamic> by default
   final Type inputType;
+
+  /// Flag indicating is this instance singleton - defaults to false
   final bool singleton;
+
+  /// Flag indicating is this instance lazy singleton - defaults to false. 
+  /// Only matters if [singleton] is set to true
   final bool lazy;
+
+  /// Initialization order for this instance. 
+  /// Only matters if [singleton], [async] 
+  /// and [awaitInitialization] are set to true
   final int? initializationOrder;
+
+  /// Flag indicating that initialization of 
+  /// this instance needs to be awaited at app startup - defaults to false
+  /// Only matters if [singleton], [async] are set to true
   final bool awaitInitialization;
+
+  /// Flag indicating that this instance is async - has async initialization
   final bool async;
+
+  /// Flag indicating that this instance is [BaseInstancePart]
   final bool part;
 
   const Instance({

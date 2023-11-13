@@ -14,15 +14,41 @@ import 'package:umvvm/arch/di/base_scopes.dart';
 /// }
 /// ```
 class Connector {
+  /// Actual type of instance to connect
   final Type type;
+
+  /// Input for connected instance
   final dynamic input;
+
+  /// Same as [input], but if [count] provided 
+  /// allows to pass unique input to every instance
   final dynamic Function(int)? inputForIndex;
+
+  /// Count of instances to be connected. Defaults to 1
   final int count;
+
+  /// Scope in whith instance should be obtained. Defaults to [BaseScopes.weak].
   final String scope;
+
+  /// Flag indicating that instance is async
   final bool async;
+
+  /// Initialization order for this instance. 
+  /// Only matters for singletons with [async] 
+  /// and [awaitInitialization] set to true
   final int? initializationOrder;
+
+  /// This flag indicates that app creation process will await initialization of this instance. 
+  /// Only matters for async singleton instances.
   final bool awaitInitialization;
+
+  /// Flag indicating that instance needs to be 
+  /// connected without initalization of dependencies and event bus subscription
   final bool withoutConnections;
+
+  /// Flag indicating that this connector is lazy. If set to true instances
+  /// need to be obtained with [getLazyLocalInstance] 
+  /// and [getAsyncLazyLocalInstance] instead of [getLocalInstance]
   final bool lazy;
 
   const Connector({

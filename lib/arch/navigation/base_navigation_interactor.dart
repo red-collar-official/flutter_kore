@@ -343,7 +343,7 @@ abstract class BaseNavigationInteractor<
     if (routeSettings.uniqueInStack &&
         !navigationStack.checkUnique(
           routeName: routeName,
-          currentTab: currentTab,
+          tab: currentTab,
           global: global,
         ) &&
         !routeSettings.replace) {
@@ -401,7 +401,7 @@ abstract class BaseNavigationInteractor<
       // if replace flag is provided we clear stack and navigator state
       navigationStack.replaceLastRoute(
         routeName: routeName,
-        currentTab: currentTab,
+        tab: currentTab,
         settings: routeSettings,
       );
 
@@ -413,7 +413,7 @@ abstract class BaseNavigationInteractor<
 
       navigationStack.addRoute(
         routeName: routeName,
-        currentTab: currentTab,
+        tab: currentTab,
         settings: routeSettings,
       );
 
@@ -447,7 +447,7 @@ abstract class BaseNavigationInteractor<
     if (dialogSettings.uniqueInStack &&
         !navigationStack.checkUnique(
           routeName: dialog,
-          currentTab: currentTab,
+          tab: currentTab,
           global: true,
         )) {
       return;
@@ -462,7 +462,7 @@ abstract class BaseNavigationInteractor<
 
     navigationStack.addRoute(
       routeName: dialogName,
-      currentTab: currentTab,
+      tab: currentTab,
       settings: dialogSettings,
     );
 
@@ -505,7 +505,7 @@ abstract class BaseNavigationInteractor<
     if (bottomSheetSettings.uniqueInStack &&
         !navigationStack.checkUnique(
           routeName: bottomSheet,
-          currentTab: currentTab,
+          tab: currentTab,
           global: true,
         )) {
       return;
@@ -520,7 +520,7 @@ abstract class BaseNavigationInteractor<
 
     navigationStack.addRoute(
       routeName: bottomSheetName,
-      currentTab: currentTab,
+      tab: currentTab,
       settings: bottomSheetSettings,
     );
 

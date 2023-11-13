@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:umvvm/umvvm.dart';
 
+/// Simple model class describing object change - next and previous values
 class ObservableChange<T> {
+  /// New object value
   final T? next;
+
+  /// Previous value of object
   final T? previous;
 
   ObservableChange(

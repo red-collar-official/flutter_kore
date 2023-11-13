@@ -39,14 +39,14 @@ class NavigationStack<AppTabType> {
   /// CurrentTab is always null for global navigation
   void addRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     final stack = _getStack(settings.global);
 
     stack.addRoute(
       routeName: routeName,
-      currentTab: currentTab,
+      tab: tab,
       settings: settings,
     );
   }
@@ -57,14 +57,14 @@ class NavigationStack<AppTabType> {
   /// CurrentTab is always null for global navigation
   void replaceLastRoute({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required UIRouteSettings settings,
   }) {
     final stack = _getStack(settings.global);
 
     stack.replaceLastRoute(
       routeName: routeName,
-      currentTab: currentTab,
+      tab: tab,
       settings: settings,
     );
   }
@@ -89,14 +89,14 @@ class NavigationStack<AppTabType> {
   /// Therefore route name is [Object] returns true if object is not present in stack
   bool checkUnique({
     required dynamic routeName,
-    AppTabType? currentTab,
+    AppTabType? tab,
     required bool global,
   }) {
     final stack = _getStack(global);
 
     return stack.checkUnique(
       routeName: routeName,
-      currentTab: currentTab,
+      tab: tab,
       global: global,
     );
   }
