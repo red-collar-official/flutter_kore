@@ -152,8 +152,10 @@ final class ScopedContainer<T> {
     final scopedInstances = _instances[scopeId];
 
     if (index == null) {
-      scopedInstances?.forEach((key, value) {
-        value.forEach(onRemove);
+      final typeInstances = scopedInstances?[type];
+
+      typeInstances?.forEach((value) {
+        onRemove(value);
       });
 
       scopedInstances?.remove(type);
