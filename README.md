@@ -110,9 +110,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> 
     late Response<List<Post>> response;
 
     if (refresh) {
-      response = await executeRequest(app.apis.posts.getPosts(0, limit));
+      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
     } else {
-      response = await executeRequest(app.apis.posts.getPosts(offset, limit));
+      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(offset, limit));
     }
 
     if (response.isSuccessful) {

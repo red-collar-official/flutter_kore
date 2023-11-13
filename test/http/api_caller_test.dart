@@ -42,11 +42,11 @@ void main() {
       late Response<int> response1;
       late Response<int> response2;
 
-      unawaited(interactor.executeRequest(request).then((value) {
+      unawaited(interactor.executeAndCancelOnDispose(request).then((value) {
         response1 = value;
       }));
 
-      unawaited(interactor.executeRequest(request2).then((value) {
+      unawaited(interactor.executeAndCancelOnDispose(request2).then((value) {
         response2 = value;
       }));
 

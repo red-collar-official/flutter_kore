@@ -1,13 +1,15 @@
 import 'package:umvvm/umvvm.dart';
 
-/// Mixin containing logic to collect requests 
-/// in collection and cancel them in a batch 
+/// Mixin containing logic to collect requests
+/// in collection and cancel them in a batch
 mixin ApiCaller<Input> on MvvmInstance<Input> {
   /// Collection of requests running in this instance
   final List<BaseRequest> requests = [];
 
   /// Executes request and adds it in local requests collection
-  Future<Response<T>> executeRequest<T>(BaseRequest<T> request) async {
+  Future<Response<T>> executeAndCancelOnDispose<T>(
+    BaseRequest<T> request,
+  ) async {
     requests.add(request);
 
     final result = await request.execute();

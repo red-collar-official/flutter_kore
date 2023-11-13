@@ -5,7 +5,7 @@ import 'package:umvvm/umvvm.dart';
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
-/// with [executeRequest] method
+/// with [executeAndCancelOnDispose] method
 /// 
 /// Example: 
 /// 
@@ -66,7 +66,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
-/// with [executeRequest] method
+/// with [executeAndCancelOnDispose] method
 /// 
 /// Example: 
 /// 

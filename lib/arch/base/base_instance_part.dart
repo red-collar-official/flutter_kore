@@ -8,7 +8,7 @@ import 'package:umvvm/umvvm.dart';
 /// You can specify input type for part
 /// Parts must be annotated with [instancePart] annotation
 /// You also can execute requests and cancel them automatically when part will be disposed
-/// with [executeRequest] method
+/// with [executeAndCancelOnDispose] method
 /// 
 /// Example:
 /// 

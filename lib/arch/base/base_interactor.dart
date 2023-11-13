@@ -6,7 +6,7 @@ import 'package:umvvm/umvvm.dart';
 /// Interactors can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when interactor will be disposed
-/// with [executeRequest] method
+/// with [executeAndCancelOnDispose] method
 ///
 /// Example:
 ///

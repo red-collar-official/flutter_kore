@@ -662,6 +662,6 @@ class TestInteractorWithRequest extends BaseInteractor<int, int?> {
   int initialState(int? input) => input ?? 0;
 
   Future<void> executeTestRequest(HttpRequest request) async {
-    await executeRequest(request);
+    await executeAndCancelOnDispose(request);
   }
 }
