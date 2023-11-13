@@ -1,8 +1,14 @@
 import 'package:umvvm/umvvm.dart';
 
+/// Simple model class with link params
 class LinkParams {
+  /// Path params for link
   final Map<String, String>? pathParams;
+
+  /// Query params for link
   final Map<String, String>? queryParams;
+
+  /// Fragment value for link
   final String? state;
 
   const LinkParams({
@@ -14,7 +20,7 @@ class LinkParams {
 
 /// Class describing mapper of url parameters to route
 ///
-/// Example
+/// Example:
 ///
 /// ```dart
 /// class TestMapper extends LinkMapper {

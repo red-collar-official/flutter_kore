@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 /// }
 /// ```
 abstract class BaseWidget extends StatefulWidget {
+  /// Any view model to be passed to view state
   final dynamic viewModel;
 
   const BaseWidget({

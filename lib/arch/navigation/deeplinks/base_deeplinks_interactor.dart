@@ -6,7 +6,9 @@ import 'package:umvvm/umvvm.dart';
 /// Base interactor for handling links in app
 /// Contains methods to get initial app deeplink and deeplink stream
 /// 
-/// Example
+/// You can obtain instance with app.navigation.deeplinks
+/// 
+/// Example:
 /// 
 /// ```dart
 /// class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {

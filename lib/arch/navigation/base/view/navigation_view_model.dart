@@ -3,6 +3,9 @@ import 'package:umvvm/umvvm.dart';
 
 /// Base view model if app uses navigation
 /// Must be extended by any view if navigation used
+/// 
+/// Note: inside navigation view models call view model pop method instead of
+/// app.navigation.pop()
 abstract class NavigationViewModel<Widget extends StatefulWidget, State>
     extends BaseViewModel<Widget, State> {
   dynamic screenTab;

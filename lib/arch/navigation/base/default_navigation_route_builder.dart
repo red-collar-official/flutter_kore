@@ -17,51 +17,47 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
 
   /// Pushes dialog route to [Navigator]
   @override
-  Future<Object?>? pushDialogRoute({
+  PopupRoute buildDialogRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
     required VoidCallback pop,
   }) =>
-      navigator.currentState?.push(
-        DialogRoute(
-          barrierDismissible: dismissable,
-          barrierColor: UINavigationSettings.barrierColor,
-          transitionDuration: UINavigationSettings.transitionDuration,
-          pageBuilder: (
-            BuildContext buildContext,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) {
-            return _overlayRouteContainer(
-              dismissable: dismissable,
-              child: child,
-              pop: pop,
-            );
-          },
-        ),
+      DialogRoute(
+        barrierDismissible: dismissable,
+        barrierColor: UINavigationSettings.barrierColor,
+        transitionDuration: UINavigationSettings.transitionDuration,
+        pageBuilder: (
+          BuildContext buildContext,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+        ) {
+          return _overlayRouteContainer(
+            dismissable: dismissable,
+            child: child,
+            pop: pop,
+          );
+        },
       );
 
   /// Pushes bottom sheet route to [Navigator]
   @override
-  Future? pushBottomSheetRoute({
+  PopupRoute buildBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
     required VoidCallback pop,
   }) =>
-      navigator.currentState?.push(
-        ModalBottomSheetRoute(
-          builder: (BuildContext buildContext) {
-            return _overlayRouteContainer(
-              dismissable: dismissable,
-              child: child,
-              pop: pop,
-            );
-          },
-          dismissible: dismissable,
-          enableDrag: dismissable,
-        ),
+      ModalBottomSheetRoute(
+        builder: (BuildContext buildContext) {
+          return _overlayRouteContainer(
+            dismissable: dismissable,
+            child: child,
+            pop: pop,
+          );
+        },
+        dismissible: dismissable,
+        enableDrag: dismissable,
       );
 
   /// Pushes route to [Navigator]

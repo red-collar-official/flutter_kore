@@ -4,7 +4,7 @@ import 'package:umvvm/umvvm.dart';
 
 /// Class describing parser for link and mapping to route
 ///
-/// Example
+/// Example:
 ///
 /// ```dart
 /// class PostLinkHandler extends BottomSheetLinkHandler {

@@ -72,6 +72,13 @@ abstract class UMvvmApp<
     registerInstances();
     await createSingletons();
 
+    UINavigationSettings.transitionDuration = const Duration(milliseconds: 200);
+    UINavigationSettings.barrierColor = Colors.black.withOpacity(0.5);
+    UINavigationSettings.bottomSheetBorderRadius = const BorderRadius.only(
+      topLeft: Radius.circular(8),
+      topRight: Radius.circular(8),
+    );
+
     _initialized = true;
   }
 

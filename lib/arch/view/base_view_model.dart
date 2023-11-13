@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create view models
+/// Contains dependencies, event bus subscription, state and  parts
 ///
 /// Example:
 /// 

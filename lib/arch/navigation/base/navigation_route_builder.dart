@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/arch/navigation/base/default_navigation_route_builder.dart';
 
 /// Class describing how to open app routes
+/// You can override builders for bottom sheets, dialogs and routes
 abstract class NavigationRouteBuilder {
   const NavigationRouteBuilder();
 
@@ -12,13 +13,13 @@ abstract class NavigationRouteBuilder {
       const DefaultNavigationRouteBuilder();
 
   /// Pushes dialog route to [Navigator]
-  Future<Object?>? pushDialogRoute({
+  PopupRoute buildDialogRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
     required VoidCallback pop,
-  }) async {
-    return defaultRouteBuilder.pushDialogRoute(
+  }) {
+    return defaultRouteBuilder.buildDialogRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
@@ -27,13 +28,13 @@ abstract class NavigationRouteBuilder {
   }
 
   /// Pushes bottom sheet route to [Navigator]
-  Future? pushBottomSheetRoute({
+  PopupRoute buildBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
     required VoidCallback pop,
-  }) async {
-    return defaultRouteBuilder.pushBottomSheetRoute(
+  }) {
+    return defaultRouteBuilder.buildBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,

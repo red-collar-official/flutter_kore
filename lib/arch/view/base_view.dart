@@ -85,10 +85,13 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
   /// Factory method for view model for this view
   ViewModel createViewModel();
 
+  /// Builds widget that represents this view
   Widget buildView(BuildContext context);
 
+  /// Flag indicating that this view is inside tab view, keeps alive this widget
   bool get isInnerView => false;
 
+  /// Flag indicating if view model needs to be paused when became invisible
   bool get pauseViewModelWhenViewBecomeInvisible => true;
 
   @override

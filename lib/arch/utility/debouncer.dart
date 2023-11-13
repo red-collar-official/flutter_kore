@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:umvvm/umvvm.dart';
 
 /// Utility class to debounce actions
-/// /// 
+/// 
 /// Example:
 /// 
 /// ```dart
@@ -14,7 +14,9 @@ import 'package:umvvm/umvvm.dart';
 /// });
 /// ```
 class Debouncer {
+  /// Delay for this debouncer
   Duration delay;
+
   Timer? _timer;
 
   /// Flag indicating that this debouncer is disposed
@@ -48,7 +50,7 @@ class Debouncer {
     });
   }
 
-  // ignore: always_declare_return_types
+  /// Cancel internal timer and sets disposed flag to true
   void dispose() {
     _timer?.cancel();
 
@@ -57,7 +59,7 @@ class Debouncer {
     _isDisposed = true;
   }
 
-  /// Executes callback immediately
+  /// Immediately executes debouncer action and resets internal timer
   void processPendingImmediately() {
     _timer?.cancel();
 

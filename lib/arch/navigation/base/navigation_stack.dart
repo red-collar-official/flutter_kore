@@ -7,11 +7,12 @@ import 'stack/global_navigation_stack.dart';
 import 'stack/tab_navigation_stack.dart';
 
 /// Class that holds navigation history for Navigation interactors
+/// Contains map of tab stacks and global stack
 class NavigationStack<AppTabType> {
   /// Map of all routes that are currently active in tabs
   final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStack;
 
-  /// Map of all routes that are currently active in tabs
+  /// List of all routes that are currently active in tabs
   final List<UIRouteModel> Function() routeStack;
 
   NavigationStack({

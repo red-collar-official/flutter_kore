@@ -153,121 +153,123 @@ abstract class RoutesBase {
   ) {
     final decisionSubroutes = <String, int>{};
 
-    if (query.isNotEmpty) {
-      final suggestions = possibleSubroutes.keys.map((element) {
-        final subroute = element as String;
+    if (query.isEmpty) {
+      return decisionSubroutes;
+    }
 
-        if (subroute.contains('|')) {
-          var canBeSelectedQueryParams = 0;
-          final alreadyChecked = <String>[];
-          final rules = subroute.split('|');
+    final suggestions = possibleSubroutes.keys.map((element) {
+      final subroute = element as String;
 
-          for (final rule in rules) {
-            var queryCheckResult = 0;
+      if (!subroute.contains('|')) {
+        for (final queryParam in query.entries) {
+          if (_checkSubroute(subroute, queryParam.key, queryParam.value)) {
+            return MapEntry(subroute, 1);
+          }
+        }
 
-            if (rule.startsWith('#')) {
-              final ruleKey = rule.split('=')[0];
+        return MapEntry(subroute, 0);
+      }
 
-              if (alreadyChecked.contains(ruleKey)) {
-                continue;
-              }
+      var canBeSelectedQueryParams = 0;
+      final alreadyChecked = <String>[];
+      final rules = subroute.split('|');
 
-              final requiredRules = rules.where(
-                (element) => element.contains('$ruleKey='),
-              );
+      for (final rule in rules) {
+        var queryCheckResult = 0;
 
-              var ruleIsSatisfied = false;
+        if (rule.startsWith('#')) {
+          final ruleKey = rule.split('=')[0];
 
-              for (final requiredRule in requiredRules) {
-                if (requiredRule.substring(2) == fragment) {
-                  ruleIsSatisfied = true;
-                  break;
-                }
-              }
-
-              if (!ruleIsSatisfied) {
-                canBeSelectedQueryParams = 0;
-                break;
-              } else {
-                canBeSelectedQueryParams++;
-                alreadyChecked.add(ruleKey);
-              }
-            } else if (rule.contains('=')) {
-              final ruleKey = rule.split('=')[0];
-
-              if (alreadyChecked.contains(ruleKey)) {
-                continue;
-              }
-
-              final requiredRules = rules.where(
-                (element) => element.contains('$ruleKey='),
-              );
-
-              var ruleIsSatisfied = false;
-
-              for (final requiredRule in requiredRules) {
-                if (query.entries.where((element) {
-                  final formattedQuery = element.value.length != 1
-                      ? '${element.key}=${element.value}'
-                      : '${element.key}=${element.value[0]}';
-
-                  return requiredRule == formattedQuery;
-                }).isNotEmpty) {
-                  ruleIsSatisfied = true;
-                  break;
-                }
-              }
-
-              if (!ruleIsSatisfied) {
-                canBeSelectedQueryParams = 0;
-                break;
-              } else {
-                canBeSelectedQueryParams++;
-                alreadyChecked.add(ruleKey);
-              }
-            } else {
-              for (final queryParam in query.entries) {
-                if (alreadyChecked.contains(queryParam.key)) {
-                  continue;
-                }
-
-                final routeCheckResult = _checkSubroute(
-                  rule,
-                  queryParam.key,
-                  queryParam.value,
-                );
-
-                if (routeCheckResult) {
-                  queryCheckResult++;
-                  canBeSelectedQueryParams++;
-                  alreadyChecked.add(queryParam.key);
-                }
-              }
-
-              if (queryCheckResult == 0 && !rule.contains('?')) {
-                canBeSelectedQueryParams = 0;
-                break;
-              }
-            }
-
-            queryCheckResult = 0;
+          if (alreadyChecked.contains(ruleKey)) {
+            continue;
           }
 
-          return MapEntry(subroute, canBeSelectedQueryParams);
+          final requiredRules = rules.where(
+            (element) => element.contains('$ruleKey='),
+          );
+
+          var ruleIsSatisfied = false;
+
+          for (final requiredRule in requiredRules) {
+            if (requiredRule.substring(2) == fragment) {
+              ruleIsSatisfied = true;
+              break;
+            }
+          }
+
+          if (!ruleIsSatisfied) {
+            canBeSelectedQueryParams = 0;
+            break;
+          } else {
+            canBeSelectedQueryParams++;
+            alreadyChecked.add(ruleKey);
+          }
+        } else if (rule.contains('=')) {
+          final ruleKey = rule.split('=')[0];
+
+          if (alreadyChecked.contains(ruleKey)) {
+            continue;
+          }
+
+          final requiredRules = rules.where(
+            (element) => element.contains('$ruleKey='),
+          );
+
+          var ruleIsSatisfied = false;
+
+          for (final requiredRule in requiredRules) {
+            if (query.entries.where((element) {
+              final formattedQuery = element.value.length != 1
+                  ? '${element.key}=${element.value}'
+                  : '${element.key}=${element.value[0]}';
+
+              return requiredRule == formattedQuery;
+            }).isNotEmpty) {
+              ruleIsSatisfied = true;
+              break;
+            }
+          }
+
+          if (!ruleIsSatisfied) {
+            canBeSelectedQueryParams = 0;
+            break;
+          } else {
+            canBeSelectedQueryParams++;
+            alreadyChecked.add(ruleKey);
+          }
         } else {
           for (final queryParam in query.entries) {
-            if (_checkSubroute(subroute, queryParam.key, queryParam.value)) {
-              return MapEntry(subroute, 1);
+            if (alreadyChecked.contains(queryParam.key)) {
+              continue;
+            }
+
+            final routeCheckResult = _checkSubroute(
+              rule,
+              queryParam.key,
+              queryParam.value,
+            );
+
+            if (routeCheckResult) {
+              queryCheckResult++;
+              canBeSelectedQueryParams++;
+              alreadyChecked.add(queryParam.key);
             }
           }
 
-          return MapEntry(subroute, 0);
+          if (queryCheckResult == 0 && !rule.contains('?')) {
+            canBeSelectedQueryParams = 0;
+            break;
+          }
         }
-      });
 
-      for (final element in suggestions) {
-        decisionSubroutes[element.key] = element.value;
+        queryCheckResult = 0;
       }
+
+      return MapEntry(subroute, canBeSelectedQueryParams);
+    });
+
+    for (final element in suggestions) {
+      decisionSubroutes[element.key] = element.value;
     }
 
     return decisionSubroutes;
