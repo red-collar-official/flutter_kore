@@ -12,6 +12,7 @@ import '../mocks/request.dart';
 const testMockPath = testBaseUrl + testPath;
 
 const testPath = '/qwerty';
+const testHeaders = {'testParam': 1};
 const testBaseUrl = 'https://test.com';
 const testParam = 'testParam';
 const testBody = 'testParam';
@@ -74,6 +75,21 @@ void addTestNullResponsesToDio(dio.Dio dio) {
     (server) {
       server.reply(500, null);
     },
+  );
+}
+
+void addTestResponsesToDioForHeadersTest(dio.Dio dio) {
+  final dioAdapter = DioAdapter(dio: dio);
+
+  // ignore: cascade_invocations
+  dioAdapter.onGet(
+    testMockPath,
+    (server) => server.reply(
+      200,
+      1,
+      delay: const Duration(milliseconds: 100),
+    ),
+    headers: testHeaders,
   );
 }
 
@@ -230,17 +246,6 @@ void main() {
 
       expect(result.isSuccessful, true);
       expect(result.result, 1);
-    });
-
-    test('Request headers test', () async {
-      final request = HttpRequest<int>()
-        ..method = RequestMethod.get
-        ..baseUrl = testBaseUrl
-        ..url = testPath
-        ..headers = testBodyMap
-        ..simulateResult = Response(code: 200, result: 1);
-
-      expect(request.dioInstance!.options.headers, testBodyMap);
     });
 
     test('Request additionalInterceptors test', () async {
@@ -635,6 +640,21 @@ void main() {
         ..formData = Future.value(testFormData);
 
       addTestResponsesForParamsToDio(request.dioInstance!);
+
+      final result = await request.execute();
+
+      expect(result.isSuccessful, true);
+      expect(result.result, 1);
+    });
+
+    test('Request headers test', () async {
+      final request = HttpRequest<int>()
+        ..method = RequestMethod.get
+        ..baseUrl = testBaseUrl
+        ..url = testPath
+        ..headers = testHeaders;
+
+      addTestResponsesToDioForHeadersTest(request.dioInstance!);
 
       final result = await request.execute();
 

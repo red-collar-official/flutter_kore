@@ -607,5 +607,97 @@ void main() {
         1,
       );
     });
+
+    test('NavigationInteractor route uniqueInStack test', () async {
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          uniqueInStack: true,
+        ),
+      );
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          uniqueInStack: true,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        2,
+      );
+    });
+
+    test('NavigationInteractor route dismissable test', () async {
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          dismissable: false,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      await app.navigation.homeBackButtonGlobalCallback(global: true);
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        2,
+      );
+    });
+
+    test('NavigationInteractor route replacePrevious test', () async {
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          replacePrevious: true,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        1,
+      );
+    });
+
+    test('NavigationInteractor route replace test', () async {
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+        ),
+      );
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+        ),
+      );
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          replace: true,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        1,
+      );
+    });
   });
 }

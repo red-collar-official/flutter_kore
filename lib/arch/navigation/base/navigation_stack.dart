@@ -1,6 +1,6 @@
 // ignore_for_file: cascade_invocations
 
-import 'package:umvvm/arch/navigation/model/route_model.dart';
+import 'package:umvvm/arch/navigation/model/route_settings.dart';
 import 'package:umvvm/arch/navigation/base/stack/base_navigation_stack.dart';
 
 import 'stack/global_navigation_stack.dart';

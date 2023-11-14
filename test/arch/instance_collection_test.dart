@@ -17,18 +17,33 @@ final class TestMvvmInstance extends MvvmInstance<int?> {
   }
 }
 
+final class TestMvvmInstance2 extends MvvmInstance<int?> {
+  int value = 1;
+
+  @override
+  void initialize(int? input) {
+    super.initialize(input);
+
+    value = input ?? 1;
+
+    initialized = true;
+  }
+}
+
 void main() {
   group('Instance collection tests', () {
     final instances = InstanceCollection.implementationInstance;
     const testScope = Constants.testScope;
     final testInstanceRuntimeType = TestMvvmInstance().runtimeType.toString();
+    final testInstance2RuntimeType = TestMvvmInstance2().runtimeType.toString();
 
     setUp(() async {
       UMvvmApp.isInTestMode = true;
 
       instances
         ..clear()
-        ..addBuilder<TestMvvmInstance>(TestMvvmInstance.new);
+        ..addBuilder<TestMvvmInstance>(TestMvvmInstance.new)
+        ..addBuilder<TestMvvmInstance2>(TestMvvmInstance2.new);
     });
 
     test('Instance collection add, get test', () async {
@@ -477,17 +492,25 @@ void main() {
     });
 
     test('Instance collection unregisterInstance global test', () async {
-      instances.addWithParams(
-        testInstanceRuntimeType,
-        2,
-        scope: BaseScopes.global,
-      );
+      instances
+        ..addWithParams(
+          testInstanceRuntimeType,
+          2,
+          scope: BaseScopes.global,
+        )
+        ..addWithParams(
+          testInstance2RuntimeType,
+          2,
+          scope: BaseScopes.global,
+        );
 
       expect(instances.get<TestMvvmInstance>().value, 2);
+      expect(instances.get<TestMvvmInstance2>().value, 2);
 
       instances.unregisterInstance<TestMvvmInstance>();
 
       expect(instances.forceGet<TestMvvmInstance>(), null);
+      expect(instances.forceGet<TestMvvmInstance2>()!.value, 2);
     });
 
     test('Instance collection use and dispose instance test', () async {

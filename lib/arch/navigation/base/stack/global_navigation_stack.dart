@@ -1,4 +1,4 @@
-import 'package:umvvm/arch/navigation/model/route_model.dart';
+import 'package:umvvm/arch/navigation/model/route_settings.dart';
 
 import 'base_navigation_stack.dart';
 

@@ -9,7 +9,7 @@ export 'base/default_navigation_route_builder.dart';
 export 'base/navigation_route_builder.dart';
 
 export 'model/route.dart';
-export 'model/route_model.dart';
+export 'model/route_settings.dart';
 export 'model/navigation_interactor_settings.dart';
 
 export 'deeplinks/link_handler.dart';
