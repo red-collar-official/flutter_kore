@@ -25,6 +25,9 @@ void main() {
 
   group('PostViewTest', () {
     testWidgets('PostViewTest InitialLoadTest', (tester) async {
+      // need to run before tests
+      // bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
+
       await initApp(testMode: true);
 
       app.registerInstances();

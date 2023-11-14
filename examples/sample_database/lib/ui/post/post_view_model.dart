@@ -29,14 +29,14 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
 
   void openTestDialog() {
     app.navigation.showDialog(
-      app.navigation.dialogs.post(),
+      app.navigation.dialogs.error(),
       dismissable: false,
     );
   }
 
   void openTestBottomSheet() {
     app.navigation.showBottomSheet(
-      app.navigation.bottomSheets.post(),
+      app.navigation.bottomSheets.authorization(),
       dismissable: false,
     );
   }

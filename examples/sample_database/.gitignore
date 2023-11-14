@@ -18,6 +18,8 @@
 # Visual Studio Code related
 .vscode/
 
+download/
+
 #Dart generated file
 **/*.g.dart
 **/*.freezed.dart

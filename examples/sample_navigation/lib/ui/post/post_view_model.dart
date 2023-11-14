@@ -31,12 +31,12 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   void openTestDialog() {
     app.instances
         .get<NavigationInteractor>()
-        .showDialog(app.navigation.dialogs.post(), dismissable: false);
+        .showDialog(app.navigation.dialogs.error(), dismissable: false);
   }
 
   void openTestBottomSheet() {
     app.instances.get<NavigationInteractor>().showBottomSheet(
-          app.navigation.bottomSheets.post(),
+          app.navigation.bottomSheets.authorization(),
           dismissable: false,
         );
   }

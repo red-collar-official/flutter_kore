@@ -16,9 +16,9 @@ class MockPostsApi extends PostsApi {
 
 void main() {
   test('getPost parsing test', () async {
-    // need to run
+    // need to run before tests
     // bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
-
+    
     await initApp(testMode: true);
 
     app.apis.posts = MockPostsApi();
