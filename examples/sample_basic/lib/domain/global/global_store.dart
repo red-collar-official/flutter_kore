@@ -32,19 +32,17 @@ Future<void> initApp({bool testMode = false}) async {
 
   currentFlavor = TestFlavor();
 
-  if (testMode) {
-    return;
+  if (!testMode) {
+    app.prefs = await SharedPreferences.getInstance();
+
+    UMvvmApp.cacheGetDelegate = (key) {
+      return app.prefs.getString(key) ?? '';
+    };
+
+    UMvvmApp.cachePutDelegate = (key, value) async {
+      return app.prefs.setString(key, value);
+    };
   }
-
-  app.prefs = await SharedPreferences.getInstance();
-
-  UMvvmApp.cacheGetDelegate = (key) {
-    return app.prefs.getString(key) ?? '';
-  };
-
-  UMvvmApp.cachePutDelegate = (key, value) async {
-    return app.prefs.setString(key, value);
-  };
 
   await app.initialize();
 }

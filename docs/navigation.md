@@ -472,7 +472,9 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 }
 ```
 
-## Defining routes and deep links
+You don't need to implement deep links interactor to use <b>openLink</b> method. It is only used for deep links.
+
+## Defining routes and links
 
 To define routes you need to specify 3 classes - <b>Routes</b>, <b>Dialogs</b> and <b>BottomSheets</b>.
 

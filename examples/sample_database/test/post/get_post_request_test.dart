@@ -10,7 +10,7 @@ class MockPostsApi extends PostsApi {
   @override
   HttpRequest<Post?> getPost(int id) => super.getPost(id)
     ..simulateResponse = SimulateResponse(
-      data: '[{"id": 1, "title": "qwerty", "body": "qwerty" }]',
+      data: [{'id': 1, 'title': 'qwerty', 'body': 'qwerty' }],
     );
 }
 

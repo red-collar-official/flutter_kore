@@ -1,9 +1,9 @@
-import 'package:sample_basic/ui/post/post_view.dart';
-import 'package:sample_basic/ui/post/post_view_model.dart';
+import 'package:sample_navigation/ui/post/post_view.dart';
+import 'package:sample_navigation/ui/post/post_view_model.dart';
 import 'package:umvvm/umvvm.dart';
-import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/global/global_store.dart';
-import 'package:sample_basic/domain/interactors/post/post_interactor.dart';
+import 'package:sample_navigation/domain/data/post.dart';
+import 'package:sample_navigation/domain/global/global_store.dart';
+import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';
 import 'package:test/test.dart';
 
 class PostInteractorMock extends PostInteractor {
@@ -33,6 +33,6 @@ void main() {
       ..initialize(mockWidget)
       ..onLaunch(mockWidget);
 
-    expect((postViewModel.currentPost as SuccessData).result.id, 1);
+    expect((postViewModel.initialPost as SuccessData).result.id, 1);
   });
 }

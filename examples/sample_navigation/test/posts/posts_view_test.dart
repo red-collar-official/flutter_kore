@@ -11,7 +11,7 @@ import 'package:sample_navigation/ui/posts_list/posts_list_view.dart';
 class MockPostsApi extends PostsApi {
   @override
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
-      HttpRequest<List<Post>>()
+      super.getPosts(offset, limit)
         ..simulateResult = Response(code: 200, result: [
           Post(
             title: 'TestTitle',

@@ -8,11 +8,6 @@ import 'posts_state.dart';
 
 @instancePart
 class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {
-  void testUpdate() {
-    parentInstance.updateState(parentInstance.state.copyWith(
-      active: false,
-    ));
-  }
 }
 
 @basicInstance
@@ -40,7 +35,8 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
 
     if (response.isSuccessful) {
       updateState(
-          state.copyWith(posts: SuccessData(result: response.result ?? [])));
+        state.copyWith(posts: SuccessData(result: response.result ?? [])),
+      );
     } else {
       updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }

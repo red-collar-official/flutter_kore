@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 class MockPostsApi extends PostsApi {
   @override
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
-      HttpRequest<List<Post>>()
+      super.getPosts(offset, limit)
         ..simulateResult = Response(code: 200, result: [
           Post(
             title: '',
@@ -26,7 +26,9 @@ void main() {
     app.apis.posts = MockPostsApi();
 
     final postsInteractor = PostsInteractor();
-    app.instances.addTest<PostsInteractor>(BaseScopes.global, postsInteractor);
+    
+    // ignore: cascade_invocations
+    postsInteractor.initialize(null);
 
     await postsInteractor.loadPosts(0, 30);
 

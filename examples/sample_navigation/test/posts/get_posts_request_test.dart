@@ -10,7 +10,7 @@ class MockPostsApi extends PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       super.getPosts(offset, limit)
         ..simulateResponse = SimulateResponse(
-          data: '[{"id": 1, "title": "qwerty", "body": "qwerty" }]',
+          data: [{'id': 1, 'title': 'qwerty', 'body': 'qwerty' }],
         );
 }
 

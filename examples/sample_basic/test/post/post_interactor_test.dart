@@ -19,13 +19,15 @@ class MockPostsApi extends PostsApi {
 }
 
 void main() {
-  test('PostsInteractorTest', () async {
+  test('PostInteractorTest', () async {
     await initApp(testMode: true);
 
     app.apis.posts = MockPostsApi();
 
     final postInteractor = PostInteractor();
-    app.instances.addTest<PostInteractor>(BaseScopes.global, postInteractor);
+    
+    // ignore: cascade_invocations
+    postInteractor.initialize(null);
 
     await postInteractor.loadPost(1);
 

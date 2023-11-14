@@ -19,7 +19,7 @@ class MockPostsApi extends PostsApi {
 }
 
 void main() {
-  test('PostsInteractorTest', () async {
+  test('PostInteractorTest', () async {
     await initApp(testMode: true);
 
     app.apis.posts = MockPostsApi();
