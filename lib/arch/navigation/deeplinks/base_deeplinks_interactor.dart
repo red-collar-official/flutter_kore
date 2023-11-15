@@ -17,7 +17,7 @@ import 'package:umvvm/umvvm.dart';
 ///   final linkStreamController = StreamController<String>.broadcast();
 /// 
 ///   @override
-///   Future<void> defaultLinkHandler() async {
+///   Future<void> defaultLinkHandler(String? link) async {
 ///     defaultLinkHandlerCalled = true;
 ///   }
 /// 
@@ -57,7 +57,7 @@ abstract class BaseDeepLinksInteractor<State>
   Stream<String?> linkStream();
 
   /// Handler for deeplink that is not defined in app routes
-  Future<void> defaultLinkHandler();
+  Future<void> defaultLinkHandler(String? link);
 
   /// Receives initial link and sends event
   
@@ -101,7 +101,7 @@ abstract class BaseDeepLinksInteractor<State>
     }
 
     if (!await UMvvmApp.navigationInteractor!.openLink(link)) {
-      await defaultLinkHandler();
+      await defaultLinkHandler(link);
     }
   }
 

@@ -755,9 +755,11 @@ abstract class BaseNavigationInteractor<
       await routeHandler.processRoute(
         routeData.copyWithDefaultSettings(routeSettings),
       );
+
+      return true;
     }
 
-    return true;
+    return false;
   }
 
   /// Tries to open link based on routes declaration

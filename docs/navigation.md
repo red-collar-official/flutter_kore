@@ -433,7 +433,7 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
   final linkStreamController = StreamController<String>.broadcast();
 
   @override
-  Future<void> defaultLinkHandler() async {
+  Future<void> defaultLinkHandler(String? link) async {
     defaultLinkHandlerCalled = true;
   }
 
