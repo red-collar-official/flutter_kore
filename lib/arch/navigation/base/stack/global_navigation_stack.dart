@@ -1,4 +1,4 @@
-import 'package:umvvm/arch/navigation/model/route_settings.dart';
+import 'package:umvvm/umvvm.dart';
 
 import 'base_navigation_stack.dart';
 
@@ -8,13 +8,19 @@ class GlobalNavigationStack<AppTabType>
   /// Map of all routes that are currently active in tabs
   final List<UIRouteModel> Function() routeStackBuilder;
 
-  late final List<UIRouteModel> _routeStack = routeStackBuilder();
+  late final Observable<List<UIRouteModel>> _routeStack = Observable.initial(
+    routeStackBuilder(),
+  );
 
   GlobalNavigationStack({
     required this.routeStackBuilder,
   });
 
-  List<UIRouteModel> get stack => _routeStack;
+  List<UIRouteModel> get stack => _routeStack.current ?? [];
+
+  Stream<List<UIRouteModel>> get stackStream => _routeStack.stream.map(
+        (event) => event.next ?? [],
+      );
 
   @override
   void addRoute({
@@ -22,12 +28,17 @@ class GlobalNavigationStack<AppTabType>
     AppTabType? tab,
     required UIRouteSettings settings,
   }) {
-    _routeStack.add(
+    final current = List<UIRouteModel>.from(stack);
+
+    // ignore: cascade_invocations
+    current.add(
       UIRouteModel(
         name: routeName,
         settings: settings,
       ),
     );
+
+    _routeStack.update(current);
   }
 
   @override
@@ -36,10 +47,15 @@ class GlobalNavigationStack<AppTabType>
     AppTabType? tab,
     required UIRouteSettings settings,
   }) {
-    _routeStack[_routeStack.length - 1] = UIRouteModel(
+    final current = List<UIRouteModel>.from(stack);
+
+    // ignore: cascade_invocations
+    current[current.length - 1] = UIRouteModel(
       name: routeName,
       settings: settings,
     );
+
+    _routeStack.update(current);
   }
 
   @override
@@ -48,7 +64,7 @@ class GlobalNavigationStack<AppTabType>
     AppTabType? tab,
     required bool global,
   }) {
-    return _routeStack.indexWhere((element) => element.name == routeName) == -1;
+    return stack.indexWhere((element) => element.name == routeName) == -1;
   }
 
   @override
@@ -57,18 +73,21 @@ class GlobalNavigationStack<AppTabType>
     AppTabType? tab,
     required UIRouteSettings settings,
   }) {
-    _routeStack
-      ..clear()
-      ..add(
-        UIRouteModel(
-          name: routeName,
-          settings: settings,
-        ),
-      );
+    _routeStack.update([
+      UIRouteModel(
+        name: routeName,
+        settings: settings,
+      ),
+    ]);
   }
 
   @override
-  void pop(AppTabType? currentTab) {
-    _routeStack.removeLast();
+  void pop(AppTabType? tab) {
+    final current = List<UIRouteModel>.from(stack);
+
+    // ignore: cascade_invocations
+    current.removeLast();
+
+    _routeStack.update(current);
   }
 }

@@ -42,5 +42,5 @@ abstract class BaseNavigationStack<AppTabType> {
   });
 
   /// Pops latest route from stack
-  void pop(AppTabType? currentTab);
+  void pop(AppTabType? tab);
 }
