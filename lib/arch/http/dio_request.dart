@@ -94,7 +94,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
     if (formData != null) {
       data = await formData;
     } else {
-      data = file ?? (body is Map ? jsonEncode(body) : body);
+      data = file ?? (body is Map || body is List ? jsonEncode(body) : body);
     }
 
     if (cancelToken.isCancelled) {
