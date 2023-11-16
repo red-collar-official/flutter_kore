@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+import 'navigation_pop_handler.dart';
+
 class NavigationPopScope extends StatelessWidget {
   const NavigationPopScope({
     super.key,
@@ -23,37 +25,19 @@ class NavigationPopScope extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<UIRouteModel>>(
-      stream: stackStream,
-      initialData: initialStack,
-      builder: (context, snapshot) {
-        final stack = snapshot.data ?? [];
-
-        final isPopDisabled = stack.isEmpty ||
-            !stack.last.settings.dismissable ||
-            stack.last.settings.needToEnsureClose;
-
-        return PopScope(
-          canPop: !isPopDisabled,
-          onPopInvoked: (bool didPop) {
-            if (didPop) {
-              return;
-            }
-
-            onPop.call();
-          },
-          // Listen to changes in the navigation stack in the widget subtree.
-          child: Navigator(
-            initialRoute: initialRoute,
-            key: navigator,
-            onGenerateRoute: (_) => MaterialPageRoute(
-              builder: (_) => Builder(
-                builder: (_) => initialView,
-              ),
-            ),
+    return UINavigatorPopHandler(
+      onPop: onPop,
+      stackStream: stackStream,
+      initialStack: initialStack,
+      child: Navigator(
+        initialRoute: initialRoute,
+        key: navigator,
+        onGenerateRoute: (_) => MaterialPageRoute(
+          builder: (_) => Builder(
+            builder: (_) => initialView,
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
