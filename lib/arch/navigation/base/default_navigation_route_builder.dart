@@ -20,7 +20,8 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback pop,
+    required VoidCallback onSystemPop,
+    required VoidCallback onOutsideTap,
   }) =>
       DialogRoute(
         barrierDismissible: dismissable,
@@ -34,7 +35,8 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
           return _overlayRouteContainer(
             dismissable: dismissable,
             child: child,
-            pop: pop,
+            onSystemPop: onSystemPop,
+            onOutsideTap: onOutsideTap,
           );
         },
       );
@@ -45,14 +47,16 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback pop,
+    required VoidCallback onSystemPop,
+    required VoidCallback onOutsideTap,
   }) =>
       ModalBottomSheetRoute(
         builder: (BuildContext buildContext) {
           return _overlayRouteContainer(
             dismissable: dismissable,
             child: child,
-            pop: pop,
+            onSystemPop: onSystemPop,
+            onOutsideTap: onOutsideTap,
           );
         },
         dismissible: dismissable,
@@ -64,7 +68,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   PageRoute buildPageRoute({
     required Widget child,
     required bool fullScreenDialog,
-    required VoidCallback? onClosedBySystemBackButtonOrGesture,
+    required VoidCallback? onSystemPop,
   }) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
@@ -75,8 +79,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
       return UICupertinoPageRoute(
         builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
-        onClosedCallback:
-            onClosedBySystemBackButtonOrGesture, // triggers only when used ios back gesture
+        onClosedCallback: onSystemPop, // triggers only when used ios back gesture
       );
     }
   }
@@ -84,14 +87,15 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   static Widget _overlayRouteContainer({
     required bool dismissable,
     required Widget child,
-    required VoidCallback pop,
+    required VoidCallback onSystemPop,
+    required VoidCallback onOutsideTap,
   }) {
     return Builder(
       builder: (BuildContext context) {
         return GestureDetector(
           onTap: () {
             if (dismissable) {
-              pop();
+              onOutsideTap();
             }
           },
           child: PopScope(
@@ -101,7 +105,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
                 return;
               }
 
-              pop();
+              onSystemPop();
             },
             child: child,
           ),

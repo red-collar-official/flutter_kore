@@ -364,7 +364,7 @@ abstract class BaseNavigationInteractor<
     final route = routeBuilder.buildPageRoute(
       child: screenToOpen,
       fullScreenDialog: routeSettings.fullScreenDialog,
-      onClosedBySystemBackButtonOrGesture: routeSettings.replace
+      onSystemPop: routeSettings.replace
           ? null
           : () {
               pop(onlyInternalStack: true);
@@ -478,7 +478,8 @@ abstract class BaseNavigationInteractor<
       dismissable: dialogSettings.dismissable,
       child: dialogToOpen,
       // coverage: ignore-start
-      pop: () => pop(onlyInternalStack: true),
+      onSystemPop: () => pop(onlyInternalStack: true),
+      onOutsideTap: pop,
       // coverage: ignore-end
     );
 
@@ -542,7 +543,8 @@ abstract class BaseNavigationInteractor<
       dismissable: bottomSheetSettings.dismissable,
       child: bottomSheetToOpen,
       // coverage: ignore-start
-      pop: () => pop(onlyInternalStack: true),
+      onSystemPop: () => pop(onlyInternalStack: true),
+      onOutsideTap: pop,
       // coverage: ignore-end
     );
 

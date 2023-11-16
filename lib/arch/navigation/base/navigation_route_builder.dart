@@ -17,13 +17,15 @@ abstract class NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback pop,
+    required VoidCallback onSystemPop,
+    required VoidCallback onOutsideTap,
   }) {
     return defaultRouteBuilder.buildDialogRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
-      pop: pop,
+      onSystemPop: onSystemPop,
+      onOutsideTap: onOutsideTap,
     );
   }
 
@@ -32,13 +34,15 @@ abstract class NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback pop,
+    required VoidCallback onSystemPop,
+    required VoidCallback onOutsideTap,
   }) {
     return defaultRouteBuilder.buildBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
-      pop: pop,
+      onSystemPop: onSystemPop,
+      onOutsideTap: onOutsideTap,
     );
   }
 
@@ -46,11 +50,11 @@ abstract class NavigationRouteBuilder {
   PageRoute buildPageRoute({
     required Widget child,
     required bool fullScreenDialog,
-    required VoidCallback? onClosedBySystemBackButtonOrGesture,
+    required VoidCallback? onSystemPop,
   }) {
     return defaultRouteBuilder.buildPageRoute(
       fullScreenDialog: fullScreenDialog,
-      onClosedBySystemBackButtonOrGesture: onClosedBySystemBackButtonOrGesture,
+      onSystemPop: onSystemPop,
       child: child,
     );
   }

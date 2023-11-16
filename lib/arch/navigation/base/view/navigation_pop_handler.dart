@@ -25,12 +25,13 @@ class UINavigatorPopHandler extends StatefulWidget {
 
 class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
   bool _canPop = true;
+  bool isPopDisabled = true;
+
   late StreamSubscription stackSub;
 
   @override
   void initState() {
     stackSub = widget.stackStream.listen((event) {
-      print('12312312321321asdasdas');
       if (!mounted) {
         return;
       }
@@ -44,16 +45,12 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
   }
 
   void checkStack(List<UIRouteModel> stack, {bool updateState = true}) {
-    final isPopDisabled = stack.isEmpty ||
+    isPopDisabled = stack.isEmpty ||
         !stack.last.settings.dismissable ||
         stack.last.settings.needToEnsureClose;
 
     if (updateState) {
-      setState(() {
-        _canPop = !isPopDisabled;
-      });
-    } else {
-      _canPop = !isPopDisabled;
+      setState(() {});
     }
   }
 
@@ -67,7 +64,7 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: _canPop,
+      canPop: _canPop && !isPopDisabled,
       onPopInvoked: (bool didPop) {
         if (didPop) {
           return;
@@ -76,6 +73,13 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
       },
       child: NotificationListener<NavigationNotification>(
         onNotification: (NavigationNotification notification) {
+          final bool nextCanPop = !notification.canHandlePop;
+          if (nextCanPop != _canPop) {
+            setState(() {
+              _canPop = nextCanPop;
+            });
+          }
+
           return false;
         },
         child: widget.child,
