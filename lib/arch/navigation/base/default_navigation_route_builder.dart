@@ -79,7 +79,8 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
       return UICupertinoPageRoute(
         builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
-        onClosedCallback: onSystemPop, // triggers only when used ios back gesture
+        onClosedCallback:
+            onSystemPop, // triggers only when used ios back gesture
       );
     }
   }
@@ -92,23 +93,16 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   }) {
     return Builder(
       builder: (BuildContext context) {
-        return GestureDetector(
-          onTap: () {
-            if (dismissable) {
-              onOutsideTap();
+        return PopScope(
+          canPop: dismissable,
+          onPopInvoked: (didPop) {
+            if (!didPop) {
+              return;
             }
-          },
-          child: PopScope(
-            canPop: !dismissable,
-            onPopInvoked: (didPop) {
-              if (didPop) {
-                return;
-              }
 
-              onSystemPop();
-            },
-            child: child,
-          ),
+            onSystemPop();
+          },
+          child: child,
         );
       },
     );
