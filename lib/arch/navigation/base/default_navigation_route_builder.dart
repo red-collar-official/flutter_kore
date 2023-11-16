@@ -64,50 +64,19 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   PageRoute buildPageRoute({
     required Widget child,
     required bool fullScreenDialog,
-    required VoidCallback? onClosedBySystemBackButton,
-    required VoidCallback? onPop,
+    required VoidCallback? onClosedBySystemBackButtonOrGesture,
   }) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
-        builder: (BuildContext context) => onClosedBySystemBackButton == null
-            ? child
-            : PopScope(
-                canPop: onPop != null,
-                onPopInvoked: (didPop) {
-                  if (didPop) {
-                    return;
-                  }
-                  
-                  if (onPop != null) {
-                    onPop();
-
-                    return;
-                  }
-
-                  onClosedBySystemBackButton(); // triggers only when used android system back button
-                },
-                child: child,
-              ),
+        builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
       );
     } else {
       return UICupertinoPageRoute(
-        builder: (BuildContext context) => onPop != null
-            ? PopScope(
-                canPop: false,
-                onPopInvoked: (didPop) {
-                  if (didPop) {
-                    return;
-                  }
-
-                  onPop();
-                },
-                child: child,
-              )
-            : child,
+        builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
         onClosedCallback:
-            onClosedBySystemBackButton, // triggers only when used ios back gesture
+            onClosedBySystemBackButtonOrGesture, // triggers only when used ios back gesture
       );
     }
   }
@@ -126,15 +95,13 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
             }
           },
           child: PopScope(
-            canPop: false,
+            canPop: !dismissable,
             onPopInvoked: (didPop) {
               if (didPop) {
                 return;
               }
 
-              if (dismissable) {
-                pop();
-              }
+              pop();
             },
             child: child,
           ),

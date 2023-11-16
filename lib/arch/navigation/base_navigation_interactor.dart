@@ -316,6 +316,7 @@ abstract class BaseNavigationInteractor<
     bool? dismissable,
     Object? id,
     NavigationRouteBuilder? customRouteBuilder,
+    bool awaitRouteResult = false,
   }) async {
     final bool global = _checkGlobalNavigatorNeeded(
       forceGlobal ?? routeData.defaultSettings.global,
@@ -363,18 +364,11 @@ abstract class BaseNavigationInteractor<
     final route = routeBuilder.buildPageRoute(
       child: screenToOpen,
       fullScreenDialog: routeSettings.fullScreenDialog,
-      onClosedBySystemBackButton: routeSettings.replace
+      onClosedBySystemBackButtonOrGesture: routeSettings.replace
           ? null
           : () {
               pop(onlyInternalStack: true);
             },
-      onPop: routeSettings.needToEnsureClose
-          ? () {
-              EventBus.instance.send(EnsureCloseRequestedEvent());
-            }
-          : (!routeSettings.dismissable
-              ? () {}
-              : null),
     );
     // coverage:ignore-end
 
@@ -417,9 +411,15 @@ abstract class BaseNavigationInteractor<
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
 
-      return await navigator.currentState?.push(
+      if (awaitRouteResult) {
+        return await navigator.currentState?.push(
+          route,
+        );
+      }
+
+      unawaited(navigator.currentState?.push(
         route,
-      );
+      ));
     }
   }
 
@@ -477,7 +477,9 @@ abstract class BaseNavigationInteractor<
       navigator: navigator,
       dismissable: dialogSettings.dismissable,
       child: dialogToOpen,
-      pop: pop,
+      // coverage: ignore-start
+      pop: () => pop(onlyInternalStack: true),
+      // coverage: ignore-end
     );
 
     final result = await navigator.currentState?.push(route);
@@ -539,7 +541,9 @@ abstract class BaseNavigationInteractor<
       navigator: navigator,
       dismissable: bottomSheetSettings.dismissable,
       child: bottomSheetToOpen,
-      pop: pop,
+      // coverage: ignore-start
+      pop: () => pop(onlyInternalStack: true),
+      // coverage: ignore-end
     );
 
     final result = await navigator.currentState?.push(route);
@@ -664,7 +668,7 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Handles system back button events
-  Future<void> homeBackButtonGlobalCallback({bool global = false}) async {
+  void homeBackButtonGlobalCallback({bool global = false}) {
     if (isInBottomSheetDialogScope) {
       pop();
     } else if ((global ? latestGlobalRoute() : latestTabRoute())

@@ -46,14 +46,12 @@ abstract class NavigationRouteBuilder {
   PageRoute buildPageRoute({
     required Widget child,
     required bool fullScreenDialog,
-    required VoidCallback? onClosedBySystemBackButton,
-    required VoidCallback? onPop,
+    required VoidCallback? onClosedBySystemBackButtonOrGesture,
   }) {
     return defaultRouteBuilder.buildPageRoute(
       fullScreenDialog: fullScreenDialog,
-      onClosedBySystemBackButton: onClosedBySystemBackButton,
+      onClosedBySystemBackButtonOrGesture: onClosedBySystemBackButtonOrGesture,
       child: child,
-      onPop: onPop,
     );
   }
 }
