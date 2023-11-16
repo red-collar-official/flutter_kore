@@ -28,12 +28,10 @@ class HomeViewModel
   }
 
   @override
-  Future<bool> onWillPop() async {
-    await app.instances
+  void onPop() {
+    app.instances
         .get<NavigationInteractor>()
         .homeBackButtonGlobalCallback();
-
-    return false;
   }
 
   GlobalKey<NavigatorState> getNavigatorKey(AppTab tab) {

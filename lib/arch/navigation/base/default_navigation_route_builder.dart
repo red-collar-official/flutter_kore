@@ -1,6 +1,5 @@
 // coverage:ignore-file
 
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart' hide DialogRoute, ModalBottomSheetRoute;
@@ -65,24 +64,27 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   PageRoute buildPageRoute({
     required Widget child,
     required bool fullScreenDialog,
-    required VoidCallback? onClosed,
-    required Future<void> Function()? onWillPop,
+    required VoidCallback? onClosedBySystemBackButton,
+    required VoidCallback? onPop,
   }) {
     if (Platform.isAndroid) {
       return MaterialPageRoute(
-        builder: (BuildContext context) => onClosed == null
+        builder: (BuildContext context) => onClosedBySystemBackButton == null
             ? child
-            : WillPopScope(
-                onWillPop: () async {
-                  if (onWillPop != null) {
-                    await onWillPop();
+            : PopScope(
+                canPop: onPop != null,
+                onPopInvoked: (didPop) {
+                  if (didPop) {
+                    return;
+                  }
+                  
+                  if (onPop != null) {
+                    onPop();
 
-                    return false;
+                    return;
                   }
 
-                  onClosed(); // triggers only when used android system back button
-
-                  return Future.value(true);
+                  onClosedBySystemBackButton(); // triggers only when used android system back button
                 },
                 child: child,
               ),
@@ -90,18 +92,22 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
       );
     } else {
       return UICupertinoPageRoute(
-        builder: (BuildContext context) => onWillPop != null
-            ? WillPopScope(
-                onWillPop: () async {
-                  await onWillPop();
+        builder: (BuildContext context) => onPop != null
+            ? PopScope(
+                canPop: false,
+                onPopInvoked: (didPop) {
+                  if (didPop) {
+                    return;
+                  }
 
-                  return false;
+                  onPop();
                 },
                 child: child,
               )
             : child,
         fullscreenDialog: fullScreenDialog,
-        onClosedCallback: onClosed, // triggers only when used ios back gesture
+        onClosedCallback:
+            onClosedBySystemBackButton, // triggers only when used ios back gesture
       );
     }
   }
@@ -119,13 +125,16 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
               pop();
             }
           },
-          child: WillPopScope(
-            onWillPop: () async {
+          child: PopScope(
+            canPop: false,
+            onPopInvoked: (didPop) {
+              if (didPop) {
+                return;
+              }
+
               if (dismissable) {
                 pop();
               }
-
-              return false;
             },
             child: child,
           ),

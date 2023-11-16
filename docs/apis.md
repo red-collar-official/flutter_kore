@@ -124,7 +124,8 @@ Important notes here:
 
 1) <b>parser</b> is a function that takes server response body and headers;
 2) <b>simulateResponse</b> lets you simulate unparsed server response body and headers so you can check parser function and database delegates;
-3) <b>simulateResult</b> lets you simulate parsed server response, so you can check interactors and viewmodels.
+3) <b>simulateResult</b> lets you simulate parsed server response, so you can check interactors and viewmodels;
+4) If <b>body</b> is <b>Map</b> or <b>List</b> it will be ecoded to json automatically.
 
 Typical example for Api class would be:
 

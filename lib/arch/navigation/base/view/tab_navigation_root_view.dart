@@ -6,10 +6,8 @@ import 'package:umvvm/arch/view/base_widget.dart';
 /// Must be extended by view containing [bottomNavigationBar] 
 abstract class TabNavigationRootViewModel<Widget extends StatefulWidget, State>
     extends NavigationViewModel<Widget, State> {
-  Future<bool> onWillPop() async {
-    await navigationInteractor.homeBackButtonGlobalCallback();
-
-    return false;
+  void onPop() {
+    navigationInteractor.homeBackButtonGlobalCallback();
   }
 }
 
@@ -26,8 +24,15 @@ abstract class TabNavigationRootView<View extends BaseWidget, ScreenState,
   }) {
     return Offstage(
       offstage: offstage,
-      child: WillPopScope(
-        onWillPop: viewModel.onWillPop,
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (bool didPop) {
+          if (didPop) {
+            return;
+          }
+
+          viewModel.onPop();
+        },
         child: HeroControllerScope(
           controller: MaterialApp.createMaterialHeroController(),
           child: Navigator(

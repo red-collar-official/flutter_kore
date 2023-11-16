@@ -102,7 +102,7 @@ mixin CupertinoRouteTransitionMixin<T> on PageRoute<T> {
       return false;
     }
 
-    if (route.hasScopedWillPopCallback) {
+    if (route.popDisposition == RoutePopDisposition.doNotPop) {
       return false;
     }
 

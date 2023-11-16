@@ -363,21 +363,17 @@ abstract class BaseNavigationInteractor<
     final route = routeBuilder.buildPageRoute(
       child: screenToOpen,
       fullScreenDialog: routeSettings.fullScreenDialog,
-      onClosed: routeSettings.replace
+      onClosedBySystemBackButton: routeSettings.replace
           ? null
           : () {
               pop(onlyInternalStack: true);
             },
-      onWillPop: routeSettings.needToEnsureClose
+      onPop: routeSettings.needToEnsureClose
           ? () {
               EventBus.instance.send(EnsureCloseRequestedEvent());
-
-              return Future.value();
             }
           : (!routeSettings.dismissable
-              ? () {
-                  return Future.value();
-                }
+              ? () {}
               : null),
     );
     // coverage:ignore-end
