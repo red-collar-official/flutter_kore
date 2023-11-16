@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -93,7 +94,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
     if (formData != null) {
       data = await formData;
     } else {
-      data = file ?? body;
+      data = file ?? (body is Map ? jsonEncode(body) : body);
     }
 
     if (cancelToken.isCancelled) {

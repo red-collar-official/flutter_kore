@@ -37,9 +37,7 @@ While we upload file we may want to send progress events in separate event bus.
 final fileUploadEventBus = EventBus.newSeparateInstance();
 ```
 
-Be aware that instances are not connected to this new separate event bus and you need to write subscribe logic yourself.
-
-Do not forget to dispose event subscriptions in instance <b>dispose</b> method.
+Be aware that instances are not connected to this new separate event bus and you need to write subscribe logic yourself (do not forget to dispose event subscriptions).
 
 Reactions to events for every mvvm instance can be paused and resumed with corresponding methods;
 By default events do not react to pauses;

@@ -65,7 +65,6 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
             _onPostLiked(event.id);
           },
           reactsToPause: true,
-          firesAfterResume: false,
         ),
       ];
 }

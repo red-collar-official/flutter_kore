@@ -121,6 +121,15 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> 
       updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
   }
+
+  @override
+  List<EventBusSubscriber> subscribe() => [
+    on<PostLikedEvent>(
+      (event) {
+        // update state
+      },
+    ),
+  ];
 }
 
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
@@ -143,6 +152,10 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
       ),
       forceGlobal: true,
     );
+  }
+
+  void like(int id) {
+    app.eventBus.send(PostLikedEvent(id: id));
   }
 
   Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);

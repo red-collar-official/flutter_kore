@@ -1,6 +1,6 @@
 # Custom instances
 
-You can create custom instances by extending <b>MvvmInstance</b> class and mixing several mixins.
+You can create custom instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
 
 You also need to specify input type for custom instances. It is passed as generic argument. Then input is available in all initialization methods.
 
@@ -8,7 +8,7 @@ You can read about default methods of <b>MvvmInstance</b> [here](./mvvm_instance
 
 Here we will discuss mixins.
 
-Mixins allow you to add additional funtions to your custom instance like dependencies, cancelable api calls and state.
+There are mixins that allow you to add additional funtions to your custom instance like dependencies, cancelable api calls and state.
 
 For example if you need to add state to your instance you can write this:
 

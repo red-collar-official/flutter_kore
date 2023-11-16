@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -168,7 +169,7 @@ void addTestResponsesForParamsToDio(dio.Dio dio) {
       1,
       delay: const Duration(milliseconds: 100),
     ),
-    data: testBodyMap,
+    data: jsonEncode(testBodyMap),
   );
 
   // ignore: cascade_invocations

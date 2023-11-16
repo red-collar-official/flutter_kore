@@ -37,7 +37,7 @@ final app = App();
 
 You can disable DI container at all and inject dependencies your own way.
 
-It is also true that you can bypass domain layer and just use <b>ViewState</b> and <b>ViewModel</b> components as state management.
+It is also true that you can bypass all components except from <b>ViewState</b> and <b>ViewModel</b> and use them as state management.
 You can also safely call <b>Apis</b> (if you use them) in view models cause view models mix <b>ApiCaller</b> mixin (more information about <b>ApiCaller</b> [here](./custom_instances.md)).
 
 This way you can impelement your own domain design.

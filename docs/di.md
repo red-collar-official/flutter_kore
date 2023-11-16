@@ -10,7 +10,7 @@ If you want to hold third party instance create a wrapper for it.
 
 More information about wrappers can be found [here](./wrapper.md).
 
-Di container is divided in scopes that are basically subcontainers.
+Di container is divided into scopes that are basically subcontainers.
 
 Using scopes you can create unique instance spaces that will be automatically disposed when every dependent instance is disposed.
 
@@ -18,27 +18,15 @@ You can also define modules that descibe dependencies collection. More informati
 
 Every scope can contain one or list of objects of given type. If scope contains multiple instances of the same type you need to speecify index when you trying to create or get object.
 
+More information about scopes below.
+
 ### Defining instances
 
-There are three ways to annotate mvvm instances to use in di container <b>singleton</b> and <b>basicInstance</b>.
-
-Or you can also use full <b>Instance</b> annotation.
+There are several ways to annotate mvvm instances to use in di container: <b>singleton</b> and <b>basicInstance</b> annotations (or async and lazy analogues described below) and full <b>Instance</b> annotation.
 
 It is required to define input type for instances. It is passed as generic argument.
 
-Singleton instances belong to global scope.
-
-There are several predefined scopes - global, unique and weak:
-
-1) Global scope (<b>BaseScopes.global</b>) holds singleton instances;
-2) Weak scope (<b>BaseScopes.weak</b>) holds objects that can be accessed from anywhere as long as some mvvm instance connected to it;
-3) Unique scope (<b>BaseScopes.unique</b>) always create new instance.
-
-You can define your own scopes.
-
-In this case instance in this scope will be alive as long as there is object that depend on this instance. It is similar to <b>BaseScopes.weak</b> behaviour, but in subcontainer, rather than in global container.
-
-If you annotate class as <b>lazySingleton</b> it will be created in global scope, but only when accessed first time.
+Singleton instances belong to global scope and they are initialized at app startup. If singleton is <b>lazy</b> then it will be created only when accessed first time.
 
 Here are some examples:
 
@@ -91,26 +79,6 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 }
 
 ```
-
-Two specify scope that you want object from you can pass scope param to <b>get</b> method.
-
-```dart
-app.instances.get<UserInteractor>(scope: CustomScopes.userProfileScope('1'));
-```
-
-You can also specify scope in connector objects (More information about connectors can be found [here](./connectors.md)):
-
-```dart
-@override
-List<Connector> dependsOn(OtherUserProfileView input) => [
-      app.connectors.userInteractorConnector(
-        scope: CustomScopes.userProfileScope(input.user?.id ?? ''),
-        input: UserInteractorInput(username: input.user?.username),
-      ),
-    ];
-```
-
-Then you can get instance with <b>getLocalInstance</b> method. This method is discussed below.
 
 ### Async initialization
 
@@ -207,8 +175,6 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 You don't need to override <b>isAsync</b> flag if you use async dependencies, this is done automatically. You only need to specify it in annotation.
 
 Async instances also have method to handle dependency ready status.
-
-You can also specify if app needs to await instance initialization with <b>awaitInitialization</b> flag. Only matters for singletons.
 
 ```dart
 @asyncSingleton
@@ -372,6 +338,40 @@ List<PartConnector> parts(int input) => [
 
 late final testInstancePart = useInstancePart<TestInstancePart>();
 ```
+
+### Scopes
+
+Scope is subcontainer where you can store independent instances.
+
+There are several predefined scopes - global, unique and weak:
+
+1) Global scope (<b>BaseScopes.global</b>) holds singleton instances;
+2) Weak scope (<b>BaseScopes.weak</b>) holds objects that can be accessed from anywhere as long as some mvvm instance connected to it;
+3) Unique scope (<b>BaseScopes.unique</b>) always create new instance.
+
+You can define your own scopes.
+
+In this case instance in this scope will be alive as long as there is object that depend on this instance. It is similar to <b>BaseScopes.weak</b> behaviour, but in subcontainer, rather than in global container.
+
+Two specify scope that you want object from you can pass scope param to <b>get</b> method.
+
+```dart
+app.instances.get<UserInteractor>(scope: CustomScopes.userProfileScope('1'));
+```
+
+You can also specify scope in connector objects (More information about connectors can be found [here](./connectors.md)):
+
+```dart
+@override
+List<Connector> dependsOn(OtherUserProfileView input) => [
+      app.connectors.userInteractorConnector(
+        scope: CustomScopes.userProfileScope(input.user?.id ?? ''),
+        input: UserInteractorInput(username: input.user?.username),
+      ),
+    ];
+```
+
+Then you can get instance with <b>getLocalInstance</b> method.
 
 ### Modules
 
