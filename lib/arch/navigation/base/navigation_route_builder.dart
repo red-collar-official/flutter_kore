@@ -17,11 +17,13 @@ abstract class NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
+    required VoidCallback? onPop,
   }) {
     return defaultRouteBuilder.buildDialogRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
+      onPop: onPop,
     );
   }
 
@@ -30,11 +32,13 @@ abstract class NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
+    required VoidCallback? onPop,
   }) {
     return defaultRouteBuilder.buildBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
+      onPop: onPop,
     );
   }
 

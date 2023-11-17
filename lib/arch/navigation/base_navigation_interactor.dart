@@ -473,10 +473,23 @@ abstract class BaseNavigationInteractor<
     final routeBuilder =
         dialogSettings.customRouteBuilder ?? settings.routeBuilder;
 
+    final stackLength = global
+        ? navigationStack.globalNavigationStack.stack.length
+        : navigationStack.tabNavigationStack.stack[currentTab]!.length;
+
     final route = routeBuilder.buildDialogRoute(
       navigator: navigator,
       dismissable: dialogSettings.dismissable,
       child: dialogToOpen,
+      onPop: () {
+        final currentStackLength = global
+            ? navigationStack.globalNavigationStack.stack.length
+            : navigationStack.tabNavigationStack.stack[currentTab]!.length;
+
+        if (currentStackLength != stackLength) {
+          pop(onlyInternalStack: true);
+        }
+      },
     );
 
     final result = await navigator.currentState?.push(route);
@@ -534,10 +547,23 @@ abstract class BaseNavigationInteractor<
     final routeBuilder =
         bottomSheetSettings.customRouteBuilder ?? settings.routeBuilder;
 
+    final stackLength = global
+        ? navigationStack.globalNavigationStack.stack.length
+        : navigationStack.tabNavigationStack.stack[currentTab]!.length;
+
     final route = routeBuilder.buildBottomSheetRoute(
       navigator: navigator,
       dismissable: bottomSheetSettings.dismissable,
       child: bottomSheetToOpen,
+      onPop: () {
+        final currentStackLength = global
+            ? navigationStack.globalNavigationStack.stack.length
+            : navigationStack.tabNavigationStack.stack[currentTab]!.length;
+
+        if (currentStackLength != stackLength) {
+          pop(onlyInternalStack: true);
+        }
+      },
     );
 
     final result = await navigator.currentState?.push(route);
