@@ -59,9 +59,7 @@ class GlobalNavigationPopScope extends StatelessWidget {
       initialView: initialView,
       navigator: UMvvmApp.navigationInteractor!.globalNavigatorKey,
       onPop: () {
-        UMvvmApp.navigationInteractor!.homeBackButtonGlobalCallback(
-          global: true,
-        );
+        UMvvmApp.navigationInteractor!.homeBackButtonGlobalCallback();
       },
       stackStream: UMvvmApp.navigationInteractor!.navigationStack
           .globalNavigationStack.stackStream,

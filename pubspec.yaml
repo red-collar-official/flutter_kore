@@ -16,7 +16,6 @@ dependencies:
   dio: ^5.3.3
   pedantic: ^1.11.1
   async: ^2.11.0
-  back_button_interceptor: ^7.0.0
   source_gen: ^1.4.0
   cancellation_token_hoc081098: ^1.0.0
   glob: ^2.1.2

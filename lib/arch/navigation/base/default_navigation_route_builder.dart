@@ -21,7 +21,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback onSystemPop,
-    required VoidCallback onOutsideTap,
   }) =>
       DialogRoute(
         barrierDismissible: dismissable,
@@ -36,7 +35,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
             dismissable: dismissable,
             child: child,
             onSystemPop: onSystemPop,
-            onOutsideTap: onOutsideTap,
           );
         },
       );
@@ -48,7 +46,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback onSystemPop,
-    required VoidCallback onOutsideTap,
   }) =>
       ModalBottomSheetRoute(
         builder: (BuildContext buildContext) {
@@ -56,7 +53,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
             dismissable: dismissable,
             child: child,
             onSystemPop: onSystemPop,
-            onOutsideTap: onOutsideTap,
           );
         },
         dismissible: dismissable,
@@ -89,7 +85,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback onSystemPop,
-    required VoidCallback onOutsideTap,
   }) {
     return Builder(
       builder: (BuildContext context) {

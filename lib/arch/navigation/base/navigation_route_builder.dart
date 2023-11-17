@@ -18,14 +18,12 @@ abstract class NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback onSystemPop,
-    required VoidCallback onOutsideTap,
   }) {
     return defaultRouteBuilder.buildDialogRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
       onSystemPop: onSystemPop,
-      onOutsideTap: onOutsideTap,
     );
   }
 
@@ -35,14 +33,12 @@ abstract class NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback onSystemPop,
-    required VoidCallback onOutsideTap,
   }) {
     return defaultRouteBuilder.buildBottomSheetRoute(
       navigator: navigator,
       dismissable: dismissable,
       child: child,
       onSystemPop: onSystemPop,
-      onOutsideTap: onOutsideTap,
     );
   }
 

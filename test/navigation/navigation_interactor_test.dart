@@ -224,14 +224,14 @@ void main() {
 
       await app.navigation.showDialog(app.navigation.dialogs.stub());
 
-      app.navigation.homeBackButtonGlobalCallback(global: true);
+      app.navigation.homeBackButtonGlobalCallback();
 
       expect(
         app.navigation.latestGlobalRoute().name,
         RouteNames.stub,
       );
 
-      app.navigation.homeBackButtonGlobalCallback(global: true);
+      app.navigation.homeBackButtonGlobalCallback();
 
       await DelayUtility.pause();
 
@@ -243,7 +243,7 @@ void main() {
 
       app.navigation.pop();
 
-      app.navigation.homeBackButtonGlobalCallback(global: true);
+      app.navigation.homeBackButtonGlobalCallback();
 
       expect(
         app.navigation.latestGlobalRoute().name,
@@ -252,7 +252,7 @@ void main() {
 
       app.navigation.pop();
 
-      app.navigation.homeBackButtonGlobalCallback(global: true);
+      app.navigation.homeBackButtonGlobalCallback();
 
       expect(
         app.navigation.latestGlobalRoute().name,
@@ -644,7 +644,7 @@ void main() {
 
       await DelayUtility.pause(millis: 200);
 
-      app.navigation.homeBackButtonGlobalCallback(global: true);
+      app.navigation.homeBackButtonGlobalCallback();
 
       expect(
         app.navigation.navigationStack.globalNavigationStack.stack.length,

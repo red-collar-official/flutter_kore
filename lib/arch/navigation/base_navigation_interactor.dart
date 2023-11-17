@@ -479,7 +479,6 @@ abstract class BaseNavigationInteractor<
       child: dialogToOpen,
       // coverage: ignore-start
       onSystemPop: () => pop(onlyInternalStack: true),
-      onOutsideTap: pop,
       // coverage: ignore-end
     );
 
@@ -544,7 +543,6 @@ abstract class BaseNavigationInteractor<
       child: bottomSheetToOpen,
       // coverage: ignore-start
       onSystemPop: () => pop(onlyInternalStack: true),
-      onOutsideTap: pop,
       // coverage: ignore-end
     );
 
@@ -670,14 +668,16 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Handles system back button events
-  void homeBackButtonGlobalCallback({bool global = false}) {
+  void homeBackButtonGlobalCallback() {
+    final isGlobal = isInGlobalStack();
+
     if (isInBottomSheetDialogScope) {
       pop();
-    } else if ((global ? latestGlobalRoute() : latestTabRoute())
+    } else if ((isGlobal ? latestGlobalRoute() : latestTabRoute())
         .settings
         .needToEnsureClose) {
       EventBus.instance.send(EnsureCloseRequestedEvent());
-    } else if (canPop(global: global)) {
+    } else if (canPop(global: isGlobal)) {
       pop();
     }
   }
