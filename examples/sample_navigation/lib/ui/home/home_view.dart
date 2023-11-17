@@ -41,6 +41,7 @@ class _HomeViewWidgetState
                       navigationKey: viewModel.getNavigatorKey(tab),
                       view: tabViews[tab]!,
                       name: tab.name,
+                      tab: tab,
                     ))
                 .toList(),
           );
