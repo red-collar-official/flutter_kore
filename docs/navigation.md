@@ -181,6 +181,7 @@ Future<void> routeTo(
   bool? dismissable,
   Object? id,
   NavigationRouteBuilder? customRouteBuilder,
+  bool awaitRouteResult = false,
 });
 
 Future<dynamic> showDialog(
@@ -243,7 +244,7 @@ Generally this classes would be root tab navigation view and view model, where y
 If you use tab navigation you need to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for your views and view models
 since it ensures that navigation is handled in correct navigation scope (tab or global).
 
-Here are an examples:
+Here are some examples:
 
 ```dart
 class AppViewModel extends GlobalNavigationRootViewModel<AppView, AppViewState> {
@@ -270,6 +271,41 @@ class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState,
         debugShowCheckedModeBanner: false,
         navigatorKey: app.navigation.globalNavigatorKey,
         home: Container(),
+    );
+  }
+}
+```
+
+If your app uses separate navigator key for dialogs and bottoms sheets you need to replace global navigator with <b>GlobalNavigationPopScope</b>. Here is an example:
+
+```dart
+class AppViewModel extends GlobalNavigationRootViewModel<AppView, AppViewState> {
+  @override
+  List<Connector> dependsOn(AppView input) => [];
+
+  @override
+  void onLaunch(AppView widget) {
+    super.onLaunch(widget);
+  }
+
+  void fireLifecycleEvent(AppLifecycleState state) {
+    app.eventBus.send(AppLifecycleStateChangedEvent(state: state));
+  }
+
+  @override
+  AppViewState initialState(AppView input) => const AppViewState();
+}
+
+class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
+  @override
+  Widget buildView(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: app.navigation.bottomSheetDialogNavigatorKey,
+        home: GlobalNavigationPopScope(
+          initialView: const SplashView(),
+          initialRoute: RouteNames.splash.name,
+        ),
     );
   }
 }

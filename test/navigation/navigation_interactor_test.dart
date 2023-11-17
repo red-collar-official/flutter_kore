@@ -699,6 +699,91 @@ void main() {
         app.navigation.navigationStack.globalNavigationStack.stack.length,
         1,
       );
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+          awaitRouteResult: true,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        2,
+      );
+    });
+
+    test('NavigationInteractor route awaitRouteResult test', () async {
+      await app.navigation.routeTo(
+        app.navigation.routes.stub(),
+        forceGlobal: true,
+        awaitRouteResult: true,
+      );
+
+      expect(
+        app.navigation.navigationStack.globalNavigationStack.stack.length,
+        2,
+      );
+    });
+
+    test('NavigationInteractor global stack stream test', () async {
+      var routeReceived = false;
+
+      final sub = app
+          .navigation.navigationStack.globalNavigationStack.stackStream
+          .listen((event) {
+        if (event.last.name == RouteNames.stub) {
+          routeReceived = true;
+        }
+      });
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+          forceGlobal: true,
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        routeReceived,
+        true,
+      );
+
+      unawaited(sub.cancel());
+    });
+
+    test('NavigationInteractor tab stack stream  test', () async {
+      var routeReceived = false;
+
+      app.navigation.setCurrentTab(AppTabs.posts);
+
+      final sub = app.navigation.navigationStack.tabNavigationStack.stackStream
+          .map((event) => event[AppTabs.posts])
+          .listen((event) {
+        if (event!.last.name == RouteNames.stub) {
+          routeReceived = true;
+        }
+      });
+
+      unawaited(
+        app.navigation.routeTo(
+          app.navigation.routes.stub(),
+        ),
+      );
+
+      await DelayUtility.pause(millis: 200);
+
+      expect(
+        routeReceived,
+        true,
+      );
+
+      unawaited(sub.cancel());
     });
   });
 }
