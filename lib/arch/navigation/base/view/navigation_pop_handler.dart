@@ -12,12 +12,16 @@ class UINavigatorPopHandler extends StatefulWidget {
     required this.child,
     required this.stackStream,
     required this.initialStack,
+    required this.currentTabStackStream,
+    required this.currentTabInitialStack,
   });
 
   final Widget child;
   final VoidCallback? onPop;
   final Stream<List<UIRouteModel>> stackStream;
-  final List<UIRouteModel> initialStack;
+  final List<UIRouteModel> Function() initialStack;
+  final Stream<List<UIRouteModel>>? currentTabStackStream;
+  final List<UIRouteModel> Function()? currentTabInitialStack;
 
   @override
   State<UINavigatorPopHandler> createState() => _NavigatorPopHandlerState();
@@ -28,6 +32,7 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
   bool isPopDisabled = true;
 
   late StreamSubscription stackSub;
+  StreamSubscription? tabStackSub;
 
   @override
   void initState() {
@@ -36,15 +41,29 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
         return;
       }
 
-      checkStack(event);
+      checkStack();
     });
 
-    checkStack(widget.initialStack, updateState: false);
+    tabStackSub = widget.currentTabStackStream?.listen((event) {
+      if (!mounted) {
+        return;
+      }
+
+      checkStack();
+    });
+
+    checkStack(updateState: false);
 
     super.initState();
   }
 
-  void checkStack(List<UIRouteModel> stack, {bool updateState = true}) {
+  void checkStack({bool updateState = true}) {
+    var stack = widget.initialStack();
+
+    if (stack.isEmpty) {
+      stack = widget.currentTabInitialStack?.call() ?? [];
+    }
+
     isPopDisabled = stack.isEmpty ||
         !stack.last.settings.dismissable ||
         stack.last.settings.needToEnsureClose;
@@ -67,6 +86,7 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
     super.dispose();
 
     stackSub.cancel();
+    tabStackSub?.cancel();
   }
 
   @override

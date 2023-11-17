@@ -14,6 +14,8 @@ class NavigationPopScope extends StatelessWidget {
     required this.onPop,
     required this.stackStream,
     required this.initialStack,
+    this.currentTabStackStream,
+    this.currentTabInitialStack,
   });
 
   final String initialRoute;
@@ -21,7 +23,9 @@ class NavigationPopScope extends StatelessWidget {
   final GlobalKey<NavigatorState> navigator;
   final VoidCallback onPop;
   final Stream<List<UIRouteModel>> stackStream;
-  final List<UIRouteModel> initialStack;
+  final List<UIRouteModel> Function() initialStack;
+  final Stream<List<UIRouteModel>>? currentTabStackStream;
+  final List<UIRouteModel> Function()? currentTabInitialStack;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,8 @@ class NavigationPopScope extends StatelessWidget {
       onPop: onPop,
       stackStream: stackStream,
       initialStack: initialStack,
+      currentTabInitialStack: currentTabInitialStack,
+      currentTabStackStream: currentTabStackStream,
       child: Navigator(
         initialRoute: initialRoute,
         key: navigator,
@@ -54,6 +60,7 @@ class GlobalNavigationPopScope extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigationInteractor = UMvvmApp.navigationInteractor!;
     return NavigationPopScope(
       initialRoute: initialRoute,
       initialView: initialView,
@@ -63,8 +70,20 @@ class GlobalNavigationPopScope extends StatelessWidget {
       },
       stackStream: UMvvmApp.navigationInteractor!.navigationStack
           .globalNavigationStack.stackStream,
-      initialStack: UMvvmApp
-          .navigationInteractor!.navigationStack.globalNavigationStack.stack,
+      initialStack: () =>
+          navigationInteractor.navigationStack.globalNavigationStack.stack,
+      currentTabStackStream: navigationInteractor
+              .settings.appContainsTabNavigation
+          ? navigationInteractor.navigationStack.tabNavigationStack.stackStream
+              .map((event) => event[navigationInteractor.currentTab] ?? [])
+          : null,
+      currentTabInitialStack:
+          navigationInteractor.settings.appContainsTabNavigation
+              ? () =>
+                  navigationInteractor.navigationStack.tabNavigationStack
+                      .stack[navigationInteractor.currentTab] ??
+                  []
+              : null,
     );
   }
 }
