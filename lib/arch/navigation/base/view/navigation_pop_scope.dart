@@ -72,18 +72,6 @@ class GlobalNavigationPopScope extends StatelessWidget {
           .globalNavigationStack.stackStream,
       initialStack: () =>
           navigationInteractor.navigationStack.globalNavigationStack.stack,
-      currentTabStackStream: navigationInteractor
-              .settings.appContainsTabNavigation
-          ? navigationInteractor.navigationStack.tabNavigationStack.stackStream
-              .map((event) => event[navigationInteractor.currentTab] ?? [])
-          : null,
-      currentTabInitialStack:
-          navigationInteractor.settings.appContainsTabNavigation
-              ? () =>
-                  navigationInteractor.navigationStack.tabNavigationStack
-                      .stack[navigationInteractor.currentTab] ??
-                  []
-              : null,
     );
   }
 }

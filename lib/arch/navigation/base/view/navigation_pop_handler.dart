@@ -60,11 +60,11 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
   void checkStack({bool updateState = true}) {
     var stack = widget.initialStack();
 
-    if (stack.isEmpty) {
+    if (stack.length < 2) {
       stack = widget.currentTabInitialStack?.call() ?? [];
     }
 
-    isPopDisabled = stack.isEmpty ||
+    isPopDisabled = stack.length < 2 ||
         !stack.last.settings.dismissable ||
         stack.last.settings.needToEnsureClose;
 
@@ -72,7 +72,7 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
       setState(() {});
     }
 
-    if (stack.isEmpty || !stack.last.settings.dismissable) {
+    if (stack.length < 2 || !stack.last.settings.dismissable) {
       return;
     }
 
