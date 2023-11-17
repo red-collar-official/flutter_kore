@@ -20,7 +20,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback onSystemPop,
   }) =>
       DialogRoute(
         barrierDismissible: dismissable,
@@ -34,7 +33,6 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
           return _overlayRouteContainer(
             dismissable: dismissable,
             child: child,
-            onSystemPop: onSystemPop,
           );
         },
       );
@@ -45,14 +43,12 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required GlobalKey<NavigatorState> navigator,
     required bool dismissable,
     required Widget child,
-    required VoidCallback onSystemPop,
   }) =>
       ModalBottomSheetRoute(
         builder: (BuildContext buildContext) {
           return _overlayRouteContainer(
             dismissable: dismissable,
             child: child,
-            onSystemPop: onSystemPop,
           );
         },
         dismissible: dismissable,
@@ -84,19 +80,11 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   static Widget _overlayRouteContainer({
     required bool dismissable,
     required Widget child,
-    required VoidCallback onSystemPop,
   }) {
     return Builder(
       builder: (BuildContext context) {
         return PopScope(
           canPop: dismissable,
-          onPopInvoked: (didPop) {
-            if (!didPop) {
-              return;
-            }
-
-            onSystemPop();
-          },
           child: child,
         );
       },

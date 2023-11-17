@@ -52,6 +52,14 @@ class _NavigatorPopHandlerState extends State<UINavigatorPopHandler> {
     if (updateState) {
       setState(() {});
     }
+
+    if (stack.isEmpty || !stack.last.settings.dismissable) {
+      return;
+    }
+
+    if (stack.last.settings.needToEnsureClose) {
+      isPopDisabled = false;
+    }
   }
 
   @override

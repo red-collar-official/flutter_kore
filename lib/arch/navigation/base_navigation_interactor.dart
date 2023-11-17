@@ -477,9 +477,6 @@ abstract class BaseNavigationInteractor<
       navigator: navigator,
       dismissable: dialogSettings.dismissable,
       child: dialogToOpen,
-      // coverage: ignore-start
-      onSystemPop: () => pop(onlyInternalStack: true),
-      // coverage: ignore-end
     );
 
     final result = await navigator.currentState?.push(route);
@@ -541,9 +538,6 @@ abstract class BaseNavigationInteractor<
       navigator: navigator,
       dismissable: bottomSheetSettings.dismissable,
       child: bottomSheetToOpen,
-      // coverage: ignore-start
-      onSystemPop: () => pop(onlyInternalStack: true),
-      // coverage: ignore-end
     );
 
     final result = await navigator.currentState?.push(route);
