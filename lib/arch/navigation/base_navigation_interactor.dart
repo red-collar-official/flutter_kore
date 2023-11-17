@@ -486,7 +486,7 @@ abstract class BaseNavigationInteractor<
             ? navigationStack.globalNavigationStack.stack.length
             : navigationStack.tabNavigationStack.stack[currentTab]!.length;
 
-        if (currentStackLength != stackLength) {
+        if (currentStackLength == stackLength) {
           pop(onlyInternalStack: true);
         }
       },
@@ -560,7 +560,7 @@ abstract class BaseNavigationInteractor<
             ? navigationStack.globalNavigationStack.stack.length
             : navigationStack.tabNavigationStack.stack[currentTab]!.length;
 
-        if (currentStackLength != stackLength) {
+        if (currentStackLength == stackLength) {
           pop(onlyInternalStack: true);
         }
       },
