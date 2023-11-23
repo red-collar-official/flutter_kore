@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/ui/home/home_view.dart';
 import 'app_view_model.dart';
@@ -17,13 +18,15 @@ class AppView extends BaseWidget {
 }
 
 class _AppViewWidgetState
-    extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
+    extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      navigatorKey: viewModel.navigationInteractor.globalNavigatorKey,
-      home: const HomeView(),
+      home: GlobalNavigationInitializer(
+        initialView: const HomeView(),
+        initialRoute: RouteNames.home.name,
+      ),
     );
   }
 

@@ -7,8 +7,7 @@ import 'package:sample_navigation/domain/interactors/navigation/navigation_inter
 import 'home_view.dart';
 import 'home_view_state.dart';
 
-class HomeViewModel
-    extends TabNavigationRootViewModel<HomeView, HomeViewState> {
+class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   @override
   List<Connector> dependsOn(HomeView input) => [];
 
@@ -28,13 +27,6 @@ class HomeViewModel
 
   void changeTab(AppTab tab) {
     app.navigation.setCurrentTab(tab);
-  }
-
-  @override
-  void onPop() {
-    app.instances
-        .get<NavigationInteractor>()
-        .homeBackButtonGlobalCallback();
   }
 
   AppTab get initialTab => app.navigation.state.currentTab;

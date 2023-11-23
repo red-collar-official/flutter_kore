@@ -20,7 +20,7 @@ class HomeView extends BaseWidget {
 }
 
 class _HomeViewWidgetState
-    extends TabNavigationRootView<HomeView, HomeViewState, HomeViewModel> {
+    extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabViews = {
     AppTabs.posts: const PostsListView(),
     AppTabs.likedPosts: const PostsListView(),
@@ -63,6 +63,26 @@ class _HomeViewWidgetState
             }).toList(),
           );
         },
+      ),
+    );
+  }
+
+  Widget tabNavigationContainer({
+    required bool offstage,
+    required GlobalKey<NavigatorState> navigationKey,
+    required Widget view,
+    required String name,
+    required dynamic tab,
+  }) {
+    return Offstage(
+      offstage: offstage,
+      child: HeroControllerScope(
+        controller: MaterialApp.createMaterialHeroController(),
+        child: TabNavigationInitializer(
+          initialRoute: name,
+          navigatorKey: navigationKey,
+          initialView: view,
+        ),
       ),
     );
   }

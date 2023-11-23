@@ -178,14 +178,17 @@ abstract class BaseNavigationInteractor<
     routes.initializeLinkHandlers();
     dialogs.initializeLinkHandlers();
     bottomSheets.initializeLinkHandlers();
+
+    initStack();
   }
 
   /// Initializes stack with [initialRoute]
   void initStack() {
     navigationStack.replaceStack(
-        routeName: settings.initialRoute,
-        tab: currentTab,
-        settings: const UIRouteSettings(global: true, uniqueInStack: true));
+      routeName: settings.initialRoute,
+      tab: currentTab,
+      settings: const UIRouteSettings(global: true, uniqueInStack: true),
+    );
 
     navigationStack.tabNavigationStack.reset();
   }

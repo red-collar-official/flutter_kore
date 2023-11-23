@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/interactors/navigation/components/mappers/test_mapper.dart';
+import 'package:sample_database/ui/post/post_view.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/global/global_store.dart';
 
@@ -24,7 +25,10 @@ class Routes extends RoutesBase with RoutesGen {
     return UIRoute(
       name: RouteNames.post,
       defaultSettings: const UIRouteSettings(),
-      child: Container(),
+      child: PostView(
+        post: post,
+        id: id,
+      ),
     );
   }
 

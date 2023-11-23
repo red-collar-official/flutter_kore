@@ -6,6 +6,8 @@ To use this feature you need to subclass <b>BaseNavigationInteractor</b> and mar
 
 Then it will be available via <b>app.navigation</b>.
 
+Supports nested tab navigation, separate navigator for dialogs and bottom sheets and PopScope.
+
 If your app contains tab (nested) navigation then NavigationInteractor will look like this:
 
 ```dart
@@ -235,11 +237,11 @@ All this methods available via <b>app.navigation</b>. And you can add your own m
 
 To complete navigation initialization you also need to provide root views for global and tab navigation(if present).
 
-For global navigation there are <b>GlobalNavigationRootViewModel</b> and <b>GlobalNavigationRootView</b>.
-Generally this classes would be root app view and view model, where you place your <b>MaterialApp</b> or analogues.
+For global navigation there is <b>GlobalNavigationInitializer</b>.
+Place it inside your <b>MaterialApp</b> and do not pass global navigator key to <b>MaterialApp</b> constructor. If you use separate key for bottom sheets and dialogs you can pass it to <b>MaterialApp</b>.
 
-For tab navigation there are also <b>TabNavigationRootViewModel</b> and <b>TabNavigationRootView</b>.
-Generally this classes would be root tab navigation view and view model, where you place your <b>bottomNavigationBar</b> and tab view.
+For tab navigation there is <b>TabNavigationInitializer</b>.
+Use it as your root tab widget. Example is below.
 
 If you use tab navigation you need to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for your views and view models
 since it ensures that navigation is handled in correct navigation scope (tab or global).
@@ -247,31 +249,22 @@ since it ensures that navigation is handled in correct navigation scope (tab or 
 Here are some examples:
 
 ```dart
-class AppViewModel extends GlobalNavigationRootViewModel<AppView, AppViewState> {
-  @override
-  List<Connector> dependsOn(AppView input) => [];
-
-  @override
-  void onLaunch(AppView widget) {
-    super.onLaunch(widget);
-  }
-
-  void fireLifecycleEvent(AppLifecycleState state) {
-    app.eventBus.send(AppLifecycleStateChangedEvent(state: state));
-  }
-
-  @override
-  AppViewState initialState(AppView input) => const AppViewState();
-}
-
-class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
+class _AppViewWidgetState
+    extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorKey: app.navigation.globalNavigatorKey,
-        home: Container(),
+      debugShowCheckedModeBanner: false,
+      home: GlobalNavigationInitializer(
+        initialView: const HomeView(),
+        initialRoute: RouteNames.home.name,
+      ),
     );
+  }
+
+  @override
+  AppViewModel createViewModel() {
+    return AppViewModel();
   }
 }
 ```
@@ -279,7 +272,7 @@ class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState,
 If your app uses separate navigator key for dialogs and bottoms sheets you need to replace global navigator with <b>GlobalNavigationPopScope</b>. Here is an example:
 
 ```dart
-class AppViewModel extends GlobalNavigationRootViewModel<AppView, AppViewState> {
+class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
   @override
   List<Connector> dependsOn(AppView input) => [];
 
@@ -296,15 +289,15 @@ class AppViewModel extends GlobalNavigationRootViewModel<AppView, AppViewState> 
   AppViewState initialState(AppView input) => const AppViewState();
 }
 
-class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState, AppViewModel> {
+class AppViewWidgetState extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         navigatorKey: app.navigation.bottomSheetDialogNavigatorKey,
-        home: GlobalNavigationPopScope(
-          initialView: const SplashView(),
-          initialRoute: RouteNames.splash.name,
+        home: GlobalNavigationInitializer(
+          initialView: const HomeView(),
+          initialRoute: RouteNames.home.name,
         ),
     );
   }
@@ -314,7 +307,7 @@ class AppViewWidgetState extends GlobalNavigationRootView<AppView, AppViewState,
 And here are examples for tab navigation initialization:
 
 ```dart
-class HomeViewModel extends TabNavigationRootViewModel<HomeView, HomeViewState> {
+class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
     AppTabs.posts: GlobalKey<NavigatorState>(),
     AppTabs.likedPosts: GlobalKey<NavigatorState>(),
@@ -353,7 +346,7 @@ class HomeView extends BaseWidget {
   }
 }
 
-class _HomeViewWidgetState extends TabNavigationRootView<HomeView, HomeViewState, HomeViewModel> {
+class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabViews = {
     AppTabs.posts: Container(),
     AppTabs.likedPosts: Container(),
@@ -375,6 +368,7 @@ class _HomeViewWidgetState extends TabNavigationRootView<HomeView, HomeViewState
                       navigationKey: viewModel.getNavigatorKey(tab),
                       view: tabViews[tab]!,
                       name: tab.name,
+                      tab: tab,
                     ))
                 .toList(),
           );
@@ -399,10 +393,28 @@ class _HomeViewWidgetState extends TabNavigationRootView<HomeView, HomeViewState
       ),
     );
   }
+
+  Widget tabNavigationContainer({
+    required bool offstage,
+    required GlobalKey<NavigatorState> navigationKey,
+    required Widget view,
+    required String name,
+    required dynamic tab,
+  }) {
+    return Offstage(
+      offstage: offstage,
+      child: HeroControllerScope(
+        controller: MaterialApp.createMaterialHeroController(),
+        child: TabNavigationInitializer(
+          initialRoute: name,
+          navigatorKey: navigationKey,
+          initialView: view,
+        ),
+      ),
+    );
+  }
 }
 ```
-
-In the example above you can see that <b>TabNavigationRootView</b> has helper method to create tab in tab view. But you can create your own implementation. Just do not forget to create navigators for you navigator keys. And do not forget to pass <v>app.navigation.globalNavigatorKey</b> to <b>MaterialApp</b> or analogues. If you using separate navigation for bottom sheets and dialogs you also need to pass <v>app.navigation.bottomSheetDialogNavigatorKey</b> to corresponding navigator.
 
 And if you using tab navigation every other view state other than global and tab root view states you extend <b>NavigationViewModel</b> and <b>NavigationView</b>:
 
