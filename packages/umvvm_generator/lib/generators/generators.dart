@@ -11,9 +11,9 @@ import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
 import 'package:umvvm/arch/navigation/annotations/annotations.dart';
-import 'package:umvvm/collectors/models/api_json_model.dart';
-import 'package:umvvm/collectors/models/instance_json_model.dart';
 import 'package:umvvm_generator/collectors/main_app_visitor.dart';
+import 'package:umvvm_generator/collectors/models/api_json_model.dart';
+import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
 import 'package:umvvm_generator/generators/annotated_function_visitor.dart';
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
