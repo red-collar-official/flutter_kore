@@ -8,14 +8,14 @@ targets:
 
 builders:
   generators:
-    import: "package:umvvm/generators/builders.dart"
+    import: "package:umvvm_generator/generators/builders.dart"
     builder_factories: ["generateMainApp", "generateMainApi", "generateNavigation", "generateNavigationInteractor"]
     build_extensions: { ".dart": [".mvvm.dart", ".api.dart", ".navigation.dart", ".app_navigation.dart"] }
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen:combining_builder"]
   collectors:
-    import: "package:umvvm/collectors/builders.dart"
+    import: "package:umvvm_generator/collectors/builders.dart"
     builder_factories: ["generateInstanceCollector", "generateApiCollector"]
     build_extensions: { ".dart": ["mvvm.json", "api.json"] }
     auto_apply: dependents

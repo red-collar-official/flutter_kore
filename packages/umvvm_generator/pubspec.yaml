@@ -1,12 +1,11 @@
 name: umvvm_generator
 description: "Source generators for Umvvm architecture library"
-version: 0.0.1
+version: 1.0.0
 
 publish_to: none
 
 environment:
-  sdk: '>=3.2.1 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
