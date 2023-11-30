@@ -1,5 +1,5 @@
 name: sample_database
-description: Sample for toolbox
+description: Basic sample demonstating minimal setup for umvvm - here we are using http, DI, and navigation components. Combined with simple object box db implementation
 version: 1.0.0+1
 publish_to: none
 
@@ -10,10 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm:
-    path: ../../
+  umvvm: 
+    git: 
+      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      path: packages/umvvm
+      branch: main
 
-  dio: ^5.3.4
+  dio: ^5.4.0
   freezed_annotation: ^2.4.1
   shared_preferences: ^2.2.2
   objectbox: ^2.3.1
@@ -26,10 +29,16 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
+  umvvm_generator: 
+    git: 
+      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      path: packages/umvvm_generator
+      branch: main
+
   json_serializable:
   build: ^2.4.1
   build_config: ^1.1.1
-  build_runner: ^2.4.6
+  build_runner: ^2.4.7
   freezed: ^2.4.1
   objectbox_generator: any
   flutter_lints: ^3.0.1

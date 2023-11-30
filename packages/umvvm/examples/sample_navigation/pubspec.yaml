@@ -1,0 +1,37 @@
+name: sample_navigation
+description: Basic sample demonstating minimal setup for umvvm - here we are using http, DI, and navigation components.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  umvvm:
+    path: ../../
+
+  dio: ^5.4.0
+  freezed_annotation: ^2.4.1
+  shared_preferences: ^2.2.2
+  back_button_interceptor: ^7.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  integration_test:
+    sdk: flutter
+
+  json_serializable:
+  build: ^2.4.1
+  build_config: ^1.1.1
+  build_runner: ^2.4.7
+  freezed: ^2.4.1
+  flutter_lints: ^3.0.1
+  test:
+
+flutter:
+  uses-material-design: true

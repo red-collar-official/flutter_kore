@@ -1,5 +1,5 @@
 name: sample_navigation
-description: Sample with NavigationInteractor and nested navigation
+description: Basic sample demonstating minimal setup for umvvm - here we are using http, DI, and navigation components.
 version: 1.0.0+1
 publish_to: none
 
@@ -10,10 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm:
-    path: ../../
+  umvvm: 
+    git: 
+      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      path: packages/umvvm
+      branch: main
 
-  dio: ^5.3.4
+  dio: ^5.4.0
   freezed_annotation: ^2.4.1
   shared_preferences: ^2.2.2
   back_button_interceptor: ^7.0.0
@@ -25,10 +28,16 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
+  umvvm_generator: 
+    git: 
+      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      path: packages/umvvm_generator
+      branch: main
+
   json_serializable:
   build: ^2.4.1
   build_config: ^1.1.1
-  build_runner: ^2.4.6
+  build_runner: ^2.4.7
   freezed: ^2.4.1
   flutter_lints: ^3.0.1
   test:
