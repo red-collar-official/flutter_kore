@@ -10,7 +10,6 @@ class TestMvvmDisposableInstance extends BaseViewModel<StatefulWidget, int>
     with UseDisposableMixin {
   late final scrollController = useScrollController();
   late final textEditingController = useTextEditingController();
-  late final cancelToken = useCancelToken();
   late final debouncer = useDebouncer(
     delay: const Duration(milliseconds: 100),
   );
@@ -35,14 +34,12 @@ void main() {
 
       viewModel.initialize(const TestWidget());
 
-      viewModel.cancelToken;
       viewModel.debouncer;
       viewModel.textEditingController;
       viewModel.scrollController;
 
       viewModel.dispose();
 
-      expect(viewModel.cancelToken.isCancelled, true);
       expect(viewModel.debouncer.isDisposed, true);
 
       expect(

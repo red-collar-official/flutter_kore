@@ -88,7 +88,6 @@ Here is full list of supported initializers:
 TextEditingController useTextEditingController({String? text});
 ScrollController useScrollController();
 Debouncer useDebouncer({required Duration delay});
-CancellationToken useCancelToken();
 ```
 
 Here is usecase example:
@@ -107,7 +106,7 @@ FormViewModelMixin can be applied only to view models.
 
 It helps to manage form views where you need to validate user input.
 
-It contains map of validators (keys of map are <b>GlobalKey</b> so form can autpmatically scroll to error field if user trying to submit form) and <b>executeSubmitAction</b> method to call form validation process. You need to pass this keys as parameters to your field widgets. Field widget implementation is up do developer.
+It contains map of validators (keys of map are <b>GlobalKey</b> so form can automatically scroll to error field if user trying to submit form) and <b>executeSubmitAction</b> method to call form validation process. You need to pass theese keys as parameters to your field widgets. Field widget implementation is up do developer.
 
 Validators can be manually updated:
 

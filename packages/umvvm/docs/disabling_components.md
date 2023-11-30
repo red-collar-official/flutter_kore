@@ -2,7 +2,7 @@
 
 You can disable most of components of Umvvm at all.
 
-If you don't want to use navigation component just don't pass it to global app initializztion:
+If you don't want to use navigation component just don't pass it to global app initialization:
 
 ```dart
 @MainApp()
@@ -38,7 +38,7 @@ final app = App();
 You can disable DI container at all and inject dependencies your own way.
 
 It is also true that you can bypass all components except from <b>ViewState</b> and <b>ViewModel</b> and use them as state management.
-You can also safely call <b>Apis</b> (if you use them) in view models cause view models mix <b>ApiCaller</b> mixin (more information about <b>ApiCaller</b> [here](./custom_instances.md)).
+You can also safely call <b>Apis</b> (if you use them) in view models because view models mix <b>ApiCaller</b> mixin (more information about <b>ApiCaller</b> [here](./custom_instances.md)).
 
 This way you can impelement your own domain design.
 

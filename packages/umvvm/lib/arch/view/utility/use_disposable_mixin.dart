@@ -1,4 +1,3 @@
-import 'package:cancellation_token_hoc081098/cancellation_token_hoc081098.dart';
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/utility/debouncer.dart';
 import 'package:umvvm/umvvm.dart';
@@ -10,7 +9,6 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
   final _textEditingControllers = <TextEditingController>[];
   final _scrollControllers = <ScrollController>[];
   final _debouncers = <Debouncer>[];
-  final _cancelationTokens = <CancellationToken>[];
 
   @override
   @mustCallSuper
@@ -27,10 +25,6 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
 
     for (final element in _debouncers) {
       element.dispose();
-    }
-
-    for (final element in _cancelationTokens) {
-      element.cancel();
     }
   }
 
@@ -62,15 +56,5 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
     _debouncers.add(debouncer);
 
     return debouncer;
-  }
-
-  /// Creates cancel token and keeps reference
-  /// It will be canceled when instance is disposed
-  CancellationToken useCancelToken() {
-    final cancellationToken = CancellationToken();
-
-    _cancelationTokens.add(cancellationToken);
-
-    return cancellationToken;
   }
 }
