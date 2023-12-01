@@ -117,6 +117,14 @@ updateFieldState(
 );
 ```
 
+You also can manually call validator for field and reset field with corresponding methods:
+
+```dart
+validateField(passwordKey);
+
+resetField(passwordKey);
+```
+
 You can also override <b>additionalCheck</b> method if you need to check some additional fields. It will be run after validators check.
 
 Here you can see the example:
