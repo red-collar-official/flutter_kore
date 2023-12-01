@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/arch/view/base_widget.dart';
-import 'package:umvvm/arch/view/utility/on_become_visible.dart';
+import 'package:umvvm/arch/utility/on_become_visible.dart';
 import 'base_view_model.dart';
 
 /// Main class for umvvm view

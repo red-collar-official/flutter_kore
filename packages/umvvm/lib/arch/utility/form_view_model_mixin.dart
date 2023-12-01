@@ -60,6 +60,23 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     fieldStates[key]!.update(state);
   }
 
+  /// Validates field and updates field state
+  /// 
+  /// Returns validation result
+  Future<FieldValidationState> validateField(GlobalKey key) async {
+    final validationFunction = _actualValidators[key];
+
+    final validationResult = await validationFunction!();
+    updateFieldState(key, validationResult);
+
+    return validationResult;
+  }
+
+  /// Resets field state to [IgnoredFieldState]
+  void resetField(GlobalKey key) {
+    updateFieldState(key, IgnoredFieldState());
+  }
+
   @override
   @mustCallSuper
   void onLaunch(widget) {

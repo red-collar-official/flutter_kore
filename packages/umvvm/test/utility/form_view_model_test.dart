@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:test/test.dart';
 import 'package:umvvm/umvvm.dart';
 
-import '../../helpers/delay_utility.dart';
-import '../../mocks/test_widget.dart';
+import '../helpers/delay_utility.dart';
+import '../mocks/test_widget.dart';
 
 final testKey1 = GlobalKey();
 final testKey2 = GlobalKey();
@@ -122,7 +122,8 @@ void main() {
       await viewModel.validateAllFields();
 
       expect(stateFromStream.runtimeType, ValidFieldState);
-      expect(viewModel.currentFieldState(testKey1).runtimeType, ValidFieldState);
+      expect(
+          viewModel.currentFieldState(testKey1).runtimeType, ValidFieldState);
 
       await subscription.cancel();
       viewModel.dispose();
@@ -169,5 +170,35 @@ void main() {
       await subscription.cancel();
       viewModel.dispose();
     });
+  });
+
+  test('FormViewModel validate field test', () async {
+    final viewModel = TestMvvmFormInstance2();
+
+    viewModel.initialize(const TestWidget());
+    viewModel.onLaunch(const TestWidget());
+
+    await viewModel.validateField(testKey1);
+
+    expect(viewModel.fieldStates[testKey1]?.current is ErrorFieldState, true);
+
+    viewModel.dispose();
+  });
+
+  test('FormViewModel reset field test', () async {
+    final viewModel = TestMvvmFormInstance2();
+
+    viewModel.initialize(const TestWidget());
+    viewModel.onLaunch(const TestWidget());
+
+    await viewModel.validateField(testKey1);
+
+    expect(viewModel.fieldStates[testKey1]?.current is ErrorFieldState, true);
+
+    viewModel.resetField(testKey1);
+
+    expect(viewModel.fieldStates[testKey1]?.current is IgnoredFieldState, true);
+
+    viewModel.dispose();
   });
 }

@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/test.dart';
 import 'package:umvvm/umvvm.dart';
 
-import '../../mocks/test_widget.dart';
+import '../mocks/test_widget.dart';
 
 class TestMvvmDisposableInstance extends BaseViewModel<StatefulWidget, int>
     with UseDisposableMixin {
