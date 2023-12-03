@@ -133,10 +133,10 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     String printMessage = '';
 
-    printMessage += 'Generated Mvvm app: ';
+    printMessage += 'umvvm_generator:\nGenerated Umvvm app: ';
     printMessage += 'Instances count: ${instances.length}';
 
-    log.log(Level.INFO, printMessage);
+    log.info(printMessage);
 
     return classBuffer.toString();
   }
@@ -613,9 +613,9 @@ if (pathSegmentPattern == '$element') {
 
     String printMessage = '';
 
-    printMessage += 'Generated Navigation for app: ';
+    printMessage += 'umvvm_generator:\nGenerated Navigation for app: ';
     printMessage += '$className count: ${methodsVisitor.allMethods.length}';
-    log.log(Level.INFO, printMessage);
+    log.info(printMessage);
 
     return classBuffer.toString();
   }
@@ -786,10 +786,10 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
 
     String printMessage = '';
 
-    printMessage += 'Generated Apis for app: ';
+    printMessage += 'umvvm_generator:\nGenerated Apis for app: ';
     printMessage += 'Apis count: ${apis.length}';
 
-    log.log(Level.INFO, printMessage);
+    log.info(printMessage);
 
     return classBuffer.toString();
   }
