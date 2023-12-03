@@ -7,6 +7,7 @@ import 'package:build/src/builder/build_step.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
 import 'package:glob/glob.dart';
+import 'package:logging/logging.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
@@ -15,6 +16,8 @@ import 'package:umvvm_generator/collectors/main_app_visitor.dart';
 import 'package:umvvm_generator/collectors/models/api_json_model.dart';
 import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
 import 'package:umvvm_generator/generators/annotated_function_visitor.dart';
+
+final log = Logger('UmvvmGen');
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
@@ -130,9 +133,12 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     String printMessage = '';
 
-    printMessage += 'Generated Mvvm app\n\n';
+    printMessage += 'Generated Mvvm app\n';
     printMessage += 'Instances count: ${instances.length}';
-    print(printMessage);
+    //print(printMessage);
+
+    log.level = Level.INFO;
+    log.log(Level.INFO, printMessage);
 
     return classBuffer.toString();
   }
@@ -609,7 +615,7 @@ if (pathSegmentPattern == '$element') {
 
     String printMessage = '';
 
-    printMessage += 'Generated Navigation for app\n\n';
+    printMessage += 'Generated Navigation for app\n';
     printMessage += '$className count: ${methodsVisitor.allMethods.length}';
     print(printMessage);
 
@@ -782,7 +788,7 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
 
     String printMessage = '';
 
-    printMessage += 'Generated Apis for app\n\n';
+    printMessage += 'Generated Apis for app\n';
     printMessage += 'Apis count: ${apis.length}';
 
     print(printMessage);
