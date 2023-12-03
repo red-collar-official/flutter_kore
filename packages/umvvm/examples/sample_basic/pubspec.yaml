@@ -28,10 +28,7 @@ dev_dependencies:
     sdk: flutter
 
   umvvm_generator: 
-    git: 
-      url: https://gitlab.rdclr.ru/flutter/umvvm.git
-      path: packages/umvvm_generator
-      branch: main
+    path: ../../../umvvm_generator
 
   json_serializable:
   build: ^2.4.1
