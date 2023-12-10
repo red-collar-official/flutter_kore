@@ -6,7 +6,21 @@ Set of classes for Flutter app architecture.
 
 ### Installing
 
-Info about installing here.
+```yaml
+dependencies: 
+  umvvm: 
+  git: 
+    url: https://gitlab.rdclr.ru/flutter/umvvm.git
+    path: packages/umvvm
+    branch: main
+
+dev_dependencies: 
+  umvvm_generator: 
+    git: 
+      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      path: packages/umvvm_generator
+      branch: main
+```
 
 You also need dependency for build_runner if you don't have it yet.
 
