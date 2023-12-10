@@ -5,39 +5,39 @@ import 'package:umvvm/umvvm.dart';
 
 /// Base interactor for handling links in app
 /// Contains methods to get initial app deeplink and deeplink stream
-/// 
+///
 /// You can obtain instance with app.navigation.deeplinks
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 ///   bool defaultLinkHandlerCalled = false;
-/// 
+///
 ///   final linkStreamController = StreamController<String>.broadcast();
-/// 
+///
 ///   @override
 ///   Future<void> defaultLinkHandler(String? link) async {
 ///     defaultLinkHandlerCalled = true;
 ///   }
-/// 
+///
 ///   @override
 ///   Future<String> getInitialLink() async {
 ///     return 'test';
 ///   }
-/// 
+///
 ///   @override
 ///   int initialState(Map<String, dynamic>? input) => 1;
-/// 
+///
 ///   @override
 ///   Stream<String> linkStream() {
 ///     return linkStreamController.stream;
 ///   }
-/// 
+///
 ///   @override
 ///   void dispose() {
 ///     super.dispose();
-/// 
+///
 ///     linkStreamController.close();
 ///   }
 /// }
@@ -60,7 +60,7 @@ abstract class BaseDeepLinksInteractor<State>
   Future<void> defaultLinkHandler(String? link);
 
   /// Receives initial link and sends event
-  
+
   @mustCallSuper
   Future<void> receiveInitialLink() async {
     if (initialLinkReceived) {

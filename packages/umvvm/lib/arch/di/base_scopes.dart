@@ -6,7 +6,7 @@ class BaseScopes {
   /// Global scope for app level singletons
   static const global = 'global';
 
-  /// Scope for global interactors that will be disposed 
+  /// Scope for global interactors that will be disposed
   /// once all holders are disposed
   static const weak = 'weak';
 

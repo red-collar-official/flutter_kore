@@ -5,7 +5,7 @@ import 'generators.dart';
 
 Builder generateMainApp(BuilderOptions options) => PartBuilder(
       [MainAppGenerator()],
-       '.mvvm.dart',
+      '.mvvm.dart',
       allowSyntaxErrors: true,
     );
 Builder generateMainApi(BuilderOptions options) => PartBuilder(

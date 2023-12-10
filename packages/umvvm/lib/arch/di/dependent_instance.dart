@@ -6,12 +6,12 @@ import 'package:umvvm/umvvm.dart';
 
 /// Mixin that contains declarations of instance dependencies
 /// Contains methods to declare, initialize and get them
-/// 
+///
 /// If used you need to call [initializeDependencies] in [initialize] call
-/// And call [disposeDependencies] in [dispose] call 
-/// 
+/// And call [disposeDependencies] in [dispose] call
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<dynamic> {
 ///   String get boxName;
@@ -102,7 +102,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Returns list of dependencies from every module 
+  /// Returns list of dependencies from every module
   /// and combines it with local dependencies
   List<Connector> getFullConnectorsList(Input input) {
     final concreteDependencies = dependsOn(input);

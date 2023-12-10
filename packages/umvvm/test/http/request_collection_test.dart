@@ -130,11 +130,11 @@ void main() {
       await DelayUtility.pause();
 
       collection.removeAllRequests();
-  
+
       expect(collection.requests.length, 0);
 
       collection.removeAllRequests();
-  
+
       expect(collection.requests.length, 0);
     });
   });

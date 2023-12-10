@@ -6,7 +6,7 @@ import 'package:umvvm/umvvm.dart';
 /// Contains dependencies, event bus subscription, state and  parts
 ///
 /// Example:
-/// 
+///
 /// ```dart
 /// class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
 ///   @override

@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:umvvm/umvvm.dart';
 
 /// Utility class to debounce actions
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// final debouncer = Debouncer(const Duration(milliseconds: 200));
-/// 
+///
 /// debouncer(() {
 ///   // do something
 /// });
@@ -20,11 +20,11 @@ class Debouncer {
   Timer? _timer;
 
   /// Flag indicating that this debouncer is disposed
-  /// Debouncer bus can't be used if this flag is true 
+  /// Debouncer bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this debouncer is disposed
-  /// Debouncer bus can't be used if this flag is true 
+  /// Debouncer bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
   void Function()? _currentCallback;

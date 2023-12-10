@@ -3,7 +3,7 @@ import 'package:umvvm/umvvm.dart';
 
 /// Base view model if app uses navigation
 /// Must be extended by any view if navigation used
-/// 
+///
 /// Note: inside navigation view models call view model pop method instead of
 /// app.navigation.pop()
 abstract class NavigationViewModel<Widget extends StatefulWidget, State>
@@ -43,7 +43,8 @@ abstract class NavigationView<View extends BaseWidget, ScreenState,
               viewModel.navigationInteractor.globalNavigatorKey &&
           currentNavigatorKey !=
               viewModel.navigationInteractor.bottomSheetDialogNavigatorKey) {
-        for (final entry in viewModel.navigationInteractor.currentTabKeys.entries) {
+        for (final entry
+            in viewModel.navigationInteractor.currentTabKeys.entries) {
           if (entry.value == currentNavigatorKey) {
             viewModel.screenTab = entry.key;
           }

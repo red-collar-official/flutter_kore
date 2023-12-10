@@ -3,13 +3,13 @@ import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/interactors/navigation/components/mappers/test_mapper.dart';
 import 'package:sample_database/ui/post/post_view.dart';
 import 'package:umvvm/umvvm.dart';
-import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/global/global_app.dart';
 
 part 'routes.navigation.dart';
 
 @routes
 class Routes extends RoutesBase with RoutesGen {
-    @Link(
+  @Link(
     paths: ['posts/:{id}'],
     query: [
       'filter',
@@ -46,7 +46,9 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(paths: ['stub'], query: [
+  @Link(paths: [
+    'stub'
+  ], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({

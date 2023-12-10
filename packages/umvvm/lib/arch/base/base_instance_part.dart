@@ -1,7 +1,7 @@
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for parts
-/// Parts are smallest mvvm instances 
+/// Parts are smallest mvvm instances
 /// They do not have state or dependencies
 /// But they can receive events and contain other parts inside
 /// Part also contain reference to parent instance and root parent instance of parts tree
@@ -9,9 +9,9 @@ import 'package:umvvm/umvvm.dart';
 /// Parts must be annotated with [instancePart] annotation
 /// You also can execute requests and cancel them automatically when part will be disposed
 /// with [executeAndCancelOnDispose] method
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// @instancePart
 /// class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {
@@ -29,7 +29,7 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   late T parentInstance;
 
   /// Root parent instance for this part
-  /// If part contain other parts then root parent instance 
+  /// If part contain other parts then root parent instance
   /// will be parent instance of the first part in the tree
   late MvvmInstance? rootParentInstance;
 
@@ -46,7 +46,7 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
 
     initialized = true;
   }
-    
+
   /// Base method for lightweight instance initialization
   // coverage:ignore-start
   @override

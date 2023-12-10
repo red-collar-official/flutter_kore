@@ -17,7 +17,7 @@ import 'store.dart';
 ///   void onRestore(Map<String, dynamic> savedStateObject) {
 ///     updateState(UserDefaultsState.fromJson(savedStateObject));
 ///   }
-/// 
+///
 ///   @override
 ///   Map<String, dynamic> get savedStateObject => state.toMap();
 ///

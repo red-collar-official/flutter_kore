@@ -6,9 +6,9 @@ import 'package:umvvm/umvvm.dart';
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
 /// with [executeAndCancelOnDispose] method
-/// 
-/// Example: 
-/// 
+///
+/// Example:
+///
 /// ```dart
 /// @singleton
 /// class StripeWrapper extends BaseWrapper<String> {
@@ -67,9 +67,9 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
 /// with [executeAndCancelOnDispose] method
-/// 
-/// Example: 
-/// 
+///
+/// Example:
+///
 /// ```dart
 /// @asyncSingleton
 /// class StripeWrapper extends BaseHolderWrapper<Stripe, String> {

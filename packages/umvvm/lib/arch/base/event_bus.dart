@@ -23,16 +23,16 @@ class EventBus {
   /// Underlying controller fot this event bus
   late final StreamController _streamController;
 
-  /// Collection of events sent through event bus 
+  /// Collection of events sent through event bus
   /// only used in test mode
   final _events = [];
 
   /// Flag indicating that this event bus is disposed
-  /// Event bus can't be used if this flag is true 
+  /// Event bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this event bus is disposed
-  /// Event bus can't be used if this flag is true 
+  /// Event bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
   EventBus._internal() {

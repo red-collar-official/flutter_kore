@@ -18,16 +18,16 @@ class Instance {
   /// Flag indicating is this instance singleton - defaults to false
   final bool singleton;
 
-  /// Flag indicating is this instance lazy singleton - defaults to false. 
+  /// Flag indicating is this instance lazy singleton - defaults to false.
   /// Only matters if [singleton] is set to true
   final bool lazy;
 
-  /// Initialization order for this instance. 
-  /// Only matters if [singleton], [async] 
+  /// Initialization order for this instance.
+  /// Only matters if [singleton], [async]
   /// and [awaitInitialization] are set to true
   final int? initializationOrder;
 
-  /// Flag indicating that initialization of 
+  /// Flag indicating that initialization of
   /// this instance needs to be awaited at app startup - defaults to false
   /// Only matters if [singleton], [async] are set to true
   final bool awaitInitialization;

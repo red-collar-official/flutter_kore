@@ -2,9 +2,9 @@ import 'package:umvvm/arch/navigation/base/default_navigation_route_builder.dart
 import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
 
 /// Class describing app navigation settings
-/// 
+///
 /// Example:
-/// 
+///
 /// ```dart
 /// NavigationInteractorSettings(
 ///   initialRoute: RouteNames.home,

@@ -61,7 +61,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   }
 
   /// Validates field and updates field state
-  /// 
+  ///
   /// Returns validation result
   Future<FieldValidationState> validateField(GlobalKey key) async {
     final validationFunction = _actualValidators[key];

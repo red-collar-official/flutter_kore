@@ -1,20 +1,20 @@
 import 'package:umvvm/umvvm.dart';
 
-/// Sealed class that holds either loading state, some typed data or error 
-/// 
+/// Sealed class that holds either loading state, some typed data or error
+///
 /// ```dart
 /// var statefulData = LoadingData();
-/// 
+///
 /// statefulData.unwrap(); // throws error
-/// 
+///
 /// var statefulData = ErrorData(error: 'test error');
-/// 
+///
 /// statefulData.unwrap(); // throws error
-/// 
+///
 /// var statefulData = SuccessData(result: 1);
-/// 
+///
 /// statefulData.unwrap(); // valid
-/// 
+///
 /// ```
 sealed class StatefulData<T> {
   /// Returns success data or throws exception if value is not [SuccessData]

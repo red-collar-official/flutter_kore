@@ -14,7 +14,8 @@ class TestDeepLinksInteractorConnector
 
 class Connectors {
   late final navigationInteractorConnector = NavigationInteractorConnector();
-  late final testDeepLinksInteractorConnector = TestDeepLinksInteractorConnector();
+  late final testDeepLinksInteractorConnector =
+      TestDeepLinksInteractorConnector();
 }
 
 mixin AppGen on UMvvmApp<NavigationInteractor> {

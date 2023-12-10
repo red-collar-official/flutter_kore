@@ -9,7 +9,7 @@ class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
 
   @override
   AppViewState initialState(AppView input) => AppViewState();
-  
+
   @override
   void onLaunch(AppView widget) {
     // ignore

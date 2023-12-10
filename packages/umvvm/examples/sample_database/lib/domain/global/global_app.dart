@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
 
-part 'global_store.mvvm.dart';
+part 'global_app.mvvm.dart';
 
 @MainApp(navigationInteractorType: NavigationInteractor)
 class App extends UMvvmApp<NavigationInteractor> with AppGen {

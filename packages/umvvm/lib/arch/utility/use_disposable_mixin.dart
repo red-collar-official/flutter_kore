@@ -47,7 +47,7 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
 
     return controller;
   }
-  
+
   /// Creates debouncer and keeps reference
   /// It will be disposed when instance is disposed
   Debouncer useDebouncer({required Duration delay}) {

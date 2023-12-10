@@ -132,7 +132,9 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(paths: ['posts'], query: [
+  @Link(paths: [
+    'posts'
+  ], query: [
     'filter',
   ])
   UIRoute<BottomSheetNames> posts2({
@@ -146,7 +148,9 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(paths: ['stub'], query: [
+  @Link(paths: [
+    'stub'
+  ], query: [
     'filter',
   ])
   UIRoute<BottomSheetNames> stub({

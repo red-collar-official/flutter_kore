@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
-import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 import 'home_view.dart';

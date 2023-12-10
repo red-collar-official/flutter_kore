@@ -133,7 +133,9 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(paths: ['posts'], query: [
+  @Link(paths: [
+    'posts'
+  ], query: [
     'filter',
   ])
   UIRoute<DialogNames> posts2({
@@ -147,7 +149,9 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(paths: ['stub'], query: [
+  @Link(paths: [
+    'stub'
+  ], query: [
     'filter',
   ])
   UIRoute<DialogNames> stub({

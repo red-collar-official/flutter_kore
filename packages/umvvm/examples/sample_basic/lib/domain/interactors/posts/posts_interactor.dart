@@ -1,14 +1,13 @@
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/events.dart';
-import 'package:sample_basic/domain/global/global_store.dart';
+import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 
 import 'posts_state.dart';
 
 @instancePart
-class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {
-}
+class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {}
 
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>

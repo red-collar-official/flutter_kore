@@ -1,5 +1,5 @@
 import 'package:sample_basic/domain/global/events.dart';
-import 'package:sample_basic/domain/global/global_store.dart';
+import 'package:sample_basic/domain/global/global_app.dart';
 
 mixin LikePostMixin {
   Future<bool> likePost(int id) async {

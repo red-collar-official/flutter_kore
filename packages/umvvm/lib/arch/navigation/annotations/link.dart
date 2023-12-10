@@ -1,7 +1,7 @@
 /// Annotation describing link parameters for given route
 ///
 /// Example:
-/// 
+///
 /// ```dart
 /// @Link(
 ///   paths: ['posts/:{id}'],

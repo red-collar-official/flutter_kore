@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/app_tab.dart';
 import 'package:sample_navigation/domain/global/events.dart';
-import 'package:sample_navigation/domain/global/global_store.dart';
+import 'package:sample_navigation/domain/global/global_app.dart';
 
 import 'components/bottom_sheets/bottom_sheets.dart';
 import 'components/dialogs/dialogs.dart';

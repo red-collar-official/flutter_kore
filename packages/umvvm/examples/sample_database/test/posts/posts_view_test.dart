@@ -5,7 +5,7 @@ import 'package:umvvm/arch/http/base_request.dart';
 import 'package:sample_database/domain/apis/base/request.dart';
 import 'package:sample_database/domain/apis/posts_api.dart';
 import 'package:sample_database/domain/data/post.dart';
-import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/ui/posts_list/posts_list_view.dart';
 
 class MockPostsApi extends PostsApi {

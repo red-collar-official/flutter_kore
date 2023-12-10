@@ -8,12 +8,11 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   glob: ^2.1.2
   source_gen: ^1.4.0
   logging: ^1.2.0
+  build: ^2.4.1
+  path: ^1.8.0
 
   umvvm: 
     git: 
@@ -22,10 +21,9 @@ dependencies:
       branch: main
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   build_runner: ^2.4.7
   build_config: ^1.1.1
   flutter_lints: ^3.0.1
+  build_test: ^2.2.1
+  test: ^1.22.1
 flutter:

@@ -22,7 +22,7 @@ class AppNavigation {
 }
 
 /// Annotation to mark app navigation interactor
-/// 
+///
 /// ```dart
 /// @singleton
 /// @AppNavigation(tabs: AppTab, deepLinks: DeepLinksInteractor)

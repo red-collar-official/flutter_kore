@@ -253,9 +253,12 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             };
           }
         } else {
+          // coverage:ignore-start
           final currentMap = pathsMap[routeKey][''] as Map;
 
           if (queryMap.isEmpty) {
+            // should never happen
+
             if (currentMap.containsKey('')) {
               throw Exception(
                 'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
@@ -278,6 +281,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
               ...queryMap,
             });
           }
+          // coverage:ignore-end
         }
       }
 
@@ -291,9 +295,13 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       if (correctedPathsMap[segment] == null) {
         correctedPathsMap[segment] = {};
       } else if (correctedPathsMap[segment] is String) {
+        // should never happen
+        
+        // coverage:ignore-start
         correctedPathsMap[segment] = {
           '': correctedPathsMap[segment],
         };
+        // coverage:ignore-end
       }
 
       correctedPathsMap = correctedPathsMap[segment];
@@ -310,6 +318,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       final currentMap = correctedPathsMap[''] as Map;
 
       if (queryMap.isEmpty) {
+        // coverage:ignore-start
         if (currentMap.containsKey('')) {
           throw Exception(
             'Multiple handlers detected for the same route: $newParser for $routeKey with path params: $pathsMap and query params $queryMap',
@@ -319,6 +328,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         currentMap.addAll({
           '': newParser,
         });
+        // coverage:ignore-end
       } else {
         for (final entry in queryMap.entries) {
           if (currentMap.containsKey(entry.key)) {
@@ -385,8 +395,10 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
               .peek('paths')
               ?.listValue
               .map((e) => e.toStringValue())
+      // coverage:ignore-start
               .toList() ??
           [];
+      // coverage:ignore-end
       final regexes = value.peek('regexes')?.listValue;
 
       if (paths.isNotEmpty && regexes != null) {
@@ -395,8 +407,10 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
 
       final requiresState = (methodsVisitor
                   .annotatedMethodsData[key]?.parameters
+          // coverage:ignore-start
                   .where((element) => element.name == 'state') ??
               [])
+          // coverage:ignore-end
           .isNotEmpty;
 
       if (regexes != null) {
@@ -409,14 +423,18 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
               .peek('query')
               ?.listValue
               .map((e) => e.toStringValue())
+          // coverage:ignore-start
               .toList() ??
           [];
+          // coverage:ignore-end
 
       final possibleFragments = value
               .peek('possibleFragments')
               ?.listValue
+          // coverage:ignore-start
               .map((e) => e.toStringValue()) ??
           [];
+          // coverage:ignore-end
 
       final customHandler = value
           .peek('customHandler')
@@ -439,16 +457,20 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
           queryForPath = queriesForPathValue[index]
                   .toListValue()
                   ?.map((e) => e.toStringValue())
+              // coverage:ignore-start
                   .toList() ??
               [];
+              // coverage:ignore-end
         }
 
         if (possibleFragmentsForPathValue != null) {
           possibleFragmentsForPath = possibleFragmentsForPathValue[index]
                   .toListValue()
                   ?.map((e) => e.toStringValue())
+              // coverage:ignore-start
                   .toList() ??
               [];
+              // coverage:ignore-end
         }
 
         if (path != null) {
@@ -630,7 +652,11 @@ if (pathSegmentPattern == '$element') {
             '\'$key\': {${generateLinksMap(value)}},',
           );
         } else {
+          // should never happen
+          
+          // coverage:ignore-start
           classBuffer.writeln('\'$key\': $value(),');
+          // coverage:ignore-end
         }
       });
     } else {

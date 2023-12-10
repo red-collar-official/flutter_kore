@@ -42,11 +42,11 @@ class Observable<T> {
   T? _current;
 
   /// Flag indicating that this observable is disposed
-  /// Observable bus can't be used if this flag is true 
+  /// Observable bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this observable is disposed
-  /// Observable bus can't be used if this flag is true 
+  /// Observable bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
   Observable() {
@@ -84,7 +84,7 @@ class Observable<T> {
 
   /// Closes underlaying stream controller
   void dispose() {
-        if (_isDisposed) {
+    if (_isDisposed) {
       throw IllegalStateException(
         message: 'Can\'t call dispose if observable is already disposed.',
       );

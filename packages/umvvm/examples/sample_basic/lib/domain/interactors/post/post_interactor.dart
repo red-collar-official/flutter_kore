@@ -1,7 +1,7 @@
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/events.dart';
-import 'package:sample_basic/domain/global/global_store.dart';
+import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 
 import 'post_state.dart';

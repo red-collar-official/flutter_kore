@@ -1,7 +1,7 @@
 /// Helper class that holds result of function execution
 /// Can contain error, result, or null
 /// Example:
-/// 
+///
 /// ```dart
 /// ResultState.success(result: 'test');
 /// ```
@@ -30,9 +30,9 @@ class ResultState<T extends Object> {
   }
 
   /// Constructs successful function result
-  /// 
+  ///
   /// Example:
-  /// 
+  ///
   /// ```dart
   /// ResultState.success(result: 'test');
   /// ```
@@ -44,9 +44,9 @@ class ResultState<T extends Object> {
       );
 
   /// Constructs result based on error value
-  /// 
+  ///
   /// Example:
-  /// 
+  ///
   /// ```dart
   /// ResultState.check(error: result.serverSideException);
   /// ```
@@ -60,9 +60,9 @@ class ResultState<T extends Object> {
       );
 
   /// Constructs invalid function result
-  /// 
+  ///
   /// Example:
-  /// 
+  ///
   /// ```dart
   /// return ResultState.error(
   ///   error: StandartEmptyException(),

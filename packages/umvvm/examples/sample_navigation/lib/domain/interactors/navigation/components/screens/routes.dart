@@ -3,7 +3,7 @@ import 'package:sample_navigation/domain/interactors/navigation/components/mappe
 import 'package:sample_navigation/ui/post/post_view.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/post.dart';
-import 'package:sample_navigation/domain/global/global_store.dart';
+import 'package:sample_navigation/domain/global/global_app.dart';
 
 part 'routes.navigation.dart';
 
@@ -47,7 +47,9 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(paths: ['stub'], query: [
+  @Link(paths: [
+    'stub'
+  ], query: [
     'filter',
   ])
   UIRoute<RouteNames> stub({

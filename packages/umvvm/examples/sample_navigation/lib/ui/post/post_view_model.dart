@@ -1,6 +1,6 @@
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_navigation/domain/data/post.dart';
-import 'package:sample_navigation/domain/global/global_store.dart';
+import 'package:sample_navigation/domain/global/global_app.dart';
 import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';
 

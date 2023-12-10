@@ -1,5 +1,5 @@
 import 'package:sample_database/domain/data/post.dart';
-import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/global/global_app.dart';
 
 class PostsBox {
   static Future<List<Post>> getPostsDelegate(

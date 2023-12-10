@@ -843,12 +843,13 @@ final Animatable<double> _dialogScaleTween = Tween<double>(begin: 1.3, end: 1)
     .chain(CurveTween(curve: Curves.linearToEaseOut));
 
 Widget _buildCupertinoDialogTransitions(
-    // ignore: avoid-unused-parameters
-    BuildContext context,
-    Animation<double> animation,
-    // ignore: avoid-unused-parameters
-    Animation<double> secondaryAnimation,
-    Widget child,) {
+  // ignore: avoid-unused-parameters
+  BuildContext context,
+  Animation<double> animation,
+  // ignore: avoid-unused-parameters
+  Animation<double> secondaryAnimation,
+  Widget child,
+) {
   final CurvedAnimation fadeAnimation = CurvedAnimation(
     parent: animation,
     curve: Curves.easeInOut,

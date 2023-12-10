@@ -78,7 +78,7 @@ class NavigationStack<AppTabType> {
     required UIRouteSettings settings,
   }) {
     final stack = _getStack(settings.global);
-    
+
     stack.replaceStack(
       routeName: routeName,
       tab: tab,

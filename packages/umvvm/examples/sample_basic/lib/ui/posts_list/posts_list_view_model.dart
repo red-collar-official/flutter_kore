@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/global/global_store.dart';
+import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/posts/posts_interactor.dart';
 import 'package:sample_basic/domain/interactors/user_defaults/user_defaults_interactor.dart';
 import 'package:sample_basic/ui/post/post_view.dart';

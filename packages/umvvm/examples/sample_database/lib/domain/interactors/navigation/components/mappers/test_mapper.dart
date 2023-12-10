@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample_database/domain/global/global_store.dart';
+import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:umvvm/umvvm.dart';
 

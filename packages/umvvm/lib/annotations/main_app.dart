@@ -11,7 +11,7 @@
 ///  }
 /// ```
 class MainApp {
-  /// Type if navigation interactor used in app. 
+  /// Type if navigation interactor used in app.
   /// If navigation component is not used you can ignore this parameter
   final Type? navigationInteractorType;
 
