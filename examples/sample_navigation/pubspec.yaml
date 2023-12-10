@@ -28,7 +28,7 @@ dev_dependencies:
     sdk: flutter
 
   umvvm_generator: 
-    path: ../../../umvvm_generator
+    path: ../../packages/umvvm_generator
 
   json_serializable:
   build: ^2.4.1

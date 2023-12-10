@@ -1,41 +1,3 @@
-# UMVVM library
-
-![Tests code coverage status](coverage/coverage_badge.svg)
-
-Set of classes for Flutter app architecture.
-
-### Installing
-
-Info about installing here.
-
-You also need dependency for build_runner if you don't have it yet.
-
-```yaml
-dev_dependencies: 
-  build: ^<latest version>
-  build_config: ^<latest version>
-  build_runner: ^<latest version>
-```
-
-To build/rebuild generated files use:
-
-```shell
-flutter pub run build_runner build --delete-conflicting-outputs
-```
-
-### Examples
-
-Basic example can be found [here](./example).
-
-More complex examples can be found [here](../examples).
-
-There are small basic example with all basic components, example on using navigation and example of connecting database.
-
-### Docs
-
-Here is small example demonstrating all components:
-
-```dart
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
@@ -296,48 +258,76 @@ class _PostsListViewWidgetState
     return PostsListViewModel();
   }
 }
-```
 
-Learn about components:
+class PostCard extends StatelessWidget {
+  final VoidCallback onTap;
+  final String title;
+  final String body;
+  final bool isLiked;
+  final VoidCallback onLikeTap;
 
-#### Global layer
+  const PostCard({
+    super.key,
+    required this.onTap,
+    required this.title,
+    required this.body,
+    required this.isLiked,
+    required this.onLikeTap,
+  });
 
-* [App](./docs/app.md);
-* [DI](./docs/di.md);
-* [Event bus](./docs/event_bus.md);
-* [Navigation](./docs/navigation.md).
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 0,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildUserHeader(),
+              const SizedBox(height: 8),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(body),
+              const SizedBox(height: 8),
+              _buildControls(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-#### Data Layer
+  Widget _buildControls() => Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: onLikeTap,
+            child: Icon(
+              Icons.heart_broken,
+              color: isLiked ? Colors.red : Colors.grey,
+            ),
+          ),
+        ],
+      );
 
-* [Apis and databases](./docs/apis.md). 
-
-#### Domain Layer
-
-* [Interactors](./docs/interactor.md);
-* [Wrappers](./docs/wrapper.md);
-* [Instance parts](./docs/instance_part.md);
-* [MvvmInstance](./docs/mvvm_instance.md);
-* [Custom Mvvm instances](./docs/custom_instances.md).
-
-#### View layer
-
-* [View models](./docs/view_model.md);
-* [Widgets and view states](./docs/widget.md);
-* [Custom Mvvm instances](./docs/custom_instances.md).
-
-#### Utility
-
-* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](./docs/utility.md).
-
-#### Other materials
-
-* [Testing](./docs/testing.md);
-* [Migration tips](./docs/migration.md);
-* [Disabling components](./docs/disabling_components.md).
-
-#### Important note
-
-To generage test coverage report run sh coverage.sh.
-
-If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/).
-
+  Widget _buildUserHeader() => const Row(
+        children: [
+          Icon(Icons.person),
+          Text(
+            'Unnamed user',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      );
+}

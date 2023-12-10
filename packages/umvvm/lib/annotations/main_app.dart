@@ -19,3 +19,5 @@ class MainApp {
     this.navigationInteractorType,
   });
 }
+
+const mainApp = MainApp();
