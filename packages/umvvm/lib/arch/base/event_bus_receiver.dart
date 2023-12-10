@@ -22,7 +22,7 @@ abstract class EventBusReceiver {
   final Map<Type, EventBusSubscriber> _subscribers = {};
   final List<Type> _receivedEvents = [];
 
-  bool _paused = false;
+  bool paused = false;
   final _eventsReceivedWhilePaused = [];
 
   /// Underlying stream subsription for [EventBus] events
@@ -65,7 +65,7 @@ abstract class EventBusReceiver {
     bool firesAfterResume = true,
   }) {
     void dynamicProcessor(event) {
-      if (reactsToPause && _paused) {
+      if (reactsToPause && paused) {
         if (firesAfterResume) {
           _eventsReceivedWhilePaused.add(event);
 
@@ -92,7 +92,7 @@ abstract class EventBusReceiver {
   /// Sets paused flag to false so events stop processing
   @mustCallSuper
   void pauseEventBusSubscription() {
-    _paused = true;
+    paused = true;
   }
 
   /// Resumes events processing
@@ -100,11 +100,11 @@ abstract class EventBusReceiver {
   void resumeEventBusSubscription({
     bool sendAllEventsReceivedWhilePause = true,
   }) {
-    if (!_paused) {
+    if (!paused) {
       return;
     }
 
-    _paused = false;
+    paused = false;
 
     if (sendAllEventsReceivedWhilePause) {
       for (final element in _eventsReceivedWhilePaused) {

@@ -55,11 +55,15 @@ abstract class DioRequest<T> extends BaseRequest<T> {
   /// Default settings for all requests
   RequestSettings get defaultSettings;
 
+  // coverage:ignore-start
   /// Function to retry error requests
-  Future<dynamic> onError(dio.DioException error, RetryHandler retry);
+  Future<dynamic> onError(dio.DioException error, RetryHandler retry) async {
+    return error;
+  }
 
   /// Function to add autharization headers to [Dio] instance
-  void onAuthorization(dio.Dio dio);
+  void onAuthorization(dio.Dio dio) {}
+  // coverage:ignore-end
 
   @override
   Future<Response<T>> execute() async {

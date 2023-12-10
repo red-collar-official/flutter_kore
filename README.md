@@ -6,4 +6,4 @@ Main docs can be found [here](packages/umvvm/README.md).
 
 #### Important note
 
-To generage test coverage report run sh coverage.sh in corresponding package directory.
+To generage test coverage report run <b>sh coverage.sh</b> in corresponding package directory.

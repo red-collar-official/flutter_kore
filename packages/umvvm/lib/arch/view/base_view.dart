@@ -111,6 +111,8 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
       );
     }
 
+    // coverage:ignore-start
     return buildView(context);
+    // coverage:ignore-end
   }
 }

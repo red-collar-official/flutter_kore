@@ -39,11 +39,11 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ### Examples
 
-Basic example can be found [here](./example).
+Minimal example can be found [here](./example).
 
 More complex examples can be found [here](../../examples).
 
-There are small basic example with all basic components, example on using navigation and example of connecting database.
+There are small example with all basic components, example of using navigation and example of connecting database.
 
 ### Docs
 
@@ -168,8 +168,7 @@ class PostsApi {
 }
 
 @basicInstance
-class PostsInteractor
-    extends BaseInteractor<PostsState, Map<String, dynamic>?> {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 
@@ -198,7 +197,7 @@ class PostsInteractor
   List<EventBusSubscriber> subscribe() => [
         on<PostLikedEvent>(
           (event) {
-            // update state
+            // update posts list...
           },
         ),
       ];
@@ -209,8 +208,7 @@ class PostsInteractor
 
 class PostsListViewState {}
 
-class PostsListViewModel
-    extends BaseViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
   List<Connector> dependsOn(PostsListView input) => [
         app.connectors.postsInteractorConnector(),
@@ -257,8 +255,7 @@ class PostsListView extends BaseWidget {
   }
 }
 
-class _PostsListViewWidgetState
-    extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
+class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
@@ -312,6 +309,8 @@ class _PostsListViewWidgetState
     return PostsListViewModel();
   }
 }
+
+// PostCard widget code ... 
 ```
 
 Learn about components:
@@ -335,7 +334,7 @@ Learn about components:
 * [MvvmInstance](./docs/mvvm_instance.md);
 * [Custom Mvvm instances](./docs/custom_instances.md).
 
-#### View layer
+#### Presentation layer
 
 * [View models](./docs/view_model.md);
 * [Widgets and view states](./docs/widget.md);
@@ -353,7 +352,7 @@ Learn about components:
 
 #### Important note
 
-To generage test coverage report run sh coverage.sh.
+To generage test coverage report run <b>sh coverage.sh.</b>
 
-If you using VSCode then to quickly generate files for this architecture use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/).
+If you using VSCode then use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/) to quickly generate files for this architecture.
 

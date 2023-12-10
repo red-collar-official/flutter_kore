@@ -1,6 +1,6 @@
 # Apis
 
-Defining apis consists of implementing base http request class and defining api declaration.
+Definition of api consists of implementing base http request class and defining api declaration.
 
 ### Base request class
 
@@ -45,9 +45,9 @@ Here you can provide default settings for all requests.
 
 Besides parameters above you can specify default base url, default headers and default additional interceptors for requests.
 
-You also need to specify authorization callback to add required headers to requests.
+You also can specify authorization callback to add required headers to requests.
 
-And also you need to specify error callback, where you can return error, or call retry handler.
+And also you can specify error callback, where you can return error, or call retry handler.
 
 You can then use this requests as follows:
 

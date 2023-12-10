@@ -47,6 +47,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   @mustCallSuper
   void initialize(T input) {
     initializeSub();
+    paused = false;
 
     initializeInstanceParts(input);
   }
@@ -64,6 +65,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     });
 
     _isDisposed = true;
+    paused = true;
   }
 
   /// Base method for async instance initialization
