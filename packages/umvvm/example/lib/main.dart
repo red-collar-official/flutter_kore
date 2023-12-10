@@ -47,7 +47,7 @@ class PostsState with PostsStateMappable {
 @mainApi
 class Apis with ApisGen {}
 
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   final apis = Apis();
 

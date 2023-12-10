@@ -85,7 +85,7 @@ class PostsState with PostsStateMappable {
 @mainApi
 class Apis with ApisGen {}
 
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   final apis = Apis();
 
@@ -210,6 +210,8 @@ class PostsListViewModel
   }
 
   void openPost(Post post) {
+    // read more about navigation component in docs
+
     // app.navigation.routeTo(
     //   app.navigation.routes.post(
     //     post: post,

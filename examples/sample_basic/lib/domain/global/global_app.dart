@@ -12,7 +12,7 @@ import 'apis.dart';
 
 part 'global_app.mvvm.dart';
 
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
