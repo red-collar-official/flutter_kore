@@ -27,7 +27,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 Basic example can be found [here](./example).
 
-More complex examples can be found [here](../examples).
+More complex examples can be found [here](../../examples).
 
 There are small basic example with all basic components, example on using navigation and example of connecting database.
 
