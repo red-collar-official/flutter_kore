@@ -6,11 +6,14 @@ import 'package:umvvm/arch/di/base_scopes.dart';
 ///
 /// ```dart
 /// class PostViewModel extends BaseViewModel<PostView, PostViewState> {
-///   @override
-///   List<Connector> dependsOn(PostView widget) => [
-///         Connector(type: ShareInteractor),
+///  @override
+///  DependentMvvmInstanceConfiguration get configuration =>
+///    DependentMvvmInstanceConfiguration(
+///      dependencies: [
+///        Connector(type: ShareInteractor),
 ///         Connector(type: PostInteractor, scope: BaseScopes.unique),
-///       ];
+///      ],
+///    );
 /// }
 /// ```
 class Connector {
@@ -140,10 +143,13 @@ class DefaultConnector<T> extends ConnectorCall<T, Map<String, dynamic>?> {}
 /// ```dart
 /// class PostViewModel extends BaseViewModel<PostView, PostViewState> {
 ///   @override
-///   List<PartConnector> parts(PostView widget) => [
-///         PartConnector(type: ShareInteractorPart),
-///         PartConnector(type: PostInteractorPart, input: 1),
-///       ];
+///   DependentMvvmInstanceConfiguration get configuration =>
+///     DependentMvvmInstanceConfiguration(
+///       parts: [
+///         app.connectors.testUniversalInteractorPartConnector(),
+///         app.connectors.testInteractorPartConnector(input: input.id),
+///       ],
+///     );
 /// }
 /// ```
 class PartConnector extends Connector {

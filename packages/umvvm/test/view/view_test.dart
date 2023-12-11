@@ -8,15 +8,16 @@ import '../mocks/test_interactors.dart';
 
 class TestViewModel extends BaseViewModel<TestView, int> {
   @override
-  int initialState(TestView input) => 1;
+  int get initialState => 1;
 
   @override
-  List<Connector> dependsOn(TestView input) {
-    return [
-      const Connector(type: TestInteractor1, input: 2),
-      const Connector(type: TestInteractorAsync4, input: 2, async: true),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestInteractor1, input: 2),
+          Connector(type: TestInteractorAsync4, input: 2, async: true),
+        ],
+      );
 
   late final testInteractor1 = getLocalInstance<TestInteractor1>();
   late final testInteractor4 = getLocalInstance<TestInteractorAsync4>();

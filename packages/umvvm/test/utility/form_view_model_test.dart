@@ -15,7 +15,7 @@ final testKey2 = GlobalKey();
 class TestMvvmFormInstance1 extends BaseViewModel<StatefulWidget, int>
     with FormViewModelMixin {
   @override
-  int initialState(StatefulWidget input) => 1;
+  int get initialState => 1;
 
   @override
   Future<void> submit() async {
@@ -36,7 +36,7 @@ class TestMvvmFormInstance1 extends BaseViewModel<StatefulWidget, int>
 class TestMvvmFormInstance2 extends BaseViewModel<StatefulWidget, int>
     with FormViewModelMixin {
   @override
-  int initialState(StatefulWidget input) => 1;
+  int get initialState => 1;
 
   @override
   Future<void> submit() async {
@@ -57,7 +57,7 @@ class TestMvvmFormInstance2 extends BaseViewModel<StatefulWidget, int>
 class TestMvvmFormInstance3 extends BaseViewModel<StatefulWidget, int>
     with FormViewModelMixin {
   @override
-  int initialState(StatefulWidget input) => 1;
+  int get initialState => 1;
 
   @override
   Future<void> submit() async {

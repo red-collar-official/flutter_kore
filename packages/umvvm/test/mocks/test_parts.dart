@@ -28,7 +28,10 @@ class TestInstancePart2 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  bool isAsync(int? input) => true;
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -54,9 +57,12 @@ class TestInstancePart3 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  List<PartConnector> parts(int? input) => [
-        const PartConnector(type: TestInstancePart2, async: true, input: 6),
-      ];
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
+        parts: [
+          PartConnector(type: TestInstancePart2, async: true, input: 6),
+        ],
+      );
 
   late final testInstancePart2 = useInstancePart<TestInstancePart2>();
 
@@ -81,7 +87,10 @@ class TestInstancePart4 extends UniversalInstancePart<int> {
   int value = 0;
 
   @override
-  bool isAsync(int? input) => true;
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -97,9 +106,12 @@ class TestInstancePart5 extends UniversalInstancePart<int?> {
   int value = 0;
 
   @override
-  List<PartConnector> parts(int? input) => [
-        const PartConnector(type: TestInstancePart2, async: true, input: 6),
-      ];
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
+        parts: [
+          PartConnector(type: TestInstancePart2, async: true, input: 6),
+        ],
+      );
 
   late final testInstancePart2 = useInstancePart<TestInstancePart2>();
 

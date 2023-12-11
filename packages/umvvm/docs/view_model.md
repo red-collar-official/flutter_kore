@@ -6,11 +6,11 @@ They also contain local state that we like <b>Interactor</b> can update with <b>
 
 We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
 
-View models also can depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependsOn</b> override.
+View models also can depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
 
-View models also can contain [parts](./instance_part.md) via <b>parts</b> override.
+View models also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
 
-View models also can belong to modules via <b>belongsToModules</b> override (information about modules can be found [here](./di.md)).
+View models also can belong to modules via <b>modules</b> field in configuration object (information about modules can be found [here](./di.md)).
 
 They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
 
@@ -28,20 +28,21 @@ and <b>onFirstFrame</b> that is called on first post frame callback of correspon
 ```dart
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView widget) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         app.postsInteractorConnector(lazy: true),
         app.postInteractorConnector(scopes: BaseScopes.unique),
         app.reactionsWrapperConnector(),
-      ]; 
-
-  @override
-  List<PartConnector> parts(Map<String, dynamic>? input) => [
-      app.connectors.downloadUserPartConnector(
-        input: input.id,
-        async: true,
-      ),
-      app.connectors.followUserPartConnector(input: input.id),
-    ];
+      ],
+      parts: [
+        app.connectors.downloadUserPartConnector(
+          input: input.id,
+          async: true,
+        ),
+        app.connectors.followUserPartConnector(input: input.id),
+      ],
+    );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
   late final reactionsWrapper = getLocalInstance<ReactionsWrapper>();

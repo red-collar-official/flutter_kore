@@ -14,7 +14,7 @@ import 'package:umvvm/umvvm.dart';
 /// @basicInstance
 /// class TestInteractor extends BaseInteractor<int, String> {
 ///   @override
-///   int initialState(String? input) => 1;
+///   int get initialState => 1;
 /// }
 /// ```
 abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
@@ -27,8 +27,8 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   void initialize(Input? input) {
     super.initialize(input);
 
-    initializeDependencies(input);
-    initializeStatefullInstance(input);
+    initializeDependencies();
+    initializeStatefullInstance();
 
     initialized = true;
   }
@@ -49,14 +49,15 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @override
   Future<void> initializeAsync(Input? input) async {
     await super.initializeAsync(input);
-    await initializeDependenciesAsync(input);
+    await initializeDependenciesAsync();
   }
 
   @mustCallSuper
   @override
   void initializeWithoutConnections(Input? input) {
-    initializeStore(initialState(input));
-    initializeDependenciesWithoutConnections(input);
+    super.initializeWithoutConnections(input);
+
+    initializeStore();
 
     initialized = true;
   }
@@ -64,10 +65,6 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
   @mustCallSuper
   @override
   Future<void> initializeWithoutConnectionsAsync(Input? input) async {
-    initializeStore(initialState(input));
-
-    await initializeDependenciesWithoutConnectionsAsync(input);
-
     initialized = true;
   }
 }

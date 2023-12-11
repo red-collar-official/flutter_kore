@@ -25,13 +25,16 @@ Here is an example:
 @instancePart
 class TestInteractorPart extends BaseInstancePart<Map<String, dynamic>, PostsInteractor> {
   @override
-  List<PartConnector> parts(Map<String, dynamic>? input) => [
-      app.connectors.downloadUserPartConnector(
-        input: input.id,
-        async: true,
-      ),
-      app.connectors.followUserPartConnector(input: input.id),
-    ];
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      parts: [
+        app.connectors.downloadUserPartConnector(
+          input: input.id,
+          async: true,
+        ),
+        app.connectors.followUserPartConnector(input: input.id),
+      ],
+    );
 
   late final downloadUser = useInstancePart<DownloadUserPart>();
 
@@ -85,10 +88,13 @@ class TestUniversalInteractorPart extends UniversalInstancePart<Map<String, dyna
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
     with LikePostMixin {
   @override
-  List<Type> parts(Map<String, dynamic>? input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      parts: [
         app.connectors.testUniversalInteractorPartConnector(),
         app.connectors.testInteractorPartConnector(input: input.id),
-      ];
+      ],
+    );
 
   late final testPart = useInstancePart<TestInteractorPart>();
   late final testUniversalPart = useInstancePart<TestUniversalInteractorPart>();

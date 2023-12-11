@@ -2,13 +2,13 @@
 
 Connectors are objects that describe dependency for mvvm instance.
 
-We can specify a type of instance we want to depend on.
+We need to specify a type of instance we want to depend on.
 
 We also can define count of objects that we want to connect.
 
 We also can specify scope of object. If you want unique copy of object use <b>BaseScopes.unique</b> scope. By default <b>BaseScopes.weak</b> is used.
 
-If you mark connector as lazy - instance will be connected when addressed first time
+If you mark connector as lazy - instance will be connected when accessed first time
 with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>.
 
 We can also specify if we want to connect object without dependencies - 
@@ -19,28 +19,34 @@ Examples would be:
 
 ```dart
 @override
-List<Connector> dependsOn(Map<String, dynamic>? input) => [
-      const Connector(type: SupportInteractor, scope: BaseScopes.unique), // unique instance
-      const Connector(type: ShareInteractor, count: 5), // 5 unique instances
-      const Connector(type: ReactionsWrapper), // shared instance
-      // instance without connections, only works for unique instances
-      const Connector(type: ReactionsWrapper, withoutConnections: true, scope: BaseScopes.unique),
-      const Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
-      const Connector(type: ReactionsWrapper, scope: CustomScopes.test, lazy: true), // lazy scoped instance
-    ];
+DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
+        const Connector(type: SupportInteractor, scope: BaseScopes.unique), // unique instance
+        const Connector(type: ShareInteractor, count: 5), // 5 unique instances
+        const Connector(type: ReactionsWrapper), // shared instance
+        // instance without connections, only works for unique instances
+        const Connector(type: ReactionsWrapper, withoutConnections: true, scope: BaseScopes.unique),
+        const Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
+        const Connector(type: ReactionsWrapper, scope: CustomScopes.test, lazy: true), // lazy scoped instance
+      ],
+    );
 ```
 
-Library creates connectors for every single instance.
-This way you dont need to write <b>Connector</b> classes for every instance and just use predefined ones as follows:
+Library creates connectors for every single mvvm instance.
+This way you don't need to write <b>Connector</b> classes for every instance. You can just use predefined ones as follows:
 
 ```dart
 @override
-List<Connector> dependsOn(PostView input) => [
-      app.connectors.postInteractorConnector(
-        scope: BaseScopes.unique,
-        input: input.post,
-      ),
-    ];
+DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
+        app.connectors.postInteractorConnector(
+          scope: BaseScopes.unique,
+          input: input.post,
+        ),
+      ],
+    );
 ```
 
 ### Part connectors
@@ -57,15 +63,18 @@ const PartConnector(type: LikeUserPart, withoutConnections: true),
 ```
 
 Library creates connectors for every part too.
-This way you dont need to write <b>PartConnector</b> classes for every part and just use predefined ones as follows:
+This way you don't need to write <b>PartConnector</b> classes for every part.  You can just use predefined ones as follows:
 
 ```dart
 @override
-List<PartConnector> parts(PostView input) => [
+DependentMvvmInstanceConfiguration get configuration =>
+  DependentMvvmInstanceConfiguration(
+    parts: [
       app.connectors.downloadUserPartConnector(
         input: input.id,
         async: true,
       ),
       app.connectors.followUserPartConnector(input: input.id),
-    ];
+    ],
+  );
 ```

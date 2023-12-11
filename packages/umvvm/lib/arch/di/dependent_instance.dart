@@ -4,6 +4,23 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Model class describing confifuration for dependent mvvm instance
+class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
+  const DependentMvvmInstanceConfiguration({
+    super.parts,
+    super.isAsync,
+    this.dependencies = const [],
+    this.modules = const [],
+  });
+
+  /// Dependencies for this instance
+  /// Does not hold singleton instances
+  final List<Connector> dependencies;
+
+  /// List of modules that are required for this instance
+  final List<InstancesModule> modules;
+}
+
 /// Mixin that contains declarations of instance dependencies
 /// Contains methods to declare, initialize and get them
 ///
@@ -23,7 +40,7 @@ import 'package:umvvm/umvvm.dart';
 ///   void initialize(dynamic input) {
 ///     super.initialize(input);
 ///
-///     initializeDependencies(input);
+///     initializeDependencies();
 ///
 ///     initialized = true;
 ///   }
@@ -51,25 +68,20 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Observable holding value of successfull dependencies initialization
   final allDependenciesReady = Observable<bool>.initial(false);
 
-  late List<Connector> _dependsOn;
+  /// [DependentMvvmInstanceConfiguration] for this instance
+  @override
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration();
 
-  /// Dependencies for this instance
-  /// Does not hold singleton instances
-  List<Connector> dependsOn(Input input) => [];
-
-  /// List of modules that are required for this instance
-  List<InstancesModule> belongsToModules(Input input) => [];
-
-  /// Function that returns true if instance contains async parts
+  /// Getter that returns true if instance contains async parts
   /// or require async initialization
-  /// If you override this method always use super.isAsync
+  /// If you override this getter always use super.isAsync
   /// if you not always returning true
   // coverage:ignore-start
   @override
-  bool isAsync(Input input) {
-    return super.isAsync(input) ||
-        getFullConnectorsList(input).indexWhere((element) => element.async) !=
-            -1;
+  bool get isAsync {
+    return super.isAsync ||
+        getFullConnectorsList().indexWhere((element) => element.async) != -1;
   }
   // coverage:ignore-end
 
@@ -87,8 +99,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   @override
   @mustCallSuper
-  void resumeEventBusSubscription(
-      {bool sendAllEventsReceivedWhilePause = true}) {
+  void resumeEventBusSubscription({
+    bool sendAllEventsReceivedWhilePause = true,
+  }) {
     super.resumeEventBusSubscription(
       sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
     );
@@ -104,12 +117,12 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Returns list of dependencies from every module
   /// and combines it with local dependencies
-  List<Connector> getFullConnectorsList(Input input) {
-    final concreteDependencies = dependsOn(input);
+  List<Connector> getFullConnectorsList() {
+    final concreteDependencies = configuration.dependencies;
 
-    belongsToModules(input).forEach((element) {
+    for (final element in configuration.modules) {
       concreteDependencies.addAll(element.scopedDependencies());
-    });
+    }
 
     return concreteDependencies;
   }
@@ -117,45 +130,29 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Returns list of parts from every module
   /// and combines it with local parts
   @override
-  List<Connector> getFullPartConnectorsList(Input input) {
-    final concreteParts = parts(input);
+  List<PartConnector> getFullPartConnectorsList() {
+    final concreteParts = super.getFullPartConnectorsList();
 
-    belongsToModules(input).forEach((element) {
+    for (final element in configuration.modules) {
       concreteParts.addAll(element.parts);
-    });
+    }
 
     return concreteParts;
   }
 
   /// Initializes all dependencies and increase reference count in [ScopedStack]
   @mustCallSuper
-  void initializeDependencies(Input input) {
-    _dependsOn = getFullConnectorsList(input);
-
+  void initializeDependencies() {
     _increaseReferences();
     _addInstancesSync();
 
-    if (!isAsync(input)) {
+    if (!isAsync) {
       allDependenciesReady.update(true);
     }
   }
 
-  /// Base method for lightweight instance initialization
   @mustCallSuper
-  void initializeDependenciesWithoutConnections(Input input) {
-    _dependsOn = getFullConnectorsList(input);
-  }
-
-  /// Base method for lightweight async instance initialization
-  @mustCallSuper
-  Future<void> initializeDependenciesWithoutConnectionsAsync(
-    Input input,
-  ) async {
-    _dependsOn = getFullConnectorsList(input);
-  }
-
-  @mustCallSuper
-  Future<void> initializeDependenciesAsync(Input input) async {
+  Future<void> initializeDependenciesAsync() async {
     await _addInstancesAsync();
   }
 
@@ -173,15 +170,15 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   void _addInstancesSync() {
-    _dependsOn
+    getFullConnectorsList()
         .where((element) => !element.async && element.lazy)
         .forEach(_addLazyInstanceSync);
 
-    _dependsOn
+    getFullConnectorsList()
         .where((element) => element.async && element.lazy)
         .forEach(_addLazyInstanceAsync);
 
-    _dependsOn
+    getFullConnectorsList()
         .where((element) => !element.async && !element.lazy)
         .forEach((element) {
       if (_instances[element.type] != null ||
@@ -233,11 +230,11 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
-    final asyncDeps =
-        _dependsOn.where((element) => element.async && !element.lazy);
+    final asyncDeps = getFullConnectorsList()
+        .where((element) => element.async && !element.lazy);
 
     for (final element in asyncDeps) {
-      if (_dependsOn
+      if (getFullConnectorsList()
               .where((dependency) => dependency.type == element.type)
               .length >
           1) {
@@ -420,9 +417,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Increases reference count for every interactor in [dependsOn]
+  /// Increases reference count for every interactor in [dependencies]
   void _increaseReferences() {
-    for (final element in _dependsOn) {
+    for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique || element.count > 1) {
         continue;
       }
@@ -434,9 +431,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Decreases reference count for every interactor in [dependsOn]
+  /// Decreases reference count for every interactor in [dependencies]
   void _decreaseReferences() {
-    for (final element in _dependsOn) {
+    for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique || element.count > 1) {
         continue;
       }
@@ -450,7 +447,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Disposes unique interactors in [interactors]
   void _disposeUniqueInstances() {
-    for (final element in _dependsOn) {
+    for (final element in getFullConnectorsList()) {
       if (element.scope != BaseScopes.unique && element.count == 1) {
         continue;
       }
@@ -507,9 +504,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
-  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({
-    int index = 0,
-  }) async {
+  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>(
+      {int index = 0}) async {
     final typedInstances = _instances[T];
     final typedBuilders = _lazyInstancesBuilders[T];
 
@@ -533,6 +529,20 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
 
     return typedInstances[index] as T;
+  }
+
+  T connectModule<T extends InstancesModule>() {
+    final module =
+        configuration.modules.firstWhere((element) => element.runtimeType == T);
+
+    // ignore: cascade_invocations
+    module
+      ..getAsyncLazyInstanceDelegate = getAsyncLazyLocalInstance
+      ..getInstanceDelegate = getLocalInstance
+      ..useInstancePartDelegate = useInstancePart
+      ..getLazyInstanceDelegate = getLazyLocalInstance;
+
+    return module as T;
   }
 
   /// Runs for every async instance when it is initialized

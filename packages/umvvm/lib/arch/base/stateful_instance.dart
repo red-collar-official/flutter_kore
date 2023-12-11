@@ -185,7 +185,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Initializes underlying [Store] for given [State]
-  void initializeStore(State initialState) {
+  void initializeStore() {
     _store = Store<State>();
     _store.initialize(initialState);
 
@@ -193,8 +193,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Initializes underlying [Store] for given [State]
-  void initializeStatefullInstance(Input input) {
-    initializeStore(initialState(input));
+  void initializeStatefullInstance() {
+    initializeStore();
 
     if (stateFullInstanceSettings.syncRestore) {
       restoreCachedStateSync();
@@ -228,7 +228,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   Stream<State> get stateStream => _store.stream;
 
   /// Initial state for this interactor
-  State initialState(Input input);
+  State get initialState;
 
   /// Flag indicating that cached state should be awaited
   StateFullInstanceSettings get stateFullInstanceSettings =>

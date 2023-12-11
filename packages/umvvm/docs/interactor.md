@@ -17,11 +17,11 @@ and we can access it with <b>app.instances</b>.
 
 Interactors can be disposed when dependent element is disposed.
 
-Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependsOn</b> override.
+Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependencies</b> field in configuration object.
 
-Interactors also can contain [parts](./instance_part.md) via <b>parts</b> override.
+Interactors also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
 
-Interactors also can belong to modules via <b>belongsToModules</b> override (information about modules can be found [here](./di.md)).
+Interactors also can belong to modules via <b>modules</b> field in configuration object (information about modules can be found [here](./di.md)).
 
 They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
 
@@ -33,10 +33,13 @@ Typical example would be:
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> with LikePostMixin {
   @override
-  List<Connector> dependsOn(String? input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         const Connector(type: SupportInteractor, scope: BaseScopes.unique),
         const Connector(type: ReactionsWrapper),
-      ];
+      ],
+    );
 
   late final supportInteractor = getLocalInstance<SupportInteractor>();
   late final reactionsWrapper = getLocalInstance<ReactionsWrapper>();
@@ -76,7 +79,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
       updates((state) => state.posts);
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => PostsState();
+  PostsState get initialState => PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [
@@ -102,7 +105,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   }
 
   @override
-  UserDefaultsState initialState(Map<String, dynamic>? input) => UserDefaultsState();
+  UserDefaultsState get initialState => UserDefaultsState();
   
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
@@ -150,7 +153,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   }
 
   @override
-  UserDefaultsState initialState(String? input) => UserDefaultsState();
+  UserDefaultsState get initialState => UserDefaultsState();
   
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
@@ -181,41 +184,40 @@ And here is example if declaration of all types of dependencies:
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> with LikePostMixin {
   @override
-  List<Connector> dependsOn(String? input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         const Connector(type: SupportInteractor, scope: BaseScopes.unique),
         const Connector(type: ReactionsWrapper),
-      ];
-
-  @override
-  List<InstancesModule> belongsToModules(Map<String, dynamic>? input) => [
-    Modules.test,
-  ];
-
-  @override
-  List<PartConnector> parts(int? input) => [
-    const PartConnector(type: TestInstancePart1, input: 5, async: true),
-    const PartConnector(
-        type: TestInstancePart2,
-        async: true,
-        count: 2,
-        input: 10,
-    ),
-    PartConnector(
-        type: TestInstancePart3,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    PartConnector(
-        type: TestInstancePart4,
-        async: true,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    const PartConnector(
-        type: TestInstancePart5,
-        withoutConnections: true,
-    ),
-  ];
+      ],
+      modules: [
+        Modules.test,
+      ],
+      parts: [
+        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+        const PartConnector(
+            type: TestInstancePart2,
+            async: true,
+            count: 2,
+            input: 10,
+        ),
+        PartConnector(
+            type: TestInstancePart3,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        PartConnector(
+            type: TestInstancePart4,
+            async: true,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        const PartConnector(
+            type: TestInstancePart5,
+            withoutConnections: true,
+        ),
+      ],
+    );
 
   late final supportInteractor = getLocalInstance<SupportInteractor>();
   late final reactionsWrapper = getLocalInstance<ReactionsWrapper>();
@@ -254,7 +256,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
   }
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => PostsState();
+  PostsState get initialState => PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [

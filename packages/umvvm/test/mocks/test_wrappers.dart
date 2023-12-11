@@ -24,7 +24,10 @@ class TestWrapperAsync extends BaseWrapper<int?> {
   int? value;
 
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -40,19 +43,18 @@ class TestWrapperAsync2 extends BaseWrapper<int?> {
   int? value;
 
   @override
-  bool isAsync(int? input) => true;
-
-  @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(
-        type: TestWrapperAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+        dependencies: [
+          Connector(
+            type: TestWrapperAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+        ],
+      );
 
   late final testWrapperAsync = getLocalInstance<TestWrapperAsync>();
 
@@ -74,61 +76,60 @@ class TestWrapper3 extends BaseWrapper<int?> {
   bool event3Processed = false;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(type: TestWrapper1, input: 2),
-      const Connector(
-        type: TestWrapper2,
-        input: 3,
-        scope: BaseScopes.unique,
-      ),
-      const Connector(
-        type: TestWrapper6,
-        input: 3,
-        scope: BaseScopes.unique,
-        withoutConnections: true,
-      ),
-      const Connector(
-        type: TestWrapperAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-      const Connector(
-        type: TestWrapperAsync2,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-        withoutConnections: true,
-      ),
-    ];
-  }
-
-  @override
-  List<PartConnector> parts(int? input) => [
-        const PartConnector(type: TestInstancePart3, input: 5, async: true),
-        const PartConnector(
-          type: TestInstancePart2,
-          async: true,
-          count: 2,
-          input: 10,
-        ),
-        PartConnector(
-          type: TestInstancePart,
-          count: 2,
-          inputForIndex: (index) => index + 1,
-        ),
-        PartConnector(
-          type: TestInstancePart4,
-          async: true,
-          count: 2,
-          inputForIndex: (index) => index + 1,
-        ),
-        const PartConnector(
-          type: TestInstancePart5,
-          withoutConnections: true,
-        ),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          const Connector(type: TestWrapper1, input: 2),
+          const Connector(
+            type: TestWrapper2,
+            input: 3,
+            scope: BaseScopes.unique,
+          ),
+          const Connector(
+            type: TestWrapper6,
+            input: 3,
+            scope: BaseScopes.unique,
+            withoutConnections: true,
+          ),
+          const Connector(
+            type: TestWrapperAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+          const Connector(
+            type: TestWrapperAsync2,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+            withoutConnections: true,
+          ),
+        ],
+        parts: [
+          const PartConnector(type: TestInstancePart3, input: 5, async: true),
+          const PartConnector(
+            type: TestInstancePart2,
+            async: true,
+            count: 2,
+            input: 10,
+          ),
+          PartConnector(
+            type: TestInstancePart,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+          ),
+          PartConnector(
+            type: TestInstancePart4,
+            async: true,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+          ),
+          const PartConnector(
+            type: TestInstancePart5,
+            withoutConnections: true,
+          ),
+        ],
+      );
 
   late final testWrapper1 = getLocalInstance<TestWrapper1>();
   late final testWrapper2 = getLocalInstance<TestWrapper2>();
@@ -200,32 +201,33 @@ class TestWrapperError extends BaseWrapper<int?> {
   bool eventProcessed = false;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(type: TestWrapper1, input: 2),
-      const Connector(
-        type: TestWrapper2,
-        input: 3,
-        scope: BaseScopes.unique,
-      ),
-      const Connector(
-        type: TestWrapper2,
-        input: 4,
-        scope: Constants.testScope,
-      ),
-      const Connector(
-        type: TestWrapperAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestWrapper1, input: 2),
+          Connector(
+            type: TestWrapper2,
+            input: 3,
+            scope: BaseScopes.unique,
+          ),
+          Connector(
+            type: TestWrapper2,
+            input: 4,
+            scope: Constants.testScope,
+          ),
+          Connector(
+            type: TestWrapperAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+        ],
+      );
 }
 
 class TestHolderWrapper extends BaseHolderWrapper<int, int?> {
   @override
-  int provideInstance(int? input) {
+  int provideInstance() {
     return input ?? 0;
   }
 }

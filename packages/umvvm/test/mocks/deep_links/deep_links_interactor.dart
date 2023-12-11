@@ -22,7 +22,7 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
   }
 
   @override
-  int initialState(Map<String, dynamic>? input) => 1;
+  int get initialState => 1;
 
   @override
   Stream<String> linkStream() {

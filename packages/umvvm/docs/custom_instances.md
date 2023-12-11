@@ -1,6 +1,6 @@
-# Custom instances
+# Custom mvvm instances
 
-You can create custom instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
+You can create custom mvvm instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
 
 You also need to specify input type for custom instances. It is passed as generic argument. Then input is available in all initialization methods.
 
@@ -10,7 +10,7 @@ Here we will discuss mixins.
 
 There are mixins that allow you to add additional funtions to your custom instance like dependencies, cancelable api calls and state.
 
-For example if you need to add state to your instance you can write this:
+For example - if you need to add state to your custom mvvm instance you can write this:
 
 ```dart
 abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmInstance<State, dynamic> {
@@ -67,9 +67,12 @@ class UsersBox extends BaseBox<UsersBoxState> {
 
 class UsersListViewModel extends BaseViewModel<UsersListView, UsersListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView widget) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         app.usersBoxConnector(lazy: true),
-      ]; 
+      ],
+    );
 
   late final usersInteractor = getLocalInstance<UsersBox>();
 
@@ -99,7 +102,17 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
   void initialize(dynamic input) {
     super.initialize(input);
 
-    initializeDependencies(input);
+    initializeDependencies();
+
+    initialized = true;
+  }
+
+  @mustCallSuper
+  @override
+  void initializeAsync(dynamic input) {
+    super.initializeAsync(input);
+
+    initializeDependenciesAsync();
 
     initialized = true;
   }
@@ -118,24 +131,29 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
 
 You need to add initialization call to <b>initialize</b> method and <b>disposeDependencies</b> method to <b>dispose</b> override.
 
+You also need to add <b>initializeDependenciesAsync</b> in <b>initializeAsync</b> method.
+
 Then you can extend this custom instance and use dependencies, <b>getLocalInstance</b> method and etc...
 
 ```dart
 @basicInstance
 class UsersBox extends BaseBox {
   @override
-  List<Connector> dependsOn(void input) => [
-      app.connectors.postInteractorConnector(
-        scope: BaseScopes.unique,
-        input: input.post,
-      ),
-    ];
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
+        app.connectors.postInteractorConnector(
+          scope: BaseScopes.unique,
+          input: input.post,
+        ),
+      ],
+    );
 
   late final postInteractor = getLocalInstance<PostInteractor>();
 }
 ```
 
-If you need to execute http requests in this instance you can add <b>ApiCaller</b> mixin so that requests can be cancelled automatically when instance is disposed.
+If you need to execute http requests in your custom mvvm instance you can add <b>ApiCaller</b> mixin so that requests can be cancelled automatically when instance is disposed.
 
 You can do it as follows:
 

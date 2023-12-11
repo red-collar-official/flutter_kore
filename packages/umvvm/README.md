@@ -89,11 +89,9 @@ class Post with PostMappable {
 class PostsState with PostsStateMappable {
   const PostsState({
     this.posts,
-    this.active,
   });
 
   final StatefulData<List<Post>>? posts;
-  final bool? active;
 }
 
 @mainApi
@@ -114,39 +112,20 @@ final app = App();
 Future<void> main() async {
   await app.initialize();
 
-  runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PostsListView(),
-    ),
-  );
+  runApp(const MaterialApp(home: PostsListView()));
 }
 
 class HttpRequest<T> extends DioRequest<T> {
   @override
   RequestSettings get defaultSettings => RequestSettings(
         logPrint: (message) {
-          if (kDebugMode) {
-            print(message);
-          }
+          print(message);
         },
         exceptionPrint: (error, trace) {
-          if (kDebugMode) {
-            print(error);
-            print(trace);
-          }
+          print(error);
+          print(trace);
         },
       );
-
-  @override
-  void onAuthorization(dio.Dio dio) {
-    // ignore
-  }
-
-  @override
-  Future onError(dio.DioException error, RetryHandler retry) async {
-    return error;
-  }
 }
 
 @api
@@ -175,19 +154,13 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> 
     late Response<List<Post>> response;
 
     if (refresh) {
-      response = await executeAndCancelOnDispose(
-        app.apis.posts.getPosts(0, limit),
-      );
+      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
     } else {
-      response = await executeAndCancelOnDispose(
-        app.apis.posts.getPosts(offset, limit),
-      );
+      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(offset, limit));
     }
 
     if (response.isSuccessful) {
-      updateState(
-        state.copyWith(posts: SuccessData(result: response.result ?? [])),
-      );
+      updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
     } else {
       updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
@@ -195,24 +168,25 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> 
 
   @override
   List<EventBusSubscriber> subscribe() => [
-        on<PostLikedEvent>(
-          (event) {
-            // update posts list...
-          },
-        ),
+        on<PostLikedEvent>((event) {
+          // update posts list...
+        }),
       ];
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => const PostsState();
+  PostsState get initialState => const PostsState();
 }
 
 class PostsListViewState {}
 
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView input) => [
-        app.connectors.postsInteractorConnector(),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          app.connectors.postsInteractorConnector(),
+        ],
+      );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
@@ -236,11 +210,10 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     app.eventBus.send(PostLikedEvent(id: id));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      postsInteractor.updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
 
   @override
-  PostsListViewState initialState(PostsListView input) => PostsListViewState();
+  PostsListViewState get initialState => PostsListViewState();
 }
 
 class PostsListView extends BaseWidget {
@@ -260,9 +233,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
-      appBar: AppBar(
-        title: const Text('Posts'),
-      ),
+      appBar: AppBar(title: const Text('Posts')),
       body: StreamBuilder<StatefulData<List<Post>>?>(
         stream: viewModel.postsStream,
         builder: (context, snapshot) {
@@ -305,9 +276,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
   }
 
   @override
-  PostsListViewModel createViewModel() {
-    return PostsListViewModel();
-  }
+  PostsListViewModel createViewModel() => PostsListViewModel();
 }
 
 // PostCard widget code ... 

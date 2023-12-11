@@ -9,10 +9,13 @@ import 'package:umvvm/umvvm.dart';
 ///
 /// ```dart
 /// class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
-///   @override
-///   List<Connector> dependsOn(PostsListView widget) => [
-///         Connector(interactor: PostsInteractor),
-///       ];
+///  @override
+///  DependentMvvmInstanceConfiguration get configuration =>
+///    DependentMvvmInstanceConfiguration(
+///      dependencies: [
+///        Connector(interactor: PostsInteractor),
+///      ],
+///    );
 ///
 ///   @override
 ///   void onLaunch(PostsListView widget) {
@@ -50,8 +53,8 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   void initialize(Widget input) {
     super.initialize(input);
 
-    initializeDependencies(input);
-    initializeStatefullInstance(input);
+    initializeDependencies();
+    initializeStatefullInstance();
 
     initialized = true;
   }
@@ -70,14 +73,15 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @override
   Future<void> initializeAsync(Widget input) async {
     await super.initializeAsync(input);
-    await initializeDependenciesAsync(input);
+    await initializeDependenciesAsync();
   }
 
   @mustCallSuper
   @override
   void initializeWithoutConnections(Widget input) {
-    initializeStore(initialState(input));
-    initializeDependenciesWithoutConnections(input);
+    super.initializeWithoutConnections(input);
+
+    initializeStore();
 
     initialized = true;
   }
@@ -85,9 +89,6 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
   @mustCallSuper
   @override
   Future<void> initializeWithoutConnectionsAsync(Widget input) async {
-    initializeStore(initialState(input));
-    await initializeDependenciesWithoutConnectionsAsync(input);
-
     initialized = true;
   }
 }

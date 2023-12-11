@@ -4,7 +4,7 @@ import 'test_widget.dart';
 
 class TestViewModel extends BaseViewModel<TestWidget, int> {
   @override
-  int initialState(TestWidget input) => 1;
+  int get initialState => 1;
 
   @override
   void onLaunch(TestWidget widget) {

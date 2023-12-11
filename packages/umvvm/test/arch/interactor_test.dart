@@ -227,6 +227,15 @@ void main() {
       expect((await interactor3.testInteractorAsync8_2).state, 2);
       expect((await interactor3.testInteractorAsync8_2).initialized, true);
 
+      expect(interactor3.testModule.testInstancePart5.initialized, true);
+      expect(interactor3.testModule.testInteractor7.initialized, true);
+      expect(interactor3.testModule.testInteractor13.initialized, true);
+
+      expect(
+        (await interactor3.testModule.testInteractorAsync9).initialized,
+        true,
+      );
+
       interactor1.dispose();
       interactor2.dispose();
       interactor3.dispose();

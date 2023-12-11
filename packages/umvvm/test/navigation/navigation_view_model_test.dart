@@ -24,7 +24,7 @@ class TestApp extends UMvvmApp<NavigationInteractor> {
 
 class TestViewModel extends NavigationViewModel<TestWidget, int> {
   @override
-  int initialState(TestWidget input) => 1;
+  int get initialState => 1;
 
   @override
   void onLaunch(TestWidget widget) {

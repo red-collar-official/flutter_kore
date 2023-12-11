@@ -51,6 +51,8 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   // coverage:ignore-start
   @override
   void initializeWithoutConnections(Input? input) {
+    super.initializeWithoutConnections(input);
+    
     initialized = true;
   }
   // coverage:ignore-end

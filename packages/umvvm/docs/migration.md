@@ -19,7 +19,7 @@ locator.get<ThirdPartyInstance>();
 @singleton
 class ThirdPartyInstanceWrapper extends BaseHolderWrapper<ThirdPartyInstance, Map<String, dynamic>> {
   @override
-  ThirdPartyInstance provideInstance(Map<String, dynamic>? input) {
+  ThirdPartyInstance provideInstance() {
     return ThirdPartyInstance();
   }
 }
@@ -107,9 +107,12 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> 
 
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         app.connectors.postsInteractorConnector(),
-      ];
+      ],
+    );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
@@ -121,7 +124,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
 
   @override
-  PostsListViewState initialState(PostsListView input) => PostsListViewState();
+  PostsListViewState get initialState => PostsListViewState();
 }
 
 class PostsListView extends StatefulWidget {

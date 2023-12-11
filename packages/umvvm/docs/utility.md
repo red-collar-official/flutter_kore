@@ -164,7 +164,7 @@ class SupportViewModel
       };
 
   @override
-  SupportViewState initialState(SupportView input) => SupportViewState();
+  SupportViewState get initialState => SupportViewState();
 }
 ```
 

@@ -20,6 +20,7 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestInteractor10>(TestInteractor10.new)
     ..addBuilder<TestInteractor11>(TestInteractor11.new)
     ..addBuilder<TestInteractor12>(TestInteractor12.new)
+    ..addBuilder<TestInteractor13>(TestInteractor13.new)
     ..addBuilder<TestInteractorCyclic>(TestInteractorCyclic.new)
     ..addBuilder<TestInteractorWithRequest>(TestInteractorWithRequest.new)
     ..addBuilder<NavigationInteractor>(NavigationInteractor.new)
@@ -40,6 +41,7 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestInteractorAsync6>(TestInteractorAsync6.new)
     ..addBuilder<TestInteractorAsync7>(TestInteractorAsync7.new)
     ..addBuilder<TestInteractorAsync8>(TestInteractorAsync8.new)
+    ..addBuilder<TestInteractorAsync9>(TestInteractorAsync9.new)
     ..addBuilder<TestInteractorWithDefaultRestore>(
       TestInteractorWithDefaultRestore.new,
     )

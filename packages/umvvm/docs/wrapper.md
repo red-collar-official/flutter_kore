@@ -19,11 +19,11 @@ and we can access it with <b>app.instances</b>.
 
 Wrapper can be disposed when dependent element is disposed.
 
-Wrapper also can depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via <b>dependsOn</b> override.
+Wrapper also can depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
 
-Wrapper also can contain [parts](./instance_part.md) via <b>parts</b> override.
+Wrapper also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
 
-Wrapper also can belong to modules(you can read about modules [here](./di.md)) via <b>belongsToModules</b> override.
+Wrapper also can belong to modules(you can read about modules [here](./di.md)) via <b>modules</b> field in configuration object.
 
 They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md)).
 
@@ -44,7 +44,7 @@ or singleton holder wrapper:
 @singleton
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  String provideInstance() {
     return '';
   }
 }
@@ -57,45 +57,45 @@ Here is example if declaration of all types of dependencies:
 @singleton
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  String provideInstance() {
     return '';
   }
+
   @override
-  List<Connector> dependsOn(Map<String, dynamic>? input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         const Connector(type: SupportInteractor, scope: BaseScopes.unique),
         const Connector(type: ReactionsWrapper),
-      ];
-
-  @override
-  List<InstancesModule> belongsToModules(Map<String, dynamic>? input) => [
-    Modules.test,
-  ];
-
-  @override
-  List<PartConnector> parts(Map<String, dynamic>? input) => [
-    const PartConnector(type: TestInstancePart1, input: 5, async: true),
-    const PartConnector(
-        type: TestInstancePart2,
-        async: true,
-        count: 2,
-        input: 10,
-    ),
-    PartConnector(
-        type: TestInstancePart3,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    PartConnector(
-        type: TestInstancePart4,
-        async: true,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    const PartConnector(
-        type: TestInstancePart5,
-        withoutConnections: true,
-    ),
-  ];
+      ],
+      modules: [
+        Modules.test,
+      ],
+      parts: [
+        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+        const PartConnector(
+            type: TestInstancePart2,
+            async: true,
+            count: 2,
+            input: 10,
+        ),
+        PartConnector(
+            type: TestInstancePart3,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        PartConnector(
+            type: TestInstancePart4,
+            async: true,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        const PartConnector(
+            type: TestInstancePart5,
+            withoutConnections: true,
+        ),
+      ],
+    );
 
   late final supportInteractor = getLocalInstance<SupportInteractor>();
   late final reactionsWrapper = getLocalInstance<ReactionsWrapper>();

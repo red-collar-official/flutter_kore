@@ -3,6 +3,21 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
+/// Model class describing confifuration for basic mvvm instance
+class MvvmInstanceConfiguration {
+  const MvvmInstanceConfiguration({
+    this.parts = const [],
+    this.isAsync,
+  });
+
+  /// Parts that are required for this instance
+  final List<PartConnector> parts;
+
+  /// Flag that returns true if instance contains async parts
+  /// or require async initialization
+  final bool? isAsync;
+}
+
 /// Base class for mvvm instance
 /// Contains basic interface for init and dispose operations
 /// Also every mvvm element connected to main app event bus
@@ -18,38 +33,37 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   bool get isDisposed => _isDisposed;
 
   final _parts = HashMap<Type, List<BaseInstancePart>>();
-  late List<PartConnector> _partsConnectors;
 
-  /// Function that returns true if instance contains async parts
+  /// Input for this instance
+  late final T input;
+
+  /// [MvvmInstanceConfiguration] for this instance
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration();
+
+  /// Getter that returns true if instance contains async parts
   /// or require async initialization
-  /// If you override this method always use super.isAsync
+  /// If you override this getter always use super.isAsync
   /// if you not always returning true
   // coverage:ignore-start
-  bool isAsync(T input) {
-    return getFullPartConnectorsList(input)
-            .indexWhere((element) => element.async) !=
-        -1;
+  bool get isAsync {
+    return configuration.isAsync != null
+        ? configuration.isAsync!
+        : getFullPartConnectorsList().indexWhere((element) => element.async) !=
+            -1;
   }
-
-  /// Returns list of parts
-  List<Connector> getFullPartConnectorsList(T input) {
-    final concreteParts = parts(input);
-
-    return concreteParts;
-  }
-
   // coverage:ignore-end
-
-  List<PartConnector> parts(T input) => [];
 
   /// Base method for instance initialization
   /// After you call this method set [initialized] flag to true
   @mustCallSuper
   void initialize(T input) {
+    this.input = input;
+
     initializeSub();
     paused = false;
 
-    initializeInstanceParts(input);
+    initializeInstanceParts();
   }
 
   /// Base method for instance dispose
@@ -68,24 +82,29 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     paused = true;
   }
 
+  /// Returns list of parts
+  List<PartConnector> getFullPartConnectorsList() {
+    return configuration.parts;
+  }
+
   /// Base method for async instance initialization
   @mustCallSuper
   Future<void> initializeAsync(T input) async {
-    await _initializeInstancePartsAsync(input);
+    await _initializeInstancePartsAsync();
   }
 
   /// Base method for lightweight instance initialization
   // coverage:ignore-start
+  @mustCallSuper
+  // ignore: use_setters_to_change_properties
   void initializeWithoutConnections(T input) {
-    _partsConnectors = parts(input);
+    this.input = input;
   }
   // coverage:ignore-end
 
   /// Base method for lightweight async instance initialization
   // coverage:ignore-start
-  Future<void> initializeWithoutConnectionsAsync(T input) async {
-    _partsConnectors = parts(input);
-  }
+  Future<void> initializeWithoutConnectionsAsync(T input) async {}
   // coverage:ignore-end
 
   /// Returns initialized instance part for given type
@@ -109,10 +128,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Adds parts to local collection
-  void initializeInstanceParts(T input) {
-    _partsConnectors = parts(input);
-
-    for (final element in _partsConnectors) {
+  void initializeInstanceParts() {
+    for (final element in getFullPartConnectorsList()) {
       if (element.count != 1) {
         _parts[element.type] = List.empty(growable: true);
 
@@ -167,11 +184,11 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Adds parts to local collection
-  Future<void> _initializeInstancePartsAsync(T input) async {
-    _partsConnectors = parts(input);
-
+  Future<void> _initializeInstancePartsAsync() async {
     await Future.wait(
-      _partsConnectors.where((element) => element.async).map(_addAsyncPart),
+      getFullPartConnectorsList()
+          .where((element) => element.async)
+          .map(_addAsyncPart),
     );
 
     onAllPartReady();

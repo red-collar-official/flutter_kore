@@ -70,7 +70,7 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
 
     _viewModel.initialize(widget);
 
-    if (_viewModel.isAsync(widget)) {
+    if (_viewModel.isAsync) {
       _viewModel.initializeAsync(widget);
     }
   }

@@ -18,23 +18,34 @@ import 'package:umvvm/umvvm.dart';
 /// }
 ///
 /// class Modules {
-///   static final test = TestModule();
+///   static get test => TestModule();
 /// }
 ///
 /// @singleton
 /// class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
 ///   @override
-///   String provideInstance(Map<String, dynamic>? input) {
+///   String provideInstance() {
 ///     return '';
 ///   }
 ///
 ///   @override
-///   List<InstancesModule> belongsToModules(Map<String, dynamic>? input) => [
-///     Modules.test,
-///   ];
+///   DependentMvvmInstanceConfiguration get configuration =>
+///     DependentMvvmInstanceConfiguration(
+///       modules: [
+///         Modules.test,
+///       ],
+///     );
 /// }
 /// ```
 abstract class InstancesModule {
+  late T Function<T extends MvvmInstance>({int index}) getInstanceDelegate;
+  late T Function<T extends BaseInstancePart>({int index})
+      useInstancePartDelegate;
+  late T Function<T extends MvvmInstance>({int index}) getLazyInstanceDelegate;
+
+  late Future<T> Function<T extends MvvmInstance>({int index})
+      getAsyncLazyInstanceDelegate;
+
   // coverage:ignore-start
 
   /// List of all dependencies required in this module
@@ -57,5 +68,23 @@ abstract class InstancesModule {
         return element.copyWithScope(id);
       }
     }).toList();
+  }
+
+  T getLocalInstance<T extends MvvmInstance>({int index = 0}) {
+    return getInstanceDelegate<T>(index: index);
+  }
+
+  T useInstancePart<T extends BaseInstancePart>({int index = 0}) {
+    return useInstancePartDelegate<T>(index: index);
+  }
+
+  T getLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
+    return getLazyInstanceDelegate<T>(index: index);
+  }
+
+  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({
+    int index = 0
+  }) {
+    return getAsyncLazyInstanceDelegate<T>(index: index);
   }
 }

@@ -10,7 +10,7 @@ More infomation about event bus can be found [here](./event_bus.md).
 And every mvvm instance can contain parts.
 More infomation about instance parts can be found [here](./instance_part.md).
 
-So you can add them via <b>parts</b> override and call <b>useInstancePart<T>()</b> method.
+So you can add them via via <b>parts</b> field in configuration object and then call <b>useInstancePart<T>()</b> method.
 
 Interactors, wrappers, instance parts and view models - all of them extend <v>MvvmInstance</b>.
 
@@ -53,30 +53,33 @@ Then you can use it in child classes and receive events, connect parts and etc..
 @basicInstance
 class UsersBox extends BaseBox {
   @override
-  List<PartConnector> parts(void? input) => [
-    const PartConnector(type: TestInstancePart1, input: 5, async: true),
-    const PartConnector(
-        type: TestInstancePart2,
-        async: true,
-        count: 2,
-        input: 10,
-    ),
-    PartConnector(
-        type: TestInstancePart3,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    PartConnector(
-        type: TestInstancePart4,
-        async: true,
-        count: 2,
-        inputForIndex: (index) => index + 1,
-    ),
-    const PartConnector(
-        type: TestInstancePart5,
-        withoutConnections: true,
-    ),
-  ];
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      parts: [
+        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+        const PartConnector(
+            type: TestInstancePart2,
+            async: true,
+            count: 2,
+            input: 10,
+        ),
+        PartConnector(
+            type: TestInstancePart3,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        PartConnector(
+            type: TestInstancePart4,
+            async: true,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+        ),
+        const PartConnector(
+            type: TestInstancePart5,
+            withoutConnections: true,
+        ),
+      ],
+    );
 
   late final testInstancePart1 = useInstancePart<TestInstancePart1>();
 

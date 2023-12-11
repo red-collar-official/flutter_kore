@@ -6,7 +6,7 @@ Definition of api consists of implementing base http request class and defining 
 
 Library contains default implementation of interface for [Dio](https://pub.dev/packages/dio).
 
-To use this method you need firstly to subclass <b>DioRequest</b>.
+To use this method firstly you need to subclass <b>DioRequest</b>.
 
 Generic parameter here represents type of object to be returned from request after parsing.
 
@@ -337,7 +337,7 @@ View models, interactors and wrappers cancel all running requests when they are 
 
 This is because they contain <b>ApiCaller</b> mixin.
 
-To enable this behaviour run requests with <b>executeAndCancelOnDispose</b> method inside this instances or custom Api callers.
+To enable this behaviour execute requests with <b>executeAndCancelOnDispose</b> method inside this instances or custom Api callers.
 
 ```dart
 // before
@@ -347,6 +347,6 @@ response = await app.apis.posts.getPosts(0, limit).execute();
 response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
 ```
 
-If you do not want to cancel request - for example if it is some important post request - use request as usual.
+If you do not want to cancel request - for example if it is some important POST request - use request as usual.
 
 More info about custom api callers can be found [here](./custom_instances.md).

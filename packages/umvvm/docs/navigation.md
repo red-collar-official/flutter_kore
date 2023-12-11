@@ -62,7 +62,7 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
   }
 
   @override
-  NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+  NavigationState get initialState => NavigationState(
         currentTab: AppTabs.posts,
       );
 }
@@ -121,8 +121,7 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
       ];
 
   @override
-  NavigationState initialState(Map<String, dynamic>? input) =>
-      NavigationState();
+  NavigationState get initialState => NavigationState();
 }
 ```
 
@@ -274,9 +273,6 @@ If your app uses separate navigator key for dialogs and bottoms sheets you need 
 ```dart
 class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
   @override
-  List<Connector> dependsOn(AppView input) => [];
-
-  @override
   void onLaunch(AppView widget) {
     super.onLaunch(widget);
   }
@@ -286,7 +282,7 @@ class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
   }
 
   @override
-  AppViewState initialState(AppView input) => const AppViewState();
+  AppViewState get initialState => const AppViewState();
 }
 
 class AppViewWidgetState extends NavigationView<AppView, AppViewState, AppViewModel> {
@@ -315,9 +311,12 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   };
 
   @override
-  List<Connector> dependsOn(HomeView input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         app.connectors.postsInteractorConnector(),
-      ];
+      ],
+    );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
   late final authorizationInteractor = app.instances.get<AuthorizationInteractor>();
@@ -419,9 +418,12 @@ And if you using tab navigation every other view state other than global and tab
 ```dart
 class PostsViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   @override
-  List<Connector> dependsOn(HomeView input) => [
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
         app.connectors.postsInteractorConnector(),
-      ];
+      ],
+    );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
@@ -489,7 +491,7 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
   }
 
   @override
-  int initialState(Map<String, dynamic>? input) => 1;
+  int get initialState => 1;
 
   @override
   Future<void> onLinkReceived(String? link) async {

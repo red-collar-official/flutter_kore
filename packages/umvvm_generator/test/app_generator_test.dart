@@ -18,7 +18,7 @@ import 'package:umvvm/annotations/mvvm_instance.dart';
 @singleton
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  String provideInstance() {
     return '';
   }
 }
@@ -96,7 +96,7 @@ import 'package:umvvm/annotations/mvvm_instance.dart';
 @Instance(singleton: true, awaitInitialization: true, initializationOrder: 1)
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
   @override
-  String provideInstance(Map<String, dynamic>? input) {
+  String provideInstance() {
     return '';
   }
 }
@@ -283,7 +283,7 @@ class NavigationInteractor
   }
 
   @override
-  NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+  NavigationState get initialState => NavigationState(
         currentTab: AppTabs.posts,
       );
 }

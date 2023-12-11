@@ -22,7 +22,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
   void initialize(Input? input) {
     super.initialize(input);
 
-    initializeDependencies(input);
+    initializeDependencies();
 
     initialized = true;
   }
@@ -41,13 +41,13 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
   @override
   Future<void> initializeAsync(Input? input) async {
     await super.initializeAsync(input);
-    await initializeDependenciesAsync(input);
+    await initializeDependenciesAsync();
   }
 
   @mustCallSuper
   @override
   void initializeWithoutConnections(Input? input) {
-    initializeDependenciesWithoutConnections(input);
+    super.initializeWithoutConnections(input);
 
     initialized = true;
   }
@@ -55,8 +55,6 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
   @mustCallSuper
   @override
   Future<void> initializeWithoutConnectionsAsync(Input? input) async {
-    await initializeDependenciesWithoutConnectionsAsync(input);
-
     initialized = true;
   }
 }
@@ -74,7 +72,13 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 /// @asyncSingleton
 /// class StripeWrapper extends BaseHolderWrapper<Stripe, String> {
 ///   @override
-///   Future<Stripe> provideInstance(String? params) async {
+///   DependentMvvmInstanceConfiguration get configuration =>
+///     const DependentMvvmInstanceConfiguration(
+///       isAsync: true,
+///     );
+/// 
+///   @override
+///   Stripe provideInstance() {
 ///     return Stripe.instance;
 ///   }
 /// }
@@ -90,11 +94,9 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   void initialize(Input? input) {
     super.initialize(input);
 
-    _instanceCreator = () {
-      return provideInstance(input);
-    };
+    _instanceCreator = provideInstance;
 
-    initializeDependencies(input);
+    initializeDependencies();
 
     initialized = true;
   }
@@ -114,11 +116,11 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   @override
   Future<void> initializeAsync(Input? input) async {
     await super.initializeAsync(input);
-    await initializeDependenciesAsync(input);
+    await initializeDependenciesAsync();
   }
 
   /// Creates actual object instance
-  Instance provideInstance(Input? input);
+  Instance provideInstance();
 
   /// Actual object instance
   Instance get instance => _instance == null ? _instanceCreator() : _instance!;

@@ -10,78 +10,112 @@ class TestModule extends InstancesModule {
   List<Connector> get dependencies => [
         const Connector(type: TestInteractor7, scope: BaseScopes.unique),
         const Connector(type: TestInteractor8),
+        const Connector(
+          type: TestInteractor13,
+          scope: BaseScopes.unique,
+          lazy: true,
+        ),
+        const Connector(
+          type: TestInteractorAsync9,
+          async: true,
+          scope: BaseScopes.unique,
+          lazy: true,
+        ),
       ];
+
+  @override
+  List<PartConnector> get parts => [
+        const PartConnector(type: TestInstancePart5),
+      ];
+
+  late final testInteractor7 = getLocalInstance<TestInteractor7>();
+  late final testInteractor13 = getLazyLocalInstance<TestInteractor13>();
+  late final testInstancePart5 = useInstancePart<TestInstancePart5>();
+  late final testInteractorAsync9 =
+      getAsyncLazyLocalInstance<TestInteractorAsync9>();
 
   @override
   String get id => 'test';
 }
 
 class Modules {
-  static final test = TestModule();
+  static TestModule get test => TestModule();
 }
 
 class TestInteractor1 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor2 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor4 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor5 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor7 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor8 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor9 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor11 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorCyclic extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) =>
-      [const Connector(type: TestInteractorCyclic)];
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestInteractorCyclic),
+        ],
+      );
 }
 
 class TestInteractor10 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor12 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
+}
+
+class TestInteractor13 extends BaseInteractor<int, int?> {
+  @override
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync2 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -93,12 +127,15 @@ class TestInteractorAsync2 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync3 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -110,12 +147,15 @@ class TestInteractorAsync3 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync4 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -127,12 +167,15 @@ class TestInteractorAsync4 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync5 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -144,12 +187,15 @@ class TestInteractorAsync5 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync6 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -161,12 +207,15 @@ class TestInteractorAsync6 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync7 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -178,12 +227,15 @@ class TestInteractorAsync7 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync8 extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -195,17 +247,40 @@ class TestInteractorAsync8 extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
+}
+
+class TestInteractorAsync9 extends BaseInteractor<int, int?> {
+  @override
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
+
+  @override
+  Future<void> initializeAsync(int? input) async {
+    await super.initializeAsync(input);
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    updateState(input ?? 0);
+  }
+
+  @override
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor6 extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractorAsync extends BaseInteractor<int, int?> {
   @override
-  bool isAsync(int? input) => true;
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        isAsync: true,
+      );
 
   @override
   Future<void> initializeAsync(int? input) async {
@@ -217,7 +292,7 @@ class TestInteractorAsync extends BaseInteractor<int, int?> {
   }
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 }
 
 class TestInteractor3 extends BaseInteractor<int, int?> {
@@ -226,129 +301,126 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   bool event3Processed = false;
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(type: TestInteractor1, input: 2),
-      const Connector(type: TestInteractorAsync4, input: 2, async: true),
-      const Connector(
-        type: TestInteractor2,
-        input: 3,
-        scope: BaseScopes.unique,
-      ),
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-      const Connector(
-        type: TestInteractor4,
-        input: 3,
-        count: 2,
-      ),
-      const Connector(
-        type: TestInteractorAsync2,
-        input: 3,
-        count: 2,
-        async: true,
-      ),
-      Connector(
-        type: TestInteractor5,
-        inputForIndex: (index) => index + 1,
-        count: 2,
-      ),
-      Connector(
-        type: TestInteractorAsync3,
-        inputForIndex: (index) => index + 1,
-        count: 2,
-        async: true,
-      ),
-      Connector(
-        type: TestInteractor9,
-        inputForIndex: (index) => index + 1,
-        count: 2,
-        lazy: true,
-      ),
-      Connector(
-        type: TestInteractorAsync5,
-        inputForIndex: (index) => index + 1,
-        count: 2,
-        lazy: true,
-        async: true,
-      ),
-      const Connector(
-        type: TestInteractorAsync8,
-        input: 2,
-        count: 2,
-        lazy: true,
-        async: true,
-      ),
-      const Connector(
-        type: TestInteractor12,
-        input: 2,
-        count: 2,
-        lazy: true,
-      ),
-      const Connector(
-        type: TestInteractor10,
-        lazy: true,
-        input: 2,
-      ),
-      const Connector(
-        type: TestInteractorAsync6,
-        lazy: true,
-        input: 2,
-        async: true,
-      ),
-      const Connector(
-        type: TestInteractor11,
-        lazy: true,
-        input: 2,
-        scope: BaseScopes.unique,
-      ),
-      const Connector(
-        type: TestInteractorAsync7,
-        lazy: true,
-        input: 2,
-        async: true,
-        scope: BaseScopes.unique,
-      ),
-    ];
-  }
-
-  @override
-  List<PartConnector> parts(int? input) => [
-        const PartConnector(type: TestInstancePart3, input: 5, async: true),
-        const PartConnector(
-          type: TestInstancePart2,
-          async: true,
-          count: 2,
-          input: 10,
-        ),
-        PartConnector(
-          type: TestInstancePart,
-          count: 2,
-          inputForIndex: (index) => index + 1,
-        ),
-        PartConnector(
-          type: TestInstancePart4,
-          async: true,
-          count: 2,
-          inputForIndex: (index) => index + 1,
-        ),
-        const PartConnector(
-          type: TestInstancePart5,
-          withoutConnections: true,
-        ),
-      ];
-
-  @override
-  List<InstancesModule> belongsToModules(int? input) => [
-        Modules.test,
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          const Connector(type: TestInteractor1, input: 2),
+          const Connector(type: TestInteractorAsync4, input: 2, async: true),
+          const Connector(
+            type: TestInteractor2,
+            input: 3,
+            scope: BaseScopes.unique,
+          ),
+          const Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+          const Connector(
+            type: TestInteractor4,
+            input: 3,
+            count: 2,
+          ),
+          const Connector(
+            type: TestInteractorAsync2,
+            input: 3,
+            count: 2,
+            async: true,
+          ),
+          Connector(
+            type: TestInteractor5,
+            inputForIndex: (index) => index + 1,
+            count: 2,
+          ),
+          Connector(
+            type: TestInteractorAsync3,
+            inputForIndex: (index) => index + 1,
+            count: 2,
+            async: true,
+          ),
+          Connector(
+            type: TestInteractor9,
+            inputForIndex: (index) => index + 1,
+            count: 2,
+            lazy: true,
+          ),
+          Connector(
+            type: TestInteractorAsync5,
+            inputForIndex: (index) => index + 1,
+            count: 2,
+            lazy: true,
+            async: true,
+          ),
+          const Connector(
+            type: TestInteractorAsync8,
+            input: 2,
+            count: 2,
+            lazy: true,
+            async: true,
+          ),
+          const Connector(
+            type: TestInteractor12,
+            input: 2,
+            count: 2,
+            lazy: true,
+          ),
+          const Connector(
+            type: TestInteractor10,
+            lazy: true,
+            input: 2,
+          ),
+          const Connector(
+            type: TestInteractorAsync6,
+            lazy: true,
+            input: 2,
+            async: true,
+          ),
+          const Connector(
+            type: TestInteractor11,
+            lazy: true,
+            input: 2,
+            scope: BaseScopes.unique,
+          ),
+          const Connector(
+            type: TestInteractorAsync7,
+            lazy: true,
+            input: 2,
+            async: true,
+            scope: BaseScopes.unique,
+          ),
+        ],
+        parts: [
+          const PartConnector(type: TestInstancePart3, input: 5, async: true),
+          const PartConnector(
+            type: TestInstancePart2,
+            async: true,
+            count: 2,
+            input: 10,
+          ),
+          PartConnector(
+            type: TestInstancePart,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+          ),
+          PartConnector(
+            type: TestInstancePart4,
+            async: true,
+            count: 2,
+            inputForIndex: (index) => index + 1,
+          ),
+          const PartConnector(
+            type: TestInstancePart5,
+            withoutConnections: true,
+          ),
+        ],
+        modules: [
+          Modules.test,
+        ],
+      );
 
   late final testInteractor1 = getLocalInstance<TestInteractor1>();
   late final testInteractor2 = getLocalInstance<TestInteractor2>();
@@ -457,6 +529,8 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
     index: 1,
   );
 
+  late final testModule = connectModule<TestModule>();
+
   @override
   List<EventBusSubscriber> subscribe() => [
         on<TestEvent>((event) {
@@ -486,116 +560,120 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
 
 class TestInteractorError extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(type: TestInteractor1, input: 2),
-      const Connector(
-        type: TestInteractor2,
-        input: 3,
-        scope: BaseScopes.unique,
-      ),
-      const Connector(
-        type: TestInteractor2,
-        input: 4,
-        scope: Constants.testScope,
-      ),
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestInteractor1, input: 2),
+          Connector(
+            type: TestInteractor2,
+            input: 3,
+            scope: BaseScopes.unique,
+          ),
+          Connector(
+            type: TestInteractor2,
+            input: 4,
+            scope: Constants.testScope,
+          ),
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+        ],
+      );
 }
 
 class TestInteractorErrorAsync extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        async: true,
-      ),
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            async: true,
+          ),
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+          ),
+        ],
+      );
 }
 
 class TestInteractorErrorWithLazyDeps extends BaseInteractor<int, int?> {
   bool eventProcessed = false;
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(type: TestInteractor1, input: 2, lazy: true),
-      const Connector(
-        type: TestInteractor2,
-        input: 3,
-        scope: BaseScopes.unique,
-        lazy: true,
-      ),
-      const Connector(
-        type: TestInteractor2,
-        input: 4,
-        scope: Constants.testScope,
-        lazy: true,
-      ),
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-        lazy: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestInteractor1, input: 2, lazy: true),
+          Connector(
+            type: TestInteractor2,
+            input: 3,
+            scope: BaseScopes.unique,
+            lazy: true,
+          ),
+          Connector(
+            type: TestInteractor2,
+            input: 4,
+            scope: Constants.testScope,
+            lazy: true,
+          ),
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+            lazy: true,
+          ),
+        ],
+      );
 }
 
 class TestInteractorErrorWithAsyncLazyDeps extends BaseInteractor<int, int?> {
   bool eventProcessed = false;
 
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
-  List<Connector> dependsOn(int? input) {
-    return [
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        async: true,
-        lazy: true,
-      ),
-      const Connector(
-        type: TestInteractorAsync,
-        input: 3,
-        scope: BaseScopes.unique,
-        async: true,
-        lazy: true,
-      ),
-    ];
-  }
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
+        dependencies: [
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            async: true,
+            lazy: true,
+          ),
+          Connector(
+            type: TestInteractorAsync,
+            input: 3,
+            scope: BaseScopes.unique,
+            async: true,
+            lazy: true,
+          ),
+        ],
+      );
 }
 
 class TestInteractorWithRestore extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
   StateFullInstanceSettings get stateFullInstanceSettings =>
@@ -619,7 +697,7 @@ class TestInteractorWithRestore extends BaseInteractor<int, int?> {
 
 class TestInteractorWithDefaultRestore extends BaseInteractor<double, int?> {
   @override
-  double initialState(int? input) => input?.toDouble() ?? 0.0;
+  double get initialState => input?.toDouble() ?? 0.0;
 
   @override
   StateFullInstanceSettings get stateFullInstanceSettings =>
@@ -638,7 +716,7 @@ class TestInteractorWithDefaultRestore extends BaseInteractor<double, int?> {
 
 class TestInteractorWithAsyncRestore extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   @override
   StateFullInstanceSettings get stateFullInstanceSettings =>
@@ -663,7 +741,7 @@ class TestInteractorWithAsyncRestore extends BaseInteractor<int, int?> {
 
 class TestInteractorWithRequest extends BaseInteractor<int, int?> {
   @override
-  int initialState(int? input) => input ?? 0;
+  int get initialState => input ?? 0;
 
   Future<void> executeTestRequest(HttpRequest request) async {
     await executeAndCancelOnDispose(request);

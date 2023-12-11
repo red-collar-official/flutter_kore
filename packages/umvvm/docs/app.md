@@ -7,7 +7,7 @@ App exists as global object or singleton.
 
 You must initialize app before <b>runApp</b> call.
 
-If you using apis then you can store <b>Apis</b> reference in main app.
+If you are using apis then you can store <b>Apis</b> reference in main app.
 
 More info about http component can be found [here](./apis.md).
 

@@ -3,9 +3,9 @@
 /// Annotate class as custom mvvm instance
 /// ```dart
 /// @Instance(inputType: String, singleton: true)
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -52,9 +52,9 @@ class Instance {
 /// Annotate class as default mvvm instance
 /// ```dart
 /// @instance
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -78,9 +78,9 @@ const asyncInstancePart = Instance(part: true, async: true);
 /// Annotate class as singleton mvvm instance
 /// ```dart
 /// @singleton
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -90,9 +90,9 @@ const singleton = Instance(singleton: true);
 /// Annotate class as lazy singleton mvvm instance
 /// ```dart
 /// @lazySingleton
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -101,10 +101,16 @@ const lazySingleton = Instance(singleton: true, lazy: true);
 
 /// Annotate class as async default mvvm instance
 /// ```dart
-/// @instance
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// @asyncBasicInstance
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+///  @override
+///  DependentMvvmInstanceConfiguration get configuration =>
+///    DependentMvvmInstanceConfiguration(
+///      isAsync: true,
+///    );
+/// 
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -113,10 +119,16 @@ const asyncBasicInstance = Instance(async: true);
 
 /// Annotate class as async singleton mvvm instance
 /// ```dart
-/// @singleton
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// @asyncSingleton
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+///  @override
+///  DependentMvvmInstanceConfiguration get configuration =>
+///    DependentMvvmInstanceConfiguration(
+///      isAsync: true,
+///    );
+/// 
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
@@ -125,10 +137,16 @@ const asyncSingleton = Instance(singleton: true, async: true);
 
 /// Annotate class as async lazy singleton mvvm instance
 /// ```dart
-/// @lazySingleton
-/// class NavigationWrapper extends BaseWrapper<NavigationStack, Map<String, dynamic>> {
+/// @asyncLazySingleton
+/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+///  @override
+///  DependentMvvmInstanceConfiguration get configuration =>
+///    DependentMvvmInstanceConfiguration(
+///      isAsync: true,
+///    );
+/// 
 ///   @override
-///   NavigationStack provideInstance(Map<String, dynamic>? input) {
+///   NavigationStack provideInstance() {
 ///     return NavigationStack();
 ///   }
 /// }
