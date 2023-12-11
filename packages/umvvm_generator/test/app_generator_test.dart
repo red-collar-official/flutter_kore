@@ -41,7 +41,7 @@ import 'package:umvvm/annotations/main_app.dart';
 
 part 'test_app_main.mvvm.dart';
 
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   @override
   Future<void> initialize() async {
@@ -119,7 +119,7 @@ import 'package:umvvm/annotations/main_app.dart';
 
 part 'test_app_main.mvvm.dart';
 
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   @override
   Future<void> initialize() async {

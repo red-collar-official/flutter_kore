@@ -16,7 +16,7 @@ Configuration object provided via <b>configuration</b> getter for every mvvm ins
 
 Interactors, wrappers, instance parts and view models - all of them extend <v>MvvmInstance</b>.
 
-If you extended <v>MvvmInstance</b> you can mark child classes with DI annotations and use them with <b>app.instances</b> interface.
+If you extended <b>MvvmInstance</b> you can mark child classes with DI annotations and use them with <b>app.instances</b> interface.
 More infomation about DI can be found [here](./di.md).
 
 Here is an example of simple custom mvvm instance that you can create:
@@ -55,8 +55,8 @@ Then you can use it in child classes and receive events, connect parts and etc..
 @basicInstance
 class UsersBox extends BaseBox {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-    DependentMvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+    MvvmInstanceConfiguration(
       parts: [
         const PartConnector(type: TestInstancePart1, input: 5, async: true),
         const PartConnector(
@@ -84,6 +84,40 @@ class UsersBox extends BaseBox {
     );
 
   late final testInstancePart1 = useInstancePart<TestInstancePart1>();
+
+  @override
+  List<EventBusSubscriber> subscribe() => [
+      on<PostLikedEvent>((event) {
+        _onPostLiked(event.id);
+      }),
+    ];
+}
+```
+
+Every mvvm instance also can be async. In this case you need to specify <b>isAsync</b> flag in configuration object. And also you can override <b>initializeAsync</b> method.
+
+Here is an example:
+
+```dart
+@basicInstance
+class UsersBox extends BaseBox {
+  @override
+  MvvmInstanceConfiguration get configuration =>
+    MvvmInstanceConfiguration(
+      parts: [
+        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+      ],
+      isAsync: true,
+    );
+
+  late final testInstancePart1 = useInstancePart<TestInstancePart1>();
+
+  @override
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
+
+    // ...
+  }
 
   @override
   List<EventBusSubscriber> subscribe() => [

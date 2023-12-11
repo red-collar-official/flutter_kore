@@ -75,6 +75,9 @@ class TestInteractorPart extends BaseInstancePart<Map<String, dynamic>, PostsInt
       }),
     ];
 }
+```
+
+And universal part:
 
 ```dart
 @instancePart

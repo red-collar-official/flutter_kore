@@ -4,6 +4,8 @@ It can be easy to migrate from other architecture since most of components can b
 
 More info about disabling components can be found [here](./disabling_components.md).
 
+### DI
+
 If you migrate from other DI library you need to wrap your objects in wrappers so they can be used in DI system.
 
 Here is an example:
@@ -29,7 +31,54 @@ app.instances.get<ThirdPartyInstanceWrapper>().instance;
 // or use some methods to work with instance defined in wrapper
 ```
 
+Usual in DI libraries dependencies are defined via constructors.
+
+In this library we define dependencies using connectors and dependent instances.
+
+```dart
+// some preudo code
+
+// was
+class SomeObject {
+  SomeObject(
+    this.dependency,
+  );
+
+  final ThirdPartyDependency dependency;
+}
+
+// now
+
+@basicInstance
+class ThirdPartyInstanceWrapper extends BaseHolderWrapper<ThirdPartyInstance, Map<String, dynamic>> {
+  @override
+  ThirdPartyInstance provideInstance() {
+    return ThirdPartyInstance();
+  }
+}
+
+@basicInstance
+class Interactor extends BaseInteractor<InteractorState, Map<String, dynamic>> {
+  @override
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      dependencies: [
+        app.connectors.thirdPartyInstanceWrapperConnector(),
+      ],
+    );
+
+  final ThirdPartyInstanceWrapper dependencyWrapper = getLocalInstance<ThirdPartyInstanceWrapper>();
+
+  @override
+  InteractorState get initialState => InteractorState();
+}
+```
+
 More info about wrappers can be found [here](./wrapper.md).
+
+More info about di component can be found [here](./di.md).
+
+### Events
 
 If you using other state management library based on events it is useful to know that you can do similar thing in Umvvm.
 Just create events for your operations - for example: <b>LoadUserRequestEvent</b> and subscribe to this event in your view model or other mvvm instances.

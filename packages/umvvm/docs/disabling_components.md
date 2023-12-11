@@ -2,10 +2,12 @@
 
 You can disable most of components of Umvvm at all.
 
+### Disabling navigation component
+
 If you don't want to use navigation component just don't pass it to global app initialization:
 
 ```dart
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
@@ -19,10 +21,12 @@ class App extends UMvvmApp with AppGen {
 final app = App();
 ```
 
+### Disabling http component
+
 If you don't want to use http functions of this package you can use any other and just don't define <b>apis</b> in global app instance:
 
 ```dart
-@MainApp()
+@mainApp
 class App extends UMvvmApp with AppGen {
   late SharedPreferences prefs;
 
@@ -34,6 +38,8 @@ class App extends UMvvmApp with AppGen {
 
 final app = App();
 ```
+
+### Disabling DI component
 
 You can disable DI container at all and inject dependencies your own way.
 

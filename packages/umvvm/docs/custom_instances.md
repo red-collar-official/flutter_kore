@@ -115,10 +115,10 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
 
   @mustCallSuper
   @override
-  void initializeAsync() {
-    super.initializeAsync();
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
-    initializeDependenciesAsync();
+    await initializeDependenciesAsync();
 
     initialized = true;
   }
@@ -235,10 +235,10 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
 
   @mustCallSuper
   @override
-  void initializeAsync() {
-    super.initializeAsync();
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
-    initializeDependenciesAsync();
+    await initializeDependenciesAsync();
 
     initialized = true;
   }

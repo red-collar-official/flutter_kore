@@ -17,8 +17,6 @@ When interactor is annotated as singleton it belongs to global instance collecti
 We don't need to write dependencies in our instances for singleton interactors 
 and we can access it with <b>app.instances</b>.
 
-Interactors can be disposed when dependent element is disposed.
-
 Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependencies</b> field in configuration object.
 
 Configuration object provided via <b>configuration</b> getter for every interactor.
@@ -79,8 +77,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
     updateState(state.copyWith(posts: SuccessData(posts)));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => updates((state) => state.posts);
 
   @override
   PostsState get initialState => PostsState();
@@ -114,7 +111,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
 
-    @override
+  @override
   StateFullInstanceSettings get stateFullInstanceSettings =>
       StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
@@ -270,3 +267,5 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
     ];
 }
 ```
+
+To see base settings and methods of interactors you can visit [this page](./mvvm_instance.md).

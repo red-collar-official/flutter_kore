@@ -110,3 +110,5 @@ If app uses obfuscation this is <b>required</b>.
 
 In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.
 Otherwise it will be restored asynchronously.
+
+To see base settings and methods of view models you can visit [this page](./mvvm_instance.md).

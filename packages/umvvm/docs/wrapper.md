@@ -19,8 +19,6 @@ More information about <b>EventBus</b> can be found [here](./event_bus.md).
 We dont need to write dependencies in our instances for singleton wrappers
 and we can access it with <b>app.instances</b>.
 
-Wrapper can be disposed when dependent element is disposed.
-
 Wrapper also can depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
 
 Configuration object provided via <b>configuration</b> getter for every dependent wrapper.
@@ -116,3 +114,5 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
 ```
 
 Instances can be then obtained using <b>app.instances.get<T>()</b> or <b>getLocalInstance</b> methods. More information about this methods can be found [here](./di.md).
+
+To see base settings and methods of wrappers you can visit [this page](./mvvm_instance.md).
