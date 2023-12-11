@@ -1,5 +1,5 @@
 name: umvvm_generator
-description: "Source generators for Umvvm architecture library"
+description: Source generators for Umvvm architecture library
 version: 1.0.0
 
 publish_to: none
