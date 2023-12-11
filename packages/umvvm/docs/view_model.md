@@ -6,7 +6,7 @@ They also contain local state that we like <b>Interactor</b> can update with <b>
 
 We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
 
-You also need to specify input type for view models. It is passed as generic argument.
+You also need to specify input widget type for view models. It is passed as generic argument.
 
 Input is always available via <b>input</b> field.
 

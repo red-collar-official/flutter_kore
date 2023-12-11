@@ -17,7 +17,7 @@ class PostsListViewModel
       );
 
   @override
-  void onLaunch(PostsListView widget) {
+  void onLaunch() {
     getLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }
 

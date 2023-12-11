@@ -14,7 +14,7 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   };
 
   @override
-  void onLaunch(HomeView widget) {
+  void onLaunch() {
     app.navigation.currentTabKeys = tabNavigatorKeys;
   }
 

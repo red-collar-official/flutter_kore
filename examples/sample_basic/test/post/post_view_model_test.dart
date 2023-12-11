@@ -31,7 +31,7 @@ void main() {
     // ignore: cascade_invocations
     postViewModel
       ..initialize(mockWidget)
-      ..onLaunch(mockWidget);
+      ..onLaunch();
 
     expect((postViewModel.currentPost as SuccessData).result.id, 1);
   });

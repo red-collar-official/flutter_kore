@@ -21,9 +21,9 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   late final postInteractor = getLocalInstance<PostInteractor>();
 
   @override
-  void onLaunch(PostView widget) {
-    if (widget.post == null) {
-      postInteractor.loadPost(widget.id!);
+  void onLaunch() {
+    if (input.post == null) {
+      postInteractor.loadPost(input.id!);
     }
   }
 

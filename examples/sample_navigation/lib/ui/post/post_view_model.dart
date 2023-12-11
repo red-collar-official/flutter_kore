@@ -17,13 +17,13 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
       );
 
   @override
-  void onLaunch(PostView widget) {
+  void onLaunch() {
     final postInteractor = getLocalInstance<PostInteractor>();
 
-    if (widget.post == null) {
-      postInteractor.loadPost(widget.id!);
+    if (input.post == null) {
+      postInteractor.loadPost(input.id!);
     } else {
-      postInteractor.useExistingPost(widget.post!);
+      postInteractor.useExistingPost(input.post!);
     }
   }
 
