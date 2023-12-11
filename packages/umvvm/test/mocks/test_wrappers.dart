@@ -30,8 +30,8 @@ class TestWrapperAsync extends BaseWrapper<int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -59,8 +59,8 @@ class TestWrapperAsync2 extends BaseWrapper<int?> {
   late final testWrapperAsync = getLocalInstance<TestWrapperAsync>();
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 

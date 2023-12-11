@@ -39,8 +39,8 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 
   @mustCallSuper
   @override
-  Future<void> initializeAsync(Input? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
     await initializeDependenciesAsync();
   }
 
@@ -54,7 +54,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 
   @mustCallSuper
   @override
-  Future<void> initializeWithoutConnectionsAsync(Input? input) async {
+  Future<void> initializeWithoutConnectionsAsync() async {
     initialized = true;
   }
 }
@@ -114,8 +114,8 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   /// Inititalizes wrapper
   @mustCallSuper
   @override
-  Future<void> initializeAsync(Input? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
     await initializeDependenciesAsync();
   }
 

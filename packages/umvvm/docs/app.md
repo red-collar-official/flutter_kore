@@ -67,10 +67,9 @@ Example:
 Future<void> _initLocalStorage() async {
   await app.localStorage.initialize();
 
-  UMvvmApp.cacheGetDelegate = (key) {
-    return app.localStorage.getString(key) ?? '';
-  };
-
+  UMvvmApp.cacheGetDelegate = app.localStorage.getString;
   UMvvmApp.cachePutDelegate = app.localStorage.putString;
 }
 ```
+
+In the example above <b>localStorage</b> can be any library for caching: for example <b>SharedPreferences</b> or <b>SecureStorage</b>.

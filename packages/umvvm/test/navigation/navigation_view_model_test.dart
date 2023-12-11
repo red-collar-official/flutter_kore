@@ -56,7 +56,7 @@ void main() {
 
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
-      await viewModel.initializeAsync(const TestWidget());
+      await viewModel.initializeAsync();
       viewModel.onLaunch();
 
       await app.navigation
@@ -75,7 +75,7 @@ void main() {
 
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
-      await viewModel.initializeAsync(const TestWidget());
+      await viewModel.initializeAsync();
       viewModel.onLaunch();
 
       await app.navigation.routeTo(app.navigation.routes.stub());
@@ -90,7 +90,7 @@ void main() {
 
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
-      await viewModel.initializeAsync(const TestWidget());
+      await viewModel.initializeAsync();
       viewModel.onLaunch();
 
       await app.navigation.routeTo(app.navigation.routes.stub());

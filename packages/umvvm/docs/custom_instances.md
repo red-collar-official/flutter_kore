@@ -12,6 +12,8 @@ Here we will discuss mixins.
 
 There are mixins that allow you to add additional funtions to your custom instance like dependencies, cancelable api calls and state.
 
+### StatefulMvvmInstance
+
 For example - if you need to add state to your custom mvvm instance you can write this:
 
 ```dart
@@ -91,6 +93,8 @@ class UsersListViewModel extends BaseViewModel<UsersListView, UsersListViewState
 }
 ```
 
+### DependentMvvmInstance
+
 If you need to add dependencies to your custom mvvm instance you can do the following:
 
 ```dart
@@ -111,8 +115,8 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
 
   @mustCallSuper
   @override
-  void initializeAsync(dynamic input) {
-    super.initializeAsync(input);
+  void initializeAsync() {
+    super.initializeAsync();
 
     initializeDependenciesAsync();
 
@@ -155,6 +159,8 @@ class UsersBox extends BaseBox {
 }
 ```
 
+### ApiCaller
+
 If you need to execute http requests in your custom mvvm instance you can add <b>ApiCaller</b> mixin so that requests can be cancelled automatically when instance is disposed.
 
 You can do it as follows:
@@ -171,6 +177,78 @@ abstract class BaseBox extends MvvmInstance<dynamic> with ApiCaller<dynamic> {
     super.dispose();
 
     cancelAllRequests();
+
+    initialized = false;
+  }
+}
+```
+
+### Custom configuration objects
+
+If you want to provide additional configuration for your custom mvvm instance you can subclass <b>MvvmInstanceConfiguration</b>.
+
+If your custom mvvm instance is using dependencies you need to subclass <b>DependentMvvmInstanceConfiguration</b>.
+
+Here is an example:
+
+```dart
+class CustomtMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
+  const CustomtMvvmInstanceConfiguration({
+    super.parts = const [],
+    super.isAsync,
+    this.customFlag = false,
+  });
+
+  final bool customFlag;
+}
+
+// or
+class CustomtMvvmInstanceConfiguration extends DependentMvvmInstanceConfiguration {
+  const CustomtMvvmInstanceConfiguration({
+    super.parts,
+    super.isAsync,
+    super.dependencies = const [],
+    super.modules = const []
+    this.customFlag = false,
+  });
+
+  final bool customFlag;
+}
+
+abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<dynamic> {
+  String get boxName;
+
+  late final hiveWrapper = app.instances.get<HiveWrapper>();
+
+  @override
+  CustomtMvvmInstanceConfiguration get configuration => const CustomtMvvmInstanceConfiguration();
+
+  @mustCallSuper
+  @override
+  void initialize(dynamic input) {
+    super.initialize(input);
+
+    initializeDependencies();
+
+    initialized = true;
+  }
+
+  @mustCallSuper
+  @override
+  void initializeAsync() {
+    super.initializeAsync();
+
+    initializeDependenciesAsync();
+
+    initialized = true;
+  }
+
+  @mustCallSuper
+  @override
+  void dispose() {
+    super.dispose();
+
+    disposeDependencies();
 
     initialized = false;
   }

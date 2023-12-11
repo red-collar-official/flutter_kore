@@ -23,6 +23,8 @@ Wrapper can be disposed when dependent element is disposed.
 
 Wrapper also can depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
 
+Configuration object provided via <b>configuration</b> getter for every dependent wrapper.
+
 Wrapper also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
 
 Wrapper also can belong to modules(you can read about modules [here](./di.md)) via <b>modules</b> field in configuration object.

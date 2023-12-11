@@ -118,8 +118,8 @@ class TestInteractorAsync2 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -138,8 +138,8 @@ class TestInteractorAsync3 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -158,8 +158,8 @@ class TestInteractorAsync4 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -178,8 +178,8 @@ class TestInteractorAsync5 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -198,8 +198,8 @@ class TestInteractorAsync6 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -218,8 +218,8 @@ class TestInteractorAsync7 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -238,8 +238,8 @@ class TestInteractorAsync8 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -258,8 +258,8 @@ class TestInteractorAsync9 extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -283,8 +283,8 @@ class TestInteractorAsync extends BaseInteractor<int, int?> {
       );
 
   @override
-  Future<void> initializeAsync(int? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     await Future.delayed(const Duration(milliseconds: 100));
 

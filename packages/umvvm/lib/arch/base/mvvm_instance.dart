@@ -22,15 +22,20 @@ class MvvmInstanceConfiguration {
 /// Contains basic interface for init and dispose operations
 /// Also every mvvm element connected to main app event bus
 abstract class MvvmInstance<T> extends EventBusReceiver {
+  /// Flag indicating that this instance is fully initialized
+  ///
+  /// You must set this flag to true in sync [initialize]
+  /// and [initializeWithoutConnections] calls
   bool initialized = false;
 
-  /// Flag indicating that this instance is disposed
-  /// Store can't be used if this flag is true
-  bool _isDisposed = false;
+  /// Observable indicating that all parts are connected to this instance
+  ///
+  /// Including async ones
+  final allPartsReady = Observable<bool>.initial(false);
 
   /// Flag indicating that this instance is disposed
   /// Store can't be used if this flag is true
-  bool get isDisposed => _isDisposed;
+  bool isDisposed = false;
 
   final _parts = HashMap<Type, List<BaseInstancePart>>();
 
@@ -63,6 +68,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     initializeSub();
     paused = false;
 
+    allPartsReady.update(false);
+
     initializeInstanceParts();
   }
 
@@ -78,8 +85,10 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
       }
     });
 
-    _isDisposed = true;
+    isDisposed = true;
     paused = true;
+
+    allPartsReady.dispose();
   }
 
   /// Returns list of parts
@@ -89,8 +98,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
 
   /// Base method for async instance initialization
   @mustCallSuper
-  Future<void> initializeAsync(T input) async {
-    await _initializeInstancePartsAsync();
+  Future<void> initializeAsync() async {
+    await initializeInstancePartsAsync();
   }
 
   /// Base method for lightweight instance initialization
@@ -99,12 +108,14 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   // ignore: use_setters_to_change_properties
   void initializeWithoutConnections(T input) {
     this.input = input;
+
+    paused = false;
   }
   // coverage:ignore-end
 
   /// Base method for lightweight async instance initialization
   // coverage:ignore-start
-  Future<void> initializeWithoutConnectionsAsync(T input) async {}
+  Future<void> initializeWithoutConnectionsAsync() async {}
   // coverage:ignore-end
 
   /// Returns initialized instance part for given type
@@ -174,6 +185,10 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
         });
       }
     }
+
+    if (!isAsync) {
+      onAllPartReady();
+    }
   }
 
   /// Keeps part root parent instance in sync
@@ -184,7 +199,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Adds parts to local collection
-  Future<void> _initializeInstancePartsAsync() async {
+  Future<void> initializeInstancePartsAsync() async {
     await Future.wait(
       getFullPartConnectorsList()
           .where((element) => element.async)
@@ -247,5 +262,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   void onAsyncPartReady(Type type, {int? index}) {}
 
   /// Runs for every async part when it is initialized
-  void onAllPartReady() {}
+  @mustCallSuper
+  void onAllPartReady() {
+    allPartsReady.update(true);
+  }
 }

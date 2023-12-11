@@ -49,7 +49,7 @@ class TestInteractorPart extends BaseInstancePart<Map<String, dynamic>, PostsInt
   }
 
   @override
-  Future<void> initializeAsync(Map<String, dynamic>? input) async {
+  Future<void> initializeAsync() async {
     // ...
   }
 

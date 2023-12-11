@@ -7,7 +7,7 @@ import 'package:umvvm/umvvm.dart';
 /// Model class describing confifuration for dependent mvvm instance
 class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
   const DependentMvvmInstanceConfiguration({
-    super.parts,
+    super.parts = const [],
     super.isAsync,
     this.dependencies = const [],
     this.modules = const [],
@@ -166,6 +166,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     InstanceCollection.instance.proone();
 
     _instances.clear();
+
+    allDependenciesReady.dispose();
   }
 
   /// Adds instances to local collection

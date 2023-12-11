@@ -41,8 +41,8 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   }
 
   @override
-  Future<void> initializeAsync(Input? input) async {
-    await super.initializeAsync(input);
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
 
     initialized = true;
   }
@@ -60,7 +60,7 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   /// Base method for lightweight async instance initialization
   // coverage:ignore-start
   @override
-  Future<void> initializeWithoutConnectionsAsync(Input? input) async {
+  Future<void> initializeWithoutConnectionsAsync() async {
     initialized = true;
   }
   // coverage:ignore-end

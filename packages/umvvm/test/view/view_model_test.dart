@@ -40,7 +40,7 @@ void main() {
 
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
-      await viewModel.initializeAsync(const TestWidget());
+      await viewModel.initializeAsync();
       viewModel.onLaunch();
 
       expect(viewModel.testInteractor4.state, 2);
@@ -51,7 +51,7 @@ void main() {
 
       // ignore: cascade_invocations
       viewModel.initializeWithoutConnections(const TestWidget());
-      await viewModel.initializeWithoutConnectionsAsync(const TestWidget());
+      await viewModel.initializeWithoutConnectionsAsync();
       viewModel.onLaunch();
 
       expect(

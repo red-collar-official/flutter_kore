@@ -32,7 +32,7 @@ Here are some examples:
 
 ```dart
 @Instance(inputType: String)
-class StringWrapper extends BaseWrapper<String, String> {
+class StringWrapper extends BaseHolderWrapper<String, String> {
   @override
   String provideInstance() {
     return '';
@@ -45,7 +45,7 @@ or basic instance wrapper:
 
 ```dart
 @basicInstance
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance() {
     return '';
@@ -58,7 +58,7 @@ or singleton wrapper:
 
 ```dart
 @singleton
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance() {
     return '';
@@ -71,7 +71,7 @@ or lazy singleton wrapper:
 
 ```dart
 @lazySingleton
-class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
   String provideInstance() {
     return '';
@@ -82,7 +82,7 @@ class StringWrapper extends BaseWrapper<String, Map<String, dynamic>> {
 
 ### Async initialization
 
-If you want to create mvvm instance that is initialized asynchronously you can pass <b>async</b> param to <b>Instance</b> annotation
+If you want to create mvvm instance that is initialized asynchronously you can pass <b>async</b> param to <b>Instance</b> annotation.
 Or you can use predefined default annotations.
 
 <b>Important:</b> You must mark instances as async if they depend on other async instances.
@@ -185,7 +185,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
     );
 
   @override
-  Future<void> initializeAsync(T input) async {
+  Future<void> initializeAsync() async {
     // ...
   }
 
@@ -214,7 +214,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
     );
 
   @override
-  Future<void> initializeAsync(T input) async {
+  Future<void> initializeAsync() async {
     // ...
   }
 
@@ -310,6 +310,8 @@ When you are inside of any <b>DependentInstance</b> (interactors, wrappers, view
 then you can write dependecies and they will be connected automatically when instance is initialized. Also when instance is disposed every dependency will be disposed automatically (more information about <b>DependentInstance</b> can be found [here](./custom_instances.md)).
 
 To enable this behaviour you need to override <b>dependencies</b> field in configuration object.
+
+Configuration object provided via <b>configuration</b> getter for every dependent mvvm instance.
 
 This method returns list of connector objects that describe how dependency is required to be connected.
 More information about connectors can be found [here](./connectors.md).
@@ -523,4 +525,58 @@ Here is an example:
 app.instances.useAndDisposeInstance<StoreRedirectWrapper>((storeRedirectWrapper) async {
     await storeRedirectWrapper.openStore();
 });
+```
+
+You can also check if all dependencies connected to instance and check if all parts are connected to instance. You also can override callbacks for it.
+
+Here is an example:
+
+```dart
+@asyncSingleton
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
+  @override
+  UserDefaultsState get initialState => UserDefaultsState();
+
+  @override
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      isAsync: true,
+    );
+
+  @override
+  Future<void> initializeAsync() async {
+    // ...
+  }
+
+  @override
+  Future<void> dispose() async {
+    // ...
+  }
+
+  @override
+  void onAsyncInstanceReady(Type type, {int? index}) {
+    switch (type) {
+      case value:
+        
+        break;
+      default:
+        break;
+    }
+  }
+
+  @override
+  void onAllDependenciesReady() {
+    // ...
+  }
+
+  @override
+  void onAllPartReady() {
+    // ...
+  }
+}
+
+final userDefaultsInteractor = app.instances.get<UserDefaultsInteractor>();
+
+final isEverythingConnected = userDefaultsInteractor.allDependenciesReady.current;
+final isPartsConnected = userDefaultsInteractor.allPartsReady.current;
 ```

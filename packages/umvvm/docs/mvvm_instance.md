@@ -12,6 +12,8 @@ More infomation about instance parts can be found [here](./instance_part.md).
 
 So you can add them via via <b>parts</b> field in configuration object and then call <b>useInstancePart<T>()</b> method.
 
+Configuration object provided via <b>configuration</b> getter for every mvvm instance.
+
 Interactors, wrappers, instance parts and view models - all of them extend <v>MvvmInstance</b>.
 
 If you extended <v>MvvmInstance</b> you can mark child classes with DI annotations and use them with <b>app.instances</b> interface.

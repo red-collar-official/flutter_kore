@@ -274,7 +274,7 @@ class InstanceCollection extends InstanceCollectionInterface {
 
     if (!newInstance.initialized) {
       newInstance.initialize(params);
-      await newInstance.initializeAsync(params);
+      await newInstance.initializeAsync();
     }
   }
 
@@ -295,10 +295,10 @@ class InstanceCollection extends InstanceCollectionInterface {
 
     if (withNoConnections) {
       instance.initializeWithoutConnections(params);
-      await instance.initializeWithoutConnectionsAsync(params);
+      await instance.initializeWithoutConnectionsAsync();
     } else {
       instance.initialize(params);
-      await instance.initializeAsync(params);
+      await instance.initializeAsync();
     }
 
     return instance;
@@ -342,10 +342,10 @@ class InstanceCollection extends InstanceCollectionInterface {
     if (!instance.initialized) {
       if (withoutConnections) {
         instance.initializeWithoutConnections(params);
-        await instance.initializeWithoutConnectionsAsync(params);
+        await instance.initializeWithoutConnectionsAsync();
       } else {
         instance.initialize(params);
-        await instance.initializeAsync(params);
+        await instance.initializeAsync();
       }
     }
 

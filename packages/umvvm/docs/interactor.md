@@ -21,6 +21,8 @@ Interactors can be disposed when dependent element is disposed.
 
 Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependencies</b> field in configuration object.
 
+Configuration object provided via <b>configuration</b> getter for every interactor.
+
 Interactors also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
 
 Interactors also can belong to modules via <b>modules</b> field in configuration object (information about modules can be found [here](./di.md)).
