@@ -88,7 +88,7 @@ void main() {
       final viewModel = TestMvvmFormInstance1();
 
       viewModel.initialize(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       await viewModel.executeSubmitAction();
 
@@ -105,7 +105,7 @@ void main() {
       final viewModel = TestMvvmFormInstance1();
 
       viewModel.initialize(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       FieldValidationState? stateFromStream;
 
@@ -133,7 +133,7 @@ void main() {
       final viewModel = TestMvvmFormInstance2();
 
       viewModel.initialize(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       await viewModel.executeSubmitAction();
 
@@ -146,7 +146,7 @@ void main() {
       final viewModel = TestMvvmFormInstance3();
 
       viewModel.initialize(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       bool? isDisabledInStream;
 
@@ -176,7 +176,7 @@ void main() {
     final viewModel = TestMvvmFormInstance2();
 
     viewModel.initialize(const TestWidget());
-    viewModel.onLaunch(const TestWidget());
+    viewModel.onLaunch();
 
     await viewModel.validateField(testKey1);
 
@@ -189,7 +189,7 @@ void main() {
     final viewModel = TestMvvmFormInstance2();
 
     viewModel.initialize(const TestWidget());
-    viewModel.onLaunch(const TestWidget());
+    viewModel.onLaunch();
 
     await viewModel.validateField(testKey1);
 

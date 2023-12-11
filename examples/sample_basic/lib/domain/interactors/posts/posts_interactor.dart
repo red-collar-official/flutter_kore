@@ -6,19 +6,9 @@ import 'package:sample_basic/domain/interactors/mixins/like_post_mixin.dart';
 
 import 'posts_state.dart';
 
-@instancePart
-class TestInteractorPart extends BaseInstancePart<void, PostsInteractor> {}
-
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
     with LikePostMixin {
-  @override
-  List<PartConnector> parts(Map<String, dynamic>? input) => [
-        app.connectors.testInteractorPartConnector(),
-      ];
-
-  late final testPart = useInstancePart<TestInteractorPart>();
-
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 
@@ -55,7 +45,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
   }
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => PostsState();
+  PostsState get initialState => PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [

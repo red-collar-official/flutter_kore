@@ -18,7 +18,7 @@ import 'package:umvvm/umvvm.dart';
 ///    );
 ///
 ///   @override
-///   void onLaunch(PostsListView widget) {
+///   void onLaunch() {
 ///     getLocalInstance<PostsInteractor>().loadPosts(0, 30);
 ///   }
 /// }
@@ -31,10 +31,10 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
         ApiCaller<Widget> {
   /// Function to be executed after initState
   // coverage:ignore-start
-  void onLaunch(Widget widget);
+  void onLaunch() {}
 
   /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
-  void onFirstFrame(Widget widget) {}
+  void onFirstFrame() {}
 
   /// Utility method to check if [Navigator] can be popped
   bool canPop(BuildContext context) {

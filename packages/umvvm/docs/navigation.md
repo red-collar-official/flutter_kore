@@ -273,8 +273,8 @@ If your app uses separate navigator key for dialogs and bottoms sheets you need 
 ```dart
 class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
   @override
-  void onLaunch(AppView widget) {
-    super.onLaunch(widget);
+  void onLaunch() {
+    super.onLaunch();
   }
 
   void fireLifecycleEvent(AppLifecycleState state) {
@@ -323,7 +323,7 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   late final currentUserInteractor = app.instances.get<CurrentUserInteractor>();
 
   @override
-  void onLaunch(HomeView widget) {
+  void onLaunch() {
     app.navigation.currentTabKeys = tabNavigatorKeys;
 
     // calling it here to ensure navigation initialized
@@ -428,7 +428,7 @@ class PostsViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
   @override
-  void onLaunch(HomeView widget) {
+  void onLaunch() {
     // ignore
   }
 }

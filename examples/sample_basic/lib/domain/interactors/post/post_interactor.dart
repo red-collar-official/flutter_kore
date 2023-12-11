@@ -34,8 +34,8 @@ class PostInteractor extends BaseInteractor<PostState, Post>
   }
 
   @override
-  PostState initialState(Post? input) => PostState(
-        post: input == null ? null : SuccessData(result: input),
+  PostState get initialState => PostState(
+        post: input == null ? null : SuccessData(result: input!),
       );
 
   @override

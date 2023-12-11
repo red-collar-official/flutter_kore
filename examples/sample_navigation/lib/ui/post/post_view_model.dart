@@ -9,9 +9,12 @@ import 'post_view_state.dart';
 
 class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
-  List<Connector> dependsOn(PostView input) => [
-        app.connectors.postInteractorConnector(scope: BaseScopes.unique),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          app.connectors.postInteractorConnector(scope: BaseScopes.unique),
+        ],
+      );
 
   @override
   void onLaunch(PostView widget) {
@@ -48,5 +51,5 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
       getLocalInstance<PostInteractor>().state.post;
 
   @override
-  PostViewState initialState(PostView input) => PostViewState();
+  PostViewState get initialState => PostViewState();
 }

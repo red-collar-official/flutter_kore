@@ -15,8 +15,7 @@ class UserDefaultsInteractor
   }
 
   @override
-  UserDefaultsState initialState(Map<String, dynamic>? input) =>
-      UserDefaultsState();
+  UserDefaultsState get initialState => UserDefaultsState();
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();

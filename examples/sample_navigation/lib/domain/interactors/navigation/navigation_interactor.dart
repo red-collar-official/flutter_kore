@@ -61,7 +61,7 @@ class NavigationInteractor
   }
 
   @override
-  NavigationState initialState(Map<String, dynamic>? input) => NavigationState(
+  NavigationState get initialState => NavigationState(
         currentTab: AppTabs.posts,
       );
 }

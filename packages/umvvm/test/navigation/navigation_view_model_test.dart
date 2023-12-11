@@ -27,7 +27,7 @@ class TestViewModel extends NavigationViewModel<TestWidget, int> {
   int get initialState => 1;
 
   @override
-  void onLaunch(TestWidget widget) {
+  void onLaunch() {
     // ignore
   }
 }
@@ -57,7 +57,7 @@ void main() {
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
       await viewModel.initializeAsync(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       await app.navigation
           .routeTo(app.navigation.routes.stub(), forceGlobal: true);
@@ -76,7 +76,7 @@ void main() {
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
       await viewModel.initializeAsync(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       await app.navigation.routeTo(app.navigation.routes.stub());
 
@@ -91,7 +91,7 @@ void main() {
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
       await viewModel.initializeAsync(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       await app.navigation.routeTo(app.navigation.routes.stub());
 

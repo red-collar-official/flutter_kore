@@ -191,7 +191,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
   @override
-  void onLaunch(PostsListView widget) {
+  void onLaunch() {
     postsInteractor.loadPosts(0, 30, refresh: true);
   }
 

@@ -15,8 +15,7 @@ class AutharizationInteractor
   }
 
   @override
-  AutharizationState initialState(Map<String, dynamic>? input) =>
-      AutharizationState();
+  AutharizationState get initialState => AutharizationState();
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();

@@ -8,9 +8,6 @@ import 'home_view.dart';
 import 'home_view_state.dart';
 
 class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
-  @override
-  List<Connector> dependsOn(HomeView input) => [];
-
   final Map<AppTab, GlobalKey<NavigatorState>> tabNavigatorKeys = {
     AppTabs.posts: GlobalKey<NavigatorState>(),
     AppTabs.likedPosts: GlobalKey<NavigatorState>(),
@@ -44,5 +41,5 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  HomeViewState initialState(HomeView input) => HomeViewState();
+  HomeViewState get initialState => HomeViewState();
 }

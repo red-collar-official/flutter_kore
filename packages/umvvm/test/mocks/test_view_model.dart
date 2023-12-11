@@ -7,7 +7,7 @@ class TestViewModel extends BaseViewModel<TestWidget, int> {
   int get initialState => 1;
 
   @override
-  void onLaunch(TestWidget widget) {
+  void onLaunch() {
     // ignore
   }
 }

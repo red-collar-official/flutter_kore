@@ -8,12 +8,15 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  List<Connector> dependsOn(PostView input) => [
-        app.connectors.postInteractorConnector(
-          scope: BaseScopes.unique,
-          input: input.post,
-        ),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          app.connectors.postInteractorConnector(
+            scope: BaseScopes.unique,
+            input: input.post,
+          ),
+        ],
+      );
 
   late final postInteractor = getLocalInstance<PostInteractor>();
 
@@ -34,5 +37,5 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   StatefulData<Post>? get currentPost => postInteractor.state.post;
 
   @override
-  PostViewState initialState(PostView input) => PostViewState();
+  PostViewState get initialState => PostViewState();
 }

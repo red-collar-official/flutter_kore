@@ -50,10 +50,10 @@ abstract class BaseView<View extends BaseWidget, ScreenState,
 
     initializeViewModel();
 
-    viewModel.onLaunch(widget);
+    viewModel.onLaunch();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      viewModel.onFirstFrame(widget);
+      viewModel.onFirstFrame();
     });
   }
 

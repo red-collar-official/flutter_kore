@@ -22,7 +22,7 @@ class TestViewModel extends BaseViewModel<TestWidget, int> {
   late final testInteractor4 = getLocalInstance<TestInteractorAsync4>();
 
   @override
-  void onLaunch(TestWidget widget) {
+  void onLaunch() {
     // ignore
   }
 }
@@ -41,7 +41,7 @@ void main() {
       // ignore: cascade_invocations
       viewModel.initialize(const TestWidget());
       await viewModel.initializeAsync(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       expect(viewModel.testInteractor4.state, 2);
     });
@@ -52,7 +52,7 @@ void main() {
       // ignore: cascade_invocations
       viewModel.initializeWithoutConnections(const TestWidget());
       await viewModel.initializeWithoutConnectionsAsync(const TestWidget());
-      viewModel.onLaunch(const TestWidget());
+      viewModel.onLaunch();
 
       expect(
         () => viewModel.testInteractor4.state,

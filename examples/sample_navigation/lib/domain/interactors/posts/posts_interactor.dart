@@ -43,7 +43,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
   }
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => PostsState();
+  PostsState get initialState => PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [

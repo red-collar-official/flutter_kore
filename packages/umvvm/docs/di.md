@@ -426,7 +426,10 @@ Dependencies represented with <b>Connector</b> objects. More information about c
 
 When you define dependent instance that belongs to given module all dependencies from this module will be connected automatically.
 
-Here is an example
+You also can store here instances so you can access them inside dependent class. Instances are initialized with same methods as other dependentInstances:
+<b>getLazyLocalInstance</b>, <b>getAsyncLazyLocalInstance</b>, <b>getLocalInstance</b> and <b>useInstancePart</b>. This way you do not need to write initializers in every dependent class.
+
+Here is an example:
 
 ```dart
 class TestModule extends InstancesModule {
@@ -441,6 +444,11 @@ class TestModule extends InstancesModule {
         app.connectors.loadUserPartConnector(),
         app.connectors.followUserPartConnector(),
       ];
+
+  late final postInteractor = getLocalInstance<PostInteractor>();
+  late final userInteractor = getLazyLocalInstance<UserInteractor>();
+  late final loadUserPart = useInstancePart<LoadUserPart>();
+  late final followUserPart = getAsyncLazyLocalInstance<FollowUserPart>();
 
   @override
   String get id => 'test';
@@ -468,6 +476,36 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
 ```
 
 You do not need to write singleton dependencies in module dependencies list.
+
+If you decided to store dependency instances inside module you need to connect this module - so you can access it. You can do it with <b>connectModule</b> method.
+
+<b>Important:</b> Module instances passed to <b>modules</b> field must be unique.
+
+Here is an example:
+
+```dart
+@singleton
+class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
+  @override
+  String provideInstance() {
+    return '';
+  }
+
+  @override
+  DependentMvvmInstanceConfiguration get configuration =>
+    DependentMvvmInstanceConfiguration(
+      modules: [
+        TestModule(),
+      ],
+    );
+
+  late final testModule = connectModule<TestModule>();
+
+  void somFunction() {
+    testModile.postInteractor.loadPost();
+  }
+}
+```
 
 ### Utility functions
 

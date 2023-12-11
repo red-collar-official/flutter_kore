@@ -2,7 +2,9 @@
 
 You can create custom mvvm instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
 
-You also need to specify input type for custom instances. It is passed as generic argument. Then input is available in all initialization methods.
+You also need to specify input type for custom instances. It is passed as generic argument.
+
+Input is always available via <b>input</b> field.
 
 You can read about default methods of <b>MvvmInstance</b> [here](./mvvm_instance.md).
 
@@ -77,7 +79,7 @@ class UsersListViewModel extends BaseViewModel<UsersListView, UsersListViewState
   late final usersInteractor = getLocalInstance<UsersBox>();
 
   @override
-  void onLaunch(PostsListView widget) {
+  void onLaunch() {
     // called with initState
     getLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }

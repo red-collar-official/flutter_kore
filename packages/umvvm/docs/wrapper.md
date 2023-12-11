@@ -6,7 +6,9 @@ Wrapper can be just used as instance holder or contain logic for working with th
 
 If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseWrapper</b>.
 
-You also need to specify input type for wrappers. It is passed as generic argument. Then input is available in all initialization methods.
+You also need to specify input type for wrappers. It is passed as generic argument.
+
+Input is always available via <b>input</b> field.
 
 Wrappers also can be singleton or default instances.
 

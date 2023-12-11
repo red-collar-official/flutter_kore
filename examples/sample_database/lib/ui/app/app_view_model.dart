@@ -5,10 +5,7 @@ import 'app_view_state.dart';
 
 class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
   @override
-  List<Connector> dependsOn(AppView input) => [];
-
-  @override
-  AppViewState initialState(AppView input) => AppViewState();
+  AppViewState get initialState => AppViewState();
 
   @override
   void onLaunch(AppView widget) {

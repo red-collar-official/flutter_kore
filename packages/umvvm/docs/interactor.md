@@ -2,7 +2,9 @@
 
 Interactors contain state and subscription to <b>EventBus</b> events.(more information about <b>EventBus</b> can be found [here](./event_bus.md)).
 
-You also need to specify input type for interactors. It is passed as generic argument. Then input is available in all initialization methods.
+You also need to specify input type for interactors. It is passed as generic argument.
+
+Input is always available via <b>input</b> field.
 
 Interactor state can be any immutable object. You can use <b>dart-mappable</b> or <b>freezed</b> libraries (or any other object generation libraries).
 

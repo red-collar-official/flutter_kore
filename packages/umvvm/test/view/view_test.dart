@@ -23,7 +23,7 @@ class TestViewModel extends BaseViewModel<TestView, int> {
   late final testInteractor4 = getLocalInstance<TestInteractorAsync4>();
 
   @override
-  void onLaunch(TestView widget) {
+  void onLaunch() {
     // ignore
   }
 }

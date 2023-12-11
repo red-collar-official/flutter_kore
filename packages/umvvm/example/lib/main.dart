@@ -152,7 +152,7 @@ class PostsInteractor
       ];
 
   @override
-  PostsState initialState(Map<String, dynamic>? input) => const PostsState();
+  PostsState get initialState => const PostsState();
 }
 
 class PostsListViewState {}
@@ -160,9 +160,12 @@ class PostsListViewState {}
 class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView input) => [
-        app.connectors.postsInteractorConnector(),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          app.connectors.postsInteractorConnector(),
+        ],
+      );
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
@@ -188,7 +191,7 @@ class PostsListViewModel
       postsInteractor.updates((state) => state.posts);
 
   @override
-  PostsListViewState initialState(PostsListView input) => PostsListViewState();
+  PostsListViewState get initialState => PostsListViewState();
 }
 
 class PostsListView extends BaseWidget {

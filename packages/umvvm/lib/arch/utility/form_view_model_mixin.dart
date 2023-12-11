@@ -79,7 +79,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
   @override
   @mustCallSuper
-  void onLaunch(widget) {
+  void onLaunch() {
     prefillFields();
   }
 

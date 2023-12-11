@@ -18,7 +18,7 @@ class TestMvvmDisposableInstance extends BaseViewModel<StatefulWidget, int>
   int get initialState => 1;
 
   @override
-  void onLaunch(StatefulWidget widget) {
+  void onLaunch() {
     // ignore
   }
 }

@@ -9,9 +9,12 @@ import 'posts_list_view_state.dart';
 class PostsListViewModel
     extends NavigationViewModel<PostsListView, PostsListViewState> {
   @override
-  List<Connector> dependsOn(PostsListView input) => [
-        app.connectors.postsInteractorConnector(),
-      ];
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
+        dependencies: [
+          app.connectors.postsInteractorConnector(),
+        ],
+      );
 
   @override
   void onLaunch(PostsListView widget) {
@@ -35,7 +38,7 @@ class PostsListViewModel
       getLocalInstance<PostsInteractor>().updates((state) => state.posts);
 
   @override
-  PostsListViewState initialState(PostsListView input) => PostsListViewState();
+  PostsListViewState get initialState => PostsListViewState();
 
   // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
 }
