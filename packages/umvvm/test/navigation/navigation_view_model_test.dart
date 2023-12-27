@@ -44,8 +44,7 @@ void main() {
       await app.initialize();
 
       app.instances.addTest<NavigationInteractor>(
-        BaseScopes.global,
-        app.instances.getUnique<NavigationInteractor>(),
+        instance: app.instances.getUnique<NavigationInteractor>(),
       );
 
       app.navigation.initStack();

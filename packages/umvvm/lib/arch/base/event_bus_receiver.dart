@@ -22,7 +22,7 @@ abstract class EventBusReceiver {
   final Map<Type, EventBusSubscriber> _subscribers = {};
   final List<Type> _receivedEvents = [];
 
-  bool paused = false;
+  bool isPaused = false;
   final _eventsReceivedWhilePaused = [];
 
   /// Underlying stream subsription for [EventBus] events
@@ -65,20 +65,16 @@ abstract class EventBusReceiver {
     bool firesAfterResume = true,
   }) {
     void dynamicProcessor(event) {
-      if (reactsToPause && paused) {
+      if (UMvvmApp.isInTestMode) {
+        _receivedEvents.add(event.runtimeType);
+      }
+
+      if (reactsToPause && isPaused) {
         if (firesAfterResume) {
           _eventsReceivedWhilePaused.add(event);
-
-          if (UMvvmApp.isInTestMode) {
-            _receivedEvents.add(event.runtimeType);
-          }
         }
 
         return;
-      }
-
-      if (UMvvmApp.isInTestMode) {
-        _receivedEvents.add(event.runtimeType);
       }
 
       processor(event as T);
@@ -92,7 +88,7 @@ abstract class EventBusReceiver {
   /// Sets paused flag to false so events stop processing
   @mustCallSuper
   void pauseEventBusSubscription() {
-    paused = true;
+    isPaused = true;
   }
 
   /// Resumes events processing
@@ -100,11 +96,11 @@ abstract class EventBusReceiver {
   void resumeEventBusSubscription({
     bool sendAllEventsReceivedWhilePause = true,
   }) {
-    if (!paused) {
+    if (!isPaused) {
       return;
     }
 
-    paused = false;
+    isPaused = false;
 
     if (sendAllEventsReceivedWhilePause) {
       for (final element in _eventsReceivedWhilePaused) {

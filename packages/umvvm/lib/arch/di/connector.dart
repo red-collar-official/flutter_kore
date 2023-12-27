@@ -159,12 +159,8 @@ class PartConnector extends Connector {
     super.inputForIndex,
     super.count = 1,
     super.async = false,
-    super.awaitInitialization = false,
     super.withoutConnections = false,
-  }) : super(
-          scope: BaseScopes.unique,
-          initializationOrder: null,
-        );
+  }) : super(scope: BaseScopes.unique);
 }
 
 /// Callable proxy class for [PartConnector]
@@ -187,9 +183,6 @@ class PartConnectorCall<InstanceType, InputStateType> {
 
 /// Callable proxy class for [PartConnector]
 class AsyncPartConnectorCall<InstanceType, InputStateType> {
-  int? get order => null;
-  bool get awaitInitialization => false;
-
   PartConnector call({
     InputStateType? input,
     InputStateType? Function(int)? inputForIndex,
@@ -203,7 +196,6 @@ class AsyncPartConnectorCall<InstanceType, InputStateType> {
       type: InstanceType,
       async: true,
       withoutConnections: withoutConnections,
-      awaitInitialization: awaitInitialization,
     );
   }
 }

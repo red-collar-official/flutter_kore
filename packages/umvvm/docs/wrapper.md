@@ -4,7 +4,7 @@ Wrappers contain logic for working with third party dependencies.
 
 Wrapper can be just used as instance holder or contain logic for working with third party api.
 
-If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseWrapper</b>.
+If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseStaticWrapper</b>.
 
 You also need to specify input type for wrappers. It is passed as generic argument.
 
@@ -34,7 +34,7 @@ Typical example would be:
 ```dart
 // String - input type
 @basicInstances
-class StripeWrapper extends BaseWrapper<String> {
+class StripeWrapper extends BaseStaticWrapper<String> {
 }
 ```
 

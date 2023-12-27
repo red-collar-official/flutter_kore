@@ -5,16 +5,16 @@ import 'package:umvvm/umvvm.dart';
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
-/// with [executeAndCancelOnDispose] method
+/// with [ApiCaller.executeAndCancelOnDispose] method
 ///
 /// Example:
 ///
 /// ```dart
 /// @singleton
-/// class StripeWrapper extends BaseWrapper<String> {
+/// class StripeWrapper extends BaseStaticWrapper<String> {
 /// }
 /// ```
-abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
+abstract class BaseStaticWrapper<Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// Inititalizes wrapper
   @mustCallSuper
@@ -23,8 +23,6 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
     super.initialize(input);
 
     initializeDependencies();
-
-    initialized = true;
   }
 
   @override
@@ -33,8 +31,6 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 
     disposeDependencies();
     cancelAllRequests();
-
-    initialized = false;
   }
 
   @mustCallSuper
@@ -43,20 +39,6 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
     await super.initializeAsync();
     await initializeDependenciesAsync();
   }
-
-  @mustCallSuper
-  @override
-  void initializeWithoutConnections(Input? input) {
-    super.initializeWithoutConnections(input);
-
-    initialized = true;
-  }
-
-  @mustCallSuper
-  @override
-  Future<void> initializeWithoutConnectionsAsync() async {
-    initialized = true;
-  }
 }
 
 /// Base class that creates and holds some third party instance
@@ -64,7 +46,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
-/// with [executeAndCancelOnDispose] method
+/// with [ApiCaller.executeAndCancelOnDispose] method
 ///
 /// Example:
 ///
@@ -76,7 +58,7 @@ abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
 ///     const DependentMvvmInstanceConfiguration(
 ///       isAsync: true,
 ///     );
-/// 
+///
 ///   @override
 ///   Stripe provideInstance() {
 ///     return Stripe.instance;
@@ -97,8 +79,6 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
     _instanceCreator = provideInstance;
 
     initializeDependencies();
-
-    initialized = true;
   }
 
   @override
@@ -107,8 +87,6 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
 
     disposeDependencies();
     cancelAllRequests();
-
-    initialized = false;
   }
 
   /// Inititalizes wrapper
@@ -123,5 +101,9 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   Instance provideInstance();
 
   /// Actual object instance
-  Instance get instance => _instance == null ? _instanceCreator() : _instance!;
+  Instance get instance {
+    _instance ??= _instanceCreator();
+
+    return _instance!;
+  }
 }

@@ -61,7 +61,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
     return error;
   }
 
-  /// Function to add autharization headers to [Dio] instance
+  /// Function to add authorization headers to [Dio] instance
   void onAuthorization(dio.Dio dio) {}
   // coverage:ignore-end
 

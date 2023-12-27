@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'package:umvvm/umvvm.dart';
 
 /// Simple class to count references for objects
-/// When view models are created we call [increaseReferences] for each object
-/// When view models are disposed [decreaseReferences] called for each object
+/// When instances are created we call [ScopedContainer.increaseReferencesInScope] for each object
+/// When instances are disposed [ScopedContainer.decreaseReferences] called for each object
 /// [InstanceCollection] look up this map to dispose and remove objects
-/// that has zero references with [proone] method
+/// that has zero references with [InstanceCollection.proone] method
 final class ScopedContainer<T> {
   final HashMap<String, HashMap<String, List<T>>> _instances = HashMap();
   final HashMap<String, HashMap<Type, List<int>>> _references = HashMap();
@@ -30,7 +30,7 @@ final class ScopedContainer<T> {
         if (index < 0 || index > typesCounts[type]!.length) {
           throw IllegalArgumentException(
             message:
-                'The [index] value must be non-negative and no greater than count of references of [type] in [scopeId].',
+                'The index = $index value must be non-negative and no greater than count of references of $type in $scopeId.',
           );
         }
 
@@ -64,7 +64,7 @@ final class ScopedContainer<T> {
         if (index < 0 || index >= objects.length) {
           throw IllegalArgumentException(
             message:
-                'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+                'The index = $index value must be non-negative and less than count of references of $type in $scopeId.',
           );
         }
 
@@ -81,7 +81,7 @@ final class ScopedContainer<T> {
       if (index < 0 || index >= objects.length) {
         throw IllegalArgumentException(
           message:
-              'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+              'The $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
@@ -127,7 +127,7 @@ final class ScopedContainer<T> {
     if (index < 0 || index >= objects.length) {
       throw IllegalArgumentException(
         message:
-            'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+            'The index = $index value must be non-negative and less than count of references of $type in $scopeId.',
       );
     }
 
@@ -169,13 +169,17 @@ final class ScopedContainer<T> {
       if (index < 0 || index >= objects.length) {
         throw IllegalArgumentException(
           message:
-              'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+              'The index = $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
       onRemove(objects[index]);
 
       objects.removeAt(index);
+
+      if (objects.isEmpty) {
+        scopedInstances?.remove(type);
+      }
     }
 
     if (scopedInstances?.isEmpty ?? true) {
@@ -203,7 +207,7 @@ final class ScopedContainer<T> {
       if (index < 0 || index >= refs.length) {
         throw IllegalArgumentException(
           message:
-              'The [index] value must be non-negative and less than count of references of [type] in [scopeId].',
+              'The index = $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
@@ -229,7 +233,7 @@ final class ScopedContainer<T> {
   }
 
   /// Method to remove instances that is no longer used
-  /// Called every time [dispose] called for view model
+  /// Called every time [dispose] called for instance
   void proone(void Function(T) onRemove) {
     final removeFunctions = <Function>[];
 
@@ -242,49 +246,51 @@ final class ScopedContainer<T> {
         final indicesToRemove = <int>[];
 
         for (final (index, element) in value.indexed) {
-          if (element == 0) {
-            final object = getObjectInScope(
-              type: key.toString(),
-              scopeId: scope,
-              index: index,
-            );
+          if (element != 0) {
+            continue;
+          }
 
-            indicesToRemove.add(index);
+          final object = getObjectInScope(
+            type: key.toString(),
+            scopeId: scope,
+            index: index,
+          );
 
-            if (object == null) {
-              return;
-            }
+          indicesToRemove.add(index);
 
-            removeFunctions.add(
-              () {
+          if (object == null) {
+            return;
+          }
+
+          removeFunctions.add(
+            () {
+              if (value.isEmpty) {
+                removeObjectReferenceInScope(
+                  scopeId: scope,
+                  type: key,
+                  index: index,
+                );
+              } else {
+                indicesToRemove.forEach(value.removeAt);
+
+                // checking again
                 if (value.isEmpty) {
                   removeObjectReferenceInScope(
                     scopeId: scope,
                     type: key,
                     index: index,
                   );
-                } else {
-                  indicesToRemove.forEach(value.removeAt);
-
-                  // checking again
-                  if (value.isEmpty) {
-                    removeObjectReferenceInScope(
-                      scopeId: scope,
-                      type: key,
-                      index: index,
-                    );
-                  }
                 }
+              }
 
-                removeObjectInScope(
-                  type: key.toString(),
-                  scopeId: scope,
-                  index: index,
-                  onRemove: onRemove,
-                );
-              },
-            );
-          }
+              removeObjectInScope(
+                type: key.toString(),
+                scopeId: scope,
+                index: index,
+                onRemove: onRemove,
+              );
+            },
+          );
         }
       });
     });
@@ -333,7 +339,7 @@ final class ScopedContainer<T> {
     return _instances[scope]?[type] ?? [];
   }
 
-  /// Utility method to clear collection
+  /// Utility method to clear container
   void clear() {
     _instances.clear();
     _references.clear();
@@ -346,7 +352,7 @@ final class ScopedContainer<T> {
           (_instances[scopeId]![id]?.isNotEmpty ?? false);
     } else {
       return _instances[scopeId] != null &&
-          ((_instances[scopeId]![id]?.length ?? 0) >= index);
+          ((_instances[scopeId]![id]?.length ?? 0) > index);
     }
   }
 

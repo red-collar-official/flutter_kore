@@ -27,7 +27,7 @@ abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmIns
   void initialize(Input? input) {
     super.initialize(input);
 
-    initializeStatefullInstance(input);
+    initializeStatefullInstance();
 
     initialized = true;
   }

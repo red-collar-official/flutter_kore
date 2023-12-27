@@ -25,7 +25,7 @@ class TestModule extends InstancesModule {
 
   @override
   List<PartConnector> get parts => [
-        const PartConnector(type: TestInstancePart5),
+        const PartConnector(type: TestInstancePart5, async: true),
       ];
 
   late final testInteractor7 = getLocalInstance<TestInteractor7>();

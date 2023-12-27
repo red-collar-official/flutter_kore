@@ -65,7 +65,7 @@ abstract class UMvvmApp<
   bool _initialized = false;
 
   /// Flag indicating that all mvvm instances are created and registered
-  bool get initialized => _initialized;
+  bool get isInitialized => _initialized;
 
   @mustCallSuper
   Future<void> initialize() async {
@@ -110,21 +110,18 @@ abstract class UMvvmApp<
     if (element.async) {
       if (element.awaitInitialization) {
         await instances.addAsync(
-          element.type.toString(),
-          null,
+          type: element.type.toString(),
           scope: BaseScopes.global,
         );
       } else {
         unawaited(instances.addAsync(
-          element.type.toString(),
-          null,
+          type: element.type.toString(),
           scope: BaseScopes.global,
         ));
       }
     } else {
       instances.add(
-        element.type.toString(),
-        null,
+        type: element.type.toString(),
         scope: BaseScopes.global,
       );
     }

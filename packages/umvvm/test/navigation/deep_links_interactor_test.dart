@@ -22,13 +22,11 @@ void main() {
       await app.initialize();
 
       app.instances.addTest<NavigationInteractor>(
-        BaseScopes.global,
-        app.instances.getUnique<NavigationInteractor>(),
+        instance: app.instances.getUnique<NavigationInteractor>(),
       );
 
       app.instances.addTest<TestDeepLinksInteractor>(
-        BaseScopes.global,
-        app.instances.getUnique<TestDeepLinksInteractor>(),
+        instance: app.instances.getUnique<TestDeepLinksInteractor>(),
       );
 
       app.navigation.initStack();

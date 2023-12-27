@@ -55,8 +55,6 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
     initializeDependencies();
     initializeStatefullInstance();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -82,13 +80,5 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     super.initializeWithoutConnections(input);
 
     initializeStore();
-
-    initialized = true;
-  }
-
-  @mustCallSuper
-  @override
-  Future<void> initializeWithoutConnectionsAsync() async {
-    initialized = true;
   }
 }

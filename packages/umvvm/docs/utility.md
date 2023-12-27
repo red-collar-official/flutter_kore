@@ -9,11 +9,11 @@ var statefulData = LoadingData();
 
 statefulData.unwrap(); // throws error
 
-var statefulData = ErrorData(error: 'test error');
+statefulData = ErrorData(error: 'test error');
 
 statefulData.unwrap(); // throws error
 
-var statefulData = SuccessData(result: 1);
+statefulData = SuccessData(result: 1);
 
 statefulData.unwrap(); // valid
 

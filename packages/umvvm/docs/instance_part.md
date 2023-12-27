@@ -3,11 +3,11 @@
 Part is mvvm instance type that has reference to parent mvvm instance.
 It is usefull for splitting logic in large instances. 
 
-Parts extend <b>BaseInstancePart</b> or <b>UniversalInstancePart</b>.
+Parts extend <b>RestrictedInstancePart</b> or <b>UniversalInstancePart</b>.
 
 <b>UniversalInstancePart</b> is generic type that can be connected to any mvvm instance. 
 
-<b>BaseInstancePart</b> allows you to specify type of instance that it can be connected to via generic argument.
+<b>RestrictedInstancePart</b> allows you to specify type of instance that it can be connected to via generic argument.
 
 You also need to specify input type for parts. It is passed as generic argument. Then input is available in all initialization methods.
 
@@ -23,7 +23,7 @@ Here is an example:
 
 ```dart
 @instancePart
-class TestInteractorPart extends BaseInstancePart<Map<String, dynamic>, PostsInteractor> {
+class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, PostsInteractor> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(

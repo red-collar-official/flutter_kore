@@ -86,16 +86,16 @@ void main() {
       expect(interactorAsync.state, 0);
 
       expect(interactor3.testInteractor1.state, 2);
-      expect(interactor3.testInteractor1.initialized, true);
+      expect(interactor3.testInteractor1.isInitialized, true);
 
       expect(interactor3.testInteractor2.state, 3);
-      expect(interactor3.testInteractor2.initialized, true);
+      expect(interactor3.testInteractor2.isInitialized, true);
 
       expect(interactor3.testInstancePart3.value, 5);
-      expect(interactor3.testInstancePart3.initialized, true);
+      expect(interactor3.testInstancePart3.isInitialized, true);
 
       expect(interactor3.testInstancePart3.testInstancePart2.value, 6);
-      expect(interactor3.testInstancePart3.testInstancePart2.initialized, true);
+      expect(interactor3.testInstancePart3.testInstancePart2.isInitialized, true);
 
       expect(
         (interactor3.testInstancePart3.testInstancePart2.rootParentInstance
@@ -105,82 +105,82 @@ void main() {
       );
 
       expect(interactor3.testInstancePart2_1.value, 10);
-      expect(interactor3.testInstancePart2_1.initialized, true);
+      expect(interactor3.testInstancePart2_1.isInitialized, true);
 
       expect(interactor3.testInstancePart2_2.value, 10);
-      expect(interactor3.testInstancePart2_2.initialized, true);
+      expect(interactor3.testInstancePart2_2.isInitialized, true);
 
       expect(interactor3.testInstancePart_1.value, 1);
-      expect(interactor3.testInstancePart_1.initialized, true);
+      expect(interactor3.testInstancePart_1.isInitialized, true);
 
       expect(interactor3.testInstancePart_2.value, 2);
-      expect(interactor3.testInstancePart_2.initialized, true);
+      expect(interactor3.testInstancePart_2.isInitialized, true);
 
       expect(interactor3.testInstancePart4_1.value, 1);
-      expect(interactor3.testInstancePart4_1.initialized, true);
+      expect(interactor3.testInstancePart4_1.isInitialized, true);
 
       expect(interactor3.testInstancePart4_2.value, 2);
-      expect(interactor3.testInstancePart4_2.initialized, true);
+      expect(interactor3.testInstancePart4_2.isInitialized, true);
 
       expect(interactor3.testInteractor4_1.state, 3);
-      expect(interactor3.testInteractor4_1.initialized, true);
+      expect(interactor3.testInteractor4_1.isInitialized, true);
 
       expect(interactor3.testInteractor4_2.state, 3);
-      expect(interactor3.testInteractor4_2.initialized, true);
+      expect(interactor3.testInteractor4_2.isInitialized, true);
 
       expect(interactor3.testInteractor5_1.state, 1);
-      expect(interactor3.testInteractor5_1.initialized, true);
+      expect(interactor3.testInteractor5_1.isInitialized, true);
 
       expect(interactor3.testInteractor5_2.state, 2);
-      expect(interactor3.testInteractor5_2.initialized, true);
+      expect(interactor3.testInteractor5_2.isInitialized, true);
 
       expect(interactor3.testInteractorAsync2_1.state, 3);
-      expect(interactor3.testInteractorAsync2_1.initialized, true);
+      expect(interactor3.testInteractorAsync2_1.isInitialized, true);
 
       expect(interactor3.testInteractorAsync2_2.state, 3);
-      expect(interactor3.testInteractorAsync2_2.initialized, true);
+      expect(interactor3.testInteractorAsync2_2.isInitialized, true);
 
       expect(interactor3.testInteractorAsync3_1.state, 1);
-      expect(interactor3.testInteractorAsync3_1.initialized, true);
+      expect(interactor3.testInteractorAsync3_1.isInitialized, true);
 
       expect(interactor3.testInteractorAsync3_2.state, 2);
-      expect(interactor3.testInteractorAsync3_2.initialized, true);
+      expect(interactor3.testInteractorAsync3_2.isInitialized, true);
 
       expect(interactor3.testInteractorAsync4.state, 2);
-      expect(interactor3.testInteractorAsync4.initialized, true);
+      expect(interactor3.testInteractorAsync4.isInitialized, true);
 
-      expect(interactor3.testInteractor7.initialized, true);
-      expect(interactor3.testInteractor8.initialized, true);
+      expect(interactor3.testInteractor7.isInitialized, true);
+      expect(interactor3.testInteractor8.isInitialized, true);
 
       expect(interactor3.testInteractor9_1.state, 1);
-      expect(interactor3.testInteractor9_1.initialized, true);
+      expect(interactor3.testInteractor9_1.isInitialized, true);
 
       expect(interactor3.testInteractor9_2.state, 2);
-      expect(interactor3.testInteractor9_2.initialized, true);
+      expect(interactor3.testInteractor9_2.isInitialized, true);
 
       expect((await interactor3.testInteractorAsync5_1).state, 1);
-      expect((await interactor3.testInteractorAsync5_1).initialized, true);
+      expect((await interactor3.testInteractorAsync5_1).isInitialized, true);
 
       expect((await interactor3.testInteractorAsync5_2).state, 2);
-      expect((await interactor3.testInteractorAsync5_2).initialized, true);
+      expect((await interactor3.testInteractorAsync5_2).isInitialized, true);
 
       expect(interactor3.testInteractor10.state, 2);
-      expect(interactor3.testInteractor10.initialized, true);
+      expect(interactor3.testInteractor10.isInitialized, true);
 
       expect((await interactor3.testInteractorAsync6).state, 2);
-      expect((await interactor3.testInteractorAsync6).initialized, true);
+      expect((await interactor3.testInteractorAsync6).isInitialized, true);
 
       expect(interactor3.testInteractor11.state, 2);
-      expect(interactor3.testInteractor11.initialized, true);
+      expect(interactor3.testInteractor11.isInitialized, true);
 
       expect((await interactor3.testInteractorAsync7).state, 2);
-      expect((await interactor3.testInteractorAsync7).initialized, true);
+      expect((await interactor3.testInteractorAsync7).isInitialized, true);
 
       // check again cached instances
 
       expect(interactor3.getLazyLocalInstance<TestInteractor11>().state, 2);
       expect(
-        interactor3.getLazyLocalInstance<TestInteractor11>().initialized,
+        interactor3.getLazyLocalInstance<TestInteractor11>().isInitialized,
         true,
       );
 
@@ -191,7 +191,7 @@ void main() {
       );
       expect(
         (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>())
-            .initialized,
+            .isInitialized,
         true,
       );
 
@@ -216,23 +216,23 @@ void main() {
       );
 
       expect(interactor3.testInteractor12_1.state, 2);
-      expect(interactor3.testInteractor12_1.initialized, true);
+      expect(interactor3.testInteractor12_1.isInitialized, true);
 
       expect(interactor3.testInteractor12_2.state, 2);
-      expect(interactor3.testInteractor12_2.initialized, true);
+      expect(interactor3.testInteractor12_2.isInitialized, true);
 
       expect((await interactor3.testInteractorAsync8_1).state, 2);
-      expect((await interactor3.testInteractorAsync8_1).initialized, true);
+      expect((await interactor3.testInteractorAsync8_1).isInitialized, true);
 
       expect((await interactor3.testInteractorAsync8_2).state, 2);
-      expect((await interactor3.testInteractorAsync8_2).initialized, true);
+      expect((await interactor3.testInteractorAsync8_2).isInitialized, true);
 
-      expect(interactor3.testModule.testInstancePart5.initialized, true);
-      expect(interactor3.testModule.testInteractor7.initialized, true);
-      expect(interactor3.testModule.testInteractor13.initialized, true);
+      expect(interactor3.testModule.testInstancePart5.isInitialized, true);
+      expect(interactor3.testModule.testInteractor7.isInitialized, true);
+      expect(interactor3.testModule.testInteractor13.isInitialized, true);
 
       expect(
-        (await interactor3.testModule.testInteractorAsync9).initialized,
+        (await interactor3.testModule.testInteractorAsync9).isInitialized,
         true,
       );
 
@@ -488,7 +488,7 @@ void main() {
 
       await DelayUtility.pause();
 
-      expect(interactor3.checkEventWasReceived(TestEvent3), false);
+      expect(interactor3.checkEventWasReceived(TestEvent3), true);
       expect(interactor3.state, 5);
 
       interactor3.resumeEventBusSubscription();
@@ -504,7 +504,7 @@ void main() {
       final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
 
       expect(
-        interactor3.testInstancePart5.initialized,
+        interactor3.testInstancePart5.isInitialized,
         true,
       );
 

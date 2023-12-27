@@ -52,7 +52,7 @@ class Response<ItemType> {
   /// Flag to detect that [result] was from database
   bool fromDatabase;
 
-  /// Checks that error is not null and status code is less than 400
+  /// Checks that [error] is not null and status ``code`` is equal to 200 or less than 400 and greater than 200
   bool get isSuccessful => error == null && code >= 200 && code < 400;
 
   /// Checks that result is not null and was obtained from database
@@ -137,7 +137,7 @@ abstract class BaseRequest<T> {
   /// ```
   ResponseParser<T>? parser;
 
-  /// body for this request
+  /// Body for this request
   dynamic body;
 
   /// Query for this request - will be added to the end of the [url]

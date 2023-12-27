@@ -6,7 +6,7 @@ import 'package:umvvm/umvvm.dart';
 /// Interactors can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when interactor will be disposed
-/// with [executeAndCancelOnDispose] method
+/// with [ApiCaller.executeAndCancelOnDispose] method
 ///
 /// Example:
 ///
@@ -29,8 +29,6 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
 
     initializeDependencies();
     initializeStatefullInstance();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -41,8 +39,6 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     disposeStore();
     disposeDependencies();
     cancelAllRequests();
-
-    initialized = false;
   }
 
   @mustCallSuper
@@ -58,13 +54,5 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     super.initializeWithoutConnections(input);
 
     initializeStore();
-
-    initialized = true;
-  }
-
-  @mustCallSuper
-  @override
-  Future<void> initializeWithoutConnectionsAsync() async {
-    initialized = true;
   }
 }

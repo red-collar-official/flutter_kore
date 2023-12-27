@@ -12,8 +12,6 @@ final class TestMvvmInstance extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -25,8 +23,6 @@ final class TestMvvmInstance2 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -48,8 +44,8 @@ void main() {
 
     test('Instance collection add, get test', () async {
       instances.addWithParams<int>(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
@@ -58,30 +54,26 @@ void main() {
 
     test('Instance getUniqueByTypeString test', () async {
       instances.addWithParams<int>(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
       expect(
-        (instances.getUniqueByTypeString(testInstanceRuntimeType)
-                as TestMvvmInstance)
-            .value,
+        (instances.getUniqueByTypeString(testInstanceRuntimeType) as TestMvvmInstance).value,
         1,
       );
     });
 
     test('Instance collection construct test', () async {
       instances.addWithParams<int>(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
       expect(
-        instances
-            .constructInstance<TestMvvmInstance>(testInstanceRuntimeType)
-            .value,
+        instances.constructInstance<TestMvvmInstance>(testInstanceRuntimeType).value,
         1,
       );
     });
@@ -94,8 +86,8 @@ void main() {
 
     test('Instance uninitialized test', () async {
       instances.addUninitialized(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
@@ -104,8 +96,8 @@ void main() {
 
     test('Instance uninitialized with no connections test', () async {
       instances.addUninitialized(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
@@ -122,8 +114,8 @@ void main() {
 
     test('Instance uninitialized async test', () async {
       instances.addUninitialized(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
@@ -138,8 +130,8 @@ void main() {
 
     test('Instance uninitialized async with no connections test', () async {
       instances.addUninitialized(
-        testInstanceRuntimeType,
-        1,
+        type: testInstanceRuntimeType,
+        params: 1,
         scope: testScope,
       );
 
@@ -156,13 +148,13 @@ void main() {
     test('Instance collection all test', () async {
       instances
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          1,
+          type: testInstanceRuntimeType,
+          params: 1,
           scope: testScope,
         )
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          2,
+          type: testInstanceRuntimeType,
+          params: 2,
           scope: testScope,
           index: 1,
         );
@@ -177,14 +169,14 @@ void main() {
     test('Instance collection proone test', () async {
       instances
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          1,
+          type: testInstanceRuntimeType,
+          params: 1,
           scope: testScope,
         )
         ..increaseReferencesInScope(testScope, TestMvvmInstance)
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          2,
+          type: testInstanceRuntimeType,
+          params: 2,
           scope: testScope,
           index: 1,
         )
@@ -249,13 +241,13 @@ void main() {
     test('Instance collection getAllByTypeString test', () async {
       instances
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          1,
+          type: testInstanceRuntimeType,
+          params: 1,
           scope: testScope,
         )
         ..addWithParams<int>(
-          testInstanceRuntimeType,
-          2,
+          type: testInstanceRuntimeType,
+          params: 2,
           scope: testScope,
           index: 1,
         );
@@ -271,15 +263,15 @@ void main() {
     });
 
     test('Instance collection add existing test', () async {
-      instances.addExisting(testScope, TestMvvmInstance()..initialize(3));
+      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
     });
 
     test('Instance collection add test test', () async {
       instances.addTest<TestMvvmInstance>(
-        testScope,
-        TestMvvmInstance()..initialize(3),
+        scope: testScope,
+        instance: TestMvvmInstance()..initialize(3),
       );
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
@@ -287,15 +279,15 @@ void main() {
 
     test('Instance collection add test uninitialized test', () async {
       instances.addTest<TestMvvmInstance>(
-        testScope,
-        TestMvvmInstance(),
+        scope: testScope,
+        instance: TestMvvmInstance(),
       );
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 1);
     });
 
     test('Instance collection clear test', () async {
-      instances.addExisting(testScope, TestMvvmInstance()..initialize(3));
+      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
 
@@ -305,7 +297,7 @@ void main() {
     });
 
     test('Instance collection find test', () async {
-      instances.addExisting(testScope, TestMvvmInstance()..initialize(3));
+      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.find<TestMvvmInstance>(testScope)!.value, 3);
 
@@ -334,15 +326,13 @@ void main() {
 
     test('Instance collection getWithParamsAsync test', () async {
       expect(
-        (await instances.getWithParamsAsync<TestMvvmInstance, int>(params: 2))
-            .value,
+        (await instances.getWithParamsAsync<TestMvvmInstance, int>(params: 2)).value,
         2,
       );
     });
 
-    test('Instance collection getAsync when instance already existing test',
-        () async {
-      instances.addExisting(testScope, TestMvvmInstance()..initialize(3));
+    test('Instance collection getAsync when instance already existing test', () async {
+      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(
         (await instances.getAsync<TestMvvmInstance>(scope: testScope)).value,
@@ -350,12 +340,12 @@ void main() {
       );
     });
 
-    test('Instance collection getUniqueByTypeStringWithParamsAsync test',
-        () async {
+    test('Instance collection getUniqueByTypeStringWithParamsAsync test', () async {
       expect(
         (await instances.getUniqueByTypeStringWithParamsAsync<int>(
-                testInstanceRuntimeType,
-                params: 2) as TestMvvmInstance)
+          type: testInstanceRuntimeType,
+          params: 2,
+        ) as TestMvvmInstance)
             .value,
         2,
       );
@@ -364,11 +354,9 @@ void main() {
     test('Instance collection getByTypeStringWithParamsAsync test', () async {
       expect(
         (await instances.getByTypeStringWithParamsAsync<int>(
-          testInstanceRuntimeType,
-          2,
-          null,
-          testScope,
-          false,
+          type: testInstanceRuntimeType,
+          params: 2,
+          scope: testScope,
         ) as TestMvvmInstance)
             .value,
         2,
@@ -377,8 +365,7 @@ void main() {
 
     test('Instance collection addAsync test', () async {
       await instances.addAsync(
-        testInstanceRuntimeType,
-        null,
+        type: testInstanceRuntimeType,
         scope: testScope,
       );
 
@@ -387,8 +374,8 @@ void main() {
 
     test('Instance collection addWithParamsAsync test', () async {
       await instances.addWithParamsAsync(
-        testInstanceRuntimeType,
-        2,
+        type: testInstanceRuntimeType,
+        params: 2,
         scope: testScope,
       );
 
@@ -417,9 +404,8 @@ void main() {
       );
     });
 
-    test('Instance collection get when instance already existing test',
-        () async {
-      instances.addExisting(testScope, TestMvvmInstance()..initialize(3));
+    test('Instance collection get when instance already existing test', () async {
+      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(
         instances.get<TestMvvmInstance>(scope: testScope).value,
@@ -430,11 +416,8 @@ void main() {
     test('Instance collection getByTypeString test', () async {
       expect(
         (instances.getByTypeString(
-          testInstanceRuntimeType,
-          null,
-          null,
-          testScope,
-          false,
+          type: testInstanceRuntimeType,
+          scope: testScope,
         ) as TestMvvmInstance)
             .value,
         1,
@@ -444,11 +427,9 @@ void main() {
     test('Instance collection getByTypeStringWithParams test', () async {
       expect(
         (instances.getByTypeStringWithParams<int>(
-          testInstanceRuntimeType,
-          2,
-          null,
-          testScope,
-          false,
+          type: testInstanceRuntimeType,
+          params: 2,
+          scope: testScope,
         ) as TestMvvmInstance)
             .value,
         2,
@@ -457,8 +438,7 @@ void main() {
 
     test('Instance collection add test', () async {
       instances.add(
-        testInstanceRuntimeType,
-        null,
+        type: testInstanceRuntimeType,
         scope: testScope,
       );
 
@@ -467,8 +447,8 @@ void main() {
 
     test('Instance collection addWithParams test', () async {
       instances.addWithParams(
-        testInstanceRuntimeType,
-        2,
+        type: testInstanceRuntimeType,
+        params: 2,
         scope: testScope,
       );
 
@@ -477,8 +457,8 @@ void main() {
 
     test('Instance collection unregisterInstance test', () async {
       instances.addWithParams(
-        testInstanceRuntimeType,
-        2,
+        type: testInstanceRuntimeType,
+        params: 2,
         scope: testScope,
       );
 
@@ -494,17 +474,17 @@ void main() {
     test('Instance collection unregisterInstance global test', () async {
       instances
         ..addWithParams(
-          testInstanceRuntimeType,
-          2,
+          type: testInstanceRuntimeType,
+          params: 1,
           scope: BaseScopes.global,
         )
         ..addWithParams(
-          testInstance2RuntimeType,
-          2,
+          type: testInstance2RuntimeType,
+          params: 2,
           scope: BaseScopes.global,
         );
 
-      expect(instances.get<TestMvvmInstance>().value, 2);
+      expect(instances.get<TestMvvmInstance>().value, 1);
       expect(instances.get<TestMvvmInstance2>().value, 2);
 
       instances.unregisterInstance<TestMvvmInstance>();
@@ -524,8 +504,7 @@ void main() {
       );
     });
 
-    test('Instance collection use and dispose instance with params test',
-        () async {
+    test('Instance collection use and dispose instance with params test', () async {
       await instances.useAndDisposeInstanceWithParams<TestMvvmInstance, int>(
         1,
         (instance) async {

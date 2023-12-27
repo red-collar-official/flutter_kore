@@ -39,11 +39,11 @@ void main() {
     test('MvvmApp initial test', () async {
       await app.initialize();
 
-      expect(app.initialized, true);
+      expect(app.isInitialized, true);
       expect(app.eventBus, EventBus.instance);
-      expect(app.instances.forceGet<TestInteractor3>()!.initialized, true);
-      expect(app.instances.forceGet<TestWrapper3>()!.initialized, true);
-      expect(app.instances.forceGet<TestWrapper4>()!.initialized, true);
+      expect(app.instances.forceGet<TestInteractor3>()!.isInitialized, false);
+      expect(app.instances.forceGet<TestWrapper3>()!.isInitialized, true);
+      expect(app.instances.forceGet<TestWrapper4>()!.isInitialized, true);
     });
   });
 }

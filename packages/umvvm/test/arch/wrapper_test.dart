@@ -60,32 +60,32 @@ void main() {
       expect(wrapper3.value, null);
       expect(wrapperAsync.value, null);
 
-      expect(wrapper3.testWrapper1.initialized, true);
+      expect(wrapper3.testWrapper1.isInitialized, true);
 
-      expect(wrapper3.testWrapper2.initialized, true);
+      expect(wrapper3.testWrapper2.isInitialized, true);
 
-      expect(wrapper3.testInstancePart3.initialized, true);
+      expect(wrapper3.testInstancePart3.isInitialized, true);
 
       expect(wrapper3.testInstancePart3.testInstancePart2.value, 6);
-      expect(wrapper3.testInstancePart3.testInstancePart2.initialized, true);
+      expect(wrapper3.testInstancePart3.testInstancePart2.isInitialized, true);
 
       expect(wrapper3.testInstancePart2_1.value, 10);
-      expect(wrapper3.testInstancePart2_1.initialized, true);
+      expect(wrapper3.testInstancePart2_1.isInitialized, true);
 
       expect(wrapper3.testInstancePart2_2.value, 10);
-      expect(wrapper3.testInstancePart2_2.initialized, true);
+      expect(wrapper3.testInstancePart2_2.isInitialized, true);
 
       expect(wrapper3.testInstancePart_1.value, 1);
-      expect(wrapper3.testInstancePart_1.initialized, true);
+      expect(wrapper3.testInstancePart_1.isInitialized, true);
 
       expect(wrapper3.testInstancePart_2.value, 2);
-      expect(wrapper3.testInstancePart_2.initialized, true);
+      expect(wrapper3.testInstancePart_2.isInitialized, true);
 
       expect(wrapper3.testInstancePart4_1.value, 1);
-      expect(wrapper3.testInstancePart4_1.initialized, true);
+      expect(wrapper3.testInstancePart4_1.isInitialized, true);
 
       expect(wrapper3.testInstancePart4_2.value, 2);
-      expect(wrapper3.testInstancePart4_2.initialized, true);
+      expect(wrapper3.testInstancePart4_2.isInitialized, true);
 
       expect(
         () => wrapper3.testWrapperAsync2.testWrapperAsync,
@@ -161,7 +161,7 @@ void main() {
 
       await DelayUtility.pause();
 
-      expect(wrapper3.checkEventWasReceived(TestEvent3), false);
+      expect(wrapper3.checkEventWasReceived(TestEvent3), true);
       expect(wrapper3.value, 5);
 
       wrapper3.resumeEventBusSubscription();
@@ -177,8 +177,8 @@ void main() {
       final wrapper3 = await instances.getUniqueAsync<TestWrapper3>();
 
       expect(
-        wrapper3.testInstancePart5.initialized,
-        true,
+        wrapper3.testInstancePart5.isInitialized,
+        false,
       );
 
       expect(

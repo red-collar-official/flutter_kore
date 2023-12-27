@@ -10,8 +10,6 @@ final class TestMvvmInstance0 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -23,8 +21,6 @@ final class TestMvvmInstance1 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -36,8 +32,6 @@ final class TestMvvmInstance2 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -49,8 +43,6 @@ final class TestMvvmInstance3 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -62,8 +54,6 @@ final class TestMvvmInstance4 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -75,8 +65,6 @@ final class TestMvvmInstance5 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -88,8 +76,6 @@ final class TestMvvmInstance6 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -101,8 +87,6 @@ final class TestMvvmInstance7 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -114,8 +98,6 @@ final class TestMvvmInstance8 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -127,8 +109,6 @@ final class TestMvvmInstance9 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -140,8 +120,6 @@ final class TestMvvmInstance10 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -153,8 +131,6 @@ final class TestMvvmInstance11 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -166,8 +142,6 @@ final class TestMvvmInstance12 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -179,8 +153,6 @@ final class TestMvvmInstance13 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -192,8 +164,6 @@ final class TestMvvmInstance14 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -205,8 +175,6 @@ final class TestMvvmInstance15 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -218,8 +186,6 @@ final class TestMvvmInstance16 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -231,8 +197,6 @@ final class TestMvvmInstance17 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -244,8 +208,6 @@ final class TestMvvmInstance18 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -257,8 +219,6 @@ final class TestMvvmInstance19 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -270,8 +230,6 @@ final class TestMvvmInstance20 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -283,8 +241,6 @@ final class TestMvvmInstance21 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -296,8 +252,6 @@ final class TestMvvmInstance22 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -309,8 +263,6 @@ final class TestMvvmInstance23 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -322,8 +274,6 @@ final class TestMvvmInstance24 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -335,8 +285,6 @@ final class TestMvvmInstance25 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -348,8 +296,6 @@ final class TestMvvmInstance26 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -361,8 +307,6 @@ final class TestMvvmInstance27 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -374,8 +318,6 @@ final class TestMvvmInstance28 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -387,8 +329,6 @@ final class TestMvvmInstance29 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -400,8 +340,6 @@ final class TestMvvmInstance30 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -413,8 +351,6 @@ final class TestMvvmInstance31 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -426,8 +362,6 @@ final class TestMvvmInstance32 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -439,8 +373,6 @@ final class TestMvvmInstance33 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -452,8 +384,6 @@ final class TestMvvmInstance34 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -465,8 +395,6 @@ final class TestMvvmInstance35 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -478,8 +406,6 @@ final class TestMvvmInstance36 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -491,8 +417,6 @@ final class TestMvvmInstance37 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -504,8 +428,6 @@ final class TestMvvmInstance38 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -517,8 +439,6 @@ final class TestMvvmInstance39 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -530,8 +450,6 @@ final class TestMvvmInstance40 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -543,8 +461,6 @@ final class TestMvvmInstance41 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -556,8 +472,6 @@ final class TestMvvmInstance42 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -569,8 +483,6 @@ final class TestMvvmInstance43 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -582,8 +494,6 @@ final class TestMvvmInstance44 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -595,8 +505,6 @@ final class TestMvvmInstance45 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -608,8 +516,6 @@ final class TestMvvmInstance46 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -621,8 +527,6 @@ final class TestMvvmInstance47 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -634,8 +538,6 @@ final class TestMvvmInstance48 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -647,8 +549,6 @@ final class TestMvvmInstance49 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -660,8 +560,6 @@ final class TestMvvmInstance50 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -673,8 +571,6 @@ final class TestMvvmInstance51 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -686,8 +582,6 @@ final class TestMvvmInstance52 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -699,8 +593,6 @@ final class TestMvvmInstance53 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -712,8 +604,6 @@ final class TestMvvmInstance54 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -725,8 +615,6 @@ final class TestMvvmInstance55 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -738,8 +626,6 @@ final class TestMvvmInstance56 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -751,8 +637,6 @@ final class TestMvvmInstance57 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -764,8 +648,6 @@ final class TestMvvmInstance58 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -777,8 +659,6 @@ final class TestMvvmInstance59 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -790,8 +670,6 @@ final class TestMvvmInstance60 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -803,8 +681,6 @@ final class TestMvvmInstance61 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -816,8 +692,6 @@ final class TestMvvmInstance62 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -829,8 +703,6 @@ final class TestMvvmInstance63 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -842,8 +714,6 @@ final class TestMvvmInstance64 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -855,8 +725,6 @@ final class TestMvvmInstance65 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -868,8 +736,6 @@ final class TestMvvmInstance66 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -881,8 +747,6 @@ final class TestMvvmInstance67 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -894,8 +758,6 @@ final class TestMvvmInstance68 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -907,8 +769,6 @@ final class TestMvvmInstance69 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -920,8 +780,6 @@ final class TestMvvmInstance70 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -933,8 +791,6 @@ final class TestMvvmInstance71 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -946,8 +802,6 @@ final class TestMvvmInstance72 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -959,8 +813,6 @@ final class TestMvvmInstance73 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -972,8 +824,6 @@ final class TestMvvmInstance74 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -985,8 +835,6 @@ final class TestMvvmInstance75 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -998,8 +846,6 @@ final class TestMvvmInstance76 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1011,8 +857,6 @@ final class TestMvvmInstance77 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1024,8 +868,6 @@ final class TestMvvmInstance78 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1037,8 +879,6 @@ final class TestMvvmInstance79 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1050,8 +890,6 @@ final class TestMvvmInstance80 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1063,8 +901,6 @@ final class TestMvvmInstance81 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1076,8 +912,6 @@ final class TestMvvmInstance82 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1089,8 +923,6 @@ final class TestMvvmInstance83 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1102,8 +934,6 @@ final class TestMvvmInstance84 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1115,8 +945,6 @@ final class TestMvvmInstance85 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1128,8 +956,6 @@ final class TestMvvmInstance86 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1141,8 +967,6 @@ final class TestMvvmInstance87 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1154,8 +978,6 @@ final class TestMvvmInstance88 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1167,8 +989,6 @@ final class TestMvvmInstance89 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1180,8 +1000,6 @@ final class TestMvvmInstance90 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1193,8 +1011,6 @@ final class TestMvvmInstance91 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1206,8 +1022,6 @@ final class TestMvvmInstance92 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1219,8 +1033,6 @@ final class TestMvvmInstance93 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1232,8 +1044,6 @@ final class TestMvvmInstance94 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1245,8 +1055,6 @@ final class TestMvvmInstance95 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1258,8 +1066,6 @@ final class TestMvvmInstance96 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1271,8 +1077,6 @@ final class TestMvvmInstance97 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1284,8 +1088,6 @@ final class TestMvvmInstance98 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1297,8 +1099,6 @@ final class TestMvvmInstance99 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1310,8 +1110,6 @@ final class TestMvvmInstance100 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1323,8 +1121,6 @@ final class TestMvvmInstance101 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1336,8 +1132,6 @@ final class TestMvvmInstance102 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1349,8 +1143,6 @@ final class TestMvvmInstance103 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1362,8 +1154,6 @@ final class TestMvvmInstance104 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1375,8 +1165,6 @@ final class TestMvvmInstance105 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1388,8 +1176,6 @@ final class TestMvvmInstance106 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1401,8 +1187,6 @@ final class TestMvvmInstance107 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1414,8 +1198,6 @@ final class TestMvvmInstance108 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1427,8 +1209,6 @@ final class TestMvvmInstance109 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1440,8 +1220,6 @@ final class TestMvvmInstance110 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1453,8 +1231,6 @@ final class TestMvvmInstance111 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1466,8 +1242,6 @@ final class TestMvvmInstance112 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1479,8 +1253,6 @@ final class TestMvvmInstance113 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1492,8 +1264,6 @@ final class TestMvvmInstance114 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1505,8 +1275,6 @@ final class TestMvvmInstance115 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1518,8 +1286,6 @@ final class TestMvvmInstance116 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1531,8 +1297,6 @@ final class TestMvvmInstance117 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1544,8 +1308,6 @@ final class TestMvvmInstance118 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1557,8 +1319,6 @@ final class TestMvvmInstance119 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1570,8 +1330,6 @@ final class TestMvvmInstance120 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1583,8 +1341,6 @@ final class TestMvvmInstance121 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1596,8 +1352,6 @@ final class TestMvvmInstance122 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1609,8 +1363,6 @@ final class TestMvvmInstance123 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1622,8 +1374,6 @@ final class TestMvvmInstance124 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1635,8 +1385,6 @@ final class TestMvvmInstance125 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1648,8 +1396,6 @@ final class TestMvvmInstance126 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1661,8 +1407,6 @@ final class TestMvvmInstance127 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1674,8 +1418,6 @@ final class TestMvvmInstance128 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1687,8 +1429,6 @@ final class TestMvvmInstance129 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1700,8 +1440,6 @@ final class TestMvvmInstance130 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1713,8 +1451,6 @@ final class TestMvvmInstance131 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1726,8 +1462,6 @@ final class TestMvvmInstance132 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1739,8 +1473,6 @@ final class TestMvvmInstance133 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1752,8 +1484,6 @@ final class TestMvvmInstance134 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1765,8 +1495,6 @@ final class TestMvvmInstance135 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1778,8 +1506,6 @@ final class TestMvvmInstance136 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1791,8 +1517,6 @@ final class TestMvvmInstance137 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1804,8 +1528,6 @@ final class TestMvvmInstance138 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1817,8 +1539,6 @@ final class TestMvvmInstance139 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1830,8 +1550,6 @@ final class TestMvvmInstance140 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1843,8 +1561,6 @@ final class TestMvvmInstance141 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1856,8 +1572,6 @@ final class TestMvvmInstance142 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1869,8 +1583,6 @@ final class TestMvvmInstance143 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1882,8 +1594,6 @@ final class TestMvvmInstance144 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1895,8 +1605,6 @@ final class TestMvvmInstance145 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1908,8 +1616,6 @@ final class TestMvvmInstance146 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1921,8 +1627,6 @@ final class TestMvvmInstance147 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1934,8 +1638,6 @@ final class TestMvvmInstance148 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1947,8 +1649,6 @@ final class TestMvvmInstance149 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1960,8 +1660,6 @@ final class TestMvvmInstance150 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1973,8 +1671,6 @@ final class TestMvvmInstance151 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1986,8 +1682,6 @@ final class TestMvvmInstance152 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -1999,8 +1693,6 @@ final class TestMvvmInstance153 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2012,8 +1704,6 @@ final class TestMvvmInstance154 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2025,8 +1715,6 @@ final class TestMvvmInstance155 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2038,8 +1726,6 @@ final class TestMvvmInstance156 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2051,8 +1737,6 @@ final class TestMvvmInstance157 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2064,8 +1748,6 @@ final class TestMvvmInstance158 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2077,8 +1759,6 @@ final class TestMvvmInstance159 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2090,8 +1770,6 @@ final class TestMvvmInstance160 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2103,8 +1781,6 @@ final class TestMvvmInstance161 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2116,8 +1792,6 @@ final class TestMvvmInstance162 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2129,8 +1803,6 @@ final class TestMvvmInstance163 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2142,8 +1814,6 @@ final class TestMvvmInstance164 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2155,8 +1825,6 @@ final class TestMvvmInstance165 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2168,8 +1836,6 @@ final class TestMvvmInstance166 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2181,8 +1847,6 @@ final class TestMvvmInstance167 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2194,8 +1858,6 @@ final class TestMvvmInstance168 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2207,8 +1869,6 @@ final class TestMvvmInstance169 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2220,8 +1880,6 @@ final class TestMvvmInstance170 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2233,8 +1891,6 @@ final class TestMvvmInstance171 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2246,8 +1902,6 @@ final class TestMvvmInstance172 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2259,8 +1913,6 @@ final class TestMvvmInstance173 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2272,8 +1924,6 @@ final class TestMvvmInstance174 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2285,8 +1935,6 @@ final class TestMvvmInstance175 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2298,8 +1946,6 @@ final class TestMvvmInstance176 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2311,8 +1957,6 @@ final class TestMvvmInstance177 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2324,8 +1968,6 @@ final class TestMvvmInstance178 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2337,8 +1979,6 @@ final class TestMvvmInstance179 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2350,8 +1990,6 @@ final class TestMvvmInstance180 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2363,8 +2001,6 @@ final class TestMvvmInstance181 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2376,8 +2012,6 @@ final class TestMvvmInstance182 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2389,8 +2023,6 @@ final class TestMvvmInstance183 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2402,8 +2034,6 @@ final class TestMvvmInstance184 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2415,8 +2045,6 @@ final class TestMvvmInstance185 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2428,8 +2056,6 @@ final class TestMvvmInstance186 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2441,8 +2067,6 @@ final class TestMvvmInstance187 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2454,8 +2078,6 @@ final class TestMvvmInstance188 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2467,8 +2089,6 @@ final class TestMvvmInstance189 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2480,8 +2100,6 @@ final class TestMvvmInstance190 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2493,8 +2111,6 @@ final class TestMvvmInstance191 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2506,8 +2122,6 @@ final class TestMvvmInstance192 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2519,8 +2133,6 @@ final class TestMvvmInstance193 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2532,8 +2144,6 @@ final class TestMvvmInstance194 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2545,8 +2155,6 @@ final class TestMvvmInstance195 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2558,8 +2166,6 @@ final class TestMvvmInstance196 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2571,8 +2177,6 @@ final class TestMvvmInstance197 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2584,8 +2188,6 @@ final class TestMvvmInstance198 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2597,8 +2199,6 @@ final class TestMvvmInstance199 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2610,8 +2210,6 @@ final class TestMvvmInstance200 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2623,8 +2221,6 @@ final class TestMvvmInstance201 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2636,8 +2232,6 @@ final class TestMvvmInstance202 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2649,8 +2243,6 @@ final class TestMvvmInstance203 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2662,8 +2254,6 @@ final class TestMvvmInstance204 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2675,8 +2265,6 @@ final class TestMvvmInstance205 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2688,8 +2276,6 @@ final class TestMvvmInstance206 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2701,8 +2287,6 @@ final class TestMvvmInstance207 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2714,8 +2298,6 @@ final class TestMvvmInstance208 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2727,8 +2309,6 @@ final class TestMvvmInstance209 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2740,8 +2320,6 @@ final class TestMvvmInstance210 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2753,8 +2331,6 @@ final class TestMvvmInstance211 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2766,8 +2342,6 @@ final class TestMvvmInstance212 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2779,8 +2353,6 @@ final class TestMvvmInstance213 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2792,8 +2364,6 @@ final class TestMvvmInstance214 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2805,8 +2375,6 @@ final class TestMvvmInstance215 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2818,8 +2386,6 @@ final class TestMvvmInstance216 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2831,8 +2397,6 @@ final class TestMvvmInstance217 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2844,8 +2408,6 @@ final class TestMvvmInstance218 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2857,8 +2419,6 @@ final class TestMvvmInstance219 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2870,8 +2430,6 @@ final class TestMvvmInstance220 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2883,8 +2441,6 @@ final class TestMvvmInstance221 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2896,8 +2452,6 @@ final class TestMvvmInstance222 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2909,8 +2463,6 @@ final class TestMvvmInstance223 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2922,8 +2474,6 @@ final class TestMvvmInstance224 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2935,8 +2485,6 @@ final class TestMvvmInstance225 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2948,8 +2496,6 @@ final class TestMvvmInstance226 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2961,8 +2507,6 @@ final class TestMvvmInstance227 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2974,8 +2518,6 @@ final class TestMvvmInstance228 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -2987,8 +2529,6 @@ final class TestMvvmInstance229 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3000,8 +2540,6 @@ final class TestMvvmInstance230 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3013,8 +2551,6 @@ final class TestMvvmInstance231 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3026,8 +2562,6 @@ final class TestMvvmInstance232 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3039,8 +2573,6 @@ final class TestMvvmInstance233 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3052,8 +2584,6 @@ final class TestMvvmInstance234 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3065,8 +2595,6 @@ final class TestMvvmInstance235 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3078,8 +2606,6 @@ final class TestMvvmInstance236 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3091,8 +2617,6 @@ final class TestMvvmInstance237 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3104,8 +2628,6 @@ final class TestMvvmInstance238 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3117,8 +2639,6 @@ final class TestMvvmInstance239 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3130,8 +2650,6 @@ final class TestMvvmInstance240 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3143,8 +2661,6 @@ final class TestMvvmInstance241 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3156,8 +2672,6 @@ final class TestMvvmInstance242 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3169,8 +2683,6 @@ final class TestMvvmInstance243 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3182,8 +2694,6 @@ final class TestMvvmInstance244 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3195,8 +2705,6 @@ final class TestMvvmInstance245 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3208,8 +2716,6 @@ final class TestMvvmInstance246 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3221,8 +2727,6 @@ final class TestMvvmInstance247 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3234,8 +2738,6 @@ final class TestMvvmInstance248 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3247,8 +2749,6 @@ final class TestMvvmInstance249 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3260,8 +2760,6 @@ final class TestMvvmInstance250 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3273,8 +2771,6 @@ final class TestMvvmInstance251 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3286,8 +2782,6 @@ final class TestMvvmInstance252 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3299,8 +2793,6 @@ final class TestMvvmInstance253 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3312,8 +2804,6 @@ final class TestMvvmInstance254 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3325,8 +2815,6 @@ final class TestMvvmInstance255 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3338,8 +2826,6 @@ final class TestMvvmInstance256 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3351,8 +2837,6 @@ final class TestMvvmInstance257 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3364,8 +2848,6 @@ final class TestMvvmInstance258 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3377,8 +2859,6 @@ final class TestMvvmInstance259 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3390,8 +2870,6 @@ final class TestMvvmInstance260 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3403,8 +2881,6 @@ final class TestMvvmInstance261 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3416,8 +2892,6 @@ final class TestMvvmInstance262 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3429,8 +2903,6 @@ final class TestMvvmInstance263 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3442,8 +2914,6 @@ final class TestMvvmInstance264 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3455,8 +2925,6 @@ final class TestMvvmInstance265 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3468,8 +2936,6 @@ final class TestMvvmInstance266 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3481,8 +2947,6 @@ final class TestMvvmInstance267 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3494,8 +2958,6 @@ final class TestMvvmInstance268 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3507,8 +2969,6 @@ final class TestMvvmInstance269 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3520,8 +2980,6 @@ final class TestMvvmInstance270 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3533,8 +2991,6 @@ final class TestMvvmInstance271 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3546,8 +3002,6 @@ final class TestMvvmInstance272 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3559,8 +3013,6 @@ final class TestMvvmInstance273 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3572,8 +3024,6 @@ final class TestMvvmInstance274 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3585,8 +3035,6 @@ final class TestMvvmInstance275 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3598,8 +3046,6 @@ final class TestMvvmInstance276 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3611,8 +3057,6 @@ final class TestMvvmInstance277 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3624,8 +3068,6 @@ final class TestMvvmInstance278 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3637,8 +3079,6 @@ final class TestMvvmInstance279 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3650,8 +3090,6 @@ final class TestMvvmInstance280 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3663,8 +3101,6 @@ final class TestMvvmInstance281 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3676,8 +3112,6 @@ final class TestMvvmInstance282 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3689,8 +3123,6 @@ final class TestMvvmInstance283 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3702,8 +3134,6 @@ final class TestMvvmInstance284 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3715,8 +3145,6 @@ final class TestMvvmInstance285 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3728,8 +3156,6 @@ final class TestMvvmInstance286 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3741,8 +3167,6 @@ final class TestMvvmInstance287 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3754,8 +3178,6 @@ final class TestMvvmInstance288 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3767,8 +3189,6 @@ final class TestMvvmInstance289 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3780,8 +3200,6 @@ final class TestMvvmInstance290 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3793,8 +3211,6 @@ final class TestMvvmInstance291 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3806,8 +3222,6 @@ final class TestMvvmInstance292 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3819,8 +3233,6 @@ final class TestMvvmInstance293 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3832,8 +3244,6 @@ final class TestMvvmInstance294 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3845,8 +3255,6 @@ final class TestMvvmInstance295 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3858,8 +3266,6 @@ final class TestMvvmInstance296 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3871,8 +3277,6 @@ final class TestMvvmInstance297 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3884,8 +3288,6 @@ final class TestMvvmInstance298 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3897,8 +3299,6 @@ final class TestMvvmInstance299 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3910,8 +3310,6 @@ final class TestMvvmInstance300 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3923,8 +3321,6 @@ final class TestMvvmInstance301 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3936,8 +3332,6 @@ final class TestMvvmInstance302 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3949,8 +3343,6 @@ final class TestMvvmInstance303 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3962,8 +3354,6 @@ final class TestMvvmInstance304 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3975,8 +3365,6 @@ final class TestMvvmInstance305 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -3988,8 +3376,6 @@ final class TestMvvmInstance306 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4001,8 +3387,6 @@ final class TestMvvmInstance307 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4014,8 +3398,6 @@ final class TestMvvmInstance308 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4027,8 +3409,6 @@ final class TestMvvmInstance309 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4040,8 +3420,6 @@ final class TestMvvmInstance310 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4053,8 +3431,6 @@ final class TestMvvmInstance311 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4066,8 +3442,6 @@ final class TestMvvmInstance312 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4079,8 +3453,6 @@ final class TestMvvmInstance313 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4092,8 +3464,6 @@ final class TestMvvmInstance314 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4105,8 +3475,6 @@ final class TestMvvmInstance315 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4118,8 +3486,6 @@ final class TestMvvmInstance316 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4131,8 +3497,6 @@ final class TestMvvmInstance317 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4144,8 +3508,6 @@ final class TestMvvmInstance318 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4157,8 +3519,6 @@ final class TestMvvmInstance319 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4170,8 +3530,6 @@ final class TestMvvmInstance320 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4183,8 +3541,6 @@ final class TestMvvmInstance321 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4196,8 +3552,6 @@ final class TestMvvmInstance322 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4209,8 +3563,6 @@ final class TestMvvmInstance323 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4222,8 +3574,6 @@ final class TestMvvmInstance324 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4235,8 +3585,6 @@ final class TestMvvmInstance325 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4248,8 +3596,6 @@ final class TestMvvmInstance326 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4261,8 +3607,6 @@ final class TestMvvmInstance327 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4274,8 +3618,6 @@ final class TestMvvmInstance328 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4287,8 +3629,6 @@ final class TestMvvmInstance329 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4300,8 +3640,6 @@ final class TestMvvmInstance330 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4313,8 +3651,6 @@ final class TestMvvmInstance331 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4326,8 +3662,6 @@ final class TestMvvmInstance332 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4339,8 +3673,6 @@ final class TestMvvmInstance333 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4352,8 +3684,6 @@ final class TestMvvmInstance334 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4365,8 +3695,6 @@ final class TestMvvmInstance335 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4378,8 +3706,6 @@ final class TestMvvmInstance336 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4391,8 +3717,6 @@ final class TestMvvmInstance337 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4404,8 +3728,6 @@ final class TestMvvmInstance338 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4417,8 +3739,6 @@ final class TestMvvmInstance339 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4430,8 +3750,6 @@ final class TestMvvmInstance340 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4443,8 +3761,6 @@ final class TestMvvmInstance341 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4456,8 +3772,6 @@ final class TestMvvmInstance342 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4469,8 +3783,6 @@ final class TestMvvmInstance343 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4482,8 +3794,6 @@ final class TestMvvmInstance344 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4495,8 +3805,6 @@ final class TestMvvmInstance345 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4508,8 +3816,6 @@ final class TestMvvmInstance346 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4521,8 +3827,6 @@ final class TestMvvmInstance347 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4534,8 +3838,6 @@ final class TestMvvmInstance348 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4547,8 +3849,6 @@ final class TestMvvmInstance349 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4560,8 +3860,6 @@ final class TestMvvmInstance350 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4573,8 +3871,6 @@ final class TestMvvmInstance351 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4586,8 +3882,6 @@ final class TestMvvmInstance352 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4599,8 +3893,6 @@ final class TestMvvmInstance353 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4612,8 +3904,6 @@ final class TestMvvmInstance354 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4625,8 +3915,6 @@ final class TestMvvmInstance355 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4638,8 +3926,6 @@ final class TestMvvmInstance356 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4651,8 +3937,6 @@ final class TestMvvmInstance357 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4664,8 +3948,6 @@ final class TestMvvmInstance358 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4677,8 +3959,6 @@ final class TestMvvmInstance359 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4690,8 +3970,6 @@ final class TestMvvmInstance360 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4703,8 +3981,6 @@ final class TestMvvmInstance361 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4716,8 +3992,6 @@ final class TestMvvmInstance362 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4729,8 +4003,6 @@ final class TestMvvmInstance363 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4742,8 +4014,6 @@ final class TestMvvmInstance364 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4755,8 +4025,6 @@ final class TestMvvmInstance365 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4768,8 +4036,6 @@ final class TestMvvmInstance366 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4781,8 +4047,6 @@ final class TestMvvmInstance367 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4794,8 +4058,6 @@ final class TestMvvmInstance368 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4807,8 +4069,6 @@ final class TestMvvmInstance369 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4820,8 +4080,6 @@ final class TestMvvmInstance370 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4833,8 +4091,6 @@ final class TestMvvmInstance371 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4846,8 +4102,6 @@ final class TestMvvmInstance372 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4859,8 +4113,6 @@ final class TestMvvmInstance373 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4872,8 +4124,6 @@ final class TestMvvmInstance374 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4885,8 +4135,6 @@ final class TestMvvmInstance375 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4898,8 +4146,6 @@ final class TestMvvmInstance376 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4911,8 +4157,6 @@ final class TestMvvmInstance377 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4924,8 +4168,6 @@ final class TestMvvmInstance378 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4937,8 +4179,6 @@ final class TestMvvmInstance379 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4950,8 +4190,6 @@ final class TestMvvmInstance380 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4963,8 +4201,6 @@ final class TestMvvmInstance381 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4976,8 +4212,6 @@ final class TestMvvmInstance382 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -4989,8 +4223,6 @@ final class TestMvvmInstance383 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5002,8 +4234,6 @@ final class TestMvvmInstance384 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5015,8 +4245,6 @@ final class TestMvvmInstance385 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5028,8 +4256,6 @@ final class TestMvvmInstance386 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5041,8 +4267,6 @@ final class TestMvvmInstance387 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5054,8 +4278,6 @@ final class TestMvvmInstance388 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5067,8 +4289,6 @@ final class TestMvvmInstance389 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5080,8 +4300,6 @@ final class TestMvvmInstance390 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5093,8 +4311,6 @@ final class TestMvvmInstance391 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5106,8 +4322,6 @@ final class TestMvvmInstance392 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5119,8 +4333,6 @@ final class TestMvvmInstance393 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5132,8 +4344,6 @@ final class TestMvvmInstance394 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5145,8 +4355,6 @@ final class TestMvvmInstance395 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5158,8 +4366,6 @@ final class TestMvvmInstance396 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5171,8 +4377,6 @@ final class TestMvvmInstance397 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5184,8 +4388,6 @@ final class TestMvvmInstance398 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5197,8 +4399,6 @@ final class TestMvvmInstance399 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5210,8 +4410,6 @@ final class TestMvvmInstance400 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5223,8 +4421,6 @@ final class TestMvvmInstance401 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5236,8 +4432,6 @@ final class TestMvvmInstance402 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5249,8 +4443,6 @@ final class TestMvvmInstance403 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5262,8 +4454,6 @@ final class TestMvvmInstance404 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5275,8 +4465,6 @@ final class TestMvvmInstance405 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5288,8 +4476,6 @@ final class TestMvvmInstance406 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5301,8 +4487,6 @@ final class TestMvvmInstance407 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5314,8 +4498,6 @@ final class TestMvvmInstance408 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5327,8 +4509,6 @@ final class TestMvvmInstance409 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5340,8 +4520,6 @@ final class TestMvvmInstance410 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5353,8 +4531,6 @@ final class TestMvvmInstance411 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5366,8 +4542,6 @@ final class TestMvvmInstance412 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5379,8 +4553,6 @@ final class TestMvvmInstance413 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5392,8 +4564,6 @@ final class TestMvvmInstance414 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5405,8 +4575,6 @@ final class TestMvvmInstance415 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5418,8 +4586,6 @@ final class TestMvvmInstance416 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5431,8 +4597,6 @@ final class TestMvvmInstance417 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5444,8 +4608,6 @@ final class TestMvvmInstance418 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5457,8 +4619,6 @@ final class TestMvvmInstance419 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5470,8 +4630,6 @@ final class TestMvvmInstance420 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5483,8 +4641,6 @@ final class TestMvvmInstance421 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5496,8 +4652,6 @@ final class TestMvvmInstance422 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5509,8 +4663,6 @@ final class TestMvvmInstance423 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5522,8 +4674,6 @@ final class TestMvvmInstance424 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5535,8 +4685,6 @@ final class TestMvvmInstance425 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5548,8 +4696,6 @@ final class TestMvvmInstance426 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5561,8 +4707,6 @@ final class TestMvvmInstance427 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5574,8 +4718,6 @@ final class TestMvvmInstance428 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5587,8 +4729,6 @@ final class TestMvvmInstance429 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5600,8 +4740,6 @@ final class TestMvvmInstance430 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5613,8 +4751,6 @@ final class TestMvvmInstance431 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5626,8 +4762,6 @@ final class TestMvvmInstance432 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5639,8 +4773,6 @@ final class TestMvvmInstance433 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5652,8 +4784,6 @@ final class TestMvvmInstance434 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5665,8 +4795,6 @@ final class TestMvvmInstance435 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5678,8 +4806,6 @@ final class TestMvvmInstance436 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5691,8 +4817,6 @@ final class TestMvvmInstance437 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5704,8 +4828,6 @@ final class TestMvvmInstance438 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5717,8 +4839,6 @@ final class TestMvvmInstance439 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5730,8 +4850,6 @@ final class TestMvvmInstance440 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5743,8 +4861,6 @@ final class TestMvvmInstance441 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5756,8 +4872,6 @@ final class TestMvvmInstance442 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5769,8 +4883,6 @@ final class TestMvvmInstance443 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5782,8 +4894,6 @@ final class TestMvvmInstance444 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5795,8 +4905,6 @@ final class TestMvvmInstance445 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5808,8 +4916,6 @@ final class TestMvvmInstance446 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5821,8 +4927,6 @@ final class TestMvvmInstance447 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5834,8 +4938,6 @@ final class TestMvvmInstance448 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5847,8 +4949,6 @@ final class TestMvvmInstance449 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5860,8 +4960,6 @@ final class TestMvvmInstance450 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5873,8 +4971,6 @@ final class TestMvvmInstance451 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5886,8 +4982,6 @@ final class TestMvvmInstance452 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5899,8 +4993,6 @@ final class TestMvvmInstance453 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5912,8 +5004,6 @@ final class TestMvvmInstance454 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5925,8 +5015,6 @@ final class TestMvvmInstance455 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5938,8 +5026,6 @@ final class TestMvvmInstance456 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5951,8 +5037,6 @@ final class TestMvvmInstance457 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5964,8 +5048,6 @@ final class TestMvvmInstance458 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5977,8 +5059,6 @@ final class TestMvvmInstance459 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -5990,8 +5070,6 @@ final class TestMvvmInstance460 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6003,8 +5081,6 @@ final class TestMvvmInstance461 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6016,8 +5092,6 @@ final class TestMvvmInstance462 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6029,8 +5103,6 @@ final class TestMvvmInstance463 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6042,8 +5114,6 @@ final class TestMvvmInstance464 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6055,8 +5125,6 @@ final class TestMvvmInstance465 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6068,8 +5136,6 @@ final class TestMvvmInstance466 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6081,8 +5147,6 @@ final class TestMvvmInstance467 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6094,8 +5158,6 @@ final class TestMvvmInstance468 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6107,8 +5169,6 @@ final class TestMvvmInstance469 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6120,8 +5180,6 @@ final class TestMvvmInstance470 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6133,8 +5191,6 @@ final class TestMvvmInstance471 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6146,8 +5202,6 @@ final class TestMvvmInstance472 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6159,8 +5213,6 @@ final class TestMvvmInstance473 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6172,8 +5224,6 @@ final class TestMvvmInstance474 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6185,8 +5235,6 @@ final class TestMvvmInstance475 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6198,8 +5246,6 @@ final class TestMvvmInstance476 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6211,8 +5257,6 @@ final class TestMvvmInstance477 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6224,8 +5268,6 @@ final class TestMvvmInstance478 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6237,8 +5279,6 @@ final class TestMvvmInstance479 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6250,8 +5290,6 @@ final class TestMvvmInstance480 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6263,8 +5301,6 @@ final class TestMvvmInstance481 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6276,8 +5312,6 @@ final class TestMvvmInstance482 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6289,8 +5323,6 @@ final class TestMvvmInstance483 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6302,8 +5334,6 @@ final class TestMvvmInstance484 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6315,8 +5345,6 @@ final class TestMvvmInstance485 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6328,8 +5356,6 @@ final class TestMvvmInstance486 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6341,8 +5367,6 @@ final class TestMvvmInstance487 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6354,8 +5378,6 @@ final class TestMvvmInstance488 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6367,8 +5389,6 @@ final class TestMvvmInstance489 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6380,8 +5400,6 @@ final class TestMvvmInstance490 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6393,8 +5411,6 @@ final class TestMvvmInstance491 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6406,8 +5422,6 @@ final class TestMvvmInstance492 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6419,8 +5433,6 @@ final class TestMvvmInstance493 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6432,8 +5444,6 @@ final class TestMvvmInstance494 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6445,8 +5455,6 @@ final class TestMvvmInstance495 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6458,8 +5466,6 @@ final class TestMvvmInstance496 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6471,8 +5477,6 @@ final class TestMvvmInstance497 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6484,8 +5488,6 @@ final class TestMvvmInstance498 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6497,8 +5499,6 @@ final class TestMvvmInstance499 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6510,8 +5510,6 @@ final class TestMvvmInstance500 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6523,8 +5521,6 @@ final class TestMvvmInstance501 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6536,8 +5532,6 @@ final class TestMvvmInstance502 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6549,8 +5543,6 @@ final class TestMvvmInstance503 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6562,8 +5554,6 @@ final class TestMvvmInstance504 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6575,8 +5565,6 @@ final class TestMvvmInstance505 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6588,8 +5576,6 @@ final class TestMvvmInstance506 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6601,8 +5587,6 @@ final class TestMvvmInstance507 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6614,8 +5598,6 @@ final class TestMvvmInstance508 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6627,8 +5609,6 @@ final class TestMvvmInstance509 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6640,8 +5620,6 @@ final class TestMvvmInstance510 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6653,8 +5631,6 @@ final class TestMvvmInstance511 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6666,8 +5642,6 @@ final class TestMvvmInstance512 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6679,8 +5653,6 @@ final class TestMvvmInstance513 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6692,8 +5664,6 @@ final class TestMvvmInstance514 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6705,8 +5675,6 @@ final class TestMvvmInstance515 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6718,8 +5686,6 @@ final class TestMvvmInstance516 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6731,8 +5697,6 @@ final class TestMvvmInstance517 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6744,8 +5708,6 @@ final class TestMvvmInstance518 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6757,8 +5719,6 @@ final class TestMvvmInstance519 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6770,8 +5730,6 @@ final class TestMvvmInstance520 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6783,8 +5741,6 @@ final class TestMvvmInstance521 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6796,8 +5752,6 @@ final class TestMvvmInstance522 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6809,8 +5763,6 @@ final class TestMvvmInstance523 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6822,8 +5774,6 @@ final class TestMvvmInstance524 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6835,8 +5785,6 @@ final class TestMvvmInstance525 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6848,8 +5796,6 @@ final class TestMvvmInstance526 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6861,8 +5807,6 @@ final class TestMvvmInstance527 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6874,8 +5818,6 @@ final class TestMvvmInstance528 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6887,8 +5829,6 @@ final class TestMvvmInstance529 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6900,8 +5840,6 @@ final class TestMvvmInstance530 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6913,8 +5851,6 @@ final class TestMvvmInstance531 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6926,8 +5862,6 @@ final class TestMvvmInstance532 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6939,8 +5873,6 @@ final class TestMvvmInstance533 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6952,8 +5884,6 @@ final class TestMvvmInstance534 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6965,8 +5895,6 @@ final class TestMvvmInstance535 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6978,8 +5906,6 @@ final class TestMvvmInstance536 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -6991,8 +5917,6 @@ final class TestMvvmInstance537 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7004,8 +5928,6 @@ final class TestMvvmInstance538 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7017,8 +5939,6 @@ final class TestMvvmInstance539 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7030,8 +5950,6 @@ final class TestMvvmInstance540 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7043,8 +5961,6 @@ final class TestMvvmInstance541 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7056,8 +5972,6 @@ final class TestMvvmInstance542 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7069,8 +5983,6 @@ final class TestMvvmInstance543 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7082,8 +5994,6 @@ final class TestMvvmInstance544 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7095,8 +6005,6 @@ final class TestMvvmInstance545 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7108,8 +6016,6 @@ final class TestMvvmInstance546 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7121,8 +6027,6 @@ final class TestMvvmInstance547 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7134,8 +6038,6 @@ final class TestMvvmInstance548 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7147,8 +6049,6 @@ final class TestMvvmInstance549 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7160,8 +6060,6 @@ final class TestMvvmInstance550 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7173,8 +6071,6 @@ final class TestMvvmInstance551 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7186,8 +6082,6 @@ final class TestMvvmInstance552 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7199,8 +6093,6 @@ final class TestMvvmInstance553 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7212,8 +6104,6 @@ final class TestMvvmInstance554 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7225,8 +6115,6 @@ final class TestMvvmInstance555 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7238,8 +6126,6 @@ final class TestMvvmInstance556 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7251,8 +6137,6 @@ final class TestMvvmInstance557 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7264,8 +6148,6 @@ final class TestMvvmInstance558 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7277,8 +6159,6 @@ final class TestMvvmInstance559 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7290,8 +6170,6 @@ final class TestMvvmInstance560 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7303,8 +6181,6 @@ final class TestMvvmInstance561 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7316,8 +6192,6 @@ final class TestMvvmInstance562 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7329,8 +6203,6 @@ final class TestMvvmInstance563 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7342,8 +6214,6 @@ final class TestMvvmInstance564 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7355,8 +6225,6 @@ final class TestMvvmInstance565 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7368,8 +6236,6 @@ final class TestMvvmInstance566 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7381,8 +6247,6 @@ final class TestMvvmInstance567 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7394,8 +6258,6 @@ final class TestMvvmInstance568 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7407,8 +6269,6 @@ final class TestMvvmInstance569 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7420,8 +6280,6 @@ final class TestMvvmInstance570 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7433,8 +6291,6 @@ final class TestMvvmInstance571 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7446,8 +6302,6 @@ final class TestMvvmInstance572 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7459,8 +6313,6 @@ final class TestMvvmInstance573 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7472,8 +6324,6 @@ final class TestMvvmInstance574 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7485,8 +6335,6 @@ final class TestMvvmInstance575 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7498,8 +6346,6 @@ final class TestMvvmInstance576 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7511,8 +6357,6 @@ final class TestMvvmInstance577 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7524,8 +6368,6 @@ final class TestMvvmInstance578 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7537,8 +6379,6 @@ final class TestMvvmInstance579 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7550,8 +6390,6 @@ final class TestMvvmInstance580 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7563,8 +6401,6 @@ final class TestMvvmInstance581 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7576,8 +6412,6 @@ final class TestMvvmInstance582 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7589,8 +6423,6 @@ final class TestMvvmInstance583 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7602,8 +6434,6 @@ final class TestMvvmInstance584 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7615,8 +6445,6 @@ final class TestMvvmInstance585 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7628,8 +6456,6 @@ final class TestMvvmInstance586 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7641,8 +6467,6 @@ final class TestMvvmInstance587 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7654,8 +6478,6 @@ final class TestMvvmInstance588 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7667,8 +6489,6 @@ final class TestMvvmInstance589 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7680,8 +6500,6 @@ final class TestMvvmInstance590 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7693,8 +6511,6 @@ final class TestMvvmInstance591 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7706,8 +6522,6 @@ final class TestMvvmInstance592 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7719,8 +6533,6 @@ final class TestMvvmInstance593 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7732,8 +6544,6 @@ final class TestMvvmInstance594 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7745,8 +6555,6 @@ final class TestMvvmInstance595 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7758,8 +6566,6 @@ final class TestMvvmInstance596 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7771,8 +6577,6 @@ final class TestMvvmInstance597 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7784,8 +6588,6 @@ final class TestMvvmInstance598 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7797,8 +6599,6 @@ final class TestMvvmInstance599 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7810,8 +6610,6 @@ final class TestMvvmInstance600 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7823,8 +6621,6 @@ final class TestMvvmInstance601 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7836,8 +6632,6 @@ final class TestMvvmInstance602 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7849,8 +6643,6 @@ final class TestMvvmInstance603 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7862,8 +6654,6 @@ final class TestMvvmInstance604 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7875,8 +6665,6 @@ final class TestMvvmInstance605 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7888,8 +6676,6 @@ final class TestMvvmInstance606 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7901,8 +6687,6 @@ final class TestMvvmInstance607 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7914,8 +6698,6 @@ final class TestMvvmInstance608 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7927,8 +6709,6 @@ final class TestMvvmInstance609 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7940,8 +6720,6 @@ final class TestMvvmInstance610 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7953,8 +6731,6 @@ final class TestMvvmInstance611 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7966,8 +6742,6 @@ final class TestMvvmInstance612 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7979,8 +6753,6 @@ final class TestMvvmInstance613 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -7992,8 +6764,6 @@ final class TestMvvmInstance614 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8005,8 +6775,6 @@ final class TestMvvmInstance615 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8018,8 +6786,6 @@ final class TestMvvmInstance616 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8031,8 +6797,6 @@ final class TestMvvmInstance617 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8044,8 +6808,6 @@ final class TestMvvmInstance618 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8057,8 +6819,6 @@ final class TestMvvmInstance619 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8070,8 +6830,6 @@ final class TestMvvmInstance620 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8083,8 +6841,6 @@ final class TestMvvmInstance621 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8096,8 +6852,6 @@ final class TestMvvmInstance622 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8109,8 +6863,6 @@ final class TestMvvmInstance623 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8122,8 +6874,6 @@ final class TestMvvmInstance624 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8135,8 +6885,6 @@ final class TestMvvmInstance625 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8148,8 +6896,6 @@ final class TestMvvmInstance626 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8161,8 +6907,6 @@ final class TestMvvmInstance627 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8174,8 +6918,6 @@ final class TestMvvmInstance628 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8187,8 +6929,6 @@ final class TestMvvmInstance629 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8200,8 +6940,6 @@ final class TestMvvmInstance630 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8213,8 +6951,6 @@ final class TestMvvmInstance631 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8226,8 +6962,6 @@ final class TestMvvmInstance632 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8239,8 +6973,6 @@ final class TestMvvmInstance633 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8252,8 +6984,6 @@ final class TestMvvmInstance634 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8265,8 +6995,6 @@ final class TestMvvmInstance635 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8278,8 +7006,6 @@ final class TestMvvmInstance636 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8291,8 +7017,6 @@ final class TestMvvmInstance637 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8304,8 +7028,6 @@ final class TestMvvmInstance638 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8317,8 +7039,6 @@ final class TestMvvmInstance639 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8330,8 +7050,6 @@ final class TestMvvmInstance640 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8343,8 +7061,6 @@ final class TestMvvmInstance641 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8356,8 +7072,6 @@ final class TestMvvmInstance642 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8369,8 +7083,6 @@ final class TestMvvmInstance643 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8382,8 +7094,6 @@ final class TestMvvmInstance644 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8395,8 +7105,6 @@ final class TestMvvmInstance645 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8408,8 +7116,6 @@ final class TestMvvmInstance646 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8421,8 +7127,6 @@ final class TestMvvmInstance647 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8434,8 +7138,6 @@ final class TestMvvmInstance648 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8447,8 +7149,6 @@ final class TestMvvmInstance649 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8460,8 +7160,6 @@ final class TestMvvmInstance650 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8473,8 +7171,6 @@ final class TestMvvmInstance651 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8486,8 +7182,6 @@ final class TestMvvmInstance652 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8499,8 +7193,6 @@ final class TestMvvmInstance653 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8512,8 +7204,6 @@ final class TestMvvmInstance654 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8525,8 +7215,6 @@ final class TestMvvmInstance655 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8538,8 +7226,6 @@ final class TestMvvmInstance656 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8551,8 +7237,6 @@ final class TestMvvmInstance657 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8564,8 +7248,6 @@ final class TestMvvmInstance658 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8577,8 +7259,6 @@ final class TestMvvmInstance659 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8590,8 +7270,6 @@ final class TestMvvmInstance660 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8603,8 +7281,6 @@ final class TestMvvmInstance661 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8616,8 +7292,6 @@ final class TestMvvmInstance662 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8629,8 +7303,6 @@ final class TestMvvmInstance663 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8642,8 +7314,6 @@ final class TestMvvmInstance664 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8655,8 +7325,6 @@ final class TestMvvmInstance665 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8668,8 +7336,6 @@ final class TestMvvmInstance666 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8681,8 +7347,6 @@ final class TestMvvmInstance667 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8694,8 +7358,6 @@ final class TestMvvmInstance668 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8707,8 +7369,6 @@ final class TestMvvmInstance669 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8720,8 +7380,6 @@ final class TestMvvmInstance670 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8733,8 +7391,6 @@ final class TestMvvmInstance671 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8746,8 +7402,6 @@ final class TestMvvmInstance672 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8759,8 +7413,6 @@ final class TestMvvmInstance673 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8772,8 +7424,6 @@ final class TestMvvmInstance674 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8785,8 +7435,6 @@ final class TestMvvmInstance675 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8798,8 +7446,6 @@ final class TestMvvmInstance676 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8811,8 +7457,6 @@ final class TestMvvmInstance677 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8824,8 +7468,6 @@ final class TestMvvmInstance678 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8837,8 +7479,6 @@ final class TestMvvmInstance679 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8850,8 +7490,6 @@ final class TestMvvmInstance680 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8863,8 +7501,6 @@ final class TestMvvmInstance681 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8876,8 +7512,6 @@ final class TestMvvmInstance682 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8889,8 +7523,6 @@ final class TestMvvmInstance683 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8902,8 +7534,6 @@ final class TestMvvmInstance684 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8915,8 +7545,6 @@ final class TestMvvmInstance685 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8928,8 +7556,6 @@ final class TestMvvmInstance686 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8941,8 +7567,6 @@ final class TestMvvmInstance687 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8954,8 +7578,6 @@ final class TestMvvmInstance688 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8967,8 +7589,6 @@ final class TestMvvmInstance689 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8980,8 +7600,6 @@ final class TestMvvmInstance690 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -8993,8 +7611,6 @@ final class TestMvvmInstance691 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9006,8 +7622,6 @@ final class TestMvvmInstance692 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9019,8 +7633,6 @@ final class TestMvvmInstance693 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9032,8 +7644,6 @@ final class TestMvvmInstance694 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9045,8 +7655,6 @@ final class TestMvvmInstance695 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9058,8 +7666,6 @@ final class TestMvvmInstance696 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9071,8 +7677,6 @@ final class TestMvvmInstance697 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9084,8 +7688,6 @@ final class TestMvvmInstance698 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9097,8 +7699,6 @@ final class TestMvvmInstance699 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9110,8 +7710,6 @@ final class TestMvvmInstance700 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9123,8 +7721,6 @@ final class TestMvvmInstance701 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9136,8 +7732,6 @@ final class TestMvvmInstance702 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9149,8 +7743,6 @@ final class TestMvvmInstance703 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9162,8 +7754,6 @@ final class TestMvvmInstance704 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9175,8 +7765,6 @@ final class TestMvvmInstance705 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9188,8 +7776,6 @@ final class TestMvvmInstance706 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9201,8 +7787,6 @@ final class TestMvvmInstance707 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9214,8 +7798,6 @@ final class TestMvvmInstance708 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9227,8 +7809,6 @@ final class TestMvvmInstance709 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9240,8 +7820,6 @@ final class TestMvvmInstance710 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9253,8 +7831,6 @@ final class TestMvvmInstance711 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9266,8 +7842,6 @@ final class TestMvvmInstance712 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9279,8 +7853,6 @@ final class TestMvvmInstance713 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9292,8 +7864,6 @@ final class TestMvvmInstance714 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9305,8 +7875,6 @@ final class TestMvvmInstance715 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9318,8 +7886,6 @@ final class TestMvvmInstance716 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9331,8 +7897,6 @@ final class TestMvvmInstance717 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9344,8 +7908,6 @@ final class TestMvvmInstance718 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9357,8 +7919,6 @@ final class TestMvvmInstance719 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9370,8 +7930,6 @@ final class TestMvvmInstance720 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9383,8 +7941,6 @@ final class TestMvvmInstance721 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9396,8 +7952,6 @@ final class TestMvvmInstance722 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9409,8 +7963,6 @@ final class TestMvvmInstance723 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9422,8 +7974,6 @@ final class TestMvvmInstance724 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9435,8 +7985,6 @@ final class TestMvvmInstance725 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9448,8 +7996,6 @@ final class TestMvvmInstance726 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9461,8 +8007,6 @@ final class TestMvvmInstance727 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9474,8 +8018,6 @@ final class TestMvvmInstance728 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9487,8 +8029,6 @@ final class TestMvvmInstance729 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9500,8 +8040,6 @@ final class TestMvvmInstance730 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9513,8 +8051,6 @@ final class TestMvvmInstance731 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9526,8 +8062,6 @@ final class TestMvvmInstance732 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9539,8 +8073,6 @@ final class TestMvvmInstance733 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9552,8 +8084,6 @@ final class TestMvvmInstance734 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9565,8 +8095,6 @@ final class TestMvvmInstance735 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9578,8 +8106,6 @@ final class TestMvvmInstance736 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9591,8 +8117,6 @@ final class TestMvvmInstance737 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9604,8 +8128,6 @@ final class TestMvvmInstance738 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9617,8 +8139,6 @@ final class TestMvvmInstance739 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9630,8 +8150,6 @@ final class TestMvvmInstance740 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9643,8 +8161,6 @@ final class TestMvvmInstance741 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9656,8 +8172,6 @@ final class TestMvvmInstance742 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9669,8 +8183,6 @@ final class TestMvvmInstance743 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9682,8 +8194,6 @@ final class TestMvvmInstance744 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9695,8 +8205,6 @@ final class TestMvvmInstance745 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9708,8 +8216,6 @@ final class TestMvvmInstance746 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9721,8 +8227,6 @@ final class TestMvvmInstance747 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9734,8 +8238,6 @@ final class TestMvvmInstance748 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9747,8 +8249,6 @@ final class TestMvvmInstance749 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9760,8 +8260,6 @@ final class TestMvvmInstance750 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9773,8 +8271,6 @@ final class TestMvvmInstance751 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9786,8 +8282,6 @@ final class TestMvvmInstance752 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9799,8 +8293,6 @@ final class TestMvvmInstance753 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9812,8 +8304,6 @@ final class TestMvvmInstance754 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9825,8 +8315,6 @@ final class TestMvvmInstance755 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9838,8 +8326,6 @@ final class TestMvvmInstance756 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9851,8 +8337,6 @@ final class TestMvvmInstance757 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9864,8 +8348,6 @@ final class TestMvvmInstance758 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9877,8 +8359,6 @@ final class TestMvvmInstance759 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9890,8 +8370,6 @@ final class TestMvvmInstance760 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9903,8 +8381,6 @@ final class TestMvvmInstance761 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9916,8 +8392,6 @@ final class TestMvvmInstance762 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9929,8 +8403,6 @@ final class TestMvvmInstance763 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9942,8 +8414,6 @@ final class TestMvvmInstance764 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9955,8 +8425,6 @@ final class TestMvvmInstance765 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9968,8 +8436,6 @@ final class TestMvvmInstance766 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9981,8 +8447,6 @@ final class TestMvvmInstance767 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -9994,8 +8458,6 @@ final class TestMvvmInstance768 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10007,8 +8469,6 @@ final class TestMvvmInstance769 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10020,8 +8480,6 @@ final class TestMvvmInstance770 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10033,8 +8491,6 @@ final class TestMvvmInstance771 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10046,8 +8502,6 @@ final class TestMvvmInstance772 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10059,8 +8513,6 @@ final class TestMvvmInstance773 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10072,8 +8524,6 @@ final class TestMvvmInstance774 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10085,8 +8535,6 @@ final class TestMvvmInstance775 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10098,8 +8546,6 @@ final class TestMvvmInstance776 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10111,8 +8557,6 @@ final class TestMvvmInstance777 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10124,8 +8568,6 @@ final class TestMvvmInstance778 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10137,8 +8579,6 @@ final class TestMvvmInstance779 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10150,8 +8590,6 @@ final class TestMvvmInstance780 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10163,8 +8601,6 @@ final class TestMvvmInstance781 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10176,8 +8612,6 @@ final class TestMvvmInstance782 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10189,8 +8623,6 @@ final class TestMvvmInstance783 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10202,8 +8634,6 @@ final class TestMvvmInstance784 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10215,8 +8645,6 @@ final class TestMvvmInstance785 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10228,8 +8656,6 @@ final class TestMvvmInstance786 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10241,8 +8667,6 @@ final class TestMvvmInstance787 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10254,8 +8678,6 @@ final class TestMvvmInstance788 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10267,8 +8689,6 @@ final class TestMvvmInstance789 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10280,8 +8700,6 @@ final class TestMvvmInstance790 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10293,8 +8711,6 @@ final class TestMvvmInstance791 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10306,8 +8722,6 @@ final class TestMvvmInstance792 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10319,8 +8733,6 @@ final class TestMvvmInstance793 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10332,8 +8744,6 @@ final class TestMvvmInstance794 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10345,8 +8755,6 @@ final class TestMvvmInstance795 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10358,8 +8766,6 @@ final class TestMvvmInstance796 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10371,8 +8777,6 @@ final class TestMvvmInstance797 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10384,8 +8788,6 @@ final class TestMvvmInstance798 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10397,8 +8799,6 @@ final class TestMvvmInstance799 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10410,8 +8810,6 @@ final class TestMvvmInstance800 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10423,8 +8821,6 @@ final class TestMvvmInstance801 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10436,8 +8832,6 @@ final class TestMvvmInstance802 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10449,8 +8843,6 @@ final class TestMvvmInstance803 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10462,8 +8854,6 @@ final class TestMvvmInstance804 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10475,8 +8865,6 @@ final class TestMvvmInstance805 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10488,8 +8876,6 @@ final class TestMvvmInstance806 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10501,8 +8887,6 @@ final class TestMvvmInstance807 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10514,8 +8898,6 @@ final class TestMvvmInstance808 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10527,8 +8909,6 @@ final class TestMvvmInstance809 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10540,8 +8920,6 @@ final class TestMvvmInstance810 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10553,8 +8931,6 @@ final class TestMvvmInstance811 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10566,8 +8942,6 @@ final class TestMvvmInstance812 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10579,8 +8953,6 @@ final class TestMvvmInstance813 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10592,8 +8964,6 @@ final class TestMvvmInstance814 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10605,8 +8975,6 @@ final class TestMvvmInstance815 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10618,8 +8986,6 @@ final class TestMvvmInstance816 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10631,8 +8997,6 @@ final class TestMvvmInstance817 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10644,8 +9008,6 @@ final class TestMvvmInstance818 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10657,8 +9019,6 @@ final class TestMvvmInstance819 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10670,8 +9030,6 @@ final class TestMvvmInstance820 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10683,8 +9041,6 @@ final class TestMvvmInstance821 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10696,8 +9052,6 @@ final class TestMvvmInstance822 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10709,8 +9063,6 @@ final class TestMvvmInstance823 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10722,8 +9074,6 @@ final class TestMvvmInstance824 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10735,8 +9085,6 @@ final class TestMvvmInstance825 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10748,8 +9096,6 @@ final class TestMvvmInstance826 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10761,8 +9107,6 @@ final class TestMvvmInstance827 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10774,8 +9118,6 @@ final class TestMvvmInstance828 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10787,8 +9129,6 @@ final class TestMvvmInstance829 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10800,8 +9140,6 @@ final class TestMvvmInstance830 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10813,8 +9151,6 @@ final class TestMvvmInstance831 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10826,8 +9162,6 @@ final class TestMvvmInstance832 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10839,8 +9173,6 @@ final class TestMvvmInstance833 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10852,8 +9184,6 @@ final class TestMvvmInstance834 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10865,8 +9195,6 @@ final class TestMvvmInstance835 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10878,8 +9206,6 @@ final class TestMvvmInstance836 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10891,8 +9217,6 @@ final class TestMvvmInstance837 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10904,8 +9228,6 @@ final class TestMvvmInstance838 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10917,8 +9239,6 @@ final class TestMvvmInstance839 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10930,8 +9250,6 @@ final class TestMvvmInstance840 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10943,8 +9261,6 @@ final class TestMvvmInstance841 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10956,8 +9272,6 @@ final class TestMvvmInstance842 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10969,8 +9283,6 @@ final class TestMvvmInstance843 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10982,8 +9294,6 @@ final class TestMvvmInstance844 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -10995,8 +9305,6 @@ final class TestMvvmInstance845 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11008,8 +9316,6 @@ final class TestMvvmInstance846 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11021,8 +9327,6 @@ final class TestMvvmInstance847 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11034,8 +9338,6 @@ final class TestMvvmInstance848 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11047,8 +9349,6 @@ final class TestMvvmInstance849 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11060,8 +9360,6 @@ final class TestMvvmInstance850 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11073,8 +9371,6 @@ final class TestMvvmInstance851 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11086,8 +9382,6 @@ final class TestMvvmInstance852 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11099,8 +9393,6 @@ final class TestMvvmInstance853 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11112,8 +9404,6 @@ final class TestMvvmInstance854 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11125,8 +9415,6 @@ final class TestMvvmInstance855 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11138,8 +9426,6 @@ final class TestMvvmInstance856 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11151,8 +9437,6 @@ final class TestMvvmInstance857 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11164,8 +9448,6 @@ final class TestMvvmInstance858 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11177,8 +9459,6 @@ final class TestMvvmInstance859 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11190,8 +9470,6 @@ final class TestMvvmInstance860 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11203,8 +9481,6 @@ final class TestMvvmInstance861 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11216,8 +9492,6 @@ final class TestMvvmInstance862 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11229,8 +9503,6 @@ final class TestMvvmInstance863 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11242,8 +9514,6 @@ final class TestMvvmInstance864 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11255,8 +9525,6 @@ final class TestMvvmInstance865 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11268,8 +9536,6 @@ final class TestMvvmInstance866 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11281,8 +9547,6 @@ final class TestMvvmInstance867 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11294,8 +9558,6 @@ final class TestMvvmInstance868 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11307,8 +9569,6 @@ final class TestMvvmInstance869 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11320,8 +9580,6 @@ final class TestMvvmInstance870 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11333,8 +9591,6 @@ final class TestMvvmInstance871 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11346,8 +9602,6 @@ final class TestMvvmInstance872 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11359,8 +9613,6 @@ final class TestMvvmInstance873 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11372,8 +9624,6 @@ final class TestMvvmInstance874 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11385,8 +9635,6 @@ final class TestMvvmInstance875 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11398,8 +9646,6 @@ final class TestMvvmInstance876 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11411,8 +9657,6 @@ final class TestMvvmInstance877 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11424,8 +9668,6 @@ final class TestMvvmInstance878 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11437,8 +9679,6 @@ final class TestMvvmInstance879 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11450,8 +9690,6 @@ final class TestMvvmInstance880 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11463,8 +9701,6 @@ final class TestMvvmInstance881 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11476,8 +9712,6 @@ final class TestMvvmInstance882 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11489,8 +9723,6 @@ final class TestMvvmInstance883 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11502,8 +9734,6 @@ final class TestMvvmInstance884 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11515,8 +9745,6 @@ final class TestMvvmInstance885 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11528,8 +9756,6 @@ final class TestMvvmInstance886 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11541,8 +9767,6 @@ final class TestMvvmInstance887 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11554,8 +9778,6 @@ final class TestMvvmInstance888 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11567,8 +9789,6 @@ final class TestMvvmInstance889 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11580,8 +9800,6 @@ final class TestMvvmInstance890 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11593,8 +9811,6 @@ final class TestMvvmInstance891 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11606,8 +9822,6 @@ final class TestMvvmInstance892 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11619,8 +9833,6 @@ final class TestMvvmInstance893 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11632,8 +9844,6 @@ final class TestMvvmInstance894 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11645,8 +9855,6 @@ final class TestMvvmInstance895 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11658,8 +9866,6 @@ final class TestMvvmInstance896 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11671,8 +9877,6 @@ final class TestMvvmInstance897 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11684,8 +9888,6 @@ final class TestMvvmInstance898 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11697,8 +9899,6 @@ final class TestMvvmInstance899 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11710,8 +9910,6 @@ final class TestMvvmInstance900 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11723,8 +9921,6 @@ final class TestMvvmInstance901 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11736,8 +9932,6 @@ final class TestMvvmInstance902 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11749,8 +9943,6 @@ final class TestMvvmInstance903 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11762,8 +9954,6 @@ final class TestMvvmInstance904 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11775,8 +9965,6 @@ final class TestMvvmInstance905 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11788,8 +9976,6 @@ final class TestMvvmInstance906 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11801,8 +9987,6 @@ final class TestMvvmInstance907 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11814,8 +9998,6 @@ final class TestMvvmInstance908 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11827,8 +10009,6 @@ final class TestMvvmInstance909 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11840,8 +10020,6 @@ final class TestMvvmInstance910 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11853,8 +10031,6 @@ final class TestMvvmInstance911 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11866,8 +10042,6 @@ final class TestMvvmInstance912 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11879,8 +10053,6 @@ final class TestMvvmInstance913 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11892,8 +10064,6 @@ final class TestMvvmInstance914 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11905,8 +10075,6 @@ final class TestMvvmInstance915 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11918,8 +10086,6 @@ final class TestMvvmInstance916 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11931,8 +10097,6 @@ final class TestMvvmInstance917 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11944,8 +10108,6 @@ final class TestMvvmInstance918 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11957,8 +10119,6 @@ final class TestMvvmInstance919 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11970,8 +10130,6 @@ final class TestMvvmInstance920 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11983,8 +10141,6 @@ final class TestMvvmInstance921 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -11996,8 +10152,6 @@ final class TestMvvmInstance922 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12009,8 +10163,6 @@ final class TestMvvmInstance923 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12022,8 +10174,6 @@ final class TestMvvmInstance924 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12035,8 +10185,6 @@ final class TestMvvmInstance925 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12048,8 +10196,6 @@ final class TestMvvmInstance926 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12061,8 +10207,6 @@ final class TestMvvmInstance927 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12074,8 +10218,6 @@ final class TestMvvmInstance928 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12087,8 +10229,6 @@ final class TestMvvmInstance929 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12100,8 +10240,6 @@ final class TestMvvmInstance930 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12113,8 +10251,6 @@ final class TestMvvmInstance931 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12126,8 +10262,6 @@ final class TestMvvmInstance932 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12139,8 +10273,6 @@ final class TestMvvmInstance933 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12152,8 +10284,6 @@ final class TestMvvmInstance934 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12165,8 +10295,6 @@ final class TestMvvmInstance935 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12178,8 +10306,6 @@ final class TestMvvmInstance936 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12191,8 +10317,6 @@ final class TestMvvmInstance937 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12204,8 +10328,6 @@ final class TestMvvmInstance938 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12217,8 +10339,6 @@ final class TestMvvmInstance939 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12230,8 +10350,6 @@ final class TestMvvmInstance940 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12243,8 +10361,6 @@ final class TestMvvmInstance941 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12256,8 +10372,6 @@ final class TestMvvmInstance942 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12269,8 +10383,6 @@ final class TestMvvmInstance943 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12282,8 +10394,6 @@ final class TestMvvmInstance944 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12295,8 +10405,6 @@ final class TestMvvmInstance945 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12308,8 +10416,6 @@ final class TestMvvmInstance946 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12321,8 +10427,6 @@ final class TestMvvmInstance947 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12334,8 +10438,6 @@ final class TestMvvmInstance948 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12347,8 +10449,6 @@ final class TestMvvmInstance949 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12360,8 +10460,6 @@ final class TestMvvmInstance950 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12373,8 +10471,6 @@ final class TestMvvmInstance951 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12386,8 +10482,6 @@ final class TestMvvmInstance952 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12399,8 +10493,6 @@ final class TestMvvmInstance953 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12412,8 +10504,6 @@ final class TestMvvmInstance954 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12425,8 +10515,6 @@ final class TestMvvmInstance955 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12438,8 +10526,6 @@ final class TestMvvmInstance956 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12451,8 +10537,6 @@ final class TestMvvmInstance957 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12464,8 +10548,6 @@ final class TestMvvmInstance958 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12477,8 +10559,6 @@ final class TestMvvmInstance959 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12490,8 +10570,6 @@ final class TestMvvmInstance960 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12503,8 +10581,6 @@ final class TestMvvmInstance961 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12516,8 +10592,6 @@ final class TestMvvmInstance962 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12529,8 +10603,6 @@ final class TestMvvmInstance963 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12542,8 +10614,6 @@ final class TestMvvmInstance964 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12555,8 +10625,6 @@ final class TestMvvmInstance965 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12568,8 +10636,6 @@ final class TestMvvmInstance966 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12581,8 +10647,6 @@ final class TestMvvmInstance967 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12594,8 +10658,6 @@ final class TestMvvmInstance968 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12607,8 +10669,6 @@ final class TestMvvmInstance969 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12620,8 +10680,6 @@ final class TestMvvmInstance970 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12633,8 +10691,6 @@ final class TestMvvmInstance971 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12646,8 +10702,6 @@ final class TestMvvmInstance972 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12659,8 +10713,6 @@ final class TestMvvmInstance973 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12672,8 +10724,6 @@ final class TestMvvmInstance974 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12685,8 +10735,6 @@ final class TestMvvmInstance975 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12698,8 +10746,6 @@ final class TestMvvmInstance976 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12711,8 +10757,6 @@ final class TestMvvmInstance977 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12724,8 +10768,6 @@ final class TestMvvmInstance978 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12737,8 +10779,6 @@ final class TestMvvmInstance979 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12750,8 +10790,6 @@ final class TestMvvmInstance980 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12763,8 +10801,6 @@ final class TestMvvmInstance981 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12776,8 +10812,6 @@ final class TestMvvmInstance982 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12789,8 +10823,6 @@ final class TestMvvmInstance983 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12802,8 +10834,6 @@ final class TestMvvmInstance984 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12815,8 +10845,6 @@ final class TestMvvmInstance985 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12828,8 +10856,6 @@ final class TestMvvmInstance986 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12841,8 +10867,6 @@ final class TestMvvmInstance987 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12854,8 +10878,6 @@ final class TestMvvmInstance988 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12867,8 +10889,6 @@ final class TestMvvmInstance989 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12880,8 +10900,6 @@ final class TestMvvmInstance990 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12893,8 +10911,6 @@ final class TestMvvmInstance991 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12906,8 +10922,6 @@ final class TestMvvmInstance992 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12919,8 +10933,6 @@ final class TestMvvmInstance993 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12932,8 +10944,6 @@ final class TestMvvmInstance994 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12945,8 +10955,6 @@ final class TestMvvmInstance995 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12958,8 +10966,6 @@ final class TestMvvmInstance996 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12971,8 +10977,6 @@ final class TestMvvmInstance997 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12984,8 +10988,6 @@ final class TestMvvmInstance998 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 
@@ -12997,8 +10999,6 @@ final class TestMvvmInstance999 extends MvvmInstance<int?> {
     super.initialize(input);
 
     value = input ?? 1;
-
-    initialized = true;
   }
 }
 

@@ -7,11 +7,11 @@ import 'package:umvvm/umvvm.dart';
 ///
 /// statefulData.unwrap(); // throws error
 ///
-/// var statefulData = ErrorData(error: 'test error');
+/// statefulData = ErrorData(error: 'test error');
 ///
 /// statefulData.unwrap(); // throws error
 ///
-/// var statefulData = SuccessData(result: 1);
+/// statefulData = SuccessData(result: 1);
 ///
 /// statefulData.unwrap(); // valid
 ///

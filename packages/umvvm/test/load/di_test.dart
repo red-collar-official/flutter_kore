@@ -62,13 +62,7 @@ void main() {
       for (var i = 0; i < iterations; i++) {
         final stopwatch = Stopwatch()..start();
 
-        final _ = instances.getByTypeString(
-          'TestMvvmInstance$i',
-          null,
-          null,
-          BaseScopes.global,
-          false,
-        );
+        final _ = instances.getByTypeString(type: 'TestMvvmInstance$i');
 
         average += stopwatch.elapsedMicroseconds;
       }

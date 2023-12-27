@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
-/// Model class describing confifuration for basic mvvm instance
+/// Model class describing configuration for basic mvvm instance
 class MvvmInstanceConfiguration {
   const MvvmInstanceConfiguration({
     this.parts = const [],
@@ -20,13 +20,13 @@ class MvvmInstanceConfiguration {
 
 /// Base class for mvvm instance
 /// Contains basic interface for init and dispose operations
-/// Also every mvvm element connected to main app event bus
+/// Also every mvvm instance connected to main app event bus
 abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Flag indicating that this instance is fully initialized
   ///
   /// You must set this flag to true in sync [initialize]
   /// and [initializeWithoutConnections] calls
-  bool initialized = false;
+  bool isInitialized = false;
 
   /// Observable indicating that all parts are connected to this instance
   ///
@@ -37,14 +37,13 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Store can't be used if this flag is true
   bool isDisposed = false;
 
-  final _parts = HashMap<Type, List<BaseInstancePart>>();
+  final _parts = HashMap<Type, List<BaseInstancePart?>>();
 
   /// Input for this instance
   late final T input;
 
   /// [MvvmInstanceConfiguration] for this instance
-  MvvmInstanceConfiguration get configuration =>
-      const MvvmInstanceConfiguration();
+  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration();
 
   /// Getter that returns true if instance contains async parts
   /// or require async initialization
@@ -54,8 +53,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   bool get isAsync {
     return configuration.isAsync != null
         ? configuration.isAsync!
-        : getFullPartConnectorsList().indexWhere((element) => element.async) !=
-            -1;
+        : getFullPartConnectorsList().indexWhere((element) => element.async) != -1;
   }
   // coverage:ignore-end
 
@@ -66,11 +64,15 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     this.input = input;
 
     initializeSub();
-    paused = false;
+    isPaused = false;
 
     allPartsReady.update(false);
 
     initializeInstanceParts();
+
+    if (!isAsync) {
+      isInitialized = true;
+    }
   }
 
   /// Base method for instance dispose
@@ -81,12 +83,12 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
 
     _parts.forEach((key, partsList) {
       for (final value in partsList) {
-        value.dispose();
+        value?.dispose();
       }
     });
 
     isDisposed = true;
-    paused = true;
+    isPaused = true;
 
     allPartsReady.dispose();
   }
@@ -100,6 +102,10 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   @mustCallSuper
   Future<void> initializeAsync() async {
     await initializeInstancePartsAsync();
+
+    if (isAsync) {
+      isInitialized = true;
+    }
   }
 
   /// Base method for lightweight instance initialization
@@ -109,7 +115,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   void initializeWithoutConnections(T input) {
     this.input = input;
 
-    paused = false;
+    isPaused = false;
   }
   // coverage:ignore-end
 
@@ -117,6 +123,36 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   // coverage:ignore-start
   Future<void> initializeWithoutConnectionsAsync() async {}
   // coverage:ignore-end
+
+  @override
+  @mustCallSuper
+  void pauseEventBusSubscription() {
+    super.pauseEventBusSubscription();
+
+    for (final element in _parts.values) {
+      for (final instance in element) {
+        instance?.pauseEventBusSubscription();
+      }
+    }
+  }
+
+  @override
+  @mustCallSuper
+  void resumeEventBusSubscription({
+    bool sendAllEventsReceivedWhilePause = true,
+  }) {
+    super.resumeEventBusSubscription(
+      sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
+    );
+
+    for (final element in _parts.values) {
+      for (final instance in element) {
+        instance?.resumeEventBusSubscription(
+          sendAllEventsReceivedWhilePause: sendAllEventsReceivedWhilePause,
+        );
+      }
+    }
+  }
 
   /// Returns initialized instance part for given type
   InstancePartType useInstancePart<InstancePartType extends BaseInstancePart>({
@@ -130,8 +166,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
 
     if (index < 0 || index >= _parts[InstancePartType]!.length) {
       throw IllegalArgumentException(
-        message:
-            'The [index] value must be non-negative and less than count of parts of [type].',
+        message: 'The index = $index value must be non-negative and less than count of parts of $InstancePartType.',
       );
     }
 
@@ -147,18 +182,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
         final list = _parts[element.type]!;
 
         for (var i = 0; i < element.count; i++) {
-          final part =
-              InstanceCollection.instance.getUniqueByTypeStringWithParams(
-            element.type.toString(),
-            params: element.inputForIndex != null
-                ? element.inputForIndex!(i)
-                : element.input,
-            withoutConnections: element.withoutConnections,
-            beforeInitialize: (part) {
-              part.parentInstance = this;
-            },
-          ) as BaseInstancePart;
-
+          final part = _getUniquePart(element, index: i) as BaseInstancePart;
           _setPartRootParentInstance(part);
 
           list.add(part);
@@ -168,15 +192,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
           element.type: list,
         });
       } else {
-        final part =
-            InstanceCollection.instance.getUniqueByTypeStringWithParams(
-          element.type.toString(),
-          params: element.input,
-          withoutConnections: element.withoutConnections,
-          beforeInitialize: (part) {
-            part.parentInstance = this;
-          },
-        ) as BaseInstancePart;
+        final part = _getUniquePart(element) as BaseInstancePart;
 
         _setPartRootParentInstance(part);
 
@@ -194,16 +210,20 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Keeps part root parent instance in sync
   void _setPartRootParentInstance(BaseInstancePart part) {
     if (this is BaseInstancePart) {
-      part.rootParentInstance = (this as BaseInstancePart).parentInstance;
+      final rootParent = (this as BaseInstancePart).rootParentInstance;
+
+      if (rootParent == null) {
+        (this as BaseInstancePart).rootParentInstance = (this as BaseInstancePart).parentInstance;
+      }
+
+      part.rootParentInstance = (this as BaseInstancePart).rootParentInstance;
     }
   }
 
   /// Adds parts to local collection
   Future<void> initializeInstancePartsAsync() async {
     await Future.wait(
-      getFullPartConnectorsList()
-          .where((element) => element.async)
-          .map(_addAsyncPart),
+      getFullPartConnectorsList().where((element) => element.async).map(_addAsyncPart),
     );
 
     onAllPartReady();
@@ -217,49 +237,52 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
       final list = _parts[element.type]!;
 
       Future<void> add(int index) async {
-        final part = await InstanceCollection.instance
-            .getUniqueByTypeStringWithParamsAsync(
-          element.type.toString(),
-          params: element.inputForIndex != null
-              ? element.inputForIndex!(index)
-              : element.input,
-          withoutConnections: element.withoutConnections,
-          beforeInitialize: (part) {
-            part.parentInstance = this;
-          },
-        ) as BaseInstancePart;
-
+        final part = await _getUniquePartAsync(element, index: index) as BaseInstancePart;
         _setPartRootParentInstance(part);
 
         list.add(part);
 
-        onAsyncPartReady(element.type, index: index);
+        onAsyncPartReady(element.type, index);
       }
 
       await Future.wait([
         for (var i = 0; i < element.count; i++) add(i),
       ]);
     } else {
-      final part = await InstanceCollection.instance
-          .getUniqueByTypeStringWithParamsAsync(
-        element.type.toString(),
-        params: element.input,
-        withoutConnections: element.withoutConnections,
-        beforeInitialize: (part) {
-          part.parentInstance = this;
-        },
-      ) as BaseInstancePart;
+      final part = await _getUniquePartAsync(element) as BaseInstancePart;
 
       _setPartRootParentInstance(part);
 
       _parts[element.type] = [part];
 
-      onAsyncPartReady(element.type);
+      onAsyncPartReady(element.type, null);
     }
   }
 
+  dynamic _getUniquePart(Connector connector, {int index = 0}) {
+    return InstanceCollection.instance.getUniqueByTypeStringWithParams(
+      type: connector.type.toString(),
+      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      withoutConnections: connector.withoutConnections,
+      beforeInitialize: (part) {
+        part.parentInstance = this;
+      },
+    );
+  }
+
+  Future _getUniquePartAsync(Connector connector, {int index = 0}) {
+    return InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
+      type: connector.type.toString(),
+      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      withoutConnections: connector.withoutConnections,
+      beforeInitialize: (part) {
+        part.parentInstance = this;
+      },
+    );
+  }
+
   /// Runs for every async part when it is initialized
-  void onAsyncPartReady(Type type, {int? index}) {}
+  void onAsyncPartReady(Type type, int? index) {}
 
   /// Runs for every async part when it is initialized
   @mustCallSuper

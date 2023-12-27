@@ -103,7 +103,7 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      expect(viewKey.currentState!.viewModel.initialized, true);
+      expect(viewKey.currentState!.viewModel.isInitialized, true);
     });
 
     testWidgets('BaseViewState pause test', (tester) async {
