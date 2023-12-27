@@ -79,7 +79,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   // coverage:ignore-start
   @override
   bool get isAsync {
-    return super.isAsync || getFullConnectorsList().indexWhere((element) => element.async) != -1;
+    return super.isAsync || getFullConnectorsList().indexWhere((element) => element.isAsync) != -1;
   }
   // coverage:ignore-end
 
@@ -172,11 +172,11 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   void _addInstancesSync() {
     final connectors = getFullConnectorsList();
 
-    connectors.where((element) => !element.async && element.lazy).forEach(_addLazyInstanceSync);
+    connectors.where((element) => !element.isAsync && element.isLazy).forEach(_addLazyInstanceSync);
 
-    connectors.where((element) => element.async && element.lazy).forEach(_addLazyInstanceAsync);
+    connectors.where((element) => element.isAsync && element.isLazy).forEach(_addLazyInstanceAsync);
 
-    connectors.where((element) => !element.async && !element.lazy).forEach((element) {
+    connectors.where((element) => !element.isAsync && !element.isLazy).forEach((element) {
       if (_instances[element.type] != null || _lazyInstancesBuilders[element.type] != null) {
         throw IllegalArgumentException(
           message: 'Instance already dependent on ${element.type}',
@@ -201,7 +201,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
-    final asyncDeps = getFullConnectorsList().where((element) => element.async && !element.lazy);
+    final asyncDeps = getFullConnectorsList().where((element) => element.isAsync && !element.isLazy);
 
     for (final element in asyncDeps) {
       if (getFullConnectorsList().where((dependency) => dependency.type == element.type).length > 1) {

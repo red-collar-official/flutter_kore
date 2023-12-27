@@ -60,7 +60,7 @@ class TestInstancePart3 extends UniversalInstancePart<int> {
   MvvmInstanceConfiguration get configuration =>
       const MvvmInstanceConfiguration(
         parts: [
-          PartConnector(type: TestInstancePart2, async: true, input: 6),
+          PartConnector(type: TestInstancePart2, isAsync: true, input: 6),
         ],
       );
 
@@ -109,7 +109,7 @@ class TestInstancePart5 extends UniversalInstancePart<int?> {
   MvvmInstanceConfiguration get configuration =>
       const MvvmInstanceConfiguration(
         parts: [
-          PartConnector(type: TestInstancePart2, async: true, input: 6),
+          PartConnector(type: TestInstancePart2, isAsync: true, input: 6),
         ],
       );
 

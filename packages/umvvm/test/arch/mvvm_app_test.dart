@@ -14,10 +14,10 @@ class TestApp extends UMvvmApp {
   @override
   List<Connector> get singletonInstances => [
         const Connector(type: TestInteractor1),
-        const Connector(type: TestInteractor3, async: true),
+        const Connector(type: TestInteractor3, isAsync: true),
         const Connector(
           type: TestWrapper3,
-          async: true,
+          isAsync: true,
           awaitInitialization: true,
           initializationOrder: 1,
         ),

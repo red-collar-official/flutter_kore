@@ -74,7 +74,7 @@ class UsersListViewModel extends BaseViewModel<UsersListView, UsersListViewState
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       dependencies: [
-        app.usersBoxConnector(lazy: true),
+        app.usersBoxConnector(isLazy: true),
       ],
     );
 

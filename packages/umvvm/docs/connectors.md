@@ -28,7 +28,7 @@ DependentMvvmInstanceConfiguration get configuration =>
         // instance without connections, only works for unique instances
         const Connector(type: ReactionsWrapper, withoutConnections: true, scope: BaseScopes.unique),
         const Connector(type: ReactionsWrapper, scope: CustomScopes.test), // scoped instance
-        const Connector(type: ReactionsWrapper, scope: CustomScopes.test, lazy: true), // lazy scoped instance
+        const Connector(type: ReactionsWrapper, scope: CustomScopes.test, isLazy: true), // lazy scoped instance
       ],
     );
 ```
@@ -55,7 +55,7 @@ Parts (you can read about parts [here](./instance_part.md)) are connected with <
 This is because some settings of <b>Connector</b> are not needed for parts.
 
 ```dart
-const PartConnector(type: TestInstancePart, async: true, input: 6),
+const PartConnector(type: TestInstancePart, isAsync: true, input: 6),
 const PartConnector(type: LoadUsersInstancePart),
 const PartConnector(type: SharePart, count: 5), // 5 unique parts
 // part without connections
@@ -72,7 +72,7 @@ DependentMvvmInstanceConfiguration get configuration =>
     parts: [
       app.connectors.downloadUserPartConnector(
         input: input.id,
-        async: true,
+        isAsync: true,
       ),
       app.connectors.followUserPartConnector(input: input.id),
     ],

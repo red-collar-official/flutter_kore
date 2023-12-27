@@ -107,7 +107,7 @@ abstract class UMvvmApp<
   }
 
   Future<void> _addInstance(Connector element) async {
-    if (element.async) {
+    if (element.isAsync) {
       if (element.awaitInitialization) {
         await instances.addAsync(
           type: element.type.toString(),

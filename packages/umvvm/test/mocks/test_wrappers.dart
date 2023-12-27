@@ -51,7 +51,7 @@ class TestWrapperAsync2 extends BaseStaticWrapper<int?> {
             type: TestWrapperAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
         ],
       );
@@ -95,21 +95,21 @@ class TestWrapper3 extends BaseStaticWrapper<int?> {
             type: TestWrapperAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
           const Connector(
             type: TestWrapperAsync2,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
             withoutConnections: true,
           ),
         ],
         parts: [
-          const PartConnector(type: TestInstancePart3, input: 5, async: true),
+          const PartConnector(type: TestInstancePart3, input: 5, isAsync: true),
           const PartConnector(
             type: TestInstancePart2,
-            async: true,
+            isAsync: true,
             count: 2,
             input: 10,
           ),
@@ -120,7 +120,7 @@ class TestWrapper3 extends BaseStaticWrapper<int?> {
           ),
           PartConnector(
             type: TestInstancePart4,
-            async: true,
+            isAsync: true,
             count: 2,
             inputForIndex: (index) => index + 1,
           ),
@@ -219,7 +219,7 @@ class TestWrapperError extends BaseStaticWrapper<int?> {
             type: TestWrapperAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
         ],
       );

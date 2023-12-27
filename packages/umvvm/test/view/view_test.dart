@@ -15,7 +15,7 @@ class TestViewModel extends BaseViewModel<TestView, int> {
       const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestInteractor1, input: 2),
-          Connector(type: TestInteractorAsync4, input: 2, async: true),
+          Connector(type: TestInteractorAsync4, input: 2, isAsync: true),
         ],
       );
 

@@ -35,14 +35,14 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       dependencies: [
-        app.postsInteractorConnector(lazy: true),
+        app.postsInteractorConnector(isLazy: true),
         app.postInteractorConnector(scopes: BaseScopes.unique),
         app.reactionsWrapperConnector(),
       ],
       parts: [
         app.connectors.downloadUserPartConnector(
           input: input.id,
-          async: true,
+          isAsync: true,
         ),
         app.connectors.followUserPartConnector(input: input.id),
       ],

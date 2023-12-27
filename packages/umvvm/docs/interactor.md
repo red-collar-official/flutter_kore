@@ -195,10 +195,10 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
         Modules.test,
       ],
       parts: [
-        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+        const PartConnector(type: TestInstancePart1, input: 5, isAsync: true),
         const PartConnector(
             type: TestInstancePart2,
-            async: true,
+            isAsync: true,
             count: 2,
             input: 10,
         ),
@@ -209,7 +209,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
         ),
         PartConnector(
             type: TestInstancePart4,
-            async: true,
+            isAsync: true,
             count: 2,
             inputForIndex: (index) => index + 1,
         ),

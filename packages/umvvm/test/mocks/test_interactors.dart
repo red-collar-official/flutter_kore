@@ -13,19 +13,19 @@ class TestModule extends InstancesModule {
         const Connector(
           type: TestInteractor13,
           scope: BaseScopes.unique,
-          lazy: true,
+          isLazy: true,
         ),
         const Connector(
           type: TestInteractorAsync9,
-          async: true,
+          isAsync: true,
           scope: BaseScopes.unique,
-          lazy: true,
+          isLazy: true,
         ),
       ];
 
   @override
   List<PartConnector> get parts => [
-        const PartConnector(type: TestInstancePart5, async: true),
+        const PartConnector(type: TestInstancePart5, isAsync: true),
       ];
 
   late final testInteractor7 = getLocalInstance<TestInteractor7>();
@@ -308,7 +308,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
       DependentMvvmInstanceConfiguration(
         dependencies: [
           const Connector(type: TestInteractor1, input: 2),
-          const Connector(type: TestInteractorAsync4, input: 2, async: true),
+          const Connector(type: TestInteractorAsync4, input: 2, isAsync: true),
           const Connector(
             type: TestInteractor2,
             input: 3,
@@ -318,7 +318,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
             type: TestInteractorAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
           const Connector(
             type: TestInteractor4,
@@ -329,7 +329,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
             type: TestInteractorAsync2,
             input: 3,
             count: 2,
-            async: true,
+            isAsync: true,
           ),
           Connector(
             type: TestInteractor5,
@@ -340,64 +340,64 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
             type: TestInteractorAsync3,
             inputForIndex: (index) => index + 1,
             count: 2,
-            async: true,
+            isAsync: true,
           ),
           Connector(
             type: TestInteractor9,
             inputForIndex: (index) => index + 1,
             count: 2,
-            lazy: true,
+            isLazy: true,
           ),
           Connector(
             type: TestInteractorAsync5,
             inputForIndex: (index) => index + 1,
             count: 2,
-            lazy: true,
-            async: true,
+            isLazy: true,
+            isAsync: true,
           ),
           const Connector(
             type: TestInteractorAsync8,
             input: 2,
             count: 2,
-            lazy: true,
-            async: true,
+            isLazy: true,
+            isAsync: true,
           ),
           const Connector(
             type: TestInteractor12,
             input: 2,
             count: 2,
-            lazy: true,
+            isLazy: true,
           ),
           const Connector(
             type: TestInteractor10,
-            lazy: true,
+            isLazy: true,
             input: 2,
           ),
           const Connector(
             type: TestInteractorAsync6,
-            lazy: true,
+            isLazy: true,
             input: 2,
-            async: true,
+            isAsync: true,
           ),
           const Connector(
             type: TestInteractor11,
-            lazy: true,
+            isLazy: true,
             input: 2,
             scope: BaseScopes.unique,
           ),
           const Connector(
             type: TestInteractorAsync7,
-            lazy: true,
+            isLazy: true,
             input: 2,
-            async: true,
+            isAsync: true,
             scope: BaseScopes.unique,
           ),
         ],
         parts: [
-          const PartConnector(type: TestInstancePart3, input: 5, async: true),
+          const PartConnector(type: TestInstancePart3, input: 5, isAsync: true),
           const PartConnector(
             type: TestInstancePart2,
-            async: true,
+            isAsync: true,
             count: 2,
             input: 10,
           ),
@@ -408,7 +408,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
           ),
           PartConnector(
             type: TestInstancePart4,
-            async: true,
+            isAsync: true,
             count: 2,
             inputForIndex: (index) => index + 1,
           ),
@@ -581,7 +581,7 @@ class TestInteractorError extends BaseInteractor<int, int?> {
             type: TestInteractorAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
         ],
       );
@@ -598,13 +598,13 @@ class TestInteractorErrorAsync extends BaseInteractor<int, int?> {
           Connector(
             type: TestInteractorAsync,
             input: 3,
-            async: true,
+            isAsync: true,
           ),
           Connector(
             type: TestInteractorAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
+            isAsync: true,
           ),
         ],
       );
@@ -620,25 +620,25 @@ class TestInteractorErrorWithLazyDeps extends BaseInteractor<int, int?> {
   DependentMvvmInstanceConfiguration get configuration =>
       const DependentMvvmInstanceConfiguration(
         dependencies: [
-          Connector(type: TestInteractor1, input: 2, lazy: true),
+          Connector(type: TestInteractor1, input: 2, isLazy: true),
           Connector(
             type: TestInteractor2,
             input: 3,
             scope: BaseScopes.unique,
-            lazy: true,
+            isLazy: true,
           ),
           Connector(
             type: TestInteractor2,
             input: 4,
             scope: Constants.testScope,
-            lazy: true,
+            isLazy: true,
           ),
           Connector(
             type: TestInteractorAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
-            lazy: true,
+            isAsync: true,
+            isLazy: true,
           ),
         ],
       );
@@ -657,15 +657,15 @@ class TestInteractorErrorWithAsyncLazyDeps extends BaseInteractor<int, int?> {
           Connector(
             type: TestInteractorAsync,
             input: 3,
-            async: true,
-            lazy: true,
+            isAsync: true,
+            isLazy: true,
           ),
           Connector(
             type: TestInteractorAsync,
             input: 3,
             scope: BaseScopes.unique,
-            async: true,
-            lazy: true,
+            isAsync: true,
+            isLazy: true,
           ),
         ],
       );

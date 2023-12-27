@@ -20,7 +20,7 @@ class Instance {
 
   /// Flag indicating is this instance lazy singleton - defaults to false.
   /// Only matters if [singleton] is set to true
-  final bool lazy;
+  final bool isLazy;
 
   /// Initialization order for this instance.
   /// Only matters if [singleton], [async]
@@ -33,7 +33,7 @@ class Instance {
   final bool awaitInitialization;
 
   /// Flag indicating that this instance is async - has async initialization
-  final bool async;
+  final bool isAsync;
 
   /// Flag indicating that this instance is [BaseInstancePart]
   final bool part;
@@ -41,9 +41,9 @@ class Instance {
   const Instance({
     this.inputType = Map<String, dynamic>,
     this.singleton = false,
-    this.lazy = false,
+    this.isLazy = false,
     this.initializationOrder,
-    this.async = false,
+    this.isAsync = false,
     this.awaitInitialization = false,
     this.part = false,
   });
@@ -73,7 +73,7 @@ const instancePart = Instance(part: true);
 /// @asyncInstancePart
 /// class NavigationPart extends BaseInstancePart<int, NavigationInteractor> {
 /// ```
-const asyncInstancePart = Instance(part: true, async: true);
+const asyncInstancePart = Instance(part: true, isAsync: true);
 
 /// Annotate class as singleton mvvm instance
 /// ```dart
@@ -97,7 +97,7 @@ const singleton = Instance(singleton: true);
 ///   }
 /// }
 /// ```
-const lazySingleton = Instance(singleton: true, lazy: true);
+const lazySingleton = Instance(singleton: true, isLazy: true);
 
 /// Annotate class as async default mvvm instance
 /// ```dart
@@ -115,7 +115,7 @@ const lazySingleton = Instance(singleton: true, lazy: true);
 ///   }
 /// }
 /// ```
-const asyncBasicInstance = Instance(async: true);
+const asyncBasicInstance = Instance(isAsync: true);
 
 /// Annotate class as async singleton mvvm instance
 /// ```dart
@@ -133,7 +133,7 @@ const asyncBasicInstance = Instance(async: true);
 ///   }
 /// }
 /// ```
-const asyncSingleton = Instance(singleton: true, async: true);
+const asyncSingleton = Instance(singleton: true, isAsync: true);
 
 /// Annotate class as async lazy singleton mvvm instance
 /// ```dart
@@ -151,4 +151,4 @@ const asyncSingleton = Instance(singleton: true, async: true);
 ///   }
 /// }
 /// ```
-const asyncLazySingleton = Instance(singleton: true, lazy: true, async: true);
+const asyncLazySingleton = Instance(singleton: true, isLazy: true, isAsync: true);

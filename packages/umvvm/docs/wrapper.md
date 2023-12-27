@@ -74,10 +74,10 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
         Modules.test,
       ],
       parts: [
-        const PartConnector(type: TestInstancePart1, input: 5, async: true),
+        const PartConnector(type: TestInstancePart1, input: 5, isAsync: true),
         const PartConnector(
             type: TestInstancePart2,
-            async: true,
+            isAsync: true,
             count: 2,
             input: 10,
         ),
@@ -88,7 +88,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
         ),
         PartConnector(
             type: TestInstancePart4,
-            async: true,
+            isAsync: true,
             count: 2,
             inputForIndex: (index) => index + 1,
         ),

@@ -26,7 +26,7 @@ There are several ways to annotate mvvm instances to use in DI container: <b>sin
 
 It is required to define input type for instances. It is passed as generic argument.
 
-Singleton instances belong to global scope and they are initialized at app startup. If singleton is <b>lazy</b> then it will be created only when accessed first time.
+Singleton instances belong to global scope and they are initialized at app startup. If singleton is <b>isLazy</b> then it will be created only when accessed first time.
 
 Here are some examples:
 
@@ -143,7 +143,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
 ```
 
 ```dart
-@Instance(async: true, initializationOrder: 1, awaitInitialization: true, singleton: true)
+@Instance(isAsync: true, initializationOrder: 1, awaitInitialization: true, singleton: true)
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
@@ -368,7 +368,7 @@ Here is an example:
 DependentMvvmInstanceConfiguration get configuration =>
   DependentMvvmInstanceConfiguration(
     parts: [
-      const PartConnector(type: TestInstancePart, async: true, input: 6),
+      const PartConnector(type: TestInstancePart, isAsync: true, input: 6),
     ],
   );
 

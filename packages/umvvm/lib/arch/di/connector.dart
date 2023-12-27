@@ -34,7 +34,7 @@ class Connector {
   final String scope;
 
   /// Flag indicating that instance is async
-  final bool async;
+  final bool isAsync;
 
   /// Initialization order for this instance.
   /// Only matters for singletons with [async]
@@ -52,7 +52,7 @@ class Connector {
   /// Flag indicating that this connector is lazy. If set to true instances
   /// need to be obtained with [getLazyLocalInstance]
   /// and [getAsyncLazyLocalInstance] instead of [getLocalInstance]
-  final bool lazy;
+  final bool isLazy;
 
   const Connector({
     required this.type,
@@ -60,11 +60,11 @@ class Connector {
     this.inputForIndex,
     this.count = 1,
     this.scope = BaseScopes.weak,
-    this.async = false,
+    this.isAsync = false,
     this.initializationOrder,
     this.awaitInitialization = false,
     this.withoutConnections = false,
-    this.lazy = false,
+    this.isLazy = false,
   });
 
   /// Returns copy if this connector with overriden scope value
@@ -75,11 +75,11 @@ class Connector {
       inputForIndex: inputForIndex,
       count: count,
       scope: scope,
-      async: async,
+      isAsync: isAsync,
       initializationOrder: initializationOrder,
       awaitInitialization: awaitInitialization,
       withoutConnections: withoutConnections,
-      lazy: lazy,
+      isLazy: isLazy,
     );
   }
 }
@@ -92,7 +92,7 @@ class ConnectorCall<InstanceType, InputStateType> {
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
     bool withoutConnections = false,
-    bool lazy = false,
+    bool isLazy = false,
   }) {
     return Connector(
       scope: scope,
@@ -101,7 +101,7 @@ class ConnectorCall<InstanceType, InputStateType> {
       count: count,
       type: InstanceType,
       withoutConnections: withoutConnections,
-      lazy: lazy,
+      isLazy: isLazy,
     );
   }
 }
@@ -119,7 +119,7 @@ class AsyncConnectorCall<InstanceType, InputStateType>
     InputStateType? Function(int)? inputForIndex,
     int count = 1,
     bool withoutConnections = false,
-    bool lazy = false,
+    bool isLazy = false,
   }) {
     return Connector(
       scope: scope,
@@ -127,11 +127,11 @@ class AsyncConnectorCall<InstanceType, InputStateType>
       inputForIndex: inputForIndex,
       count: count,
       type: InstanceType,
-      async: true,
+      isAsync: true,
       initializationOrder: order,
       withoutConnections: withoutConnections,
       awaitInitialization: awaitInitialization,
-      lazy: lazy,
+      isLazy: isLazy,
     );
   }
 }
@@ -158,7 +158,7 @@ class PartConnector extends Connector {
     super.input,
     super.inputForIndex,
     super.count = 1,
-    super.async = false,
+    super.isAsync = false,
     super.withoutConnections = false,
   }) : super(scope: BaseScopes.unique);
 }
@@ -194,7 +194,7 @@ class AsyncPartConnectorCall<InstanceType, InputStateType> {
       inputForIndex: inputForIndex,
       count: count,
       type: InstanceType,
-      async: true,
+      isAsync: true,
       withoutConnections: withoutConnections,
     );
   }

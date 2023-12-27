@@ -18,7 +18,7 @@ class TestApp extends UMvvmApp<NavigationInteractor> {
   @override
   List<Connector> get singletonInstances => [
         const Connector(type: TestInteractor1),
-        const Connector(type: TestInteractor3, async: true),
+        const Connector(type: TestInteractor3, isAsync: true),
       ];
 }
 

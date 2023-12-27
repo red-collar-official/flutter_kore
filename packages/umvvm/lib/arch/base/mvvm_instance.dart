@@ -53,7 +53,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   bool get isAsync {
     return configuration.isAsync != null
         ? configuration.isAsync!
-        : getFullPartConnectorsList().indexWhere((element) => element.async) != -1;
+        : getFullPartConnectorsList().indexWhere((element) => element.isAsync) != -1;
   }
   // coverage:ignore-end
 
@@ -223,7 +223,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Adds parts to local collection
   Future<void> initializeInstancePartsAsync() async {
     await Future.wait(
-      getFullPartConnectorsList().where((element) => element.async).map(_addAsyncPart),
+      getFullPartConnectorsList().where((element) => element.isAsync).map(_addAsyncPart),
     );
 
     onAllPartReady();

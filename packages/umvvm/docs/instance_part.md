@@ -30,7 +30,7 @@ class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, Po
       parts: [
         app.connectors.downloadUserPartConnector(
           input: input.id,
-          async: true,
+          isAsync: true,
         ),
         app.connectors.followUserPartConnector(input: input.id),
       ],
