@@ -91,7 +91,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     // ignore: prefer_foreach
     for (final element in instances) {
-      if (element.singleton && !element.lazy && !element.part) {
+      if (element.singleton && !element.isLazy && !element.part) {
         classBuffer.writeln(
           'connectors.${uncapitalize(element.name)}Connector(),',
         );
@@ -156,7 +156,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     for (final element in instances) {
       final nameOfElementClass = element.name;
       final nameOfInputType = element.inputType;
-      final asyncValue = element.async;
+      final asyncValue = element.isAsync;
       final awaitInitializationValue = element.awaitInitialization;
       final orderValue = element.initializationOrder;
       final partValue = element.part;

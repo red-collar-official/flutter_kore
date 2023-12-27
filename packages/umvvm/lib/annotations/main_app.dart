@@ -20,4 +20,14 @@ class MainApp {
   });
 }
 
+/// Annotate main app class
+///  ```dart
+///  import '../interactors/interactors.dart';
+///
+///  part 'global_store.g.dart';
+///
+///  @mainApp
+///  class App extends UMvvmApp with AppGen {
+///  }
+/// ```
 const mainApp = MainApp();

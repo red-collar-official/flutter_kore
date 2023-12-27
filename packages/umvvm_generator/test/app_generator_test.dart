@@ -26,7 +26,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         },
         outputs: {
           'generated|lib/test_app.mvvm.json':
-              '[{"name":"StringWrapper","singleton":true,"lazy":false,"part":false,"async":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]'
+              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]'
         },
       );
 
@@ -35,13 +35,13 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.mvvm.json':
-              '[{"name":"StringWrapper","singleton":true,"lazy":false,"part":false,"async":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]',
+              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]',
           'test_app_main.dart': '''
 import 'package:umvvm/annotations/main_app.dart';
 
 part 'test_app_main.mvvm.dart';
 
-@mainApp
+@MainApp()
 class App extends UMvvmApp with AppGen {
   @override
   Future<void> initialize() async {
@@ -104,7 +104,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         },
         outputs: {
           'generated|lib/test_app.mvvm.json':
-              '[{"name":"StringWrapper","singleton":true,"lazy":false,"part":false,"async":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]'
+              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]'
         },
       );
 
@@ -113,13 +113,13 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.mvvm.json':
-              '[{"name":"StringWrapper","singleton":true,"lazy":false,"part":false,"async":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
+              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
 import 'package:umvvm/annotations/main_app.dart';
 
 part 'test_app_main.mvvm.dart';
 
-@mainApp
+@MainApp()
 class App extends UMvvmApp with AppGen {
   @override
   Future<void> initialize() async {
@@ -174,7 +174,7 @@ mixin AppGen on UMvvmApp {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.mvvm.json':
-              '[{"name":"StringWrapper","singleton":true,"lazy":false,"part":false,"async":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
+              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
 import 'package:umvvm/annotations/main_app.dart';
 
