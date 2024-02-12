@@ -7,7 +7,7 @@ import 'package:umvvm/umvvm.dart';
 /// When instances are created we call [ScopedContainer.increaseReferencesInScope] for each object
 /// When instances are disposed [ScopedContainer.decreaseReferences] called for each object
 /// [InstanceCollection] look up this map to dispose and remove objects
-/// that has zero references with [InstanceCollection.proone] method
+/// that has zero references with [InstanceCollection.prune] method
 final class ScopedContainer<T> {
   final HashMap<String, HashMap<String, List<T>>> _instances = HashMap();
   final HashMap<String, HashMap<Type, List<int>>> _references = HashMap();
@@ -80,8 +80,7 @@ final class ScopedContainer<T> {
     if (objects != null) {
       if (index < 0 || index >= objects.length) {
         throw IllegalArgumentException(
-          message:
-              'The $index value must be non-negative and less than count of references of $type in $scopeId.',
+          message: 'The $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
@@ -234,7 +233,7 @@ final class ScopedContainer<T> {
 
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for instance
-  void proone(void Function(T) onRemove) {
+  void prune(void Function(T) onRemove) {
     final removeFunctions = <Function>[];
 
     _references.forEach((scope, refs) {
@@ -268,7 +267,6 @@ final class ScopedContainer<T> {
                 removeObjectReferenceInScope(
                   scopeId: scope,
                   type: key,
-                  index: index,
                 );
               } else {
                 indicesToRemove.forEach(value.removeAt);
@@ -278,7 +276,6 @@ final class ScopedContainer<T> {
                   removeObjectReferenceInScope(
                     scopeId: scope,
                     type: key,
-                    index: index,
                   );
                 }
               }
@@ -348,11 +345,9 @@ final class ScopedContainer<T> {
   /// Checks if container contains object for type in given scope
   bool contains(String scopeId, String id, int? index) {
     if (index == null) {
-      return _instances[scopeId] != null &&
-          (_instances[scopeId]![id]?.isNotEmpty ?? false);
+      return _instances[scopeId] != null && (_instances[scopeId]![id]?.isNotEmpty ?? false);
     } else {
-      return _instances[scopeId] != null &&
-          ((_instances[scopeId]![id]?.length ?? 0) > index);
+      return _instances[scopeId] != null && ((_instances[scopeId]![id]?.length ?? 0) > index);
     }
   }
 

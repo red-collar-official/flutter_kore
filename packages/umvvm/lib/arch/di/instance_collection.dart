@@ -38,8 +38,8 @@ class InstanceCollection {
 
   /// Method to remove instances that is no longer used
   /// Called every time [dispose] called for instance
-  void proone() {
-    container.proone((object) {
+  void prune() {
+    container.prune((object) {
       if (!object.isDisposed) {
         object.dispose();
       }
@@ -486,7 +486,7 @@ class InstanceCollection {
   /// Also calls [MvvmInstance.initialize] for this isntance
   void add({
     required String type,
-    DefaultInputType? params, 
+    DefaultInputType? params,
     int? index,
     String? scope,
   }) {
@@ -498,7 +498,7 @@ class InstanceCollection {
   @visibleForTesting
   void addUninitialized<InputState>({
     required String type,
-    InputState? params, 
+    InputState? params,
     int? index,
     String? scope,
   }) {
@@ -520,7 +520,7 @@ class InstanceCollection {
   /// Also calls [MvvmInstance.initialize] for this isntance
   void addWithParams<InputState>({
     required String type,
-    InputState? params, 
+    InputState? params,
     int? index,
     String? scope,
   }) {

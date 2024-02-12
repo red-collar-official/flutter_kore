@@ -34,14 +34,14 @@ class RequestCollection {
 
     if (cancelReasonProcessor != null) {
       await cancelReasonProcessor();
-    }
 
-    if (retryRequestsAfterProcessing) {
-      if (!(cancelReasonProcessingCompleter?.isCompleted ?? true)) {
-        cancelReasonProcessingCompleter?.complete();
+      if (retryRequestsAfterProcessing) {
+        if (!(cancelReasonProcessingCompleter?.isCompleted ?? true)) {
+          cancelReasonProcessingCompleter?.complete();
+        }
+
+        cancelReasonProcessingCompleter = null;
       }
-
-      cancelReasonProcessingCompleter = null;
     }
   }
 

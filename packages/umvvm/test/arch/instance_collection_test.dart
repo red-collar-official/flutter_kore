@@ -166,7 +166,7 @@ void main() {
       expect((all[1] as TestMvvmInstance).value, 2);
     });
 
-    test('Instance collection proone test', () async {
+    test('Instance collection prune test', () async {
       instances
         ..addWithParams<int>(
           type: testInstanceRuntimeType,
@@ -189,7 +189,7 @@ void main() {
       expect((all[0] as TestMvvmInstance).value, 1);
       expect((all[1] as TestMvvmInstance).value, 2);
 
-      instances.proone();
+      instances.prune();
 
       all = instances.all(testScope);
 
@@ -199,7 +199,7 @@ void main() {
 
       instances
         ..decreaseReferencesInScope(testScope, TestMvvmInstance, index: 1)
-        ..proone();
+        ..prune();
 
       all = instances.all(testScope);
 
@@ -208,7 +208,7 @@ void main() {
 
       instances
         ..decreaseReferencesInScope(testScope, int)
-        ..proone();
+        ..prune();
 
       all = instances.all(testScope);
 
@@ -218,20 +218,20 @@ void main() {
       expect(
         () => instances
           ..decreaseReferencesInScope(testScope, TestMvvmInstance, index: 10)
-          ..proone(),
+          ..prune(),
         throwsA(isA<IllegalArgumentException>()),
       );
 
       expect(
         () => instances
           ..decreaseReferencesInScope(testScope, TestMvvmInstance, index: -1)
-          ..proone(),
+          ..prune(),
         throwsA(isA<IllegalArgumentException>()),
       );
 
       instances
         ..decreaseReferencesInScope(testScope, TestMvvmInstance)
-        ..proone();
+        ..prune();
 
       all = instances.all(testScope);
 

@@ -161,7 +161,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
     _decreaseReferences();
 
-    InstanceCollection.instance.proone();
+    InstanceCollection.instance.prune();
 
     _instances.clear();
 
