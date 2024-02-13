@@ -7,13 +7,12 @@ import 'package:test/test.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<List<Post>> getPosts(int offset, int limit) =>
-      super.getPosts(offset, limit)
-        ..simulateResponse = SimulateResponse(
-          data: [
-            {'id': 1, 'title': 'qwerty', 'body': 'qwerty'}
-          ],
-        );
+  HttpRequest<List<Post>> getPosts(int offset, int limit) => super.getPosts(offset, limit)
+    ..simulateResponse = SimulateResponse(
+      data: [
+        {'id': 1, 'title': 'qwerty', 'body': 'qwerty'}
+      ],
+    );
 }
 
 void main() {

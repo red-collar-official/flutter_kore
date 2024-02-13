@@ -23,21 +23,19 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 
-abstract class BaseInstancePart<Input, T extends MvvmInstance>
-    extends MvvmInstance<Input?> with ApiCaller<Input?> {
+abstract class BaseInstancePart<Input, T extends MvvmInstance> extends MvvmInstance<Input?> with ApiCaller<Input?> {
   /// Instance that created this part
   late T parentInstance;
 
   /// Root parent instance for this part
+  ///
   /// If part contain other parts then root parent instance
   /// will be parent instance of the first part in the tree
   MvvmInstance? rootParentInstance;
 }
 
 /// [BaseInstancePart] that applies to every [MvvmInstance] subtype
-abstract class UniversalInstancePart<Input>
-    extends BaseInstancePart<Input, MvvmInstance> {}
+abstract class UniversalInstancePart<Input> extends BaseInstancePart<Input, MvvmInstance> {}
 
 /// [BaseInstancePart] that applies to given [MvvmInstance] subtype
-abstract class RestrictedInstancePart<Input, T extends MvvmInstance>
-    extends BaseInstancePart<Input, T> {}
+abstract class RestrictedInstancePart<Input, T extends MvvmInstance> extends BaseInstancePart<Input, T> {}

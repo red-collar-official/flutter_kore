@@ -11,8 +11,7 @@ class TestViewModel extends BaseViewModel<TestView, int> {
   int get initialState => 1;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestInteractor1, input: 2),
           Connector(type: TestInteractorAsync4, input: 2, isAsync: true),

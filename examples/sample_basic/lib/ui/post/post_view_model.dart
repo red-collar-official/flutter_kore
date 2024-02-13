@@ -8,8 +8,7 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           app.connectors.postInteractorConnector(
             scope: BaseScopes.unique,
@@ -31,8 +30,7 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
     postInteractor.likePost(id);
   }
 
-  Stream<StatefulData<Post>?> get postStream =>
-      postInteractor.updates((state) => state.post);
+  Stream<StatefulData<Post>?> get postStream => postInteractor.updates((state) => state.post);
 
   StatefulData<Post>? get currentPost => postInteractor.state.post;
 

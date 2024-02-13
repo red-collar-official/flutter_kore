@@ -12,18 +12,17 @@ import 'components/dialogs/dialogs.dart';
 import 'components/screens/routes.dart';
 
 @singleton
-class NavigationInteractorWithBottomSheetsAndDialogsKey
-    extends BaseNavigationInteractor<
-        NavigationState,
-        Map<String, dynamic>,
-        AppTab,
-        Routes,
-        Dialogs,
-        BottomSheets,
-        RouteNames,
-        DialogNames,
-        BottomSheetNames,
-        TestDeepLinksInteractor> {
+class NavigationInteractorWithBottomSheetsAndDialogsKey extends BaseNavigationInteractor<
+    NavigationState,
+    Map<String, dynamic>,
+    AppTab,
+    Routes,
+    Dialogs,
+    BottomSheets,
+    RouteNames,
+    DialogNames,
+    BottomSheetNames,
+    TestDeepLinksInteractor> {
   final _routes = Routes();
   final _dialogs = Dialogs();
   final _bottomSheets = BottomSheets();
@@ -38,8 +37,7 @@ class NavigationInteractorWithBottomSheetsAndDialogsKey
       };
 
   @override
-  NavigationInteractorSettings get settings =>
-      const NavigationInteractorSettings(
+  NavigationInteractorSettings get settings => const NavigationInteractorSettings(
         initialRoute: RouteNames.home,
         tabs: AppTabs.tabs,
         tabViewHomeRoute: RouteNames.home,

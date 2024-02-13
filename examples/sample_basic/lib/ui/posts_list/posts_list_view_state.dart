@@ -9,6 +9,5 @@ class PostsListViewState with _$PostsListViewState {
     @Default(false) bool darkMode,
   }) = _PostsListViewState;
 
-  factory PostsListViewState.fromJson(Map<String, dynamic> json) =>
-      _$PostsListViewStateFromJson(json);
+  factory PostsListViewState.fromJson(Map<String, dynamic> json) => _$PostsListViewStateFromJson(json);
 }

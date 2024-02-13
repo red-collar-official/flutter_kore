@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class that wraps logic for working with third party dependency
+///
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
@@ -41,8 +42,8 @@ abstract class BaseStaticWrapper<Input> extends MvvmInstance<Input?>
   }
 }
 
-/// Base class that creates and holds some third party instance
-/// and provides methods to work with it
+/// Base class that creates and holds some third party instance and provides methods to work with it
+///
 /// Wrappers can contain dependencies and receive events
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
@@ -67,7 +68,7 @@ abstract class BaseStaticWrapper<Input> extends MvvmInstance<Input?>
 /// ```
 abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
-  /// actual object instance
+  /// Actual object instance
   late Instance Function() _instanceCreator;
   Instance? _instance;
 

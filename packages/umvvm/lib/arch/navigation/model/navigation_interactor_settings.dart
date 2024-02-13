@@ -1,5 +1,5 @@
-import 'package:umvvm/arch/navigation/base/default_navigation_route_builder.dart';
-import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
+import 'package:umvvm/arch/navigation/base/navigation_stack.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Class describing app navigation settings
 ///
@@ -20,7 +20,7 @@ import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
 class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
     BottomSheetType> {
   /// Initial route of whole app
-  /// Used to initialize [navigationStack]
+  /// Used to initialize [NavigationStack]
   final RouteType initialRoute;
 
   // coverage:ignore-start
@@ -40,7 +40,8 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
   final bool appContainsTabNavigation;
 
   /// Flag indicating that app dialogs and botttom sheets
-  /// using [globalNavigatorKey] instead of separate [bottomSheetDialogNavigatorKey]
+  /// using [BaseNavigationInteractor.globalNavigatorKey] instead of separate [BaseNavigationInteractor.bottomSheetDialogNavigatorKey]
+  /// 
   /// Set it to false if you want separate navigator for bottom sheets and dialogs
   final bool bottomSheetsAndDialogsUsingGlobalNavigator;
 

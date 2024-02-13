@@ -260,9 +260,7 @@ void main() {
         ..simulateResult = Response(code: 200, result: 1);
 
       expect(
-        request.dioInstance!.interceptors
-                .indexWhere((element) => element is dio.LogInterceptor) !=
-            -1,
+        request.dioInstance!.interceptors.indexWhere((element) => element is dio.LogInterceptor) != -1,
         true,
       );
     });
@@ -275,9 +273,7 @@ void main() {
         ..simulateResult = Response(code: 200, result: 1);
 
       expect(
-        request.dioInstance!.interceptors
-                .indexWhere((element) => element is dio.LogInterceptor) !=
-            -1,
+        request.dioInstance!.interceptors.indexWhere((element) => element is dio.LogInterceptor) != -1,
         true,
       );
     });
@@ -574,8 +570,7 @@ void main() {
 
       // ignore: cascade_invocations
       dioAdapter.onGet(
-        _fixDioUrlForQueryUri(testBaseUrl, testBodyMapWithList, testPath)
-            .toString(),
+        _fixDioUrlForQueryUri(testBaseUrl, testBodyMapWithList, testPath).toString(),
         (server) => server.reply(
           200,
           1,

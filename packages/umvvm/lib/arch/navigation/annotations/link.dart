@@ -12,15 +12,19 @@
 /// ```
 class Link {
   /// List of paths supported by this route
+  /// 
   /// If regexes specified must be null
   final List<String>? paths;
 
   /// List of regexes supported by this route
+  /// 
   /// If paths specified must be null
   final List<String>? regexes;
 
   /// Query params for this link
+  /// 
   /// Supported in the next formats
+  /// 
   /// 'name' - required query param
   /// 'name=test' - required query with given value
   /// 'name=test|test2' - required query that matches one of given values
@@ -28,7 +32,9 @@ class Link {
   final List<String> query;
 
   /// Query params for every link in [paths] array.
+  /// 
   /// Supported in the next formats
+  /// 
   /// 'name' - required query param
   /// 'name=test' - required query with given value
   /// 'name=test|test2' - required query that matches one of given values
@@ -39,6 +45,7 @@ class Link {
   final Type? customHandler;
 
   /// Custom mapper for this route
+  /// 
   /// Must be specified if [regexes] is not null
   final Type? customParamsMapper;
 

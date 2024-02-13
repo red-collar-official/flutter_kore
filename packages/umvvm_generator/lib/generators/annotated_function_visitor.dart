@@ -12,8 +12,7 @@ class AnnotatedFunctionVisitor extends SimpleElementVisitor<dynamic> {
   Map<String, MethodElement> annotatedMethodsData = <String, MethodElement>{};
   List<String> allMethods = <String>[];
 
-  Map<String, List<ParameterElement>> parameters =
-      <String, List<ParameterElement>>{};
+  Map<String, List<ParameterElement>> parameters = <String, List<ParameterElement>>{};
 
   @override
   dynamic visitMethodElement(MethodElement element) {

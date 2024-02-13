@@ -5,16 +5,14 @@ class HttpRequest<T> extends DioRequest<T> {
   HttpRequest() : super();
 
   @override
-  RequestSettings get defaultSettings => RequestSettings(
-          logPrint: (message) {},
-          exceptionPrint: (error, trace) {},
-          defaultInterceptors: [
-            dio.LogInterceptor(
-              requestBody: true,
-              responseBody: true,
-              logPrint: (object) {},
-            ),
-          ]);
+  RequestSettings get defaultSettings =>
+      RequestSettings(logPrint: (message) {}, exceptionPrint: (error, trace) {}, defaultInterceptors: [
+        dio.LogInterceptor(
+          requestBody: true,
+          responseBody: true,
+          logPrint: (object) {},
+        ),
+      ]);
 
   @override
   void onAuthorization(dio.Dio dio) {

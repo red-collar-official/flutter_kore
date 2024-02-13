@@ -6,11 +6,9 @@ import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart
 import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListViewModel
-    extends NavigationViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel extends NavigationViewModel<PostsListView, PostsListViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           app.connectors.postsInteractorConnector(),
         ],

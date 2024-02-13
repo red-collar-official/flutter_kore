@@ -38,9 +38,7 @@ abstract class EventBusReceiver {
       return;
     }
 
-    _eventsSubscription = EventBus.instance
-        .streamOfCollection(_subscribers.keys.toList())
-        .listen((event) {
+    _eventsSubscription = EventBus.instance.streamOfCollection(_subscribers.keys.toList()).listen((event) {
       _subscribers[event.runtimeType]?.call(event);
     });
   }
@@ -57,6 +55,7 @@ abstract class EventBusReceiver {
   }
 
   /// Subscribes to event of given type
+  ///
   /// Adds subscriber to local subscribers collection
   @mustCallSuper
   EventBusSubscriber on<T>(

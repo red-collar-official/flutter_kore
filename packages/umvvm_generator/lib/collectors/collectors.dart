@@ -23,21 +23,16 @@ class InstancesCollectorGenerator extends Generator {
 
     for (final element in instances) {
       final name = getClassName(element.element);
-      final inputType = element.annotation
-          .peek('inputType')
-          ?.typeValue
-          .getDisplayString(withNullability: false);
+      final inputType = element.annotation.peek('inputType')?.typeValue.getDisplayString(withNullability: false);
       final asyncValue = element.annotation.peek('isAsync')?.boolValue ?? false;
       final partValue = element.annotation.peek('part')?.boolValue ?? false;
-      final awaitInitialization =
-          element.annotation.peek('awaitInitialization')?.boolValue ?? false;
+      final awaitInitialization = element.annotation.peek('awaitInitialization')?.boolValue ?? false;
       final order = element.annotation
           .peek(
             'initializationOrder',
           )
           ?.intValue;
-      final singleton =
-          element.annotation.peek('singleton')?.boolValue ?? false;
+      final singleton = element.annotation.peek('singleton')?.boolValue ?? false;
       final lazy = element.annotation.peek('isLazy')?.boolValue ?? false;
 
       instancesJsonModels.add(InstanceJsonModel(

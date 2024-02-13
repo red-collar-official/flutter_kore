@@ -29,6 +29,7 @@ class Store<State> {
   State get state => _state.current!;
 
   /// Flag indicating that this store is disposed
+  ///
   /// Store can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
@@ -36,6 +37,7 @@ class Store<State> {
   Stream<State> get stream => _state.stream.map((event) => event.next!);
 
   /// Updates current state
+  ///
   /// Listeners of [stream] will be notified about changes
   ///
   /// ```dart
@@ -86,6 +88,7 @@ class Store<State> {
   }
 
   /// Stream of new values in [state]
+  ///
   /// Using mapper you can select values you want to listen
   ///
   /// ```dart
@@ -99,12 +102,12 @@ class Store<State> {
     }
 
     return _state.stream.where((element) {
-      return mapper(element.previous ?? element.next!) !=
-          mapper(element.next as State);
+      return mapper(element.previous ?? element.next!) != mapper(element.next as State);
     }).map((event) => mapper(event.next as State));
   }
 
   /// Stream of changes of values [state]
+  ///
   /// Using mapper you can select values you want to listen
   /// In contrast to [updates] this stream returns pairs of values -
   /// new state and previous state, so you can easily compare them if needed

@@ -1,6 +1,7 @@
 // coverage:ignore-file
 
 /// Annotate main app class
+///
 ///  ```dart
 ///  import '../interactors/interactors.dart';
 ///
@@ -12,6 +13,7 @@
 /// ```
 class MainApp {
   /// Type if navigation interactor used in app.
+  ///
   /// If navigation component is not used you can ignore this parameter
   final Type? navigationInteractorType;
 
@@ -21,6 +23,7 @@ class MainApp {
 }
 
 /// Annotate main app class
+///
 ///  ```dart
 ///  import '../interactors/interactors.dart';
 ///

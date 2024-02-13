@@ -20,10 +20,12 @@ class Debouncer {
   Timer? _timer;
 
   /// Flag indicating that this debouncer is disposed
+  /// 
   /// Debouncer bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this debouncer is disposed
+  /// 
   /// Debouncer bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 

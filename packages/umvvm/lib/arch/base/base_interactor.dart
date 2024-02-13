@@ -2,9 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create interactor
+///
 /// Interactors contain business logic for given state type
 /// Interactors can contain dependencies and receive events
 /// They also can contain parts
+///
 /// You also can execute requests and cancel them automatically when interactor will be disposed
 /// with [ApiCaller.executeAndCancelOnDispose] method
 ///
@@ -18,10 +20,7 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
-    with
-        StatefulMvvmInstance<State, Input?>,
-        DependentMvvmInstance<Input?>,
-        ApiCaller<Input?> {
+    with StatefulMvvmInstance<State, Input?>, DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   @mustCallSuper
   @override
   void initialize(Input? input) {

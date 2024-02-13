@@ -9,11 +9,9 @@ import 'package:sample_basic/ui/post/post_view.dart';
 import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListViewModel
-    extends BaseViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           app.connectors.postsInteractorConnector(),
         ],
@@ -21,8 +19,7 @@ class PostsListViewModel
 
   late final postsInteractor = getLocalInstance<PostsInteractor>();
 
-  late final userDefaultsInteractor =
-      app.instances.get<UserDefaultsInteractor>();
+  late final userDefaultsInteractor = app.instances.get<UserDefaultsInteractor>();
 
   @override
   void onLaunch() {
@@ -40,8 +37,7 @@ class PostsListViewModel
     }));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      postsInteractor.updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();

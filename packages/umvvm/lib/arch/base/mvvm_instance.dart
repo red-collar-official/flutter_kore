@@ -19,6 +19,7 @@ class MvvmInstanceConfiguration {
 }
 
 /// Base class for mvvm instance
+///
 /// Contains basic interface for init and dispose operations
 /// Also every mvvm instance connected to main app event bus
 abstract class MvvmInstance<T> extends EventBusReceiver {
@@ -34,6 +35,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   final allPartsReady = Observable<bool>.initial(false);
 
   /// Flag indicating that this instance is disposed
+  ///
   /// Store can't be used if this flag is true
   bool isDisposed = false;
 
@@ -47,7 +49,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
 
   /// Getter that returns true if instance contains async parts
   /// or require async initialization
-  /// If you override this getter always use super.isAsync
+  ///
+  /// If you override this getter always use super [MvvmInstance.isAsync]
   /// if you not always returning true
   // coverage:ignore-start
   bool get isAsync {
@@ -58,7 +61,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   // coverage:ignore-end
 
   /// Base method for instance initialization
-  /// After you call this method set [initialized] flag to true
+  ///
+  /// After you call this method set [isInitialized] flag to true
   @mustCallSuper
   void initialize(T input) {
     this.input = input;
@@ -76,7 +80,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Base method for instance dispose
-  /// After you call this method set [initialized] flag to false
+  ///
+  /// After you call this method set [isInitialized] flag to false
   @mustCallSuper
   void dispose() {
     disposeSub();

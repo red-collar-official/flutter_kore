@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:umvvm/umvvm.dart';
 
 /// Simple class to count references for objects
+/// 
 /// When instances are created we call [ScopedContainer.increaseReferencesInScope] for each object
 /// When instances are disposed [ScopedContainer.decreaseReferences] called for each object
 /// [InstanceCollection] look up this map to dispose and remove objects
@@ -232,7 +233,8 @@ final class ScopedContainer<T> {
   }
 
   /// Method to remove instances that is no longer used
-  /// Called every time [dispose] called for instance
+  /// 
+  /// Called every time [MvvmInstance.dispose] called for instance
   void prune(void Function(T) onRemove) {
     final removeFunctions = <Function>[];
 

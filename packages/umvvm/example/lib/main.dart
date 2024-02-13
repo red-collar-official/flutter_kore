@@ -99,25 +99,23 @@ class HttpRequest<T> extends DioRequest<T> {
 
 @api
 class PostsApi {
-  HttpRequest<List<Post>> getPosts(int offset, int limit) =>
-      HttpRequest<List<Post>>()
-        ..method = RequestMethod.get
-        ..baseUrl = 'http://jsonplaceholder.typicode.com'
-        ..url = '/posts'
-        ..parser = (result, headers) async {
-          final list = <Post>[];
+  HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
+    ..method = RequestMethod.get
+    ..baseUrl = 'http://jsonplaceholder.typicode.com'
+    ..url = '/posts'
+    ..parser = (result, headers) async {
+      final list = <Post>[];
 
-          result?.forEach((data) {
-            list.add(Post.fromMap(data));
-          });
+      result?.forEach((data) {
+        list.add(Post.fromMap(data));
+      });
 
-          return list;
-        };
+      return list;
+    };
 }
 
 @basicInstance
-class PostsInteractor
-    extends BaseInteractor<PostsState, Map<String, dynamic>?> {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 
@@ -157,11 +155,9 @@ class PostsInteractor
 
 class PostsListViewState {}
 
-class PostsListViewModel
-    extends BaseViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           app.connectors.postsInteractorConnector(),
         ],
@@ -187,8 +183,7 @@ class PostsListViewModel
     app.eventBus.send(PostLikedEvent(id: id));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      postsInteractor.updates((state) => state.posts);
+  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
@@ -206,8 +201,7 @@ class PostsListView extends BaseWidget {
   }
 }
 
-class _PostsListViewWidgetState
-    extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
+class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:umvvm/arch/di/base_scopes.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Class containing instance type to connect to given instance
 ///
@@ -37,7 +37,7 @@ class Connector {
   final bool isAsync;
 
   /// Initialization order for this instance.
-  /// Only matters for singletons with [async]
+  /// Only matters for singletons with [isAsync]
   /// and [awaitInitialization] set to true
   final int? initializationOrder;
 
@@ -50,8 +50,8 @@ class Connector {
   final bool withoutConnections;
 
   /// Flag indicating that this connector is lazy. If set to true instances
-  /// need to be obtained with [getLazyLocalInstance]
-  /// and [getAsyncLazyLocalInstance] instead of [getLocalInstance]
+  /// need to be obtained with [DependentMvvmInstance.getLazyLocalInstance]
+  /// and [DependentMvvmInstance.getAsyncLazyLocalInstance] instead of [DependentMvvmInstance.getLocalInstance]
   final bool isLazy;
 
   const Connector({
@@ -106,9 +106,8 @@ class ConnectorCall<InstanceType, InputStateType> {
   }
 }
 
-/// Async callable proxy class for [BaseConnector]
-class AsyncConnectorCall<InstanceType, InputStateType>
-    extends ConnectorCall<InstanceType, InputStateType> {
+/// Async callable proxy class for [Connector]
+class AsyncConnectorCall<InstanceType, InputStateType> extends ConnectorCall<InstanceType, InputStateType> {
   int? get order => null;
   bool get awaitInitialization => false;
 

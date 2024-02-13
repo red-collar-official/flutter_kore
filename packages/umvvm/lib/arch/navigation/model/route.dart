@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Class describing route for navigation interactor methods
-/// Used as input for [routeTo], [showDialog] and [showBottomSheet]
+/// Used as input for [BaseNavigationInteractor.routeTo], [BaseNavigationInteractor.showDialog] and [BaseNavigationInteractor.showBottomSheet]
 /// You need to specify type of [name] field
-/// can be [BottomSheetNames], [DialogNames] or [RouteNames] or anything else
+/// can be BottomSheetNames, DialogNames or RouteNames or anything else
 class UIRoute<T> {
   /// Name for this route of given type
   final T name;

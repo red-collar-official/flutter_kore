@@ -10,7 +10,8 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 );
 
 /// Main class for UMvvm application
-/// It contains global [InteractorCollection] and [EventBus]
+///
+/// It contains global [InstanceCollection] and [EventBus]
 /// It performs initial setup for interactors and view models
 /// (register builders for interactors and register singletons)
 ///
@@ -44,8 +45,7 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 ///   await app.initialize();
 /// }
 /// ```
-abstract class UMvvmApp<
-    NavigationInteractorType extends BaseNavigationInteractor> {
+abstract class UMvvmApp<NavigationInteractorType extends BaseNavigationInteractor> {
   /// Main app instances collection
   final instances = InstanceCollection.instance;
 
@@ -53,14 +53,12 @@ abstract class UMvvmApp<
   EventBus get eventBus => EventBus.instance;
 
   /// Navigation interactor for this app
-  static final navigationInteractor =
-      InstanceCollection.instance.find<BaseNavigationInteractor>(
+  static final navigationInteractor = InstanceCollection.instance.find<BaseNavigationInteractor>(
     BaseScopes.global,
   );
 
   /// Navigation interactor for this app
-  late final NavigationInteractorType navigation =
-      navigationInteractor! as NavigationInteractorType;
+  late final NavigationInteractorType navigation = navigationInteractor! as NavigationInteractorType;
 
   bool _initialized = false;
 
@@ -86,15 +84,11 @@ abstract class UMvvmApp<
   Future<void> createSingletons() async {
     // no need to count references for singletons
 
-    final unorderedInstances = singletonInstances
-        .where((element) => element.initializationOrder == null);
+    final unorderedInstances = singletonInstances.where((element) => element.initializationOrder == null);
 
-    final orderedInstances = singletonInstances
-        .where((element) => element.initializationOrder != null)
-        .toList()
+    final orderedInstances = singletonInstances.where((element) => element.initializationOrder != null).toList()
       ..sort((first, second) {
-        return first.initializationOrder!
-            .compareTo(second.initializationOrder!);
+        return first.initializationOrder!.compareTo(second.initializationOrder!);
       });
 
     for (final element in orderedInstances) {
@@ -166,6 +160,7 @@ abstract class UMvvmApp<
   };
 
   /// Flag indicating test mode
+  ///
   /// Set it to true before any tests
   static bool isInTestMode = false;
 }

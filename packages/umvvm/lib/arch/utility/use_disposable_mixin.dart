@@ -4,8 +4,7 @@ import 'package:umvvm/umvvm.dart';
 
 /// Mixin with methods to create disposable instances that will be disposed
 /// when instance is disposed
-mixin UseDisposableMixin<Widget extends StatefulWidget>
-    on MvvmInstance<Widget> {
+mixin UseDisposableMixin<Widget extends StatefulWidget> on MvvmInstance<Widget> {
   final _textEditingControllers = <TextEditingController>[];
   final _scrollControllers = <ScrollController>[];
   final _debouncers = <Debouncer>[];
@@ -29,6 +28,7 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
   }
 
   /// Creates text editing controller and keeps reference
+  /// 
   /// It will be disposed when instance is disposed
   TextEditingController useTextEditingController({String? text}) {
     final controller = TextEditingController(text: text);
@@ -39,6 +39,7 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
   }
 
   /// Creates scroll controller and keeps reference
+  /// 
   /// It will be disposed when instance is disposed
   ScrollController useScrollController() {
     final controller = ScrollController();
@@ -49,6 +50,7 @@ mixin UseDisposableMixin<Widget extends StatefulWidget>
   }
 
   /// Creates debouncer and keeps reference
+  /// 
   /// It will be disposed when instance is disposed
   Debouncer useDebouncer({required Duration delay}) {
     final debouncer = Debouncer(delay);

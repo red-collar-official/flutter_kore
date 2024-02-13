@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Basic Event bus implementation
+///
 /// You can [send] events and [streamOf] to stream of event callbacks or collection of events callbacks with [streamOfCollection]
 ///
 ///  ```dart
@@ -24,14 +25,17 @@ class EventBus {
   late final StreamController _streamController;
 
   /// Collection of events sent through event bus
-  /// only used in test mode
+  ///
+  /// Only used in test mode
   final _events = [];
 
   /// Flag indicating that this event bus is disposed
+  ///
   /// Event bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this event bus is disposed
+  ///
   /// Event bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
@@ -46,6 +50,7 @@ class EventBus {
   }
 
   /// Creates separate instance of event bus
+  ///
   /// Useful when you need eventbus specificaly for one task, for example file upload
   // ignore: prefer_constructors_over_static_methods
   static EventBus newSeparateInstance() {
@@ -60,9 +65,7 @@ class EventBus {
       );
     }
 
-    return _streamController.stream
-        .where((event) => event is T)
-        .map((event) => event as T);
+    return _streamController.stream.where((event) => event is T).map((event) => event as T);
   }
 
   /// Return dart stream of events with particular names
@@ -73,8 +76,7 @@ class EventBus {
       );
     }
 
-    return _streamController.stream
-        .where((event) => events.contains(event.runtimeType));
+    return _streamController.stream.where((event) => events.contains(event.runtimeType));
   }
 
   /// Sends event to stream controller

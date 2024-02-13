@@ -134,7 +134,7 @@ class TempAssetWriter implements RecordingAssetWriter {
   void dispose() {
     try {
       dir.deleteSync(recursive: true);
-    } catch(e) {
+    } catch (e) {
       // ignore
     }
   }

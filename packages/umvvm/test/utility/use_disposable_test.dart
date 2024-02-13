@@ -6,8 +6,7 @@ import 'package:umvvm/umvvm.dart';
 
 import '../mocks/test_widget.dart';
 
-class TestMvvmDisposableInstance extends BaseViewModel<StatefulWidget, int>
-    with UseDisposableMixin {
+class TestMvvmDisposableInstance extends BaseViewModel<StatefulWidget, int> with UseDisposableMixin {
   late final scrollController = useScrollController();
   late final textEditingController = useTextEditingController();
   late final debouncer = useDebouncer(

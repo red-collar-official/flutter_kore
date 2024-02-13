@@ -35,10 +35,10 @@ class StateFullInstanceSettings {
     this.syncRestore = true,
   });
 
-  /// Flag indicating that this interactor needs to save state to user defaults
+  /// Flag indicating that this instance needs to save state to user defaults
   final bool isRestores;
 
-  /// State id for this interactor -
+  /// State id for this instance -
   /// used as key in cache storage
   final String stateId;
 
@@ -47,11 +47,12 @@ class StateFullInstanceSettings {
 }
 
 /// Base class for storing test data
+///
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
 ///
-/// If used you need to call [initializeStatefullInstance] in [initialize] call
-/// And call [disposeStore] in [dispose] call
+/// If used you need to call [initializeStatefullInstance] in [MvvmInstance.initialize] call
+/// And call [disposeStore] in [MvvmInstance.dispose] call
 ///
 /// ```dart
 /// abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmInstance<State, dynamic> {
@@ -98,17 +99,14 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// ```dart
   /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
   /// ```
-  Stream<Value> updates<Value>(Value Function(State state) mapper) =>
-      _store.updates(mapper);
+  Stream<Value> updates<Value>(Value Function(State state) mapper) => _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
   ///
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
-  Stream<StoreChange<Value>> changes<Value>(
-          Value Function(State state) mapper) =>
-      _store.changes(mapper);
+  Stream<StoreChange<Value>> changes<Value>(Value Function(State state) mapper) => _store.changes(mapper);
 
   /// Underlying stream subsription for [Store] updates
   StreamSubscription<State>? _storeSaveSubscription;
@@ -130,6 +128,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   Map<String, dynamic> get savedStateObject => {};
 
   /// Tries to restore cached state
+  ///
   /// If cached state is empty does nothing
   /// if cached state is not empty calls [onRestore]
   @protected
@@ -138,6 +137,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Tries to restore cached state
+  ///
   /// If cached state is empty does nothing
   /// if cached state is not empty calls [onRestore]
   @protected
@@ -159,6 +159,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Callback to get cache object
+  ///
   /// Use it to call [updateState] and restore saved state object
   void onRestore(Map<String, dynamic> savedStateObject) {}
 
@@ -204,6 +205,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Creates stream subscription for store updates
+  ///
   /// if [savedStateObject] is not empty listens to state updates and puts it to cache using [UMvvmApp.cachePutDelegate]
   /// If [savedStateObject] is empty does nothing
   void _subscribeToStoreUpdates() {
@@ -227,12 +229,11 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// Stream of all state updates
   Stream<State> get stateStream => _store.stream;
 
-  /// Initial state for this interactor
+  /// Initial state for this instance
   State get initialState;
 
   /// Flag indicating that cached state should be awaited
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
       );
 }

@@ -39,12 +39,10 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 abstract class InstancesModule {
   late T Function<T extends MvvmInstance>({int index}) getInstanceDelegate;
-  late T Function<T extends BaseInstancePart>({int index})
-      useInstancePartDelegate;
+  late T Function<T extends BaseInstancePart>({int index}) useInstancePartDelegate;
   late T Function<T extends MvvmInstance>({int index}) getLazyInstanceDelegate;
 
-  late Future<T> Function<T extends MvvmInstance>({int index})
-      getAsyncLazyInstanceDelegate;
+  late Future<T> Function<T extends MvvmInstance>({int index}) getAsyncLazyInstanceDelegate;
 
   // coverage:ignore-start
 
@@ -82,9 +80,7 @@ abstract class InstancesModule {
     return getLazyInstanceDelegate<T>(index: index);
   }
 
-  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({
-    int index = 0
-  }) {
+  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
     return getAsyncLazyInstanceDelegate<T>(index: index);
   }
 }

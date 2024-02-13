@@ -18,8 +18,7 @@ class PostsListView extends BaseWidget {
   }
 }
 
-class _PostsListViewWidgetState
-    extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
+class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(

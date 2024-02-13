@@ -10,13 +10,13 @@ class RequestSettings {
   /// Default headers to be added to every instance
   final Map<String, dynamic> defaultHeaders;
 
-  /// Default base url if [baseUrl] is not provided
+  /// Default base url if [BaseRequest.baseUrl] is not provided
   final String defaultBaseUrl;
 
-  /// Default timeout if [timeout] is not provided
+  /// Default timeout if [BaseRequest.timeout] is not provided
   final int defaultTimeoutInSeconds;
 
-  /// Default timeout if [timeout] is not provided
+  /// Default interceptors for [DioRequest]
   final Iterable<Interceptor> defaultInterceptors;
 
   /// Print function for [Dio] logger
@@ -52,7 +52,7 @@ class Response<ItemType> {
   /// Flag to detect that [result] was from database
   bool fromDatabase;
 
-  /// Checks that [error] is not null and status ``code`` is equal to 200 or less than 400 and greater than 200
+  /// Checks that [error] is not null and status [code] is equal to 200 or less than 400 and greater than 200
   bool get isSuccessful => error == null && code >= 200 && code < 400;
 
   /// Checks that result is not null and was obtained from database
@@ -116,6 +116,7 @@ abstract class BaseRequest<T> {
   String? url;
 
   /// Summary timeout for connect and receive timeouts
+  /// 
   /// It will be divided by half and used as connect and receive timeouts
   Duration? timeout;
 

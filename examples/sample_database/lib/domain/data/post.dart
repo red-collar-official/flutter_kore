@@ -7,11 +7,7 @@ part 'post.freezed.dart';
 @freezed
 class Post with _$Post {
   @Entity(realClass: Post)
-  factory Post(
-      {String? title,
-      String? body,
-      @Id(assignable: true) int? id,
-      @Default(false) bool isLiked}) = _Post;
+  factory Post({String? title, String? body, @Id(assignable: true) int? id, @Default(false) bool isLiked}) = _Post;
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 }

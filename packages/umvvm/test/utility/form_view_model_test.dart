@@ -12,8 +12,7 @@ import '../mocks/test_widget.dart';
 final testKey1 = GlobalKey();
 final testKey2 = GlobalKey();
 
-class TestMvvmFormInstance1 extends BaseViewModel<StatefulWidget, int>
-    with FormViewModelMixin {
+class TestMvvmFormInstance1 extends BaseViewModel<StatefulWidget, int> with FormViewModelMixin {
   @override
   int get initialState => 1;
 
@@ -33,8 +32,7 @@ class TestMvvmFormInstance1 extends BaseViewModel<StatefulWidget, int>
       };
 }
 
-class TestMvvmFormInstance2 extends BaseViewModel<StatefulWidget, int>
-    with FormViewModelMixin {
+class TestMvvmFormInstance2 extends BaseViewModel<StatefulWidget, int> with FormViewModelMixin {
   @override
   int get initialState => 1;
 
@@ -54,8 +52,7 @@ class TestMvvmFormInstance2 extends BaseViewModel<StatefulWidget, int>
       };
 }
 
-class TestMvvmFormInstance3 extends BaseViewModel<StatefulWidget, int>
-    with FormViewModelMixin {
+class TestMvvmFormInstance3 extends BaseViewModel<StatefulWidget, int> with FormViewModelMixin {
   @override
   int get initialState => 1;
 
@@ -122,8 +119,7 @@ void main() {
       await viewModel.validateAllFields();
 
       expect(stateFromStream.runtimeType, ValidFieldState);
-      expect(
-          viewModel.currentFieldState(testKey1).runtimeType, ValidFieldState);
+      expect(viewModel.currentFieldState(testKey1).runtimeType, ValidFieldState);
 
       await subscription.cancel();
       viewModel.dispose();

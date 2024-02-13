@@ -28,9 +28,8 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
 
   AppTab get initialTab => app.navigation.state.currentTab;
 
-  Stream<AppTab?> get currentTabStream => app.instances
-      .get<NavigationInteractor>()
-      .updates((state) => state.currentTab);
+  Stream<AppTab?> get currentTabStream =>
+      app.instances.get<NavigationInteractor>().updates((state) => state.currentTab);
 
   @override
   HomeViewState get initialState => HomeViewState();

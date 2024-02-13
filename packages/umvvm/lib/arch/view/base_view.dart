@@ -33,9 +33,8 @@ import 'base_view_model.dart';
 ///   }
 /// }
 /// ```
-abstract class BaseView<View extends BaseWidget, ScreenState,
-        ViewModel extends BaseViewModel<View, ScreenState>> extends State<View>
-    with AutomaticKeepAliveClientMixin<View>, WidgetsBindingObserver {
+abstract class BaseView<View extends BaseWidget, ScreenState, ViewModel extends BaseViewModel<View, ScreenState>>
+    extends State<View> with AutomaticKeepAliveClientMixin<View>, WidgetsBindingObserver {
   final _visibilityDetectorKey = UniqueKey();
 
   /// View model for this view

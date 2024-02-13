@@ -14,6 +14,7 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
   });
 
   /// Dependencies for this instance
+  /// 
   /// Does not hold singleton instances
   final List<Connector> dependencies;
 
@@ -22,6 +23,7 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 }
 
 /// Mixin that contains declarations of instance dependencies
+/// 
 /// Contains methods to declare, initialize and get them
 ///
 /// If used you need to call [initializeDependencies] in [MvvmInstance.initialize] call
@@ -58,10 +60,12 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 /// ```
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Local instances
+  /// 
   /// Does not hold singleton instances
   final _instances = HashMap<Type, List<MvvmInstance?>>();
 
   /// Local lazy instances
+  /// 
   /// Does not hold singleton instances
   final _lazyInstancesBuilders = HashMap<Type, List>();
 
@@ -74,6 +78,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Getter that returns true if instance contains async parts
   /// or require async initialization
+  /// 
   /// If you override this getter always use super.isAsync
   /// if you not always returning true
   // coverage:ignore-start
@@ -138,7 +143,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     return concreteParts;
   }
 
-  /// Initializes all dependencies and increase reference count in [ScopedStack]
+  /// Initializes all dependencies and increase reference count in [ScopedContainer]
   @mustCallSuper
   void initializeDependencies() {
     _increaseReferences();
@@ -335,7 +340,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     );
   }
 
-  /// Increases reference count for every interactor in [dependencies]
+  /// Increases reference count for every instance in [dependencies]
   void _increaseReferences() {
     for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique) {
@@ -349,7 +354,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Decreases reference count for every interactor in [dependencies]
+  /// Decreases reference count for every instance in [dependencies]
   void _decreaseReferences() {
     for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique) {

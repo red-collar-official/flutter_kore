@@ -1,5 +1,6 @@
 /// Sealed class with possible input field states
-/// can be [ValidFieldState], [IgnoredFieldState] or [ErrorFieldState]
+/// 
+/// Can be [ValidFieldState], [IgnoredFieldState] or [ErrorFieldState]
 sealed class FieldValidationState {}
 
 /// Type of [FieldValidationState] indicating valid input field state

@@ -7,6 +7,5 @@ part 'app_view_state.freezed.dart';
 class AppViewState with _$AppViewState {
   factory AppViewState() = _AppViewState;
 
-  factory AppViewState.fromJson(Map<String, dynamic> json) =>
-      _$AppViewStateFromJson(json);
+  factory AppViewState.fromJson(Map<String, dynamic> json) => _$AppViewStateFromJson(json);
 }

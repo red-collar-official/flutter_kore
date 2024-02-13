@@ -31,8 +31,7 @@ class TestModule extends InstancesModule {
   late final testInteractor7 = getLocalInstance<TestInteractor7>();
   late final testInteractor13 = getLazyLocalInstance<TestInteractor13>();
   late final testInstancePart5 = useInstancePart<TestInstancePart5>();
-  late final testInteractorAsync9 =
-      getAsyncLazyLocalInstance<TestInteractorAsync9>();
+  late final testInteractorAsync9 = getAsyncLazyLocalInstance<TestInteractorAsync9>();
 
   @override
   String get id => 'test';
@@ -87,8 +86,7 @@ class TestInteractorCyclic extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestInteractorCyclic),
         ],
@@ -112,8 +110,7 @@ class TestInteractor13 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync2 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -132,8 +129,7 @@ class TestInteractorAsync2 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync3 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -152,8 +148,7 @@ class TestInteractorAsync3 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync4 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -172,8 +167,7 @@ class TestInteractorAsync4 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync5 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -192,8 +186,7 @@ class TestInteractorAsync5 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync6 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -212,8 +205,7 @@ class TestInteractorAsync6 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync7 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -232,8 +224,7 @@ class TestInteractorAsync7 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync8 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -252,8 +243,7 @@ class TestInteractorAsync8 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync9 extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -277,8 +267,7 @@ class TestInteractor6 extends BaseInteractor<int, int?> {
 
 class TestInteractorAsync extends BaseInteractor<int, int?> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -304,8 +293,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           const Connector(type: TestInteractor1, input: 2),
           const Connector(type: TestInteractorAsync4, input: 2, isAsync: true),
@@ -430,13 +418,11 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   late final testInteractor4_1 = getLocalInstance<TestInteractor4>();
   late final testInteractor4_2 = getLocalInstance<TestInteractor4>(index: 1);
   late final testInteractorAsync2_1 = getLocalInstance<TestInteractorAsync2>();
-  late final testInteractorAsync2_2 =
-      getLocalInstance<TestInteractorAsync2>(index: 1);
+  late final testInteractorAsync2_2 = getLocalInstance<TestInteractorAsync2>(index: 1);
   late final testInteractor5_1 = getLocalInstance<TestInteractor5>();
   late final testInteractor5_2 = getLocalInstance<TestInteractor5>(index: 1);
   late final testInteractorAsync3_1 = getLocalInstance<TestInteractorAsync3>();
-  late final testInteractorAsync3_2 =
-      getLocalInstance<TestInteractorAsync3>(index: 1);
+  late final testInteractorAsync3_2 = getLocalInstance<TestInteractorAsync3>(index: 1);
   late final testInteractor7 = getLocalInstance<TestInteractor7>();
   late final testInteractor8 = getLocalInstance<TestInteractor8>();
 
@@ -469,8 +455,7 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   );
 
   // ignore: non_constant_identifier_names
-  late final testInteractor1_error_no_object =
-      getLocalInstance<TestInteractor6>();
+  late final testInteractor1_error_no_object = getLocalInstance<TestInteractor6>();
 
   // ignore: non_constant_identifier_names
   late final testPart_error_no_object = useInstancePart<TestInstancePart6>();
@@ -483,17 +468,13 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   late final testInteractor10 = getLazyLocalInstance<TestInteractor10>();
   late final testInteractor11 = getLazyLocalInstance<TestInteractor11>();
 
-  late final testInteractorAsync5_1 =
-      getAsyncLazyLocalInstance<TestInteractorAsync5>();
-  late final testInteractorAsync5_2 =
-      getAsyncLazyLocalInstance<TestInteractorAsync5>(
+  late final testInteractorAsync5_1 = getAsyncLazyLocalInstance<TestInteractorAsync5>();
+  late final testInteractorAsync5_2 = getAsyncLazyLocalInstance<TestInteractorAsync5>(
     index: 1,
   );
 
-  late final testInteractorAsync6 =
-      getAsyncLazyLocalInstance<TestInteractorAsync6>();
-  late final testInteractorAsync7 =
-      getAsyncLazyLocalInstance<TestInteractorAsync7>();
+  late final testInteractorAsync6 = getAsyncLazyLocalInstance<TestInteractorAsync6>();
+  late final testInteractorAsync7 = getAsyncLazyLocalInstance<TestInteractorAsync7>();
 
   // ignore: non_constant_identifier_names
   late final testInteractor9_error_1 = getLazyLocalInstance<TestInteractor9>(
@@ -506,14 +487,12 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
   );
 
   // ignore: non_constant_identifier_names
-  late final testInteractorAsync5_error_1 =
-      getAsyncLazyLocalInstance<TestInteractorAsync5>(
+  late final testInteractorAsync5_error_1 = getAsyncLazyLocalInstance<TestInteractorAsync5>(
     index: -1,
   );
 
   // ignore: non_constant_identifier_names
-  late final testInteractorAsync6_error_2 =
-      getAsyncLazyLocalInstance<TestInteractorAsync6>(
+  late final testInteractorAsync6_error_2 = getAsyncLazyLocalInstance<TestInteractorAsync6>(
     index: 10,
   );
 
@@ -522,10 +501,8 @@ class TestInteractor3 extends BaseInteractor<int, int?> {
     index: 1,
   );
 
-  late final testInteractorAsync8_1 =
-      getAsyncLazyLocalInstance<TestInteractorAsync8>();
-  late final testInteractorAsync8_2 =
-      getAsyncLazyLocalInstance<TestInteractorAsync8>(
+  late final testInteractorAsync8_1 = getAsyncLazyLocalInstance<TestInteractorAsync8>();
+  late final testInteractorAsync8_2 = getAsyncLazyLocalInstance<TestInteractorAsync8>(
     index: 1,
   );
 
@@ -563,8 +540,7 @@ class TestInteractorError extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestInteractor1, input: 2),
           Connector(
@@ -592,8 +568,7 @@ class TestInteractorErrorAsync extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(
             type: TestInteractorAsync,
@@ -617,8 +592,7 @@ class TestInteractorErrorWithLazyDeps extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestInteractor1, input: 2, isLazy: true),
           Connector(
@@ -651,8 +625,7 @@ class TestInteractorErrorWithAsyncLazyDeps extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(
             type: TestInteractorAsync,
@@ -676,8 +649,7 @@ class TestInteractorWithRestore extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
       );
@@ -700,8 +672,7 @@ class TestInteractorWithDefaultRestore extends BaseInteractor<double, int?> {
   double get initialState => input?.toDouble() ?? 0.0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
       );
@@ -719,8 +690,7 @@ class TestInteractorWithAsyncRestore extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
         syncRestore: false,

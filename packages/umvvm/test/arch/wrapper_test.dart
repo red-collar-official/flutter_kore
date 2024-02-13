@@ -99,8 +99,7 @@ void main() {
     });
 
     test('Wrapper holder initialization test', () async {
-      final holderWrapper =
-          await instances.getUniqueWithParamsAsync<TestHolderWrapper, int>(
+      final holderWrapper = await instances.getUniqueWithParamsAsync<TestHolderWrapper, int>(
         params: 3,
       );
 

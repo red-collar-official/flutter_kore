@@ -1,4 +1,4 @@
-import 'package:umvvm/arch/navigation/base/navigation_route_builder.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Class describing route settings
 ///
@@ -89,7 +89,7 @@ class UIDialogRouteSettings extends UIRouteSettings {
 /// Class describing route data in navigation stack
 class UIRouteModel {
   /// name for this route
-  /// can be [BottomSheetNames], [DialogNames] or [RouteNames] or anything else
+  /// can be BottomSheetNames, DialogNames or RouteNames or anything else
   final dynamic name;
 
   /// Route settings for this route

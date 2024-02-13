@@ -52,13 +52,11 @@ void main() {
       expect(response2.isSuccessful, false);
 
       expect(
-        (response1.error as dio.DioException).type ==
-            dio.DioExceptionType.cancel,
+        (response1.error as dio.DioException).type == dio.DioExceptionType.cancel,
         true,
       );
       expect(
-        (response2.error as dio.DioException).type ==
-            dio.DioExceptionType.cancel,
+        (response2.error as dio.DioException).type == dio.DioExceptionType.cancel,
         true,
       );
     });

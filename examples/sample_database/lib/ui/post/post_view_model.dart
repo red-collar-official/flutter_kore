@@ -8,8 +8,7 @@ import 'post_view_state.dart';
 
 class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
         dependencies: [
           app.connectors.postInteractorConnector(scope: BaseScopes.unique),
         ],
@@ -44,12 +43,10 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
     );
   }
 
-  Stream<StatefulData<Post>?> get postStream =>
-      getLocalInstance<PostInteractor>().updates((state) => state.post);
+  Stream<StatefulData<Post>?> get postStream => getLocalInstance<PostInteractor>().updates((state) => state.post);
 
   @override
   PostViewState get initialState => PostViewState();
 
-  StatefulData<Post>? get initialPost =>
-      getLocalInstance<PostInteractor>().state.post;
+  StatefulData<Post>? get initialPost => getLocalInstance<PostInteractor>().state.post;
 }

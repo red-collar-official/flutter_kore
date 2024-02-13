@@ -17,8 +17,7 @@ class AppView extends BaseWidget {
   }
 }
 
-class _AppViewWidgetState
-    extends NavigationView<AppView, AppViewState, AppViewModel> {
+class _AppViewWidgetState extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(

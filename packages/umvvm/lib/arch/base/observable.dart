@@ -63,8 +63,7 @@ class Observable<T> {
   T? get current => _current;
 
   /// Broadcast stream of [current] changes
-  Stream<ObservableChange<T>> get stream =>
-      _controller.stream.asBroadcastStream();
+  Stream<ObservableChange<T>> get stream => _controller.stream.asBroadcastStream();
 
   /// Updates [current] and [previous]
   void update(T data) {

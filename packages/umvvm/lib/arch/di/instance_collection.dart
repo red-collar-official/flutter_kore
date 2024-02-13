@@ -6,6 +6,7 @@ import 'package:umvvm/umvvm.dart';
 typedef DefaultInputType = Map<String, dynamic>;
 
 /// Main class to store instances of mvvm elements
+/// 
 /// Contains internal methods to manage instances
 class InstanceCollection {
   final container = ScopedContainer<MvvmInstance>();
@@ -37,7 +38,8 @@ class InstanceCollection {
   List<MvvmInstance> all(String scope) => container.all(scope);
 
   /// Method to remove instances that is no longer used
-  /// Called every time [dispose] called for instance
+  /// 
+  /// Called every time [MvvmInstance.dispose] called for instance
   void prune() {
     container.prune((object) {
       if (!object.isDisposed) {
@@ -73,6 +75,7 @@ class InstanceCollection {
   }
 
   /// Adds test instance for given instance type
+  /// 
   /// Used only for tests
   @visibleForTesting
   void addTest<Instance extends MvvmInstance>({
@@ -121,6 +124,7 @@ class InstanceCollection {
   // Async methods
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<Instance> getUniqueAsync<Instance extends MvvmInstance>({
     bool withoutConnections = false,
@@ -134,6 +138,7 @@ class InstanceCollection {
   }
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<Instance> getUniqueWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
@@ -148,7 +153,8 @@ class InstanceCollection {
     );
   }
 
-  /// Return instance for given type
+  /// Returns instance for given type
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<Instance> getAsync<Instance extends MvvmInstance>({
     DefaultInputType? params,
@@ -165,6 +171,7 @@ class InstanceCollection {
   }
 
   /// Return instance for given type
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<Instance> getWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
@@ -184,6 +191,7 @@ class InstanceCollection {
   }
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<MvvmInstance> getUniqueByTypeStringWithParamsAsync<InputState>({
     required String type,
@@ -202,6 +210,7 @@ class InstanceCollection {
   }
 
   /// Similar to get
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Future<MvvmInstance> getByTypeStringWithParamsAsync<InputState>({
     required String type,
@@ -222,6 +231,7 @@ class InstanceCollection {
   }
 
   /// Adds instance in collection
+  /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
   Future<void> addAsync({
     required String type,
@@ -233,6 +243,7 @@ class InstanceCollection {
   }
 
   /// Adds instance in collection
+  /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
   Future<void> addWithParamsAsync<InputState>({
     required String type,
@@ -338,6 +349,7 @@ class InstanceCollection {
   // Sync methods
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Instance getUnique<Instance extends MvvmInstance>({
     DefaultInputType? params,
@@ -350,6 +362,7 @@ class InstanceCollection {
   }
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Instance getUniqueWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
@@ -378,6 +391,7 @@ class InstanceCollection {
   }
 
   /// Return instance for given type
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Instance get<Instance extends MvvmInstance>({
     DefaultInputType? params,
@@ -394,6 +408,7 @@ class InstanceCollection {
   }
 
   /// Return instance for given type
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   Instance getWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
@@ -413,6 +428,7 @@ class InstanceCollection {
   }
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   MvvmInstance getUniqueByTypeStringWithParams<InputState>({
     required String type,
@@ -431,6 +447,7 @@ class InstanceCollection {
   }
 
   /// Similar to get, but create new instance every time
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   MvvmInstance getUniqueByTypeString(
     String type, {
@@ -445,6 +462,7 @@ class InstanceCollection {
   }
 
   /// Similar to get
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   MvvmInstance getByTypeStringWithParams<InputState>({
     required String type,
@@ -465,6 +483,7 @@ class InstanceCollection {
   }
 
   /// Similar to get
+  /// 
   /// Also calls [MvvmInstance.initialize] for this instance
   MvvmInstance getByTypeString({
     required String type,
@@ -483,6 +502,7 @@ class InstanceCollection {
   }
 
   /// Adds instance in collection
+  /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
   void add({
     required String type,
@@ -494,7 +514,8 @@ class InstanceCollection {
   }
 
   /// Adds instance in collection
-  /// Also calls [MvvmInstance.initialize] for this isntance
+  /// 
+  /// Does not call [MvvmInstance.initialize] for this isntance
   @visibleForTesting
   void addUninitialized<InputState>({
     required String type,
@@ -517,6 +538,7 @@ class InstanceCollection {
   }
 
   /// Adds instance in collection
+  /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
   void addWithParams<InputState>({
     required String type,

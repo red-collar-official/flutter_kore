@@ -27,8 +27,7 @@ class PostMapper extends ClassMapperBase<Post> {
   static int? _$id(Post v) => v.id;
   static const Field<Post, int> _f$id = Field('id', _$id);
   static bool _$isLiked(Post v) => v.isLiked;
-  static const Field<Post, bool> _f$isLiked =
-      Field('isLiked', _$isLiked, opt: true, def: false);
+  static const Field<Post, bool> _f$isLiked = Field('isLiked', _$isLiked, opt: true, def: false);
 
   @override
   final Map<Symbol, Field<Post, dynamic>> fields = const {
@@ -39,11 +38,7 @@ class PostMapper extends ClassMapperBase<Post> {
   };
 
   static Post _instantiate(DecodingData data) {
-    return Post(
-        title: data.dec(_f$title),
-        body: data.dec(_f$body),
-        id: data.dec(_f$id),
-        isLiked: data.dec(_f$isLiked));
+    return Post(title: data.dec(_f$title), body: data.dec(_f$body), id: data.dec(_f$id), isLiked: data.dec(_f$isLiked));
   }
 
   @override
@@ -67,8 +62,7 @@ mixin PostMappable {
     return PostMapper.ensureInitialized().encodeMap<Post>(this as Post);
   }
 
-  PostCopyWith<Post, Post, Post> get copyWith =>
-      _PostCopyWithImpl(this as Post, $identity, $identity);
+  PostCopyWith<Post, Post, Post> get copyWith => _PostCopyWithImpl(this as Post, $identity, $identity);
   @override
   String toString() {
     return PostMapper.ensureInitialized().stringifyValue(this as Post);
@@ -77,8 +71,7 @@ mixin PostMappable {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (runtimeType == other.runtimeType &&
-            PostMapper.ensureInitialized().isValueEqual(this as Post, other));
+        (runtimeType == other.runtimeType && PostMapper.ensureInitialized().isValueEqual(this as Post, other));
   }
 
   @override
@@ -88,28 +81,21 @@ mixin PostMappable {
 }
 
 extension PostValueCopy<$R, $Out> on ObjectCopyWith<$R, Post, $Out> {
-  PostCopyWith<$R, Post, $Out> get $asPost =>
-      $base.as((v, t, t2) => _PostCopyWithImpl(v, t, t2));
+  PostCopyWith<$R, Post, $Out> get $asPost => $base.as((v, t, t2) => _PostCopyWithImpl(v, t, t2));
 }
 
-abstract class PostCopyWith<$R, $In extends Post, $Out>
-    implements ClassCopyWith<$R, $In, $Out> {
+abstract class PostCopyWith<$R, $In extends Post, $Out> implements ClassCopyWith<$R, $In, $Out> {
   $R call({String? title, String? body, int? id, bool? isLiked});
   PostCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _PostCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Post, $Out>
-    implements PostCopyWith<$R, Post, $Out> {
+class _PostCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Post, $Out> implements PostCopyWith<$R, Post, $Out> {
   _PostCopyWithImpl(super.value, super.then, super.then2);
 
   @override
   late final ClassMapperBase<Post> $mapper = PostMapper.ensureInitialized();
   @override
-  $R call(
-          {Object? title = $none,
-          Object? body = $none,
-          Object? id = $none,
-          bool? isLiked}) =>
+  $R call({Object? title = $none, Object? body = $none, Object? id = $none, bool? isLiked}) =>
       $apply(FieldCopyWithData({
         if (title != $none) #title: title,
         if (body != $none) #body: body,
@@ -124,8 +110,7 @@ class _PostCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Post, $Out>
       isLiked: data.get(#isLiked, or: $value.isLiked));
 
   @override
-  PostCopyWith<$R2, Post, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _PostCopyWithImpl($value, $cast, t);
+  PostCopyWith<$R2, Post, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) => _PostCopyWithImpl($value, $cast, t);
 }
 
 class PostsStateMapper extends ClassMapperBase<PostsState> {
@@ -144,8 +129,7 @@ class PostsStateMapper extends ClassMapperBase<PostsState> {
   final String id = 'PostsState';
 
   static StatefulData<List<Post>>? _$posts(PostsState v) => v.posts;
-  static const Field<PostsState, StatefulData<List<Post>>> _f$posts =
-      Field('posts', _$posts);
+  static const Field<PostsState, StatefulData<List<Post>>> _f$posts = Field('posts', _$posts);
   static bool? _$active(PostsState v) => v.active;
   static const Field<PostsState, bool> _f$active = Field('active', _$active);
 
@@ -173,29 +157,25 @@ class PostsStateMapper extends ClassMapperBase<PostsState> {
 
 mixin PostsStateMappable {
   String toJson() {
-    return PostsStateMapper.ensureInitialized()
-        .encodeJson<PostsState>(this as PostsState);
+    return PostsStateMapper.ensureInitialized().encodeJson<PostsState>(this as PostsState);
   }
 
   Map<String, dynamic> toMap() {
-    return PostsStateMapper.ensureInitialized()
-        .encodeMap<PostsState>(this as PostsState);
+    return PostsStateMapper.ensureInitialized().encodeMap<PostsState>(this as PostsState);
   }
 
   PostsStateCopyWith<PostsState, PostsState, PostsState> get copyWith =>
       _PostsStateCopyWithImpl(this as PostsState, $identity, $identity);
   @override
   String toString() {
-    return PostsStateMapper.ensureInitialized()
-        .stringifyValue(this as PostsState);
+    return PostsStateMapper.ensureInitialized().stringifyValue(this as PostsState);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            PostsStateMapper.ensureInitialized()
-                .isValueEqual(this as PostsState, other));
+            PostsStateMapper.ensureInitialized().isValueEqual(this as PostsState, other));
   }
 
   @override
@@ -204,39 +184,30 @@ mixin PostsStateMappable {
   }
 }
 
-extension PostsStateValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, PostsState, $Out> {
+extension PostsStateValueCopy<$R, $Out> on ObjectCopyWith<$R, PostsState, $Out> {
   PostsStateCopyWith<$R, PostsState, $Out> get $asPostsState =>
       $base.as((v, t, t2) => _PostsStateCopyWithImpl(v, t, t2));
 }
 
-abstract class PostsStateCopyWith<$R, $In extends PostsState, $Out>
-    implements ClassCopyWith<$R, $In, $Out> {
+abstract class PostsStateCopyWith<$R, $In extends PostsState, $Out> implements ClassCopyWith<$R, $In, $Out> {
   $R call({StatefulData<List<Post>>? posts, bool? active});
   PostsStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _PostsStateCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, PostsState, $Out>
+class _PostsStateCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, PostsState, $Out>
     implements PostsStateCopyWith<$R, PostsState, $Out> {
   _PostsStateCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<PostsState> $mapper =
-      PostsStateMapper.ensureInitialized();
+  late final ClassMapperBase<PostsState> $mapper = PostsStateMapper.ensureInitialized();
   @override
   $R call({Object? posts = $none, Object? active = $none}) =>
-      $apply(FieldCopyWithData({
-        if (posts != $none) #posts: posts,
-        if (active != $none) #active: active
-      }));
+      $apply(FieldCopyWithData({if (posts != $none) #posts: posts, if (active != $none) #active: active}));
   @override
-  PostsState $make(CopyWithData data) => PostsState(
-      posts: data.get(#posts, or: $value.posts),
-      active: data.get(#active, or: $value.active));
+  PostsState $make(CopyWithData data) =>
+      PostsState(posts: data.get(#posts, or: $value.posts), active: data.get(#active, or: $value.active));
 
   @override
-  PostsStateCopyWith<$R2, PostsState, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
+  PostsStateCopyWith<$R2, PostsState, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
       _PostsStateCopyWithImpl($value, $cast, t);
 }

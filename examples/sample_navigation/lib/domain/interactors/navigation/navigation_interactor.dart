@@ -15,8 +15,7 @@ part 'navigation_interactor.app_navigation.dart';
 
 @singleton
 @AppNavigation(tabs: AppTab)
-class NavigationInteractor
-    extends NavigationInteractorDeclaration<NavigationState> {
+class NavigationInteractor extends NavigationInteractorDeclaration<NavigationState> {
   @override
   AppTab? get currentTab => state.currentTab;
 

@@ -23,8 +23,7 @@ class PostView extends BaseWidget {
   }
 }
 
-class _PostViewWidgetState
-    extends NavigationView<PostView, PostViewState, PostViewModel> {
+class _PostViewWidgetState extends NavigationView<PostView, PostViewState, PostViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
