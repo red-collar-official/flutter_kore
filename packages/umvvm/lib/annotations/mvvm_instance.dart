@@ -1,7 +1,5 @@
 // coverage:ignore-file
 
-import 'package:umvvm/umvvm.dart';
-
 /// Annotate class as custom mvvm instance
 ///
 /// ```dart
