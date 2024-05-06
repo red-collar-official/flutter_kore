@@ -35,6 +35,9 @@ class InstanceCollection {
 
   InstanceCollection._internal();
 
+  /// Returns all instances in given scope
+  /// 
+  /// [scope] - string scope value 
   List<MvvmInstance> all(String scope) => container.all(scope);
 
   /// Method to remove instances that is no longer used
@@ -48,12 +51,18 @@ class InstanceCollection {
     });
   }
 
-  /// Similar to get
+  /// Similar to [all] but with type provided
+  /// 
+  /// [scope] - string scope value 
+  /// [type] - string type value
   List<MvvmInstance> getAllByTypeString(String scope, String type) {
     return container.getAllByTypeString(scope, type);
   }
 
   /// Adds existing instance to collection
+  /// 
+  /// [scope] - string scope value 
+  /// [instance] - given instance to add
   void addExisting({
     String scope = BaseScopes.global,
     required MvvmInstance instance,
@@ -68,6 +77,8 @@ class InstanceCollection {
   }
 
   /// Adds builder for given instance type
+  /// 
+  /// [builder] - builder for this instance type
   void addBuilder<Instance extends MvvmInstance>(Function builder) {
     final id = Instance.toString();
 
@@ -77,6 +88,10 @@ class InstanceCollection {
   /// Adds test instance for given instance type
   /// 
   /// Used only for tests
+  /// 
+  /// [scope] - string scope value 
+  /// [instance] - given instance to add
+  /// [params] - params for this instance
   @visibleForTesting
   void addTest<Instance extends MvvmInstance>({
     String scope = BaseScopes.global,
@@ -101,6 +116,9 @@ class InstanceCollection {
     container.clear();
   }
 
+  /// Returns built instance for given type id
+  /// 
+  /// [id] - string type id for instance
   Instance constructInstance<Instance extends MvvmInstance>(String id) {
     final builder = builders[id];
 
@@ -117,6 +135,8 @@ class InstanceCollection {
   // coverage:ignore-end
 
   /// Tries to find object in scope
+  /// 
+  /// [scope] - string scope value 
   InstanceType? find<InstanceType>(String scope) {
     return container.find<InstanceType>(scope);
   }
@@ -126,6 +146,8 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   Future<Instance> getUniqueAsync<Instance extends MvvmInstance>({
     bool withoutConnections = false,
   }) {
@@ -140,6 +162,9 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Future<Instance> getUniqueWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
     bool withoutConnections = false,
@@ -156,6 +181,11 @@ class InstanceCollection {
   /// Returns instance for given type
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Future<Instance> getAsync<Instance extends MvvmInstance>({
     DefaultInputType? params,
     int? index,
@@ -173,6 +203,11 @@ class InstanceCollection {
   /// Return instance for given type
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Future<Instance> getWithParamsAsync<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
@@ -193,6 +228,11 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [params] - params for this instance
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [beforeInitialize] - callback to run before [MvvmInstance.initialize] call
   Future<MvvmInstance> getUniqueByTypeStringWithParamsAsync<InputState>({
     required String type,
     InputState? params,
@@ -212,6 +252,12 @@ class InstanceCollection {
   /// Similar to get
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Future<MvvmInstance> getByTypeStringWithParamsAsync<InputState>({
     required String type,
     InputState? params,
@@ -233,6 +279,11 @@ class InstanceCollection {
   /// Adds instance in collection
   /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [params] - params for this instance
   Future<void> addAsync({
     required String type,
     DefaultInputType? params,
@@ -245,6 +296,11 @@ class InstanceCollection {
   /// Adds instance in collection
   /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
+  ///   
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [params] - params for this instance
   Future<void> addWithParamsAsync<InputState>({
     required String type,
     InputState? params,
@@ -351,6 +407,9 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Instance getUnique<Instance extends MvvmInstance>({
     DefaultInputType? params,
     bool withoutConnections = false,
@@ -364,6 +423,9 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Instance getUniqueWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
     bool withoutConnections = false,
@@ -378,6 +440,9 @@ class InstanceCollection {
   }
 
   /// Forcibly tries to get instance for type
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
   @visibleForTesting
   Instance? forceGet<Instance extends MvvmInstance>({
     int? index,
@@ -393,6 +458,11 @@ class InstanceCollection {
   /// Return instance for given type
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Instance get<Instance extends MvvmInstance>({
     DefaultInputType? params,
     int? index,
@@ -410,6 +480,11 @@ class InstanceCollection {
   /// Return instance for given type
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   Instance getWithParams<Instance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
@@ -430,6 +505,11 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [params] - params for this instance
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [beforeInitialize] - callback to run before [MvvmInstance.initialize] call
   MvvmInstance getUniqueByTypeStringWithParams<InputState>({
     required String type,
     InputState? params,
@@ -449,6 +529,10 @@ class InstanceCollection {
   /// Similar to get, but create new instance every time
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [params] - params for this instance
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   MvvmInstance getUniqueByTypeString(
     String type, {
     DefaultInputType? params,
@@ -464,6 +548,12 @@ class InstanceCollection {
   /// Similar to get
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   MvvmInstance getByTypeStringWithParams<InputState>({
     required String type,
     InputState? params,
@@ -485,6 +575,12 @@ class InstanceCollection {
   /// Similar to get
   /// 
   /// Also calls [MvvmInstance.initialize] for this instance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
+  /// [params] - params for this instance
   MvvmInstance getByTypeString({
     required String type,
     DefaultInputType? params,
@@ -504,6 +600,11 @@ class InstanceCollection {
   /// Adds instance in collection
   /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [params] - params for this instance
   void add({
     required String type,
     DefaultInputType? params,
@@ -516,6 +617,11 @@ class InstanceCollection {
   /// Adds instance in collection
   /// 
   /// Does not call [MvvmInstance.initialize] for this isntance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [params] - params for this instance
   @visibleForTesting
   void addUninitialized<InputState>({
     required String type,
@@ -540,6 +646,11 @@ class InstanceCollection {
   /// Adds instance in collection
   /// 
   /// Also calls [MvvmInstance.initialize] for this isntance
+  /// 
+  /// [type] - string type of this instance
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
+  /// [params] - params for this instance
   void addWithParams<InputState>({
     required String type,
     InputState? params,
@@ -648,6 +759,9 @@ class InstanceCollection {
 
   /// Unregisters instance in scope and
   /// resets object reference counter in scope
+  /// 
+  /// [index] - index for this instance
+  /// [scope] - string scope to get instance from
   void unregisterInstance<T>({
     String scope = BaseScopes.global,
     int? index,
@@ -720,6 +834,8 @@ class InstanceCollection {
 
   /// Helper method to get unique instance and
   /// dispose it automatically after body is finished
+  /// 
+  /// [body] - function to run this this instance
   Future useAndDisposeInstance<T extends MvvmInstance>(
     Future Function(T) body,
   ) async {
@@ -734,6 +850,9 @@ class InstanceCollection {
 
   /// Helper method to get unique instance and
   /// dispose it automatically after body is finished
+  /// 
+  /// [params] - params for this instance
+  /// [body] - function to run this this instance
   Future useAndDisposeInstanceWithParams<T extends MvvmInstance, Input>(
     Input? params,
     Future Function(T) body,

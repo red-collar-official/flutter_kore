@@ -14,7 +14,6 @@ import 'package:umvvm/umvvm.dart';
 /// statefulData = SuccessData(result: 1);
 ///
 /// statefulData.unwrap(); // valid
-///
 /// ```
 sealed class StatefulData<T> {
   /// Returns success data or throws exception if value is not [SuccessData]

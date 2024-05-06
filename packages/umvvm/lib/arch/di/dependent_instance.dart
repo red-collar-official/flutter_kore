@@ -340,7 +340,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     );
   }
 
-  /// Increases reference count for every instance in [dependencies]
+  /// Increases reference count for every instance
   void _increaseReferences() {
     for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique) {
@@ -354,7 +354,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Decreases reference count for every instance in [dependencies]
+  /// Decreases reference count for every instance
   void _decreaseReferences() {
     for (final element in getFullConnectorsList()) {
       if (element.scope == BaseScopes.unique) {
@@ -368,7 +368,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
     }
   }
 
-  /// Disposes unique interactors in [interactors]
+  /// Disposes unique instances
   void _disposeUniqueInstances() {
     for (final element in getFullConnectorsList()) {
       if (element.scope != BaseScopes.unique) {
@@ -382,6 +382,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
+  /// 
+  /// [index] - index of instance if multiple are connected
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) {
     if (_instances[T] == null) {
       throw IllegalStateException(
@@ -399,6 +401,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
+  /// 
+  /// [index] - index of instance if multiple are connected
   T getLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
     final typedInstances = _instances[T];
     final typedBuilders = _lazyInstancesBuilders[T];
@@ -425,6 +429,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
+  /// 
+  /// [index] - index of instance if multiple are connected
   Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({int index = 0}) async {
     final typedInstances = _instances[T];
     final typedBuilders = _lazyInstancesBuilders[T];
@@ -464,6 +470,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Runs for every async instance when it is initialized
+  /// 
+  /// [type] - type of instance that is ready
+  /// [index] - index of instance that is ready
   void onAsyncInstanceReady(Type type, int? index) {}
 
   /// Runs after every async instance is initialized

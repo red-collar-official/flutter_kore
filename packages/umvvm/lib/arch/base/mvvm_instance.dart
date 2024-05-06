@@ -63,6 +63,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Base method for instance initialization
   ///
   /// After you call this method set [isInitialized] flag to true
+  /// 
+  /// [input] - input for this instance
   @mustCallSuper
   void initialize(T input) {
     this.input = input;
@@ -114,6 +116,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Base method for lightweight instance initialization
+  /// 
+  /// [input] - input for this instance
   // coverage:ignore-start
   @mustCallSuper
   // ignore: use_setters_to_change_properties
@@ -160,6 +164,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Returns initialized instance part for given type
+  /// 
+  /// [index] - index for this part
   InstancePartType useInstancePart<InstancePartType extends BaseInstancePart>({
     int index = 0,
   }) {
@@ -287,6 +293,9 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Runs for every async part when it is initialized
+  /// 
+  /// [type] - type of instance that is ready
+  /// [index] - index of instance that is ready
   void onAsyncPartReady(Type type, int? index) {}
 
   /// Runs for every async part when it is initialized

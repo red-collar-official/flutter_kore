@@ -7,6 +7,8 @@ mixin ApiCaller<Input> on MvvmInstance<Input> {
   final List<BaseRequest> requests = [];
 
   /// Executes request and adds it in local requests collection
+  /// 
+  /// [request] - request to track
   Future<Response<T>> executeAndCancelOnDispose<T>(
     BaseRequest<T> request,
   ) async {

@@ -26,20 +26,20 @@ class Instance {
 
   /// Initialization order for this instance.
   ///
-  /// Only matters if [singleton], [async]
+  /// Only matters if [singleton], [isAsync]
   /// and [awaitInitialization] are set to true
   final int? initializationOrder;
 
   /// Flag indicating that initialization of
   ///
   /// this instance needs to be awaited at app startup - defaults to false
-  /// Only matters if [singleton], [async] are set to true
+  /// Only matters if [singleton], [isAsync] are set to true
   final bool awaitInitialization;
 
   /// Flag indicating that this instance is async - has async initialization
   final bool isAsync;
 
-  /// Flag indicating that this instance is [BaseInstancePart]
+  /// Flag indicating that this instance is part instance
   final bool part;
 
   const Instance({

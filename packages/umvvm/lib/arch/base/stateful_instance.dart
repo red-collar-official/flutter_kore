@@ -161,10 +161,14 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// Callback to get cache object
   ///
   /// Use it to call [updateState] and restore saved state object
+  /// 
+  /// [savedStateObject] - restored state value
   void onRestore(Map<String, dynamic> savedStateObject) {}
 
   /// Updates state in underlying [Store]
-  ///
+  /// 
+  /// [state] - new state value
+  /// 
   /// ```dart
   /// @basicInstance
   /// class PostsInteractor extends BaseInteractor<PostsState> {

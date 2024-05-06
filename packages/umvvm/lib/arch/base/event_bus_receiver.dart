@@ -57,6 +57,10 @@ abstract class EventBusReceiver {
   /// Subscribes to event of given type
   ///
   /// Adds subscriber to local subscribers collection
+  /// 
+  /// [processor] - function that handles event
+  /// [reactsToPause] - flag indicating that this handler is paused when assosiated view is paused
+  /// [firesAfterResume] - flag indicating that events that are received while pause need to be replayed
   @mustCallSuper
   EventBusSubscriber on<T>(
     EventBusSubscriber<T> processor, {
@@ -91,6 +95,8 @@ abstract class EventBusReceiver {
   }
 
   /// Resumes events processing
+  /// 
+  /// [sendAllEventsReceivedWhilePause] - flag indicating that events received while pause will be resent
   @mustCallSuper
   void resumeEventBusSubscription({
     bool sendAllEventsReceivedWhilePause = true,

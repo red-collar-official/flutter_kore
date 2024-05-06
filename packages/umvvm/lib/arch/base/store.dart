@@ -37,7 +37,9 @@ class Store<State> {
   Stream<State> get stream => _state.stream.map((event) => event.next!);
 
   /// Updates current state
-  ///
+  /// 
+  /// [state] - new state value
+  /// 
   /// Listeners of [stream] will be notified about changes
   ///
   /// ```dart
@@ -70,6 +72,8 @@ class Store<State> {
   }
 
   /// Initializes internal state [Observable]
+  /// 
+  /// [state] - initial state value
   void initialize(State state) {
     _state = Observable<State>.initial(state);
   }

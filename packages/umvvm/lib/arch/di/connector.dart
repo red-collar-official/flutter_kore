@@ -68,6 +68,8 @@ class Connector {
   });
 
   /// Returns copy if this connector with overriden scope value
+  /// 
+  /// [scope] - scope string that will replace initial value
   Connector copyWithScope(String scope) {
     return Connector(
       type: type,
@@ -84,7 +86,7 @@ class Connector {
   }
 }
 
-/// Callable proxy class for [BaseConnector]
+/// Callable proxy class for [Connector]
 class ConnectorCall<InstanceType, InputStateType> {
   Connector call({
     String scope = BaseScopes.weak,
