@@ -1,6 +1,6 @@
 # Apis
 
-![apis](doc_images/apis.png "Apis")
+<img src="doc_images/apis.png" alt="apis" width="500"/>
 
 Definition of api consists of implementing base http request class and defining api declaration.
 
