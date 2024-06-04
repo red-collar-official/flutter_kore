@@ -284,7 +284,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Learn about components:
 
-<img src="doc_images/overall.png" alt="overall" width="600"/>
+<img src="docs/doc_images/overall.png" alt="overall" width="600"/>
 
 #### Global layer
 
