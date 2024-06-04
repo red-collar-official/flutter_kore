@@ -1,6 +1,6 @@
 # App
 
-![app image](doc_images/app.png "App")
+<img src="doc_images/app.png" alt="app" width="600"/>
 
 App is main class that holds and connects umvvm architecture components
 such as event bus and instance collection.

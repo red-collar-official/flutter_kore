@@ -1,6 +1,6 @@
 # Widget and view state
 
-![Widget](doc_images/widget.png "Widget")
+<img src="doc_images/widget.png" alt="widget" width="600"/>
 
 View state has a reference to view model and method to create view model.
 

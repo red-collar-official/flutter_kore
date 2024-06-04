@@ -1,6 +1,6 @@
 # ViewModel
 
-![view model image](doc_images/view_model.png "ViewModel")
+<img src="doc_images/view_model.png" alt="view_model" width="600"/>
 
 View models contain logic for view classes.
 

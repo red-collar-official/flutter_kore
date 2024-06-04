@@ -1,6 +1,6 @@
 # Custom mvvm instances
 
-![custom](doc_images/custom.png "Custom")
+<img src="doc_images/custom.png" alt="custom" width="600"/>
 
 You can create custom mvvm instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
 

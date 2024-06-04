@@ -1,6 +1,6 @@
 # Testing
 
-![Testing](doc_images/testing.png "Testing")
+<img src="doc_images/testing.png" alt="testing" width="600"/>
 
 All components of architecture except for view states can be unit tested.
 View states require widget tests.

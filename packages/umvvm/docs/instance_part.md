@@ -1,6 +1,6 @@
 # Parts
 
-![Instance part](doc_images/instance_part.png "Instance part")
+<img src="doc_images/instance_part.png" alt="instance_part" width="600"/>
 
 Part is mvvm instance type that has reference to parent mvvm instance.
 It is usefull for splitting logic in large instances. 

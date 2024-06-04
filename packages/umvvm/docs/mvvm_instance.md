@@ -1,6 +1,6 @@
 # Mvvm instance
 
-![mvvm instance image](doc_images/mvvm_instance.png "MvvmInstance")
+<img src="doc_images/mvvm_instance.png" alt="mvvm_instance" width="600"/>
 
 Mvvm instance is base class for every umvvm component.
 

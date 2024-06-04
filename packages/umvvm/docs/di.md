@@ -1,6 +1,6 @@
 # DI
 
-![DI](doc_images/di.png "DI")
+<img src="doc_images/di.png" alt="di" width="600"/>
 
 Library contains simple DI container.
 

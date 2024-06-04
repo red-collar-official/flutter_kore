@@ -1,6 +1,6 @@
 # Wrappers
 
-![wrapper image](doc_images/wrapper.png "Wrapper")
+<img src="doc_images/wrapper.png" alt="wrapper" width="600"/>
 
 Wrappers contain logic for working with third party dependencies.
 

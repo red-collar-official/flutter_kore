@@ -1,6 +1,6 @@
 # Apis
 
-<img src="doc_images/apis.png" alt="apis" width="500"/>
+<img src="doc_images/apis.png" alt="apis" width="600"/>
 
 Definition of api consists of implementing base http request class and defining api declaration.
 

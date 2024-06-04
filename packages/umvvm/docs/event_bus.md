@@ -1,6 +1,6 @@
 # EventBus
 
-![Event Bus](doc_images/event_bus.png "Event bus")
+<img src="doc_images/event_bus.png" alt="event_bus" width="600"/>
 
 Event bus instance is avaliable globally with <b>app.eventBus</b> or via <b>EventBus</b> singleton. 
 

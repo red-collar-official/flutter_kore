@@ -1,6 +1,6 @@
 # Interactors
 
-![interactor image](doc_images/interactor.png "Interactor")
+<img src="doc_images/interactor.png" alt="interactor" width="600"/>
 
 Interactors contain state and subscription to <b>EventBus</b> events.(more information about <b>EventBus</b> can be found [here](./event_bus.md)).
 

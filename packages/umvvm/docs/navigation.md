@@ -1,6 +1,6 @@
 # Navigation
 
-![Navigation](doc_images/navigation.png "Navigation")
+<img src="doc_images/navigation.png" alt="navigation" width="600"/>
 
 Package also contains default way to handle navigation.
 
