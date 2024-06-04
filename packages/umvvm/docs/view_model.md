@@ -1,5 +1,7 @@
 # ViewModel
 
+![view model image](doc_images/view_model.png "ViewModel")
+
 View models contain logic for view classes.
 
 They also contain local state that we like <b>Interactor</b> can update with <b>updateState</b>.

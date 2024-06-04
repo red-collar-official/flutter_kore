@@ -1,5 +1,7 @@
 # Mvvm instance
 
+![mvvm instance image](doc_images/mvvm_instance.png "MvvmInstance")
+
 Mvvm instance is base class for every umvvm component.
 
 It contains simple interface with initialize and dispose methods.

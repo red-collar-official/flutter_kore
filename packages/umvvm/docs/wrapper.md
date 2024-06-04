@@ -1,5 +1,7 @@
 # Wrappers
 
+![wrapper image](doc_images/wrapper.png "Wrapper")
+
 Wrappers contain logic for working with third party dependencies.
 
 Wrapper can be just used as instance holder or contain logic for working with third party api.

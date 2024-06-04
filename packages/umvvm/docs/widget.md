@@ -1,5 +1,7 @@
 # Widget and view state
 
+![Widget](doc_images/widget.png "Widget")
+
 View state has a reference to view model and method to create view model.
 
 If you need to pass mocked view model extend <b>BaseWidget</b> instead of <b>StatefulWidget</b>.

@@ -1,5 +1,7 @@
 # Apis
 
+![apis](doc_images/apis.png "Apis")
+
 Definition of api consists of implementing base http request class and defining api declaration.
 
 ### Base request class

@@ -1,5 +1,7 @@
 # Navigation
 
+![Navigation](doc_images/navigation.png "Navigation")
+
 Package also contains default way to handle navigation.
 
 To use this feature you need to subclass <b>NavigationInteractorDeclaration</b> and mark class with <b>AppNavigation</b> annotation. Navigation interactor must be marked as <b>singleton</b>. <b>NavigationInteractorDeclaration</b> will be generated.

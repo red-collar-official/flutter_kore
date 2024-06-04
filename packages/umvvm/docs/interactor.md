@@ -1,5 +1,7 @@
 # Interactors
 
+![interactor image](doc_images/interactor.png "Interactor")
+
 Interactors contain state and subscription to <b>EventBus</b> events.(more information about <b>EventBus</b> can be found [here](./event_bus.md)).
 
 You also need to specify input type for interactors. It is passed as generic argument.

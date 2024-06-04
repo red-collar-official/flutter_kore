@@ -1,5 +1,7 @@
 # DI
 
+![DI](doc_images/di.png "DI")
+
 Library contains simple DI container.
 
 You can access it with <b>app.instances</b> or via singleton <b>InstanceCollection</b>.

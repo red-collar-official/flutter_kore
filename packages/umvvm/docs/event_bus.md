@@ -1,5 +1,7 @@
 # EventBus
 
+![Event Bus](doc_images/event_bus.png "Event bus")
+
 Event bus instance is avaliable globally with <b>app.eventBus</b> or via <b>EventBus</b> singleton. 
 
 Every mvvm instance has access to <b>EventBus</b> events.
