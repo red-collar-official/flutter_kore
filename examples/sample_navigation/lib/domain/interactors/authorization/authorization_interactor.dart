@@ -1,12 +1,12 @@
 import 'package:umvvm/umvvm.dart';
 
-import 'autharization_state.dart';
+import 'authorization_state.dart';
 
 @singleton
-class AutharizationInteractor extends BaseInteractor<AutharizationState, Map<String, dynamic>?> {
+class AuthorizationInteractor extends BaseInteractor<AuthorizationState, Map<String, dynamic>> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
-    updateState(AutharizationState.fromJson(savedStateObject));
+    updateState(AuthorizationState.fromJson(savedStateObject));
   }
 
   void stubAuthorize() {
@@ -14,7 +14,7 @@ class AutharizationInteractor extends BaseInteractor<AutharizationState, Map<Str
   }
 
   @override
-  AutharizationState get initialState => AutharizationState();
+  AuthorizationState get initialState => AuthorizationState();
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();

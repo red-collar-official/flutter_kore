@@ -50,7 +50,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     // @override
     // List<Type> get singletons => [
-    //     AutharizationInteractor,
+    //     AuthorizationInteractor,
     //     UserDefaultsInteractor,
     //     NavigationInteractor,
     //   ];
@@ -101,7 +101,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     // @override
     // void registerBuilders() {
     //   interactors
-    //     ..addBuilder<AutharizationInteractor>(() => AutharizationInteractor())
+    //     ..addBuilder<AuthorizationInteractor>(() => AuthorizationInteractor())
     //     ..addBuilder<UserDefaultsInteractor>(() => UserDefaultsInteractor())
     //     ..addBuilder<PostsInteractor>(() => PostsInteractor())
     //     ..addBuilder<ShareInteractor>(() => ShareInteractor())

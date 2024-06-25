@@ -27,7 +27,7 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///      );
 ///
 ///  @override
-///  void onAutharization(Dio dio) {
+///  void onAuthorization(Dio dio) {
 ///    // ignore
 ///  }
 ///

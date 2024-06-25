@@ -128,7 +128,7 @@ abstract class UMvvmApp<NavigationInteractorType extends BaseNavigationInteracto
   ///  void registerInstances() {
   ///    interactors
   ///      ..addBuilder<UserDefaultsInteractor>(() => UserDefaultsInteractor())
-  ///      ..addBuilder<AutharizationInteractor>(() => AutharizationInteractor())
+  ///      ..addBuilder<AuthorizationInteractor>(() => AuthorizationInteractor())
   ///      ..addBuilder<NavigationInteractor>(() => NavigationInteractor())
   ///      ..addBuilder<PostsInteractor>(() => PostsInteractor())
   ///      ..addBuilder<PostInteractor>(() => PostInteractor())
@@ -143,7 +143,7 @@ abstract class UMvvmApp<NavigationInteractorType extends BaseNavigationInteracto
   ///   @override
   ///   List<Type> get singletonInstances => [
   ///         UserDefaultsInteractor,
-  ///         AutharizationInteractor,
+  ///         AuthorizationInteractor,
   ///         NavigationInteractor,
   ///       ];
   /// ```
