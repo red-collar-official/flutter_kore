@@ -20,16 +20,18 @@ class Debouncer {
   Timer? _timer;
 
   /// Flag indicating that this debouncer is disposed
-  /// 
+  ///
   /// Debouncer bus can't be used if this flag is true
   bool _isDisposed = false;
 
   /// Flag indicating that this debouncer is disposed
-  /// 
+  ///
   /// Debouncer bus can't be used if this flag is true
   bool get isDisposed => _isDisposed;
 
   void Function()? _currentCallback;
+
+  bool _isPending = false;
 
   Debouncer(
     this.delay,
@@ -44,11 +46,13 @@ class Debouncer {
     }
 
     _currentCallback = callback;
+    _isPending = true;
 
     _timer?.cancel();
 
     _timer = Timer(delay, () {
       callback();
+      _isPending = false;
     });
   }
 
@@ -64,6 +68,10 @@ class Debouncer {
   /// Immediately executes debouncer action and resets internal timer
   void processPendingImmediately() {
     _timer?.cancel();
+
+    if (!_isPending) {
+      return;
+    }
 
     _currentCallback?.call();
   }
