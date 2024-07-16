@@ -31,12 +31,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
   AppTab? get currentTab => state.currentTab;
 
   @override
-  Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
-        AppTabs.posts: GlobalKey<NavigatorState>(),
-        AppTabs.likedPosts: GlobalKey<NavigatorState>(),
-      };
-
-  @override
   NavigationInteractorSettings get settings => NavigationInteractorSettings(
         initialRoute: RouteNames.home,
         tabs: AppTabs.tabs,
