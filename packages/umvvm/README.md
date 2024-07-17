@@ -10,14 +10,14 @@ Set of classes for Flutter app architecture.
 dependencies: 
   umvvm: 
     git: 
-      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
       path: packages/umvvm
       branch: main
 
 dev_dependencies: 
   umvvm_generator: 
     git: 
-      url: https://gitlab.rdclr.ru/flutter/umvvm.git
+      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
       path: packages/umvvm_generator
       branch: main
 ```
