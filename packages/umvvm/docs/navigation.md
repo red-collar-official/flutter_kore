@@ -1028,6 +1028,25 @@ Construction of link is up to developer.
 
 If you are using this navigation in Flutter Web you need to override <b>openLink</b> method to set url address. You also need to provide <b>routeBuilder</b> in  settings for navigation interactor.
 
+### Calling routes
+
+After you defined routes you can call <b>build_runner</b> to generate routes. Routes will be available with <b>app.navigation.routes</b>, <b>app.navigation.dialogs</b>(for dialogs) and <b>app.navigation.bottomSheets</b> for bottom sheets. Here are examples:
+
+```dart
+app.navigation.routeTo(
+  app.navigation.routes.posts()
+);
+
+app.navigation.showDialog(
+  app.navigation.dialogs.error()
+);
+
+app.navigation.showBottomSheet(
+  app.navigation.bottomSheets.authorization()
+);
+
+```
+
 ### Route settings
 
 You can pass settings to every route, dialog or bottom sheet.
