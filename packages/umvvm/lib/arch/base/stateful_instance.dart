@@ -218,7 +218,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
     }
 
     _storeSaveSubscription = _store.stream.listen((_) async {
-      final stateId = state.runtimeType.toString();
+      final stateId = stateFullInstanceSettings.stateId;
       await UMvvmApp.cachePutDelegate(stateId, json.encode(savedStateObject));
     });
   }
