@@ -2,7 +2,14 @@ name: umvvm
 
 description: UMvvm architecture components
 
-version: 4.0.0
+version: 1.0.0
+
+repository: https://github.com/felangel/bloc/tree/master/packages/flutter_bloc
+issue_tracker: https://github.com/felangel/bloc/issues
+homepage: https://bloclibrary.dev
+documentation: https://bloclibrary.dev/getting-started
+topics: [bloc, state-management]
+funding: [https://github.com/sponsors/felangel]
 
 publish_to: none
 

@@ -10,13 +10,15 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State> on BaseViewModel<
   final Map<GlobalKey, Observable<FieldValidationState>> fieldStates = {};
   final Map<GlobalKey, Future<FieldValidationState> Function()> _actualValidators = {};
 
-  final _disable = Observable.initial(false);
+  final disable = Observable.initial(false);
 
   /// Stream of disable flags
-  Stream<bool> get disableStream => _disable.stream.map((event) => event.next ?? false);
+  Stream<bool> get disableStream => disable.stream.map((event) => event.next ?? false);
 
   /// Returns true if form is currently disabled
-  bool get isFormDisabled => _disable.current ?? false;
+  bool get isFormDisabled => disable.current ?? false;
+
+  bool get validateFormOnSubmit => true;
 
   /// Map of validators for current form
   ValidatorsMap get validators;
@@ -120,27 +122,29 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State> on BaseViewModel<
   Future<void> executeSubmitAction() async {
     removeInputFocus();
 
-    await validateAllFields();
+    if (validateFormOnSubmit) {
+      await validateAllFields();
 
-    final additionalCheckResult = await additionalCheck();
+      final additionalCheckResult = await additionalCheck();
 
-    for (final key in _actualValidators.keys) {
-      if ((await _actualValidators[key]!()) is ErrorFieldState) {
-        ensureVisible(key);
+      for (final key in _actualValidators.keys) {
+        if ((await _actualValidators[key]!()) is ErrorFieldState) {
+          ensureVisible(key);
 
+          return;
+        }
+      }
+
+      if (!additionalCheckResult) {
         return;
       }
     }
 
-    if (!additionalCheckResult) {
-      return;
-    }
-
-    _disable.update(true);
+    disable.update(true);
 
     await submit();
 
-    _disable.update(false);
+    disable.update(false);
   }
 
   /// Brings view to the center of the screen

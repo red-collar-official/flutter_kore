@@ -8,18 +8,10 @@ Set of classes for Flutter app architecture.
 
 ```yaml
 dependencies: 
-  umvvm: 
-    git: 
-      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
-      path: packages/umvvm
-      branch: main
+  umvvm: ^1.0.0
 
 dev_dependencies: 
-  umvvm_generator: 
-    git: 
-      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
-      path: packages/umvvm_generator
-      branch: main
+  umvvm_generator: ^1.0.0
 ```
 
 You also need dependency for build_runner if you don't have it yet.
