@@ -41,6 +41,4 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 
   @override
   PostsListViewState get initialState => PostsListViewState();
-
-  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => postsInteractor.changes((state) => state.posts);
 }

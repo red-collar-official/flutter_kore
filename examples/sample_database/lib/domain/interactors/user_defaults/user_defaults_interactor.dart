@@ -3,8 +3,7 @@ import 'package:umvvm/umvvm.dart';
 import 'user_defaults_state.dart';
 
 @singleton
-class UserDefaultsInteractor
-    extends BaseInteractor<UserDefaultsState, Map<String, dynamic>> {
+class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>?> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(UserDefaultsState.fromJson(savedStateObject));
@@ -19,4 +18,10 @@ class UserDefaultsInteractor
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();
+
+  @override
+  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
+        isRestores: true,
+        stateId: 'UserDefaultsInteractor',
+      );
 }

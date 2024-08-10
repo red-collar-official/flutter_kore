@@ -24,7 +24,7 @@ class ResultState<T extends Object> {
   });
 
   /// Checks if [error] and [messageToDisplay] are null
-  bool get isSuccessfull => this.error == null && this.messageToDisplay == null;
+  bool get isSuccessful => this.error == null && this.messageToDisplay == null;
 
   /// Returns error with given type or throws exception
   ErrorType unwrapError<ErrorType extends Object>() {

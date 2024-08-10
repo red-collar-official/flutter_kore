@@ -24,8 +24,8 @@ void main() {
         error: IllegalArgumentException(message: 'test'),
       );
 
-      expect(resultStateSuccess.isSuccessfull, true);
-      expect(resultStateError.isSuccessfull, false);
+      expect(resultStateSuccess.isSuccessful, true);
+      expect(resultStateError.isSuccessful, false);
     });
 
     test('ResultState check test', () async {
@@ -34,8 +34,8 @@ void main() {
         error: IllegalArgumentException(message: 'test'),
       );
 
-      expect(resultStateSuccess.isSuccessfull, true);
-      expect(resultStateError.isSuccessfull, false);
+      expect(resultStateSuccess.isSuccessful, true);
+      expect(resultStateError.isSuccessful, false);
     });
   });
 }
