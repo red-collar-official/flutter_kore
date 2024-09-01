@@ -91,7 +91,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
         return PopScope(
           canPop: dismissable,
           child: child,
-          onPopInvoked: (didPop) {
+          onPopInvokedWithResult: (didPop, result) {
             if (!didPop || onPop == null) {
               return;
             }

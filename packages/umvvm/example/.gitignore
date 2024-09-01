@@ -21,6 +21,7 @@
 #Dart generated file
 **/*.g.dart
 **/*.freezed.dart
+**/*.mapper.dart
 lib/**/*.mvvm.dart
 lib/**/*.api.dart
 

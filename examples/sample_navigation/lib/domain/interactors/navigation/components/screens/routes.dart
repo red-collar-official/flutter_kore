@@ -9,18 +9,10 @@ part 'routes.navigation.dart';
 
 @routes
 class Routes extends RoutesBase with RoutesGen {
-  @Link(
-    paths: ['posts/:{id}'],
-    query: [
-      'filter',
-    ],
-  )
   UIRoute<RouteNames> post({
     Post? post,
     int? id,
     int? filter,
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
       name: RouteNames.post,
@@ -47,15 +39,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(paths: [
-    'stub'
-  ], query: [
-    'filter',
-  ])
-  UIRoute<RouteNames> stub({
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
-  }) {
+  UIRoute<RouteNames> stub() {
     return UIRoute(
       name: RouteNames.stub,
       defaultSettings: const UIRouteSettings(),
@@ -63,13 +47,7 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(
-    paths: ['home'],
-  )
-  UIRoute<RouteNames> home({
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
-  }) {
+  UIRoute<RouteNames> home() {
     return UIRoute(
       name: RouteNames.home,
       defaultSettings: const UIRouteSettings(),
@@ -77,30 +55,9 @@ class Routes extends RoutesBase with RoutesGen {
     );
   }
 
-  @Link(
-    paths: ['likedPosts'],
-  )
-  UIRoute<RouteNames> likedPosts({
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
-  }) {
+  UIRoute<RouteNames> likedPosts() {
     return UIRoute(
       name: RouteNames.likedPosts,
-      defaultSettings: const UIRouteSettings(),
-      child: Container(),
-    );
-  }
-
-  @Link(
-    regexes: ['(.*?)'],
-    customParamsMapper: TestMapper,
-  )
-  UIRoute<RouteNames> postsRegex({
-    Map<String, dynamic>? pathParams,
-    Map<String, dynamic>? queryParams,
-  }) {
-    return UIRoute(
-      name: RouteNames.postsRegex,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );

@@ -4,7 +4,10 @@ description: UMvvm architecture components
 
 version: 1.0.0
 
-publish_to: none
+repository: https://github.com/red-collar-dev/umvvm/packages/umvvm
+issue_tracker: https://github.com/red-collar-dev/umvvm/issues
+documentation: https://github.com/red-collar-dev/umvvm/packages/umvvm/docs
+topics: [mvvm, state-management, di, navigation]
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

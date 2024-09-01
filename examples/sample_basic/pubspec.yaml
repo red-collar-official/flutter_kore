@@ -1,5 +1,5 @@
 name: sample_basic
-description: Basic sample demonstating minimal setup for umvvm - here we are using only http and DI conmponents.
+description: Basic sample demonstating minimal setup for umvvm - here we are using only http and DI components.
 version: 1.0.0+1
 publish_to: none
 
