@@ -31,9 +31,9 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ### Examples
 
-Minimal example can be found [here](https://github.com/red-collar-dev/umvvm/packages/umvvm/example).
+Minimal example can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/example).
 
-More complex examples can be found [here](https://github.com/red-collar-dev/umvvm/examples).
+More complex examples can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/examples).
 
 There are small example with all basic components, example of using navigation and example of connecting database.
 
@@ -276,46 +276,43 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Learn about components:
 
-<img src="docs/doc_images/overall.png" alt="overall" width="600"/>
+<img src="doc/doc_images/overall.png" alt="overall" width="600"/>
 
 #### Global layer
 
-* [App](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/app.md);
-* [DI](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/di.md);
-* [Event bus](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/event_bus.md);
-* [Navigation](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/navigation.md).
+* [App](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/app.md);
+* [DI](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/di.md);
+* [Event bus](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/event_bus.md);
+* [Navigation](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/navigation.md).
 
 #### Data Layer
 
-* [Apis and databases](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/apis.md). 
+* [Apis and databases](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/apis.md). 
 
 #### Domain Layer
 
-* [Interactors](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/interactor.md);
-* [Wrappers](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/wrapper.md);
-* [Instance parts](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/instance_part.md);
-* [MvvmInstance](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/mvvm_instance.md);
-* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/custom_instances.md).
+* [Interactors](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/interactor.md);
+* [Wrappers](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/wrapper.md);
+* [Instance parts](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/instance_part.md);
+* [MvvmInstance](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/mvvm_instance.md);
+* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
 
 #### Presentation layer
 
-* [View models](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/view_model.md);
-* [Widgets and view states](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/widget.md);
-* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/custom_instances.md).
+* [View models](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/view_model.md);
+* [Widgets and view states](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/widget.md);
+* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
 
 #### Utility
 
-* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/utility.md).
+* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/utility.md).
 
 #### Other materials
 
-* [Testing](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/testing.md);
-* [Migration tips](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/migration.md);
-* [Disabling components](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/disabling_components.md).
+* [Testing](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/testing.md);
+* [Migration tips](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/migration.md);
+* [Disabling components](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/disabling_components.md).
 
 #### Important note
 
 To generage test coverage report run <b>sh coverage.sh.</b>
-
-If you using VSCode then use [UMvvm-Gen VSCode extension](https://gitlab.rdclr.ru/flutter/umvvm-vs-code-gen-plugin/) to quickly generate files for this architecture.
-
