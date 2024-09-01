@@ -26,7 +26,7 @@ More information about event bus can be found [here](./event_bus.md).
 
 To get local instances connected to view model use <b>getLocalInstance<T>()</b>.
 
-To get part use <b>useInstancePart<T>()</b> method.
+To get part "../docs"use <b>useInstancePart<T>()</b> method.
 
 View models also can override <b>onLaunch</b> method that is called on initState 
 and <b>onFirstFrame</b> that is called on first post frame callback of corresponding view.

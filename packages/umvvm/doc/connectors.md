@@ -62,7 +62,7 @@ const PartConnector(type: SharePart, count: 5), // 5 unique parts
 const PartConnector(type: LikeUserPart, withoutConnections: true),
 ```
 
-Library creates connectors for every part too.
+Library creates connectors for every part "../docs"too.
 This way you don't need to write <b>PartConnector</b> classes for every part.  You can just use predefined ones as follows:
 
 ```dart

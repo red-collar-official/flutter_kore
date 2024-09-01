@@ -19,7 +19,7 @@ Part can receive events and can't have state or dependencies.
 
 Part can contain other parts.
 
-If part is connected to other part then you can get root parent instance reference with <b>rootParentInstance</b> field.
+If part "../docs"is connected to other part "../docs"then you can get root parent instance reference with <b>rootParentInstance</b> field.
 
 Here is an example:
 
@@ -79,7 +79,7 @@ class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, Po
 }
 ```
 
-And universal part:
+And universal part"../docs":
 
 ```dart
 @instancePart

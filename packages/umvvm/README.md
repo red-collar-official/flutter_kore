@@ -31,9 +31,9 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ### Examples
 
-Minimal example can be found [here](./example).
+Minimal example can be found [here](https://github.com/red-collar-dev/umvvm/packages/umvvm/example).
 
-More complex examples can be found [here](../../examples).
+More complex examples can be found [here](https://github.com/red-collar-dev/umvvm/examples).
 
 There are small example with all basic components, example of using navigation and example of connecting database.
 
@@ -280,38 +280,38 @@ Learn about components:
 
 #### Global layer
 
-* [App](./docs/app.md);
-* [DI](./docs/di.md);
-* [Event bus](./docs/event_bus.md);
-* [Navigation](./docs/navigation.md).
+* [App](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/app.md);
+* [DI](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/di.md);
+* [Event bus](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/event_bus.md);
+* [Navigation](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/navigation.md).
 
 #### Data Layer
 
-* [Apis and databases](./docs/apis.md). 
+* [Apis and databases](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/apis.md). 
 
 #### Domain Layer
 
-* [Interactors](./docs/interactor.md);
-* [Wrappers](./docs/wrapper.md);
-* [Instance parts](./docs/instance_part.md);
-* [MvvmInstance](./docs/mvvm_instance.md);
-* [Custom Mvvm instances](./docs/custom_instances.md).
+* [Interactors](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/interactor.md);
+* [Wrappers](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/wrapper.md);
+* [Instance parts](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/instance_part.md);
+* [MvvmInstance](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/mvvm_instance.md);
+* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/custom_instances.md).
 
 #### Presentation layer
 
-* [View models](./docs/view_model.md);
-* [Widgets and view states](./docs/widget.md);
-* [Custom Mvvm instances](./docs/custom_instances.md).
+* [View models](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/view_model.md);
+* [Widgets and view states](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/widget.md);
+* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/custom_instances.md).
 
 #### Utility
 
-* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](./docs/utility.md).
+* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/utility.md).
 
 #### Other materials
 
-* [Testing](./docs/testing.md);
-* [Migration tips](./docs/migration.md);
-* [Disabling components](./docs/disabling_components.md).
+* [Testing](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/testing.md);
+* [Migration tips](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/migration.md);
+* [Disabling components](https://github.com/red-collar-dev/umvvm/packages/umvvm/doc/disabling_components.md).
 
 #### Important note
 
