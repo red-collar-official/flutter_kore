@@ -2,10 +2,8 @@
 
 import 'dart:async';
 import 'dart:convert';
-// ignore: implementation_imports, depend_on_referenced_packages
-import 'package:build/src/builder/build_step.dart';
-// ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
+import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:source_gen/source_gen.dart';
@@ -119,7 +117,8 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     }
 
     for (final element in instances) {
-      classBuffer.writeln('..addBuilder<${element.name}>(() => ${element.name}())');
+      classBuffer
+          .writeln('..addBuilder<${element.name}>(() => ${element.name}())');
     }
 
     if (instances.isNotEmpty) {
@@ -404,12 +403,13 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
         throw Exception('Cant add paths and regexes to the same route $key');
       }
 
-      final requiresState = (methodsVisitor.annotatedMethodsData[key]?.parameters
-                  // coverage:ignore-start
-                  .where((element) => element.name == 'state') ??
-              [])
-          // coverage:ignore-end
-          .isNotEmpty;
+      final requiresState =
+          (methodsVisitor.annotatedMethodsData[key]?.parameters
+                      // coverage:ignore-start
+                      .where((element) => element.name == 'state') ??
+                  [])
+              // coverage:ignore-end
+              .isNotEmpty;
 
       if (regexes != null) {
         return;
@@ -434,10 +434,14 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
           [];
       // coverage:ignore-end
 
-      final customHandler = value.peek('customHandler')?.typeValue.getDisplayString(withNullability: false);
+      final customHandler = value
+          .peek('customHandler')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
 
       final queriesForPathValue = value.peek('queriesForPath')?.listValue;
-      final possibleFragmentsForPathValue = value.peek('possibleFragmentsForPath')?.listValue;
+      final possibleFragmentsForPathValue =
+          value.peek('possibleFragmentsForPath')?.listValue;
 
       for (int index = 0; index < paths.length; index++) {
         final path = paths[index];
@@ -501,7 +505,8 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
             if (customHandler != null) {
               queryHandlersMap[resultRule] = customHandler;
             } else {
-              queryHandlersMap[resultRule] = '${capitalize(key)}LinkHandler$handlerIndex';
+              queryHandlersMap[resultRule] =
+                  '${capitalize(key)}LinkHandler$handlerIndex';
             }
           }
 
@@ -665,8 +670,12 @@ if (pathSegmentPattern == '$element') {
     final classBuffer = StringBuffer();
 
     for (final method in annotatedMethods) {
-      final regexes = method.peek('regexes')?.listValue.map((e) => e.toStringValue());
-      final customMapperType = method.peek('customParamsMapper')?.typeValue.getDisplayString(withNullability: false);
+      final regexes =
+          method.peek('regexes')?.listValue.map((e) => e.toStringValue());
+      final customMapperType = method
+          .peek('customParamsMapper')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
 
       if (regexes != null) {
         for (final regex in regexes) {
@@ -681,7 +690,8 @@ if (pathSegmentPattern == '$element') {
   }
 }
 
-class MainNavigationInteractorGenerator extends GeneratorForAnnotation<AppNavigation> {
+class MainNavigationInteractorGenerator
+    extends GeneratorForAnnotation<AppNavigation> {
   @override
   FutureOr<String> generateForAnnotatedElement(
     Element element,
@@ -789,9 +799,11 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
 
       classBuffer
         ..writeln('$elementName? _$elementShortName;')
-        ..writeln('$elementName get $elementShortName => _$elementShortName ??= $elementName();')
+        ..writeln(
+            '$elementName get $elementShortName => _$elementShortName ??= $elementName();')
         ..writeln('@visibleForTesting')
-        ..writeln('set $elementShortName(value) => _$elementShortName = value;');
+        ..writeln(
+            'set $elementShortName(value) => _$elementShortName = value;');
     }
 
     classBuffer.writeln('}');

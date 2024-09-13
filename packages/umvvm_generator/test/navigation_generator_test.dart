@@ -1311,7 +1311,9 @@ class Routes extends RoutesBase with RoutesGen {
         );
       } catch (e) {
         expect(
-          e.toString().contains('Multiple handlers detected for the same route'),
+          e
+              .toString()
+              .contains('Multiple handlers detected for the same route'),
           true,
         );
       }

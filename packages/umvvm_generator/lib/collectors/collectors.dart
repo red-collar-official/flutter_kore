@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-// ignore: implementation_imports, depend_on_referenced_packages
-import 'package:build/src/builder/build_step.dart';
+import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/api.dart';
 import 'package:umvvm/annotations/mvvm_instance.dart';
 
-// ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
 import 'package:umvvm_generator/collectors/models/api_json_model.dart';
 import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
@@ -23,16 +21,21 @@ class InstancesCollectorGenerator extends Generator {
 
     for (final element in instances) {
       final name = getClassName(element.element);
-      final inputType = element.annotation.peek('inputType')?.typeValue.getDisplayString(withNullability: false);
+      final inputType = element.annotation
+          .peek('inputType')
+          ?.typeValue
+          .getDisplayString(withNullability: false);
       final asyncValue = element.annotation.peek('isAsync')?.boolValue ?? false;
       final partValue = element.annotation.peek('part')?.boolValue ?? false;
-      final awaitInitialization = element.annotation.peek('awaitInitialization')?.boolValue ?? false;
+      final awaitInitialization =
+          element.annotation.peek('awaitInitialization')?.boolValue ?? false;
       final order = element.annotation
           .peek(
             'initializationOrder',
           )
           ?.intValue;
-      final singleton = element.annotation.peek('singleton')?.boolValue ?? false;
+      final singleton =
+          element.annotation.peek('singleton')?.boolValue ?? false;
       final lazy = element.annotation.peek('isLazy')?.boolValue ?? false;
 
       instancesJsonModels.add(InstanceJsonModel(
