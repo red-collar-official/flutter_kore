@@ -2,11 +2,11 @@ name: umvvm
 
 description: UMvvm architecture components
 
-version: 1.0.0
+version: 1.0.0+1
 
-repository: https://github.com/red-collar-dev/umvvm/packages/umvvm
+repository: https://github.com/red-collar-dev/umvvm
 issue_tracker: https://github.com/red-collar-dev/umvvm/issues
-documentation: https://github.com/red-collar-dev/umvvm/packages/umvvm/docs
+documentation: https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/doc
 topics: [mvvm, state-management, di, navigation]
 
 environment:

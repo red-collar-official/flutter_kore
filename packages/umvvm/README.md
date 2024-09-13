@@ -1,7 +1,5 @@
 # UMVVM library
 
-![Tests code coverage status](coverage/coverage_badge.svg)
-
 Set of classes for Flutter app architecture.
 
 ### Installing
@@ -276,7 +274,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Learn about components:
 
-<img src="doc/doc_images/overall.png" alt="overall" width="600"/>
+<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/overall.png?raw=true" alt="overall" width="600"/>
 
 #### Global layer
 
