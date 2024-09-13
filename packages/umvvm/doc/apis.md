@@ -105,7 +105,6 @@ Api classes must be annotated with <b>api</b> annotation.
 this.method = RequestMethod.get,
 this.url,
 this.parser,
-this.file,
 this.query,
 this.timeout = const Duration(seconds: 20), // connectTimeout + receiveTimeout
 this.headers = const {},

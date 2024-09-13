@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +88,6 @@ abstract class BaseRequest<T> {
     this.method = RequestMethod.get,
     this.url,
     this.parser,
-    this.file,
     this.query,
     this.timeout,
     this.headers,
@@ -143,9 +141,6 @@ abstract class BaseRequest<T> {
 
   /// Query for this request - will be added to the end of the [url]
   Map<String, dynamic>? query;
-
-  /// File for this request
-  File? file;
 
   /// Flag to indicate that we need to add autharization headers to this request
   bool requiresLogin;

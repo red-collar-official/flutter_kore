@@ -1,12 +1,11 @@
 // coverage:ignore-file
 
-import 'dart:io';
-
 import 'package:flutter/material.dart' hide DialogRoute, ModalBottomSheetRoute;
 import 'package:umvvm/arch/navigation/settings.dart';
 import 'package:umvvm/arch/navigation/utilities/bottom_sheet_route.dart';
 import 'package:umvvm/arch/navigation/utilities/dialog_route.dart';
 import 'package:umvvm/arch/navigation/utilities/willpop_cupertino_page_route.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import 'navigation_route_builder.dart';
 
@@ -66,7 +65,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool fullScreenDialog,
     required VoidCallback? onSystemPop,
   }) {
-    if (Platform.isAndroid) {
+    if (UniversalPlatform.isAndroid) {
       return MaterialPageRoute(
         builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,

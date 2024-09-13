@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:http_mock_adapter/http_mock_adapter.dart';
@@ -17,7 +16,6 @@ const testHeaders = {'testParam': 1};
 const testBaseUrl = 'https://test.com';
 const testParam = 'testParam';
 const testBody = 'testParam';
-final testFileBody = File('testPath');
 const testBodyMap = {'testParam': 1};
 final testFormData = dio.FormData();
 const testBodyMapWithList = {
@@ -607,7 +605,7 @@ void main() {
     test('Request put with params test', () async {
       final request = HttpRequest<int>()
         ..method = RequestMethod.put
-        ..body = testFileBody
+        ..body = {}
         ..baseUrl = testBaseUrl
         ..url = testPath;
 

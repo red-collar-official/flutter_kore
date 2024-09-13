@@ -2,7 +2,6 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
@@ -98,13 +97,12 @@ abstract class DioRequest<T> extends BaseRequest<T> {
     if (formData != null) {
       data = await formData;
     } else {
-      data = file ?? (body is Map || body is List ? jsonEncode(body) : body);
+      data = body is Map || body is List ? jsonEncode(body) : body;
     }
 
     if (cancelToken.isCancelled) {
       if (requestCollection.cancelReasonProcessingCompleter != null) {
-        await RequestCollection
-            .instance.cancelReasonProcessingCompleter!.future;
+        await RequestCollection.instance.cancelReasonProcessingCompleter!.future;
       }
     }
 
@@ -262,8 +260,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
     client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
-    final requestTimeout =
-        timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
+    final requestTimeout = timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
     client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
     client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
 
@@ -324,8 +321,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
       if (error.type == dio.DioExceptionType.cancel) {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
-          await RequestCollection
-              .instance.cancelReasonProcessingCompleter!.future;
+          await RequestCollection.instance.cancelReasonProcessingCompleter!.future;
           return _retryRequest(client, data, error);
         }
       }
@@ -344,9 +340,7 @@ abstract class DioRequest<T> extends BaseRequest<T> {
   ) async {
     dynamic data;
 
-    if (encodedData != null && encodedData is File) {
-      data = encodedData.openRead();
-    } else {
+    if (encodedData != null) {
       data = encodedData;
     }
 
