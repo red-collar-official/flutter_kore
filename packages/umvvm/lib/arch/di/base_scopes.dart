@@ -1,7 +1,7 @@
 // coverage:ignore-file
 
 /// Default scopes for app
-/// 
+///
 /// Do not use this predefined ids
 class BaseScopes {
   /// Global scope for app level singletons

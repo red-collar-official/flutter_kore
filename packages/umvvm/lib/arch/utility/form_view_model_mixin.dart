@@ -6,14 +6,17 @@ import 'package:umvvm/umvvm.dart';
 typedef ValidatorsMap = Map<GlobalKey, Future<FieldValidationState> Function()>;
 
 /// Mixin with helper methods to create form views
-mixin FormViewModelMixin<Widget extends StatefulWidget, State> on BaseViewModel<Widget, State> {
+mixin FormViewModelMixin<Widget extends StatefulWidget, State>
+    on BaseViewModel<Widget, State> {
   final Map<GlobalKey, Observable<FieldValidationState>> fieldStates = {};
-  final Map<GlobalKey, Future<FieldValidationState> Function()> _actualValidators = {};
+  final Map<GlobalKey, Future<FieldValidationState> Function()>
+      _actualValidators = {};
 
   final disable = Observable.initial(false);
 
   /// Stream of disable flags
-  Stream<bool> get disableStream => disable.stream.map((event) => event.next ?? false);
+  Stream<bool> get disableStream =>
+      disable.stream.map((event) => event.next ?? false);
 
   /// Returns true if form is currently disabled
   bool get isFormDisabled => disable.current ?? false;

@@ -16,7 +16,7 @@ class RequestCollection {
   Completer? cancelReasonProcessingCompleter;
 
   /// Cancels all requests in collection.
-  /// 
+  ///
   /// If [retryRequestsAfterProcessing] is true then every request
   /// will be retried after [cancelReasonProcessor] is finished
   Future<void> cancelAllRequests({

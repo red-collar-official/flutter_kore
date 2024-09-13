@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:umvvm/umvvm.dart';
 
 /// Simple class to count references for objects
-/// 
+///
 /// When instances are created we call [ScopedContainer.increaseReferencesInScope] for each object
 /// When instances are disposed [ScopedContainer.decreaseReferences] called for each object
 /// [InstanceCollection] look up this map to dispose and remove objects
@@ -81,7 +81,8 @@ final class ScopedContainer<T> {
     if (objects != null) {
       if (index < 0 || index >= objects.length) {
         throw IllegalArgumentException(
-          message: 'The $index value must be non-negative and less than count of references of $type in $scopeId.',
+          message:
+              'The $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
@@ -233,7 +234,7 @@ final class ScopedContainer<T> {
   }
 
   /// Method to remove instances that is no longer used
-  /// 
+  ///
   /// Called every time [MvvmInstance.dispose] called for instance
   void prune(void Function(T) onRemove) {
     final removeFunctions = <Function>[];
@@ -347,9 +348,11 @@ final class ScopedContainer<T> {
   /// Checks if container contains object for type in given scope
   bool contains(String scopeId, String id, int? index) {
     if (index == null) {
-      return _instances[scopeId] != null && (_instances[scopeId]![id]?.isNotEmpty ?? false);
+      return _instances[scopeId] != null &&
+          (_instances[scopeId]![id]?.isNotEmpty ?? false);
     } else {
-      return _instances[scopeId] != null && ((_instances[scopeId]![id]?.length ?? 0) > index);
+      return _instances[scopeId] != null &&
+          ((_instances[scopeId]![id]?.length ?? 0) > index);
     }
   }
 

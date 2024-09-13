@@ -46,7 +46,8 @@ void main() {
 
     test('Interactor initialization error with async lazy deps test', () async {
       expect(
-        () async => instances.getUniqueAsync<TestInteractorErrorWithAsyncLazyDeps>(),
+        () async =>
+            instances.getUniqueAsync<TestInteractorErrorWithAsyncLazyDeps>(),
         throwsA(isA<IllegalArgumentException>()),
       );
     });
@@ -76,7 +77,8 @@ void main() {
       final interactor1 = instances.getUnique<TestInteractor1>();
       final interactor2 = instances.getUnique<TestInteractor2>();
       final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
-      final interactorAsync = await instances.getUniqueAsync<TestInteractorAsync>();
+      final interactorAsync =
+          await instances.getUniqueAsync<TestInteractorAsync>();
 
       expect(interactor1.state, 0);
       expect(interactor2.state, 0);
@@ -93,10 +95,13 @@ void main() {
       expect(interactor3.testInstancePart3.isInitialized, true);
 
       expect(interactor3.testInstancePart3.testInstancePart2.value, 6);
-      expect(interactor3.testInstancePart3.testInstancePart2.isInitialized, true);
+      expect(
+          interactor3.testInstancePart3.testInstancePart2.isInitialized, true);
 
       expect(
-        (interactor3.testInstancePart3.testInstancePart2.rootParentInstance as TestInteractor3).state,
+        (interactor3.testInstancePart3.testInstancePart2.rootParentInstance
+                as TestInteractor3)
+            .state,
         0,
       );
 
@@ -181,11 +186,13 @@ void main() {
       );
 
       expect(
-        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>()).state,
+        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>())
+            .state,
         2,
       );
       expect(
-        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>()).isInitialized,
+        (await interactor3.getAsyncLazyLocalInstance<TestInteractorAsync7>())
+            .isInitialized,
         true,
       );
 
@@ -259,7 +266,8 @@ void main() {
 
       final completer = Completer();
 
-      final subscription = interactor3.updates((state) => state).listen((event) {
+      final subscription =
+          interactor3.updates((state) => state).listen((event) {
         if (event == 2) {
           completer.complete();
         }
@@ -303,7 +311,8 @@ void main() {
 
       final completer = Completer();
 
-      final subscription = interactor3.changes((state) => state).listen((event) {
+      final subscription =
+          interactor3.changes((state) => state).listen((event) {
         if (event.next == 2) {
           completer.complete();
         }
@@ -405,7 +414,8 @@ void main() {
     });
 
     test('Interactor default restore state test', () async {
-      final interactor1 = instances.getUnique<TestInteractorWithDefaultRestore>();
+      final interactor1 =
+          instances.getUnique<TestInteractorWithDefaultRestore>();
 
       expect(interactor1.state, 0.0);
 
@@ -415,7 +425,8 @@ void main() {
 
       await DelayUtility.pause();
 
-      final interactor1New = instances.getUnique<TestInteractorWithDefaultRestore>();
+      final interactor1New =
+          instances.getUnique<TestInteractorWithDefaultRestore>();
 
       expect(interactor1New.state, 0.0);
 
@@ -433,7 +444,8 @@ void main() {
 
       await DelayUtility.pause();
 
-      final interactor1New = instances.getUnique<TestInteractorWithAsyncRestore>();
+      final interactor1New =
+          instances.getUnique<TestInteractorWithAsyncRestore>();
 
       await DelayUtility.pause();
 

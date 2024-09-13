@@ -41,7 +41,7 @@ class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
 
   /// Flag indicating that app dialogs and botttom sheets
   /// using [BaseNavigationInteractor.globalNavigatorKey] instead of separate [BaseNavigationInteractor.bottomSheetDialogNavigatorKey]
-  /// 
+  ///
   /// Set it to false if you want separate navigator for bottom sheets and dialogs
   final bool bottomSheetsAndDialogsUsingGlobalNavigator;
 

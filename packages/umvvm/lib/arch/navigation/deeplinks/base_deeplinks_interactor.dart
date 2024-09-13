@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base interactor for handling links in app
-/// 
+///
 /// Contains methods to get initial app deeplink and deeplink stream
 ///
 /// You can obtain instance with app.navigation.deeplinks
@@ -78,7 +78,7 @@ abstract class BaseDeepLinksInteractor<State>
   }
 
   /// Starts to listen for deeplinks
-  /// 
+  ///
   /// You can call it after app initialization
   /// so navigation is handled correctly
   @mustCallSuper

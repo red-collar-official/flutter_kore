@@ -116,7 +116,7 @@ abstract class BaseRequest<T> {
   String? url;
 
   /// Summary timeout for connect and receive timeouts
-  /// 
+  ///
   /// It will be divided by half and used as connect and receive timeouts
   Duration? timeout;
 

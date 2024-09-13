@@ -69,31 +69,35 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseNavigationInteractor<
-    State,
-    Input,
-    AppTabType,
-    RoutesClassType extends RoutesBase,
-    DialogClassType extends RoutesBase,
-    BottomSheetClassType extends RoutesBase,
-    RouteType,
-    DialogType,
-    BottomSheetType,
-    DeepLinksInteractorType extends BaseDeepLinksInteractor> extends BaseInteractor<State, Input> {
+        State,
+        Input,
+        AppTabType,
+        RoutesClassType extends RoutesBase,
+        DialogClassType extends RoutesBase,
+        BottomSheetClassType extends RoutesBase,
+        RouteType,
+        DialogType,
+        BottomSheetType,
+        DeepLinksInteractorType extends BaseDeepLinksInteractor>
+    extends BaseInteractor<State, Input> {
   /// Deeplinks interactor for global app
   /// throws exception if deeplinks interactor not used
-  late final deepLinks =
-      InstanceCollection.instance.find<DeepLinksInteractorType>(BaseScopes.global) as DeepLinksInteractorType;
+  late final deepLinks = InstanceCollection.instance
+          .find<DeepLinksInteractorType>(BaseScopes.global)
+      as DeepLinksInteractorType;
 
   /// Global key for main app global navigator
-  /// 
+  ///
   /// You need to pass it to instance of MaterialApp
   final globalNavigatorKey = GlobalKey<NavigatorState>();
 
   /// Global key for main app bottom sheets and dialogs navigator
-  /// 
+  ///
   /// if [NavigationInteractorSettings.bottomSheetsAndDialogsUsingGlobalNavigator] is true then it is [globalNavigatorKey]
   late final bottomSheetDialogNavigatorKey =
-      settings.bottomSheetsAndDialogsUsingGlobalNavigator ? globalNavigatorKey : GlobalKey<NavigatorState>();
+      settings.bottomSheetsAndDialogsUsingGlobalNavigator
+          ? globalNavigatorKey
+          : GlobalKey<NavigatorState>();
 
   /// main route observer for app
   final routeObserver = RouteObserver<ModalRoute<void>>();
@@ -161,10 +165,12 @@ abstract class BaseNavigationInteractor<
   );
 
   /// Latest route in global stack
-  UIRouteModel latestGlobalRoute() => navigationStack.globalNavigationStack.stack.last;
+  UIRouteModel latestGlobalRoute() =>
+      navigationStack.globalNavigationStack.stack.last;
 
   /// Latest route in current tab
-  UIRouteModel latestTabRoute() => navigationStack.tabNavigationStack.stack[currentTab]!.last;
+  UIRouteModel latestTabRoute() =>
+      navigationStack.tabNavigationStack.stack[currentTab]!.last;
 
   @mustCallSuper
   @override
@@ -195,15 +201,18 @@ abstract class BaseNavigationInteractor<
       return true;
     }
 
-    final isHomePresentInStack = navigationStack.globalNavigationStack.stack.indexWhere(
-          (element) => element.name == settings.tabViewHomeRoute,
-        ) !=
-        -1;
+    final isHomePresentInStack =
+        navigationStack.globalNavigationStack.stack.indexWhere(
+              (element) => element.name == settings.tabViewHomeRoute,
+            ) !=
+            -1;
 
     final bool isGlobalStack = includeBottomSheetsAndDialogs
         ? navigationStack.globalNavigationStack.stack.length > 1
         : navigationStack.globalNavigationStack.stack
-                .where((element) => element.name is! BottomSheetType && element.name is! DialogType)
+                .where((element) =>
+                    element.name is! BottomSheetType &&
+                    element.name is! DialogType)
                 .length >
             1;
 
@@ -230,7 +239,7 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Pops latest route from current navigation stack
-  /// 
+  ///
   /// if [onlyInternalStack] is true than only removes route data from navigation stack
   /// Navigator state stays the same in this case
   void pop({
@@ -265,7 +274,8 @@ abstract class BaseNavigationInteractor<
       return;
     }
 
-    final navigator = isInBottomSheetApp ? bottomSheetDialogNavigatorKey : getNavigator();
+    final navigator =
+        isInBottomSheetApp ? bottomSheetDialogNavigatorKey : getNavigator();
 
     navigationStack.pop(currentTab, isInGlobal || isInBottomSheetApp);
 
@@ -273,7 +283,7 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Pops latest route in given tab
-  /// 
+  ///
   /// if [onlyInternalStack] is true than only removes route data from navigation stack
   /// Navigator state stays the same in this case
   void popInTab(
@@ -320,16 +330,20 @@ abstract class BaseNavigationInteractor<
     );
 
     final routeSettings = UIRouteSettings(
-      fullScreenDialog: fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
+      fullScreenDialog:
+          fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
       global: global,
       uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
-      needToEnsureClose: needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
+      needToEnsureClose:
+          needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
       dismissable: dismissable ?? routeData.defaultSettings.dismissable,
       id: id ?? routeData.defaultSettings.id,
       replace: replace ?? routeData.defaultSettings.replace,
-      replacePrevious: replacePrevious ?? routeData.defaultSettings.replacePrevious,
+      replacePrevious:
+          replacePrevious ?? routeData.defaultSettings.replacePrevious,
       name: routeData.name.toString(),
-      customRouteBuilder: customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
+      customRouteBuilder:
+          customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
     );
 
     final routeName = routeData.name;
@@ -350,7 +364,8 @@ abstract class BaseNavigationInteractor<
 
     final screenToOpen = routeData.child;
 
-    final routeBuilder = routeSettings.customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        routeSettings.customRouteBuilder ?? settings.routeBuilder;
 
     // coverage:ignore-start
     final route = routeBuilder.buildPageRoute(
@@ -434,7 +449,8 @@ abstract class BaseNavigationInteractor<
       dismissable: dismissable ?? dialog.defaultSettings.dismissable,
       id: id ?? dialog.defaultSettings.id,
       name: dialog.name.toString(),
-      customRouteBuilder: customRouteBuilder ?? dialog.defaultSettings.customRouteBuilder,
+      customRouteBuilder:
+          customRouteBuilder ?? dialog.defaultSettings.customRouteBuilder,
     );
 
     if (dialogSettings.uniqueInStack &&
@@ -448,7 +464,8 @@ abstract class BaseNavigationInteractor<
 
     final dialogName = dialog.name;
 
-    final navigator = global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
+    final navigator =
+        global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
 
     navigationStack.addRoute(
       routeName: dialogName,
@@ -460,7 +477,8 @@ abstract class BaseNavigationInteractor<
 
     unawaited(onDialogOpened(dialogToOpen, dialogSettings));
 
-    final routeBuilder = dialogSettings.customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        dialogSettings.customRouteBuilder ?? settings.routeBuilder;
 
     // coverage:ignore-start
     final stackLength = global
@@ -509,7 +527,8 @@ abstract class BaseNavigationInteractor<
       dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
       id: id,
       name: bottomSheet.name.toString(),
-      customRouteBuilder: customRouteBuilder ?? bottomSheet.defaultSettings.customRouteBuilder,
+      customRouteBuilder:
+          customRouteBuilder ?? bottomSheet.defaultSettings.customRouteBuilder,
     );
 
     if (bottomSheetSettings.uniqueInStack &&
@@ -523,7 +542,8 @@ abstract class BaseNavigationInteractor<
 
     final bottomSheetName = bottomSheet.name;
 
-    final navigator = global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
+    final navigator =
+        global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
 
     navigationStack.addRoute(
       routeName: bottomSheetName,
@@ -535,7 +555,8 @@ abstract class BaseNavigationInteractor<
 
     unawaited(onBottomSheetOpened(bottomSheetToOpen, bottomSheetSettings));
 
-    final routeBuilder = bottomSheetSettings.customRouteBuilder ?? settings.routeBuilder;
+    final routeBuilder =
+        bottomSheetSettings.customRouteBuilder ?? settings.routeBuilder;
 
     // coverage:ignore-start
     final stackLength = global
@@ -569,14 +590,16 @@ abstract class BaseNavigationInteractor<
   void setCurrentTab(AppTabType tab);
 
   /// Checks if route can be popped
-  /// 
+  ///
   /// The route cant be popped if it is root route in navigator
   /// or if latest route is not dismissable
   bool canPop({bool global = true}) {
     if (global) {
-      return navigationStack.globalNavigationStack.stack.length > 1 && latestGlobalRoute().settings.dismissable;
+      return navigationStack.globalNavigationStack.stack.length > 1 &&
+          latestGlobalRoute().settings.dismissable;
     } else {
-      return navigationStack.tabNavigationStack.stack[currentTab]!.length > 1 && latestTabRoute().settings.dismissable;
+      return navigationStack.tabNavigationStack.stack[currentTab]!.length > 1 &&
+          latestTabRoute().settings.dismissable;
     }
   }
 
@@ -591,7 +614,8 @@ abstract class BaseNavigationInteractor<
     // coverage:ignore-end
 
     navigationStack.replaceStack(
-      routeName: navigationStack.globalNavigationStack.stack.first.name as RouteType,
+      routeName:
+          navigationStack.globalNavigationStack.stack.first.name as RouteType,
       settings: const UIRouteSettings(global: true, uniqueInStack: true),
     );
   }
@@ -685,7 +709,9 @@ abstract class BaseNavigationInteractor<
 
     if (isInBottomSheetDialogScope) {
       pop();
-    } else if ((isGlobal ? latestGlobalRoute() : latestTabRoute()).settings.needToEnsureClose) {
+    } else if ((isGlobal ? latestGlobalRoute() : latestTabRoute())
+        .settings
+        .needToEnsureClose) {
       EventBus.instance.send(EnsureCloseRequestedEvent());
     } else if (canPop(global: isGlobal)) {
       pop();
@@ -694,16 +720,19 @@ abstract class BaseNavigationInteractor<
 
   /// Checks if latest route is bottom sheet or dialog
   bool get isInBottomSheetDialogScope {
-    return latestGlobalRoute().name is BottomSheetType || latestGlobalRoute().name is DialogType;
+    return latestGlobalRoute().name is BottomSheetType ||
+        latestGlobalRoute().name is DialogType;
   }
 
   /// Checks if global navigator contains given route
   bool containsGlobalRoute(Object routeName) {
-    return navigationStack.globalNavigationStack.stack.indexWhere((element) => element.name == routeName) != -1;
+    return navigationStack.globalNavigationStack.stack
+            .indexWhere((element) => element.name == routeName) !=
+        -1;
   }
 
   /// Tries to open link based on routes declaration and open mapped route
-  /// 
+  ///
   /// Returns false if no possible link handler found
   Future<bool> openLink(
     String link, {
@@ -746,16 +775,20 @@ abstract class BaseNavigationInteractor<
       );
 
       final routeSettings = UIRouteSettings(
-        fullScreenDialog: fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
+        fullScreenDialog:
+            fullScreenDialog ?? routeData.defaultSettings.fullScreenDialog,
         global: global,
         uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
-        needToEnsureClose: needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
+        needToEnsureClose:
+            needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
         dismissable: dismissable ?? routeData.defaultSettings.dismissable,
         id: id ?? routeData.defaultSettings.id,
         replace: replace ?? routeData.defaultSettings.replace,
-        replacePrevious: replacePrevious ?? routeData.defaultSettings.replacePrevious,
+        replacePrevious:
+            replacePrevious ?? routeData.defaultSettings.replacePrevious,
         name: routeData.name.toString(),
-        customRouteBuilder: customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
+        customRouteBuilder:
+            customRouteBuilder ?? routeData.defaultSettings.customRouteBuilder,
       );
 
       await routeHandler.processRoute(

@@ -54,7 +54,7 @@ class Observable<T> {
   }
 
   /// Initializes observable with given initial value
-  /// 
+  ///
   /// [initial] - initial value for this observable
   Observable.initial(T initial) {
     _controller = StreamController<ObservableChange<T>>.broadcast();
@@ -66,10 +66,11 @@ class Observable<T> {
   T? get current => _current;
 
   /// Broadcast stream of [current] changes
-  Stream<ObservableChange<T>> get stream => _controller.stream.asBroadcastStream();
+  Stream<ObservableChange<T>> get stream =>
+      _controller.stream.asBroadcastStream();
 
   /// Updates [current] field
-  /// 
+  ///
   /// [data] - new observable value
   void update(T data) {
     if (_isDisposed) {

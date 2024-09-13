@@ -24,7 +24,8 @@ class TestWrapperAsync extends BaseStaticWrapper<int?> {
   int? value;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -42,7 +43,8 @@ class TestWrapperAsync2 extends BaseStaticWrapper<int?> {
   int? value;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
         isAsync: true,
         dependencies: [
           Connector(
@@ -74,7 +76,8 @@ class TestWrapper3 extends BaseStaticWrapper<int?> {
   bool event3Processed = false;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration =>
+      DependentMvvmInstanceConfiguration(
         dependencies: [
           const Connector(type: TestWrapper1, input: 2),
           const Connector(
@@ -198,7 +201,8 @@ class TestWrapperError extends BaseStaticWrapper<int?> {
   bool eventProcessed = false;
 
   @override
-  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration(
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration(
         dependencies: [
           Connector(type: TestWrapper1, input: 2),
           Connector(

@@ -60,7 +60,9 @@ void main() {
       );
 
       expect(
-        (instances.getUniqueByTypeString(testInstanceRuntimeType) as TestMvvmInstance).value,
+        (instances.getUniqueByTypeString(testInstanceRuntimeType)
+                as TestMvvmInstance)
+            .value,
         1,
       );
     });
@@ -73,7 +75,9 @@ void main() {
       );
 
       expect(
-        instances.constructInstance<TestMvvmInstance>(testInstanceRuntimeType).value,
+        instances
+            .constructInstance<TestMvvmInstance>(testInstanceRuntimeType)
+            .value,
         1,
       );
     });
@@ -263,7 +267,8 @@ void main() {
     });
 
     test('Instance collection add existing test', () async {
-      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
+      instances.addExisting(
+          scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
     });
@@ -287,7 +292,8 @@ void main() {
     });
 
     test('Instance collection clear test', () async {
-      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
+      instances.addExisting(
+          scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
 
@@ -297,7 +303,8 @@ void main() {
     });
 
     test('Instance collection find test', () async {
-      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
+      instances.addExisting(
+          scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(instances.find<TestMvvmInstance>(testScope)!.value, 3);
 
@@ -326,13 +333,16 @@ void main() {
 
     test('Instance collection getWithParamsAsync test', () async {
       expect(
-        (await instances.getWithParamsAsync<TestMvvmInstance, int>(params: 2)).value,
+        (await instances.getWithParamsAsync<TestMvvmInstance, int>(params: 2))
+            .value,
         2,
       );
     });
 
-    test('Instance collection getAsync when instance already existing test', () async {
-      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
+    test('Instance collection getAsync when instance already existing test',
+        () async {
+      instances.addExisting(
+          scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(
         (await instances.getAsync<TestMvvmInstance>(scope: testScope)).value,
@@ -340,7 +350,8 @@ void main() {
       );
     });
 
-    test('Instance collection getUniqueByTypeStringWithParamsAsync test', () async {
+    test('Instance collection getUniqueByTypeStringWithParamsAsync test',
+        () async {
       expect(
         (await instances.getUniqueByTypeStringWithParamsAsync<int>(
           type: testInstanceRuntimeType,
@@ -404,8 +415,10 @@ void main() {
       );
     });
 
-    test('Instance collection get when instance already existing test', () async {
-      instances.addExisting(scope: testScope, instance: TestMvvmInstance()..initialize(3));
+    test('Instance collection get when instance already existing test',
+        () async {
+      instances.addExisting(
+          scope: testScope, instance: TestMvvmInstance()..initialize(3));
 
       expect(
         instances.get<TestMvvmInstance>(scope: testScope).value,
@@ -504,7 +517,8 @@ void main() {
       );
     });
 
-    test('Instance collection use and dispose instance with params test', () async {
+    test('Instance collection use and dispose instance with params test',
+        () async {
       await instances.useAndDisposeInstanceWithParams<TestMvvmInstance, int>(
         1,
         (instance) async {

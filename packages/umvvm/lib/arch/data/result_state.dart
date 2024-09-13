@@ -1,7 +1,7 @@
 /// Helper class that holds result of function execution
-/// 
+///
 /// Can contain error, result, or null
-/// 
+///
 /// Example:
 ///
 /// ```dart

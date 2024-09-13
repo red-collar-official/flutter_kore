@@ -28,7 +28,8 @@ class TestInstancePart2 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -56,7 +57,8 @@ class TestInstancePart3 extends UniversalInstancePart<int> {
   bool eventProcessed = false;
 
   @override
-  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
         parts: [
           PartConnector(type: TestInstancePart2, isAsync: true, input: 6),
         ],
@@ -85,7 +87,8 @@ class TestInstancePart4 extends UniversalInstancePart<int> {
   int value = 0;
 
   @override
-  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
         isAsync: true,
       );
 
@@ -103,7 +106,8 @@ class TestInstancePart5 extends UniversalInstancePart<int?> {
   int value = 0;
 
   @override
-  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration(
         parts: [
           PartConnector(type: TestInstancePart2, isAsync: true, input: 6),
         ],

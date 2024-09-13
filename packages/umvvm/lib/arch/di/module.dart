@@ -39,10 +39,12 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 abstract class InstancesModule {
   late T Function<T extends MvvmInstance>({int index}) getInstanceDelegate;
-  late T Function<T extends BaseInstancePart>({int index}) useInstancePartDelegate;
+  late T Function<T extends BaseInstancePart>({int index})
+      useInstancePartDelegate;
   late T Function<T extends MvvmInstance>({int index}) getLazyInstanceDelegate;
 
-  late Future<T> Function<T extends MvvmInstance>({int index}) getAsyncLazyInstanceDelegate;
+  late Future<T> Function<T extends MvvmInstance>({int index})
+      getAsyncLazyInstanceDelegate;
 
   // coverage:ignore-start
 
@@ -69,28 +71,28 @@ abstract class InstancesModule {
   }
 
   /// Returns connected instance
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) {
     return getInstanceDelegate<T>(index: index);
   }
 
   /// Returns connected part
-  /// 
+  ///
   /// [index] - index of part if multiple are connected
   T useInstancePart<T extends BaseInstancePart>({int index = 0}) {
     return useInstancePartDelegate<T>(index: index);
   }
 
   /// Returns connected instance
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
   T getLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
     return getLazyInstanceDelegate<T>(index: index);
   }
 
   /// Returns connected instance
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
   Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
     return getAsyncLazyInstanceDelegate<T>(index: index);

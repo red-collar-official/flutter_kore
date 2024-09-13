@@ -45,7 +45,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   late final T input;
 
   /// [MvvmInstanceConfiguration] for this instance
-  MvvmInstanceConfiguration get configuration => const MvvmInstanceConfiguration();
+  MvvmInstanceConfiguration get configuration =>
+      const MvvmInstanceConfiguration();
 
   /// Getter that returns true if instance contains async parts
   /// or require async initialization
@@ -56,14 +57,16 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   bool get isAsync {
     return configuration.isAsync != null
         ? configuration.isAsync!
-        : getFullPartConnectorsList().indexWhere((element) => element.isAsync) != -1;
+        : getFullPartConnectorsList()
+                .indexWhere((element) => element.isAsync) !=
+            -1;
   }
   // coverage:ignore-end
 
   /// Base method for instance initialization
   ///
   /// After you call this method set [isInitialized] flag to true
-  /// 
+  ///
   /// [input] - input for this instance
   @mustCallSuper
   void initialize(T input) {
@@ -116,7 +119,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Base method for lightweight instance initialization
-  /// 
+  ///
   /// [input] - input for this instance
   // coverage:ignore-start
   @mustCallSuper
@@ -164,7 +167,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Returns initialized instance part for given type
-  /// 
+  ///
   /// [index] - index for this part
   InstancePartType useInstancePart<InstancePartType extends BaseInstancePart>({
     int index = 0,
@@ -177,7 +180,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
 
     if (index < 0 || index >= _parts[InstancePartType]!.length) {
       throw IllegalArgumentException(
-        message: 'The index = $index value must be non-negative and less than count of parts of $InstancePartType.',
+        message:
+            'The index = $index value must be non-negative and less than count of parts of $InstancePartType.',
       );
     }
 
@@ -224,7 +228,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
       final rootParent = (this as BaseInstancePart).rootParentInstance;
 
       if (rootParent == null) {
-        (this as BaseInstancePart).rootParentInstance = (this as BaseInstancePart).parentInstance;
+        (this as BaseInstancePart).rootParentInstance =
+            (this as BaseInstancePart).parentInstance;
       }
 
       part.rootParentInstance = (this as BaseInstancePart).rootParentInstance;
@@ -234,7 +239,9 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   /// Adds parts to local collection
   Future<void> initializeInstancePartsAsync() async {
     await Future.wait(
-      getFullPartConnectorsList().where((element) => element.isAsync).map(_addAsyncPart),
+      getFullPartConnectorsList()
+          .where((element) => element.isAsync)
+          .map(_addAsyncPart),
     );
 
     onAllPartReady();
@@ -248,7 +255,8 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
       final list = _parts[element.type]!;
 
       Future<void> add(int index) async {
-        final part = await _getUniquePartAsync(element, index: index) as BaseInstancePart;
+        final part = await _getUniquePartAsync(element, index: index)
+            as BaseInstancePart;
         _setPartRootParentInstance(part);
 
         list.add(part);
@@ -273,7 +281,9 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   dynamic _getUniquePart(Connector connector, {int index = 0}) {
     return InstanceCollection.instance.getUniqueByTypeStringWithParams(
       type: connector.type.toString(),
-      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      params: connector.inputForIndex != null
+          ? connector.inputForIndex!(index)
+          : connector.input,
       withoutConnections: connector.withoutConnections,
       beforeInitialize: (part) {
         part.parentInstance = this;
@@ -284,7 +294,9 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   Future _getUniquePartAsync(Connector connector, {int index = 0}) {
     return InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
       type: connector.type.toString(),
-      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      params: connector.inputForIndex != null
+          ? connector.inputForIndex!(index)
+          : connector.input,
       withoutConnections: connector.withoutConnections,
       beforeInitialize: (part) {
         part.parentInstance = this;
@@ -293,7 +305,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   }
 
   /// Runs for every async part when it is initialized
-  /// 
+  ///
   /// [type] - type of instance that is ready
   /// [index] - index of instance that is ready
   void onAsyncPartReady(Type type, int? index) {}

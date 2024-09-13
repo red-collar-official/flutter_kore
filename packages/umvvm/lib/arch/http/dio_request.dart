@@ -103,7 +103,8 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
     if (cancelToken.isCancelled) {
       if (requestCollection.cancelReasonProcessingCompleter != null) {
-        await RequestCollection.instance.cancelReasonProcessingCompleter!.future;
+        await RequestCollection
+            .instance.cancelReasonProcessingCompleter!.future;
       }
     }
 
@@ -261,7 +262,8 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
     client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
-    final requestTimeout = timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
+    final requestTimeout =
+        timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
     client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
     client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
 
@@ -322,7 +324,8 @@ abstract class DioRequest<T> extends BaseRequest<T> {
 
       if (error.type == dio.DioExceptionType.cancel) {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
-          await RequestCollection.instance.cancelReasonProcessingCompleter!.future;
+          await RequestCollection
+              .instance.cancelReasonProcessingCompleter!.future;
           return _retryRequest(client, data, error);
         }
       }

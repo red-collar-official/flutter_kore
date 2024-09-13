@@ -58,7 +58,8 @@ void main() {
       await viewModel.initializeAsync();
       viewModel.onLaunch();
 
-      await app.navigation.routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation
+          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
 
       viewModel.pop();
 

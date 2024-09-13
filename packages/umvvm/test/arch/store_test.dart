@@ -40,7 +40,8 @@ void main() {
     test('Store updates test', () async {
       final completer = Completer();
 
-      final subscription = store.updates((state) => state.number).listen((event) {
+      final subscription =
+          store.updates((state) => state.number).listen((event) {
         if (event == 2) {
           completer.complete();
         }
@@ -58,7 +59,8 @@ void main() {
     test('Store changes test', () async {
       final completer = Completer();
 
-      final subscription = store.changes((state) => state.number).listen((event) {
+      final subscription =
+          store.changes((state) => state.number).listen((event) {
         if (event.next == 2) {
           completer.complete();
         }

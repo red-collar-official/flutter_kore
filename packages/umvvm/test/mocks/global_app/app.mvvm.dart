@@ -6,13 +6,16 @@ part of 'app.dart';
 // MainAppGenerator
 // **************************************************************************
 
-class NavigationInteractorConnector extends ConnectorCall<NavigationInteractor, Map<String, dynamic>?> {}
+class NavigationInteractorConnector
+    extends ConnectorCall<NavigationInteractor, Map<String, dynamic>?> {}
 
-class TestDeepLinksInteractorConnector extends ConnectorCall<NavigationInteractor, Map<String, dynamic>?> {}
+class TestDeepLinksInteractorConnector
+    extends ConnectorCall<NavigationInteractor, Map<String, dynamic>?> {}
 
 class Connectors {
   late final navigationInteractorConnector = NavigationInteractorConnector();
-  late final testDeepLinksInteractorConnector = TestDeepLinksInteractorConnector();
+  late final testDeepLinksInteractorConnector =
+      TestDeepLinksInteractorConnector();
 }
 
 mixin AppGen on UMvvmApp<NavigationInteractor> {

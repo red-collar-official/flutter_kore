@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 /// Class containing settings for app navigation
-/// 
+///
 /// Here we can specify default params for dialog and bottom sheets transitions
 class UINavigationSettings {
   /// Duration of dialog of bottom sheet transition

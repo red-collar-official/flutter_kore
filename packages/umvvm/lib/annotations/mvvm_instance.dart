@@ -163,4 +163,8 @@ const asyncSingleton = Instance(singleton: true, isAsync: true);
 ///   }
 /// }
 /// ```
-const asyncLazySingleton = Instance(singleton: true, isLazy: true, isAsync: true);
+const asyncLazySingleton = Instance(
+  singleton: true,
+  isLazy: true,
+  isAsync: true,
+);

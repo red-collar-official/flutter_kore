@@ -68,7 +68,7 @@ class Connector {
   });
 
   /// Returns copy if this connector with overriden scope value
-  /// 
+  ///
   /// [scope] - scope string that will replace initial value
   Connector copyWithScope(String scope) {
     return Connector(
@@ -109,7 +109,8 @@ class ConnectorCall<InstanceType, InputStateType> {
 }
 
 /// Async callable proxy class for [Connector]
-class AsyncConnectorCall<InstanceType, InputStateType> extends ConnectorCall<InstanceType, InputStateType> {
+class AsyncConnectorCall<InstanceType, InputStateType>
+    extends ConnectorCall<InstanceType, InputStateType> {
   int? get order => null;
   bool get awaitInitialization => false;
 

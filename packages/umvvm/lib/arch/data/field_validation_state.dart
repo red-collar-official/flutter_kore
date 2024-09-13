@@ -1,5 +1,5 @@
 /// Sealed class with possible input field states
-/// 
+///
 /// Can be [ValidFieldState], [IgnoredFieldState] or [ErrorFieldState]
 sealed class FieldValidationState {}
 

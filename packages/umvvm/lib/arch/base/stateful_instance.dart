@@ -99,14 +99,17 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// ```dart
   /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
   /// ```
-  Stream<Value> updates<Value>(Value Function(State state) mapper) => _store.updates(mapper);
+  Stream<Value> updates<Value>(Value Function(State state) mapper) =>
+      _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
   ///
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
-  Stream<StoreChange<Value>> changes<Value>(Value Function(State state) mapper) => _store.changes(mapper);
+  Stream<StoreChange<Value>> changes<Value>(
+          Value Function(State state) mapper) =>
+      _store.changes(mapper);
 
   /// Underlying stream subsription for [Store] updates
   StreamSubscription<State>? _storeSaveSubscription;
@@ -161,14 +164,14 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// Callback to get cache object
   ///
   /// Use it to call [updateState] and restore saved state object
-  /// 
+  ///
   /// [savedStateObject] - restored state value
   void onRestore(Map<String, dynamic> savedStateObject) {}
 
   /// Updates state in underlying [Store]
-  /// 
+  ///
   /// [state] - new state value
-  /// 
+  ///
   /// ```dart
   /// @basicInstance
   /// class PostsInteractor extends BaseInteractor<PostsState> {
@@ -237,7 +240,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   State get initialState;
 
   /// Flag indicating that cached state should be awaited
-  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
+  StateFullInstanceSettings get stateFullInstanceSettings =>
+      StateFullInstanceSettings(
         stateId: state.runtimeType.toString(),
       );
 }

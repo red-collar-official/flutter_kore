@@ -20,7 +20,10 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
-    with StatefulMvvmInstance<State, Input?>, DependentMvvmInstance<Input?>, ApiCaller<Input?> {
+    with
+        StatefulMvvmInstance<State, Input?>,
+        DependentMvvmInstance<Input?>,
+        ApiCaller<Input?> {
   @mustCallSuper
   @override
   void initialize(Input? input) {

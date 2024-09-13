@@ -12,7 +12,8 @@ class TestWidget extends BaseWidget {
   State<StatefulWidget> createState() => PostsListViewWidgetState();
 }
 
-class PostsListViewWidgetState extends BaseView<TestWidget, int, TestViewModel> {
+class PostsListViewWidgetState
+    extends BaseView<TestWidget, int, TestViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Container();

@@ -14,7 +14,7 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
   });
 
   /// Dependencies for this instance
-  /// 
+  ///
   /// Does not hold singleton instances
   final List<Connector> dependencies;
 
@@ -23,7 +23,7 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 }
 
 /// Mixin that contains declarations of instance dependencies
-/// 
+///
 /// Contains methods to declare, initialize and get them
 ///
 /// If used you need to call [initializeDependencies] in [MvvmInstance.initialize] call
@@ -60,12 +60,12 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 /// ```
 mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   /// Local instances
-  /// 
+  ///
   /// Does not hold singleton instances
   final _instances = HashMap<Type, List<MvvmInstance?>>();
 
   /// Local lazy instances
-  /// 
+  ///
   /// Does not hold singleton instances
   final _lazyInstancesBuilders = HashMap<Type, List>();
 
@@ -74,17 +74,19 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// [DependentMvvmInstanceConfiguration] for this instance
   @override
-  DependentMvvmInstanceConfiguration get configuration => const DependentMvvmInstanceConfiguration();
+  DependentMvvmInstanceConfiguration get configuration =>
+      const DependentMvvmInstanceConfiguration();
 
   /// Getter that returns true if instance contains async parts
   /// or require async initialization
-  /// 
+  ///
   /// If you override this getter always use super.isAsync
   /// if you not always returning true
   // coverage:ignore-start
   @override
   bool get isAsync {
-    return super.isAsync || getFullConnectorsList().indexWhere((element) => element.isAsync) != -1;
+    return super.isAsync ||
+        getFullConnectorsList().indexWhere((element) => element.isAsync) != -1;
   }
   // coverage:ignore-end
 
@@ -177,12 +179,19 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   void _addInstancesSync() {
     final connectors = getFullConnectorsList();
 
-    connectors.where((element) => !element.isAsync && element.isLazy).forEach(_addLazyInstanceSync);
+    connectors
+        .where((element) => !element.isAsync && element.isLazy)
+        .forEach(_addLazyInstanceSync);
 
-    connectors.where((element) => element.isAsync && element.isLazy).forEach(_addLazyInstanceAsync);
+    connectors
+        .where((element) => element.isAsync && element.isLazy)
+        .forEach(_addLazyInstanceAsync);
 
-    connectors.where((element) => !element.isAsync && !element.isLazy).forEach((element) {
-      if (_instances[element.type] != null || _lazyInstancesBuilders[element.type] != null) {
+    connectors
+        .where((element) => !element.isAsync && !element.isLazy)
+        .forEach((element) {
+      if (_instances[element.type] != null ||
+          _lazyInstancesBuilders[element.type] != null) {
         throw IllegalArgumentException(
           message: 'Instance already dependent on ${element.type}',
         );
@@ -206,10 +215,14 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
-    final asyncDeps = getFullConnectorsList().where((element) => element.isAsync && !element.isLazy);
+    final asyncDeps = getFullConnectorsList()
+        .where((element) => element.isAsync && !element.isLazy);
 
     for (final element in asyncDeps) {
-      if (getFullConnectorsList().where((dependency) => dependency.type == element.type).length > 1) {
+      if (getFullConnectorsList()
+              .where((dependency) => dependency.type == element.type)
+              .length >
+          1) {
         throw IllegalArgumentException(
           message: 'Instance already dependent on ${element.type}',
         );
@@ -256,7 +269,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
   /// Adds instance to local collection
   void _addLazyInstanceAsync(Connector element) {
-    if (_instances[element.type] != null || _lazyInstancesBuilders[element.type] != null) {
+    if (_instances[element.type] != null ||
+        _lazyInstancesBuilders[element.type] != null) {
       throw IllegalArgumentException(
         message: 'Instance already dependent on ${element.type}',
       );
@@ -274,15 +288,20 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       final instancesReserved = List<MvvmInstance?>.filled(element.count, null);
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
-      _lazyInstancesBuilders[element.type] = [() async => _getUniqueInstanceAsync(element)];
+      _lazyInstancesBuilders[element.type] = [
+        () async => _getUniqueInstanceAsync(element)
+      ];
     } else {
-      _lazyInstancesBuilders[element.type] = [() async => _getInstanceAsync(element)];
+      _lazyInstancesBuilders[element.type] = [
+        () async => _getInstanceAsync(element)
+      ];
     }
   }
 
   /// Adds instance to local collection
   void _addLazyInstanceSync(Connector element) {
-    if (_instances[element.type] != null || _lazyInstancesBuilders[element.type] != null) {
+    if (_instances[element.type] != null ||
+        _lazyInstancesBuilders[element.type] != null) {
       throw IllegalArgumentException(
         message: 'Instance already dependent on ${element.type}',
       );
@@ -300,7 +319,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       final instancesReserved = List<MvvmInstance?>.filled(element.count, null);
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
-      _lazyInstancesBuilders[element.type] = [() => _getUniqueInstance(element)];
+      _lazyInstancesBuilders[element.type] = [
+        () => _getUniqueInstance(element)
+      ];
     } else {
       _lazyInstancesBuilders[element.type] = [() => _getInstance(element)];
     }
@@ -318,7 +339,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   dynamic _getUniqueInstance(Connector connector, {int index = 0}) {
     return InstanceCollection.instance.getUniqueByTypeStringWithParams(
       type: connector.type.toString(),
-      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      params: connector.inputForIndex != null
+          ? connector.inputForIndex!(index)
+          : connector.input,
       withoutConnections: connector.withoutConnections,
     );
   }
@@ -335,7 +358,9 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   Future _getUniqueInstanceAsync(Connector connector, {int index = 0}) {
     return InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
       type: connector.type.toString(),
-      params: connector.inputForIndex != null ? connector.inputForIndex!(index) : connector.input,
+      params: connector.inputForIndex != null
+          ? connector.inputForIndex!(index)
+          : connector.input,
       withoutConnections: connector.withoutConnections,
     );
   }
@@ -382,7 +407,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
   T getLocalInstance<T extends MvvmInstance>({int index = 0}) {
     if (_instances[T] == null) {
@@ -393,7 +418,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
     if (index < 0 || index >= _instances[T]!.length) {
       throw IllegalArgumentException(
-        message: 'The index = $index value must be non-negative and less than count of instances of $T.',
+        message:
+            'The index = $index value must be non-negative and less than count of instances of $T.',
       );
     }
 
@@ -401,7 +427,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
   T getLazyLocalInstance<T extends MvvmInstance>({int index = 0}) {
     final typedInstances = _instances[T];
@@ -409,11 +435,13 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
 
     if (index < 0 || index >= typedBuilders!.length) {
       throw IllegalArgumentException(
-        message: 'The index = $index value must be non-negative and less than count of instances of $T.',
+        message:
+            'The index = $index value must be non-negative and less than count of instances of $T.',
       );
     }
 
-    if (typedInstances?[index] == null || index >= (typedInstances?.length ?? 0)) {
+    if (typedInstances?[index] == null ||
+        index >= (typedInstances?.length ?? 0)) {
       final object = typedBuilders[index]();
 
       if (typedInstances == null) {
@@ -429,19 +457,22 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Returns connected instance of given type
-  /// 
+  ///
   /// [index] - index of instance if multiple are connected
-  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>({int index = 0}) async {
+  Future<T> getAsyncLazyLocalInstance<T extends MvvmInstance>(
+      {int index = 0}) async {
     final typedInstances = _instances[T];
     final typedBuilders = _lazyInstancesBuilders[T];
 
     if (index < 0 || index >= typedBuilders!.length) {
       throw IllegalArgumentException(
-        message: 'The index = $index value must be non-negative and less than count of instances of $T.',
+        message:
+            'The index = $index value must be non-negative and less than count of instances of $T.',
       );
     }
 
-    if (typedInstances?[index] == null || index >= (typedInstances?.length ?? 0)) {
+    if (typedInstances?[index] == null ||
+        index >= (typedInstances?.length ?? 0)) {
       final object = await typedBuilders[index]();
 
       if (typedInstances == null) {
@@ -457,7 +488,8 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   T connectModule<T extends InstancesModule>() {
-    final module = configuration.modules.firstWhere((element) => element.runtimeType == T);
+    final module =
+        configuration.modules.firstWhere((element) => element.runtimeType == T);
 
     // ignore: cascade_invocations
     module
@@ -470,7 +502,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Runs for every async instance when it is initialized
-  /// 
+  ///
   /// [type] - type of instance that is ready
   /// [index] - index of instance that is ready
   void onAsyncInstanceReady(Type type, int? index) {}

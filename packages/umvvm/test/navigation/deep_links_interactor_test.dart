@@ -318,7 +318,8 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
     });
 
-    test('DeepLinkInteractor test various links for bottom sheets test', () async {
+    test('DeepLinkInteractor test various links for bottom sheets test',
+        () async {
       app.navigation.dialogs.routeLinkHandlers.clear();
       app.navigation.bottomSheets.routeLinkHandlers.clear();
       app.navigation.routes.routeLinkHandlers.clear();
@@ -424,7 +425,8 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
     });
 
-    test('DeepLinkInteractor open link prefer dialogs not found test', () async {
+    test('DeepLinkInteractor open link prefer dialogs not found test',
+        () async {
       app.navigation.dialogs.routeLinkHandlers.clear();
       app.navigation.bottomSheets.routeLinkHandlers.clear();
       app.navigation.routes.routeLinkHandlers.clear();
@@ -440,7 +442,8 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
     });
 
-    test('DeepLinkInteractor open link prefer bottom sheets not found test', () async {
+    test('DeepLinkInteractor open link prefer bottom sheets not found test',
+        () async {
       app.navigation.dialogs.routeLinkHandlers.clear();
       app.navigation.bottomSheets.routeLinkHandlers.clear();
       app.navigation.routes.routeLinkHandlers.clear();

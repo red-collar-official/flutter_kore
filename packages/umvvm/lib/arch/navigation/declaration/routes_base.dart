@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Base class for route declarations
-/// 
+///
 /// Must be extented by Routes, Dialogs, BottomSheets
 /// or any custom route container
 abstract class RoutesBase {
@@ -146,7 +146,7 @@ abstract class RoutesBase {
   }
 
   /// Rates all route handlers for given query and possible subroutes
-  /// 
+  ///
   /// More matches for query params -> bigger rate value
   Map<String, int> findPossibleRoutes(
     Map<String, List<String>> query,

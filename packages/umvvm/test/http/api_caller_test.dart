@@ -36,7 +36,8 @@ void main() {
 
       addTestResponsesToDio(request2.dioInstance!);
 
-      final interactor = await instances.getUniqueAsync<TestInteractorWithRequest>();
+      final interactor =
+          await instances.getUniqueAsync<TestInteractorWithRequest>();
 
       late Response<int> response1;
       late Response<int> response2;
@@ -59,11 +60,13 @@ void main() {
       expect(response2.isSuccessful, false);
 
       expect(
-        (response1.error as dio.DioException).type == dio.DioExceptionType.cancel,
+        (response1.error as dio.DioException).type ==
+            dio.DioExceptionType.cancel,
         true,
       );
       expect(
-        (response2.error as dio.DioException).type == dio.DioExceptionType.cancel,
+        (response2.error as dio.DioException).type ==
+            dio.DioExceptionType.cancel,
         true,
       );
     });

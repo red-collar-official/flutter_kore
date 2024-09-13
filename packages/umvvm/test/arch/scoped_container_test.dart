@@ -293,7 +293,9 @@ void main() {
         );
 
       expect(
-        testContainer.referencesInScope(testScope, testObject.runtimeType).length,
+        testContainer
+            .referencesInScope(testScope, testObject.runtimeType)
+            .length,
         2,
       );
 
@@ -303,7 +305,9 @@ void main() {
       );
 
       expect(
-        testContainer.referencesInScope(testScope, testObject.runtimeType).isEmpty,
+        testContainer
+            .referencesInScope(testScope, testObject.runtimeType)
+            .isEmpty,
         true,
       );
 
@@ -329,7 +333,9 @@ void main() {
         );
 
       expect(
-        testContainer.referencesInScope(testScope, testObject.runtimeType).isEmpty,
+        testContainer
+            .referencesInScope(testScope, testObject.runtimeType)
+            .isEmpty,
         true,
       );
     });
@@ -426,7 +432,8 @@ void main() {
       );
     });
 
-    test('Scoped container increaseReferencesInScope illegal arguments test', () async {
+    test('Scoped container increaseReferencesInScope illegal arguments test',
+        () async {
       const testObject = 1;
 
       testContainer
@@ -459,7 +466,8 @@ void main() {
       );
     });
 
-    test('Scoped container decreaseReferences illegal arguments test', () async {
+    test('Scoped container decreaseReferences illegal arguments test',
+        () async {
       const testObject = 1;
 
       testContainer
@@ -492,7 +500,8 @@ void main() {
       );
     });
 
-    test('Scoped container getCurrentReferenceCount illegal arguments test', () async {
+    test('Scoped container getCurrentReferenceCount illegal arguments test',
+        () async {
       const testObject = 1;
 
       testContainer
@@ -558,7 +567,8 @@ void main() {
       );
     });
 
-    test('Scoped container removeObjectInScope illegal arguments test', () async {
+    test('Scoped container removeObjectInScope illegal arguments test',
+        () async {
       const testObject = 1;
 
       testContainer

@@ -23,8 +23,12 @@ import 'package:umvvm/umvvm.dart';
 ///   }
 /// }
 /// ```
-abstract class BaseViewModel<Widget extends StatefulWidget, State> extends MvvmInstance<Widget>
-    with StatefulMvvmInstance<State, Widget>, DependentMvvmInstance<Widget>, ApiCaller<Widget> {
+abstract class BaseViewModel<Widget extends StatefulWidget, State>
+    extends MvvmInstance<Widget>
+    with
+        StatefulMvvmInstance<State, Widget>,
+        DependentMvvmInstance<Widget>,
+        ApiCaller<Widget> {
   /// Function to be executed after initState
   // coverage:ignore-start
   void onLaunch() {}

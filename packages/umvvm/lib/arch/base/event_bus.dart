@@ -65,11 +65,13 @@ class EventBus {
       );
     }
 
-    return _streamController.stream.where((event) => event is T).map((event) => event as T);
+    return _streamController.stream
+        .where((event) => event is T)
+        .map((event) => event as T);
   }
 
   /// Return dart stream of events with particular names
-  /// 
+  ///
   /// [events] - list of events to receive
   Stream streamOfCollection(List<Type> events) {
     if (_isDisposed) {
@@ -78,11 +80,12 @@ class EventBus {
       );
     }
 
-    return _streamController.stream.where((event) => events.contains(event.runtimeType));
+    return _streamController.stream
+        .where((event) => events.contains(event.runtimeType));
   }
 
   /// Sends event to stream controller
-  /// 
+  ///
   /// [event] - event instance
   void send(dynamic event) {
     if (_isDisposed) {
@@ -112,7 +115,7 @@ class EventBus {
   }
 
   /// Returns true if underlying events list contains given event name
-  /// 
+  ///
   /// [event] - type of event to check
   @visibleForTesting
   bool checkEventWasSent(Type event) {

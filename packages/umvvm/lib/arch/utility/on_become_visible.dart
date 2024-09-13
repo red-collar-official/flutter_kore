@@ -37,7 +37,9 @@ class _UIOnBecomeVisibleState extends State<OnBecomeVisible> {
           _alreadyBecameVisible = true;
           _alreadyBecameInvisible = false;
           widget.onBecameVisible();
-        } else if (widget.onBecameInvisible != null && visiblePercentage == 0 && !_alreadyBecameInvisible) {
+        } else if (widget.onBecameInvisible != null &&
+            visiblePercentage == 0 &&
+            !_alreadyBecameInvisible) {
           _alreadyBecameInvisible = true;
           _alreadyBecameVisible = false;
           widget.onBecameInvisible?.call();
