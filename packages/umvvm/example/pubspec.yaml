@@ -10,18 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: 
-    git: 
-      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
-      path: packages/umvvm
-      branch: main
+  umvvm: ^1.0.1
 
   dio: ^5.4.0
   dart_mappable: ^4.1.0
 
 dev_dependencies:
-  umvvm_generator: 
-    path: ../../umvvm_generator
+  umvvm_generator: ^1.0.0
 
   build: ^2.4.1
   build_config: ^1.1.1

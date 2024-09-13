@@ -24,7 +24,7 @@ class InstancesCollectorGenerator extends Generator {
       final inputType = element.annotation
           .peek('inputType')
           ?.typeValue
-          .getDisplayString(withNullability: false);
+          .getDisplayString();
       final asyncValue = element.annotation.peek('isAsync')?.boolValue ?? false;
       final partValue = element.annotation.peek('part')?.boolValue ?? false;
       final awaitInitialization =

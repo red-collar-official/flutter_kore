@@ -2,7 +2,7 @@ name: umvvm_generator
 
 description: Source generators for Umvvm architecture library annotations
 
-version: 1.0.0
+version: 1.0.1
 
 repository: https://github.com/red-collar-dev/umvvm
 issue_tracker: https://github.com/red-collar-dev/umvvm/issues
@@ -18,7 +18,7 @@ dependencies:
   logging: ^1.2.0
   build: ^2.4.1
   path: ^1.8.0
-  analyzer: ^6.4.1
+  analyzer: ^6.7.0
   umvvm: ^1.0.1
 
 dev_dependencies:

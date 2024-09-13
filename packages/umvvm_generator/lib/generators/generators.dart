@@ -76,7 +76,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       );
     } else {
       classBuffer.writeln(
-        'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString(withNullability: false)}> {',
+        'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString()}> {',
       );
     }
 
@@ -437,7 +437,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       final customHandler = value
           .peek('customHandler')
           ?.typeValue
-          .getDisplayString(withNullability: false);
+          .getDisplayString();
 
       final queriesForPathValue = value.peek('queriesForPath')?.listValue;
       final possibleFragmentsForPathValue =
@@ -675,7 +675,7 @@ if (pathSegmentPattern == '$element') {
       final customMapperType = method
           .peek('customParamsMapper')
           ?.typeValue
-          .getDisplayString(withNullability: false);
+          .getDisplayString();
 
       if (regexes != null) {
         for (final regex in regexes) {
@@ -706,9 +706,7 @@ class MainNavigationInteractorGenerator
 
     var appTabValue = 'void';
 
-    final tabsValue = annotation.peek('tabs')?.typeValue.getDisplayString(
-          withNullability: false,
-        );
+    final tabsValue = annotation.peek('tabs')?.typeValue.getDisplayString();
 
     if (tabsValue != null) {
       appTabValue = tabsValue;
@@ -716,9 +714,7 @@ class MainNavigationInteractorGenerator
 
     var deeplinkValue = 'BaseDeepLinksInteractor';
 
-    final deeplink = annotation.peek('deepLinks')?.typeValue.getDisplayString(
-          withNullability: false,
-        );
+    final deeplink = annotation.peek('deepLinks')?.typeValue.getDisplayString();
 
     if (deeplink != null) {
       deeplinkValue = deeplink;
