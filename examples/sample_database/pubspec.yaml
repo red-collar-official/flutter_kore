@@ -10,11 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: 
-    git: 
-      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
-      path: packages/umvvm
-      branch: main
+  umvvm: ^1.0.1
 
   dio: ^5.4.0
   freezed_annotation: ^2.4.1
@@ -29,8 +25,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
-  umvvm_generator: 
-    path: ../../packages/umvvm_generator
+  umvvm_generator: ^1.0.1
 
   json_serializable:
   build: ^2.4.1

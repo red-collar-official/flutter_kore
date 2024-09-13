@@ -16,7 +16,7 @@ dependencies:
   dart_mappable: ^4.1.0
 
 dev_dependencies:
-  umvvm_generator: ^1.0.0
+  umvvm_generator: ^1.0.1
 
   build: ^2.4.1
   build_config: ^1.1.1
