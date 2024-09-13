@@ -14,11 +14,7 @@ dependencies:
   build: ^2.4.1
   path: ^1.8.0
 
-  umvvm: 
-    git: 
-      url: https://gitlab.rdclr.ru/mobile/umvvm-flutter.git
-      path: packages/umvvm
-      branch: main
+  umvvm: ^1.0.1
 
 dev_dependencies:
   build_runner: ^2.4.8

@@ -6,10 +6,10 @@ Set of classes for Flutter app architecture.
 
 ```yaml
 dependencies: 
-  umvvm: ^1.0.0
+  umvvm: ^<latest version>
 
 dev_dependencies: 
-  umvvm_generator: ^1.0.0
+  umvvm_generator: ^<latest version>
 ```
 
 You also need dependency for build_runner if you don't have it yet.

@@ -1,8 +1,8 @@
 name: umvvm
 
-description: UMvvm architecture components
+description: This library contains components for MVVM architecture, and also utility classes for http, navigation and di
 
-version: 1.0.1
+version: 1.0.1+1
 
 repository: https://github.com/red-collar-dev/umvvm
 issue_tracker: https://github.com/red-collar-dev/umvvm/issues
