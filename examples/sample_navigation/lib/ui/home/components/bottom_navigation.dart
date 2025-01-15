@@ -32,7 +32,7 @@ class BottomNavigation extends StatelessWidget {
         borderRadius: const BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 30,
           ),
         ],
@@ -77,7 +77,7 @@ class BottomNavigationItem extends StatelessWidget {
         boxShadow: [
           if (selected)
             BoxShadow(
-              color: Colors.green.withOpacity(0.12),
+              color: Colors.green.withValues(alpha: 0.12),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),

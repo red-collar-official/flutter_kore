@@ -383,13 +383,6 @@ abstract class DioRequest<T> extends BaseRequest<T> {
           data: data,
           cancelToken: cancelToken,
         );
-      // coverage:ignore-start
-      default:
-        return client.get(
-          Uri.encodeFull(url ?? ''),
-          cancelToken: cancelToken,
-        );
-      // coverage:ignore-end
     }
   }
 

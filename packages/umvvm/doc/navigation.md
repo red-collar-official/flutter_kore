@@ -488,7 +488,7 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
   }
 
   @override
-  Future<String> getInitialLink() async {
+  Future<String?> getInitialLink() async {
     return 'test';
   }
 
