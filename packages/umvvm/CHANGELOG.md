@@ -1,3 +1,7 @@
+## 1.0.2
+
+Update for latest Flutter version
+
 ## 1.0.1+1
 
 Update main doc file
