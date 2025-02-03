@@ -1,3 +1,7 @@
+## 1.0.3
+
+Add overrideMainInstance param for addTest method of InstanceCollection
+
 ## 1.0.2
 
 Update for latest Flutter version

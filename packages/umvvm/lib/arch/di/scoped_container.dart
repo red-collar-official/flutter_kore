@@ -81,8 +81,7 @@ final class ScopedContainer<T> {
     if (objects != null) {
       if (index < 0 || index >= objects.length) {
         throw IllegalArgumentException(
-          message:
-              'The $index value must be non-negative and less than count of references of $type in $scopeId.',
+          message: 'The $index value must be non-negative and less than count of references of $type in $scopeId.',
         );
       }
 
@@ -97,6 +96,7 @@ final class ScopedContainer<T> {
     required T object,
     required String type,
     required String scopeId,
+    bool overrideMainInstance = false,
   }) {
     if (_instances.containsKey(scopeId)) {
       final scope = _instances[scopeId]!;
@@ -104,7 +104,11 @@ final class ScopedContainer<T> {
       if (scope[type] == null) {
         _instances[scopeId]![type] = [object];
       } else {
-        _instances[scopeId]![type]?.add(object);
+        if (overrideMainInstance) {
+          _instances[scopeId]![type] = [object];
+        } else {
+          _instances[scopeId]![type]?.add(object);
+        }
       }
     } else {
       _instances[scopeId] = HashMap.from({
@@ -348,11 +352,9 @@ final class ScopedContainer<T> {
   /// Checks if container contains object for type in given scope
   bool contains(String scopeId, String id, int? index) {
     if (index == null) {
-      return _instances[scopeId] != null &&
-          (_instances[scopeId]![id]?.isNotEmpty ?? false);
+      return _instances[scopeId] != null && (_instances[scopeId]![id]?.isNotEmpty ?? false);
     } else {
-      return _instances[scopeId] != null &&
-          ((_instances[scopeId]![id]?.length ?? 0) > index);
+      return _instances[scopeId] != null && ((_instances[scopeId]![id]?.length ?? 0) > index);
     }
   }
 

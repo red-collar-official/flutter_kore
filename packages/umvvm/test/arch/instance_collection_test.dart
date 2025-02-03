@@ -282,6 +282,30 @@ void main() {
       expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
     });
 
+    test('Instance collection add test overrideMainInstance test', () async {
+      instances.addTest<TestMvvmInstance>(
+        scope: testScope,
+        instance: TestMvvmInstance()..initialize(3),
+      );
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 3);
+
+      instances.addTest<TestMvvmInstance>(
+        scope: testScope,
+        instance: TestMvvmInstance()..initialize(4),
+      );
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 4);
+
+      instances.addTest<TestMvvmInstance>(
+        scope: testScope,
+        instance: TestMvvmInstance()..initialize(5),
+        overrideMainInstance: false,
+      );
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 4);
+    });
+
     test('Instance collection add test uninitialized test', () async {
       instances.addTest<TestMvvmInstance>(
         scope: testScope,

@@ -98,6 +98,7 @@ class InstanceCollection {
     String scope = BaseScopes.global,
     required MvvmInstance instance,
     dynamic params,
+    bool overrideMainInstance = true,
   }) {
     final id = Instance.toString();
 
@@ -105,6 +106,7 @@ class InstanceCollection {
       object: instance,
       type: id,
       scopeId: scope,
+      overrideMainInstance: overrideMainInstance,
     );
 
     if (!instance.isInitialized) {
