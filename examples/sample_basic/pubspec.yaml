@@ -10,11 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: ^1.0.1
+  umvvm: ^1.0.3
 
-  dio: ^5.4.0
-  freezed_annotation: ^2.4.1
-  shared_preferences: ^2.2.2
+  dio: ^5.8.0
+  freezed_annotation: ^2.4.4
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:
@@ -26,11 +26,11 @@ dev_dependencies:
   umvvm_generator: ^1.0.1
 
   json_serializable:
-  build: ^2.4.1
-  build_config: ^1.1.1
-  build_runner: ^2.4.6
-  flutter_lints: ^3.0.1
-  freezed: ^2.4.1
+  build: ^2.4.2
+  build_config: ^1.1.2
+  build_runner: ^2.4.15
+  flutter_lints: ^3.0.2
+  freezed: ^2.5.8
   test:
 
 flutter:
