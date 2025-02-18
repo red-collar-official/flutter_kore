@@ -232,6 +232,8 @@ void popGlobalUntil(Object routeName);
 void popInTabUntil(Object routeName);
 void popAllTabsToFirst();
 bool containsGlobalRoute(Object routeName);
+UIRouteModel latestGlobalRoute();
+UIRouteModel latestTabRoute();
 ```
 
 All this methods available via <b>app.navigation</b>. And you can add your own methods if you want or override existing ones - for example if you want to send analytics event every time some route is opened.
