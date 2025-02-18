@@ -6,12 +6,14 @@ Builder generateInstanceCollector(BuilderOptions options) => LibraryBuilder(
       InstancesCollectorGenerator(),
       generatedExtension: '.mvvm.json',
       allowSyntaxErrors: true,
-      formatOutput: (generated) => generated.replaceAll(RegExp(r'//.*|\s'), ''),
+      formatOutput: (generated, version) =>
+          generated.replaceAll(RegExp(r'//.*|\s'), ''),
     );
 
 Builder generateApiCollector(BuilderOptions options) => LibraryBuilder(
       ApisCollectorGenerator(),
       generatedExtension: '.api.json',
       allowSyntaxErrors: true,
-      formatOutput: (generated) => generated.replaceAll(RegExp(r'//.*|\s'), ''),
+      formatOutput: (generated, version) =>
+          generated.replaceAll(RegExp(r'//.*|\s'), ''),
     );

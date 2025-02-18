@@ -434,10 +434,8 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
           [];
       // coverage:ignore-end
 
-      final customHandler = value
-          .peek('customHandler')
-          ?.typeValue
-          .getDisplayString();
+      final customHandler =
+          value.peek('customHandler')?.typeValue.getDisplayString();
 
       final queriesForPathValue = value.peek('queriesForPath')?.listValue;
       final possibleFragmentsForPathValue =
@@ -672,10 +670,8 @@ if (pathSegmentPattern == '$element') {
     for (final method in annotatedMethods) {
       final regexes =
           method.peek('regexes')?.listValue.map((e) => e.toStringValue());
-      final customMapperType = method
-          .peek('customParamsMapper')
-          ?.typeValue
-          .getDisplayString();
+      final customMapperType =
+          method.peek('customParamsMapper')?.typeValue.getDisplayString();
 
       if (regexes != null) {
         for (final regex in regexes) {
