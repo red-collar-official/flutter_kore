@@ -2,7 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
@@ -10,25 +10,22 @@ import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/main_api.dart';
 import 'package:umvvm/annotations/main_app.dart';
 import 'package:umvvm/arch/navigation/annotations/annotations.dart';
-import 'package:umvvm_generator/collectors/main_app_visitor.dart';
+import 'package:umvvm_generator/utility/class_utility.dart';
+import 'package:umvvm_generator/utility/main_app_visitor.dart';
 import 'package:umvvm_generator/collectors/models/api_json_model.dart';
 import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
-import 'package:umvvm_generator/generators/annotated_function_visitor.dart';
+import 'package:umvvm_generator/utility/annotated_function_visitor.dart';
 
 final log = Logger('UmvvmGen');
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element element,
+    Element2 element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
-    final className = '${getClassName(element)}Gen';
+    final className = '${ClassUtility.getClassName(element)}Gen';
     final classBuffer = StringBuffer();
 
     final instanceJsons = Glob('lib/**.mvvm.json');
@@ -137,14 +134,6 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     log.info(printMessage);
 
     return classBuffer.toString();
-  }
-
-  String getClassName(Element element) {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
-    return visitor.className ?? '';
   }
 
   void generateConnectorsForInstanceType(
@@ -347,7 +336,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
 
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element element,
+    Element2 element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
@@ -359,8 +348,8 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
     final methodsVisitor = AnnotatedFunctionVisitor();
 
     element
-      ..visitChildren(visitor)
-      ..visitChildren(methodsVisitor);
+      ..visitChildren2(visitor)
+      ..visitChildren2(methodsVisitor);
 
     final isDialog = annotation.peek('dialogs')?.boolValue ?? false;
     final isBottomSheet = annotation.peek('bottomSheets')?.boolValue ?? false;
@@ -404,9 +393,9 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       }
 
       final requiresState =
-          (methodsVisitor.annotatedMethodsData[key]?.parameters
+          (methodsVisitor.annotatedMethodsData[key]?.formalParameters
                       // coverage:ignore-start
-                      .where((element) => element.name == 'state') ??
+                      .where((element) => element.name3 == 'state') ??
                   [])
               // coverage:ignore-end
               .isNotEmpty;
@@ -690,14 +679,10 @@ class MainNavigationInteractorGenerator
     extends GeneratorForAnnotation<AppNavigation> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element element,
+    Element2 element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
     final classBuffer = StringBuffer();
 
     var appTabValue = 'void';
@@ -717,7 +702,7 @@ class MainNavigationInteractorGenerator
     }
 
     classBuffer.writeln('''
-abstract class ${visitor.className?.split("<")[0]}Declaration<NavigationState> extends BaseNavigationInteractor<
+abstract class ${ClassUtility.getClassName(element).split("<")[0]}Declaration<NavigationState> extends BaseNavigationInteractor<
     NavigationState,
     Map<String, dynamic>,
     $appTabValue,
@@ -748,15 +733,11 @@ abstract class ${visitor.className?.split("<")[0]}Declaration<NavigationState> e
 class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element element,
+    Element2 element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
-    final className = '${visitor.className}Gen';
+    final className = '${ClassUtility.getClassName(element)}Gen';
     final classBuffer = StringBuffer();
 
     // class Apis {

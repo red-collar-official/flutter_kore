@@ -1,11 +1,11 @@
-import 'package:analyzer/dart/element/visitor.dart';
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
+import 'package:analyzer/dart/element/visitor2.dart';
 
-class MainAppVisitor extends SimpleElementVisitor<void> {
+class MainAppVisitor extends SimpleElementVisitor2<void> {
   String? className;
 
   @override
-  void visitConstructorElement(ConstructorElement element) {
+  void visitConstructorElement(ConstructorElement2 element) {
     final elementReturnType = element.type.returnType.toString();
     className = elementReturnType.replaceFirst('*', '');
 

@@ -13,7 +13,7 @@
 /// ```
 ///
 class Instance {
-  /// Input type for this instance. Map<String, dynamic> by default
+  /// Input type for this instance. Map by default
   final Type inputType;
 
   /// Flag indicating is this instance singleton - defaults to false

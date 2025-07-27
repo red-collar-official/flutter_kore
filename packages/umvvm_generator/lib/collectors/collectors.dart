@@ -6,11 +6,9 @@ import 'package:source_gen/source_gen.dart';
 import 'package:umvvm/annotations/api.dart';
 import 'package:umvvm/annotations/mvvm_instance.dart';
 
-import 'package:analyzer/dart/element/element.dart';
 import 'package:umvvm_generator/collectors/models/api_json_model.dart';
 import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
-
-import 'main_app_visitor.dart';
+import 'package:umvvm_generator/utility/class_utility.dart';
 
 class InstancesCollectorGenerator extends Generator {
   @override
@@ -20,7 +18,7 @@ class InstancesCollectorGenerator extends Generator {
     final instancesJsonModels = <InstanceJsonModel>[];
 
     for (final element in instances) {
-      final name = getClassName(element.element);
+      final name = ClassUtility.getClassName(element.element);
       final inputType =
           element.annotation.peek('inputType')?.typeValue.getDisplayString();
       final asyncValue = element.annotation.peek('isAsync')?.boolValue ?? false;
@@ -54,14 +52,6 @@ class InstancesCollectorGenerator extends Generator {
 
     return null;
   }
-
-  String getClassName(Element element) {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
-    return visitor.className ?? '';
-  }
 }
 
 class ApisCollectorGenerator extends Generator {
@@ -72,7 +62,7 @@ class ApisCollectorGenerator extends Generator {
     final apisJsonModels = <ApiJsonModel>[];
 
     for (final element in apis) {
-      final name = getClassName(element.element);
+      final name = ClassUtility.getClassName(element.element);
 
       apisJsonModels.add(ApiJsonModel(
         name: name,
@@ -84,13 +74,5 @@ class ApisCollectorGenerator extends Generator {
     }
 
     return null;
-  }
-
-  String getClassName(Element element) {
-    final visitor = MainAppVisitor();
-
-    element.visitChildren(visitor);
-
-    return visitor.className ?? '';
   }
 }

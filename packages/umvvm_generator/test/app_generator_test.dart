@@ -52,6 +52,7 @@ class App extends UMvvmApp with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.mvvm.dart': '''
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_app_main.dart';
@@ -72,12 +73,12 @@ mixin AppGen on UMvvmApp {
 
   @override
   List<Connector> get singletonInstances => [
-        connectors.stringWrapperConnector(),
-      ];
+    connectors.stringWrapperConnector(),
+  ];
 
   @override
   void registerInstances() {
-    instances.addBuilder<StringWrapper>(() => StringWrapper());
+    instances..addBuilder<StringWrapper>(() => StringWrapper());
   }
 }
 '''
@@ -130,6 +131,7 @@ class App extends UMvvmApp with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.mvvm.dart': '''
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_app_main.dart';
@@ -155,12 +157,12 @@ mixin AppGen on UMvvmApp {
 
   @override
   List<Connector> get singletonInstances => [
-        connectors.stringWrapperConnector(),
-      ];
+    connectors.stringWrapperConnector(),
+  ];
 
   @override
   void registerInstances() {
-    instances.addBuilder<StringWrapper>(() => StringWrapper());
+    instances..addBuilder<StringWrapper>(() => StringWrapper());
   }
 }
 '''
@@ -299,6 +301,7 @@ class App<T> extends UMvvmApp<NavigationInteractor> with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.mvvm.dart': '''
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_app_main.dart';
@@ -324,12 +327,12 @@ mixin AppGen on UMvvmApp<NavigationInteractor> {
 
   @override
   List<Connector> get singletonInstances => [
-        connectors.stringWrapperConnector(),
-      ];
+    connectors.stringWrapperConnector(),
+  ];
 
   @override
   void registerInstances() {
-    instances.addBuilder<StringWrapper>(() => StringWrapper());
+    instances..addBuilder<StringWrapper>(() => StringWrapper());
   }
 }
 '''

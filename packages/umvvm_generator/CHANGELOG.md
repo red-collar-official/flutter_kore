@@ -1,3 +1,7 @@
+## 2.0.0
+
+Update source_gen and build dependencies
+
 ## 1.0.2
 
 Update for latest Flutter version

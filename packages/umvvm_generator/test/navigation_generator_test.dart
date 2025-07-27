@@ -407,6 +407,7 @@ class Routes extends RoutesBase with RoutesGen {
         },
         outputs: {
           'generated|lib/test_routes.navigation.dart': '''
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_routes.dart';
@@ -531,11 +532,11 @@ class PostFilterMultiplePossibleValuesWithAnchorLinkHandler1
       }
     }
 
-    final route =
-        app.navigation.routes.postFilterMultiplePossibleValuesWithAnchor(
-      pathParams: pathParams,
-      queryParams: queryParamsForView,
-    );
+    final route = app.navigation.routes
+        .postFilterMultiplePossibleValuesWithAnchor(
+          pathParams: pathParams,
+          queryParams: queryParamsForView,
+        );
 
     return route;
   }
@@ -1053,42 +1054,25 @@ mixin RoutesGen on RoutesBase {
             'filter|query': Post3LinkHandler1(),
           },
           '*': {
-            '': {
-              'filter=qwerty1|filter=qwerty2': TestHandler(),
-            },
+            '': {'filter=qwerty1|filter=qwerty2': TestHandler()},
           },
           'test': {
             'test': {
-              '': {
-                'filter=qwerty1|filter=qwerty2': TestHandler(),
-              },
+              '': {'filter=qwerty1|filter=qwerty2': TestHandler()},
             },
-            '': {
-              'filter|query': Post4LinkHandler1(),
-            },
+            '': {'filter|query': Post4LinkHandler1()},
           },
         },
-        '': {
-          '': PostsLinkHandler1(),
-          'filter': Posts2LinkHandler1(),
-        },
+        '': {'': PostsLinkHandler1(), 'filter': Posts2LinkHandler1()},
       },
       'stub': {
-        '': {
-          'filter': StubLinkHandler1(),
-        },
+        '': {'filter': StubLinkHandler1()},
       },
-      'home': {
-        '': HomeLinkHandler1(),
-      },
-      'likedPosts': {
-        '': LikedPostsLinkHandler1(),
-      },
+      'home': {'': HomeLinkHandler1()},
+      'likedPosts': {'': LikedPostsLinkHandler1()},
       '*': {
         'posts': {
-          '*': {
-            '': PostsWithPrefixLinkHandler1(),
-          },
+          '*': {'': PostsWithPrefixLinkHandler1()},
           'test': {
             '*': {
               '': {
@@ -1100,9 +1084,7 @@ mixin RoutesGen on RoutesBase {
         },
       },
     });
-    regexHandlers.addAll({
-      r'\bhttp:\/\/qwerty.com\b(.*?)': TestMapper(),
-    });
+    regexHandlers.addAll({r'\bhttp:\/\/qwerty.com\b(.*?)': TestMapper()});
   }
 }
 '''
@@ -1203,6 +1185,7 @@ class NavigationInteractor
         },
         outputs: {
           'generated|lib/test_navigation_main.app_navigation.dart': '''
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_navigation_main.dart';
@@ -1212,17 +1195,19 @@ part of 'test_navigation_main.dart';
 // **************************************************************************
 
 abstract class NavigationInteractorDeclaration<NavigationState>
-    extends BaseNavigationInteractor<
-        NavigationState,
-        Map<String, dynamic>,
-        AppTab,
-        Routes,
-        Dialogs,
-        BottomSheets,
-        RouteNames,
-        DialogNames,
-        BottomSheetNames,
-        BaseDeepLinksInteractor> {
+    extends
+        BaseNavigationInteractor<
+          NavigationState,
+          Map<String, dynamic>,
+          AppTab,
+          Routes,
+          Dialogs,
+          BottomSheets,
+          RouteNames,
+          DialogNames,
+          BottomSheetNames,
+          BaseDeepLinksInteractor
+        > {
   final _routes = Routes();
   final _dialogs = Dialogs();
   final _bottomSheets = BottomSheets();

@@ -1,3 +1,7 @@
+## 1.0.5
+
+Update dependecies with latest versions
+
 ## 1.0.4
 
 Update for latest Flutter version
