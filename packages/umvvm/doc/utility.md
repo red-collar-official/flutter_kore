@@ -220,7 +220,7 @@ UmvvmMultiStreamBuilder(
       return const SizedBox.shrink();
     }
 
-    return Text((viewModel.user.current?.name ?? ''));
+    return Text(viewModel.user.current?.name ?? '');
   },
 );
 ```
