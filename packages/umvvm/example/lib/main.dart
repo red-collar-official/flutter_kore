@@ -2,6 +2,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:umvvm/arch/utility/stream_builder.dart';
 import 'package:umvvm/umvvm.dart';
 
 part 'main.api.dart';
@@ -214,8 +215,8 @@ class _PostsListViewWidgetState
       appBar: AppBar(
         title: const Text('Posts'),
       ),
-      body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.posts.stream,
+      body: UmvvmStreamBuilder<StatefulData<List<Post>>?>(
+        streamWrap: viewModel.posts,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/utility/debouncer.dart';
 import 'package:umvvm/umvvm.dart';
 
 /// Mixin with methods to create disposable instances that will be disposed

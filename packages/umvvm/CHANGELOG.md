@@ -1,3 +1,8 @@
+## 1.2.1
+
+- Update package exports
+- Update example
+
 ## 1.2.0
 
 - Add wrapChanges method - analogue of wrapUpdates
