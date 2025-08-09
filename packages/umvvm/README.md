@@ -200,7 +200,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     app.eventBus.send(PostLikedEvent(id: id));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
+  late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
@@ -225,7 +225,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
       body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.postsStream,
+        stream: viewModel.posts.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);

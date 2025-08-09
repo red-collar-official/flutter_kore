@@ -187,8 +187,7 @@ class PostsListViewModel
     app.eventBus.send(PostLikedEvent(id: id));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      postsInteractor.updates((state) => state.posts);
+  late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
@@ -216,7 +215,7 @@ class _PostsListViewWidgetState
         title: const Text('Posts'),
       ),
       body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.postsStream,
+        stream: viewModel.posts.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);

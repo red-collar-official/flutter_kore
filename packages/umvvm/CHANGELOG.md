@@ -1,3 +1,8 @@
+## 1.1.1
+
+- Fix formatting for StatefulMvvmInstance
+- Update docs and example
+
 ## 1.1.0
 
 - Add wrapUpdates method for stateful instances that exposes stream and current value for given state mapper

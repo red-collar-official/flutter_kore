@@ -9,7 +9,7 @@ import 'umvvm_app.dart';
 import 'store.dart';
 
 /// Wrapper class for state updates for [StateFulInstanceSettings]
-/// 
+///
 /// Exposes [Stream] for needed value and also current value of mapped state value
 class StateStream<T> {
   /// Stream for given state value
