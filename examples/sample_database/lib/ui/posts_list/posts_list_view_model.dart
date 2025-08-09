@@ -14,24 +14,23 @@ class PostsListViewModel extends NavigationViewModel<PostsListView, PostsListVie
         ],
       );
 
+  late final postsInteractor = getLocalInstance<PostsInteractor>();
+
   @override
   void onLaunch() {
-    getLocalInstance<PostsInteractor>().loadPosts(0, 30);
+    postsInteractor.loadPosts(0, 30);
   }
 
   void like(int id) {
-    getLocalInstance<PostsInteractor>().likePost(id);
+    postsInteractor.likePost(id);
   }
 
   void openPost(Post post) {
     app.navigation.routeTo(app.navigation.routes.post(post: post));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      getLocalInstance<PostsInteractor>().updates((state) => state.posts);
+  late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
-
-  // Stream<StoreChange<StatefulData<List<Post>>?>> get postsChangesStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
 }

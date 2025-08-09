@@ -40,8 +40,7 @@ class PostsListViewModel
     }));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream =>
-      getLocalInstance<PostsInteractor>().updates((state) => state.posts);
+  late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();

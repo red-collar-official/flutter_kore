@@ -10,13 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: ^1.0.1
+  umvvm: ^1.1.1
 
-  dio: ^5.8.0
-  freezed_annotation: ^2.4.4
-  shared_preferences: ^2.5.2
-  objectbox: ^2.3.1
-  objectbox_flutter_libs: any
+  dio: ^5.9.0
+  freezed_annotation: ^3.1.0
+  shared_preferences: ^2.5.3
+  objectbox: ^4.3.0
+  objectbox_flutter_libs: ^4.3.0
 
 dev_dependencies:
   flutter_test:
@@ -25,16 +25,20 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
-  umvvm_generator: ^1.0.1
+  umvvm_generator: ^2.0.0
 
   json_serializable:
-  build: ^2.4.2
+  build: ^3.0.0
   build_config: ^1.1.2
-  build_runner: ^2.4.15
-  freezed: ^2.5.8
-  objectbox_generator: any
-  flutter_lints: ^3.0.1
+  build_runner: ^2.6.0
+  freezed: ^3.2.0
+  objectbox_generator: ^4.3.0
+  flutter_lints: ^6.0.0
   test:
+
+dependency_overrides:
+  build: ^3.0.0
+  source_gen: ^3.0.0
 
 flutter:
   uses-material-design: true

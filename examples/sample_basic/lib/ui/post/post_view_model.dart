@@ -1,5 +1,4 @@
 import 'package:umvvm/umvvm.dart';
-import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/post/post_interactor.dart';
 
@@ -30,9 +29,7 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
     postInteractor.likePost(id);
   }
 
-  Stream<StatefulData<Post>?> get postStream => postInteractor.updates((state) => state.post);
-
-  StatefulData<Post>? get currentPost => postInteractor.state.post;
+  late final post = postInteractor.wrapUpdates((state) => state.post);
 
   @override
   PostViewState get initialState => PostViewState();

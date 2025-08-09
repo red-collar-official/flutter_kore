@@ -20,7 +20,7 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings => StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings => StateFulInstanceSettings(
         isRestores: true,
         stateId: 'UserDefaultsInteractor',
       );

@@ -33,8 +33,8 @@ class _PostViewWidgetState extends BaseView<PostView, PostViewState, PostViewMod
       ),
       body: Center(
         child: StreamBuilder<StatefulData<Post>?>(
-          stream: viewModel.postStream,
-          initialData: viewModel.currentPost,
+          stream: viewModel.post.stream,
+          initialData: viewModel.post.current,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               return buildPost(snapshot.data!);

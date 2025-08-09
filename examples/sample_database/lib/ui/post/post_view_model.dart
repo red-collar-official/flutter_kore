@@ -1,5 +1,4 @@
 import 'package:umvvm/umvvm.dart';
-import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/post/post_interactor.dart';
 
@@ -14,10 +13,10 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
         ],
       );
 
+  late final postInteractor = getLocalInstance<PostInteractor>();
+
   @override
   void onLaunch() {
-    final postInteractor = getLocalInstance<PostInteractor>();
-
     if (input.post == null) {
       postInteractor.loadPost(input.id!);
     } else {
@@ -43,10 +42,8 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
     );
   }
 
-  Stream<StatefulData<Post>?> get postStream => getLocalInstance<PostInteractor>().updates((state) => state.post);
+  late final post = postInteractor.wrapUpdates((state) => state.post);
 
   @override
   PostViewState get initialState => PostViewState();
-
-  StatefulData<Post>? get initialPost => getLocalInstance<PostInteractor>().state.post;
 }

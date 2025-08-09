@@ -27,7 +27,7 @@ class _PostsListViewWidgetState extends NavigationView<PostsListView, PostsListV
         title: const Text('Posts'),
       ),
       body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.postsStream,
+        stream: viewModel.posts.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);

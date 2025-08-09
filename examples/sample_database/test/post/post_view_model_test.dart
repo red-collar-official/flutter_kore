@@ -36,6 +36,6 @@ void main() {
       ..initialize(mockWidget)
       ..onLaunch();
 
-    expect((postViewModel.initialPost as SuccessData).result.id, 1);
+    expect((postViewModel.post.current as SuccessData).result.id, 1);
   });
 }

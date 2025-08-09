@@ -34,7 +34,7 @@ class ObjectBox {
     } catch (ex) {
       print('$dir exists: ${dir.existsSync()}');
       print('Store is open in directory: ${Store.isOpen(dir.path)}');
-      print('Model Info: ${modelDefinition.model.toMap(forModelJson: true)}');
+      print('Model Info: ${modelDefinition.model.toMap()}');
       rethrow;
     }
   }
