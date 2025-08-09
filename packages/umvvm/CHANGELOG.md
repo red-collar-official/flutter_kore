@@ -1,5 +1,9 @@
 ## 1.2.2
 
+- Fix UmvvmMultiStreamBuilder initial data bug
+
+## 1.2.2
+
 - Remove mapIndexed extension
 
 ## 1.2.1+1

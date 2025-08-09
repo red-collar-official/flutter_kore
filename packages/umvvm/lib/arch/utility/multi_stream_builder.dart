@@ -130,10 +130,14 @@ class _UmvvmMultiStreamBuilderState extends State<UmvvmMultiStreamBuilder> {
       if (subscriptions.isEmpty) {
         controller.close();
       } else {
-        values = widget.initialData?.map((e) {
-              return e();
-            }).toList() ??
-            List.filled(subscriptions.length, null);
+        if (widget.streamWraps != null) {
+          values = widget.streamWraps!.map((wrap) => wrap.current).toList();
+        } else {
+          values = widget.initialData?.map((e) {
+                return e();
+              }).toList() ??
+              List.filled(subscriptions.length, null);
+        }
       }
     };
 
@@ -164,9 +168,11 @@ class _UmvvmMultiStreamBuilderState extends State<UmvvmMultiStreamBuilder> {
   Widget build(BuildContext context) {
     return StreamBuilder<List>(
       stream: controller.stream,
-      initialData: widget.initialData?.map((e) {
-        return e();
-      }).toList(),
+      initialData: widget.streamWraps != null
+          ? widget.streamWraps!.map((wrap) => wrap.current).toList()
+          : widget.initialData?.map((e) {
+              return e();
+            }).toList(),
       builder: widget.builder,
     );
   }
