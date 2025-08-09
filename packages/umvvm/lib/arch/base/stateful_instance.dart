@@ -130,13 +130,27 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
           Value Function(State state) mapper) =>
       _store.changes(mapper);
 
-  /// [StateStream] object for given mapper for instance state
+  /// [StateStream] object for updates with given mapper for instance state
   ///
   /// ```dart
   /// late final posts = postsInteractor.wrapUpdates((state) => state.posts);
   /// ```
   StateStream<Value> wrapUpdates<Value>(Value Function(State) mapper) {
     return StateStream(updates(mapper), () => mapper(state));
+  }
+
+  /// [StateStream] object for changes with given mapper for instance state
+  ///
+  /// ```dart
+  /// late final posts = postsInteractor.wrapChanges((state) => state.posts);
+  /// ```
+  StateStream<Value> wrapChanges<ChangeValue, Value>(
+      {required ChangeValue Function(State) changeMapper,
+      required Value Function(StoreChange<ChangeValue>) stateMapper,
+      required Value Function(State) currentMapper}) {
+    return StateStream(
+        changes(changeMapper).map((change) => stateMapper(change)),
+        () => currentMapper(state));
   }
 
   /// Underlying stream subsription for [Store] updates

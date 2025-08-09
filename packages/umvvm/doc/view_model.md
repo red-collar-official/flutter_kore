@@ -8,7 +8,7 @@ They also contain local state that we like <b>Interactor</b> can update with <b>
 
 We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
 
-There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter.
+There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter. And also there is a <b>wrapChanges</b> analogue for <b>changes</b> method.
 
 You also need to specify input widget type for view models. It is passed as generic argument.
 

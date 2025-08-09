@@ -188,3 +188,39 @@ Button(
   },
 );
 ```
+
+#### StreamBuilders
+
+Library contains simple analogues of <b>StreamBuilder</b> that allow you to pass <b>StateStream</b>(wrapper object to get stream and current value for given state mapper). - <b>UmvvmStreamBuilder</b> and <b>UmvvmMultiStreamBuilder</b>. This widgets also allow to pass <b>Stream</b> and <b>initialData</b> as usual if needed.
+
+Here are examples:
+
+```dart
+UmvvmStreamBuilder<StatefulData<User>?>(
+  streamWrap: viewModel.user,
+  builder: (context, snapshot) {
+    final userData = snapshot.data;
+
+    if (userData is! SuccessData) {
+      return const SizedBox.shrink();
+    }
+
+    final user = userData!.unwrap();
+
+    return Text(user.name);
+  },
+);
+```
+
+```dart
+UmvvmMultiStreamBuilder(
+  streamWraps: [viewModel.user, viewModel.auth],
+  builder: (context, snapshot) {
+    if (!(viewModel.auth.current ?? false)) {
+      return const SizedBox.shrink();
+    }
+
+    return Text((viewModel.user.current?.name ?? ''));
+  },
+);
+```

@@ -1,3 +1,9 @@
+## 1.2.0
+
+- Add wrapChanges method - analogue of wrapUpdates
+- Update docs
+- Add UmvvmStreamBuilder and UmvvmMultiStreamBuilder - analogues of StreamBuilder that allow to pass StateStream
+
 ## 1.1.1
 
 - Fix formatting for StatefulMvvmInstance
