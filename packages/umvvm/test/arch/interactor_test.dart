@@ -284,6 +284,42 @@ void main() {
       interactor3.dispose();
     });
 
+    test('Interactor store wrap updates test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      final completer = Completer();
+
+      final stateStream = interactor3.wrapUpdates((state) => state);
+
+      final subscription = stateStream.stream.listen((event) {
+        if (event == 2) {
+          completer.complete();
+        }
+      });
+
+      DelayUtility.withDelay(() {
+        interactor3.updateState(2);
+      });
+
+      await completer.future.timeout(const Duration(seconds: 1));
+
+      await subscription.cancel();
+
+      interactor3.dispose();
+    });
+
+    test('Interactor store wrap updates current value test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      final stateStream = interactor3.wrapUpdates((state) => state);
+
+      interactor3.updateState(2);
+
+      expect(2, stateStream.current);
+
+      interactor3.dispose();
+    });
+
     test('Interactor state stream test', () async {
       final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
 

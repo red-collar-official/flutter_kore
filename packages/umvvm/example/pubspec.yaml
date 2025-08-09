@@ -10,19 +10,23 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: ^1.0.3
+  umvvm: ^1.0.5
 
   dio: ^5.8.0
-  dart_mappable: ^4.4.0
+  dart_mappable: ^4.5.0
+
+dependency_overrides:
+  source_gen: ^3.0.0
+  build: ^3.0.0
 
 dev_dependencies:
-  umvvm_generator: ^1.0.1
+  umvvm_generator: ^2.0.0
 
-  build: ^2.4.2
+  build: ^3.0.0
   build_config: ^1.1.2
   build_runner: ^2.4.15
-  flutter_lints: ^3.0.2
-  dart_mappable_builder: ^4.4.0
+  flutter_lints: ^6.0.0
+  dart_mappable_builder: ^4.5.0
 
 flutter:
   uses-material-design: true

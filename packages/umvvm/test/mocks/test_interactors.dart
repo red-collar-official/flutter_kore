@@ -676,8 +676,8 @@ class TestInteractorWithRestore extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
       );
@@ -700,8 +700,8 @@ class TestInteractorWithDefaultRestore extends BaseInteractor<double, int?> {
   double get initialState => input?.toDouble() ?? 0.0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
       );
@@ -719,8 +719,8 @@ class TestInteractorWithAsyncRestore extends BaseInteractor<int, int?> {
   int get initialState => input ?? 0;
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
         syncRestore: false,

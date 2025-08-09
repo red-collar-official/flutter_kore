@@ -8,6 +8,8 @@ They also contain local state that we like <b>Interactor</b> can update with <b>
 
 We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
 
+There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter.
+
 You also need to specify input widget type for view models. It is passed as generic argument.
 
 Input is always available via <b>input</b> field.
@@ -80,7 +82,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
     app.navigation.routeTo(app.navigation.routes.post(id: '1'));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => postsInteractor.updates((state) => state.posts);
+  late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
   PostsListViewState get initialState => PostsListViewState();
@@ -89,8 +91,8 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
         syncRestore: false,
@@ -107,7 +109,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 
 View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>.
 
-By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFullInstanceSettings</b>.
+By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFulInstanceSettings</b>.
 If app uses obfuscation this is <b>required</b>.
 
 In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.

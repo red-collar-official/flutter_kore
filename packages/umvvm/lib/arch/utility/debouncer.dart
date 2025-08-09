@@ -37,7 +37,7 @@ class Debouncer {
     this.delay,
   );
 
-  // ignore: always_declare_return_types
+  // ignore: always_declare_return_types, strict_top_level_inference
   call(void Function() callback) {
     if (_isDisposed) {
       throw IllegalStateException(

@@ -2,7 +2,7 @@ name: umvvm
 
 description: This library contains components for MVVM architecture, and also utility classes for http, navigation and di
 
-version: 1.0.5
+version: 1.1.0
 
 repository: https://github.com/red-collar-dev/umvvm
 issue_tracker: https://github.com/red-collar-dev/umvvm/issues
@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  dio: ^5.8.0
+  dio: ^5.9.0
   async: ^2.13.0
   visibility_detector: ^0.4.0+2
   universal_platform: ^1.1.0

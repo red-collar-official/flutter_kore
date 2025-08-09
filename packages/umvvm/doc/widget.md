@@ -32,7 +32,8 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
         title: const Text('Posts'),
       ),
       body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.postsStream,
+        stream: viewModel.posts.stream,
+        initialData: viewModel.posts.current,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);

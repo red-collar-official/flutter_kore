@@ -54,7 +54,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
     super.initialize(input);
 
     initializeDependencies();
-    initializeStatefullInstance();
+    initializeStatefulInstance();
   }
 
   @mustCallSuper

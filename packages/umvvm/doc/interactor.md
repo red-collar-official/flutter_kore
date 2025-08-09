@@ -12,6 +12,8 @@ Interactor state can be any immutable object. You can use <b>dart-mappable</b> o
 
 State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>(<b>changes</b> returns stream of old and new values in object, <b>updates</b> returns stream of new object values).
 
+There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter.
+
 Interactors must be annotated with <b>basicInstance</b>, <b>singleton</b> or full <b>Instance</b> annotation.
 
 When interactor is annotated as singleton it belongs to global instance collection.
@@ -79,7 +81,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
     updateState(state.copyWith(posts: SuccessData(posts)));
   }
 
-  Stream<StatefulData<List<Post>>?> get postsStream => updates((state) => state.posts);
+  late final posts = wrapUpdates((state) => state.posts);
 
   @override
   PostsState get initialState => PostsState();
@@ -114,8 +116,8 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
       );
@@ -134,11 +136,11 @@ In the last example we also can see that every interactor also has <b>savedState
 
 When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider such as <b>SecureStorage</b>.
 
-To enable it you need to override <b>stateFullInstanceSettings</b> getter and set <b>isRestores</b> flag to true.
+To enable it you need to override <b>stateFulInstanceSettings</b> getter and set <b>isRestores</b> flag to true.
 
 Later state can be restored with <b>onRestore</b> callback.
 
-By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFullInstanceSettings</b>.
+By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFulInstanceSettings</b>.
 If app uses obfuscation this is <b>required</b>.
 
 You can also specify input type for every interactor in annotation:
@@ -162,8 +164,8 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
         isRestores: true,
         syncRestore: false,

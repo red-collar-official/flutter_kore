@@ -8,7 +8,26 @@ import 'event_bus.dart';
 import 'umvvm_app.dart';
 import 'store.dart';
 
-/// Settings for statefull instance. Contain state restore flags and state id
+/// Wrapper class for state updates for [StateFulInstanceSettings]
+/// 
+/// Exposes [Stream] for needed value and also current value of mapped state value
+class StateStream<T> {
+  /// Stream for given state value
+  final Stream<T?> stream;
+
+  /// Mapper for state
+  final T Function() mapper;
+
+  /// Returns current mapped state value
+  T? get current => mapper();
+
+  const StateStream(
+    this.stream,
+    this.mapper,
+  );
+}
+
+/// Settings for stateful instance. Contain state restore flags and state id
 ///
 /// ```dart
 /// @singleton
@@ -22,14 +41,14 @@ import 'store.dart';
 ///   Map<String, dynamic> get savedStateObject => state.toMap();
 ///
 ///   @override
-///   StateFullInstanceSettings get stateFullInstanceSettings =>
-///      StateFullInstanceSettings(
+///   StateFulInstanceSettings get stateFulInstanceSettings =>
+///      StateFulInstanceSettings(
 ///        stateId: state.runtimeType.toString(),
 ///      );
 /// }
 /// ```
-class StateFullInstanceSettings {
-  StateFullInstanceSettings({
+class StateFulInstanceSettings {
+  StateFulInstanceSettings({
     this.isRestores = false,
     required this.stateId,
     this.syncRestore = true,
@@ -51,7 +70,7 @@ class StateFullInstanceSettings {
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
 ///
-/// If used you need to call [initializeStatefullInstance] in [MvvmInstance.initialize] call
+/// If used you need to call [initializeStatefulInstance] in [MvvmInstance.initialize] call
 /// And call [disposeStore] in [MvvmInstance.dispose] call
 ///
 /// ```dart
@@ -65,7 +84,7 @@ class StateFullInstanceSettings {
 ///   void initialize(Input? input) {
 ///     super.initialize(input);
 ///
-///     initializeStatefullInstance(input);
+///     initializeStatefulInstance(input);
 ///
 ///     initialized = true;
 ///   }
@@ -111,6 +130,15 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
           Value Function(State state) mapper) =>
       _store.changes(mapper);
 
+  /// [StateStream] object for given mapper for instance state
+  ///
+  /// ```dart
+  /// late final posts = postsInteractor.wrapUpdates((state) => state.posts);
+  /// ```
+  StateStream<Value> wrapUpdates<Value>(Value Function(State) mapper) {
+    return StateStream(updates(mapper), () => mapper(state));
+  }
+
   /// Underlying stream subsription for [Store] updates
   StreamSubscription<State>? _storeSaveSubscription;
 
@@ -145,12 +173,12 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// if cached state is not empty calls [onRestore]
   @protected
   void restoreCachedStateSync() {
-    if (!stateFullInstanceSettings.isRestores) {
+    if (!stateFulInstanceSettings.isRestores) {
       return;
     }
 
     final stateFromCacheJsonString = UMvvmApp.cacheGetDelegate(
-      stateFullInstanceSettings.stateId,
+      stateFulInstanceSettings.stateId,
     );
 
     if (stateFromCacheJsonString == null || stateFromCacheJsonString.isEmpty) {
@@ -201,10 +229,10 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// Initializes underlying [Store] for given [State]
-  void initializeStatefullInstance() {
+  void initializeStatefulInstance() {
     initializeStore();
 
-    if (stateFullInstanceSettings.syncRestore) {
+    if (stateFulInstanceSettings.syncRestore) {
       restoreCachedStateSync();
     } else {
       restoreCachedStateAsync();
@@ -216,12 +244,12 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// if [savedStateObject] is not empty listens to state updates and puts it to cache using [UMvvmApp.cachePutDelegate]
   /// If [savedStateObject] is empty does nothing
   void _subscribeToStoreUpdates() {
-    if (!stateFullInstanceSettings.isRestores) {
+    if (!stateFulInstanceSettings.isRestores) {
       return;
     }
 
     _storeSaveSubscription = _store.stream.listen((_) async {
-      final stateId = stateFullInstanceSettings.stateId;
+      final stateId = stateFulInstanceSettings.stateId;
       await UMvvmApp.cachePutDelegate(stateId, json.encode(savedStateObject));
     });
   }
@@ -240,8 +268,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   State get initialState;
 
   /// Flag indicating that cached state should be awaited
-  StateFullInstanceSettings get stateFullInstanceSettings =>
-      StateFullInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),
       );
 }

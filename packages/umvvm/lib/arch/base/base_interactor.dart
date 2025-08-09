@@ -30,7 +30,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     super.initialize(input);
 
     initializeDependencies();
-    initializeStatefullInstance();
+    initializeStatefulInstance();
   }
 
   @mustCallSuper
