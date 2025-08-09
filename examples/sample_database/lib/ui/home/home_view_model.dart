@@ -31,10 +31,9 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
     app.navigation.setCurrentTab(tab);
   }
 
-  AppTab get initialTab => app.navigation.state.currentTab;
-
-  Stream<AppTab?> get currentTabStream =>
-      app.instances.get<NavigationInteractor>().updates((state) => state.currentTab);
+  late final currentTab = app.instances
+      .get<NavigationInteractor>()
+      .wrapUpdates((state) => state.currentTab);
 
   @override
   Map<String, dynamic> get savedStateObject => state.toJson();

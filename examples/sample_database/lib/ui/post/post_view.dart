@@ -32,9 +32,8 @@ class _PostViewWidgetState extends NavigationView<PostView, PostViewState, PostV
         title: const Text('Post'),
       ),
       body: Center(
-        child: StreamBuilder<StatefulData<Post>?>(
-          stream: viewModel.post.stream,
-          initialData: viewModel.post.current,
+        child: UmvvmStreamBuilder<StatefulData<Post>?>(
+          streamWrap: viewModel.post,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               return buildPost(snapshot.data!);

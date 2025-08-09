@@ -360,9 +360,8 @@ class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeV
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: StreamBuilder<AppTab?>(
-        stream: viewModel.currentTabStream,
-        initialData: viewModel.initialTab,
+      body: UmvvmStreamBuilder<AppTab?>(
+        streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           return Stack(
             children: AppTabs.tabs
@@ -376,9 +375,8 @@ class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeV
           );
         },
       ),
-      bottomNavigationBar: StreamBuilder<AppTab?>(
-        stream: viewModel.currentTabStream,
-        initialData: viewModel.initialTab,
+      bottomNavigationBar: UmvvmStreamBuilder<AppTab?>(
+        streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return const SizedBox.shrink();

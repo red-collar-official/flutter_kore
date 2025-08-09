@@ -26,8 +26,8 @@ class _PostsListViewWidgetState extends NavigationView<PostsListView, PostsListV
       appBar: AppBar(
         title: const Text('Posts'),
       ),
-      body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.posts.stream,
+      body: UmvvmStreamBuilder<StatefulData<List<Post>>?>(
+        streamWrap: viewModel.posts,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);
