@@ -2,7 +2,6 @@ import 'package:dart_mappable/dart_mappable.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/utility/stream_builder.dart';
 import 'package:umvvm/umvvm.dart';
 
 part 'main.api.dart';

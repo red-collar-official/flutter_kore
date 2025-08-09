@@ -1,3 +1,9 @@
+## 1.2.1+1
+
+- Update main doc
+- Update example
+- Update tags
+
 ## 1.2.1
 
 - Update package exports

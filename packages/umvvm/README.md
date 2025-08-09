@@ -224,8 +224,8 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
-      body: StreamBuilder<StatefulData<List<Post>>?>(
-        stream: viewModel.posts.stream,
+      body: UmvvmStreamBuilder<StatefulData<List<Post>>?>(
+        streamWrap: viewModel.posts,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             return buildList(snapshot.data!);
@@ -303,7 +303,7 @@ Learn about components:
 
 #### Utility
 
-* [FormViewModelMixin, UseDisposableMixin, StatefulData etc...](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/utility.md).
+* [FormViewModelMixin, UseDisposableMixin, StatefulData, UmvvmStreamBuilder etc...](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/utility.md).
 
 #### Other materials
 
