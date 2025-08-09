@@ -5,15 +5,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 
-extension MapNotNullIterableExtension<T> on Iterable<T> {
-  Iterable<R> mapIndexed<R>(R Function(int index, T element) transform) sync* {
-    var index = 0;
-    for (final e in this) {
-      yield transform(index++, e);
-    }
-  }
-}
-
 extension StreamSubscriptionsIterableExtensions
     on Iterable<StreamSubscription<void>> {
   Future<void>? waitFuturesList(List<Future<void>> futures) {
@@ -98,6 +89,14 @@ class _UmvvmMultiStreamBuilderState extends State<UmvvmMultiStreamBuilder> {
     initBuilder();
   }
 
+  Iterable<R> mapIndexed<R, T>(
+      Iterable<T> streams, R Function(int index, T element) transform) sync* {
+    var index = 0;
+    for (final e in streams) {
+      yield transform(index++, e);
+    }
+  }
+
   StreamController<List> _buildController(Iterable<Stream> streams) {
     final controller = StreamController<List>(sync: true);
     late List<StreamSubscription> subscriptions;
@@ -112,7 +111,7 @@ class _UmvvmMultiStreamBuilderState extends State<UmvvmMultiStreamBuilder> {
         }
       }
 
-      subscriptions = streams.mapIndexed((index, stream) {
+      subscriptions = mapIndexed(streams, (index, stream) {
         return stream.listen(
           (value) {
             if (values == null) {
