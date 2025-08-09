@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  umvvm: ^1.2.1
+  umvvm: ^1.2.3
 
   dio: ^5.8.0
   dart_mappable: ^4.5.0
