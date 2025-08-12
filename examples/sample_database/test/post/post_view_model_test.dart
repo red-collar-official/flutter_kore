@@ -23,10 +23,9 @@ void main() {
     await initApp(testMode: true);
 
     app.registerInstances();
-    await app.createSingletons();
 
     final postInteractor = PostInteractorMock();
-    app.instances.addBuilder<PostInteractor>(() => postInteractor);
+    app.instances.mock<PostInteractor>(instance: postInteractor);
 
     final postViewModel = PostViewModel();
     const mockWidget = PostView(id: 1);
