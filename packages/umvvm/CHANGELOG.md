@@ -1,3 +1,8 @@
+## 1.2.4
+
+- Fix test app initialization
+- Add mock method to InstanceCollection to mock instance builders
+
 ## 1.2.3
 
 - Fix UmvvmMultiStreamBuilder initial data bug

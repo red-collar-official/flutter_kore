@@ -15,6 +15,19 @@ final class TestMvvmInstance extends MvvmInstance<int?> {
   }
 }
 
+final class MockTestMvvmInstance extends TestMvvmInstance {
+  @override
+  // ignore: overridden_fields
+  int value = 2;
+
+  @override
+  void initialize(int? input) {
+    super.initialize(input);
+
+    value = 2;
+  }
+}
+
 final class TestMvvmInstance2 extends MvvmInstance<int?> {
   int value = 1;
 
@@ -40,6 +53,22 @@ void main() {
         ..clear()
         ..addBuilder<TestMvvmInstance>(TestMvvmInstance.new)
         ..addBuilder<TestMvvmInstance2>(TestMvvmInstance2.new);
+    });
+
+    test('Instance collection mock test', () async {
+      final mockInstance = TestMvvmInstance();
+
+      instances.mock(instance: mockInstance);
+
+      mockInstance.value = 1;
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 1);
+    });
+
+    test('Instance collection mock builder test', () async {
+      instances.mock<TestMvvmInstance>(builder: MockTestMvvmInstance.new);
+
+      expect(instances.get<TestMvvmInstance>(scope: testScope).value, 2);
     });
 
     test('Instance collection add, get test', () async {

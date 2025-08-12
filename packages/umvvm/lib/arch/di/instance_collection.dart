@@ -86,6 +86,23 @@ class InstanceCollection {
     builders[id] = builder;
   }
 
+  /// Adds mocked builder for given instance type or concrete instance
+  ///
+  /// [builder] - builder for this instance type
+  /// [instance] - concrete instance
+  void mock<Instance extends MvvmInstance>({
+    Instance? instance,
+    Instance Function()? builder,
+  }) {
+    final id = Instance.toString();
+
+    if (instance != null) {
+      builders[id] = () => instance;
+    } else {
+      builders[id] = builder!;
+    }
+  }
+
   /// Adds test instance for given instance type
   ///
   /// Used only for tests

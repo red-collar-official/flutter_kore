@@ -30,13 +30,25 @@ class TestApp extends UMvvmApp {
 
 void main() {
   group('MvvmApp tests', () {
-    late final app = TestApp();
-
-    setUpAll(() async {
+    test('MvvmApp initial test', () async {
+      final app = TestApp();
       UMvvmApp.isInTestMode = true;
+
+      await app.initialize();
+      await app.createSingletons();
+
+      expect(app.isInitialized, true);
+      expect(app.eventBus, EventBus.instance);
+      expect(app.instances.forceGet<TestInteractor3>()!.isInitialized, false);
+      expect(app.instances.forceGet<TestWrapper3>()!.isInitialized, true);
+      expect(app.instances.forceGet<TestWrapper4>()!.isInitialized, true);
     });
 
-    test('MvvmApp initial test', () async {
+     test('MvvmApp initial test no test mode', () async {
+      final app = TestApp();
+      
+      UMvvmApp.isInTestMode = false;
+      
       await app.initialize();
 
       expect(app.isInitialized, true);

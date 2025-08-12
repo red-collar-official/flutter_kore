@@ -40,6 +40,11 @@ You can also add builder for mocked dependency to mock instances initialization:
 
 ```dart
 app.instances.addBuilder<PostInteractor>(() => postInteractor);
+
+// or
+
+app.instances.mock(instance: mockInstance);
+app.instances.mock<TestMvvmInstance>(builder: MockTestMvvmInstance.new);
 ```
 
 More info about DI can be found [here](./di.md).
@@ -161,10 +166,9 @@ void main() {
     await initApp(testMode: true);
 
     app.registerInstances();
-    await app.createSingletons();
 
     final postInteractor = PostInteractorMock();
-    app.instances.addBuilder<PostInteractor>(() => postInteractor);
+    app.instances.mock<PostInteractor>(instance: postInteractor);
 
     final postViewModel = PostViewModel();
     const mockWidget = PostView(id: 1);

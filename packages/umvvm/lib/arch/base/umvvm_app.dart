@@ -71,7 +71,10 @@ abstract class UMvvmApp<
   @mustCallSuper
   Future<void> initialize() async {
     registerInstances();
-    await createSingletons();
+
+    if (!isInTestMode) {
+      await createSingletons();
+    }
 
     UINavigationSettings.transitionDuration = const Duration(milliseconds: 200);
     UINavigationSettings.barrierColor = Colors.black.withValues(alpha: 0.5);
@@ -128,7 +131,7 @@ abstract class UMvvmApp<
     }
   }
 
-  /// Collection of singletion instances
+  /// Method to register builders for instances
   ///
   /// ```dart
   ///  @override
