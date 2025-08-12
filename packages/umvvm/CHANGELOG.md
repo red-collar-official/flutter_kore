@@ -1,3 +1,7 @@
+## 1.2.5
+
+Add check for instance initialization in InstanceCollection construct functions
+
 ## 1.2.4
 
 - Fix test app initialization

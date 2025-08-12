@@ -368,6 +368,10 @@ class InstanceCollection {
       beforeInitialize(instance);
     }
 
+    if (instance.isInitialized) {
+      return instance;
+    }
+
     if (withNoConnections) {
       instance.initializeWithoutConnections(params);
       await instance.initializeWithoutConnectionsAsync();
@@ -717,6 +721,10 @@ class InstanceCollection {
 
     if (beforeInitialize != null) {
       beforeInitialize(instance);
+    }
+
+    if (instance.isInitialized) {
+      return instance;
     }
 
     if (withNoConnections) {
