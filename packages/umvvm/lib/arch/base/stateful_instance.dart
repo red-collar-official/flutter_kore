@@ -114,7 +114,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   State get state => _store.state;
 
   /// Stream of values for given [State] mapper
-  /// 
+  ///
   /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
@@ -124,7 +124,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
       _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
-  /// 
+  ///
   /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
@@ -135,7 +135,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
       _store.changes(mapper);
 
   /// [StateStream] object for updates with given mapper for instance state
-  /// 
+  ///
   /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
@@ -146,7 +146,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// [StateStream] object for changes with given mapper for instance state
-  /// 
+  ///
   /// [changeMapper] - mapper function to get exact state field to listen to
   /// [stateMapper] - mapper function to get value from [StoreChange]
   /// [currentMapper] - mapper function to get current value

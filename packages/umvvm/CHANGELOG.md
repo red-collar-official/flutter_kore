@@ -1,3 +1,7 @@
+## 1.2.5+3
+
+- Fix formatting issues
+
 ## 1.2.5+2
 
 - Update docs
