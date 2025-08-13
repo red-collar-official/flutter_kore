@@ -1,6 +1,6 @@
 # UMVVM Generator
 
-[![Code Coverage](./coverage/coverage_badge.svg)](./test/)
+[![Code Coverage](./coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm_generator/test)
 
 Source builder for Umvvm architecture library.
 
