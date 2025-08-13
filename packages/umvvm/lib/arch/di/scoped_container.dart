@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:developer';
 
 import 'package:umvvm/umvvm.dart';
 
@@ -382,8 +381,10 @@ final class ScopedContainer<T> {
   /// Utility method to print instances map
   // coverage:ignore-start
   void debugPrintMap() {
-    log('Current instance map count: ${_instances.length}');
-    log('Current intances: $_instances');
+    // ignore: avoid_print
+    print('Current instance map count: ${_instances.length}');
+    // ignore: avoid_print
+    print('Current intances: $_instances');
   }
   // coverage:ignore-end
 }

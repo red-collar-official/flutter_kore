@@ -152,11 +152,12 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
   /// Brings view to the center of the screen
   // coverage:ignore-start
-  void ensureVisible(GlobalKey key, {double alignment = 0.3}) async {
+  void ensureVisible(GlobalKey key,
+      {double alignment = 0.3, Duration? scrollDuration}) async {
     try {
       await Scrollable.ensureVisible(
         key.currentContext!,
-        duration: UINavigationSettings.transitionDuration,
+        duration: scrollDuration ?? UINavigationSettings.transitionDuration,
         alignment: alignment,
       );
     } catch (e) {

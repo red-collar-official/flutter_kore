@@ -1,3 +1,7 @@
+## 1.2.1+1
+
+- Update docs
+
 ## 1.2.5
 
 Add check for instance initialization in InstanceCollection construct functions

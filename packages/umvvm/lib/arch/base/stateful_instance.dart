@@ -65,7 +65,7 @@ class StateFulInstanceSettings {
   final bool syncRestore;
 }
 
-/// Base class for storing test data
+/// Base class for storing data
 ///
 /// It contains [Store], subscription to [EventBus] events and cached state
 /// Do not forget to call dispose method for instances
@@ -84,7 +84,7 @@ class StateFulInstanceSettings {
 ///   void initialize(Input? input) {
 ///     super.initialize(input);
 ///
-///     initializeStatefulInstance(input);
+///     initializeStatefulInstance();
 ///
 ///     initialized = true;
 ///   }
@@ -114,6 +114,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   State get state => _store.state;
 
   /// Stream of values for given [State] mapper
+  /// 
+  /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
   /// Stream<StatefulData<List<Post>>?> get postsStream => getLocalInstance<PostsInteractor>().updates((state) => state.posts);
@@ -122,6 +124,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
       _store.updates(mapper);
 
   /// Stream of changes (a pair of previous and current values of [State]) for given [State] mapper
+  /// 
+  /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => getLocalInstance<PostsInteractor>().changes((state) => state.posts);
@@ -131,6 +135,8 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
       _store.changes(mapper);
 
   /// [StateStream] object for updates with given mapper for instance state
+  /// 
+  /// [mapper] - mapper function to get exact state field to listen to
   ///
   /// ```dart
   /// late final posts = postsInteractor.wrapUpdates((state) => state.posts);
@@ -140,6 +146,10 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   }
 
   /// [StateStream] object for changes with given mapper for instance state
+  /// 
+  /// [changeMapper] - mapper function to get exact state field to listen to
+  /// [stateMapper] - mapper function to get value from [StoreChange]
+  /// [currentMapper] - mapper function to get current value
   ///
   /// ```dart
   /// late final posts = postsInteractor.wrapChanges((state) => state.posts);
@@ -281,7 +291,7 @@ mixin StatefulMvvmInstance<State, Input> on MvvmInstance<Input> {
   /// Initial state for this instance
   State get initialState;
 
-  /// Flag indicating that cached state should be awaited
+  /// Settings for state - contains cache id and flags to await initialization if needed
   StateFulInstanceSettings get stateFulInstanceSettings =>
       StateFulInstanceSettings(
         stateId: state.runtimeType.toString(),

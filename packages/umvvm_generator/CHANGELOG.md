@@ -1,3 +1,7 @@
+## 2.0.0+1
+
+- Update docs
+
 ## 2.0.0
 
 Update source_gen and build dependencies

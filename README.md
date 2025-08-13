@@ -1,6 +1,7 @@
 # UMVVM
 
 [![Pub Umvvm Version](https://img.shields.io/pub/v/umvvm)](https://pub.dev/packages/umvvm)
+[![Code Coverage](./packages/umvvm/coverage/coverage_badge.svg)](./test/)
 
 Set of classes for Flutter app architecture.
 
@@ -8,4 +9,4 @@ Main docs can be found [here](packages/umvvm/README.md).
 
 #### Important note
 
-To generage test coverage report run <b>sh coverage.sh</b> in corresponding package directory.
+To generate test coverage report run <b>sh coverage.sh</b> in corresponding package directory.

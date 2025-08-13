@@ -23,18 +23,18 @@ class ObservableChange<T> {
 /// Example:
 /// ```dart
 /// void example() {
-///   final userName = Observable<String>.initial("Ted");
+///   final username = Observable<String>.initial("Ted");
 ///
-///   final subscription = userName.stream.listen((name) {
+///   final subscription = username.stream.listen((name) {
 ///     // do something with name
 ///   });
 ///
-///   userName.update('John');
+///   username.update('John');
 ///
-///   print('current userName=${userName.current}');
+///   print('current username=${username.current}');
 ///
 ///   subscription.cancel();
-///   userName.dispose();
+///   username.dispose();
 /// }
 /// ```
 class Observable<T> {

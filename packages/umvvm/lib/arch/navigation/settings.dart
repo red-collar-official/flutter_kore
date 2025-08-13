@@ -14,4 +14,13 @@ class UINavigationSettings {
 
   /// Border radius for dialog of bottom sheet form
   static late BorderRadius bottomSheetBorderRadius;
+
+  static void useDefaults() {
+    UINavigationSettings.transitionDuration = const Duration(milliseconds: 200);
+    UINavigationSettings.barrierColor = Colors.black.withValues(alpha: 0.5);
+    UINavigationSettings.bottomSheetBorderRadius = const BorderRadius.only(
+      topLeft: Radius.circular(8),
+      topRight: Radius.circular(8),
+    );
+  }
 }

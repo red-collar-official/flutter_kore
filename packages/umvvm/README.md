@@ -1,5 +1,7 @@
 # UMVVM library
 
+[![Code Coverage](./coverage/coverage_badge.svg)](./test/)
+
 Set of classes for Flutter app architecture.
 
 ### Installing
@@ -313,4 +315,4 @@ Learn about components:
 
 #### Important note
 
-To generage test coverage report run <b>sh coverage.sh.</b>
+To generate test coverage report run <b>sh coverage.sh.</b>
