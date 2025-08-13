@@ -1,7 +1,7 @@
 # UMVVM
 
 [![Pub Umvvm Version](https://img.shields.io/pub/v/umvvm)](https://pub.dev/packages/umvvm)
-[![Code Coverage](./packages/umvvm/coverage/coverage_badge.svg)](./test/)
+[![Code Coverage](./packages/umvvm/coverage/coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/test)
 
 Set of classes for Flutter app architecture.
 
