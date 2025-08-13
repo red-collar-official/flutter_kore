@@ -1,6 +1,6 @@
 # UMVVM library
 
-[![Code Coverage](./coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/test)
+[![Code Coverage](https://raw.githubusercontent.com/red-collar-dev/umvvm/refs/heads/main/packages/umvvm/coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/test)
 
 Set of classes for Flutter app architecture.
 
