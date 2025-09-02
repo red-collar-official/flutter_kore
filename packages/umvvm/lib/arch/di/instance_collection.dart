@@ -80,8 +80,8 @@ class InstanceCollection {
   /// Adds builder for given instance type
   ///
   /// [builder] - builder for this instance type
-  void addBuilder<Instance extends MvvmInstance>(Function builder) {
-    final id = Instance.toString();
+  void addBuilder<MInstance extends MvvmInstance>(Function builder) {
+    final id = MInstance.toString();
 
     builders[id] = builder;
   }
@@ -90,11 +90,11 @@ class InstanceCollection {
   ///
   /// [builder] - builder for this instance type
   /// [instance] - concrete instance
-  void mock<Instance extends MvvmInstance>({
-    Instance? instance,
-    Instance Function()? builder,
+  void mock<MInstance extends MvvmInstance>({
+    MInstance? instance,
+    MInstance Function()? builder,
   }) {
-    final id = Instance.toString();
+    final id = MInstance.toString();
 
     if (instance != null) {
       builders[id] = () => instance;
@@ -111,13 +111,13 @@ class InstanceCollection {
   /// [instance] - given instance to add
   /// [params] - params for this instance
   @visibleForTesting
-  void addTest<Instance extends MvvmInstance>({
+  void addTest<MInstance extends MvvmInstance>({
     String scope = BaseScopes.global,
     required MvvmInstance instance,
     dynamic params,
     bool overrideMainInstance = true,
   }) {
-    final id = Instance.toString();
+    final id = MInstance.toString();
 
     container.addObjectInScope(
       object: instance,
@@ -139,7 +139,7 @@ class InstanceCollection {
   /// Returns built instance for given type id
   ///
   /// [id] - string type id for instance
-  Instance constructInstance<Instance extends MvvmInstance>(String id) {
+  MInstance constructInstance<MInstance extends MvvmInstance>(String id) {
     final builder = builders[id];
 
     final instance = builder!();
@@ -168,12 +168,12 @@ class InstanceCollection {
   /// Also calls [MvvmInstance.initialize] for this instance
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
-  Future<Instance> getUniqueAsync<Instance extends MvvmInstance>({
+  Future<MInstance> getUniqueAsync<MInstance extends MvvmInstance>({
     bool withoutConnections = false,
   }) {
-    final id = Instance.toString();
+    final id = MInstance.toString();
 
-    return constructAndInitializeInstanceAsync<Instance>(
+    return constructAndInitializeInstanceAsync<MInstance>(
       id,
       withNoConnections: withoutConnections,
     );
@@ -185,14 +185,14 @@ class InstanceCollection {
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Future<Instance>
-      getUniqueWithParamsAsync<Instance extends MvvmInstance, InputState>({
+  Future<MInstance>
+      getUniqueWithParamsAsync<MInstance extends MvvmInstance, InputState>({
     InputState? params,
     bool withoutConnections = false,
   }) {
-    final id = Instance.toString();
+    final id = MInstance.toString();
 
-    return constructAndInitializeInstanceAsync<Instance>(
+    return constructAndInitializeInstanceAsync<MInstance>(
       id,
       params: params,
       withNoConnections: withoutConnections,
@@ -207,13 +207,13 @@ class InstanceCollection {
   /// [scope] - string scope to get instance from
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Future<Instance> getAsync<Instance extends MvvmInstance>({
+  Future<MInstance> getAsync<MInstance extends MvvmInstance>({
     DefaultInputType? params,
     int? index,
     String scope = BaseScopes.global,
     bool withoutConnections = false,
   }) {
-    return getWithParamsAsync<Instance, DefaultInputType?>(
+    return getWithParamsAsync<MInstance, DefaultInputType?>(
       params: params,
       index: index,
       scope: scope,
@@ -229,16 +229,16 @@ class InstanceCollection {
   /// [scope] - string scope to get instance from
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Future<Instance>
-      getWithParamsAsync<Instance extends MvvmInstance, InputState>({
+  Future<MInstance>
+      getWithParamsAsync<MInstance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
     String scope = BaseScopes.global,
     bool withoutConnections = false,
   }) {
-    final runtimeType = Instance.toString();
+    final runtimeType = MInstance.toString();
 
-    return getInstanceFromCacheAsync<Instance, InputState>(
+    return getInstanceFromCacheAsync<MInstance, InputState>(
       runtimeType,
       params: params,
       index: index,
@@ -353,8 +353,8 @@ class InstanceCollection {
     }
   }
 
-  Future<Instance>
-      constructAndInitializeInstanceAsync<Instance extends MvvmInstance>(
+  Future<MInstance>
+      constructAndInitializeInstanceAsync<MInstance extends MvvmInstance>(
     String id, {
     dynamic params,
     bool withNoConnections = false,
@@ -362,7 +362,7 @@ class InstanceCollection {
   }) async {
     final builder = builders[id];
 
-    final instance = builder!() as Instance;
+    final instance = builder!() as MInstance;
 
     if (beforeInitialize != null) {
       beforeInitialize(instance);
@@ -383,8 +383,8 @@ class InstanceCollection {
     return instance;
   }
 
-  Future<Instance>
-      getInstanceFromCacheAsync<Instance extends MvvmInstance, InputState>(
+  Future<MInstance>
+      getInstanceFromCacheAsync<MInstance extends MvvmInstance, InputState>(
     String id, {
     dynamic params,
     int? index,
@@ -396,7 +396,7 @@ class InstanceCollection {
     if (!container.contains(scope, id, index)) {
       performCheckForCyclicDependencies(id, index);
 
-      final instance = await constructAndInitializeInstanceAsync<Instance>(
+      final instance = await constructAndInitializeInstanceAsync<MInstance>(
         id,
         params: params,
       );
@@ -416,7 +416,7 @@ class InstanceCollection {
       type: id,
       scopeId: scope,
       index: index ?? 0,
-    ) as Instance;
+    ) as MInstance;
 
     if (!instance.isInitialized) {
       if (withoutConnections) {
@@ -439,11 +439,11 @@ class InstanceCollection {
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Instance getUnique<Instance extends MvvmInstance>({
+  MInstance getUnique<MInstance extends MvvmInstance>({
     DefaultInputType? params,
     bool withoutConnections = false,
   }) {
-    return getUniqueWithParams<Instance, DefaultInputType?>(
+    return getUniqueWithParams<MInstance, DefaultInputType?>(
       params: params,
       withoutConnections: withoutConnections,
     );
@@ -455,13 +455,13 @@ class InstanceCollection {
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Instance getUniqueWithParams<Instance extends MvvmInstance, InputState>({
+  MInstance getUniqueWithParams<MInstance extends MvvmInstance, InputState>({
     InputState? params,
     bool withoutConnections = false,
   }) {
-    final id = Instance.toString();
+    final id = MInstance.toString();
 
-    return constructAndInitializeInstance<Instance>(
+    return constructAndInitializeInstance<MInstance>(
       id,
       params: params,
       withNoConnections: withoutConnections,
@@ -473,15 +473,15 @@ class InstanceCollection {
   /// [index] - index for this instance
   /// [scope] - string scope to get instance from
   @visibleForTesting
-  Instance? forceGet<Instance extends MvvmInstance>({
+  MInstance? forceGet<MInstance extends MvvmInstance>({
     int? index,
     String scope = BaseScopes.global,
   }) {
     return container.getObjectInScope(
-      type: Instance.toString(),
+      type: MInstance.toString(),
       scopeId: scope,
       index: index ?? 0,
-    ) as Instance?;
+    ) as MInstance?;
   }
 
   /// Return instance for given type
@@ -492,13 +492,13 @@ class InstanceCollection {
   /// [scope] - string scope to get instance from
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Instance get<Instance extends MvvmInstance>({
+  MInstance get<MInstance extends MvvmInstance>({
     DefaultInputType? params,
     int? index,
     String scope = BaseScopes.global,
     bool withoutConnections = false,
   }) {
-    return getWithParams<Instance, DefaultInputType?>(
+    return getWithParams<MInstance, DefaultInputType?>(
       params: params,
       index: index,
       scope: scope,
@@ -514,15 +514,15 @@ class InstanceCollection {
   /// [scope] - string scope to get instance from
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Instance getWithParams<Instance extends MvvmInstance, InputState>({
+  MInstance getWithParams<MInstance extends MvvmInstance, InputState>({
     InputState? params,
     int? index,
     String scope = BaseScopes.global,
     bool withoutConnections = false,
   }) {
-    final runtimeType = Instance.toString();
+    final runtimeType = MInstance.toString();
 
-    return getInstanceFromCache<Instance>(
+    return getInstanceFromCache<MInstance>(
       runtimeType,
       params: params,
       index: index,
@@ -709,7 +709,7 @@ class InstanceCollection {
     }
   }
 
-  Instance constructAndInitializeInstance<Instance extends MvvmInstance>(
+  MInstance constructAndInitializeInstance<MInstance extends MvvmInstance>(
     String id, {
     dynamic params,
     bool withNoConnections = false,
@@ -717,7 +717,7 @@ class InstanceCollection {
   }) {
     final builder = builders[id];
 
-    final instance = builder!() as Instance;
+    final instance = builder!() as MInstance;
 
     if (beforeInitialize != null) {
       beforeInitialize(instance);
@@ -736,7 +736,7 @@ class InstanceCollection {
     return instance;
   }
 
-  Instance getInstanceFromCache<Instance extends MvvmInstance>(
+  MInstance getInstanceFromCache<MInstance extends MvvmInstance>(
     String id, {
     dynamic params,
     int? index,
@@ -748,7 +748,7 @@ class InstanceCollection {
     if (!container.contains(scope, id, index)) {
       performCheckForCyclicDependencies(id, index);
 
-      final instance = constructAndInitializeInstance<Instance>(
+      final instance = constructAndInitializeInstance<MInstance>(
         id,
         params: params,
       );
@@ -768,7 +768,7 @@ class InstanceCollection {
       type: id,
       scopeId: scope,
       index: index ?? 0,
-    ) as Instance;
+    ) as MInstance;
 
     if (!instance.isInitialized) {
       if (withoutConnections) {

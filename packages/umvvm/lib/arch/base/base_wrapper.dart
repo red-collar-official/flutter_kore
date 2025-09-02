@@ -66,11 +66,11 @@ abstract class BaseStaticWrapper<Input> extends MvvmInstance<Input?>
 ///   }
 /// }
 /// ```
-abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
+abstract class BaseHolderWrapper<MInstance, Input> extends MvvmInstance<Input?>
     with DependentMvvmInstance<Input?>, ApiCaller<Input?> {
   /// Actual object instance
-  late Instance Function() _instanceCreator;
-  Instance? _instance;
+  late MInstance Function() _instanceCreator;
+  MInstance? _instance;
 
   @mustCallSuper
   @override
@@ -99,10 +99,10 @@ abstract class BaseHolderWrapper<Instance, Input> extends MvvmInstance<Input?>
   }
 
   /// Creates actual object instance
-  Instance provideInstance();
+  MInstance provideInstance();
 
   /// Actual object instance
-  Instance get instance {
+  MInstance get instance {
     _instance ??= _instanceCreator();
 
     return _instance!;

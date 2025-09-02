@@ -43,8 +43,8 @@ import 'package:umvvm/umvvm.dart';
 ///   }
 /// }
 /// ```
-abstract class BaseDeepLinksInteractor<State>
-    extends BaseInteractor<State, Map<String, dynamic>> {
+abstract class BaseDeepLinksInteractor<MState>
+    extends BaseInteractor<MState, Map<String, dynamic>> {
   /// Flag indicating if initial route is received
   bool initialLinkReceived = false;
 

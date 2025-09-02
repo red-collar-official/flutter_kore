@@ -69,7 +69,7 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseNavigationInteractor<
-        State,
+        IState,
         Input,
         AppTabType,
         RoutesClassType extends RoutesBase,
@@ -79,7 +79,7 @@ abstract class BaseNavigationInteractor<
         DialogType,
         BottomSheetType,
         DeepLinksInteractorType extends BaseDeepLinksInteractor>
-    extends BaseInteractor<State, Input> {
+    extends BaseInteractor<IState, Input> {
   /// Deeplinks interactor for global app
   /// throws exception if deeplinks interactor not used
   late final deepLinks = InstanceCollection.instance

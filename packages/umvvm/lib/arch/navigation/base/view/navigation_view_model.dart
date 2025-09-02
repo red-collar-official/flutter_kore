@@ -6,8 +6,8 @@ import 'package:umvvm/umvvm.dart';
 ///
 /// Note: inside navigation view models call view model pop method instead of
 /// app.navigation.pop()
-abstract class NavigationViewModel<Widget extends StatefulWidget, State>
-    extends BaseViewModel<Widget, State> {
+abstract class NavigationViewModel<MWidget extends StatefulWidget, IState>
+    extends BaseViewModel<MWidget, IState> {
   dynamic screenTab;
 
   late final navigationInteractor = UMvvmApp.navigationInteractor!;
@@ -26,9 +26,9 @@ abstract class NavigationViewModel<Widget extends StatefulWidget, State>
 /// Base view state if app uses navigation
 /// Must be extended by any view if navigation used
 // coverage:ignore-start
-abstract class NavigationView<View extends BaseWidget, ScreenState,
-        ViewModel extends NavigationViewModel<View, ScreenState>>
-    extends BaseView<View, ScreenState, ViewModel> {
+abstract class NavigationView<MWidget extends BaseWidget, ScreenState,
+        ViewModel extends NavigationViewModel<MWidget, ScreenState>>
+    extends BaseView<MWidget, ScreenState, ViewModel> {
   dynamic screenTab;
 
   @mustCallSuper

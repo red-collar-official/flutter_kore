@@ -23,12 +23,12 @@ import 'package:umvvm/umvvm.dart';
 ///   }
 /// }
 /// ```
-abstract class BaseViewModel<Widget extends StatefulWidget, State>
-    extends MvvmInstance<Widget>
+abstract class BaseViewModel<MWidget extends StatefulWidget, MState>
+    extends MvvmInstance<MWidget>
     with
-        StatefulMvvmInstance<State, Widget>,
-        DependentMvvmInstance<Widget>,
-        ApiCaller<Widget> {
+        StatefulMvvmInstance<MState, MWidget>,
+        DependentMvvmInstance<MWidget>,
+        ApiCaller<MWidget> {
   /// Function to be executed after initState
   // coverage:ignore-start
   void onLaunch() {}
@@ -50,7 +50,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
   @mustCallSuper
   @override
-  void initialize(Widget input) {
+  void initialize(MWidget input) {
     super.initialize(input);
 
     initializeDependencies();
@@ -76,7 +76,7 @@ abstract class BaseViewModel<Widget extends StatefulWidget, State>
 
   @mustCallSuper
   @override
-  void initializeWithoutConnections(Widget input) {
+  void initializeWithoutConnections(MWidget input) {
     super.initializeWithoutConnections(input);
 
     initializeStore();
