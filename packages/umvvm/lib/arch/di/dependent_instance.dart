@@ -43,8 +43,6 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 ///     super.initialize(input);
 ///
 ///     initializeDependencies();
-///
-///     initialized = true;
 ///   }
 ///
 ///   @mustCallSuper
@@ -53,8 +51,6 @@ class DependentMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 ///     super.dispose();
 ///
 ///     disposeDependencies();
-
-///     initialized = false;
 ///   }
 /// }
 /// ```

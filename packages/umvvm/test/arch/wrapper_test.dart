@@ -98,17 +98,6 @@ void main() {
       wrapperAsync.dispose();
     });
 
-    test('Wrapper holder initialization test', () async {
-      final holderWrapper =
-          await instances.getUniqueWithParamsAsync<TestHolderWrapper, int>(
-        params: 3,
-      );
-
-      expect(holderWrapper.instance, 3);
-
-      holderWrapper.dispose();
-    });
-
     test('Wrapper dispose test', () async {
       final wrapper3 = await instances.getUniqueAsync<TestWrapper3>();
 
@@ -116,15 +105,6 @@ void main() {
       wrapper3.dispose();
 
       expect(wrapper3.isDisposed, true);
-    });
-
-    test('Wrapper holder dispose test', () async {
-      final holderWrapper = await instances.getUniqueAsync<TestHolderWrapper>();
-
-      // ignore: cascade_invocations
-      holderWrapper.dispose();
-
-      expect(holderWrapper.isDisposed, true);
     });
 
     test('Wrapper pause test', () async {

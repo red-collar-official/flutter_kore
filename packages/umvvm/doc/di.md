@@ -34,12 +34,7 @@ Here are some examples:
 
 ```dart
 @Instance(inputType: String)
-class StringWrapper extends BaseHolderWrapper<String, String> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-}
+class StringWrapper extends BaseWrapper<String> {}
 
 ```
 
@@ -47,12 +42,7 @@ or basic instance wrapper:
 
 ```dart
 @basicInstance
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-}
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {}
 
 ```
 
@@ -60,12 +50,7 @@ or singleton wrapper:
 
 ```dart
 @singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-}
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {}
 
 ```
 
@@ -73,12 +58,7 @@ or lazy singleton wrapper:
 
 ```dart
 @lazySingleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-}
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {}
 
 ```
 
@@ -95,68 +75,48 @@ Here are some examples:
 
 ```dart
 @asyncLazySingleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       isAsync: true,
     );
-
-  @override
-  String provideInstance() async {
-    return '';
-  }
 }
 
 ```
 
 ```dart
 @asyncSingleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       isAsync: true,
     );
-
-  @override
-  String provideInstance() async {
-    return '';
-  }
 }
 
 ```
 
 ```dart
 @asyncBasicInstance
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       isAsync: true,
     );
-
-  @override
-  String provideInstance() async {
-    return '';
-  }
 }
 
 ```
 
 ```dart
 @Instance(isAsync: true, initializationOrder: 1, awaitInitialization: true, singleton: true)
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
       isAsync: true,
     );
-
-  @override
-  String provideInstance() async {
-    return '';
-  }
 }
 
 ```
@@ -463,12 +423,7 @@ class Modules {
 }
 
 @singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
@@ -489,12 +444,7 @@ Here is an example:
 
 ```dart
 @singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(

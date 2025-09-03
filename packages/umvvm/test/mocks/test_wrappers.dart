@@ -4,23 +4,23 @@ import '../helpers/constants.dart';
 import 'test_event.dart';
 import 'test_parts.dart';
 
-class TestWrapper1 extends BaseStaticWrapper<int?> {
+class TestWrapper1 extends BaseWrapper<int?> {
   int? value;
 }
 
-class TestWrapper2 extends BaseStaticWrapper<int?> {
+class TestWrapper2 extends BaseWrapper<int?> {
   int? value;
 }
 
-class TestWrapper4 extends BaseStaticWrapper<int?> {
+class TestWrapper4 extends BaseWrapper<int?> {
   int? value;
 }
 
-class TestWrapper6 extends BaseStaticWrapper<int?> {
+class TestWrapper6 extends BaseWrapper<int?> {
   int? value;
 }
 
-class TestWrapperAsync extends BaseStaticWrapper<int?> {
+class TestWrapperAsync extends BaseWrapper<int?> {
   int? value;
 
   @override
@@ -39,7 +39,7 @@ class TestWrapperAsync extends BaseStaticWrapper<int?> {
   }
 }
 
-class TestWrapperAsync2 extends BaseStaticWrapper<int?> {
+class TestWrapperAsync2 extends BaseWrapper<int?> {
   int? value;
 
   @override
@@ -68,7 +68,7 @@ class TestWrapperAsync2 extends BaseStaticWrapper<int?> {
   }
 }
 
-class TestWrapper3 extends BaseStaticWrapper<int?> {
+class TestWrapper3 extends BaseWrapper<int?> {
   int? value;
 
   bool eventProcessed = false;
@@ -197,7 +197,7 @@ class TestWrapper3 extends BaseStaticWrapper<int?> {
       ];
 }
 
-class TestWrapperError extends BaseStaticWrapper<int?> {
+class TestWrapperError extends BaseWrapper<int?> {
   bool eventProcessed = false;
 
   @override
@@ -223,11 +223,4 @@ class TestWrapperError extends BaseStaticWrapper<int?> {
           ),
         ],
       );
-}
-
-class TestHolderWrapper extends BaseHolderWrapper<int, int?> {
-  @override
-  int provideInstance() {
-    return input ?? 0;
-  }
 }

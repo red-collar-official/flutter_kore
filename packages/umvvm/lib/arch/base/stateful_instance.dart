@@ -85,8 +85,6 @@ class StateFulInstanceSettings {
 ///     super.initialize(input);
 ///
 ///     initializeStatefulInstance();
-///
-///     initialized = true;
 ///   }
 ///
 ///   @mustCallSuper
@@ -95,8 +93,6 @@ class StateFulInstanceSettings {
 ///     super.dispose();
 ///
 ///     disposeStore();
-///
-///     initialized = false;
 ///   }
 /// }
 /// ```

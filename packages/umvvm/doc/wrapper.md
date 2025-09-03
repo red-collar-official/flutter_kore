@@ -6,8 +6,6 @@ Wrappers contain logic for working with third party dependencies.
 
 Wrapper can be just used as instance holder or contain logic for working with third party api.
 
-If wrapper holds object instance extend <b>BaseHolderWrapper</b>, otherwise use <b>BaseStaticWrapper</b>.
-
 You also need to specify input type for wrappers. It is passed as generic argument.
 
 Input is always available via <b>input</b> field.
@@ -36,35 +34,15 @@ Typical example would be:
 ```dart
 // String - input type
 @basicInstances
-class StripeWrapper extends BaseStaticWrapper<String> {
+class StripeWrapper extends BaseWrapper<String> {
 }
-```
-
-or singleton holder wrapper:
-
-```dart
-// Map<String, dynamic> - input type
-// String - type of object that is used in this wrapper - can be void
-@singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-}
-
 ```
 
 Here is example if declaration of all types of dependencies:
 
 ```dart
 @singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
-  @override
-  String provideInstance() {
-    return '';
-  }
-
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentMvvmInstanceConfiguration get configuration =>
     DependentMvvmInstanceConfiguration(
@@ -112,6 +90,30 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>> {
         _onPostLiked(event.id);
       }),
     ];
+}
+```
+
+There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+
+By default if wrapper is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
+Also you can provide optional timeout for this operation
+
+```dart
+@singleton
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
+  Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
+    enqueue(operation: () async {
+      late Response<List<Post>> response;
+
+      if (refresh) {
+        response = await app.apis.posts.getPosts(0, limit).execute();
+      } else {
+        response = await app.apis.posts.getPosts(offset, limit).execute();
+      }
+
+      // process response
+    })
+  }
 }
 ```
 

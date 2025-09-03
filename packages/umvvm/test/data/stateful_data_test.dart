@@ -24,5 +24,25 @@ void main() {
 
       expect(statefulDataSuccess.unwrap(), 1);
     });
+
+    test('StatefulData constructor test', () async {
+      StatefulData<int> statefulData = const LoadingData();
+
+      expect(
+        () => statefulData.unwrap(),
+        throwsA(isA<IllegalStateException>()),
+      );
+
+      statefulData = const ErrorData(error: '');
+
+      expect(
+        () => statefulData.unwrap(),
+        throwsA(isA<IllegalStateException>()),
+      );
+
+      statefulData = const SuccessData(result: 1);
+
+      expect(statefulData.unwrap(), 1);
+    });
   });
 }

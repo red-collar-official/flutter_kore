@@ -310,7 +310,6 @@ Learn about components:
 #### Other materials
 
 * [Testing](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/testing.md);
-* [Migration tips](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/migration.md);
 * [Disabling components](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/disabling_components.md).
 
 #### Important note

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_function_declarations_over_variables
+
 import 'dart:async';
 
 import 'package:test/test.dart';
@@ -313,11 +315,10 @@ void main() {
 
       final completer = Completer();
 
-      final stateStream = interactor3.wrapChanges( 
-        changeMapper: (state) => state, 
-        stateMapper: (change) => change.next, 
-        currentMapper: (state) => state
-      );
+      final stateStream = interactor3.wrapChanges(
+          changeMapper: (state) => state,
+          stateMapper: (change) => change.next,
+          currentMapper: (state) => state);
 
       final subscription = stateStream.stream.listen((event) {
         if (event == 2) {
@@ -351,11 +352,10 @@ void main() {
     test('Interactor store wrap changes current value test', () async {
       final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
 
-      final stateStream = interactor3.wrapChanges( 
-        changeMapper: (state) => state, 
-        stateMapper: (change) => change.next, 
-        currentMapper: (state) => state
-      );
+      final stateStream = interactor3.wrapChanges(
+          changeMapper: (state) => state,
+          stateMapper: (change) => change.next,
+          currentMapper: (state) => state);
 
       interactor3.updateState(2);
 
@@ -653,6 +653,176 @@ void main() {
       );
 
       expect(instance.state, 1);
+    });
+
+    test('Interactor enqueue operation test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      var future1Completed = false;
+      var future2Completed = false;
+      var future3Completed = false;
+
+      final future1 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future1Completed = true;
+      };
+
+      final future2 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future2Completed = true;
+      };
+
+      final future3 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future3Completed = true;
+      };
+
+      unawaited(interactor3.enqueue(operation: future1));
+      unawaited(interactor3.enqueue(operation: future2));
+      unawaited(interactor3.enqueue(operation: future3));
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      expect(future1Completed, false);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 600));
+
+      expect(future1Completed, true);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, true);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, true);
+      expect(future3Completed, true);
+
+      interactor3.dispose();
+    });
+
+    test('Interactor enqueue operation dispose test', () async {
+      final interactor6 = await instances.getUniqueAsync<TestInteractor6>();
+
+      var future1Completed = false;
+      var future2Completed = false;
+      var future3Completed = false;
+
+      final future1 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future1Completed = true;
+      };
+
+      final future2 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future2Completed = true;
+      };
+
+      final future3 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future3Completed = true;
+      };
+
+      unawaited(interactor6.enqueue(operation: future1));
+      unawaited(interactor6.enqueue(operation: future2, discardOnDispose: false));
+      unawaited(interactor6.enqueue(operation: future3));
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      expect(future1Completed, false);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      interactor6.dispose();
+
+      await Future.delayed(const Duration(milliseconds: 600));
+
+      expect(future1Completed, true);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, true);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, true);
+      expect(future3Completed, false);
+    });
+
+    test('Interactor enqueue operation timeout test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      var future1Completed = false;
+      var future2Completed = false;
+      var future3Completed = false;
+      var future3Timeout = false;
+
+      final future1 = () async {
+        await Future.delayed(const Duration(seconds: 1));
+        future1Completed = true;
+      };
+
+      final future2 = () async {
+        await Future.delayed(const Duration(seconds: 3));
+        future2Completed = true;
+      };
+
+      final future3 = () async {
+        await Future.delayed(const Duration(seconds: 2));
+        future3Completed = true;
+      };
+
+      unawaited(interactor3.enqueue(operation: future1));
+      unawaited(interactor3.enqueue(
+        operation: future2,
+        timeout: const Duration(seconds: 1),
+      ));
+      unawaited(interactor3.enqueue(
+        operation: future3,
+        timeout: const Duration(seconds: 1),
+        onTimeout: () {
+          future3Timeout = true;
+        },
+      ));
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      expect(future1Completed, false);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 600));
+
+      expect(future1Completed, true);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      expect(future1Completed, true);
+      expect(future2Completed, false);
+      expect(future3Completed, false);
+      expect(future3Timeout, true);
+
+      interactor3.dispose();
     });
 
     tearDownAll(eventBus.dispose);

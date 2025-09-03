@@ -25,12 +25,16 @@ sealed class StatefulData<T> {
     return (this as SuccessData<T>).result;
   }
 
+  // coverage:ignore-start
   const StatefulData();
+  // coverage:ignore-end
 }
 
 /// [StatefulData] indicating loading state for underlying object
 class LoadingData<T> extends StatefulData<T> {
+  // coverage:ignore-start
   const LoadingData();
+  // coverage:ignore-end
 }
 
 /// [StatefulData] indicating success state for underlying object
@@ -38,10 +42,12 @@ class LoadingData<T> extends StatefulData<T> {
 class SuccessData<T> extends StatefulData<T> {
   /// Successfull result for this [StatefulData]
   final T result;
-
+  
+  // coverage:ignore-start
   const SuccessData({
     required this.result,
   });
+  // coverage:ignore-end
 }
 
 /// [StatefulData] indicating error state for underlying object
@@ -50,5 +56,7 @@ class ErrorData<T> extends StatefulData<T> {
   /// Reason object for this error state
   final dynamic error;
 
+  // coverage:ignore-start
   const ErrorData({this.error});
+  // coverage:ignore-end
 }

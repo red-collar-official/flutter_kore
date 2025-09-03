@@ -30,8 +30,6 @@ abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmIns
     super.initialize(input);
 
     initializeStatefulInstance();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -40,8 +38,6 @@ abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmIns
     super.dispose();
 
     disposeStore();
-
-    initialized = false;
   }
 }
 ```
@@ -111,8 +107,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     super.initialize(input);
 
     initializeDependencies();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -121,8 +115,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     await super.initializeAsync();
 
     await initializeDependenciesAsync();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -131,8 +123,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     super.dispose();
 
     disposeDependencies();
-
-    initialized = false;
   }
 }
 ```
@@ -179,8 +169,31 @@ abstract class BaseBox extends MvvmInstance<dynamic> with ApiCaller<dynamic> {
     super.dispose();
 
     cancelAllRequests();
+  }
+}
+```
 
-    initialized = false;
+### SynchronizedMvvmInstance
+
+There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+
+By default if instance is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
+Also you can provide optional timeout for this operation
+
+You can do it as follows:
+
+```dart
+abstract class BaseBox extends MvvmInstance<dynamic> with SynchronizedMvvmInstance<dynamic> {
+  String get boxName;
+
+  late final hiveWrapper = app.instances.get<HiveWrapper>();
+
+  @mustCallSuper
+  @override
+  void dispose() {
+    super.dispose();
+
+    cancelPendingOperations();
   }
 }
 ```
@@ -231,8 +244,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     super.initialize(input);
 
     initializeDependencies();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -241,8 +252,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     await super.initializeAsync();
 
     await initializeDependenciesAsync();
-
-    initialized = true;
   }
 
   @mustCallSuper
@@ -251,8 +260,6 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
     super.dispose();
 
     disposeDependencies();
-
-    initialized = false;
   }
 }
 ```

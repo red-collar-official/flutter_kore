@@ -54,7 +54,6 @@ void addTestBuilders(InstanceCollection collection) {
     ..addBuilder<TestWrapper3>(TestWrapper3.new)
     ..addBuilder<TestWrapper4>(TestWrapper4.new)
     ..addBuilder<TestWrapper6>(TestWrapper6.new)
-    ..addBuilder<TestHolderWrapper>(TestHolderWrapper.new)
     ..addBuilder<TestWrapperError>(TestWrapperError.new)
     ..addBuilder<TestWrapperAsync>(TestWrapperAsync.new)
     ..addBuilder<TestWrapperAsync2>(TestWrapperAsync2.new)

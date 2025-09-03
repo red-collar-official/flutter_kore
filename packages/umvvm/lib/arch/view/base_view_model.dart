@@ -4,6 +4,11 @@ import 'package:umvvm/umvvm.dart';
 
 /// Main class to extend to create view models
 /// Contains dependencies, event bus subscription, state and  parts
+/// 
+/// You also can execute requests and cancel them automatically when wrapper will be disposed
+/// with [ApiCaller.executeAndCancelOnDispose] method
+/// 
+/// Also view models can execute operations in enqueue with [SynchronizedMvvmInstance.enqueue]
 ///
 /// Example:
 ///
@@ -28,8 +33,9 @@ abstract class BaseViewModel<MWidget extends StatefulWidget, MState>
     with
         StatefulMvvmInstance<MState, MWidget>,
         DependentMvvmInstance<MWidget>,
+        SynchronizedMvvmInstance<MWidget>,
         ApiCaller<MWidget> {
-  /// Function to be executed after initState
+  /// Function to be executed after [State.initState]
   // coverage:ignore-start
   void onLaunch() {}
 
@@ -65,6 +71,7 @@ abstract class BaseViewModel<MWidget extends StatefulWidget, MState>
     disposeStore();
     disposeDependencies();
     cancelAllRequests();
+    cancelPendingOperations();
   }
 
   @mustCallSuper

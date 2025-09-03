@@ -9,6 +9,8 @@ import 'package:umvvm/umvvm.dart';
 /// Parts must be annotated with [instancePart] annotation
 /// You also can execute requests and cancel them automatically when part will be disposed
 /// with [ApiCaller.executeAndCancelOnDispose] method
+/// 
+/// Also parts can execute operations in sync with [SynchronizedMvvmInstance.enqueue]
 ///
 /// Example:
 ///
@@ -24,7 +26,8 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 
 abstract class BaseInstancePart<Input, T extends MvvmInstance>
-    extends MvvmInstance<Input?> with ApiCaller<Input?> {
+    extends MvvmInstance<Input?>
+    with SynchronizedMvvmInstance<Input?>, ApiCaller<Input?> {
   /// Instance that created this part
   late T parentInstance;
 
@@ -33,6 +36,14 @@ abstract class BaseInstancePart<Input, T extends MvvmInstance>
   /// If part contain other parts then root parent instance
   /// will be parent instance of the first part in the tree
   MvvmInstance? rootParentInstance;
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    cancelAllRequests();
+    cancelPendingOperations();
+  }
 }
 
 /// [BaseInstancePart] that applies to every [MvvmInstance] subtype

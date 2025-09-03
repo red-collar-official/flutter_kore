@@ -105,3 +105,33 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
   late final testUniversalPart = useInstancePart<TestUniversalInteractorPart>();
 }
 ```
+
+There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+
+By default if part is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
+Also you can provide optional timeout for this operation
+
+```dart
+@instancePart
+class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, PostsInteractor> {
+  Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
+    enqueue(operation: () async {
+      parentInstance.updateState(parentInstance.state.copyWith(posts: LoadingData()));
+
+      late Response<List<Post>> response;
+
+      if (refresh) {
+        response = await app.apis.posts.getPosts(0, limit).execute();
+      } else {
+        response = await app.apis.posts.getPosts(offset, limit).execute();
+      }
+
+      if (response.isSuccessful || response.isSuccessfulFromDatabase) {
+        parentInstance.updateState(parentInstance.state.copyWith(posts: SuccessData(response.result ?? [])));
+      } else {
+        parentInstance.updateState(parentInstance.state.copyWith(posts: ErrorData(response.error)));
+      }
+    })
+  }
+}
+```

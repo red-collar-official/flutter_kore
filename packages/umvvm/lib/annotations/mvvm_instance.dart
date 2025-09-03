@@ -4,12 +4,7 @@
 ///
 /// ```dart
 /// @Instance(inputType: String, singleton: true)
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
-/// }
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {}
 /// ```
 ///
 class Instance {
@@ -56,13 +51,8 @@ class Instance {
 /// Annotate class as default mvvm instance
 ///
 /// ```dart
-/// @instance
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
-/// }
+/// @basicInstance
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {}
 /// ```
 const basicInstance = Instance();
 
@@ -86,12 +76,7 @@ const asyncInstancePart = Instance(part: true, isAsync: true);
 ///
 /// ```dart
 /// @singleton
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
-/// }
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {}
 /// ```
 const singleton = Instance(singleton: true);
 
@@ -99,12 +84,7 @@ const singleton = Instance(singleton: true);
 ///
 /// ```dart
 /// @lazySingleton
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
-/// }
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {}
 /// ```
 const lazySingleton = Instance(singleton: true, isLazy: true);
 
@@ -112,17 +92,12 @@ const lazySingleton = Instance(singleton: true, isLazy: true);
 ///
 /// ```dart
 /// @asyncBasicInstance
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {
 ///  @override
 ///  DependentMvvmInstanceConfiguration get configuration =>
 ///    DependentMvvmInstanceConfiguration(
 ///      isAsync: true,
 ///    );
-///
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
 /// }
 /// ```
 const asyncBasicInstance = Instance(isAsync: true);
@@ -131,17 +106,12 @@ const asyncBasicInstance = Instance(isAsync: true);
 ///
 /// ```dart
 /// @asyncSingleton
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {
 ///  @override
 ///  DependentMvvmInstanceConfiguration get configuration =>
 ///    DependentMvvmInstanceConfiguration(
 ///      isAsync: true,
 ///    );
-///
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
 /// }
 /// ```
 const asyncSingleton = Instance(singleton: true, isAsync: true);
@@ -150,17 +120,12 @@ const asyncSingleton = Instance(singleton: true, isAsync: true);
 ///
 /// ```dart
 /// @asyncLazySingleton
-/// class NavigationWrapper extends BaseHolderWrapper<NavigationStack, Map<String, dynamic>> {
+/// class NavigationWrapper extends BaseWrapper<Map<String, dynamic>> {
 ///  @override
 ///  DependentMvvmInstanceConfiguration get configuration =>
 ///    DependentMvvmInstanceConfiguration(
 ///      isAsync: true,
 ///    );
-///
-///   @override
-///   NavigationStack provideInstance() {
-///     return NavigationStack();
-///   }
 /// }
 /// ```
 const asyncLazySingleton = Instance(

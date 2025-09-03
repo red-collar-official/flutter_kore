@@ -10,6 +10,8 @@ import 'package:umvvm/umvvm.dart';
 /// You also can execute requests and cancel them automatically when interactor will be disposed
 /// with [ApiCaller.executeAndCancelOnDispose] method
 ///
+/// Also interactors can execute operations in sync with [SynchronizedMvvmInstance.enqueue]
+///
 /// Example:
 ///
 /// ```dart
@@ -23,6 +25,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     with
         StatefulMvvmInstance<State, Input?>,
         DependentMvvmInstance<Input?>,
+        SynchronizedMvvmInstance<Input?>,
         ApiCaller<Input?> {
   @mustCallSuper
   @override
@@ -41,6 +44,7 @@ abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
     disposeStore();
     disposeDependencies();
     cancelAllRequests();
+    cancelPendingOperations();
   }
 
   @mustCallSuper

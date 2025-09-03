@@ -9,3 +9,4 @@ export 'observable.dart';
 export 'store.dart';
 export '../http/apis_caller.dart';
 export 'base_instance_part.dart';
+export 'synchronized_instance.dart';
