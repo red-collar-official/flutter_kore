@@ -47,6 +47,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
+import 'package:umvvm/umvvm_widgets.dart';
 
 part 'main.api.dart';
 part 'main.mvvm.dart';
