@@ -1,3 +1,7 @@
+## 1.3.1+1
+
+- Fix formatting
+
 ## 1.3.1
 
 - Split widget exports from main exports
