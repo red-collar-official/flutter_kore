@@ -7,7 +7,7 @@ import 'package:umvvm/umvvm.dart';
 /// They also can contain parts
 /// You also can execute requests and cancel them automatically when wrapper will be disposed
 /// with [ApiCaller.executeAndCancelOnDispose] method
-/// 
+///
 /// Also wrappers can execute operations in sync with [SynchronizedMvvmInstance.enqueue]
 ///
 /// Example:

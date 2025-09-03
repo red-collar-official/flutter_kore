@@ -75,6 +75,68 @@ void main() {
       interactor3.dispose();
     });
 
+    test('Interactor wait event is received test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      // ignore: cascade_invocations
+      eventBus.send(TestEvent(number: 5));
+
+      await interactor3.waitTillEventIsReceived(TestEvent);
+
+      expect(interactor3.checkEventWasReceived(TestEvent), true);
+      expect(interactor3.state, 5);
+
+      interactor3.dispose();
+    });
+
+    test('Interactor cleanup received events test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      // ignore: cascade_invocations
+      eventBus.send(TestEvent(number: 5));
+
+      await interactor3.waitTillEventIsReceived(TestEvent);
+
+      expect(interactor3.checkEventWasReceived(TestEvent), true);
+      expect(interactor3.state, 5);
+
+      interactor3.cleanupReceivedEvents();
+
+      expect(interactor3.checkEventWasReceived(TestEvent), false);
+
+      interactor3.dispose();
+    });
+
+    test('Interactor wait multiple events are received test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      for (var i = 0; i < 10; i++) {
+        eventBus.send(TestEvent(number: 5));
+      }
+
+      await interactor3.waitTillEventIsReceived(TestEvent, count: 10);
+
+      expect(interactor3.checkEventWasReceived(TestEvent, count: 10), true);
+      expect(interactor3.state, 5);
+
+      interactor3.dispose();
+    });
+
+    test('Interactor wait multiple events are received timeout test', () async {
+      final interactor3 = await instances.getUniqueAsync<TestInteractor3>();
+
+      for (var i = 0; i < 10; i++) {
+        eventBus.send(TestEvent(number: 5));
+      }
+
+      await interactor3.waitTillEventIsReceived(TestEvent, count: 11);
+
+      expect(interactor3.checkEventWasReceived(TestEvent, count: 11), false);
+      expect(interactor3.state, 5);
+
+      interactor3.dispose();
+    });
+
     test('Interactor initialization test', () async {
       final interactor1 = instances.getUnique<TestInteractor1>();
       final interactor2 = instances.getUnique<TestInteractor2>();
@@ -731,7 +793,8 @@ void main() {
       };
 
       unawaited(interactor6.enqueue(operation: future1));
-      unawaited(interactor6.enqueue(operation: future2, discardOnDispose: false));
+      unawaited(
+          interactor6.enqueue(operation: future2, discardOnDispose: false));
       unawaited(interactor6.enqueue(operation: future3));
 
       await Future.delayed(const Duration(milliseconds: 500));

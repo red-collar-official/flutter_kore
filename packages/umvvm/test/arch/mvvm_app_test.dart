@@ -44,11 +44,11 @@ void main() {
       expect(app.instances.forceGet<TestWrapper4>()!.isInitialized, true);
     });
 
-     test('MvvmApp initial test no test mode', () async {
+    test('MvvmApp initial test no test mode', () async {
       final app = TestApp();
-      
+
       UMvvmApp.isInTestMode = false;
-      
+
       await app.initialize();
 
       expect(app.isInitialized, true);

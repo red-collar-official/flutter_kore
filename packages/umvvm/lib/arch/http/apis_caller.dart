@@ -2,7 +2,7 @@ import 'package:umvvm/umvvm.dart';
 
 /// Mixin containing logic to collect requests
 /// in collection and cancel them in a batch when [MvvmInstance.dispose] called
-/// 
+///
 /// ```dart
 /// abstract class BaseBox extends MvvmInstance<dynamic> with ApiCaller<dynamic> {
 ///   String get boxName;

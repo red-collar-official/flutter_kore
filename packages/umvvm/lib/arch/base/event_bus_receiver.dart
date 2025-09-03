@@ -28,6 +28,8 @@ abstract class EventBusReceiver {
   /// Underlying stream subsription for [EventBus] events
   StreamSubscription? _eventsSubscription;
 
+  final _testReceivedEventsController = StreamController();
+
   /// Creates stream subscription for [EventBus] events.
   /// If [subscribe] is empty does nothing
   @protected
@@ -54,6 +56,10 @@ abstract class EventBusReceiver {
   @mustCallSuper
   void disposeSub() {
     _eventsSubscription?.cancel();
+    _testReceivedEventsController.close();
+
+    _receivedEvents.clear();
+    _eventsReceivedWhilePaused.clear();
   }
 
   /// Subscribes to event of given type
@@ -72,6 +78,8 @@ abstract class EventBusReceiver {
     void dynamicProcessor(event) {
       if (UMvvmApp.isInTestMode) {
         _receivedEvents.add(event.runtimeType);
+
+        _testReceivedEventsController.add(event);
       }
 
       if (reactsToPause && isPaused) {
@@ -119,8 +127,42 @@ abstract class EventBusReceiver {
   }
 
   /// Returns true if underlying events list contains given event name
+  ///
+  /// [event] - event type to check
+  /// [count] - optional count of events that must have been received
   @visibleForTesting
-  bool checkEventWasReceived(Type event) {
-    return _receivedEvents.contains(event);
+  bool checkEventWasReceived(Type event, {int? count}) {
+    if (count == null) {
+      return _receivedEvents.contains(event);
+    }
+
+    return _receivedEvents.whereType<Type>().length == count;
+  }
+
+  /// Waits till given event is received by this instance
+  ///
+  /// [event] - event type to check
+  /// [count] - optional count of events that must have been received
+  /// [timeout] - maximum duration to wait for events
+  @visibleForTesting
+  Future<void> waitTillEventIsReceived(
+    Type event, {
+    int? count,
+    Duration timeout = const Duration(seconds: 1),
+  }) async {
+    await for (final _ in _testReceivedEventsController.stream
+        .timeout(timeout, onTimeout: (s) => s.close())) {
+      if (checkEventWasReceived(event, count: count)) {
+        break;
+      }
+    }
+  }
+
+  /// Cleans collection of received events
+  ///
+  /// Useful for testing when you need to check event processing
+  @visibleForTesting
+  void cleanupReceivedEvents() {
+    _receivedEvents.clear();
   }
 }

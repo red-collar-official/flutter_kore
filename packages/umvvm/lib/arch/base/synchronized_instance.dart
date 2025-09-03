@@ -5,7 +5,7 @@ import 'package:umvvm/umvvm.dart';
 /// Helper class to call any [Future] with addition of timeout handling
 class SyncFuture {
   /// Flag indicating that this operation can be canceled
-  /// 
+  ///
   /// Used by [SynchronizedMvvmInstance] to decide if this operation must be canceled
   /// when calling instance is disposed
   final bool cancelOnDispose;
@@ -78,7 +78,7 @@ mixin SynchronizedMvvmInstance<Input> on MvvmInstance<Input> {
   /// Executes operation in sync meaning that if you wrap any code in this function
   /// the code will be executed in place if currently there are no other operations running
   /// otherwise function will add operation to queue and it will be executed after all previously executed operations are completed
-  /// 
+  ///
   /// [discardOnDispose] - flag indicating that this operation will be canceled when instance is disposed - defaults to true
   /// [timeout] - optional timeout for this operation
   /// [operation] - actual future callback that will be executed
@@ -124,7 +124,7 @@ mixin SynchronizedMvvmInstance<Input> on MvvmInstance<Input> {
   }
 
   /// Cancels all operations in current queue
-  /// 
+  ///
   /// Due to [Future] implementation in dart this function will not stop future that is currently running
   /// but all operations after running future will be discarded
   void cancelPendingOperations() {

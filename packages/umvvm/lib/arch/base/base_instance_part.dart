@@ -9,7 +9,7 @@ import 'package:umvvm/umvvm.dart';
 /// Parts must be annotated with [instancePart] annotation
 /// You also can execute requests and cancel them automatically when part will be disposed
 /// with [ApiCaller.executeAndCancelOnDispose] method
-/// 
+///
 /// Also parts can execute operations in sync with [SynchronizedMvvmInstance.enqueue]
 ///
 /// Example:

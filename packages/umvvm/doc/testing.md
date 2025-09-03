@@ -71,9 +71,37 @@ To check that event was sent and received you can use following methods:
 app.eventBus.checkEventWasSent(EnsureCloseRequestedEvent);
 
 postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent);
+
+// or
+
+postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent, count: 10);
 ```
 
 <b>checkEventWasReceived</b> method available for every mvvm instance.
+
+You also can wait till event is received by instance
+
+Here is example:
+
+```dart
+final interactor = await instances.getUniqueAsync<TestInteractor>();
+
+eventBus.send(TestEvent(number: 5));
+
+await interactor.waitTillEventIsReceived(TestEvent);
+
+// or
+
+await interactor.waitTillEventIsReceived(TestEvent, count: 10);
+
+expect(interactor.checkEventWasReceived(TestEvent), true);
+```
+
+If you need to reset received events information, for example to check again for same events you can clear this information as follows:
+
+```dart
+interactor.cleanupReceivedEvents();
+```
 
 More info about event bus can be found [here](./event_bus.md). 
 

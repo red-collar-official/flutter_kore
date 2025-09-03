@@ -42,7 +42,7 @@ class LoadingData<T> extends StatefulData<T> {
 class SuccessData<T> extends StatefulData<T> {
   /// Successfull result for this [StatefulData]
   final T result;
-  
+
   // coverage:ignore-start
   const SuccessData({
     required this.result,

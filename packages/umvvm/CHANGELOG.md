@@ -1,3 +1,9 @@
+## 1.3.0
+
+- Add SynchronizedMvvmInstance mixin that adds ability to execute operations in sync queue for every MvvmInstance
+- Adds test methods to wait till events are received by MvvmInstance
+- Update docs
+
 ## 1.2.5+3
 
 - Fix formatting issues
