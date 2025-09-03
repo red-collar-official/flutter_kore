@@ -1,3 +1,7 @@
+## 1.3.1
+
+- Split widget exports from main exports
+
 ## 1.3.0
 
 - Add SynchronizedMvvmInstance mixin that adds ability to execute operations in sync queue for every MvvmInstance

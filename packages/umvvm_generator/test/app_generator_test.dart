@@ -218,9 +218,9 @@ enum RouteNames {
   home,
 }
 
-abstract class NavigationInteractorDeclaration<NavigationState>
+abstract class NavigationInteractorDeclaration<NState>
     extends BaseNavigationInteractor<
-        NavigationState,
+        NState,
         Map<String, dynamic>,
         AppTab,
         Routes,

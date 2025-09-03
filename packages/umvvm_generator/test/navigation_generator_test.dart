@@ -1194,10 +1194,10 @@ part of 'test_navigation_main.dart';
 // MainNavigationInteractorGenerator
 // **************************************************************************
 
-abstract class NavigationInteractorDeclaration<NavigationState>
+abstract class NavigationInteractorDeclaration<NState>
     extends
         BaseNavigationInteractor<
-          NavigationState,
+          NState,
           Map<String, dynamic>,
           AppTab,
           Routes,

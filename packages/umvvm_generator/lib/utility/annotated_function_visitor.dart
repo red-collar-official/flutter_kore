@@ -31,7 +31,7 @@ class AnnotatedFunctionVisitor extends SimpleElementVisitor2<dynamic> {
   }
 
   DartObject? methodHasAnnotation(Type annotationType, MethodElement2 element) {
-    final annotations = TypeChecker.fromRuntime(annotationType).annotationsOf(
+    final annotations = TypeChecker.typeNamed(annotationType).annotationsOf(
       element,
     );
 

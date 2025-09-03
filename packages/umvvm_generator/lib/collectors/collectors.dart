@@ -13,7 +13,7 @@ import 'package:umvvm_generator/utility/class_utility.dart';
 class InstancesCollectorGenerator extends Generator {
   @override
   FutureOr<String?> generate(LibraryReader library, BuildStep buildStep) async {
-    const instancesAnnotation = TypeChecker.fromRuntime(Instance);
+    const instancesAnnotation = TypeChecker.typeNamed(Instance);
     final instances = library.annotatedWith(instancesAnnotation);
     final instancesJsonModels = <InstanceJsonModel>[];
 
@@ -57,7 +57,7 @@ class InstancesCollectorGenerator extends Generator {
 class ApisCollectorGenerator extends Generator {
   @override
   FutureOr<String?> generate(LibraryReader library, BuildStep buildStep) async {
-    const apiAnnotation = TypeChecker.fromRuntime(ApiAnnotation);
+    const apiAnnotation = TypeChecker.typeNamed(ApiAnnotation);
     final apis = library.annotatedWith(apiAnnotation);
     final apisJsonModels = <ApiJsonModel>[];
 

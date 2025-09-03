@@ -702,8 +702,8 @@ class MainNavigationInteractorGenerator
     }
 
     classBuffer.writeln('''
-abstract class ${ClassUtility.getClassName(element).split("<")[0]}Declaration<NavigationState> extends BaseNavigationInteractor<
-    NavigationState,
+abstract class ${ClassUtility.getClassName(element).split("<")[0]}Declaration<NState> extends BaseNavigationInteractor<
+    NState,
     Map<String, dynamic>,
     $appTabValue,
     Routes,
