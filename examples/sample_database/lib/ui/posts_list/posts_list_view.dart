@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/ui/posts_list/components/post_card.dart';
+import 'package:umvvm/umvvm_widgets.dart';
 
 import 'posts_list_view_model.dart';
 import 'posts_list_view_state.dart';

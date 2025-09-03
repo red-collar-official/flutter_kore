@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umvvm/umvvm.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/ui/posts_list/posts_list_view.dart';
+import 'package:umvvm/umvvm_widgets.dart';
 
 import 'components/bottom_navigation.dart';
 import 'home_view_model.dart';
