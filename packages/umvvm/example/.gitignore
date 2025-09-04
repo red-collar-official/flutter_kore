@@ -42,6 +42,7 @@ lib/**/*.api.dart
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/android/build/
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
