@@ -1,3 +1,7 @@
+## 1.3.1+2
+
+- Update main example
+
 ## 1.3.1+1
 
 - Fix formatting
