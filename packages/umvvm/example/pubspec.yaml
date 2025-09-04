@@ -20,7 +20,7 @@ dependency_overrides:
   build: ^3.0.0
 
 dev_dependencies:
-  umvvm_generator: ^2.0.0
+  umvvm_generator: ^2.1.0
 
   build: ^3.0.0
   build_config: ^1.1.2

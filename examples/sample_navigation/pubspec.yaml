@@ -23,7 +23,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
-  umvvm_generator: ^2.0.0
+  umvvm_generator: ^2.1.0
 
   json_serializable:
   build: ^3.0.0
