@@ -1,5 +1,9 @@
 ## 2.0.0+2
 
+- Update dependencies
+
+## 2.0.0+2
+
 - Update docs
 
 ## 2.0.0+1
