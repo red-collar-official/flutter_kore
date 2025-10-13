@@ -1,62 +1,64 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:integration_test/integration_test.dart';
-import 'package:sample_basic/ui/post/post_view_model.dart';
-import 'package:umvvm/arch/http/base_request.dart';
-import 'package:sample_basic/domain/apis/base/request.dart';
-import 'package:sample_basic/domain/apis/posts_api.dart';
-import 'package:sample_basic/domain/data/post.dart';
-import 'package:sample_basic/domain/global/global_app.dart';
-import 'package:sample_basic/ui/post/post_view.dart';
+// TODO: wait integration_test to update
 
-class MockPostsApi extends PostsApi {
-  @override
-  HttpRequest<Post?> getPost(int id) => super.getPost(id)
-    ..simulateResult = Response(
-        code: 200,
-        result: Post(
-          title: 'TestTitle',
-          body: 'TestBody',
-          id: 1,
-        ));
-}
+// import 'package:flutter/material.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:integration_test/integration_test.dart';
+// import 'package:sample_basic/ui/post/post_view_model.dart';
+// import 'package:umvvm/arch/http/base_request.dart';
+// import 'package:sample_basic/domain/apis/base/request.dart';
+// import 'package:sample_basic/domain/apis/posts_api.dart';
+// import 'package:sample_basic/domain/data/post.dart';
+// import 'package:sample_basic/domain/global/global_app.dart';
+// import 'package:sample_basic/ui/post/post_view.dart';
 
-class MockViewModel extends PostViewModel {}
+// class MockPostsApi extends PostsApi {
+//   @override
+//   HttpRequest<Post?> getPost(int id) => super.getPost(id)
+//     ..simulateResult = Response(
+//         code: 200,
+//         result: Post(
+//           title: 'TestTitle',
+//           body: 'TestBody',
+//           id: 1,
+//         ));
+// }
 
-void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+// class MockViewModel extends PostViewModel {}
 
-  group('PostViewTest', () {
-    testWidgets('PostViewTest InitialLoadTest', (tester) async {
-      await initApp(testMode: true);
+// void main() {
+//   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-      app.registerInstances();
-      await app.createSingletons();
+//   group('PostViewTest', () {
+//     testWidgets('PostViewTest InitialLoadTest', (tester) async {
+//       await initApp(testMode: true);
 
-      await tester.pumpAndSettle();
+//       app.registerInstances();
+//       await app.createSingletons();
 
-      final widget = PostView(
-        post: Post(
-          title: 'TestTitle',
-          body: 'TestBody',
-          id: 1,
-        ),
-        viewModel: MockViewModel(),
-      );
+//       await tester.pumpAndSettle();
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(
-          child: widget,
-        ),
-      ));
+//       final widget = PostView(
+//         post: Post(
+//           title: 'TestTitle',
+//           body: 'TestBody',
+//           id: 1,
+//         ),
+//         viewModel: MockViewModel(),
+//       );
 
-      await Future.delayed(const Duration(seconds: 3), () {});
+//       await tester.pumpWidget(MaterialApp(
+//         home: Material(
+//           child: widget,
+//         ),
+//       ));
 
-      await tester.pumpAndSettle();
+//       await Future.delayed(const Duration(seconds: 3), () {});
 
-      final titleFinder = find.text('TestTitle');
+//       await tester.pumpAndSettle();
 
-      expect(titleFinder, findsOneWidget);
-    });
-  });
-}
+//       final titleFinder = find.text('TestTitle');
+
+//       expect(titleFinder, findsOneWidget);
+//     });
+//   });
+// }

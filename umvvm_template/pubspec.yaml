@@ -29,13 +29,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build: ^3.0.0
+  build: ^4.0.2
   build_config: ^1.2.0
-  build_runner: ^2.6.0
-  dart_mappable_builder: ^4.6.0
+  build_runner: ^2.9.0
+  dart_mappable_builder: ^4.6.1
   flutter_lints: ^6.0.0
 
-  umvvm_generator: ^2.1.0
+  umvvm_generator: ^2.2.0
 
 flutter:
   generate: true
