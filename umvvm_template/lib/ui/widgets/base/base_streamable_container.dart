@@ -1,3 +1,4 @@
+import 'package:umvvm/umvvm_widgets.dart';
 import 'package:umvvm_template/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,13 +55,13 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
   final ScrollPhysics physics;
 }
 
-abstract class BaseStreamContainerState<Type, W extends BaseStreamContainer<Type>> extends State<W> {
+abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>> extends State<W> {
   bool isLoadingMore = false;
   int currentListLength = 0;
 
   @override
   Widget build(BuildContext context) {
-    return UIStreamBuilder<StatefulData<Type>?>(
+    return UmvvmStreamBuilder<StatefulData<T>?>(
       stream: widget.stream,
       // ignore: prefer_null_aware_operators
       initialData: widget.currentData != null ? widget.currentData! : null,
@@ -125,7 +126,7 @@ abstract class BaseStreamContainerState<Type, W extends BaseStreamContainer<Type
     );
   }
 
-  List<Widget> _dataView(Type result) {
+  List<Widget> _dataView(T result) {
     bool showTitle;
 
     if (widget.showTitle != null) {
@@ -166,7 +167,7 @@ abstract class BaseStreamContainerState<Type, W extends BaseStreamContainer<Type
         if (widget.bottomSlivers != null) ...widget.bottomSlivers!(0, null),
       ];
 
-  void processLoadMoreCallback(Type object) {
+  void processLoadMoreCallback(T object) {
     if (widget.isFinish!(object) || isLoadingMore) {
       return;
     }
@@ -189,9 +190,9 @@ abstract class BaseStreamContainerState<Type, W extends BaseStreamContainer<Type
     });
   }
 
-  Widget content(Type object);
+  Widget content(T object);
 
-  Widget itemBuilder(Type object, int index) {
+  Widget itemBuilder(T object, int index) {
     if (widget.onLoadMore != null) {
       if (index == widget.length(object) - 1) {
         processLoadMoreCallback(object);

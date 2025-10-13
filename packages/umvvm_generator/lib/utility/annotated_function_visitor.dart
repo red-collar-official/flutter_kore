@@ -1,4 +1,4 @@
-import 'package:analyzer/dart/element/element2.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/visitor2.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:analyzer/dart/constant/value.dart';
@@ -6,16 +6,16 @@ import 'package:umvvm/arch/navigation/annotations/link.dart';
 
 class AnnotatedFunctionVisitor extends SimpleElementVisitor2<dynamic> {
   Map<String, ConstantReader> annotatedMethods = <String, ConstantReader>{};
-  Map<String, MethodElement2> annotatedMethodsData = <String, MethodElement2>{};
+  Map<String, MethodElement> annotatedMethodsData = <String, MethodElement>{};
   List<String> allMethods = <String>[];
 
   Map<String, List<FormalParameterElement>> parameters =
       <String, List<FormalParameterElement>>{};
 
   @override
-  dynamic visitMethodElement(MethodElement2 element) {
+  dynamic visitMethodElement(MethodElement element) {
     final annotation = methodHasAnnotation(Link, element);
-    final name = element.name3;
+    final name = element.name;
 
     if (name == null || name.isEmpty) {
       return;
@@ -30,7 +30,7 @@ class AnnotatedFunctionVisitor extends SimpleElementVisitor2<dynamic> {
     allMethods.add(name);
   }
 
-  DartObject? methodHasAnnotation(Type annotationType, MethodElement2 element) {
+  DartObject? methodHasAnnotation(Type annotationType, MethodElement element) {
     final annotations = TypeChecker.typeNamed(annotationType).annotationsOf(
       element,
     );

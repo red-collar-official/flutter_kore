@@ -2,7 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'package:analyzer/dart/element/element2.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
@@ -21,7 +21,7 @@ final log = Logger('UmvvmGen');
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element2 element,
+    Element element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
@@ -336,7 +336,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
 
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element2 element,
+    Element element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
@@ -348,8 +348,8 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
     final methodsVisitor = AnnotatedFunctionVisitor();
 
     element
-      ..visitChildren2(visitor)
-      ..visitChildren2(methodsVisitor);
+      ..visitChildren(visitor)
+      ..visitChildren(methodsVisitor);
 
     final isDialog = annotation.peek('dialogs')?.boolValue ?? false;
     final isBottomSheet = annotation.peek('bottomSheets')?.boolValue ?? false;
@@ -395,7 +395,7 @@ class MainNavigationGenerator extends GeneratorForAnnotation<RoutesAnnotation> {
       final requiresState =
           (methodsVisitor.annotatedMethodsData[key]?.formalParameters
                       // coverage:ignore-start
-                      .where((element) => element.name3 == 'state') ??
+                      .where((element) => element.name == 'state') ??
                   [])
               // coverage:ignore-end
               .isNotEmpty;
@@ -679,7 +679,7 @@ class MainNavigationInteractorGenerator
     extends GeneratorForAnnotation<AppNavigation> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element2 element,
+    Element element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
@@ -733,7 +733,7 @@ abstract class ${ClassUtility.getClassName(element).split("<")[0]}Declaration<NS
 class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
   @override
   FutureOr<String> generateForAnnotatedElement(
-    Element2 element,
+    Element element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {

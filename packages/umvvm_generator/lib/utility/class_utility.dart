@@ -1,11 +1,11 @@
-import 'package:analyzer/dart/element/element2.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:umvvm_generator/utility/main_app_visitor.dart';
 
 class ClassUtility {
-  static String getClassName(Element2 element) {
+  static String getClassName(Element element) {
     final visitor = MainAppVisitor();
 
-    element.visitChildren2(visitor);
+    element.visitChildren(visitor);
 
     return visitor.className ?? '';
   }

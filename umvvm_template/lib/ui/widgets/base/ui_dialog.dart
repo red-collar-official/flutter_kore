@@ -40,7 +40,7 @@ class UIDialog extends StatelessWidget {
           },
           child: SafeArea(
             child: Material(
-              color: backgroundColor ?? dialogTheme.backgroundColor ?? Theme.of(context).dialogBackgroundColor,
+              color: backgroundColor ?? dialogTheme.backgroundColor ?? DialogTheme.of(context).backgroundColor,
               elevation: elevation ?? dialogTheme.elevation ?? _defaultElevation,
               shape: shape ?? dialogTheme.shape ?? _defaultDialogShape,
               type: MaterialType.card,
