@@ -1,34 +1,34 @@
 # DI
 
-<img src="doc_images/di.png" alt="di" width="600"/>
+<img src="doc_images/di.png" alt="di" width="750"/>
 
-Library contains simple DI container.
+The library contains a simple DI container.
 
-You can access it with <b>app.instances</b> or via singleton <b>InstanceCollection</b>.
+You can access it with `app.instances` or via the singleton `InstanceCollection`.
 
-DI container can hold any annotated <b>MvvmInstance</b> child class but not any other.
+The DI container can hold any annotated `MvvmInstance` child class but not any other.
 
-If you want to hold third party instance create a wrapper for it.
+If you want to hold a third-party instance, create a wrapper for it.
 
 More information about wrappers can be found [here](./wrapper.md).
 
-Di container is divided into scopes that are basically subcontainers.
+The DI container is divided into scopes, which are basically subcontainers.
 
-Using scopes you can create unique instance spaces that will be automatically disposed when every dependent instance is disposed.
+Using scopes, you can create unique instance spaces that will be automatically disposed when every dependent instance is disposed.
 
-You can also define modules that descibe dependencies collection. More information about modules below.
+You can also define modules that describe dependency collections. More information about modules is provided below.
 
-Every scope can contain one or list of objects of given type. If scope contains multiple instances of the same type you need to specify index when you are trying to create or get object.
+Every scope can contain one or a list of objects of a given type. If a scope contains multiple instances of the same type, you need to specify the index when you are trying to create or get the object.
 
-More information about scopes below.
+More information about scopes is provided below.
 
-### Defining instances
+### Defining Instances
 
-There are several ways to annotate mvvm instances to use in DI container: <b>singleton</b> and <b>basicInstance</b> annotations (or async and lazy analogues described below) and full <b>Instance</b> annotation.
+There are several ways to annotate MVVM instances to use in the DI container: `singleton` and `basicInstance` annotations (or async and lazy analogues described below) and the full `Instance` annotation.
 
-It is required to define input type for instances. It is passed as generic argument.
+It is required to define the input type for instances. It is passed as a generic argument.
 
-Singleton instances belong to global scope and they are initialized at app startup. If singleton is <b>isLazy</b> then it will be created only when accessed first time.
+Singleton instances belong to the global scope and they are initialized at app startup. If a singleton is `isLazy`, then it will be created only when accessed for the first time.
 
 Here are some examples:
 
@@ -62,14 +62,13 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {}
 
 ```
 
-### Async initialization
+### Async Initialization
 
-If you want to create mvvm instance that is initialized asynchronously you can pass <b>async</b> param to <b>Instance</b> annotation.
-Or you can use predefined default annotations.
+If you want to create an MVVM instance that is initialized asynchronously, you can pass the `async` param to the `Instance` annotation, or you can use predefined default annotations.
 
-<b>Important:</b> You must mark instances as async if they depend on other async instances.
+**Important:** You must mark instances as async if they depend on other async instances.
 
-Then you can get async instances with <b>getAsync</b> method.
+Then you can get async instances with the `getAsync` method.
 
 Here are some examples:
 
@@ -121,18 +120,17 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 
 ```
 
-In last example there is also <b>initializationOrder</b> field that is used to specify the order of singleton initialization. 
-Only matters for singleton async instances.
+In the last example, there is also an `initializationOrder` field that is used to specify the order of singleton initialization. This only matters for singleton async instances.
 
-If this field is specified <b>awaitInitialization</b> value is also must be set to true.
+If this field is specified, the `awaitInitialization` value must also be set to true.
 
-This flag indicates that app creation process will await initialization of this instance. Only matters for async singleton instances.
+This flag indicates that the app creation process will await the initialization of this instance. This only matters for async singleton instances.
 
-You also need to specify <b>isAsync</b> flag in configuration object for async instance.
+You also need to specify the `isAsync` flag in the configuration object for an async instance.
 
-You can also override <b>initializeAsync</b> method for async instances.
+You can also override the `initializeAsync` method for async instances.
 
-Here is example of async instance:
+Here is an example of an async instance:
 
 ```dart
 @asyncSingleton
@@ -159,9 +157,9 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 
 ```
 
-You don't need to specify <b>isAsync</b> flag in configuration object if you use async dependencies, this is done automatically. You only need to specify it in annotation.
+You don't need to specify the `isAsync` flag in the configuration object if you use async dependencies; this is done automatically. You only need to specify it in the annotation.
 
-Async instances also have method to handle dependency ready status:
+Async instances also have a method to handle dependency ready status:
 
 ```dart
 @asyncSingleton
@@ -198,24 +196,21 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 }
 ```
 
-Async local instances can be accessed safely only after <b>onAsyncInstanceReady</b> fired for this instance.
+Async local instances can be accessed safely only after `onAsyncInstanceReady` is fired for this instance.
 
-You can unregister instances with <b>app.instances.unregisterInstance</b> method. This is useful when you need singleton instance, but only for some time.
-This way after instance is used you can unregister and dispose it.
+You can unregister instances with the `app.instances.unregisterInstance` method. This is useful when you need a singleton instance but only for some time. This way, after the instance is used, you can unregister and dispose of it.
 
-### Accessing instances with global instances interface
+### Accessing Instances with Global Instances Interface
 
-Instances can be obtained using <b>app.instances.get<T>()</b> or analogues for async and etc...
+Instances can be obtained using `app.instances.get<T>()` or analogues for async, etc.
 
-Instance collection ensures that object is initialized before you accessing it.
+The instance collection ensures that the object is initialized before you access it.
 
-When you trying to get instance from collection - it will be initialized first, 
-then all dependencies of this instance will be initialized, and etc. At the end you will get fully initialized object and every dependency in dependency tree of this object also will be initialized.
+When you try to get an instance from the collection, it will be initialized first, then all dependencies of this instance will be initialized, and so on. At the end, you will get a fully initialized object, and every dependency in the dependency tree of this object will also be initialized.
 
-If you want to skip initialization of instance dependencies (for example if you need to just call some method from instance that doesn't require any of dependencies to be processed) you can pass <b>withoutConnections</b> flag to <b>app.instances.get<T>()</b> or analogues.
+If you want to skip the initialization of instance dependencies (for example, if you need to just call some method from an instance that doesn't require any of the dependencies to be processed), you can pass the `withoutConnections` flag to `app.instances.get<T>()` or analogues.
 
-If you need to access singleton instance or you need to get object in some 
-scope you can use <b>app.instances.get<T>()</b> anywere in code.
+If you need to access a singleton instance or you need to get an object in some scope, you can use `app.instances.get<T>()` anywhere in the code.
 
 Here are some examples of how you can access instances:
 
@@ -266,23 +261,21 @@ Instance getWithParams<Instance extends MvvmInstance, InputState>({
 });
 ```
 
-### Accessing instances inside dependent instances
+### Accessing Instances Inside Dependent Instances
 
-When you are inside of any <b>DependentInstance</b> (interactors, wrappers, view models and any custom mvvm instance that mix <b>DependentInstance</b>)
-then you can write dependecies and they will be connected automatically when instance is initialized. Also when instance is disposed every dependency will be disposed automatically (more information about <b>DependentInstance</b> can be found [here](./custom_instances.md)).
+When you are inside any `DependentInstance` (interactors, wrappers, view models, and any custom MVVM instance that mixes `DependentInstance`), then you can write dependencies and they will be connected automatically when the instance is initialized. Also, when the instance is disposed, every dependency will be disposed automatically (more information about `DependentInstance` can be found [here](./custom_instances.md)).
 
-To enable this behaviour you need to override <b>dependencies</b> field in configuration object.
+To enable this behavior, you need to override the `dependencies` field in the configuration object.
 
-Configuration object provided via <b>configuration</b> getter for every dependent mvvm instance.
+The configuration object is provided via the `configuration` getter for every dependent MVVM instance.
 
-This method returns list of connector objects that describe how dependency is required to be connected.
-More information about connectors can be found [here](./connectors.md).
+This method returns a list of connector objects that describe how the dependency is required to be connected. More information about connectors can be found [here](./connectors.md).
 
-Then you need to access object with <b>getLocalInstance</b> rather than <b>app.instances.get<T>()</b>.
+Then you need to access the object with `getLocalInstance` rather than `app.instances.get<T>()`.
 
-Singleton instances are always accessed with <b>app.instances.get<T>()</b>. And you do not need to write them in dependencies list.
+Singleton instances are always accessed with `app.instances.get<T>()`. And you do not need to write them in the dependencies list.
 
-Here is example:
+Here is an example:
 
 ```dart
 @basicInstance
@@ -310,18 +303,17 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 }
 ```
 
-### Accessing parts
+### Accessing Parts
 
-Parts are always unique. So you can get them with <b>getUnique</b> and <b>getUniqueAsync</b> methods.
+Parts are always unique. So you can get them with the `getUnique` and `getUniqueAsync` methods.
 
-If you get part with this method <b>parentInstance</b> will be uninitialized.
+If you get a part with this method, `parentInstance` will be uninitialized.
 
-If you inside any <b>MvvmInstance</b> you can connect parts via <b>parts</b> field in configuration object.
+If you are inside any `MvvmInstance`, you can connect parts via the `parts` field in the configuration object.
 
-Parts connected via <b>PartConnector</b>. 
-More information about connectors can be found [here](./connectors.md)
+Parts are connected via `PartConnector`. More information about connectors can be found [here](./connectors.md).
 
-Then you can get instance with <b>useInstancePart</b> method.
+Then you can get the instance with the `useInstancePart` method.
 
 Here is an example:
 
@@ -339,27 +331,27 @@ late final testInstancePart = useInstancePart<TestInstancePart>();
 
 ### Scopes
 
-Scope is subcontainer where you can store independent instances.
+A scope is a subcontainer where you can store independent instances.
 
 Scopes are defined by unique string identifiers.
 
-There are several predefined scopes - global, unique and weak:
+There are several predefined scopes—global, unique, and weak:
 
-1) Global scope (<b>BaseScopes.global</b>) holds singleton instances;
-2) Weak scope (<b>BaseScopes.weak</b>) holds objects that can be accessed from anywhere as long as some mvvm instance connected to it;
-3) Unique scope (<b>BaseScopes.unique</b>) always create new instance.
+1) Global scope (`BaseScopes.global`) holds singleton instances;
+2) Weak scope (`BaseScopes.weak`) holds objects that can be accessed from anywhere as long as some MVVM instance is connected to it;
+3) Unique scope (`BaseScopes.unique`) always creates a new instance.
 
 You can define your own scopes.
 
-In this case instance in this scope will be alive as long as there is object that depend on this instance. It is similar to <b>BaseScopes.weak</b> behaviour, but in subcontainer, rather than in global container.
+In this case, an instance in this scope will be alive as long as there is an object that depends on this instance. It is similar to `BaseScopes.weak` behavior, but in a subcontainer rather than in the global container.
 
-Two specify scope that you want object from you can pass scope param to <b>get</b> method.
+To specify the scope that you want an object from, you can pass the scope param to the `get` method.
 
 ```dart
 app.instances.get<UserInteractor>(scope: CustomScopes.userProfileScope('1'));
 ```
 
-You can also specify scope in connector objects (More information about connectors can be found [here](./connectors.md)):
+You can also specify the scope in connector objects (more information about connectors can be found [here](./connectors.md)):
 
 ```dart
 @override
@@ -374,24 +366,25 @@ DependentMvvmInstanceConfiguration get configuration =>
   );
 ```
 
-Then you can get instance with <b>getLocalInstance</b> method.
+Then you can get the instance with the `getLocalInstance` method.
 
 ### Modules
 
-Modules are simple classes that help to orginize dependencies.
+<img src="doc_images/modules.png" alt="modules" width="750"/>
 
-If your classes depend on similar set of scoped instances you can combine them using <b>InstanceModule</b>.
+Modules are simple classes that help to organize dependencies.
 
-All dependencies in module will be disposed when there are no instances that belong to this module.
+If your classes depend on a similar set of scoped instances, you can combine them using `InstanceModule`.
 
-You can also define typical parts for this module that will be connected for every instance that belongs to given module.
+All dependencies in a module will be disposed when there are no instances that belong to this module.
 
-Dependencies represented with <b>Connector</b> objects. More information about connectors can be found [here](./connectors.md)
+You can also define typical parts for this module that will be connected for every instance that belongs to the given module.
 
-When you define dependent instance that belongs to given module all dependencies from this module will be connected automatically.
+Dependencies are represented with `Connector` objects. More information about connectors can be found [here](./connectors.md).
 
-You also can store here instances so you can access them inside dependent class. Instances are initialized with same methods as other dependentInstances:
-<b>getLazyLocalInstance</b>, <b>getAsyncLazyLocalInstance</b>, <b>getLocalInstance</b> and <b>useInstancePart</b>. This way you do not need to write initializers in every dependent class.
+When you define a dependent instance that belongs to a given module, all dependencies from this module will be connected automatically.
+
+You can also store instances here so you can access them inside a dependent class. Instances are initialized with the same methods as other dependent instances: `getLazyLocalInstance`, `getAsyncLazyLocalInstance`, `getLocalInstance`, and `useInstancePart`. This way, you do not need to write initializers in every dependent class.
 
 Here is an example:
 
@@ -434,11 +427,11 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 }
 ```
 
-You do not need to write singleton dependencies in module dependencies list.
+You do not need to write singleton dependencies in the module dependencies list.
 
-If you decided to store dependency instances inside module you need to connect this module - so you can access it. You can do it with <b>connectModule</b> method.
+If you decide to store dependency instances inside a module, you need to connect this module so you can access it. You can do it with the `connectModule` method.
 
-<b>Important:</b> Module instances passed to <b>modules</b> field must be unique.
+**Important:** Module instances passed to the `modules` field must be unique.
 
 Here is an example:
 
@@ -455,21 +448,19 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 
   late final testModule = connectModule<TestModule>();
 
-  void somFunction() {
-    testModile.postInteractor.loadPost();
+  void someFunction() {
+    testModule.postInteractor.loadPost();
   }
 }
 ```
 
-### Utility functions
+### Utility Functions
 
-You also can enable runtime check for cyclic dependencies with <b>instances.checkForCyclicDependencies</b> flag.
-This flag is false by default.
+You can also enable runtime check for cyclic dependencies with the `instances.checkForCyclicDependencies` flag. This flag is false by default.
 
-It is recommended to allow only in debug or stage modes.
+It is recommended to enable this only in debug or stage modes.
 
-You also can quickly get and use instance and dispose it after automatically 
-with <b>app.instances.useAndDisposeInstance</b> and <b>app.instances.useAndDisposeInstanceWithParams</b>.
+You can also quickly get and use an instance and dispose of it afterward automatically with `app.instances.useAndDisposeInstance` and `app.instances.useAndDisposeInstanceWithParams`.
 
 Here is an example:
 
@@ -479,7 +470,7 @@ app.instances.useAndDisposeInstance<StoreRedirectWrapper>((storeRedirectWrapper)
 });
 ```
 
-You can also check if all dependencies connected to instance and check if all parts are connected to instance. You also can override callbacks for it.
+You can also check if all dependencies are connected to an instance and check if all parts are connected to an instance. You can also override callbacks for it.
 
 Here is an example:
 

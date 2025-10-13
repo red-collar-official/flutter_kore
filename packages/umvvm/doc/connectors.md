@@ -1,19 +1,18 @@
 # Connectors
 
-Connectors are objects that describe dependency for mvvm instance.
+<img src="doc_images/connectors.png" alt="connectors" width="750"/>
 
-We need to specify a type of instance we want to depend on.
+Connectors are objects that describe dependencies for Umvvm instances.
 
-We also can define count of objects that we want to connect.
+We need to specify the type of instance we want to depend on.
 
-We also can specify scope of object. If you want unique copy of object use <b>BaseScopes.unique</b> scope. By default <b>BaseScopes.weak</b> is used.
+We can also define the count of objects that we want to connect.
 
-If you mark connector as lazy - instance will be connected when accessed first time
-with <b>getLazyLocalInstance</b> and <b>getAsyncLazyLocalInstance</b>.
+We can also specify the scope of the object. If you want a unique copy of an object, use `BaseScopes.unique` scope. By default, `BaseScopes.weak` is used.
 
-We can also specify if we want to connect object without dependencies - 
-in this case connected object won't be listening <b>EventBus</b> events and objects that this instance depends on also won't be connected.
-It is useful if you just want to use some method of small instance.
+If you mark a connector as lazy, the instance will be connected when accessed for the first time with `getLazyLocalInstance` and `getAsyncLazyLocalInstance`.
+
+We can also specify if we want to connect an object without dependencies—in this case, the connected object won't be listening to `EventBus` events, and objects that this instance depends on also won't be connected. This is useful if you just want to use some method of a small instance.
 
 Examples would be:
 
@@ -33,8 +32,7 @@ DependentMvvmInstanceConfiguration get configuration =>
     );
 ```
 
-Library creates connectors for every single mvvm instance.
-This way you don't need to write <b>Connector</b> classes for every instance. You can just use predefined ones as follows:
+The library creates connectors for every single MVVM instance. This way you don't need to write `Connector` classes for every instance. You can just use predefined ones as follows:
 
 ```dart
 @override
@@ -48,11 +46,9 @@ DependentMvvmInstanceConfiguration get configuration =>
       ],
     );
 ```
+### Part Connectors
 
-### Part connectors
-
-Parts (you can read about parts [here](./instance_part.md)) are connected with <b>PartConnector</b> that is lightweight version of base connector.
-This is because some settings of <b>Connector</b> are not needed for parts.
+Parts (you can read about parts [here](https://./instance_part.md)) are connected with `PartConnector`, which is a lightweight version of the base connector. This is because some settings of `Connector` are not needed for parts.
 
 ```dart
 const PartConnector(type: TestInstancePart, isAsync: true, input: 6),
@@ -62,8 +58,7 @@ const PartConnector(type: SharePart, count: 5), // 5 unique parts
 const PartConnector(type: LikeUserPart, withoutConnections: true),
 ```
 
-Library creates connectors for every part "../docs"too.
-This way you don't need to write <b>PartConnector</b> classes for every part.  You can just use predefined ones as follows:
+The library creates connectors for every part too. This way you don't need to write `PartConnector` classes for every part. You can just use predefined ones as follows:
 
 ```dart
 @override

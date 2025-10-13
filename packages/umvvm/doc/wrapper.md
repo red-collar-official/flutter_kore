@@ -1,35 +1,34 @@
 # Wrappers
 
-<img src="doc_images/wrapper.png" alt="wrapper" width="600"/>
+<img src="doc_images/wrapper.png" alt="wrapper" width="750"/>
 
-Wrappers contain logic for working with third party dependencies.
+Wrappers contain logic for working with third-party dependencies.
 
-Wrapper can be just used as instance holder or contain logic for working with third party api.
+Wrappers can be used as instance holders or contain logic for working with third-party APIs.
 
-You also need to specify input type for wrappers. It is passed as generic argument.
+You also need to specify the input type for wrappers. It is passed as a generic argument.
 
-Input is always available via <b>input</b> field.
+Input is always available via the `input` field.
 
-Wrappers also can be singleton or default instances.
+Wrappers can be singleton or default instances.
 
-Wrappers unlike interactors don't have state, but they also can receive <b>EventBus</b> events.
+Unlike interactors, wrappers don't have state, but they can receive `EventBus` events.
 
-More information about <b>EventBus</b> can be found [here](./event_bus.md).
+More information about `EventBus` can be found [here](./event_bus.md).
 
-We dont need to write dependencies in our instances for singleton wrappers
-and we can access it with <b>app.instances</b>.
+We don't need to write dependencies in our instances for singleton wrappers and we can access them with `app.instances`.
 
-Wrapper also can depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
+Wrappers can also depend on other [interactors](./interactor.md) and wrappers (or [custom](./custom_instance.md) instances) via the `dependencies` field in the configuration object.
 
-Configuration object provided via <b>configuration</b> getter for every dependent wrapper.
+The configuration object is provided via the `configuration` getter for every dependent wrapper.
 
-Wrapper also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
+Wrappers can also contain [parts](./instance_part.md) via the `parts` field in the configuration object.
 
-Wrapper also can belong to modules(you can read about modules [here](./di.md)) via <b>modules</b> field in configuration object.
+Wrappers can also belong to modules (you can read about modules [here](./di.md)) via the `modules` field in the configuration object.
 
-They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md)).
+They are connected with `Connector` objects (more information about connectors can be found [here](./connectors.md)).
 
-Typical example would be:
+A typical example would be:
 
 ```dart
 // String - input type
@@ -38,7 +37,7 @@ class StripeWrapper extends BaseWrapper<String> {
 }
 ```
 
-Here is example if declaration of all types of dependencies:
+Here is an example of declaration of all types of dependencies:
 
 ```dart
 @singleton
@@ -93,10 +92,9 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 }
 ```
 
-There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+There is also the ability to execute code in a synced queue — meaning that if there are currently running operations, new code will be executed after all previous operations are completed. Otherwise, the operation will be executed instantly.
 
-By default if wrapper is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
-Also you can provide optional timeout for this operation
+By default, if a wrapper is disposed, all pending operations are discarded, but this can be changed with the `discardOnDispose` flag. You can also provide an optional timeout for this operation.
 
 ```dart
 @singleton
@@ -111,12 +109,12 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
         response = await app.apis.posts.getPosts(offset, limit).execute();
       }
 
-      // process response
+      // Process response
     })
   }
 }
 ```
 
-Instances can be then obtained using <b>app.instances.get<T>()</b> or <b>getLocalInstance</b> methods. More information about this methods can be found [here](./di.md).
+Instances can then be obtained using `app.instances.get<T>()` or `getLocalInstance` methods. More information about these methods can be found [here](./di.md).
 
-To see base settings and methods of wrappers you can visit [this page](./mvvm_instance.md).
+To see base settings and methods of wrappers, you can visit [this page](./mvvm_instance.md).

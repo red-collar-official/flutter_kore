@@ -1,17 +1,16 @@
 # Testing
 
-<img src="doc_images/testing.png" alt="testing" width="600"/>
+<img src="doc_images/testing.png" alt="testing" width="750"/>
 
-All components of architecture except for view states can be unit tested.
-View states require widget tests.
+All components of the architecture except for view states can be unit tested. View states require widget tests.
 
-Before tests you always need set test mode flag.
+Before tests, you always need to set the test mode flag.
 
 ```dart
 UMvvmApp.isInTestMode = true;
 ```
 
-If you testing mvvm instances you also you need to register instances if they are used in test.
+If you are testing MVVM instances, you also need to register instances if they are used in the test.
 
 ```dart
 setUp(() async {
@@ -24,9 +23,9 @@ setUp(() async {
 
 There are several helper methods for tests.
 
-Mock instances can be registered in instance collection with <b>addTest</b> method.
+Mock instances can be registered in the instance collection with the `addTest` method.
 
-You also can force get instance (skipping initialization checks).
+You can also force get an instance (skipping initialization checks).
 
 ```dart
 app.instances.addTest<PostInteractor>(BaseScopes.global, mockPostInteractor);
@@ -36,7 +35,7 @@ app.instances.forceGet<UserInteractor>(); // throws exception
 
 ```
 
-You can also add builder for mocked dependency to mock instances initialization:
+You can also add a builder for a mocked dependency to mock instances initialization:
 
 ```dart
 app.instances.addBuilder<PostInteractor>(() => postInteractor);
@@ -47,9 +46,9 @@ app.instances.mock(instance: mockInstance);
 app.instances.mock<TestMvvmInstance>(builder: MockTestMvvmInstance.new);
 ```
 
-More info about DI can be found [here](./di.md).
+More information about DI can be found [here](./di.md).
 
-Test view models can be passed as parameter to mvvm widgets:
+Test view models can be passed as a parameter to MVVM widgets:
 
 ```dart
 final widget = PostView(
@@ -62,10 +61,9 @@ final widget = PostView(
 );
 ```
 
-More info about view models can be found [here](./view_model.md). 
-About widgets you can read [here](./widget.md). 
+More information about view models can be found [here](./view_model.md). About widgets, you can read [here](./widget.md).
 
-To check that event was sent and received you can use following methods:
+To check that an event was sent and received, you can use the following methods:
 
 ```dart
 app.eventBus.checkEventWasSent(EnsureCloseRequestedEvent);
@@ -77,11 +75,11 @@ postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent);
 postInteractor.checkEventWasReceived(EnsureCloseRequestedEvent, count: 10);
 ```
 
-<b>checkEventWasReceived</b> method available for every mvvm instance.
+The `checkEventWasReceived` method is available for every MVVM instance.
 
-You also can wait till event is received by instance
+You can also wait until an event is received by an instance.
 
-Here is example:
+Here is an example:
 
 ```dart
 final interactor = await instances.getUniqueAsync<TestInteractor>();
@@ -97,17 +95,17 @@ await interactor.waitTillEventIsReceived(TestEvent, count: 10);
 expect(interactor.checkEventWasReceived(TestEvent), true);
 ```
 
-If you need to reset received events information, for example to check again for same events you can clear this information as follows:
+If you need to reset received events information, for example, to check again for the same events, you can clear this information as follows:
 
 ```dart
 interactor.cleanupReceivedEvents();
 ```
 
-More info about event bus can be found [here](./event_bus.md). 
+More information about the event bus can be found [here](./event_bus.md).
 
-For apis you can mock api results with <b>simulateResponse</b> and <b>simulateResult</b>
+For APIs, you can mock API results with `simulateResponse` and `simulateResult`.
 
-Typical example of Api mocks for tests:
+A typical example of API mocks for tests:
 
 ```dart
 class MockPostsApiResponse extends PostsApi {
@@ -131,13 +129,13 @@ class MockPostsApiResult extends PostsApi {
 }
 ```
 
-You can then set apis to mocked instance:
+You can then set APIs to a mocked instance:
 
 ```dart
 app.apis.posts = MockPostsApi();
 ```
 
-More info about apis can be found [here](./view_model.md). 
+More information about APIs can be found [here](./view_model.md).
 
 Here are some examples for typical test cases:
 
@@ -243,9 +241,9 @@ void main() {
 }
 ```
 
-Custom instances can be tested in the same way. If you annotated mvvm instance with <b>Instance</b> annotation you can safely replace builders and references for it.
+Custom instances can be tested in the same way. If you annotated an MVVM instance with the `Instance` annotation, you can safely replace builders and references for it.
 
-Navigation can be tested with default methods. You can check latest routes in all stacks, you can set current tab if needed, you can execute links and open routes, this way you can simulate any navigation stack state.
+Navigation can be tested with default methods. You can check the latest routes in all stacks; you can set the current tab if needed; you can execute links and open routes; this way you can simulate any navigation stack state.
 
 Here are some examples:
 

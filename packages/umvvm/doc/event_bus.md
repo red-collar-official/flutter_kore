@@ -1,11 +1,10 @@
 # EventBus
 
-<img src="doc_images/event_bus.png" alt="event_bus" width="600"/>
+<img src="doc_images/event_bus.png" alt="event_bus" width="750"/>
 
-Event bus instance is avaliable globally with <b>app.eventBus</b> or via <b>EventBus</b> singleton. 
+The EventBus instance is available globally with `app.eventBus` or via the `EventBus` singleton.
 
-Every mvvm instance has access to <b>EventBus</b> events.
-Events can be subscribed to with <b>subscribe</b> method.
+Every MVVM instance has access to `EventBus` events. Events can be subscribed to with the `subscribe` method.
 
 Events are just model classes with needed fields.
 
@@ -32,18 +31,15 @@ List<EventBusSubscriber> subscribe() => [
 app.eventBus.send(PostLikedEvent(id: id));
 ```
 
-You also can create separate instance of EventBus to handle specific operation - for example file uploading.
-While we upload file we may want to send progress events in separate event bus.
+You can also create a separate instance of EventBus to handle specific operations—for example, file uploading. While we upload a file, we may want to send progress events in a separate event bus.
 
 ```dart
 final fileUploadEventBus = EventBus.newSeparateInstance();
 ```
 
-Be aware that instances are not connected to this new separate event bus and you need to write subscribe logic yourself (do not forget to dispose event subscriptions).
+Be aware that instances are not connected to this new separate event bus, and you need to write the subscription logic yourself (do not forget to dispose of event subscriptions).
 
-Reactions to events for every mvvm instance can be paused and resumed with corresponding methods;
-By default events do not react to pauses;
-To enable this you can subscribe to events with follows:
+Reactions to events for every MVVM instance can be paused and resumed with corresponding methods. By default, events do not react to pauses. To enable this, you can subscribe to events as follows:
 
 ```dart
 @override
@@ -53,19 +49,19 @@ List<EventBusSubscriber> subscribe() => [
           _onPostLiked(event.id);
         },
         reactsToPause: true,
-        // flag indicating if instance need to 'replay' events that was received while instance was paused
+        // flag indicating if instance needs to 'replay' events that were received while instance was paused
         firesAfterResume: false,
       ),
     ];
 ```
 
-By default view models pause event subscriptions when view become invisible and pause them for all dependencies.
+By default, view models pause event subscriptions when the view becomes invisible and pause them for all dependencies.
 
-If you want to manually pause events for instance you can call <b>pauseEventBusSubscription</b>.
+If you want to manually pause events for an instance, you can call `pauseEventBusSubscription`.
 
-When you want to resume events for instance call <b>resumeEventBusSubscription</b>.
+When you want to resume events for an instance, call `resumeEventBusSubscription`.
 
-You can also manually subscribe for particular event of list of events anywere in the app.
+You can also manually subscribe to a particular event or a list of events anywhere in the app.
 
 Here is an example:
 

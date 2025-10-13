@@ -1,19 +1,18 @@
 # App
 
-<img src="doc_images/app.png" alt="app" width="600"/>
+<img src="doc_images/app.png" alt="app" width="750"/>
 
-App is main class that holds and connects umvvm architecture components
-such as event bus and instance collection.
+The App is the main class that holds and connects Umvvm architecture components such as the event bus and instance collection.
 
-App exists as global object or singleton.
+The App exists as a global object or singleton.
 
-You must initialize app before <b>runApp</b> call.
+You must initialize the app before the `runApp` call.
 
-If you are using apis then you can store <b>Apis</b> reference in main app.
+If you are using APIs, then you can store the `Apis` reference in the main app.
 
-More info about http component can be found [here](./apis.md).
+More information about the HTTP component can be found [here](./apis.md).
 
-For example here is definition of main app class:
+For example, here is the definition of a main app class:
 
 ```dart
 @mainApp
@@ -39,11 +38,12 @@ Future<void> main() async {
 }
 ```
 
-If your app uses navigation component you need to specify navigation interactor type in app declaration.
+If your app uses the navigation component, you need to specify the navigation interactor type in the app declaration.
 
 Here is an example:
 
 ```dart
+
 @MainApp(navigationInteractorType: NavigationInteractor)
 class App extends UMvvmApp<NavigationInteractor> with AppGen {
   final localStorage = SecureStorage();
@@ -57,15 +57,16 @@ class App extends UMvvmApp<NavigationInteractor> with AppGen {
 }
 ```
 
-More info about navigation component can be found [here](./navigation.md).
+More information about the navigation component can be found [here](https://./navigation.md).
 
-Be aware that if you create separate isolate - it will contain new independent app instance.
+Be aware that if you create a separate isolate, it will contain a new independent app instance.
 
-If your app uses caching for stateful instances you need to specify cache delegates for this app.
+If your app uses caching for stateful instances, you need to specify cache delegates for this app.
 
 Example:
 
 ```dart
+
 Future<void> _initLocalStorage() async {
   await app.localStorage.initialize();
 
@@ -74,4 +75,4 @@ Future<void> _initLocalStorage() async {
 }
 ```
 
-In the example above <b>localStorage</b> can be any library for caching: for example <b>SharedPreferences</b> or <b>SecureStorage</b>.
+In the example above, `localStorage` can be any library for caching, for example, `SharedPreferences` or `SecureStorage`.

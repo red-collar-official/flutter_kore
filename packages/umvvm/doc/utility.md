@@ -1,6 +1,6 @@
 # Utility
 
-Package contains small utility classes.
+The package contains small utility classes.
 
 The first two are just sealed classes for network requests and field validation:
 
@@ -19,9 +19,9 @@ statefulData.unwrap(); // valid
 
 ```
 
-Stateful data can be unwrapped to get result value if it is present.
+Stateful data can be unwrapped to get the result value if it is present.
 
-And here is sealed class for field validation: it contains valid, error and ignored state.
+And here is a sealed class for field validation: it contains valid, error, and ignored states.
 
 ```dart
 sealed class FieldValidationState {}
@@ -37,9 +37,9 @@ class ErrorFieldState extends FieldValidationState {
 }
 ```
 
-This values used by <b>FormViewModelMixin</b>. More info about <b>FormViewModelMixin</b> below.
+These values are used by `FormViewModelMixin`. More information about `FormViewModelMixin` is provided below.
 
-There is also <b>ResultState</b> class to hold function execution result:
+There is also a `ResultState` class to hold function execution results:
 
 ```dart
 ResultState.success(result: 'test');
@@ -50,7 +50,7 @@ ResultState.error(
 );
 ```
 
-You also can unwrap error with specific type with <b>unwrapError</b> method.
+You can also unwrap an error with a specific type using the `unwrapError` method.
 
 ```dart
 Future<ResultState> confirmEmail(String link) async {
@@ -77,12 +77,11 @@ There are also two helper mixins that you can apply to your view models or insta
 
 #### UseDisposableMixin
 
-<b>UseDisposableMixin</b> can be applied to any <b>MvvmInstance</b>.
+`UseDisposableMixin` can be applied to any `MvvmInstance`.
 
-It provides methods to initialize disposable objects like <b>TextEditingController</b>.
-They will be disposed authomatically when instance is disposed.
+It provides methods to initialize disposable objects like `TextEditingController`. They will be disposed automatically when the instance is disposed.
 
-Here is full list of supported initializers:
+Here is the full list of supported initializers:
 
 ```dart
 TextEditingController useTextEditingController({String? text});
@@ -90,7 +89,7 @@ ScrollController useScrollController();
 Debouncer useDebouncer({required Duration delay});
 ```
 
-Here is usecase example:
+Here is a use case example:
 
 ```dart
 class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState>
@@ -102,11 +101,11 @@ class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState
 
 #### FormViewModelMixin
 
-FormViewModelMixin can be applied only to view models.
+`FormViewModelMixin` can be applied only to view models.
 
 It helps to manage form views where you need to validate user input.
 
-It contains map of validators (keys of map are <b>GlobalKey</b> so form can automatically scroll to error field if user trying to submit form) and <b>executeSubmitAction</b> method to call form validation process. You need to pass theese keys as parameters to your field widgets. Field widget implementation is up do developer.
+It contains a map of validators (keys of the map are `GlobalKey` so the form can automatically scroll to the error field if the user is trying to submit the form) and the `executeSubmitAction` method to call the form validation process. You need to pass these keys as parameters to your field widgets. Field widget implementation is up to the developer.
 
 Validators can be manually updated:
 
@@ -117,7 +116,7 @@ updateFieldState(
 );
 ```
 
-You also can manually call validator for field and reset field with corresponding methods:
+You can also manually call the validator for a field and reset the field with corresponding methods:
 
 ```dart
 validateField(passwordKey);
@@ -125,9 +124,9 @@ validateField(passwordKey);
 resetField(passwordKey);
 ```
 
-You can also override <b>additionalCheck</b> method if you need to check some additional fields. It will be run after validators check.
+You can also override the `additionalCheck` method if you need to check some additional fields. It will be run after the validators check.
 
-Here you can see the example:
+Here you can see an example:
 
 ```dart
 class SupportViewModel
@@ -168,7 +167,7 @@ class SupportViewModel
 }
 ```
 
-After initialization you can use streams of validation states for fields that you specified:
+After initialization, you can use streams of validation states for fields that you specified:
 
 ```dart
 WhatHappenedField(
@@ -191,7 +190,7 @@ Button(
 
 #### StreamBuilders
 
-Library contains simple analogues of <b>StreamBuilder</b> that allow you to pass <b>StateStream</b>(wrapper object to get stream and current value for given state mapper). - <b>UmvvmStreamBuilder</b> and <b>UmvvmMultiStreamBuilder</b>. This widgets also allow to pass <b>Stream</b> and <b>initialData</b> as usual if needed.
+The library contains simple analogues of `StreamBuilder` that allow you to pass `StateStream` (wrapper object to get stream and current value for a given state mapper)—`UmvvmStreamBuilder` and `UmvvmMultiStreamBuilder`. These widgets also allow you to pass `Stream` and `initialData` as usual if needed.
 
 Here are examples:
 

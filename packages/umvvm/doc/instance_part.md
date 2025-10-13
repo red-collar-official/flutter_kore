@@ -1,25 +1,24 @@
 # Parts
 
-<img src="doc_images/instance_part.png" alt="instance_part" width="600"/>
+<img src="doc_images/instance_part.png" alt="instance_part" width="750"/>
 
-Part is mvvm instance type that has reference to parent mvvm instance.
-It is usefull for splitting logic in large instances. 
+A Part is an MVVM instance type that has a reference to a parent MVVM instance. It is useful for splitting logic in large instances.
 
-Parts extend <b>RestrictedInstancePart</b> or <b>UniversalInstancePart</b>.
+Parts extend `RestrictedInstancePart` or `UniversalInstancePart`.
 
-<b>UniversalInstancePart</b> is generic type that can be connected to any mvvm instance. 
+`UniversalInstancePart` is a generic type that can be connected to any MVVM instance.
 
-<b>RestrictedInstancePart</b> allows you to specify type of instance that it can be connected to via generic argument.
+`RestrictedInstancePart` allows you to specify the type of instance that it can be connected to via a generic argument.
 
-You also need to specify input type for parts. It is passed as generic argument. Then input is available in all initialization methods.
+You also need to specify the input type for parts. It is passed as a generic argument. Then the input is available in all initialization methods.
 
-You must annotate parts with <b>instancePart</b> annotation.
+You must annotate parts with the `instancePart` annotation.
 
-Part can receive events and can't have state or dependencies.
+A part can receive events and can't have state or dependencies.
 
-Part can contain other parts.
+A part can contain other parts.
 
-If part "../docs"is connected to other part "../docs"then you can get root parent instance reference with <b>rootParentInstance</b> field.
+If a part is connected to another part, then you can get the root parent instance reference with the `rootParentInstance` field.
 
 Here is an example:
 
@@ -79,7 +78,7 @@ class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, Po
 }
 ```
 
-And universal part"../docs":
+And a universal part:
 
 ```dart
 @instancePart
@@ -106,10 +105,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
 }
 ```
 
-There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+There is also the ability to execute code in a synchronized queue—meaning that if there are currently running operations, new code will be executed after all previous operations complete; otherwise, the operation will be executed instantly.
 
-By default if part is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
-Also you can provide optional timeout for this operation
+By default, if a part is disposed, all pending operations are discarded, but this can be changed with the `discardOnDispose` flag. Also, you can provide an optional timeout for this operation.
 
 ```dart
 @instancePart

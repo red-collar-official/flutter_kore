@@ -1,27 +1,24 @@
-# Mvvm instance
+# MVVM Instance
 
-<img src="doc_images/mvvm_instance.png" alt="mvvm_instance" width="600"/>
+<img src="doc_images/mvvm_instance.png" alt="mvvm_instance" width="750"/>
 
-Mvvm instance is base class for every umvvm component.
+MVVM instance is the base class for every UMVVM component.
 
-It contains simple interface with initialize and dispose methods.
+It contains a simple interface with initialize and dispose methods.
 
-Every mvvm instance is connected to global event bus so in every mvvm instance you can subscribe to events.
-More infomation about event bus can be found [here](./event_bus.md).
+Every MVVM instance is connected to the global event bus, so in every MVVM instance you can subscribe to events. More information about the event bus can be found [here](./event_bus.md).
 
-And every mvvm instance can contain parts.
-More infomation about instance parts can be found [here](./instance_part.md).
+And every MVVM instance can contain parts. More information about instance parts can be found [here](./instance_part.md).
 
-So you can add them via via <b>parts</b> field in configuration object and then call <b>useInstancePart<T>()</b> method.
+So you can add them via the `parts` field in the configuration object and then call the `useInstancePart<T>()` method.
 
-Configuration object provided via <b>configuration</b> getter for every mvvm instance.
+The configuration object is provided via the `configuration` getter for every MVVM instance.
 
-Interactors, wrappers, instance parts and view models - all of them extend <v>MvvmInstance</b>.
+Interactors, wrappers, instance parts, and view models—all of them extend `MvvmInstance`.
 
-If you extended <b>MvvmInstance</b> you can mark child classes with DI annotations and use them with <b>app.instances</b> interface.
-More infomation about DI can be found [here](./di.md).
+If you extended `MvvmInstance`, you can mark child classes with DI annotations and use them with the `app.instances` interface. More information about DI can be found [here](./di.md).
 
-Here is an example of simple custom mvvm instance that you can create:
+Here is an example of a simple custom MVVM instance that you can create:
 
 ```dart
 abstract class BaseBox extends MvvmInstance<dynamic> {
@@ -43,7 +40,7 @@ abstract class BaseBox extends MvvmInstance<dynamic> {
 }
 ```
 
-Then you can use it in child classes and receive events, connect parts and etc..
+Then you can use it in child classes and receive events, connect parts, etc.
 
 ```dart
 @basicInstance
@@ -88,7 +85,7 @@ class UsersBox extends BaseBox {
 }
 ```
 
-Every mvvm instance also can be async. In this case you need to specify <b>isAsync</b> flag in configuration object. And also you can override <b>initializeAsync</b> method.
+Every MVVM instance can also be async. In this case, you need to specify the `isAsync` flag in the configuration object. And also you can override the `initializeAsync` method.
 
 Here is an example:
 

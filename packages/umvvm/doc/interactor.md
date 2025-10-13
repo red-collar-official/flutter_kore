@@ -1,37 +1,36 @@
 # Interactors
 
-<img src="doc_images/interactor.png" alt="interactor" width="600"/>
+<img src="doc_images/interactor.png" alt="interactor" width="750"/>
 
-Interactors contain state and subscription to <b>EventBus</b> events.(more information about <b>EventBus</b> can be found [here](./event_bus.md)).
+Interactors contain state and subscription to `EventBus` events (more information about `EventBus` can be found [here](./event_bus.md)).
 
-You also need to specify input type for interactors. It is passed as generic argument.
+You also need to specify the input type for interactors. It is passed as a generic argument.
 
-Input is always available via <b>input</b> field.
+Input is always available via the `input` field.
 
-Interactor state can be any immutable object. You can use <b>dart-mappable</b> or <b>freezed</b> libraries (or any other object generation libraries).
+Interactor state can be any immutable object. You can use `dart-mappable` or `freezed` libraries (or any other object generation libraries).
 
-State can be updated with <b>updateState</b> method and receivers like view models can later subscribe to state update events with <b>updates</b> or <b>changes</b>(<b>changes</b> returns stream of old and new values in object, <b>updates</b> returns stream of new object values).
+State can be updated with the `updateState` method, and receivers like view models can later subscribe to state update events with `updates` or `changes` (`changes` returns a stream of old and new values in the object, `updates` returns a stream of new object values).
 
-There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter. And also there is a <b>wrapChanges</b> analogue for <b>changes</b> method.
+There is also a `wrapUpdates` method that returns a `Stream` for a given mapper and also exposes the current value—it simplifies work with `StreamBuilder`. Instead of creating a `Stream` getter with the `updates` method and a getter for the current value, you can use this method to get an object that wraps these getters, and you can use the `stream` field and `current` getter. And also there is a `wrapChanges` analogue for the `changes` method.
 
-Interactors must be annotated with <b>basicInstance</b>, <b>singleton</b> or full <b>Instance</b> annotation.
+Interactors must be annotated with `basicInstance`, `singleton`, or the full `Instance` annotation.
 
-When interactor is annotated as singleton it belongs to global instance collection.
+When an interactor is annotated as a singleton, it belongs to the global instance collection.
 
-We don't need to write dependencies in our instances for singleton interactors 
-and we can access it with <b>app.instances</b>.
+We don't need to write dependencies in our instances for singleton interactors, and we can access them with `app.instances`.
 
-Interactors also can depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via <b>dependencies</b> field in configuration object.
+Interactors can also depend on other interactors and [wrappers](./wrapper.md) (or [custom instances](./custom_instance.md)) via the `dependencies` field in the configuration object.
 
-Configuration object provided via <b>configuration</b> getter for every interactor.
+The configuration object is provided via the `configuration` getter for every interactor.
 
-Interactors also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
+Interactors can also contain [parts](./instance_part.md) via the `parts` field in the configuration object.
 
-Interactors also can belong to modules via <b>modules</b> field in configuration object (information about modules can be found [here](./di.md)).
+Interactors can also belong to modules via the `modules` field in the configuration object (information about modules can be found [here](./di.md)).
 
-They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
+They are connected with `Connector` objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
 
-Typical example would be:
+A typical example would be:
 
 ```dart
 // Map<String, dynamic> - input type
@@ -95,7 +94,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 }
 ```
 
-Or singleton interactor:
+Or a singleton interactor:
 
 ```dart
 @singleton
@@ -132,18 +131,17 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
 
 ```
 
-In the last example we also can see that every interactor also has <b>savedStateObject</b>.
+In the last example, we can also see that every interactor also has `savedStateObject`.
 
-When we override <b>savedStateObject</b> so interactor can save state to <b>SharedPreferences</b> or other provider such as <b>SecureStorage</b>.
+When we override `savedStateObject`, the interactor can save state to `SharedPreferences` or other providers such as `SecureStorage`.
 
-To enable it you need to override <b>stateFulInstanceSettings</b> getter and set <b>isRestores</b> flag to true.
+To enable it, you need to override the `stateFulInstanceSettings` getter and set the `isRestores` flag to true.
 
-Later state can be restored with <b>onRestore</b> callback.
+Later, state can be restored with the `onRestore` callback.
 
-By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFulInstanceSettings</b>.
-If app uses obfuscation this is <b>required</b>.
+By default, the state key for the saved object is equal to the state runtime type string, but you can override it with the `stateId` field in `stateFulInstanceSettings`. If the app uses obfuscation, this is **required**.
 
-You can also specify input type for every interactor in annotation:
+You can also specify the input type for every interactor in the annotation:
 
 ```dart
 @Instance(inputType: String)
@@ -180,10 +178,9 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
 }
 ```
 
-In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.
-Otherwise it will be restored asynchronously.
+In the example above, we also specify the `syncRestore` option. If this option is set to true, the state will be restored from the cache during the `initialize` call. Otherwise, it will be restored asynchronously.
 
-And here is example if declaration of all types of dependencies:
+And here is an example of the declaration of all types of dependencies:
 
 ```dart
 @basicInstance
@@ -272,10 +269,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 }
 ```
 
-There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+There is also the ability to execute code in a synchronized queue—meaning that if there are currently running operations, new code will be executed after all previous operations complete; otherwise, the operation will be executed instantly.
 
-By default if interactor is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
-Also you can provide optional timeout for this operation
+By default, if an interactor is disposed, all pending operations are discarded, but this can be changed with the `discardOnDispose` flag. Also, you can provide an optional timeout for this operation.
 
 ```dart
 @basicInstance
@@ -305,4 +301,4 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 }
 ```
 
-To see base settings and methods of interactors you can visit [this page](./mvvm_instance.md).
+To see base settings and methods of interactors, you can visit [this page](./mvvm_instance.md).

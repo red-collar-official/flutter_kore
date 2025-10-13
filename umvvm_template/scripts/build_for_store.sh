@@ -1,0 +1,1 @@
+sh scripts/execute_flutter_command_for_app.sh ACTION=build PLATFORM=$1 TYPE=release LAUNCH_FILE=$2 FLAVOR=googleplay CODE_SIGN=YES OBFUSCATE=YES

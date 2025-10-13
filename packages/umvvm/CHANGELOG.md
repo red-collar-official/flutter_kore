@@ -1,3 +1,7 @@
+## 1.3.2
+
+- Update docs and add template project
+
 ## 1.3.1+2
 
 - Update main example

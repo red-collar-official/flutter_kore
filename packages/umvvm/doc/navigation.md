@@ -1,16 +1,16 @@
 # Navigation
 
-<img src="doc_images/navigation.png" alt="navigation" width="600"/>
+<img src="doc_images/navigation.png" alt="navigation" width="750"/>
 
-Package also contains default way to handle navigation.
+The package also contains a default way to handle navigation.
 
-To use this feature you need to subclass <b>NavigationInteractorDeclaration</b> and mark class with <b>AppNavigation</b> annotation. Navigation interactor must be marked as <b>singleton</b>. <b>NavigationInteractorDeclaration</b> will be generated.
+To use this feature, you need to subclass `NavigationInteractorDeclaration` and mark the class with the `AppNavigation` annotation. The navigation interactor must be marked as `singleton`. `NavigationInteractorDeclaration` will be generated.
 
-Then it will be available via <b>app.navigation</b>.
+Then it will be available via `app.navigation`.
 
-Supports nested tab navigation, separate navigator for dialogs and bottom sheets and PopScope.
+Supports nested tab navigation, separate navigator for dialogs and bottom sheets, and PopScope.
 
-If your app contains tab (nested) navigation then NavigationInteractor will look like this:
+If your app contains tab (nested) navigation, then NavigationInteractor will look like this:
 
 ```dart
 @singleton
@@ -20,7 +20,7 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
   AppTab? get currentTab => state.currentTab;
 
   // you can set this field any time
-  // In general you need to set current tab keys in tab home view 
+  // In general, you need to set current tab keys in tab home view 
   // and keep global keys in tab home view model
   // so it can be changed every time tab home screen is reopened
   @override
@@ -70,15 +70,13 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
 }
 ```
 
-<b>AppTab</b> here can be any immutable model class - it will be used as a key to map of <b>GlobalKey</b> objects for tab navigation. For example it can be model class with icon name and id.
+`AppTab` here can be any immutable model class—it will be used as a key to a map of `GlobalKey` objects for tab navigation. For example, it can be a model class with an icon name and id.
 
-You also need to override navigation interactor settings to set default values for required fields.
-You can see all needed values in the example above.
+You also need to override navigation interactor settings to set default values for required fields. You can see all needed values in the example above.
 
-Also you need to override <b>setCurrentTab</b> method to keep current tab value in state.
-State can be any immutable object like in any other interactor.
+Also, you need to override the `setCurrentTab` method to keep the current tab value in the state. The state can be any immutable object like in any other interactor.
 
-If app does not contains tab (nested) navigation then you can skip tab related methods:
+If the app does not contain tab (nested) navigation, then you can skip tab-related methods:
 
 ```dart
 @singleton
@@ -127,11 +125,11 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
 }
 ```
 
-Last flag that describes navigation flow in app is <b>bottomSheetsAndDialogsUsingGlobalNavigator</b>.
+The last flag that describes the navigation flow in the app is `bottomSheetsAndDialogsUsingGlobalNavigator`.
 
-If this flag is false (like in last code snippet) then you need to create separate navigator for bottom sheets and dialogs - useful if you have some overlay views for app. In this case global route will be opened in global navigator and bottom sheets and dialogs will be opened in separate navigator that you can place anywhere you want.
+If this flag is false (like in the last code snippet), then you need to create a separate navigator for bottom sheets and dialogs—useful if you have some overlay views for the app. In this case, the global route will be opened in the global navigator, and bottom sheets and dialogs will be opened in a separate navigator that you can place anywhere you want.
 
-You also need to specify navigation interactor in main app annotation.
+You also need to specify the navigation interactor in the main app annotation.
 
 ```dart
 @MainApp(navigationInteractorType: NavigationInteractor)
@@ -150,14 +148,13 @@ UINavigationSettings.bottomSheetBorderRadius = BorderRadius.only(
 );
 ```
 
-If you need to specify custom transition builder you can specify <b>routeBuilder</b> in navigation settings object 
-or you can specify <b>customRouteBuilder</b> for specific route.
+If you need to specify a custom transition builder, you can specify `routeBuilder` in the navigation settings object or you can specify `customRouteBuilder` for a specific route.
 
-You can see how routes are specified in <b>example_navigation</b> example and in section below.
+You can see how routes are specified in the `example_navigation` example and in the section below.
 
-You also need to create root navigation view model and view state. This is described below.
+You also need to create a root navigation view model and view state. This is described below.
 
-And here is also list of methods in <b>BaseNavigationInteractor</b>. Parameters for routes will be discussed below:
+And here is also a list of methods in `BaseNavigationInteractor`. Parameters for routes will be discussed below:
 
 ```dart
 bool isInGlobalStack({bool includeBottomSheetsAndDialogs = true});
@@ -236,18 +233,17 @@ UIRouteModel latestGlobalRoute();
 UIRouteModel latestTabRoute();
 ```
 
-All this methods available via <b>app.navigation</b>. And you can add your own methods if you want or override existing ones - for example if you want to send analytics event every time some route is opened.
+All these methods are available via `app.navigation`. And you can add your own methods if you want or override existing ones—for example, if you want to send an analytics event every time some route is opened.
 
-To complete navigation initialization you also need to provide root views for global and tab navigation(if present).
+To complete navigation initialization, you also need to provide root views for global and tab navigation (if present).
 
-For global navigation there is <b>GlobalNavigationInitializer</b>.
-Place it inside your <b>MaterialApp</b> and do not pass global navigator key to <b>MaterialApp</b> constructor. If you use separate key for bottom sheets and dialogs you can pass it to <b>MaterialApp</b>.
+<img src="doc_images/navigation2.png" alt="navigation2" width="750"/>
 
-For tab navigation there is <b>TabNavigationInitializer</b>.
-Use it as your root tab widget. Example is below.
+For global navigation, there is `GlobalNavigationInitializer`. Place it inside your `MaterialApp` and do not pass the global navigator key to the `MaterialApp` constructor. If you use a separate key for bottom sheets and dialogs, you can pass it to `MaterialApp`.
 
-If you use tab navigation you need to use <b>NavigationViewModel</b> and <b>NavigationView</b> as base classes for your views and view models
-since it ensures that navigation is handled in correct navigation scope (tab or global).
+For tab navigation, there is `TabNavigationInitializer`. Use it as your root tab widget. An example is below.
+
+If you use tab navigation, you need to use `NavigationViewModel` and `NavigationView` as base classes for your views and view models since it ensures that navigation is handled in the correct navigation scope (tab or global).
 
 Here are some examples:
 
@@ -272,7 +268,7 @@ class _AppViewWidgetState
 }
 ```
 
-If your app uses separate navigator key for dialogs and bottoms sheets you need to replace global navigator with <b>GlobalNavigationPopScope</b>. Here is an example:
+If your app uses a separate navigator key for dialogs and bottom sheets, you need to replace the global navigator with `GlobalNavigationPopScope`. Here is an example:
 
 ```dart
 class AppViewModel extends NavigationViewModel<AppView, AppViewState> {
@@ -415,7 +411,7 @@ class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeV
 }
 ```
 
-And if you using tab navigation every other view state other than global and tab root view states you extend <b>NavigationViewModel</b> and <b>NavigationView</b>:
+And if you are using tab navigation, every other view state other than global and tab root view states should extend `NavigationViewModel` and `NavigationView`:
 
 ```dart
 class PostsViewModel extends NavigationViewModel<HomeView, HomeViewState> {
@@ -458,22 +454,23 @@ class _PostsViewWidgetState extends NavigationView<HomeView, HomeViewState, Home
 }
 ```
 
-Inside <b>NavigationViewModel</b> you need to use <b>pop</b> method of view model instead of <b>app.navigation.pop()</b>.
+Inside `NavigationViewModel`, you need to use the `pop` method of the view model instead of `app.navigation.pop()`.
 
-### Deep links
+### Deep Links
 
-Navigation component supports deeplinks with <b>BaseDeepLinksInteractor</b>. Deep links interactor must be marked as <b>singleton</b>.
+<img src="doc_images/deeplinks.png" alt="deeplinks" width="750"/>
 
-You need to specify it in <b>AppNavigation</b> annotation <b>deepLinks</b> arguments.
+The navigation component supports deep links with `BaseDeepLinksInteractor`. The deep links interactor must be marked as `singleton`.
 
-You need to provide methods to get initial link and get stream of deep links.
+You need to specify it in the `AppNavigation` annotation `deepLinks` arguments.
 
-You also can override <b>onLinkReceived</b> to process some links that does not require route processing. Do not forget to call <b>super.onLinkReceived(link)</b>.
+You need to provide methods to get the initial link and get a stream of deep links.
 
-To respond to deep links define routes with <b>@Link</b> annotation.
-Example for this will be in next section.
+You can also override `onLinkReceived` to process some links that do not require route processing. Do not forget to call `super.onLinkReceived(link)`.
 
-Here is example of deep links interactor:
+To respond to deep links, define routes with the `@Link` annotation. An example for this will be in the next section.
+
+Here is an example of a deep links interactor:
 
 ```dart
 @singleton
@@ -522,32 +519,34 @@ class TestDeepLinksInteractor extends BaseDeepLinksInteractor<int> {
 }
 ```
 
-You don't need to implement deep links interactor to use <b>openLink</b> method. It is only used for deep links.
+You don't need to implement a deep links interactor to use the `openLink` method. It is only used for deep links.
 
-## Defining routes and links
+## Defining Routes and Links
 
-To define routes you need to specify 3 classes - <b>Routes</b>, <b>Dialogs</b> and <b>BottomSheets</b>.
+<img src="doc_images/defining_routes.png" alt="defining_routes" width="750"/>
+
+To define routes, you need to specify three classes—`Routes`, `Dialogs`, and `BottomSheets`.
 
 Names must be exact.
 
-In routes declaration you need to define methods for you routes, dialogs and bottom sheets and specify their parameters. You can also mark them with <b>Link</b> annotation if you want route to respond to <b>openLink</b> calls and deep links.
+In routes declaration, you need to define methods for your routes, dialogs, and bottom sheets and specify their parameters. You can also mark them with the `Link` annotation if you want the route to respond to `openLink` calls and deep links.
 
-By defining link you can specify link filters for specific screen.
+By defining a link, you can specify link filters for a specific screen.
 
-Here is list of supported filters:
+Here is a list of supported filters:
 
-1) <b>paths</b> - list of paths that this route supports. Paths are defined in format 'posts/:{id}' where path params changed with pattern with parameter name. This parameter will be then available in <b>pathParams</b> with corresponding key.
-2) <b>query</b> - list of query filters for this route. Aplies to all paths is <b>paths</b> array. Query filters support following options:
-    * basic filter - query: [ 'param' ] - this means that param is required in query. If this param is not present in query route won't be opened;
-    * equality filter - query: [ 'param=qwerty1' ] - this means that param is required in query with given value. If this param is not present in query route won't be opened;
-    * multiple equality filter - query: [ 'param=qwerty1|qwerty2' ] - this means that param is required in query with on of given values. If this param is not present in query route won't be opened;
-3) <b>queriesForPath</b> - same as <b>query</b> but for every corresponding path in <b>paths</b> array; 
-4) <b>possibleFragments</b> - list of fragment restrictions for this link. If link does not contain fragment value equal to one of the values in the list route won't be opened. Aplies to all paths is <b>paths</b> array;
-5) <b>possibleFragmentsForPath</b> - same as <b>possibleFragments</b> but for every corresponding path in <b>paths</b> array;
-6) <b>regexes</b> - list of regular expresions that this route supports. If link does not match with one of given regexes route won't be opened. If you specify this parameter you also need to pass <b>customParamsMapper</b>. Example of this can be found below;
-7) <b>customHandler</b> - you can pass custom handler for route and parse url how you want. You can return null from <b>parseLinkToRoute</b> if you want to skip this link.
+1) `paths` - list of paths that this route supports. Paths are defined in the format 'posts/:{id}' where path params are changed with a pattern with parameter name. This parameter will then be available in `pathParams` with the corresponding key.
+2) `query` - list of query filters for this route. Applies to all paths in the `paths` array. Query filters support the following options:
+    * basic filter - query: [ 'param' ] - this means that the param is required in the query. If this param is not present in the query, the route won't be opened;
+    * equality filter - query: [ 'param=qwerty1' ] - this means that the param is required in the query with the given value. If this param is not present in the query, the route won't be opened;
+    * multiple equality filter - query: [ 'param=qwerty1|qwerty2' ] - this means that the param is required in the query with one of the given values. If this param is not present in the query, the route won't be opened;
+3) `queriesForPath` - same as `query` but for every corresponding path in the `paths` array; 
+4) `possibleFragments` - list of fragment restrictions for this link. If the link does not contain a fragment value equal to one of the values in the list, the route won't be opened. Applies to all paths in the `paths` array;
+5) `possibleFragmentsForPath` - same as `possibleFragments` but for every corresponding path in the `paths` array;
+6) `regexes` - list of regular expressions that this route supports. If the link does not match one of the given regexes, the route won't be opened. If you specify this parameter, you also need to pass `customParamsMapper`. An example of this can be found below;
+7) `customHandler` - you can pass a custom handler for the route and parse the URL how you want. You can return null from `parseLinkToRoute` if you want to skip this link.
 
-Here is an examples of possible links:
+Here are examples of possible links:
 
 ```dart
 class TestMapper extends LinkMapper {
@@ -943,7 +942,7 @@ class Routes extends RoutesBase with RoutesGen {
 }
 ```
 
-Same declaration goes for dialogs and bottom sheets. All link annotations are supported.
+The same declaration goes for dialogs and bottom sheets. All link annotations are supported.
 
 Here are small examples of differences with routes:
 
@@ -1016,21 +1015,21 @@ class Dialogs extends RoutesBase with DialogsGen {
 }
 ```
 
-If you do not specify <b>Link</b> annotation route wont respond to links.
+If you do not specify the `Link` annotation, the route won't respond to links.
 
-You can also execute link yourself with <b>openLink</b> method of <b>NavigationInteractor</b>.
+You can also execute the link yourself with the `openLink` method of `NavigationInteractor`.
 
-Parameters from link will be available in <b>pathParams</b> and <b>queryParams</b>. You need to specify them in function declaration.
+Parameters from the link will be available in `pathParams` and `queryParams`. You need to specify them in the function declaration.
 
-If you need to access url fragment add <b>String? state</b> to function declaration.
+If you need to access the URL fragment, add `String? state` to the function declaration.
 
-Construction of link is up to developer.
+Construction of the link is up to the developer.
 
-If you are using this navigation in Flutter Web you need to override <b>openLink</b> method to set url address. You also need to provide <b>routeBuilder</b> in  settings for navigation interactor.
+If you are using this navigation in Flutter Web, you need to override the `openLink` method to set the URL address. You also need to provide `routeBuilder` in the settings for the navigation interactor.
 
-### Calling routes
+### Calling Routes
 
-After you defined routes you can call <b>build_runner</b> to generate routes. Routes will be available with <b>app.navigation.routes</b>, <b>app.navigation.dialogs</b>(for dialogs) and <b>app.navigation.bottomSheets</b> for bottom sheets. Here are examples:
+After you define routes, you can call `build_runner` to generate routes. Routes will be available with `app.navigation.routes`, `app.navigation.dialogs` (for dialogs), and `app.navigation.bottomSheets` for bottom sheets. Here are examples:
 
 ```dart
 app.navigation.routeTo(
@@ -1047,22 +1046,22 @@ app.navigation.showBottomSheet(
 
 ```
 
-### Route settings
+### Route Settings
 
-You can pass settings to every route, dialog or bottom sheet.
+You can pass settings to every route, dialog, or bottom sheet.
 
-There are two ways to do it. First - you can pass <b>defaultSettings</b> when building routes. Second - you can pass it in <b>routeTo<b>, <b>showDialog<b>, <b>showBottomSheet<b> or <b>openLink</b> methods. Default values then will be overwritten.
+There are two ways to do it. First—you can pass `defaultSettings` when building routes. Second—you can pass it in `routeTo`, `showDialog`, `showBottomSheet`, or `openLink` methods. Default values will then be overwritten.
 
 Here is a list of supported parameters:
 
-1) dismissable - if true then route can not be popped by system gestures or back buttons, but can be popped with <b>pop</b> method;
-2) uniqueInStack - if true then if route with given name is already present in stack then new route will be ignored;
-3) needToEnsureClose - flag indicating that if system gestures or back buttons used instead of popping screen or ignoring it navigation interactor will send <b>EnsureCloseRequestedEvent</b> event to global event bus. You can subscribe to it in view models of screens that needs to be checked before close. It is recommended to pause this event so only visible screen can respond to sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with IOS swipe back gesture - it will always be executed if route is <b>dismissable</b>;
-4) fullScreenDialog - flag indicating that route will be opened as fullscreen dialog - with back gestures disabled on ios and specific animation;
-5) global - flag indicating that this route must be opened in global stack, not in tab stack. If app do not use tab navigation this flag is ignored;
+1) dismissable - if true, then the route cannot be popped by system gestures or back buttons but can be popped with the `pop` method;
+2) uniqueInStack - if true, then if a route with the given name is already present in the stack, the new route will be ignored;
+3) needToEnsureClose - flag indicating that if system gestures or back buttons are used instead of popping the screen or ignoring it, the navigation interactor will send an `EnsureCloseRequestedEvent` event to the global event bus. You can subscribe to it in view models of screens that need to be checked before closing. It is recommended to pause this event so only the visible screen can respond to the sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with the iOS swipe back gesture—it will always be executed if the route is `dismissable`;
+4) fullScreenDialog - flag indicating that the route will be opened as a fullscreen dialog—with back gestures disabled on iOS and a specific animation;
+5) global - flag indicating that this route must be opened in the global stack, not in the tab stack. If the app does not use tab navigation, this flag is ignored;
 6) id - unique id of this route. Can be any Object;
-7) replace - flag indicating that route must replace all previous navigation history in current navigation stack;
-8) replacePrevious - flag indicating that previous in current navigation stack route should be popped;
+7) replace - flag indicating that the route must replace all previous navigation history in the current navigation stack;
+8) replacePrevious - flag indicating that the previous route in the current navigation stack should be popped;
 9) name - name for this route.
 
 Here is an example:
@@ -1128,5 +1127,4 @@ app.navigation.showBottomSheet(
     id: 1,
   )
 );
-
 ```

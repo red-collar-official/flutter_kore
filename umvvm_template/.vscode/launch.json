@@ -1,0 +1,77 @@
+{
+    "version": "1.0.2",
+    "configurations": [
+        {
+            "name": "dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_dev.dart",
+            "toolArgs": [
+                "--dart-define",
+                "BASE_URL_DEV=https://dev.example.com",
+                "--dart-define",
+                "BASE_URL_STAGE=https://stage.example.com",
+                "--dart-define",
+                "BASE_URL_PROD=https://example.com"
+            ],
+            "args": [
+                "--flavor",
+                "basic"
+            ],
+        },
+        {
+            "name": "stage",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_stage.dart",
+            "toolArgs": [
+                "--dart-define",
+                "BASE_URL_DEV=https://dev.example.com",
+                "--dart-define",
+                "BASE_URL_STAGE=https://stage.example.com",
+                "--dart-define",
+                "BASE_URL_PROD=https://example.com"
+            ],
+            "args": [
+                "--flavor",
+                "basic"
+            ],
+        },
+        {
+            "name": "prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "toolArgs": [
+                "--dart-define",
+                "BASE_URL_DEV=https://dev.example.com",
+                "--dart-define",
+                "BASE_URL_STAGE=https://stage.example.com",
+                "--dart-define",
+                "BASE_URL_PROD=https://example.com"
+            ],
+            "args": [
+                "--flavor",
+                "basic"
+            ],
+        },
+        {
+            "name": "prod_test",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_test.dart",
+            "toolArgs": [
+                "--dart-define",
+                "BASE_URL_DEV=https://dev.example.com",
+                "--dart-define",
+                "BASE_URL_STAGE=https://stage.example.com",
+                "--dart-define",
+                "BASE_URL_PROD=https://example.com"
+            ],
+            "args": [
+                "--flavor",
+                "basic"
+            ],
+        }
+    ]
+}

@@ -1,22 +1,22 @@
-# Custom mvvm instances
+# Custom Umvvm Instances
 
-<img src="doc_images/custom.png" alt="custom" width="600"/>
+<img src="doc_images/custom.png" alt="custom" width="750"/>
 
-You can create custom mvvm instances by extending <b>MvvmInstance</b>. There are also predefined mixins for main functions like dependencies and state.
+You can create custom MVVM instances by extending `MvvmInstance`. There are also predefined mixins for main functions like dependencies and state.
 
-You also need to specify input type for custom instances. It is passed as generic argument.
+You also need to specify the input type for custom instances. It is passed as a generic argument.
 
-Input is always available via <b>input</b> field.
+Input is always available via the `input` field.
 
-You can read about default methods of <b>MvvmInstance</b> [here](./mvvm_instance.md).
+You can read about default methods of `MvvmInstance` [here](./mvvm_instance.md).
 
 Here we will discuss mixins.
 
-There are mixins that allow you to add additional funtions to your custom instance like dependencies, cancelable api calls and state.
+There are mixins that allow you to add additional functions to your custom instance like dependencies, cancelable API calls, and state.
 
 ### StatefulMvvmInstance
 
-For example - if you need to add state to your custom mvvm instance you can write this:
+For example—if you need to add state to your custom MVVM instance—you can write this:
 
 ```dart
 abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmInstance<State, dynamic> {
@@ -42,11 +42,12 @@ abstract class BaseBox<State> extends MvvmInstance<dynamic> with StatefulMvvmIns
 }
 ```
 
-You need to add initialization call to <b>initialize</b> method and <b>disposeStore</b> method to <b>dispose</b> override.
+You need to add an initialization call to the `initialize` method and the `disposeStore` method to the `dispose` override.
 
-Then you can extend this custom instance and use if state and receive updates, restore cache and etc..
+Then you can extend this custom instance and use its state, receive updates, restore cache, etc.
 
 ```dart
+
 @MappableClass()
 class UsersBoxState with UsersBoxStateMappable {
   const UsersBoxState({
@@ -90,12 +91,12 @@ class UsersListViewModel extends BaseViewModel<UsersListView, UsersListViewState
   PostsListViewState get initialState => PostsListViewState();
 }
 ```
-
 ### DependentMvvmInstance
 
-If you need to add dependencies to your custom mvvm instance you can do the following:
+If you need to add dependencies to your custom MVVM instance, you can do the following:
 
 ```dart
+
 abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<dynamic> {
   String get boxName;
 
@@ -127,13 +128,14 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
 }
 ```
 
-You need to add initialization call to <b>initialize</b> method and <b>disposeDependencies</b> method to <b>dispose</b> override.
+You need to add an initialization call to the `initialize` method and the `disposeDependencies` method to the `dispose` override.
 
-You also need to add <b>initializeDependenciesAsync</b> in <b>initializeAsync</b> method.
+You also need to add `initializeDependenciesAsync` in the `initializeAsync` method.
 
-Then you can extend this custom instance and use dependencies, <b>getLocalInstance</b> method and etc...
+Then you can extend this custom instance and use dependencies, the `getLocalInstance` method, etc.
 
 ```dart
+
 @basicInstance
 class UsersBox extends BaseBox {
   @override
@@ -150,14 +152,14 @@ class UsersBox extends BaseBox {
   late final postInteractor = getLocalInstance<PostInteractor>();
 }
 ```
-
 ### ApiCaller
 
-If you need to execute http requests in your custom mvvm instance you can add <b>ApiCaller</b> mixin so that requests can be cancelled automatically when instance is disposed.
+If you need to execute HTTP requests in your custom MVVM instance, you can add the `ApiCaller` mixin so that requests can be canceled automatically when the instance is disposed.
 
 You can do it as follows:
 
 ```dart
+
 abstract class BaseBox extends MvvmInstance<dynamic> with ApiCaller<dynamic> {
   String get boxName;
 
@@ -172,17 +174,16 @@ abstract class BaseBox extends MvvmInstance<dynamic> with ApiCaller<dynamic> {
   }
 }
 ```
-
 ### SynchronizedMvvmInstance
 
-There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+There is also the ability to execute code in a synchronized queue—meaning that if there are currently running operations, new code will be executed after all previous operations complete; otherwise, the operation will be executed instantly.
 
-By default if instance is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
-Also you can provide optional timeout for this operation
+By default, if the instance is disposed, all pending operations are discarded, but this can be changed with the `discardOnDispose` flag. Also, you can provide an optional timeout for this operation.
 
 You can do it as follows:
 
 ```dart
+
 abstract class BaseBox extends MvvmInstance<dynamic> with SynchronizedMvvmInstance<dynamic> {
   String get boxName;
 
@@ -197,18 +198,18 @@ abstract class BaseBox extends MvvmInstance<dynamic> with SynchronizedMvvmInstan
   }
 }
 ```
+### Custom Configuration Objects
 
-### Custom configuration objects
+If you want to provide additional configuration for your custom MVVM instance, you can subclass `MvvmInstanceConfiguration`.
 
-If you want to provide additional configuration for your custom mvvm instance you can subclass <b>MvvmInstanceConfiguration</b>.
-
-If your custom mvvm instance is using dependencies you need to subclass <b>DependentMvvmInstanceConfiguration</b>.
+If your custom MVVM instance is using dependencies, you need to subclass `DependentMvvmInstanceConfiguration`.
 
 Here is an example:
 
 ```dart
-class CustomtMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
-  const CustomtMvvmInstanceConfiguration({
+
+class CustomMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
+  const CustomMvvmInstanceConfiguration({
     super.parts = const [],
     super.isAsync,
     this.customFlag = false,
@@ -218,12 +219,12 @@ class CustomtMvvmInstanceConfiguration extends MvvmInstanceConfiguration {
 }
 
 // or
-class CustomtMvvmInstanceConfiguration extends DependentMvvmInstanceConfiguration {
-  const CustomtMvvmInstanceConfiguration({
+class CustomMvvmInstanceConfiguration extends DependentMvvmInstanceConfiguration {
+  const CustomMvvmInstanceConfiguration({
     super.parts,
     super.isAsync,
     super.dependencies = const [],
-    super.modules = const []
+    super.modules = const [],
     this.customFlag = false,
   });
 
@@ -236,7 +237,7 @@ abstract class BaseBox extends MvvmInstance<dynamic> with DependentMvvmInstance<
   late final hiveWrapper = app.instances.get<HiveWrapper>();
 
   @override
-  CustomtMvvmInstanceConfiguration get configuration => const CustomtMvvmInstanceConfiguration();
+  CustomMvvmInstanceConfiguration get configuration => const CustomMvvmInstanceConfiguration();
 
   @mustCallSuper
   @override

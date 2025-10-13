@@ -1,37 +1,36 @@
 # ViewModel
 
-<img src="doc_images/view_model.png" alt="view_model" width="600"/>
+<img src="doc_images/view_model.png" alt="view_model" width="750"/>
 
 View models contain logic for view classes.
 
-They also contain local state that we like <b>Interactor</b> can update with <b>updateState</b>.
+They also contain local state that we like `Interactor` can update with `updateState`.
 
-We also can listen to state changes with <b>updates</b> or <b>changes</b> methods.
+We can also listen to state changes with the `updates` or `changes` methods.
 
-There is also <b>wrapUpdates</b> method that returns <b>Stream</b> for given mapper and also exposes current value - it simplifies work with <b>StreamBuilder</b> - instead of creating <b>Stream</b> getter with <b>updates</b> method and getter for current value you can use this method to get object that wraps this getters and you can use <b>stream</b> field and <b>current</b> getter. And also there is a <b>wrapChanges</b> analogue for <b>changes</b> method.
+There is also a `wrapUpdates` method that returns a `Stream` for a given mapper and also exposes the current value. This simplifies working with `StreamBuilder` — instead of creating a `Stream` getter with the `updates` method and a getter for the current value, you can use this method to get an object that wraps these getters. You can then use the `stream` field and the `current` getter. There is also a `wrapChanges` analogue for the `changes` method.
 
-You also need to specify input widget type for view models. It is passed as generic argument.
+You also need to specify the input widget type for view models. It is passed as a generic argument.
 
-Input is always available via <b>input</b> field.
+Input is always available via the `input` field.
 
-View models also can depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via <b>dependencies</b> field in configuration object.
+View models can also depend on [interactors](./interactor.md) and [wrappers](./wrapper.md) (or [custom](./custom_instance.md) instances) via the `dependencies` field in the configuration object.
 
-View models also can contain [parts](./instance_part.md) via <b>parts</b> field in configuration object.
+View models can also contain [parts](./instance_part.md) via the `parts` field in the configuration object.
 
-View models also can belong to modules via <b>modules</b> field in configuration object (information about modules can be found [here](./di.md)).
+View models can also belong to modules via the `modules` field in the configuration object (information about modules can be found [here](./di.md)).
 
-They are connected with <b>Connector</b> objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
+They are connected with `Connector` objects (more information about connectors can be found [here](./connectors.md) and for DI [here](./di.md)).
 
-View models like every mvvm instance can receive <b>EventBus</b> events using <b>subscribe</b> method.
+View models, like every mvvm instance, can receive `EventBus` events using the `subscribe` method.
 
-More information about event bus can be found [here](./event_bus.md).
+More information about the event bus can be found [here](./event_bus.md).
 
-To get local instances connected to view model use <b>getLocalInstance<T>()</b>.
+To get local instances connected to the view model, use `getLocalInstance<T>()`.
 
-To get part "../docs"use <b>useInstancePart<T>()</b> method.
+To get a part, use the `useInstancePart<T>()` method.
 
-View models also can override <b>onLaunch</b> method that is called on initState 
-and <b>onFirstFrame</b> that is called on first post frame callback of corresponding view.
+View models can also override the `onLaunch` method, which is called on `initState`, and `onFirstFrame`, which is called on the first post-frame callback of the corresponding view.
 
 ```dart
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
@@ -60,13 +59,13 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 
   @override
   void onLaunch(PostsListView widget) {
-    // called with initState
+    // Called with initState
     getLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }
 
   @override
   void onFirstFrame(SearchView widget) {
-    // called with first frame - post frame callback
+    // Called with first frame - post frame callback
   }
 
   @override
@@ -107,18 +106,15 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 }
 ```
 
-View models also have <b>savedStateObject</b> and it also later can be restored with <b>onRestore</b>.
+View models also have a `savedStateObject`, which can later be restored with `onRestore`.
 
-By default state key for saved object is equal to state runtime type string, but you can override it with <b>stateId</b> field in <b>stateFulInstanceSettings</b>.
-If app uses obfuscation this is <b>required</b>.
+By default, the state key for the saved object is equal to the state runtime type string, but you can override it with the `stateId` field in `stateFulInstanceSettings`. If the app uses obfuscation, this is **required**.
 
-In the example above we also specify <b>syncRestore</b> option. If this option set to true state will be restored from cache during <b>initialize</b> call.
-Otherwise it will be restored asynchronously.
+In the example above, we also specify the `syncRestore` option. If this option is set to `true`, the state will be restored from the cache during the `initialize` call. Otherwise, it will be restored asynchronously.
 
-There is also ability to execute code in synced queue - meaning that if there are currently running operations - new code will be executed after all previous operations comleted - otherwise operation will be executed instantly
+There is also the ability to execute code in a synced queue — meaning that if there are currently running operations, new code will be executed after all previous operations are completed. Otherwise, the operation will be executed instantly.
 
-By default if view model is disposed all pending operation are discarded, but it can be changed with <b>discardOnDispose</b> flag
-Also you can provide optional timeout for this operation
+By default, if a view model is disposed, all pending operations are discarded, but this can be changed with the `discardOnDispose` flag. You can also provide an optional timeout for this operation.
 
 ```dart
 class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState> {
@@ -144,4 +140,4 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
 }
 ```
 
-To see base settings and methods of view models you can visit [this page](./mvvm_instance.md).
+To see base settings and methods of view models, you can visit [this page](./mvvm_instance.md).

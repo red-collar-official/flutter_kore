@@ -1,14 +1,14 @@
-# Widget and view state
+# Widget and View State
 
-<img src="doc_images/widget.png" alt="widget" width="600"/>
+<img src="doc_images/widget.png" alt="widget" width="750"/>
 
-View state has a reference to view model and method to create view model.
+View state has a reference to the view model and a method to create the view model.
 
-If you need to pass mocked view model extend <b>BaseWidget</b> instead of <b>StatefulWidget</b>.
+If you need to pass a mocked view model, extend `BaseWidget` instead of `StatefulWidget`.
 
-If view model is passed to <b>BaseWidget</b> child class it will be provided to view state and default one won't be created.
+If a view model is passed to a `BaseWidget` child class, it will be provided to the view state and the default one won't be created.
 
-Example: 
+Example:
 
 ```dart
 class PostsListView extends BaseWidget {
@@ -82,4 +82,4 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 }
 ```
 
-You can pass mocked view model in <b>viewModel</b> input parameter of <b>BaseWidget</b>.
+You can pass a mocked view model in the `viewModel` input parameter of `BaseWidget`.

@@ -1,10 +1,10 @@
-# Disabling components
+# Disabling Components
 
-You can disable most of components of Umvvm at all.
+You can disable most of the components of Umvvm entirely.
 
-### Disabling navigation component
+### Disabling Navigation Component
 
-If you don't want to use navigation component just don't pass it to global app initialization:
+If you don't want to use the navigation component, just don't pass it to the global app initialization:
 
 ```dart
 @mainApp
@@ -21,9 +21,9 @@ class App extends UMvvmApp with AppGen {
 final app = App();
 ```
 
-### Disabling http component
+### Disabling HTTP Component
 
-If you don't want to use http functions of this package you can use any other and just don't define <b>apis</b> in global app instance:
+If you don't want to use the HTTP functions of this package, you can use any other and just don't define `apis` in the global app instance:
 
 ```dart
 @mainApp
@@ -39,17 +39,16 @@ class App extends UMvvmApp with AppGen {
 final app = App();
 ```
 
-### Disabling DI component
+### Disabling DI Component
 
-You can disable DI container at all and inject dependencies your own way.
+You can disable the DI container entirely and inject dependencies in your own way.
 
-It is also true that you can bypass all components except from <b>ViewState</b> and <b>ViewModel</b> and use them as state management.
-You can also safely call <b>Apis</b> (if you use them) in view models because view models mix <b>ApiCaller</b> mixin (more information about <b>ApiCaller</b> [here](./custom_instances.md)).
+It is also true that you can bypass all components except `ViewState` and `ViewModel` and use them as state management. You can also safely call `Apis` (if you use them) in view models because view models mix the `ApiCaller` mixin (more information about `ApiCaller` [here](./custom_instances.md)).
 
-This way you can impelement your own domain design.
+This way you can implement your own domain design.
 
-It is also useful for small projects cause you can just use state management and split it to <b>InstanceParts</b> if code start to grow (more information about <b>InstanceParts</b> [here](./instance_part.md)).
+It is also useful for small projects because you can just use state management and split it into `InstanceParts` if the code starts to grow (more information about `InstanceParts` [here](./instance_part.md)).
 
-You can also use your own state management and use this package for domain, DI, or http. With <b>app.instances</b> you can always get objects from container - just don't forget to dispose them manually.
+You can also use your own state management and use this package for domain, DI, or HTTP. With `app.instances`, you can always get objects from the container—just don't forget to dispose of them manually.
 
-You only always need to define global app instance.
+You only always need to define a global app instance.
