@@ -1,6 +1,6 @@
 # UMVVM library
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/header.png?raw=true" alt="overall" width="750"/>
+<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/header.png?raw=true" alt="header" width="750"/>
 
 [![Code Coverage](https://raw.githubusercontent.com/red-collar-dev/umvvm/refs/heads/main/packages/umvvm/coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/test)
 
@@ -279,7 +279,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Learn about components:
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/layers.png?raw=true" alt="overall" width="750"/>
+<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/layers.png?raw=true" alt="layers" width="750"/>
 
 <img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/overall.png?raw=true" alt="overall" width="750"/>
 
