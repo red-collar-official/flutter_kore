@@ -1,3 +1,7 @@
+## 1.3.3
+
+- Update main readme
+
 ## 1.3.2
 
 - Update docs and add template project

@@ -37,6 +37,8 @@ Minimal example can be found [here](https://github.com/red-collar-dev/umvvm/tree
 
 More complex examples can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/examples).
 
+Template project can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/umvvm_template).
+
 There are small example with all basic components, example of using navigation and example of connecting database.
 
 ### Docs
@@ -281,7 +283,7 @@ Learn about components:
 
 <img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/layers.png?raw=true" alt="layers" width="750"/>
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/overall.png?raw=true" alt="overall" width="750"/>
+<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/main.png?raw=true" alt="main" width="750"/>
 
 #### Global layer
 
