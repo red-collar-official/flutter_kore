@@ -1,4 +1,4 @@
-## 2.2.0
+## 2.2.1
 
 - Update main docs
 - Update github repo links
