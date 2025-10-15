@@ -25,6 +25,24 @@ sealed class StatefulData<T> {
     return (this as SuccessData<T>).result;
   }
 
+  /// Executes given block if this data is [SuccessData]
+  X? runIfSuccess<X>(X Function(T) block) {
+    if (this is SuccessData) {
+      return block(unwrap());
+    }
+
+    return null;
+  }
+
+  /// Executes given block if this data is [SuccessData]
+  Future<X?> runIfSuccessAsync<X>(Future<X> Function(T) block) async {
+    if (this is SuccessData) {
+      return block(unwrap());
+    }
+
+    return null;
+  }
+
   // coverage:ignore-start
   const StatefulData();
   // coverage:ignore-end

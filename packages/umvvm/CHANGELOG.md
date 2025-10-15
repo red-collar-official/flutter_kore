@@ -1,3 +1,9 @@
+## 1.3.4
+
+- Update main docs
+- Add runIfSuccess function for StatefulData
+- Update github repo links
+
 ## 1.3.3
 
 - Update main readme

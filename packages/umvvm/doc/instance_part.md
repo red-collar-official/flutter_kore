@@ -26,14 +26,11 @@ Here is an example:
 @instancePart
 class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, PostsInteractor> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-    DependentMvvmInstanceConfiguration(
+  MvvmInstanceConfiguration get configuration =>
+    MvvmInstanceConfiguration(
       parts: [
-        app.connectors.downloadUserPartConnector(
-          input: input.id,
-          isAsync: true,
-        ),
-        app.connectors.followUserPartConnector(input: input.id),
+        app.connectors.downloadUserPartConnector(input: input['id']),
+        app.connectors.followUserPartConnector(input: input['id']),
       ],
     );
 
@@ -96,7 +93,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
     DependentMvvmInstanceConfiguration(
       parts: [
         app.connectors.testUniversalInteractorPartConnector(),
-        app.connectors.testInteractorPartConnector(input: input.id),
+        app.connectors.testInteractorPartConnector(input: input['id']),
       ],
     );
 

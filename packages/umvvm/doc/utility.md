@@ -1,8 +1,10 @@
 # Utility
 
+<img src="doc_images/utility.png" alt="utility" width="750"/>
+
 The package contains small utility classes.
 
-The first two are just sealed classes for network requests and field validation:
+The first two are just sealed classes for operations result and field validation:
 
 ```dart
 var statefulData = LoadingData();
@@ -17,9 +19,40 @@ statefulData = SuccessData(result: 1);
 
 statefulData.unwrap(); // valid
 
+statefulData.is
 ```
 
 Stateful data can be unwrapped to get the result value if it is present.
+
+It is also possible to execute block of code only if value inside `StatefulData` is successful:
+
+```dart
+var value = 1;
+
+statefulData.runIfSuccess((data) {
+  value = 2;
+});
+
+// or async analogue
+
+var value = 1;
+
+await statefulData.runIfSuccessAsync((data) async {
+  value = 2;
+});
+
+// or you can return value from this block
+
+final result = statefulData.runIfSuccess((data) {
+  return 2;
+});
+
+// or async analogue
+
+final result = await statefulData.runIfSuccessAsync((data) async {
+  return 2;
+});
+```
 
 And here is a sealed class for field validation: it contains valid, error, and ignored states.
 

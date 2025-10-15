@@ -44,5 +44,93 @@ void main() {
 
       expect(statefulData.unwrap(), 1);
     });
+
+    test('StatefulData runIfSuccess test', () async {
+      StatefulData<int> statefulData = const LoadingData();
+
+      var value = 1;
+
+      statefulData.runIfSuccess((data) {
+        value = 2;
+      });
+
+      expect(value, 1);
+
+      statefulData = const ErrorData(error: '');
+
+      // ignore: cascade_invocations
+      statefulData.runIfSuccess((data) {
+        value = 2;
+      });
+
+      expect(value, 1);
+
+      statefulData = const SuccessData(result: 1);
+
+      // ignore: cascade_invocations
+      statefulData.runIfSuccess((data) {
+        value = 2;
+      });
+
+      expect(value, 2);
+
+      final result = statefulData.runIfSuccess((data) {
+        return 2;
+      });
+
+      expect(result, 2);
+
+      statefulData = const ErrorData(error: '');
+
+      final errorResult = statefulData.runIfSuccess((data) {
+        return 2;
+      });
+
+      expect(errorResult, null);
+    });
+
+    test('StatefulData runIfSuccessAsync test', () async {
+      StatefulData<int> statefulData = const LoadingData();
+
+      var value = 1;
+
+      await statefulData.runIfSuccessAsync((data) async {
+        value = 2;
+      });
+
+      expect(value, 1);
+
+      statefulData = const ErrorData(error: '');
+
+      // ignore: cascade_invocations
+      await statefulData.runIfSuccessAsync((data) async {
+        value = 2;
+      });
+
+      expect(value, 1);
+
+      statefulData = const SuccessData(result: 1);
+
+      // ignore: cascade_invocations
+      await statefulData.runIfSuccessAsync((data) async {
+        value = 2;
+      });
+
+      expect(value, 2);
+
+      final result = await statefulData.runIfSuccessAsync((data) async {
+        return 2;
+      });
+
+      expect(result, 2);
+
+      statefulData = const ErrorData(error: '');
+
+      final errorResult = await statefulData.runIfSuccessAsync((data) async {
+        return 2;
+      });
+
+      expect(errorResult, null);
+    });
   });
 }

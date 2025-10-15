@@ -1,8 +1,8 @@
 # UMVVM library
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/header.png?raw=true" alt="header" width="750"/>
+<img src="https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/doc_images/logo.png?raw=true" alt="header" width="750"/>
 
-[![Code Coverage](https://raw.githubusercontent.com/red-collar-dev/umvvm/refs/heads/main/packages/umvvm/coverage_badge.svg)](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/test)
+[![Code Coverage](https://raw.githubusercontent.com/red-collar-official/umvvm/refs/heads/main/packages/umvvm/coverage_badge.svg)](https://github.com/red-collar-official/umvvm/tree/main/packages/umvvm/test)
 
 Set of classes for Flutter app architecture.
 
@@ -33,11 +33,11 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ### Examples
 
-Minimal example can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/example).
+Minimal example can be found [here](https://github.com/red-collar-official/umvvm/tree/main/packages/umvvm/example).
 
-More complex examples can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/examples).
+More complex examples can be found [here](https://github.com/red-collar-official/umvvm/tree/main/examples).
 
-Template project can be found [here](https://github.com/red-collar-dev/umvvm/tree/main/umvvm_template).
+Template project can be found [here](https://github.com/red-collar-official/umvvm/tree/main/umvvm_template).
 
 There are small example with all basic components, example of using navigation and example of connecting database.
 
@@ -281,43 +281,43 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
 
 Learn about components:
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/layers.png?raw=true" alt="layers" width="750"/>
+<img src="https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/doc_images/main_layers.png?raw=true" alt="layers" width="750"/>
 
-<img src="https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/doc_images/main.png?raw=true" alt="main" width="750"/>
+<img src="https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/doc_images/components.png?raw=true" alt="main" width="750"/>
 
 #### Global layer
 
-* [App](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/app.md);
-* [DI](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/di.md);
-* [Event bus](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/event_bus.md);
-* [Navigation](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/navigation.md).
+* [App](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/app.md);
+* [DI](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/di.md);
+* [Event bus](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/event_bus.md);
+* [Navigation](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/navigation.md).
 
 #### Data Layer
 
-* [Apis and databases](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/apis.md). 
+* [Apis and databases](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/apis.md). 
 
 #### Domain Layer
 
-* [Interactors](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/interactor.md);
-* [Wrappers](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/wrapper.md);
-* [Instance parts](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/instance_part.md);
-* [MvvmInstance](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/mvvm_instance.md);
-* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
+* [Interactors](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/interactor.md);
+* [Wrappers](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/wrapper.md);
+* [Instance parts](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/instance_part.md);
+* [MvvmInstance](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/mvvm_instance.md);
+* [Custom Mvvm instances](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
 
 #### Presentation layer
 
-* [View models](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/view_model.md);
-* [Widgets and view states](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/widget.md);
-* [Custom Mvvm instances](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
+* [View models](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/view_model.md);
+* [Widgets and view states](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/widget.md);
+* [Custom Mvvm instances](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/custom_instances.md).
 
 #### Utility
 
-* [FormViewModelMixin, UseDisposableMixin, StatefulData, UmvvmStreamBuilder etc...](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/utility.md).
+* [FormViewModelMixin, UseDisposableMixin, StatefulData, UmvvmStreamBuilder etc...](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/utility.md).
 
 #### Other materials
 
-* [Testing](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/testing.md);
-* [Disabling components](https://github.com/red-collar-dev/umvvm/blob/main/packages/umvvm/doc/disabling_components.md).
+* [Testing](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/testing.md);
+* [Disabling components](https://github.com/red-collar-official/umvvm/blob/main/packages/umvvm/doc/disabling_components.md).
 
 #### Important note
 

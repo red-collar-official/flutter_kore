@@ -2,11 +2,11 @@ name: umvvm_generator
 
 description: Source generators for Umvvm architecture library annotations
 
-version: 2.2.0
+version: 2.2.1
 
-repository: https://github.com/red-collar-dev/umvvm
-issue_tracker: https://github.com/red-collar-dev/umvvm/issues
-documentation: https://github.com/red-collar-dev/umvvm/tree/main/packages/umvvm/doc
+repository: https://github.com/red-collar-official/umvvm
+issue_tracker: https://github.com/red-collar-official/umvvm/issues
+documentation: https://github.com/red-collar-official/umvvm/tree/main/packages/umvvm/doc
 topics: [mvvm, state-management, di, navigation, codegen]
 
 environment:

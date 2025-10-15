@@ -1,5 +1,10 @@
 ## 2.2.0
 
+- Update main docs
+- Update github repo links
+
+## 2.2.0
+
 - Update dependencies
 
 ## 2.1.0
