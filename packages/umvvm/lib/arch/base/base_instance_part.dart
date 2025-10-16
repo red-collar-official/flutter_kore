@@ -26,7 +26,7 @@ import 'package:umvvm/umvvm.dart';
 /// ```
 
 abstract class BaseInstancePart<Input, T extends MvvmInstance>
-    extends MvvmInstance<Input?>
+    extends BaseMvvmInstance<Input?>
     with SynchronizedMvvmInstance<Input?>, ApiCaller<Input?> {
   /// Instance that created this part
   late T parentInstance;

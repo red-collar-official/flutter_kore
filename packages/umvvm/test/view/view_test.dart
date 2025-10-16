@@ -84,7 +84,7 @@ void main() {
     setUp(() async {
       UMvvmApp.isInTestMode = true;
 
-      addTestBuilders(InstanceCollection.implementationInstance);
+      addTestBuilders(InstanceCollection.instance);
     });
 
     testWidgets('BaseViewState initState test', (tester) async {

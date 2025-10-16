@@ -8,7 +8,7 @@ import '../mocks/test_wrappers.dart';
 
 void main() {
   group('Wrapper tests', () {
-    final instances = InstanceCollection.implementationInstance;
+    final instances = InstanceCollection.instance;
     final cache = <String, String?>{};
     final eventBus = EventBus.instance;
 

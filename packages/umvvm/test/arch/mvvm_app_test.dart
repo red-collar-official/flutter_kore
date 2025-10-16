@@ -8,7 +8,7 @@ import '../mocks/test_wrappers.dart';
 class TestApp extends UMvvmApp {
   @override
   void registerInstances() {
-    addTestBuilders(InstanceCollection.implementationInstance);
+    addTestBuilders(InstanceCollection.instance);
   }
 
   @override

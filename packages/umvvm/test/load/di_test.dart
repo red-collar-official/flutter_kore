@@ -5,7 +5,7 @@ import 'test_load_instances.dart';
 
 void main() {
   group('Instance collection load tests', () {
-    final instances = InstanceCollection.implementationInstance;
+    final instances = InstanceCollection.instance;
 
     setUp(() async {
       UMvvmApp.isInTestMode = true;
@@ -19,7 +19,7 @@ void main() {
 
       for (var i = 0; i < iterations; i++) {
         final stopwatch = Stopwatch()..start();
-        final _ = instances.get<TestMvvmInstance700>();
+        final _ = instances.get<TestBaseMvvmInstance700>();
 
         average += stopwatch.elapsedMicroseconds;
       }
@@ -33,7 +33,7 @@ void main() {
 
       for (var i = 0; i < iterations; i++) {
         final stopwatch = Stopwatch()..start();
-        final _ = instances.getUnique<TestMvvmInstance700>();
+        final _ = instances.getUnique<TestBaseMvvmInstance700>();
 
         average += stopwatch.elapsedMicroseconds;
       }
@@ -47,7 +47,7 @@ void main() {
 
       for (var i = 0; i < iterations; i++) {
         final stopwatch = Stopwatch()..start();
-        final _ = instances.getUniqueByTypeString('TestMvvmInstance$i');
+        final _ = instances.getUniqueByTypeString('TestBaseMvvmInstance$i');
 
         average += stopwatch.elapsedMicroseconds;
       }
@@ -62,7 +62,7 @@ void main() {
       for (var i = 0; i < iterations; i++) {
         final stopwatch = Stopwatch()..start();
 
-        final _ = instances.getByTypeString(type: 'TestMvvmInstance$i');
+        final _ = instances.getByTypeString(type: 'TestBaseMvvmInstance$i');
 
         average += stopwatch.elapsedMicroseconds;
       }

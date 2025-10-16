@@ -18,11 +18,11 @@ class MvvmInstanceConfiguration {
   final bool? isAsync;
 }
 
-/// Base class for mvvm instance
+/// Base mixin for mvvm instance
 ///
 /// Contains basic interface for init and dispose operations
 /// Also every mvvm instance connected to main app event bus
-abstract class MvvmInstance<T> extends EventBusReceiver {
+mixin MvvmInstance<T> on EventBusReceiver {
   /// Flag indicating that this instance is fully initialized
   ///
   /// You must set this flag to true in sync [initialize]
@@ -88,7 +88,7 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
   ///
   /// After you call this method set [isInitialized] flag to false
   @mustCallSuper
-  void dispose() {
+  void disposeInstance() {
     disposeSub();
 
     _parts.forEach((key, partsList) {
@@ -316,3 +316,11 @@ abstract class MvvmInstance<T> extends EventBusReceiver {
     allPartsReady.update(true);
   }
 }
+
+abstract class BaseMvvmInstance<Input> with EventBusReceiver, 
+  MvvmInstance<Input> {
+    @mustCallSuper
+    void dispose() {
+      super.disposeInstance();
+    }
+  }

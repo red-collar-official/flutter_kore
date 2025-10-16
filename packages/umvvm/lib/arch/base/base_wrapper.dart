@@ -17,7 +17,7 @@ import 'package:umvvm/umvvm.dart';
 /// class StripeWrapper extends BaseWrapper<String> {
 /// }
 /// ```
-abstract class BaseWrapper<Input> extends MvvmInstance<Input?>
+abstract class BaseWrapper<Input> extends BaseMvvmInstance<Input?>
     with
         DependentMvvmInstance<Input?>,
         SynchronizedMvvmInstance<Input?>,

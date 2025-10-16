@@ -32,7 +32,7 @@ void main() {
     setUp(() async {
       UMvvmApp.isInTestMode = true;
 
-      addTestBuilders(InstanceCollection.implementationInstance);
+      addTestBuilders(InstanceCollection.instance);
     });
 
     test('ViewModel initializeAsync test', () async {

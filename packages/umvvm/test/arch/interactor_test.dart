@@ -12,7 +12,7 @@ import '../mocks/test_interactors.dart';
 
 void main() {
   group('Interactor tests', () {
-    final instances = InstanceCollection.implementationInstance;
+    final instances = InstanceCollection.instance;
     final cache = <String, String?>{};
     final eventBus = EventBus.instance;
 

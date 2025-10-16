@@ -29,8 +29,9 @@ import 'package:umvvm/umvvm.dart';
 /// }
 /// ```
 abstract class BaseViewModel<MWidget extends StatefulWidget, MState>
-    extends MvvmInstance<MWidget>
     with
+        EventBusReceiver,
+        MvvmInstance<MWidget>,
         StatefulMvvmInstance<MState, MWidget>,
         DependentMvvmInstance<MWidget>,
         SynchronizedMvvmInstance<MWidget>,
@@ -64,9 +65,8 @@ abstract class BaseViewModel<MWidget extends StatefulWidget, MState>
   }
 
   @mustCallSuper
-  @override
   void dispose() {
-    super.dispose();
+    super.disposeInstance();
 
     disposeStore();
     disposeDependencies();

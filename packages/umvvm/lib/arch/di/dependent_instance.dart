@@ -397,7 +397,7 @@ mixin DependentMvvmInstance<Input> on MvvmInstance<Input> {
       }
 
       _instances[element.type]?.forEach((element) {
-        element?.dispose();
+        element?.disposeInstance();
       });
     }
   }

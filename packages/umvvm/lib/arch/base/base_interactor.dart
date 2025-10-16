@@ -21,8 +21,8 @@ import 'package:umvvm/umvvm.dart';
 ///   int get initialState => 1;
 /// }
 /// ```
-abstract class BaseInteractor<State, Input> extends MvvmInstance<Input?>
-    with
+abstract class BaseInteractor<State, Input> extends BaseMvvmInstance<Input?> 
+      with
         StatefulMvvmInstance<State, Input?>,
         DependentMvvmInstance<Input?>,
         SynchronizedMvvmInstance<Input?>,

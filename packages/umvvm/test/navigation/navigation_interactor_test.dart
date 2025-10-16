@@ -17,7 +17,7 @@ import '../mocks/test_interactors.dart';
 class TestApp extends UMvvmApp<NavigationInteractor> {
   @override
   void registerInstances() {
-    addTestBuilders(InstanceCollection.implementationInstance);
+    addTestBuilders(InstanceCollection.instance);
   }
 
   @override

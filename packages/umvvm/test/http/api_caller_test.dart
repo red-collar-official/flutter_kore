@@ -13,7 +13,7 @@ import 'request_test.dart';
 
 void main() {
   group('ApiCaller tests', () {
-    final instances = InstanceCollection.implementationInstance;
+    final instances = InstanceCollection.instance;
 
     setUp(() async {
       UMvvmApp.isInTestMode = true;

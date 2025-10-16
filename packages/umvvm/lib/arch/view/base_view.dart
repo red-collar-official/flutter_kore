@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/arch/view/base_widget.dart';
 import 'package:umvvm/arch/utility/on_become_visible.dart';
-import 'base_view_model.dart';
+import 'package:umvvm/umvvm.dart';
 
 /// Main class for umvvm view
 /// It holds reference to view model, receives [WidgetsBinding]
@@ -36,7 +35,11 @@ import 'base_view_model.dart';
 abstract class BaseView<MWidget extends BaseWidget, ScreenState,
         ViewModel extends BaseViewModel<MWidget, ScreenState>>
     extends State<MWidget>
-    with AutomaticKeepAliveClientMixin<MWidget>, WidgetsBindingObserver {
+    with 
+      AutomaticKeepAliveClientMixin<MWidget>, 
+      WidgetsBindingObserver, 
+      EventBusReceiver,
+      MvvmInstance<MWidget> {
   final _visibilityDetectorKey = UniqueKey();
 
   /// View model for this view
@@ -48,6 +51,12 @@ abstract class BaseView<MWidget extends BaseWidget, ScreenState,
   @override
   void initState() {
     super.initState();
+
+    initialize(widget);
+
+    if (isAsync) {
+      initializeAsync();
+    }
 
     initializeViewModel();
 
@@ -80,6 +89,7 @@ abstract class BaseView<MWidget extends BaseWidget, ScreenState,
   void dispose() {
     super.dispose();
 
+    disposeInstance();
     _viewModel.dispose();
   }
 
@@ -93,19 +103,21 @@ abstract class BaseView<MWidget extends BaseWidget, ScreenState,
   bool get isInnerView => false;
 
   /// Flag indicating if view model needs to be paused when became invisible
-  bool get pauseViewModelWhenViewBecomeInvisible => true;
+  bool get pauseWhenViewBecomeInvisible => true;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
-    if (pauseViewModelWhenViewBecomeInvisible) {
+    if (pauseWhenViewBecomeInvisible) {
       return OnBecomeVisible(
         detectorKey: _visibilityDetectorKey,
         onBecameVisible: () {
+          resumeEventBusSubscription();
           viewModel.resumeEventBusSubscription();
         },
         onBecameInvisible: () {
+          pauseEventBusSubscription();
           viewModel.pauseEventBusSubscription();
         },
         child: buildView(context),

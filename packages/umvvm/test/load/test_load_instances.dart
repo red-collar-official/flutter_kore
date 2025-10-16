@@ -2,7 +2,7 @@
 
 import 'package:umvvm/umvvm.dart';
 
-final class TestMvvmInstance0 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance0 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -13,7 +13,7 @@ final class TestMvvmInstance0 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance1 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance1 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -24,7 +24,7 @@ final class TestMvvmInstance1 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance2 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance2 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -35,7 +35,7 @@ final class TestMvvmInstance2 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance3 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance3 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -46,7 +46,7 @@ final class TestMvvmInstance3 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance4 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance4 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -57,7 +57,7 @@ final class TestMvvmInstance4 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance5 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance5 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -68,7 +68,7 @@ final class TestMvvmInstance5 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance6 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance6 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -79,7 +79,7 @@ final class TestMvvmInstance6 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance7 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance7 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -90,7 +90,7 @@ final class TestMvvmInstance7 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance8 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance8 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -101,7 +101,7 @@ final class TestMvvmInstance8 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance9 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance9 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -112,7 +112,7 @@ final class TestMvvmInstance9 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance10 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance10 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -123,7 +123,7 @@ final class TestMvvmInstance10 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance11 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance11 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -134,7 +134,7 @@ final class TestMvvmInstance11 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance12 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance12 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -145,7 +145,7 @@ final class TestMvvmInstance12 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance13 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance13 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -156,7 +156,7 @@ final class TestMvvmInstance13 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance14 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance14 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -167,7 +167,7 @@ final class TestMvvmInstance14 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance15 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance15 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -178,7 +178,7 @@ final class TestMvvmInstance15 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance16 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance16 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -189,7 +189,7 @@ final class TestMvvmInstance16 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance17 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance17 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -200,7 +200,7 @@ final class TestMvvmInstance17 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance18 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance18 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -211,7 +211,7 @@ final class TestMvvmInstance18 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance19 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance19 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -222,7 +222,7 @@ final class TestMvvmInstance19 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance20 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance20 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -233,7 +233,7 @@ final class TestMvvmInstance20 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance21 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance21 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -244,7 +244,7 @@ final class TestMvvmInstance21 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance22 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance22 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -255,7 +255,7 @@ final class TestMvvmInstance22 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance23 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance23 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -266,7 +266,7 @@ final class TestMvvmInstance23 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance24 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance24 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -277,7 +277,7 @@ final class TestMvvmInstance24 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance25 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance25 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -288,7 +288,7 @@ final class TestMvvmInstance25 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance26 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance26 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -299,7 +299,7 @@ final class TestMvvmInstance26 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance27 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance27 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -310,7 +310,7 @@ final class TestMvvmInstance27 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance28 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance28 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -321,7 +321,7 @@ final class TestMvvmInstance28 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance29 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance29 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -332,7 +332,7 @@ final class TestMvvmInstance29 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance30 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance30 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -343,7 +343,7 @@ final class TestMvvmInstance30 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance31 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance31 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -354,7 +354,7 @@ final class TestMvvmInstance31 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance32 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance32 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -365,7 +365,7 @@ final class TestMvvmInstance32 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance33 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance33 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -376,7 +376,7 @@ final class TestMvvmInstance33 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance34 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance34 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -387,7 +387,7 @@ final class TestMvvmInstance34 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance35 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance35 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -398,7 +398,7 @@ final class TestMvvmInstance35 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance36 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance36 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -409,7 +409,7 @@ final class TestMvvmInstance36 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance37 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance37 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -420,7 +420,7 @@ final class TestMvvmInstance37 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance38 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance38 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -431,7 +431,7 @@ final class TestMvvmInstance38 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance39 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance39 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -442,7 +442,7 @@ final class TestMvvmInstance39 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance40 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance40 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -453,7 +453,7 @@ final class TestMvvmInstance40 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance41 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance41 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -464,7 +464,7 @@ final class TestMvvmInstance41 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance42 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance42 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -475,7 +475,7 @@ final class TestMvvmInstance42 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance43 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance43 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -486,7 +486,7 @@ final class TestMvvmInstance43 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance44 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance44 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -497,7 +497,7 @@ final class TestMvvmInstance44 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance45 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance45 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -508,7 +508,7 @@ final class TestMvvmInstance45 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance46 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance46 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -519,7 +519,7 @@ final class TestMvvmInstance46 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance47 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance47 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -530,7 +530,7 @@ final class TestMvvmInstance47 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance48 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance48 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -541,7 +541,7 @@ final class TestMvvmInstance48 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance49 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance49 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -552,7 +552,7 @@ final class TestMvvmInstance49 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance50 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance50 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -563,7 +563,7 @@ final class TestMvvmInstance50 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance51 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance51 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -574,7 +574,7 @@ final class TestMvvmInstance51 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance52 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance52 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -585,7 +585,7 @@ final class TestMvvmInstance52 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance53 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance53 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -596,7 +596,7 @@ final class TestMvvmInstance53 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance54 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance54 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -607,7 +607,7 @@ final class TestMvvmInstance54 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance55 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance55 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -618,7 +618,7 @@ final class TestMvvmInstance55 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance56 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance56 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -629,7 +629,7 @@ final class TestMvvmInstance56 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance57 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance57 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -640,7 +640,7 @@ final class TestMvvmInstance57 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance58 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance58 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -651,7 +651,7 @@ final class TestMvvmInstance58 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance59 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance59 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -662,7 +662,7 @@ final class TestMvvmInstance59 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance60 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance60 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -673,7 +673,7 @@ final class TestMvvmInstance60 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance61 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance61 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -684,7 +684,7 @@ final class TestMvvmInstance61 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance62 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance62 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -695,7 +695,7 @@ final class TestMvvmInstance62 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance63 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance63 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -706,7 +706,7 @@ final class TestMvvmInstance63 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance64 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance64 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -717,7 +717,7 @@ final class TestMvvmInstance64 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance65 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance65 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -728,7 +728,7 @@ final class TestMvvmInstance65 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance66 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance66 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -739,7 +739,7 @@ final class TestMvvmInstance66 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance67 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance67 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -750,7 +750,7 @@ final class TestMvvmInstance67 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance68 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance68 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -761,7 +761,7 @@ final class TestMvvmInstance68 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance69 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance69 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -772,7 +772,7 @@ final class TestMvvmInstance69 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance70 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance70 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -783,7 +783,7 @@ final class TestMvvmInstance70 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance71 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance71 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -794,7 +794,7 @@ final class TestMvvmInstance71 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance72 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance72 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -805,7 +805,7 @@ final class TestMvvmInstance72 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance73 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance73 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -816,7 +816,7 @@ final class TestMvvmInstance73 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance74 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance74 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -827,7 +827,7 @@ final class TestMvvmInstance74 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance75 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance75 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -838,7 +838,7 @@ final class TestMvvmInstance75 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance76 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance76 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -849,7 +849,7 @@ final class TestMvvmInstance76 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance77 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance77 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -860,7 +860,7 @@ final class TestMvvmInstance77 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance78 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance78 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -871,7 +871,7 @@ final class TestMvvmInstance78 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance79 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance79 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -882,7 +882,7 @@ final class TestMvvmInstance79 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance80 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance80 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -893,7 +893,7 @@ final class TestMvvmInstance80 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance81 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance81 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -904,7 +904,7 @@ final class TestMvvmInstance81 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance82 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance82 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -915,7 +915,7 @@ final class TestMvvmInstance82 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance83 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance83 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -926,7 +926,7 @@ final class TestMvvmInstance83 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance84 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance84 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -937,7 +937,7 @@ final class TestMvvmInstance84 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance85 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance85 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -948,7 +948,7 @@ final class TestMvvmInstance85 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance86 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance86 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -959,7 +959,7 @@ final class TestMvvmInstance86 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance87 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance87 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -970,7 +970,7 @@ final class TestMvvmInstance87 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance88 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance88 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -981,7 +981,7 @@ final class TestMvvmInstance88 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance89 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance89 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -992,7 +992,7 @@ final class TestMvvmInstance89 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance90 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance90 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1003,7 +1003,7 @@ final class TestMvvmInstance90 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance91 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance91 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1014,7 +1014,7 @@ final class TestMvvmInstance91 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance92 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance92 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1025,7 +1025,7 @@ final class TestMvvmInstance92 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance93 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance93 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1036,7 +1036,7 @@ final class TestMvvmInstance93 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance94 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance94 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1047,7 +1047,7 @@ final class TestMvvmInstance94 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance95 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance95 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1058,7 +1058,7 @@ final class TestMvvmInstance95 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance96 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance96 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1069,7 +1069,7 @@ final class TestMvvmInstance96 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance97 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance97 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1080,7 +1080,7 @@ final class TestMvvmInstance97 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance98 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance98 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1091,7 +1091,7 @@ final class TestMvvmInstance98 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance99 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance99 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1102,7 +1102,7 @@ final class TestMvvmInstance99 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance100 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance100 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1113,7 +1113,7 @@ final class TestMvvmInstance100 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance101 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance101 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1124,7 +1124,7 @@ final class TestMvvmInstance101 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance102 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance102 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1135,7 +1135,7 @@ final class TestMvvmInstance102 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance103 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance103 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1146,7 +1146,7 @@ final class TestMvvmInstance103 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance104 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance104 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1157,7 +1157,7 @@ final class TestMvvmInstance104 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance105 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance105 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1168,7 +1168,7 @@ final class TestMvvmInstance105 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance106 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance106 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1179,7 +1179,7 @@ final class TestMvvmInstance106 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance107 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance107 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1190,7 +1190,7 @@ final class TestMvvmInstance107 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance108 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance108 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1201,7 +1201,7 @@ final class TestMvvmInstance108 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance109 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance109 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1212,7 +1212,7 @@ final class TestMvvmInstance109 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance110 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance110 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1223,7 +1223,7 @@ final class TestMvvmInstance110 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance111 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance111 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1234,7 +1234,7 @@ final class TestMvvmInstance111 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance112 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance112 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1245,7 +1245,7 @@ final class TestMvvmInstance112 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance113 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance113 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1256,7 +1256,7 @@ final class TestMvvmInstance113 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance114 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance114 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1267,7 +1267,7 @@ final class TestMvvmInstance114 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance115 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance115 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1278,7 +1278,7 @@ final class TestMvvmInstance115 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance116 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance116 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1289,7 +1289,7 @@ final class TestMvvmInstance116 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance117 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance117 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1300,7 +1300,7 @@ final class TestMvvmInstance117 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance118 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance118 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1311,7 +1311,7 @@ final class TestMvvmInstance118 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance119 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance119 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1322,7 +1322,7 @@ final class TestMvvmInstance119 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance120 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance120 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1333,7 +1333,7 @@ final class TestMvvmInstance120 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance121 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance121 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1344,7 +1344,7 @@ final class TestMvvmInstance121 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance122 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance122 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1355,7 +1355,7 @@ final class TestMvvmInstance122 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance123 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance123 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1366,7 +1366,7 @@ final class TestMvvmInstance123 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance124 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance124 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1377,7 +1377,7 @@ final class TestMvvmInstance124 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance125 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance125 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1388,7 +1388,7 @@ final class TestMvvmInstance125 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance126 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance126 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1399,7 +1399,7 @@ final class TestMvvmInstance126 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance127 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance127 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1410,7 +1410,7 @@ final class TestMvvmInstance127 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance128 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance128 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1421,7 +1421,7 @@ final class TestMvvmInstance128 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance129 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance129 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1432,7 +1432,7 @@ final class TestMvvmInstance129 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance130 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance130 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1443,7 +1443,7 @@ final class TestMvvmInstance130 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance131 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance131 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1454,7 +1454,7 @@ final class TestMvvmInstance131 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance132 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance132 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1465,7 +1465,7 @@ final class TestMvvmInstance132 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance133 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance133 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1476,7 +1476,7 @@ final class TestMvvmInstance133 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance134 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance134 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1487,7 +1487,7 @@ final class TestMvvmInstance134 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance135 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance135 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1498,7 +1498,7 @@ final class TestMvvmInstance135 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance136 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance136 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1509,7 +1509,7 @@ final class TestMvvmInstance136 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance137 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance137 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1520,7 +1520,7 @@ final class TestMvvmInstance137 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance138 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance138 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1531,7 +1531,7 @@ final class TestMvvmInstance138 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance139 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance139 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1542,7 +1542,7 @@ final class TestMvvmInstance139 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance140 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance140 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1553,7 +1553,7 @@ final class TestMvvmInstance140 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance141 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance141 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1564,7 +1564,7 @@ final class TestMvvmInstance141 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance142 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance142 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1575,7 +1575,7 @@ final class TestMvvmInstance142 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance143 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance143 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1586,7 +1586,7 @@ final class TestMvvmInstance143 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance144 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance144 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1597,7 +1597,7 @@ final class TestMvvmInstance144 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance145 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance145 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1608,7 +1608,7 @@ final class TestMvvmInstance145 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance146 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance146 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1619,7 +1619,7 @@ final class TestMvvmInstance146 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance147 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance147 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1630,7 +1630,7 @@ final class TestMvvmInstance147 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance148 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance148 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1641,7 +1641,7 @@ final class TestMvvmInstance148 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance149 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance149 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1652,7 +1652,7 @@ final class TestMvvmInstance149 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance150 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance150 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1663,7 +1663,7 @@ final class TestMvvmInstance150 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance151 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance151 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1674,7 +1674,7 @@ final class TestMvvmInstance151 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance152 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance152 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1685,7 +1685,7 @@ final class TestMvvmInstance152 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance153 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance153 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1696,7 +1696,7 @@ final class TestMvvmInstance153 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance154 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance154 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1707,7 +1707,7 @@ final class TestMvvmInstance154 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance155 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance155 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1718,7 +1718,7 @@ final class TestMvvmInstance155 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance156 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance156 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1729,7 +1729,7 @@ final class TestMvvmInstance156 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance157 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance157 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1740,7 +1740,7 @@ final class TestMvvmInstance157 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance158 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance158 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1751,7 +1751,7 @@ final class TestMvvmInstance158 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance159 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance159 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1762,7 +1762,7 @@ final class TestMvvmInstance159 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance160 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance160 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1773,7 +1773,7 @@ final class TestMvvmInstance160 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance161 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance161 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1784,7 +1784,7 @@ final class TestMvvmInstance161 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance162 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance162 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1795,7 +1795,7 @@ final class TestMvvmInstance162 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance163 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance163 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1806,7 +1806,7 @@ final class TestMvvmInstance163 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance164 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance164 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1817,7 +1817,7 @@ final class TestMvvmInstance164 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance165 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance165 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1828,7 +1828,7 @@ final class TestMvvmInstance165 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance166 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance166 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1839,7 +1839,7 @@ final class TestMvvmInstance166 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance167 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance167 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1850,7 +1850,7 @@ final class TestMvvmInstance167 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance168 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance168 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1861,7 +1861,7 @@ final class TestMvvmInstance168 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance169 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance169 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1872,7 +1872,7 @@ final class TestMvvmInstance169 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance170 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance170 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1883,7 +1883,7 @@ final class TestMvvmInstance170 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance171 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance171 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1894,7 +1894,7 @@ final class TestMvvmInstance171 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance172 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance172 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1905,7 +1905,7 @@ final class TestMvvmInstance172 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance173 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance173 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1916,7 +1916,7 @@ final class TestMvvmInstance173 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance174 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance174 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1927,7 +1927,7 @@ final class TestMvvmInstance174 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance175 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance175 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1938,7 +1938,7 @@ final class TestMvvmInstance175 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance176 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance176 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1949,7 +1949,7 @@ final class TestMvvmInstance176 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance177 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance177 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1960,7 +1960,7 @@ final class TestMvvmInstance177 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance178 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance178 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1971,7 +1971,7 @@ final class TestMvvmInstance178 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance179 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance179 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1982,7 +1982,7 @@ final class TestMvvmInstance179 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance180 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance180 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -1993,7 +1993,7 @@ final class TestMvvmInstance180 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance181 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance181 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2004,7 +2004,7 @@ final class TestMvvmInstance181 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance182 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance182 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2015,7 +2015,7 @@ final class TestMvvmInstance182 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance183 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance183 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2026,7 +2026,7 @@ final class TestMvvmInstance183 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance184 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance184 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2037,7 +2037,7 @@ final class TestMvvmInstance184 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance185 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance185 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2048,7 +2048,7 @@ final class TestMvvmInstance185 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance186 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance186 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2059,7 +2059,7 @@ final class TestMvvmInstance186 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance187 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance187 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2070,7 +2070,7 @@ final class TestMvvmInstance187 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance188 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance188 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2081,7 +2081,7 @@ final class TestMvvmInstance188 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance189 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance189 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2092,7 +2092,7 @@ final class TestMvvmInstance189 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance190 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance190 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2103,7 +2103,7 @@ final class TestMvvmInstance190 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance191 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance191 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2114,7 +2114,7 @@ final class TestMvvmInstance191 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance192 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance192 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2125,7 +2125,7 @@ final class TestMvvmInstance192 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance193 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance193 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2136,7 +2136,7 @@ final class TestMvvmInstance193 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance194 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance194 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2147,7 +2147,7 @@ final class TestMvvmInstance194 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance195 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance195 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2158,7 +2158,7 @@ final class TestMvvmInstance195 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance196 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance196 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2169,7 +2169,7 @@ final class TestMvvmInstance196 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance197 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance197 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2180,7 +2180,7 @@ final class TestMvvmInstance197 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance198 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance198 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2191,7 +2191,7 @@ final class TestMvvmInstance198 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance199 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance199 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2202,7 +2202,7 @@ final class TestMvvmInstance199 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance200 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance200 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2213,7 +2213,7 @@ final class TestMvvmInstance200 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance201 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance201 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2224,7 +2224,7 @@ final class TestMvvmInstance201 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance202 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance202 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2235,7 +2235,7 @@ final class TestMvvmInstance202 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance203 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance203 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2246,7 +2246,7 @@ final class TestMvvmInstance203 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance204 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance204 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2257,7 +2257,7 @@ final class TestMvvmInstance204 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance205 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance205 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2268,7 +2268,7 @@ final class TestMvvmInstance205 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance206 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance206 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2279,7 +2279,7 @@ final class TestMvvmInstance206 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance207 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance207 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2290,7 +2290,7 @@ final class TestMvvmInstance207 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance208 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance208 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2301,7 +2301,7 @@ final class TestMvvmInstance208 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance209 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance209 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2312,7 +2312,7 @@ final class TestMvvmInstance209 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance210 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance210 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2323,7 +2323,7 @@ final class TestMvvmInstance210 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance211 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance211 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2334,7 +2334,7 @@ final class TestMvvmInstance211 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance212 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance212 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2345,7 +2345,7 @@ final class TestMvvmInstance212 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance213 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance213 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2356,7 +2356,7 @@ final class TestMvvmInstance213 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance214 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance214 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2367,7 +2367,7 @@ final class TestMvvmInstance214 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance215 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance215 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2378,7 +2378,7 @@ final class TestMvvmInstance215 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance216 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance216 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2389,7 +2389,7 @@ final class TestMvvmInstance216 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance217 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance217 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2400,7 +2400,7 @@ final class TestMvvmInstance217 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance218 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance218 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2411,7 +2411,7 @@ final class TestMvvmInstance218 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance219 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance219 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2422,7 +2422,7 @@ final class TestMvvmInstance219 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance220 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance220 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2433,7 +2433,7 @@ final class TestMvvmInstance220 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance221 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance221 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2444,7 +2444,7 @@ final class TestMvvmInstance221 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance222 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance222 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2455,7 +2455,7 @@ final class TestMvvmInstance222 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance223 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance223 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2466,7 +2466,7 @@ final class TestMvvmInstance223 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance224 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance224 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2477,7 +2477,7 @@ final class TestMvvmInstance224 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance225 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance225 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2488,7 +2488,7 @@ final class TestMvvmInstance225 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance226 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance226 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2499,7 +2499,7 @@ final class TestMvvmInstance226 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance227 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance227 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2510,7 +2510,7 @@ final class TestMvvmInstance227 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance228 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance228 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2521,7 +2521,7 @@ final class TestMvvmInstance228 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance229 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance229 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2532,7 +2532,7 @@ final class TestMvvmInstance229 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance230 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance230 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2543,7 +2543,7 @@ final class TestMvvmInstance230 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance231 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance231 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2554,7 +2554,7 @@ final class TestMvvmInstance231 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance232 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance232 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2565,7 +2565,7 @@ final class TestMvvmInstance232 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance233 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance233 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2576,7 +2576,7 @@ final class TestMvvmInstance233 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance234 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance234 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2587,7 +2587,7 @@ final class TestMvvmInstance234 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance235 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance235 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2598,7 +2598,7 @@ final class TestMvvmInstance235 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance236 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance236 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2609,7 +2609,7 @@ final class TestMvvmInstance236 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance237 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance237 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2620,7 +2620,7 @@ final class TestMvvmInstance237 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance238 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance238 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2631,7 +2631,7 @@ final class TestMvvmInstance238 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance239 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance239 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2642,7 +2642,7 @@ final class TestMvvmInstance239 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance240 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance240 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2653,7 +2653,7 @@ final class TestMvvmInstance240 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance241 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance241 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2664,7 +2664,7 @@ final class TestMvvmInstance241 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance242 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance242 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2675,7 +2675,7 @@ final class TestMvvmInstance242 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance243 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance243 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2686,7 +2686,7 @@ final class TestMvvmInstance243 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance244 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance244 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2697,7 +2697,7 @@ final class TestMvvmInstance244 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance245 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance245 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2708,7 +2708,7 @@ final class TestMvvmInstance245 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance246 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance246 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2719,7 +2719,7 @@ final class TestMvvmInstance246 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance247 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance247 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2730,7 +2730,7 @@ final class TestMvvmInstance247 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance248 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance248 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2741,7 +2741,7 @@ final class TestMvvmInstance248 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance249 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance249 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2752,7 +2752,7 @@ final class TestMvvmInstance249 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance250 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance250 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2763,7 +2763,7 @@ final class TestMvvmInstance250 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance251 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance251 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2774,7 +2774,7 @@ final class TestMvvmInstance251 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance252 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance252 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2785,7 +2785,7 @@ final class TestMvvmInstance252 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance253 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance253 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2796,7 +2796,7 @@ final class TestMvvmInstance253 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance254 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance254 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2807,7 +2807,7 @@ final class TestMvvmInstance254 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance255 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance255 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2818,7 +2818,7 @@ final class TestMvvmInstance255 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance256 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance256 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2829,7 +2829,7 @@ final class TestMvvmInstance256 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance257 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance257 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2840,7 +2840,7 @@ final class TestMvvmInstance257 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance258 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance258 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2851,7 +2851,7 @@ final class TestMvvmInstance258 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance259 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance259 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2862,7 +2862,7 @@ final class TestMvvmInstance259 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance260 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance260 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2873,7 +2873,7 @@ final class TestMvvmInstance260 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance261 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance261 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2884,7 +2884,7 @@ final class TestMvvmInstance261 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance262 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance262 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2895,7 +2895,7 @@ final class TestMvvmInstance262 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance263 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance263 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2906,7 +2906,7 @@ final class TestMvvmInstance263 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance264 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance264 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2917,7 +2917,7 @@ final class TestMvvmInstance264 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance265 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance265 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2928,7 +2928,7 @@ final class TestMvvmInstance265 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance266 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance266 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2939,7 +2939,7 @@ final class TestMvvmInstance266 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance267 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance267 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2950,7 +2950,7 @@ final class TestMvvmInstance267 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance268 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance268 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2961,7 +2961,7 @@ final class TestMvvmInstance268 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance269 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance269 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2972,7 +2972,7 @@ final class TestMvvmInstance269 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance270 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance270 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2983,7 +2983,7 @@ final class TestMvvmInstance270 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance271 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance271 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -2994,7 +2994,7 @@ final class TestMvvmInstance271 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance272 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance272 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3005,7 +3005,7 @@ final class TestMvvmInstance272 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance273 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance273 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3016,7 +3016,7 @@ final class TestMvvmInstance273 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance274 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance274 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3027,7 +3027,7 @@ final class TestMvvmInstance274 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance275 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance275 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3038,7 +3038,7 @@ final class TestMvvmInstance275 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance276 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance276 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3049,7 +3049,7 @@ final class TestMvvmInstance276 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance277 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance277 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3060,7 +3060,7 @@ final class TestMvvmInstance277 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance278 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance278 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3071,7 +3071,7 @@ final class TestMvvmInstance278 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance279 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance279 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3082,7 +3082,7 @@ final class TestMvvmInstance279 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance280 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance280 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3093,7 +3093,7 @@ final class TestMvvmInstance280 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance281 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance281 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3104,7 +3104,7 @@ final class TestMvvmInstance281 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance282 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance282 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3115,7 +3115,7 @@ final class TestMvvmInstance282 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance283 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance283 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3126,7 +3126,7 @@ final class TestMvvmInstance283 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance284 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance284 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3137,7 +3137,7 @@ final class TestMvvmInstance284 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance285 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance285 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3148,7 +3148,7 @@ final class TestMvvmInstance285 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance286 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance286 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3159,7 +3159,7 @@ final class TestMvvmInstance286 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance287 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance287 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3170,7 +3170,7 @@ final class TestMvvmInstance287 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance288 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance288 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3181,7 +3181,7 @@ final class TestMvvmInstance288 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance289 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance289 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3192,7 +3192,7 @@ final class TestMvvmInstance289 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance290 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance290 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3203,7 +3203,7 @@ final class TestMvvmInstance290 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance291 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance291 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3214,7 +3214,7 @@ final class TestMvvmInstance291 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance292 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance292 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3225,7 +3225,7 @@ final class TestMvvmInstance292 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance293 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance293 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3236,7 +3236,7 @@ final class TestMvvmInstance293 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance294 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance294 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3247,7 +3247,7 @@ final class TestMvvmInstance294 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance295 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance295 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3258,7 +3258,7 @@ final class TestMvvmInstance295 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance296 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance296 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3269,7 +3269,7 @@ final class TestMvvmInstance296 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance297 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance297 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3280,7 +3280,7 @@ final class TestMvvmInstance297 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance298 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance298 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3291,7 +3291,7 @@ final class TestMvvmInstance298 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance299 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance299 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3302,7 +3302,7 @@ final class TestMvvmInstance299 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance300 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance300 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3313,7 +3313,7 @@ final class TestMvvmInstance300 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance301 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance301 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3324,7 +3324,7 @@ final class TestMvvmInstance301 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance302 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance302 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3335,7 +3335,7 @@ final class TestMvvmInstance302 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance303 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance303 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3346,7 +3346,7 @@ final class TestMvvmInstance303 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance304 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance304 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3357,7 +3357,7 @@ final class TestMvvmInstance304 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance305 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance305 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3368,7 +3368,7 @@ final class TestMvvmInstance305 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance306 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance306 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3379,7 +3379,7 @@ final class TestMvvmInstance306 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance307 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance307 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3390,7 +3390,7 @@ final class TestMvvmInstance307 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance308 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance308 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3401,7 +3401,7 @@ final class TestMvvmInstance308 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance309 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance309 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3412,7 +3412,7 @@ final class TestMvvmInstance309 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance310 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance310 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3423,7 +3423,7 @@ final class TestMvvmInstance310 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance311 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance311 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3434,7 +3434,7 @@ final class TestMvvmInstance311 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance312 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance312 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3445,7 +3445,7 @@ final class TestMvvmInstance312 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance313 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance313 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3456,7 +3456,7 @@ final class TestMvvmInstance313 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance314 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance314 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3467,7 +3467,7 @@ final class TestMvvmInstance314 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance315 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance315 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3478,7 +3478,7 @@ final class TestMvvmInstance315 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance316 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance316 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3489,7 +3489,7 @@ final class TestMvvmInstance316 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance317 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance317 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3500,7 +3500,7 @@ final class TestMvvmInstance317 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance318 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance318 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3511,7 +3511,7 @@ final class TestMvvmInstance318 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance319 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance319 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3522,7 +3522,7 @@ final class TestMvvmInstance319 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance320 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance320 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3533,7 +3533,7 @@ final class TestMvvmInstance320 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance321 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance321 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3544,7 +3544,7 @@ final class TestMvvmInstance321 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance322 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance322 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3555,7 +3555,7 @@ final class TestMvvmInstance322 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance323 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance323 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3566,7 +3566,7 @@ final class TestMvvmInstance323 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance324 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance324 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3577,7 +3577,7 @@ final class TestMvvmInstance324 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance325 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance325 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3588,7 +3588,7 @@ final class TestMvvmInstance325 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance326 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance326 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3599,7 +3599,7 @@ final class TestMvvmInstance326 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance327 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance327 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3610,7 +3610,7 @@ final class TestMvvmInstance327 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance328 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance328 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3621,7 +3621,7 @@ final class TestMvvmInstance328 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance329 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance329 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3632,7 +3632,7 @@ final class TestMvvmInstance329 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance330 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance330 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3643,7 +3643,7 @@ final class TestMvvmInstance330 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance331 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance331 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3654,7 +3654,7 @@ final class TestMvvmInstance331 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance332 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance332 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3665,7 +3665,7 @@ final class TestMvvmInstance332 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance333 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance333 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3676,7 +3676,7 @@ final class TestMvvmInstance333 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance334 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance334 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3687,7 +3687,7 @@ final class TestMvvmInstance334 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance335 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance335 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3698,7 +3698,7 @@ final class TestMvvmInstance335 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance336 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance336 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3709,7 +3709,7 @@ final class TestMvvmInstance336 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance337 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance337 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3720,7 +3720,7 @@ final class TestMvvmInstance337 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance338 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance338 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3731,7 +3731,7 @@ final class TestMvvmInstance338 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance339 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance339 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3742,7 +3742,7 @@ final class TestMvvmInstance339 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance340 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance340 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3753,7 +3753,7 @@ final class TestMvvmInstance340 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance341 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance341 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3764,7 +3764,7 @@ final class TestMvvmInstance341 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance342 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance342 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3775,7 +3775,7 @@ final class TestMvvmInstance342 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance343 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance343 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3786,7 +3786,7 @@ final class TestMvvmInstance343 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance344 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance344 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3797,7 +3797,7 @@ final class TestMvvmInstance344 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance345 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance345 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3808,7 +3808,7 @@ final class TestMvvmInstance345 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance346 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance346 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3819,7 +3819,7 @@ final class TestMvvmInstance346 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance347 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance347 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3830,7 +3830,7 @@ final class TestMvvmInstance347 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance348 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance348 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3841,7 +3841,7 @@ final class TestMvvmInstance348 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance349 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance349 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3852,7 +3852,7 @@ final class TestMvvmInstance349 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance350 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance350 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3863,7 +3863,7 @@ final class TestMvvmInstance350 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance351 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance351 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3874,7 +3874,7 @@ final class TestMvvmInstance351 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance352 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance352 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3885,7 +3885,7 @@ final class TestMvvmInstance352 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance353 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance353 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3896,7 +3896,7 @@ final class TestMvvmInstance353 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance354 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance354 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3907,7 +3907,7 @@ final class TestMvvmInstance354 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance355 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance355 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3918,7 +3918,7 @@ final class TestMvvmInstance355 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance356 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance356 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3929,7 +3929,7 @@ final class TestMvvmInstance356 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance357 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance357 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3940,7 +3940,7 @@ final class TestMvvmInstance357 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance358 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance358 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3951,7 +3951,7 @@ final class TestMvvmInstance358 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance359 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance359 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3962,7 +3962,7 @@ final class TestMvvmInstance359 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance360 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance360 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3973,7 +3973,7 @@ final class TestMvvmInstance360 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance361 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance361 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3984,7 +3984,7 @@ final class TestMvvmInstance361 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance362 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance362 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -3995,7 +3995,7 @@ final class TestMvvmInstance362 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance363 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance363 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4006,7 +4006,7 @@ final class TestMvvmInstance363 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance364 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance364 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4017,7 +4017,7 @@ final class TestMvvmInstance364 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance365 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance365 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4028,7 +4028,7 @@ final class TestMvvmInstance365 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance366 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance366 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4039,7 +4039,7 @@ final class TestMvvmInstance366 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance367 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance367 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4050,7 +4050,7 @@ final class TestMvvmInstance367 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance368 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance368 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4061,7 +4061,7 @@ final class TestMvvmInstance368 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance369 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance369 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4072,7 +4072,7 @@ final class TestMvvmInstance369 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance370 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance370 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4083,7 +4083,7 @@ final class TestMvvmInstance370 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance371 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance371 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4094,7 +4094,7 @@ final class TestMvvmInstance371 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance372 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance372 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4105,7 +4105,7 @@ final class TestMvvmInstance372 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance373 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance373 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4116,7 +4116,7 @@ final class TestMvvmInstance373 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance374 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance374 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4127,7 +4127,7 @@ final class TestMvvmInstance374 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance375 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance375 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4138,7 +4138,7 @@ final class TestMvvmInstance375 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance376 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance376 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4149,7 +4149,7 @@ final class TestMvvmInstance376 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance377 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance377 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4160,7 +4160,7 @@ final class TestMvvmInstance377 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance378 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance378 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4171,7 +4171,7 @@ final class TestMvvmInstance378 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance379 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance379 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4182,7 +4182,7 @@ final class TestMvvmInstance379 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance380 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance380 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4193,7 +4193,7 @@ final class TestMvvmInstance380 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance381 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance381 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4204,7 +4204,7 @@ final class TestMvvmInstance381 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance382 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance382 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4215,7 +4215,7 @@ final class TestMvvmInstance382 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance383 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance383 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4226,7 +4226,7 @@ final class TestMvvmInstance383 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance384 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance384 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4237,7 +4237,7 @@ final class TestMvvmInstance384 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance385 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance385 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4248,7 +4248,7 @@ final class TestMvvmInstance385 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance386 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance386 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4259,7 +4259,7 @@ final class TestMvvmInstance386 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance387 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance387 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4270,7 +4270,7 @@ final class TestMvvmInstance387 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance388 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance388 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4281,7 +4281,7 @@ final class TestMvvmInstance388 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance389 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance389 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4292,7 +4292,7 @@ final class TestMvvmInstance389 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance390 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance390 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4303,7 +4303,7 @@ final class TestMvvmInstance390 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance391 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance391 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4314,7 +4314,7 @@ final class TestMvvmInstance391 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance392 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance392 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4325,7 +4325,7 @@ final class TestMvvmInstance392 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance393 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance393 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4336,7 +4336,7 @@ final class TestMvvmInstance393 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance394 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance394 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4347,7 +4347,7 @@ final class TestMvvmInstance394 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance395 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance395 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4358,7 +4358,7 @@ final class TestMvvmInstance395 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance396 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance396 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4369,7 +4369,7 @@ final class TestMvvmInstance396 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance397 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance397 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4380,7 +4380,7 @@ final class TestMvvmInstance397 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance398 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance398 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4391,7 +4391,7 @@ final class TestMvvmInstance398 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance399 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance399 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4402,7 +4402,7 @@ final class TestMvvmInstance399 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance400 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance400 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4413,7 +4413,7 @@ final class TestMvvmInstance400 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance401 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance401 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4424,7 +4424,7 @@ final class TestMvvmInstance401 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance402 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance402 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4435,7 +4435,7 @@ final class TestMvvmInstance402 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance403 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance403 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4446,7 +4446,7 @@ final class TestMvvmInstance403 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance404 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance404 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4457,7 +4457,7 @@ final class TestMvvmInstance404 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance405 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance405 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4468,7 +4468,7 @@ final class TestMvvmInstance405 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance406 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance406 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4479,7 +4479,7 @@ final class TestMvvmInstance406 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance407 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance407 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4490,7 +4490,7 @@ final class TestMvvmInstance407 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance408 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance408 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4501,7 +4501,7 @@ final class TestMvvmInstance408 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance409 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance409 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4512,7 +4512,7 @@ final class TestMvvmInstance409 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance410 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance410 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4523,7 +4523,7 @@ final class TestMvvmInstance410 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance411 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance411 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4534,7 +4534,7 @@ final class TestMvvmInstance411 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance412 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance412 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4545,7 +4545,7 @@ final class TestMvvmInstance412 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance413 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance413 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4556,7 +4556,7 @@ final class TestMvvmInstance413 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance414 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance414 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4567,7 +4567,7 @@ final class TestMvvmInstance414 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance415 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance415 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4578,7 +4578,7 @@ final class TestMvvmInstance415 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance416 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance416 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4589,7 +4589,7 @@ final class TestMvvmInstance416 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance417 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance417 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4600,7 +4600,7 @@ final class TestMvvmInstance417 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance418 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance418 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4611,7 +4611,7 @@ final class TestMvvmInstance418 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance419 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance419 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4622,7 +4622,7 @@ final class TestMvvmInstance419 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance420 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance420 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4633,7 +4633,7 @@ final class TestMvvmInstance420 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance421 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance421 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4644,7 +4644,7 @@ final class TestMvvmInstance421 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance422 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance422 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4655,7 +4655,7 @@ final class TestMvvmInstance422 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance423 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance423 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4666,7 +4666,7 @@ final class TestMvvmInstance423 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance424 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance424 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4677,7 +4677,7 @@ final class TestMvvmInstance424 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance425 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance425 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4688,7 +4688,7 @@ final class TestMvvmInstance425 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance426 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance426 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4699,7 +4699,7 @@ final class TestMvvmInstance426 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance427 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance427 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4710,7 +4710,7 @@ final class TestMvvmInstance427 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance428 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance428 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4721,7 +4721,7 @@ final class TestMvvmInstance428 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance429 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance429 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4732,7 +4732,7 @@ final class TestMvvmInstance429 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance430 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance430 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4743,7 +4743,7 @@ final class TestMvvmInstance430 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance431 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance431 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4754,7 +4754,7 @@ final class TestMvvmInstance431 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance432 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance432 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4765,7 +4765,7 @@ final class TestMvvmInstance432 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance433 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance433 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4776,7 +4776,7 @@ final class TestMvvmInstance433 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance434 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance434 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4787,7 +4787,7 @@ final class TestMvvmInstance434 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance435 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance435 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4798,7 +4798,7 @@ final class TestMvvmInstance435 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance436 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance436 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4809,7 +4809,7 @@ final class TestMvvmInstance436 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance437 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance437 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4820,7 +4820,7 @@ final class TestMvvmInstance437 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance438 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance438 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4831,7 +4831,7 @@ final class TestMvvmInstance438 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance439 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance439 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4842,7 +4842,7 @@ final class TestMvvmInstance439 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance440 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance440 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4853,7 +4853,7 @@ final class TestMvvmInstance440 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance441 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance441 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4864,7 +4864,7 @@ final class TestMvvmInstance441 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance442 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance442 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4875,7 +4875,7 @@ final class TestMvvmInstance442 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance443 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance443 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4886,7 +4886,7 @@ final class TestMvvmInstance443 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance444 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance444 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4897,7 +4897,7 @@ final class TestMvvmInstance444 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance445 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance445 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4908,7 +4908,7 @@ final class TestMvvmInstance445 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance446 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance446 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4919,7 +4919,7 @@ final class TestMvvmInstance446 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance447 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance447 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4930,7 +4930,7 @@ final class TestMvvmInstance447 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance448 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance448 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4941,7 +4941,7 @@ final class TestMvvmInstance448 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance449 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance449 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4952,7 +4952,7 @@ final class TestMvvmInstance449 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance450 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance450 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4963,7 +4963,7 @@ final class TestMvvmInstance450 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance451 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance451 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4974,7 +4974,7 @@ final class TestMvvmInstance451 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance452 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance452 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4985,7 +4985,7 @@ final class TestMvvmInstance452 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance453 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance453 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -4996,7 +4996,7 @@ final class TestMvvmInstance453 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance454 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance454 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5007,7 +5007,7 @@ final class TestMvvmInstance454 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance455 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance455 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5018,7 +5018,7 @@ final class TestMvvmInstance455 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance456 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance456 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5029,7 +5029,7 @@ final class TestMvvmInstance456 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance457 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance457 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5040,7 +5040,7 @@ final class TestMvvmInstance457 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance458 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance458 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5051,7 +5051,7 @@ final class TestMvvmInstance458 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance459 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance459 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5062,7 +5062,7 @@ final class TestMvvmInstance459 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance460 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance460 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5073,7 +5073,7 @@ final class TestMvvmInstance460 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance461 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance461 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5084,7 +5084,7 @@ final class TestMvvmInstance461 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance462 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance462 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5095,7 +5095,7 @@ final class TestMvvmInstance462 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance463 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance463 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5106,7 +5106,7 @@ final class TestMvvmInstance463 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance464 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance464 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5117,7 +5117,7 @@ final class TestMvvmInstance464 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance465 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance465 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5128,7 +5128,7 @@ final class TestMvvmInstance465 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance466 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance466 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5139,7 +5139,7 @@ final class TestMvvmInstance466 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance467 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance467 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5150,7 +5150,7 @@ final class TestMvvmInstance467 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance468 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance468 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5161,7 +5161,7 @@ final class TestMvvmInstance468 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance469 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance469 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5172,7 +5172,7 @@ final class TestMvvmInstance469 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance470 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance470 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5183,7 +5183,7 @@ final class TestMvvmInstance470 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance471 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance471 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5194,7 +5194,7 @@ final class TestMvvmInstance471 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance472 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance472 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5205,7 +5205,7 @@ final class TestMvvmInstance472 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance473 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance473 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5216,7 +5216,7 @@ final class TestMvvmInstance473 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance474 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance474 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5227,7 +5227,7 @@ final class TestMvvmInstance474 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance475 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance475 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5238,7 +5238,7 @@ final class TestMvvmInstance475 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance476 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance476 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5249,7 +5249,7 @@ final class TestMvvmInstance476 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance477 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance477 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5260,7 +5260,7 @@ final class TestMvvmInstance477 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance478 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance478 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5271,7 +5271,7 @@ final class TestMvvmInstance478 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance479 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance479 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5282,7 +5282,7 @@ final class TestMvvmInstance479 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance480 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance480 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5293,7 +5293,7 @@ final class TestMvvmInstance480 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance481 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance481 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5304,7 +5304,7 @@ final class TestMvvmInstance481 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance482 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance482 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5315,7 +5315,7 @@ final class TestMvvmInstance482 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance483 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance483 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5326,7 +5326,7 @@ final class TestMvvmInstance483 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance484 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance484 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5337,7 +5337,7 @@ final class TestMvvmInstance484 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance485 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance485 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5348,7 +5348,7 @@ final class TestMvvmInstance485 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance486 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance486 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5359,7 +5359,7 @@ final class TestMvvmInstance486 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance487 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance487 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5370,7 +5370,7 @@ final class TestMvvmInstance487 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance488 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance488 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5381,7 +5381,7 @@ final class TestMvvmInstance488 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance489 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance489 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5392,7 +5392,7 @@ final class TestMvvmInstance489 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance490 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance490 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5403,7 +5403,7 @@ final class TestMvvmInstance490 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance491 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance491 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5414,7 +5414,7 @@ final class TestMvvmInstance491 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance492 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance492 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5425,7 +5425,7 @@ final class TestMvvmInstance492 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance493 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance493 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5436,7 +5436,7 @@ final class TestMvvmInstance493 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance494 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance494 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5447,7 +5447,7 @@ final class TestMvvmInstance494 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance495 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance495 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5458,7 +5458,7 @@ final class TestMvvmInstance495 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance496 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance496 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5469,7 +5469,7 @@ final class TestMvvmInstance496 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance497 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance497 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5480,7 +5480,7 @@ final class TestMvvmInstance497 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance498 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance498 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5491,7 +5491,7 @@ final class TestMvvmInstance498 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance499 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance499 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5502,7 +5502,7 @@ final class TestMvvmInstance499 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance500 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance500 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5513,7 +5513,7 @@ final class TestMvvmInstance500 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance501 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance501 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5524,7 +5524,7 @@ final class TestMvvmInstance501 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance502 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance502 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5535,7 +5535,7 @@ final class TestMvvmInstance502 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance503 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance503 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5546,7 +5546,7 @@ final class TestMvvmInstance503 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance504 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance504 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5557,7 +5557,7 @@ final class TestMvvmInstance504 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance505 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance505 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5568,7 +5568,7 @@ final class TestMvvmInstance505 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance506 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance506 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5579,7 +5579,7 @@ final class TestMvvmInstance506 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance507 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance507 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5590,7 +5590,7 @@ final class TestMvvmInstance507 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance508 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance508 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5601,7 +5601,7 @@ final class TestMvvmInstance508 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance509 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance509 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5612,7 +5612,7 @@ final class TestMvvmInstance509 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance510 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance510 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5623,7 +5623,7 @@ final class TestMvvmInstance510 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance511 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance511 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5634,7 +5634,7 @@ final class TestMvvmInstance511 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance512 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance512 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5645,7 +5645,7 @@ final class TestMvvmInstance512 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance513 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance513 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5656,7 +5656,7 @@ final class TestMvvmInstance513 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance514 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance514 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5667,7 +5667,7 @@ final class TestMvvmInstance514 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance515 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance515 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5678,7 +5678,7 @@ final class TestMvvmInstance515 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance516 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance516 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5689,7 +5689,7 @@ final class TestMvvmInstance516 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance517 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance517 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5700,7 +5700,7 @@ final class TestMvvmInstance517 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance518 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance518 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5711,7 +5711,7 @@ final class TestMvvmInstance518 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance519 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance519 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5722,7 +5722,7 @@ final class TestMvvmInstance519 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance520 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance520 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5733,7 +5733,7 @@ final class TestMvvmInstance520 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance521 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance521 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5744,7 +5744,7 @@ final class TestMvvmInstance521 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance522 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance522 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5755,7 +5755,7 @@ final class TestMvvmInstance522 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance523 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance523 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5766,7 +5766,7 @@ final class TestMvvmInstance523 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance524 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance524 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5777,7 +5777,7 @@ final class TestMvvmInstance524 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance525 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance525 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5788,7 +5788,7 @@ final class TestMvvmInstance525 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance526 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance526 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5799,7 +5799,7 @@ final class TestMvvmInstance526 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance527 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance527 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5810,7 +5810,7 @@ final class TestMvvmInstance527 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance528 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance528 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5821,7 +5821,7 @@ final class TestMvvmInstance528 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance529 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance529 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5832,7 +5832,7 @@ final class TestMvvmInstance529 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance530 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance530 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5843,7 +5843,7 @@ final class TestMvvmInstance530 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance531 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance531 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5854,7 +5854,7 @@ final class TestMvvmInstance531 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance532 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance532 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5865,7 +5865,7 @@ final class TestMvvmInstance532 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance533 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance533 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5876,7 +5876,7 @@ final class TestMvvmInstance533 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance534 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance534 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5887,7 +5887,7 @@ final class TestMvvmInstance534 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance535 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance535 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5898,7 +5898,7 @@ final class TestMvvmInstance535 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance536 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance536 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5909,7 +5909,7 @@ final class TestMvvmInstance536 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance537 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance537 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5920,7 +5920,7 @@ final class TestMvvmInstance537 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance538 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance538 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5931,7 +5931,7 @@ final class TestMvvmInstance538 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance539 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance539 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5942,7 +5942,7 @@ final class TestMvvmInstance539 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance540 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance540 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5953,7 +5953,7 @@ final class TestMvvmInstance540 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance541 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance541 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5964,7 +5964,7 @@ final class TestMvvmInstance541 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance542 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance542 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5975,7 +5975,7 @@ final class TestMvvmInstance542 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance543 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance543 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5986,7 +5986,7 @@ final class TestMvvmInstance543 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance544 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance544 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -5997,7 +5997,7 @@ final class TestMvvmInstance544 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance545 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance545 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6008,7 +6008,7 @@ final class TestMvvmInstance545 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance546 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance546 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6019,7 +6019,7 @@ final class TestMvvmInstance546 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance547 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance547 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6030,7 +6030,7 @@ final class TestMvvmInstance547 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance548 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance548 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6041,7 +6041,7 @@ final class TestMvvmInstance548 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance549 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance549 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6052,7 +6052,7 @@ final class TestMvvmInstance549 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance550 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance550 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6063,7 +6063,7 @@ final class TestMvvmInstance550 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance551 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance551 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6074,7 +6074,7 @@ final class TestMvvmInstance551 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance552 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance552 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6085,7 +6085,7 @@ final class TestMvvmInstance552 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance553 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance553 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6096,7 +6096,7 @@ final class TestMvvmInstance553 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance554 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance554 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6107,7 +6107,7 @@ final class TestMvvmInstance554 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance555 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance555 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6118,7 +6118,7 @@ final class TestMvvmInstance555 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance556 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance556 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6129,7 +6129,7 @@ final class TestMvvmInstance556 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance557 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance557 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6140,7 +6140,7 @@ final class TestMvvmInstance557 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance558 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance558 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6151,7 +6151,7 @@ final class TestMvvmInstance558 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance559 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance559 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6162,7 +6162,7 @@ final class TestMvvmInstance559 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance560 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance560 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6173,7 +6173,7 @@ final class TestMvvmInstance560 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance561 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance561 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6184,7 +6184,7 @@ final class TestMvvmInstance561 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance562 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance562 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6195,7 +6195,7 @@ final class TestMvvmInstance562 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance563 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance563 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6206,7 +6206,7 @@ final class TestMvvmInstance563 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance564 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance564 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6217,7 +6217,7 @@ final class TestMvvmInstance564 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance565 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance565 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6228,7 +6228,7 @@ final class TestMvvmInstance565 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance566 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance566 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6239,7 +6239,7 @@ final class TestMvvmInstance566 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance567 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance567 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6250,7 +6250,7 @@ final class TestMvvmInstance567 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance568 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance568 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6261,7 +6261,7 @@ final class TestMvvmInstance568 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance569 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance569 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6272,7 +6272,7 @@ final class TestMvvmInstance569 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance570 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance570 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6283,7 +6283,7 @@ final class TestMvvmInstance570 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance571 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance571 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6294,7 +6294,7 @@ final class TestMvvmInstance571 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance572 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance572 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6305,7 +6305,7 @@ final class TestMvvmInstance572 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance573 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance573 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6316,7 +6316,7 @@ final class TestMvvmInstance573 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance574 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance574 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6327,7 +6327,7 @@ final class TestMvvmInstance574 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance575 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance575 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6338,7 +6338,7 @@ final class TestMvvmInstance575 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance576 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance576 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6349,7 +6349,7 @@ final class TestMvvmInstance576 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance577 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance577 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6360,7 +6360,7 @@ final class TestMvvmInstance577 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance578 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance578 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6371,7 +6371,7 @@ final class TestMvvmInstance578 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance579 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance579 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6382,7 +6382,7 @@ final class TestMvvmInstance579 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance580 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance580 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6393,7 +6393,7 @@ final class TestMvvmInstance580 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance581 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance581 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6404,7 +6404,7 @@ final class TestMvvmInstance581 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance582 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance582 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6415,7 +6415,7 @@ final class TestMvvmInstance582 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance583 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance583 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6426,7 +6426,7 @@ final class TestMvvmInstance583 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance584 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance584 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6437,7 +6437,7 @@ final class TestMvvmInstance584 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance585 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance585 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6448,7 +6448,7 @@ final class TestMvvmInstance585 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance586 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance586 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6459,7 +6459,7 @@ final class TestMvvmInstance586 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance587 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance587 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6470,7 +6470,7 @@ final class TestMvvmInstance587 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance588 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance588 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6481,7 +6481,7 @@ final class TestMvvmInstance588 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance589 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance589 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6492,7 +6492,7 @@ final class TestMvvmInstance589 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance590 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance590 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6503,7 +6503,7 @@ final class TestMvvmInstance590 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance591 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance591 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6514,7 +6514,7 @@ final class TestMvvmInstance591 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance592 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance592 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6525,7 +6525,7 @@ final class TestMvvmInstance592 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance593 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance593 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6536,7 +6536,7 @@ final class TestMvvmInstance593 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance594 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance594 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6547,7 +6547,7 @@ final class TestMvvmInstance594 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance595 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance595 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6558,7 +6558,7 @@ final class TestMvvmInstance595 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance596 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance596 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6569,7 +6569,7 @@ final class TestMvvmInstance596 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance597 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance597 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6580,7 +6580,7 @@ final class TestMvvmInstance597 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance598 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance598 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6591,7 +6591,7 @@ final class TestMvvmInstance598 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance599 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance599 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6602,7 +6602,7 @@ final class TestMvvmInstance599 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance600 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance600 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6613,7 +6613,7 @@ final class TestMvvmInstance600 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance601 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance601 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6624,7 +6624,7 @@ final class TestMvvmInstance601 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance602 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance602 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6635,7 +6635,7 @@ final class TestMvvmInstance602 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance603 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance603 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6646,7 +6646,7 @@ final class TestMvvmInstance603 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance604 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance604 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6657,7 +6657,7 @@ final class TestMvvmInstance604 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance605 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance605 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6668,7 +6668,7 @@ final class TestMvvmInstance605 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance606 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance606 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6679,7 +6679,7 @@ final class TestMvvmInstance606 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance607 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance607 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6690,7 +6690,7 @@ final class TestMvvmInstance607 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance608 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance608 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6701,7 +6701,7 @@ final class TestMvvmInstance608 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance609 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance609 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6712,7 +6712,7 @@ final class TestMvvmInstance609 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance610 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance610 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6723,7 +6723,7 @@ final class TestMvvmInstance610 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance611 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance611 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6734,7 +6734,7 @@ final class TestMvvmInstance611 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance612 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance612 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6745,7 +6745,7 @@ final class TestMvvmInstance612 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance613 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance613 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6756,7 +6756,7 @@ final class TestMvvmInstance613 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance614 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance614 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6767,7 +6767,7 @@ final class TestMvvmInstance614 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance615 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance615 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6778,7 +6778,7 @@ final class TestMvvmInstance615 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance616 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance616 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6789,7 +6789,7 @@ final class TestMvvmInstance616 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance617 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance617 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6800,7 +6800,7 @@ final class TestMvvmInstance617 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance618 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance618 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6811,7 +6811,7 @@ final class TestMvvmInstance618 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance619 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance619 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6822,7 +6822,7 @@ final class TestMvvmInstance619 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance620 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance620 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6833,7 +6833,7 @@ final class TestMvvmInstance620 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance621 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance621 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6844,7 +6844,7 @@ final class TestMvvmInstance621 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance622 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance622 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6855,7 +6855,7 @@ final class TestMvvmInstance622 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance623 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance623 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6866,7 +6866,7 @@ final class TestMvvmInstance623 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance624 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance624 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6877,7 +6877,7 @@ final class TestMvvmInstance624 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance625 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance625 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6888,7 +6888,7 @@ final class TestMvvmInstance625 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance626 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance626 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6899,7 +6899,7 @@ final class TestMvvmInstance626 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance627 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance627 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6910,7 +6910,7 @@ final class TestMvvmInstance627 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance628 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance628 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6921,7 +6921,7 @@ final class TestMvvmInstance628 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance629 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance629 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6932,7 +6932,7 @@ final class TestMvvmInstance629 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance630 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance630 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6943,7 +6943,7 @@ final class TestMvvmInstance630 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance631 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance631 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6954,7 +6954,7 @@ final class TestMvvmInstance631 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance632 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance632 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6965,7 +6965,7 @@ final class TestMvvmInstance632 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance633 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance633 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6976,7 +6976,7 @@ final class TestMvvmInstance633 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance634 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance634 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6987,7 +6987,7 @@ final class TestMvvmInstance634 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance635 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance635 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -6998,7 +6998,7 @@ final class TestMvvmInstance635 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance636 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance636 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7009,7 +7009,7 @@ final class TestMvvmInstance636 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance637 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance637 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7020,7 +7020,7 @@ final class TestMvvmInstance637 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance638 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance638 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7031,7 +7031,7 @@ final class TestMvvmInstance638 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance639 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance639 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7042,7 +7042,7 @@ final class TestMvvmInstance639 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance640 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance640 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7053,7 +7053,7 @@ final class TestMvvmInstance640 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance641 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance641 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7064,7 +7064,7 @@ final class TestMvvmInstance641 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance642 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance642 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7075,7 +7075,7 @@ final class TestMvvmInstance642 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance643 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance643 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7086,7 +7086,7 @@ final class TestMvvmInstance643 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance644 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance644 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7097,7 +7097,7 @@ final class TestMvvmInstance644 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance645 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance645 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7108,7 +7108,7 @@ final class TestMvvmInstance645 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance646 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance646 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7119,7 +7119,7 @@ final class TestMvvmInstance646 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance647 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance647 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7130,7 +7130,7 @@ final class TestMvvmInstance647 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance648 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance648 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7141,7 +7141,7 @@ final class TestMvvmInstance648 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance649 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance649 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7152,7 +7152,7 @@ final class TestMvvmInstance649 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance650 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance650 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7163,7 +7163,7 @@ final class TestMvvmInstance650 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance651 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance651 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7174,7 +7174,7 @@ final class TestMvvmInstance651 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance652 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance652 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7185,7 +7185,7 @@ final class TestMvvmInstance652 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance653 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance653 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7196,7 +7196,7 @@ final class TestMvvmInstance653 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance654 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance654 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7207,7 +7207,7 @@ final class TestMvvmInstance654 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance655 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance655 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7218,7 +7218,7 @@ final class TestMvvmInstance655 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance656 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance656 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7229,7 +7229,7 @@ final class TestMvvmInstance656 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance657 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance657 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7240,7 +7240,7 @@ final class TestMvvmInstance657 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance658 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance658 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7251,7 +7251,7 @@ final class TestMvvmInstance658 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance659 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance659 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7262,7 +7262,7 @@ final class TestMvvmInstance659 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance660 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance660 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7273,7 +7273,7 @@ final class TestMvvmInstance660 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance661 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance661 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7284,7 +7284,7 @@ final class TestMvvmInstance661 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance662 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance662 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7295,7 +7295,7 @@ final class TestMvvmInstance662 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance663 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance663 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7306,7 +7306,7 @@ final class TestMvvmInstance663 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance664 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance664 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7317,7 +7317,7 @@ final class TestMvvmInstance664 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance665 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance665 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7328,7 +7328,7 @@ final class TestMvvmInstance665 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance666 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance666 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7339,7 +7339,7 @@ final class TestMvvmInstance666 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance667 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance667 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7350,7 +7350,7 @@ final class TestMvvmInstance667 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance668 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance668 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7361,7 +7361,7 @@ final class TestMvvmInstance668 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance669 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance669 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7372,7 +7372,7 @@ final class TestMvvmInstance669 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance670 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance670 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7383,7 +7383,7 @@ final class TestMvvmInstance670 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance671 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance671 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7394,7 +7394,7 @@ final class TestMvvmInstance671 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance672 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance672 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7405,7 +7405,7 @@ final class TestMvvmInstance672 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance673 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance673 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7416,7 +7416,7 @@ final class TestMvvmInstance673 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance674 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance674 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7427,7 +7427,7 @@ final class TestMvvmInstance674 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance675 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance675 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7438,7 +7438,7 @@ final class TestMvvmInstance675 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance676 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance676 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7449,7 +7449,7 @@ final class TestMvvmInstance676 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance677 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance677 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7460,7 +7460,7 @@ final class TestMvvmInstance677 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance678 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance678 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7471,7 +7471,7 @@ final class TestMvvmInstance678 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance679 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance679 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7482,7 +7482,7 @@ final class TestMvvmInstance679 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance680 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance680 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7493,7 +7493,7 @@ final class TestMvvmInstance680 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance681 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance681 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7504,7 +7504,7 @@ final class TestMvvmInstance681 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance682 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance682 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7515,7 +7515,7 @@ final class TestMvvmInstance682 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance683 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance683 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7526,7 +7526,7 @@ final class TestMvvmInstance683 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance684 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance684 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7537,7 +7537,7 @@ final class TestMvvmInstance684 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance685 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance685 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7548,7 +7548,7 @@ final class TestMvvmInstance685 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance686 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance686 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7559,7 +7559,7 @@ final class TestMvvmInstance686 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance687 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance687 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7570,7 +7570,7 @@ final class TestMvvmInstance687 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance688 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance688 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7581,7 +7581,7 @@ final class TestMvvmInstance688 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance689 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance689 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7592,7 +7592,7 @@ final class TestMvvmInstance689 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance690 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance690 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7603,7 +7603,7 @@ final class TestMvvmInstance690 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance691 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance691 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7614,7 +7614,7 @@ final class TestMvvmInstance691 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance692 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance692 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7625,7 +7625,7 @@ final class TestMvvmInstance692 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance693 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance693 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7636,7 +7636,7 @@ final class TestMvvmInstance693 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance694 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance694 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7647,7 +7647,7 @@ final class TestMvvmInstance694 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance695 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance695 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7658,7 +7658,7 @@ final class TestMvvmInstance695 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance696 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance696 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7669,7 +7669,7 @@ final class TestMvvmInstance696 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance697 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance697 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7680,7 +7680,7 @@ final class TestMvvmInstance697 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance698 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance698 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7691,7 +7691,7 @@ final class TestMvvmInstance698 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance699 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance699 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7702,7 +7702,7 @@ final class TestMvvmInstance699 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance700 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance700 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7713,7 +7713,7 @@ final class TestMvvmInstance700 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance701 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance701 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7724,7 +7724,7 @@ final class TestMvvmInstance701 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance702 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance702 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7735,7 +7735,7 @@ final class TestMvvmInstance702 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance703 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance703 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7746,7 +7746,7 @@ final class TestMvvmInstance703 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance704 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance704 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7757,7 +7757,7 @@ final class TestMvvmInstance704 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance705 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance705 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7768,7 +7768,7 @@ final class TestMvvmInstance705 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance706 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance706 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7779,7 +7779,7 @@ final class TestMvvmInstance706 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance707 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance707 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7790,7 +7790,7 @@ final class TestMvvmInstance707 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance708 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance708 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7801,7 +7801,7 @@ final class TestMvvmInstance708 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance709 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance709 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7812,7 +7812,7 @@ final class TestMvvmInstance709 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance710 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance710 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7823,7 +7823,7 @@ final class TestMvvmInstance710 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance711 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance711 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7834,7 +7834,7 @@ final class TestMvvmInstance711 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance712 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance712 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7845,7 +7845,7 @@ final class TestMvvmInstance712 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance713 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance713 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7856,7 +7856,7 @@ final class TestMvvmInstance713 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance714 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance714 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7867,7 +7867,7 @@ final class TestMvvmInstance714 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance715 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance715 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7878,7 +7878,7 @@ final class TestMvvmInstance715 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance716 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance716 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7889,7 +7889,7 @@ final class TestMvvmInstance716 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance717 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance717 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7900,7 +7900,7 @@ final class TestMvvmInstance717 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance718 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance718 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7911,7 +7911,7 @@ final class TestMvvmInstance718 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance719 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance719 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7922,7 +7922,7 @@ final class TestMvvmInstance719 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance720 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance720 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7933,7 +7933,7 @@ final class TestMvvmInstance720 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance721 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance721 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7944,7 +7944,7 @@ final class TestMvvmInstance721 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance722 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance722 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7955,7 +7955,7 @@ final class TestMvvmInstance722 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance723 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance723 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7966,7 +7966,7 @@ final class TestMvvmInstance723 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance724 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance724 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7977,7 +7977,7 @@ final class TestMvvmInstance724 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance725 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance725 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7988,7 +7988,7 @@ final class TestMvvmInstance725 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance726 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance726 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -7999,7 +7999,7 @@ final class TestMvvmInstance726 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance727 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance727 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8010,7 +8010,7 @@ final class TestMvvmInstance727 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance728 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance728 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8021,7 +8021,7 @@ final class TestMvvmInstance728 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance729 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance729 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8032,7 +8032,7 @@ final class TestMvvmInstance729 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance730 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance730 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8043,7 +8043,7 @@ final class TestMvvmInstance730 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance731 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance731 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8054,7 +8054,7 @@ final class TestMvvmInstance731 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance732 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance732 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8065,7 +8065,7 @@ final class TestMvvmInstance732 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance733 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance733 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8076,7 +8076,7 @@ final class TestMvvmInstance733 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance734 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance734 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8087,7 +8087,7 @@ final class TestMvvmInstance734 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance735 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance735 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8098,7 +8098,7 @@ final class TestMvvmInstance735 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance736 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance736 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8109,7 +8109,7 @@ final class TestMvvmInstance736 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance737 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance737 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8120,7 +8120,7 @@ final class TestMvvmInstance737 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance738 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance738 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8131,7 +8131,7 @@ final class TestMvvmInstance738 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance739 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance739 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8142,7 +8142,7 @@ final class TestMvvmInstance739 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance740 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance740 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8153,7 +8153,7 @@ final class TestMvvmInstance740 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance741 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance741 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8164,7 +8164,7 @@ final class TestMvvmInstance741 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance742 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance742 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8175,7 +8175,7 @@ final class TestMvvmInstance742 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance743 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance743 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8186,7 +8186,7 @@ final class TestMvvmInstance743 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance744 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance744 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8197,7 +8197,7 @@ final class TestMvvmInstance744 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance745 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance745 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8208,7 +8208,7 @@ final class TestMvvmInstance745 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance746 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance746 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8219,7 +8219,7 @@ final class TestMvvmInstance746 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance747 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance747 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8230,7 +8230,7 @@ final class TestMvvmInstance747 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance748 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance748 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8241,7 +8241,7 @@ final class TestMvvmInstance748 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance749 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance749 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8252,7 +8252,7 @@ final class TestMvvmInstance749 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance750 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance750 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8263,7 +8263,7 @@ final class TestMvvmInstance750 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance751 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance751 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8274,7 +8274,7 @@ final class TestMvvmInstance751 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance752 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance752 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8285,7 +8285,7 @@ final class TestMvvmInstance752 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance753 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance753 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8296,7 +8296,7 @@ final class TestMvvmInstance753 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance754 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance754 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8307,7 +8307,7 @@ final class TestMvvmInstance754 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance755 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance755 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8318,7 +8318,7 @@ final class TestMvvmInstance755 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance756 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance756 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8329,7 +8329,7 @@ final class TestMvvmInstance756 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance757 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance757 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8340,7 +8340,7 @@ final class TestMvvmInstance757 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance758 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance758 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8351,7 +8351,7 @@ final class TestMvvmInstance758 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance759 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance759 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8362,7 +8362,7 @@ final class TestMvvmInstance759 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance760 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance760 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8373,7 +8373,7 @@ final class TestMvvmInstance760 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance761 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance761 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8384,7 +8384,7 @@ final class TestMvvmInstance761 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance762 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance762 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8395,7 +8395,7 @@ final class TestMvvmInstance762 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance763 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance763 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8406,7 +8406,7 @@ final class TestMvvmInstance763 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance764 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance764 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8417,7 +8417,7 @@ final class TestMvvmInstance764 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance765 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance765 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8428,7 +8428,7 @@ final class TestMvvmInstance765 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance766 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance766 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8439,7 +8439,7 @@ final class TestMvvmInstance766 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance767 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance767 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8450,7 +8450,7 @@ final class TestMvvmInstance767 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance768 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance768 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8461,7 +8461,7 @@ final class TestMvvmInstance768 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance769 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance769 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8472,7 +8472,7 @@ final class TestMvvmInstance769 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance770 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance770 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8483,7 +8483,7 @@ final class TestMvvmInstance770 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance771 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance771 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8494,7 +8494,7 @@ final class TestMvvmInstance771 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance772 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance772 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8505,7 +8505,7 @@ final class TestMvvmInstance772 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance773 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance773 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8516,7 +8516,7 @@ final class TestMvvmInstance773 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance774 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance774 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8527,7 +8527,7 @@ final class TestMvvmInstance774 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance775 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance775 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8538,7 +8538,7 @@ final class TestMvvmInstance775 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance776 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance776 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8549,7 +8549,7 @@ final class TestMvvmInstance776 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance777 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance777 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8560,7 +8560,7 @@ final class TestMvvmInstance777 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance778 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance778 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8571,7 +8571,7 @@ final class TestMvvmInstance778 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance779 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance779 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8582,7 +8582,7 @@ final class TestMvvmInstance779 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance780 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance780 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8593,7 +8593,7 @@ final class TestMvvmInstance780 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance781 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance781 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8604,7 +8604,7 @@ final class TestMvvmInstance781 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance782 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance782 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8615,7 +8615,7 @@ final class TestMvvmInstance782 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance783 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance783 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8626,7 +8626,7 @@ final class TestMvvmInstance783 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance784 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance784 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8637,7 +8637,7 @@ final class TestMvvmInstance784 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance785 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance785 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8648,7 +8648,7 @@ final class TestMvvmInstance785 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance786 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance786 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8659,7 +8659,7 @@ final class TestMvvmInstance786 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance787 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance787 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8670,7 +8670,7 @@ final class TestMvvmInstance787 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance788 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance788 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8681,7 +8681,7 @@ final class TestMvvmInstance788 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance789 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance789 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8692,7 +8692,7 @@ final class TestMvvmInstance789 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance790 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance790 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8703,7 +8703,7 @@ final class TestMvvmInstance790 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance791 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance791 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8714,7 +8714,7 @@ final class TestMvvmInstance791 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance792 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance792 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8725,7 +8725,7 @@ final class TestMvvmInstance792 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance793 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance793 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8736,7 +8736,7 @@ final class TestMvvmInstance793 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance794 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance794 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8747,7 +8747,7 @@ final class TestMvvmInstance794 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance795 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance795 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8758,7 +8758,7 @@ final class TestMvvmInstance795 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance796 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance796 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8769,7 +8769,7 @@ final class TestMvvmInstance796 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance797 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance797 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8780,7 +8780,7 @@ final class TestMvvmInstance797 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance798 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance798 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8791,7 +8791,7 @@ final class TestMvvmInstance798 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance799 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance799 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8802,7 +8802,7 @@ final class TestMvvmInstance799 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance800 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance800 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8813,7 +8813,7 @@ final class TestMvvmInstance800 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance801 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance801 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8824,7 +8824,7 @@ final class TestMvvmInstance801 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance802 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance802 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8835,7 +8835,7 @@ final class TestMvvmInstance802 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance803 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance803 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8846,7 +8846,7 @@ final class TestMvvmInstance803 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance804 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance804 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8857,7 +8857,7 @@ final class TestMvvmInstance804 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance805 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance805 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8868,7 +8868,7 @@ final class TestMvvmInstance805 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance806 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance806 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8879,7 +8879,7 @@ final class TestMvvmInstance806 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance807 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance807 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8890,7 +8890,7 @@ final class TestMvvmInstance807 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance808 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance808 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8901,7 +8901,7 @@ final class TestMvvmInstance808 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance809 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance809 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8912,7 +8912,7 @@ final class TestMvvmInstance809 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance810 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance810 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8923,7 +8923,7 @@ final class TestMvvmInstance810 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance811 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance811 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8934,7 +8934,7 @@ final class TestMvvmInstance811 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance812 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance812 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8945,7 +8945,7 @@ final class TestMvvmInstance812 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance813 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance813 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8956,7 +8956,7 @@ final class TestMvvmInstance813 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance814 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance814 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8967,7 +8967,7 @@ final class TestMvvmInstance814 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance815 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance815 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8978,7 +8978,7 @@ final class TestMvvmInstance815 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance816 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance816 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -8989,7 +8989,7 @@ final class TestMvvmInstance816 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance817 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance817 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9000,7 +9000,7 @@ final class TestMvvmInstance817 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance818 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance818 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9011,7 +9011,7 @@ final class TestMvvmInstance818 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance819 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance819 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9022,7 +9022,7 @@ final class TestMvvmInstance819 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance820 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance820 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9033,7 +9033,7 @@ final class TestMvvmInstance820 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance821 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance821 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9044,7 +9044,7 @@ final class TestMvvmInstance821 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance822 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance822 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9055,7 +9055,7 @@ final class TestMvvmInstance822 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance823 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance823 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9066,7 +9066,7 @@ final class TestMvvmInstance823 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance824 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance824 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9077,7 +9077,7 @@ final class TestMvvmInstance824 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance825 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance825 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9088,7 +9088,7 @@ final class TestMvvmInstance825 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance826 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance826 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9099,7 +9099,7 @@ final class TestMvvmInstance826 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance827 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance827 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9110,7 +9110,7 @@ final class TestMvvmInstance827 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance828 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance828 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9121,7 +9121,7 @@ final class TestMvvmInstance828 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance829 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance829 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9132,7 +9132,7 @@ final class TestMvvmInstance829 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance830 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance830 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9143,7 +9143,7 @@ final class TestMvvmInstance830 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance831 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance831 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9154,7 +9154,7 @@ final class TestMvvmInstance831 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance832 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance832 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9165,7 +9165,7 @@ final class TestMvvmInstance832 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance833 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance833 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9176,7 +9176,7 @@ final class TestMvvmInstance833 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance834 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance834 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9187,7 +9187,7 @@ final class TestMvvmInstance834 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance835 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance835 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9198,7 +9198,7 @@ final class TestMvvmInstance835 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance836 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance836 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9209,7 +9209,7 @@ final class TestMvvmInstance836 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance837 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance837 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9220,7 +9220,7 @@ final class TestMvvmInstance837 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance838 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance838 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9231,7 +9231,7 @@ final class TestMvvmInstance838 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance839 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance839 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9242,7 +9242,7 @@ final class TestMvvmInstance839 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance840 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance840 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9253,7 +9253,7 @@ final class TestMvvmInstance840 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance841 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance841 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9264,7 +9264,7 @@ final class TestMvvmInstance841 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance842 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance842 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9275,7 +9275,7 @@ final class TestMvvmInstance842 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance843 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance843 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9286,7 +9286,7 @@ final class TestMvvmInstance843 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance844 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance844 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9297,7 +9297,7 @@ final class TestMvvmInstance844 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance845 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance845 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9308,7 +9308,7 @@ final class TestMvvmInstance845 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance846 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance846 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9319,7 +9319,7 @@ final class TestMvvmInstance846 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance847 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance847 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9330,7 +9330,7 @@ final class TestMvvmInstance847 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance848 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance848 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9341,7 +9341,7 @@ final class TestMvvmInstance848 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance849 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance849 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9352,7 +9352,7 @@ final class TestMvvmInstance849 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance850 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance850 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9363,7 +9363,7 @@ final class TestMvvmInstance850 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance851 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance851 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9374,7 +9374,7 @@ final class TestMvvmInstance851 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance852 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance852 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9385,7 +9385,7 @@ final class TestMvvmInstance852 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance853 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance853 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9396,7 +9396,7 @@ final class TestMvvmInstance853 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance854 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance854 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9407,7 +9407,7 @@ final class TestMvvmInstance854 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance855 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance855 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9418,7 +9418,7 @@ final class TestMvvmInstance855 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance856 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance856 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9429,7 +9429,7 @@ final class TestMvvmInstance856 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance857 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance857 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9440,7 +9440,7 @@ final class TestMvvmInstance857 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance858 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance858 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9451,7 +9451,7 @@ final class TestMvvmInstance858 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance859 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance859 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9462,7 +9462,7 @@ final class TestMvvmInstance859 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance860 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance860 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9473,7 +9473,7 @@ final class TestMvvmInstance860 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance861 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance861 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9484,7 +9484,7 @@ final class TestMvvmInstance861 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance862 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance862 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9495,7 +9495,7 @@ final class TestMvvmInstance862 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance863 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance863 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9506,7 +9506,7 @@ final class TestMvvmInstance863 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance864 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance864 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9517,7 +9517,7 @@ final class TestMvvmInstance864 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance865 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance865 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9528,7 +9528,7 @@ final class TestMvvmInstance865 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance866 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance866 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9539,7 +9539,7 @@ final class TestMvvmInstance866 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance867 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance867 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9550,7 +9550,7 @@ final class TestMvvmInstance867 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance868 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance868 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9561,7 +9561,7 @@ final class TestMvvmInstance868 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance869 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance869 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9572,7 +9572,7 @@ final class TestMvvmInstance869 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance870 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance870 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9583,7 +9583,7 @@ final class TestMvvmInstance870 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance871 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance871 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9594,7 +9594,7 @@ final class TestMvvmInstance871 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance872 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance872 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9605,7 +9605,7 @@ final class TestMvvmInstance872 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance873 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance873 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9616,7 +9616,7 @@ final class TestMvvmInstance873 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance874 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance874 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9627,7 +9627,7 @@ final class TestMvvmInstance874 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance875 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance875 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9638,7 +9638,7 @@ final class TestMvvmInstance875 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance876 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance876 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9649,7 +9649,7 @@ final class TestMvvmInstance876 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance877 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance877 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9660,7 +9660,7 @@ final class TestMvvmInstance877 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance878 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance878 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9671,7 +9671,7 @@ final class TestMvvmInstance878 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance879 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance879 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9682,7 +9682,7 @@ final class TestMvvmInstance879 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance880 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance880 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9693,7 +9693,7 @@ final class TestMvvmInstance880 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance881 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance881 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9704,7 +9704,7 @@ final class TestMvvmInstance881 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance882 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance882 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9715,7 +9715,7 @@ final class TestMvvmInstance882 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance883 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance883 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9726,7 +9726,7 @@ final class TestMvvmInstance883 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance884 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance884 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9737,7 +9737,7 @@ final class TestMvvmInstance884 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance885 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance885 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9748,7 +9748,7 @@ final class TestMvvmInstance885 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance886 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance886 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9759,7 +9759,7 @@ final class TestMvvmInstance886 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance887 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance887 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9770,7 +9770,7 @@ final class TestMvvmInstance887 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance888 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance888 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9781,7 +9781,7 @@ final class TestMvvmInstance888 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance889 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance889 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9792,7 +9792,7 @@ final class TestMvvmInstance889 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance890 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance890 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9803,7 +9803,7 @@ final class TestMvvmInstance890 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance891 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance891 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9814,7 +9814,7 @@ final class TestMvvmInstance891 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance892 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance892 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9825,7 +9825,7 @@ final class TestMvvmInstance892 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance893 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance893 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9836,7 +9836,7 @@ final class TestMvvmInstance893 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance894 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance894 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9847,7 +9847,7 @@ final class TestMvvmInstance894 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance895 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance895 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9858,7 +9858,7 @@ final class TestMvvmInstance895 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance896 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance896 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9869,7 +9869,7 @@ final class TestMvvmInstance896 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance897 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance897 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9880,7 +9880,7 @@ final class TestMvvmInstance897 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance898 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance898 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9891,7 +9891,7 @@ final class TestMvvmInstance898 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance899 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance899 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9902,7 +9902,7 @@ final class TestMvvmInstance899 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance900 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance900 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9913,7 +9913,7 @@ final class TestMvvmInstance900 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance901 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance901 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9924,7 +9924,7 @@ final class TestMvvmInstance901 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance902 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance902 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9935,7 +9935,7 @@ final class TestMvvmInstance902 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance903 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance903 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9946,7 +9946,7 @@ final class TestMvvmInstance903 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance904 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance904 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9957,7 +9957,7 @@ final class TestMvvmInstance904 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance905 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance905 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9968,7 +9968,7 @@ final class TestMvvmInstance905 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance906 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance906 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9979,7 +9979,7 @@ final class TestMvvmInstance906 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance907 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance907 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -9990,7 +9990,7 @@ final class TestMvvmInstance907 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance908 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance908 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10001,7 +10001,7 @@ final class TestMvvmInstance908 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance909 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance909 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10012,7 +10012,7 @@ final class TestMvvmInstance909 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance910 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance910 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10023,7 +10023,7 @@ final class TestMvvmInstance910 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance911 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance911 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10034,7 +10034,7 @@ final class TestMvvmInstance911 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance912 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance912 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10045,7 +10045,7 @@ final class TestMvvmInstance912 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance913 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance913 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10056,7 +10056,7 @@ final class TestMvvmInstance913 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance914 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance914 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10067,7 +10067,7 @@ final class TestMvvmInstance914 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance915 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance915 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10078,7 +10078,7 @@ final class TestMvvmInstance915 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance916 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance916 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10089,7 +10089,7 @@ final class TestMvvmInstance916 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance917 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance917 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10100,7 +10100,7 @@ final class TestMvvmInstance917 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance918 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance918 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10111,7 +10111,7 @@ final class TestMvvmInstance918 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance919 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance919 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10122,7 +10122,7 @@ final class TestMvvmInstance919 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance920 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance920 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10133,7 +10133,7 @@ final class TestMvvmInstance920 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance921 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance921 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10144,7 +10144,7 @@ final class TestMvvmInstance921 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance922 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance922 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10155,7 +10155,7 @@ final class TestMvvmInstance922 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance923 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance923 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10166,7 +10166,7 @@ final class TestMvvmInstance923 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance924 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance924 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10177,7 +10177,7 @@ final class TestMvvmInstance924 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance925 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance925 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10188,7 +10188,7 @@ final class TestMvvmInstance925 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance926 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance926 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10199,7 +10199,7 @@ final class TestMvvmInstance926 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance927 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance927 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10210,7 +10210,7 @@ final class TestMvvmInstance927 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance928 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance928 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10221,7 +10221,7 @@ final class TestMvvmInstance928 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance929 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance929 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10232,7 +10232,7 @@ final class TestMvvmInstance929 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance930 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance930 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10243,7 +10243,7 @@ final class TestMvvmInstance930 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance931 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance931 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10254,7 +10254,7 @@ final class TestMvvmInstance931 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance932 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance932 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10265,7 +10265,7 @@ final class TestMvvmInstance932 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance933 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance933 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10276,7 +10276,7 @@ final class TestMvvmInstance933 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance934 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance934 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10287,7 +10287,7 @@ final class TestMvvmInstance934 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance935 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance935 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10298,7 +10298,7 @@ final class TestMvvmInstance935 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance936 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance936 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10309,7 +10309,7 @@ final class TestMvvmInstance936 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance937 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance937 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10320,7 +10320,7 @@ final class TestMvvmInstance937 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance938 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance938 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10331,7 +10331,7 @@ final class TestMvvmInstance938 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance939 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance939 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10342,7 +10342,7 @@ final class TestMvvmInstance939 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance940 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance940 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10353,7 +10353,7 @@ final class TestMvvmInstance940 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance941 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance941 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10364,7 +10364,7 @@ final class TestMvvmInstance941 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance942 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance942 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10375,7 +10375,7 @@ final class TestMvvmInstance942 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance943 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance943 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10386,7 +10386,7 @@ final class TestMvvmInstance943 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance944 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance944 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10397,7 +10397,7 @@ final class TestMvvmInstance944 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance945 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance945 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10408,7 +10408,7 @@ final class TestMvvmInstance945 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance946 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance946 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10419,7 +10419,7 @@ final class TestMvvmInstance946 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance947 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance947 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10430,7 +10430,7 @@ final class TestMvvmInstance947 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance948 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance948 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10441,7 +10441,7 @@ final class TestMvvmInstance948 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance949 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance949 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10452,7 +10452,7 @@ final class TestMvvmInstance949 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance950 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance950 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10463,7 +10463,7 @@ final class TestMvvmInstance950 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance951 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance951 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10474,7 +10474,7 @@ final class TestMvvmInstance951 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance952 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance952 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10485,7 +10485,7 @@ final class TestMvvmInstance952 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance953 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance953 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10496,7 +10496,7 @@ final class TestMvvmInstance953 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance954 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance954 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10507,7 +10507,7 @@ final class TestMvvmInstance954 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance955 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance955 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10518,7 +10518,7 @@ final class TestMvvmInstance955 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance956 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance956 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10529,7 +10529,7 @@ final class TestMvvmInstance956 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance957 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance957 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10540,7 +10540,7 @@ final class TestMvvmInstance957 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance958 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance958 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10551,7 +10551,7 @@ final class TestMvvmInstance958 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance959 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance959 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10562,7 +10562,7 @@ final class TestMvvmInstance959 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance960 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance960 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10573,7 +10573,7 @@ final class TestMvvmInstance960 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance961 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance961 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10584,7 +10584,7 @@ final class TestMvvmInstance961 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance962 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance962 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10595,7 +10595,7 @@ final class TestMvvmInstance962 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance963 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance963 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10606,7 +10606,7 @@ final class TestMvvmInstance963 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance964 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance964 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10617,7 +10617,7 @@ final class TestMvvmInstance964 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance965 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance965 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10628,7 +10628,7 @@ final class TestMvvmInstance965 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance966 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance966 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10639,7 +10639,7 @@ final class TestMvvmInstance966 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance967 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance967 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10650,7 +10650,7 @@ final class TestMvvmInstance967 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance968 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance968 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10661,7 +10661,7 @@ final class TestMvvmInstance968 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance969 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance969 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10672,7 +10672,7 @@ final class TestMvvmInstance969 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance970 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance970 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10683,7 +10683,7 @@ final class TestMvvmInstance970 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance971 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance971 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10694,7 +10694,7 @@ final class TestMvvmInstance971 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance972 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance972 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10705,7 +10705,7 @@ final class TestMvvmInstance972 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance973 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance973 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10716,7 +10716,7 @@ final class TestMvvmInstance973 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance974 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance974 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10727,7 +10727,7 @@ final class TestMvvmInstance974 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance975 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance975 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10738,7 +10738,7 @@ final class TestMvvmInstance975 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance976 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance976 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10749,7 +10749,7 @@ final class TestMvvmInstance976 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance977 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance977 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10760,7 +10760,7 @@ final class TestMvvmInstance977 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance978 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance978 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10771,7 +10771,7 @@ final class TestMvvmInstance978 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance979 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance979 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10782,7 +10782,7 @@ final class TestMvvmInstance979 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance980 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance980 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10793,7 +10793,7 @@ final class TestMvvmInstance980 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance981 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance981 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10804,7 +10804,7 @@ final class TestMvvmInstance981 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance982 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance982 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10815,7 +10815,7 @@ final class TestMvvmInstance982 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance983 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance983 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10826,7 +10826,7 @@ final class TestMvvmInstance983 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance984 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance984 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10837,7 +10837,7 @@ final class TestMvvmInstance984 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance985 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance985 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10848,7 +10848,7 @@ final class TestMvvmInstance985 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance986 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance986 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10859,7 +10859,7 @@ final class TestMvvmInstance986 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance987 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance987 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10870,7 +10870,7 @@ final class TestMvvmInstance987 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance988 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance988 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10881,7 +10881,7 @@ final class TestMvvmInstance988 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance989 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance989 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10892,7 +10892,7 @@ final class TestMvvmInstance989 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance990 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance990 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10903,7 +10903,7 @@ final class TestMvvmInstance990 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance991 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance991 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10914,7 +10914,7 @@ final class TestMvvmInstance991 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance992 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance992 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10925,7 +10925,7 @@ final class TestMvvmInstance992 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance993 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance993 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10936,7 +10936,7 @@ final class TestMvvmInstance993 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance994 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance994 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10947,7 +10947,7 @@ final class TestMvvmInstance994 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance995 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance995 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10958,7 +10958,7 @@ final class TestMvvmInstance995 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance996 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance996 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10969,7 +10969,7 @@ final class TestMvvmInstance996 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance997 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance997 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10980,7 +10980,7 @@ final class TestMvvmInstance997 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance998 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance998 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -10991,7 +10991,7 @@ final class TestMvvmInstance998 extends MvvmInstance<int?> {
   }
 }
 
-final class TestMvvmInstance999 extends MvvmInstance<int?> {
+final class TestBaseMvvmInstance999 extends BaseMvvmInstance<int?> {
   int value = 1;
 
   @override
@@ -11003,4003 +11003,4003 @@ final class TestMvvmInstance999 extends MvvmInstance<int?> {
 }
 
 void initialize(InstanceCollection instances) {
-  instances.addBuilder<TestMvvmInstance0>(TestMvvmInstance0.new);
+  instances.addBuilder<TestBaseMvvmInstance0>(TestBaseMvvmInstance0.new);
 
-  instances.addBuilder<TestMvvmInstance1>(TestMvvmInstance1.new);
+  instances.addBuilder<TestBaseMvvmInstance1>(TestBaseMvvmInstance1.new);
 
-  instances.addBuilder<TestMvvmInstance2>(TestMvvmInstance2.new);
+  instances.addBuilder<TestBaseMvvmInstance2>(TestBaseMvvmInstance2.new);
 
-  instances.addBuilder<TestMvvmInstance3>(TestMvvmInstance3.new);
+  instances.addBuilder<TestBaseMvvmInstance3>(TestBaseMvvmInstance3.new);
 
-  instances.addBuilder<TestMvvmInstance4>(TestMvvmInstance4.new);
+  instances.addBuilder<TestBaseMvvmInstance4>(TestBaseMvvmInstance4.new);
 
-  instances.addBuilder<TestMvvmInstance5>(TestMvvmInstance5.new);
+  instances.addBuilder<TestBaseMvvmInstance5>(TestBaseMvvmInstance5.new);
 
-  instances.addBuilder<TestMvvmInstance6>(TestMvvmInstance6.new);
+  instances.addBuilder<TestBaseMvvmInstance6>(TestBaseMvvmInstance6.new);
 
-  instances.addBuilder<TestMvvmInstance7>(TestMvvmInstance7.new);
+  instances.addBuilder<TestBaseMvvmInstance7>(TestBaseMvvmInstance7.new);
 
-  instances.addBuilder<TestMvvmInstance8>(TestMvvmInstance8.new);
+  instances.addBuilder<TestBaseMvvmInstance8>(TestBaseMvvmInstance8.new);
 
-  instances.addBuilder<TestMvvmInstance9>(TestMvvmInstance9.new);
+  instances.addBuilder<TestBaseMvvmInstance9>(TestBaseMvvmInstance9.new);
 
-  instances.addBuilder<TestMvvmInstance10>(TestMvvmInstance10.new);
+  instances.addBuilder<TestBaseMvvmInstance10>(TestBaseMvvmInstance10.new);
 
-  instances.addBuilder<TestMvvmInstance11>(TestMvvmInstance11.new);
+  instances.addBuilder<TestBaseMvvmInstance11>(TestBaseMvvmInstance11.new);
 
-  instances.addBuilder<TestMvvmInstance12>(TestMvvmInstance12.new);
+  instances.addBuilder<TestBaseMvvmInstance12>(TestBaseMvvmInstance12.new);
 
-  instances.addBuilder<TestMvvmInstance13>(TestMvvmInstance13.new);
+  instances.addBuilder<TestBaseMvvmInstance13>(TestBaseMvvmInstance13.new);
 
-  instances.addBuilder<TestMvvmInstance14>(TestMvvmInstance14.new);
+  instances.addBuilder<TestBaseMvvmInstance14>(TestBaseMvvmInstance14.new);
 
-  instances.addBuilder<TestMvvmInstance15>(TestMvvmInstance15.new);
+  instances.addBuilder<TestBaseMvvmInstance15>(TestBaseMvvmInstance15.new);
 
-  instances.addBuilder<TestMvvmInstance16>(TestMvvmInstance16.new);
+  instances.addBuilder<TestBaseMvvmInstance16>(TestBaseMvvmInstance16.new);
 
-  instances.addBuilder<TestMvvmInstance17>(TestMvvmInstance17.new);
+  instances.addBuilder<TestBaseMvvmInstance17>(TestBaseMvvmInstance17.new);
 
-  instances.addBuilder<TestMvvmInstance18>(TestMvvmInstance18.new);
+  instances.addBuilder<TestBaseMvvmInstance18>(TestBaseMvvmInstance18.new);
 
-  instances.addBuilder<TestMvvmInstance19>(TestMvvmInstance19.new);
+  instances.addBuilder<TestBaseMvvmInstance19>(TestBaseMvvmInstance19.new);
 
-  instances.addBuilder<TestMvvmInstance20>(TestMvvmInstance20.new);
+  instances.addBuilder<TestBaseMvvmInstance20>(TestBaseMvvmInstance20.new);
 
-  instances.addBuilder<TestMvvmInstance21>(TestMvvmInstance21.new);
+  instances.addBuilder<TestBaseMvvmInstance21>(TestBaseMvvmInstance21.new);
 
-  instances.addBuilder<TestMvvmInstance22>(TestMvvmInstance22.new);
+  instances.addBuilder<TestBaseMvvmInstance22>(TestBaseMvvmInstance22.new);
 
-  instances.addBuilder<TestMvvmInstance23>(TestMvvmInstance23.new);
+  instances.addBuilder<TestBaseMvvmInstance23>(TestBaseMvvmInstance23.new);
 
-  instances.addBuilder<TestMvvmInstance24>(TestMvvmInstance24.new);
+  instances.addBuilder<TestBaseMvvmInstance24>(TestBaseMvvmInstance24.new);
 
-  instances.addBuilder<TestMvvmInstance25>(TestMvvmInstance25.new);
+  instances.addBuilder<TestBaseMvvmInstance25>(TestBaseMvvmInstance25.new);
 
-  instances.addBuilder<TestMvvmInstance26>(TestMvvmInstance26.new);
+  instances.addBuilder<TestBaseMvvmInstance26>(TestBaseMvvmInstance26.new);
 
-  instances.addBuilder<TestMvvmInstance27>(TestMvvmInstance27.new);
+  instances.addBuilder<TestBaseMvvmInstance27>(TestBaseMvvmInstance27.new);
 
-  instances.addBuilder<TestMvvmInstance28>(TestMvvmInstance28.new);
+  instances.addBuilder<TestBaseMvvmInstance28>(TestBaseMvvmInstance28.new);
 
-  instances.addBuilder<TestMvvmInstance29>(TestMvvmInstance29.new);
+  instances.addBuilder<TestBaseMvvmInstance29>(TestBaseMvvmInstance29.new);
 
-  instances.addBuilder<TestMvvmInstance30>(TestMvvmInstance30.new);
+  instances.addBuilder<TestBaseMvvmInstance30>(TestBaseMvvmInstance30.new);
 
-  instances.addBuilder<TestMvvmInstance31>(TestMvvmInstance31.new);
+  instances.addBuilder<TestBaseMvvmInstance31>(TestBaseMvvmInstance31.new);
 
-  instances.addBuilder<TestMvvmInstance32>(TestMvvmInstance32.new);
+  instances.addBuilder<TestBaseMvvmInstance32>(TestBaseMvvmInstance32.new);
 
-  instances.addBuilder<TestMvvmInstance33>(TestMvvmInstance33.new);
+  instances.addBuilder<TestBaseMvvmInstance33>(TestBaseMvvmInstance33.new);
 
-  instances.addBuilder<TestMvvmInstance34>(TestMvvmInstance34.new);
+  instances.addBuilder<TestBaseMvvmInstance34>(TestBaseMvvmInstance34.new);
 
-  instances.addBuilder<TestMvvmInstance35>(TestMvvmInstance35.new);
+  instances.addBuilder<TestBaseMvvmInstance35>(TestBaseMvvmInstance35.new);
 
-  instances.addBuilder<TestMvvmInstance36>(TestMvvmInstance36.new);
+  instances.addBuilder<TestBaseMvvmInstance36>(TestBaseMvvmInstance36.new);
 
-  instances.addBuilder<TestMvvmInstance37>(TestMvvmInstance37.new);
+  instances.addBuilder<TestBaseMvvmInstance37>(TestBaseMvvmInstance37.new);
 
-  instances.addBuilder<TestMvvmInstance38>(TestMvvmInstance38.new);
+  instances.addBuilder<TestBaseMvvmInstance38>(TestBaseMvvmInstance38.new);
 
-  instances.addBuilder<TestMvvmInstance39>(TestMvvmInstance39.new);
+  instances.addBuilder<TestBaseMvvmInstance39>(TestBaseMvvmInstance39.new);
 
-  instances.addBuilder<TestMvvmInstance40>(TestMvvmInstance40.new);
+  instances.addBuilder<TestBaseMvvmInstance40>(TestBaseMvvmInstance40.new);
 
-  instances.addBuilder<TestMvvmInstance41>(TestMvvmInstance41.new);
+  instances.addBuilder<TestBaseMvvmInstance41>(TestBaseMvvmInstance41.new);
 
-  instances.addBuilder<TestMvvmInstance42>(TestMvvmInstance42.new);
+  instances.addBuilder<TestBaseMvvmInstance42>(TestBaseMvvmInstance42.new);
 
-  instances.addBuilder<TestMvvmInstance43>(TestMvvmInstance43.new);
+  instances.addBuilder<TestBaseMvvmInstance43>(TestBaseMvvmInstance43.new);
 
-  instances.addBuilder<TestMvvmInstance44>(TestMvvmInstance44.new);
+  instances.addBuilder<TestBaseMvvmInstance44>(TestBaseMvvmInstance44.new);
 
-  instances.addBuilder<TestMvvmInstance45>(TestMvvmInstance45.new);
+  instances.addBuilder<TestBaseMvvmInstance45>(TestBaseMvvmInstance45.new);
 
-  instances.addBuilder<TestMvvmInstance46>(TestMvvmInstance46.new);
+  instances.addBuilder<TestBaseMvvmInstance46>(TestBaseMvvmInstance46.new);
 
-  instances.addBuilder<TestMvvmInstance47>(TestMvvmInstance47.new);
+  instances.addBuilder<TestBaseMvvmInstance47>(TestBaseMvvmInstance47.new);
 
-  instances.addBuilder<TestMvvmInstance48>(TestMvvmInstance48.new);
+  instances.addBuilder<TestBaseMvvmInstance48>(TestBaseMvvmInstance48.new);
 
-  instances.addBuilder<TestMvvmInstance49>(TestMvvmInstance49.new);
+  instances.addBuilder<TestBaseMvvmInstance49>(TestBaseMvvmInstance49.new);
 
-  instances.addBuilder<TestMvvmInstance50>(TestMvvmInstance50.new);
+  instances.addBuilder<TestBaseMvvmInstance50>(TestBaseMvvmInstance50.new);
 
-  instances.addBuilder<TestMvvmInstance51>(TestMvvmInstance51.new);
+  instances.addBuilder<TestBaseMvvmInstance51>(TestBaseMvvmInstance51.new);
 
-  instances.addBuilder<TestMvvmInstance52>(TestMvvmInstance52.new);
+  instances.addBuilder<TestBaseMvvmInstance52>(TestBaseMvvmInstance52.new);
 
-  instances.addBuilder<TestMvvmInstance53>(TestMvvmInstance53.new);
+  instances.addBuilder<TestBaseMvvmInstance53>(TestBaseMvvmInstance53.new);
 
-  instances.addBuilder<TestMvvmInstance54>(TestMvvmInstance54.new);
+  instances.addBuilder<TestBaseMvvmInstance54>(TestBaseMvvmInstance54.new);
 
-  instances.addBuilder<TestMvvmInstance55>(TestMvvmInstance55.new);
+  instances.addBuilder<TestBaseMvvmInstance55>(TestBaseMvvmInstance55.new);
 
-  instances.addBuilder<TestMvvmInstance56>(TestMvvmInstance56.new);
+  instances.addBuilder<TestBaseMvvmInstance56>(TestBaseMvvmInstance56.new);
 
-  instances.addBuilder<TestMvvmInstance57>(TestMvvmInstance57.new);
+  instances.addBuilder<TestBaseMvvmInstance57>(TestBaseMvvmInstance57.new);
 
-  instances.addBuilder<TestMvvmInstance58>(TestMvvmInstance58.new);
+  instances.addBuilder<TestBaseMvvmInstance58>(TestBaseMvvmInstance58.new);
 
-  instances.addBuilder<TestMvvmInstance59>(TestMvvmInstance59.new);
+  instances.addBuilder<TestBaseMvvmInstance59>(TestBaseMvvmInstance59.new);
 
-  instances.addBuilder<TestMvvmInstance60>(TestMvvmInstance60.new);
+  instances.addBuilder<TestBaseMvvmInstance60>(TestBaseMvvmInstance60.new);
 
-  instances.addBuilder<TestMvvmInstance61>(TestMvvmInstance61.new);
+  instances.addBuilder<TestBaseMvvmInstance61>(TestBaseMvvmInstance61.new);
 
-  instances.addBuilder<TestMvvmInstance62>(TestMvvmInstance62.new);
+  instances.addBuilder<TestBaseMvvmInstance62>(TestBaseMvvmInstance62.new);
 
-  instances.addBuilder<TestMvvmInstance63>(TestMvvmInstance63.new);
+  instances.addBuilder<TestBaseMvvmInstance63>(TestBaseMvvmInstance63.new);
 
-  instances.addBuilder<TestMvvmInstance64>(TestMvvmInstance64.new);
+  instances.addBuilder<TestBaseMvvmInstance64>(TestBaseMvvmInstance64.new);
 
-  instances.addBuilder<TestMvvmInstance65>(TestMvvmInstance65.new);
+  instances.addBuilder<TestBaseMvvmInstance65>(TestBaseMvvmInstance65.new);
 
-  instances.addBuilder<TestMvvmInstance66>(TestMvvmInstance66.new);
+  instances.addBuilder<TestBaseMvvmInstance66>(TestBaseMvvmInstance66.new);
 
-  instances.addBuilder<TestMvvmInstance67>(TestMvvmInstance67.new);
+  instances.addBuilder<TestBaseMvvmInstance67>(TestBaseMvvmInstance67.new);
 
-  instances.addBuilder<TestMvvmInstance68>(TestMvvmInstance68.new);
+  instances.addBuilder<TestBaseMvvmInstance68>(TestBaseMvvmInstance68.new);
 
-  instances.addBuilder<TestMvvmInstance69>(TestMvvmInstance69.new);
+  instances.addBuilder<TestBaseMvvmInstance69>(TestBaseMvvmInstance69.new);
 
-  instances.addBuilder<TestMvvmInstance70>(TestMvvmInstance70.new);
+  instances.addBuilder<TestBaseMvvmInstance70>(TestBaseMvvmInstance70.new);
 
-  instances.addBuilder<TestMvvmInstance71>(TestMvvmInstance71.new);
+  instances.addBuilder<TestBaseMvvmInstance71>(TestBaseMvvmInstance71.new);
 
-  instances.addBuilder<TestMvvmInstance72>(TestMvvmInstance72.new);
+  instances.addBuilder<TestBaseMvvmInstance72>(TestBaseMvvmInstance72.new);
 
-  instances.addBuilder<TestMvvmInstance73>(TestMvvmInstance73.new);
+  instances.addBuilder<TestBaseMvvmInstance73>(TestBaseMvvmInstance73.new);
 
-  instances.addBuilder<TestMvvmInstance74>(TestMvvmInstance74.new);
+  instances.addBuilder<TestBaseMvvmInstance74>(TestBaseMvvmInstance74.new);
 
-  instances.addBuilder<TestMvvmInstance75>(TestMvvmInstance75.new);
+  instances.addBuilder<TestBaseMvvmInstance75>(TestBaseMvvmInstance75.new);
 
-  instances.addBuilder<TestMvvmInstance76>(TestMvvmInstance76.new);
+  instances.addBuilder<TestBaseMvvmInstance76>(TestBaseMvvmInstance76.new);
 
-  instances.addBuilder<TestMvvmInstance77>(TestMvvmInstance77.new);
+  instances.addBuilder<TestBaseMvvmInstance77>(TestBaseMvvmInstance77.new);
 
-  instances.addBuilder<TestMvvmInstance78>(TestMvvmInstance78.new);
+  instances.addBuilder<TestBaseMvvmInstance78>(TestBaseMvvmInstance78.new);
 
-  instances.addBuilder<TestMvvmInstance79>(TestMvvmInstance79.new);
+  instances.addBuilder<TestBaseMvvmInstance79>(TestBaseMvvmInstance79.new);
 
-  instances.addBuilder<TestMvvmInstance80>(TestMvvmInstance80.new);
+  instances.addBuilder<TestBaseMvvmInstance80>(TestBaseMvvmInstance80.new);
 
-  instances.addBuilder<TestMvvmInstance81>(TestMvvmInstance81.new);
+  instances.addBuilder<TestBaseMvvmInstance81>(TestBaseMvvmInstance81.new);
 
-  instances.addBuilder<TestMvvmInstance82>(TestMvvmInstance82.new);
+  instances.addBuilder<TestBaseMvvmInstance82>(TestBaseMvvmInstance82.new);
 
-  instances.addBuilder<TestMvvmInstance83>(TestMvvmInstance83.new);
+  instances.addBuilder<TestBaseMvvmInstance83>(TestBaseMvvmInstance83.new);
 
-  instances.addBuilder<TestMvvmInstance84>(TestMvvmInstance84.new);
+  instances.addBuilder<TestBaseMvvmInstance84>(TestBaseMvvmInstance84.new);
 
-  instances.addBuilder<TestMvvmInstance85>(TestMvvmInstance85.new);
+  instances.addBuilder<TestBaseMvvmInstance85>(TestBaseMvvmInstance85.new);
 
-  instances.addBuilder<TestMvvmInstance86>(TestMvvmInstance86.new);
+  instances.addBuilder<TestBaseMvvmInstance86>(TestBaseMvvmInstance86.new);
 
-  instances.addBuilder<TestMvvmInstance87>(TestMvvmInstance87.new);
+  instances.addBuilder<TestBaseMvvmInstance87>(TestBaseMvvmInstance87.new);
 
-  instances.addBuilder<TestMvvmInstance88>(TestMvvmInstance88.new);
+  instances.addBuilder<TestBaseMvvmInstance88>(TestBaseMvvmInstance88.new);
 
-  instances.addBuilder<TestMvvmInstance89>(TestMvvmInstance89.new);
+  instances.addBuilder<TestBaseMvvmInstance89>(TestBaseMvvmInstance89.new);
 
-  instances.addBuilder<TestMvvmInstance90>(TestMvvmInstance90.new);
+  instances.addBuilder<TestBaseMvvmInstance90>(TestBaseMvvmInstance90.new);
 
-  instances.addBuilder<TestMvvmInstance91>(TestMvvmInstance91.new);
+  instances.addBuilder<TestBaseMvvmInstance91>(TestBaseMvvmInstance91.new);
 
-  instances.addBuilder<TestMvvmInstance92>(TestMvvmInstance92.new);
+  instances.addBuilder<TestBaseMvvmInstance92>(TestBaseMvvmInstance92.new);
 
-  instances.addBuilder<TestMvvmInstance93>(TestMvvmInstance93.new);
+  instances.addBuilder<TestBaseMvvmInstance93>(TestBaseMvvmInstance93.new);
 
-  instances.addBuilder<TestMvvmInstance94>(TestMvvmInstance94.new);
+  instances.addBuilder<TestBaseMvvmInstance94>(TestBaseMvvmInstance94.new);
 
-  instances.addBuilder<TestMvvmInstance95>(TestMvvmInstance95.new);
+  instances.addBuilder<TestBaseMvvmInstance95>(TestBaseMvvmInstance95.new);
 
-  instances.addBuilder<TestMvvmInstance96>(TestMvvmInstance96.new);
+  instances.addBuilder<TestBaseMvvmInstance96>(TestBaseMvvmInstance96.new);
 
-  instances.addBuilder<TestMvvmInstance97>(TestMvvmInstance97.new);
+  instances.addBuilder<TestBaseMvvmInstance97>(TestBaseMvvmInstance97.new);
 
-  instances.addBuilder<TestMvvmInstance98>(TestMvvmInstance98.new);
+  instances.addBuilder<TestBaseMvvmInstance98>(TestBaseMvvmInstance98.new);
 
-  instances.addBuilder<TestMvvmInstance99>(TestMvvmInstance99.new);
+  instances.addBuilder<TestBaseMvvmInstance99>(TestBaseMvvmInstance99.new);
 
-  instances.addBuilder<TestMvvmInstance100>(TestMvvmInstance100.new);
+  instances.addBuilder<TestBaseMvvmInstance100>(TestBaseMvvmInstance100.new);
 
-  instances.addBuilder<TestMvvmInstance101>(TestMvvmInstance101.new);
+  instances.addBuilder<TestBaseMvvmInstance101>(TestBaseMvvmInstance101.new);
 
-  instances.addBuilder<TestMvvmInstance102>(TestMvvmInstance102.new);
+  instances.addBuilder<TestBaseMvvmInstance102>(TestBaseMvvmInstance102.new);
 
-  instances.addBuilder<TestMvvmInstance103>(TestMvvmInstance103.new);
+  instances.addBuilder<TestBaseMvvmInstance103>(TestBaseMvvmInstance103.new);
 
-  instances.addBuilder<TestMvvmInstance104>(TestMvvmInstance104.new);
+  instances.addBuilder<TestBaseMvvmInstance104>(TestBaseMvvmInstance104.new);
 
-  instances.addBuilder<TestMvvmInstance105>(TestMvvmInstance105.new);
+  instances.addBuilder<TestBaseMvvmInstance105>(TestBaseMvvmInstance105.new);
 
-  instances.addBuilder<TestMvvmInstance106>(TestMvvmInstance106.new);
+  instances.addBuilder<TestBaseMvvmInstance106>(TestBaseMvvmInstance106.new);
 
-  instances.addBuilder<TestMvvmInstance107>(TestMvvmInstance107.new);
+  instances.addBuilder<TestBaseMvvmInstance107>(TestBaseMvvmInstance107.new);
 
-  instances.addBuilder<TestMvvmInstance108>(TestMvvmInstance108.new);
+  instances.addBuilder<TestBaseMvvmInstance108>(TestBaseMvvmInstance108.new);
 
-  instances.addBuilder<TestMvvmInstance109>(TestMvvmInstance109.new);
+  instances.addBuilder<TestBaseMvvmInstance109>(TestBaseMvvmInstance109.new);
 
-  instances.addBuilder<TestMvvmInstance110>(TestMvvmInstance110.new);
+  instances.addBuilder<TestBaseMvvmInstance110>(TestBaseMvvmInstance110.new);
 
-  instances.addBuilder<TestMvvmInstance111>(TestMvvmInstance111.new);
+  instances.addBuilder<TestBaseMvvmInstance111>(TestBaseMvvmInstance111.new);
 
-  instances.addBuilder<TestMvvmInstance112>(TestMvvmInstance112.new);
+  instances.addBuilder<TestBaseMvvmInstance112>(TestBaseMvvmInstance112.new);
 
-  instances.addBuilder<TestMvvmInstance113>(TestMvvmInstance113.new);
+  instances.addBuilder<TestBaseMvvmInstance113>(TestBaseMvvmInstance113.new);
 
-  instances.addBuilder<TestMvvmInstance114>(TestMvvmInstance114.new);
+  instances.addBuilder<TestBaseMvvmInstance114>(TestBaseMvvmInstance114.new);
 
-  instances.addBuilder<TestMvvmInstance115>(TestMvvmInstance115.new);
+  instances.addBuilder<TestBaseMvvmInstance115>(TestBaseMvvmInstance115.new);
 
-  instances.addBuilder<TestMvvmInstance116>(TestMvvmInstance116.new);
+  instances.addBuilder<TestBaseMvvmInstance116>(TestBaseMvvmInstance116.new);
 
-  instances.addBuilder<TestMvvmInstance117>(TestMvvmInstance117.new);
+  instances.addBuilder<TestBaseMvvmInstance117>(TestBaseMvvmInstance117.new);
 
-  instances.addBuilder<TestMvvmInstance118>(TestMvvmInstance118.new);
+  instances.addBuilder<TestBaseMvvmInstance118>(TestBaseMvvmInstance118.new);
 
-  instances.addBuilder<TestMvvmInstance119>(TestMvvmInstance119.new);
+  instances.addBuilder<TestBaseMvvmInstance119>(TestBaseMvvmInstance119.new);
 
-  instances.addBuilder<TestMvvmInstance120>(TestMvvmInstance120.new);
+  instances.addBuilder<TestBaseMvvmInstance120>(TestBaseMvvmInstance120.new);
 
-  instances.addBuilder<TestMvvmInstance121>(TestMvvmInstance121.new);
+  instances.addBuilder<TestBaseMvvmInstance121>(TestBaseMvvmInstance121.new);
 
-  instances.addBuilder<TestMvvmInstance122>(TestMvvmInstance122.new);
+  instances.addBuilder<TestBaseMvvmInstance122>(TestBaseMvvmInstance122.new);
 
-  instances.addBuilder<TestMvvmInstance123>(TestMvvmInstance123.new);
+  instances.addBuilder<TestBaseMvvmInstance123>(TestBaseMvvmInstance123.new);
 
-  instances.addBuilder<TestMvvmInstance124>(TestMvvmInstance124.new);
+  instances.addBuilder<TestBaseMvvmInstance124>(TestBaseMvvmInstance124.new);
 
-  instances.addBuilder<TestMvvmInstance125>(TestMvvmInstance125.new);
+  instances.addBuilder<TestBaseMvvmInstance125>(TestBaseMvvmInstance125.new);
 
-  instances.addBuilder<TestMvvmInstance126>(TestMvvmInstance126.new);
+  instances.addBuilder<TestBaseMvvmInstance126>(TestBaseMvvmInstance126.new);
 
-  instances.addBuilder<TestMvvmInstance127>(TestMvvmInstance127.new);
+  instances.addBuilder<TestBaseMvvmInstance127>(TestBaseMvvmInstance127.new);
 
-  instances.addBuilder<TestMvvmInstance128>(TestMvvmInstance128.new);
+  instances.addBuilder<TestBaseMvvmInstance128>(TestBaseMvvmInstance128.new);
 
-  instances.addBuilder<TestMvvmInstance129>(TestMvvmInstance129.new);
+  instances.addBuilder<TestBaseMvvmInstance129>(TestBaseMvvmInstance129.new);
 
-  instances.addBuilder<TestMvvmInstance130>(TestMvvmInstance130.new);
+  instances.addBuilder<TestBaseMvvmInstance130>(TestBaseMvvmInstance130.new);
 
-  instances.addBuilder<TestMvvmInstance131>(TestMvvmInstance131.new);
+  instances.addBuilder<TestBaseMvvmInstance131>(TestBaseMvvmInstance131.new);
 
-  instances.addBuilder<TestMvvmInstance132>(TestMvvmInstance132.new);
+  instances.addBuilder<TestBaseMvvmInstance132>(TestBaseMvvmInstance132.new);
 
-  instances.addBuilder<TestMvvmInstance133>(TestMvvmInstance133.new);
+  instances.addBuilder<TestBaseMvvmInstance133>(TestBaseMvvmInstance133.new);
 
-  instances.addBuilder<TestMvvmInstance134>(TestMvvmInstance134.new);
+  instances.addBuilder<TestBaseMvvmInstance134>(TestBaseMvvmInstance134.new);
 
-  instances.addBuilder<TestMvvmInstance135>(TestMvvmInstance135.new);
+  instances.addBuilder<TestBaseMvvmInstance135>(TestBaseMvvmInstance135.new);
 
-  instances.addBuilder<TestMvvmInstance136>(TestMvvmInstance136.new);
+  instances.addBuilder<TestBaseMvvmInstance136>(TestBaseMvvmInstance136.new);
 
-  instances.addBuilder<TestMvvmInstance137>(TestMvvmInstance137.new);
+  instances.addBuilder<TestBaseMvvmInstance137>(TestBaseMvvmInstance137.new);
 
-  instances.addBuilder<TestMvvmInstance138>(TestMvvmInstance138.new);
+  instances.addBuilder<TestBaseMvvmInstance138>(TestBaseMvvmInstance138.new);
 
-  instances.addBuilder<TestMvvmInstance139>(TestMvvmInstance139.new);
+  instances.addBuilder<TestBaseMvvmInstance139>(TestBaseMvvmInstance139.new);
 
-  instances.addBuilder<TestMvvmInstance140>(TestMvvmInstance140.new);
+  instances.addBuilder<TestBaseMvvmInstance140>(TestBaseMvvmInstance140.new);
 
-  instances.addBuilder<TestMvvmInstance141>(TestMvvmInstance141.new);
+  instances.addBuilder<TestBaseMvvmInstance141>(TestBaseMvvmInstance141.new);
 
-  instances.addBuilder<TestMvvmInstance142>(TestMvvmInstance142.new);
+  instances.addBuilder<TestBaseMvvmInstance142>(TestBaseMvvmInstance142.new);
 
-  instances.addBuilder<TestMvvmInstance143>(TestMvvmInstance143.new);
+  instances.addBuilder<TestBaseMvvmInstance143>(TestBaseMvvmInstance143.new);
 
-  instances.addBuilder<TestMvvmInstance144>(TestMvvmInstance144.new);
+  instances.addBuilder<TestBaseMvvmInstance144>(TestBaseMvvmInstance144.new);
 
-  instances.addBuilder<TestMvvmInstance145>(TestMvvmInstance145.new);
+  instances.addBuilder<TestBaseMvvmInstance145>(TestBaseMvvmInstance145.new);
 
-  instances.addBuilder<TestMvvmInstance146>(TestMvvmInstance146.new);
+  instances.addBuilder<TestBaseMvvmInstance146>(TestBaseMvvmInstance146.new);
 
-  instances.addBuilder<TestMvvmInstance147>(TestMvvmInstance147.new);
+  instances.addBuilder<TestBaseMvvmInstance147>(TestBaseMvvmInstance147.new);
 
-  instances.addBuilder<TestMvvmInstance148>(TestMvvmInstance148.new);
+  instances.addBuilder<TestBaseMvvmInstance148>(TestBaseMvvmInstance148.new);
 
-  instances.addBuilder<TestMvvmInstance149>(TestMvvmInstance149.new);
+  instances.addBuilder<TestBaseMvvmInstance149>(TestBaseMvvmInstance149.new);
 
-  instances.addBuilder<TestMvvmInstance150>(TestMvvmInstance150.new);
+  instances.addBuilder<TestBaseMvvmInstance150>(TestBaseMvvmInstance150.new);
 
-  instances.addBuilder<TestMvvmInstance151>(TestMvvmInstance151.new);
+  instances.addBuilder<TestBaseMvvmInstance151>(TestBaseMvvmInstance151.new);
 
-  instances.addBuilder<TestMvvmInstance152>(TestMvvmInstance152.new);
+  instances.addBuilder<TestBaseMvvmInstance152>(TestBaseMvvmInstance152.new);
 
-  instances.addBuilder<TestMvvmInstance153>(TestMvvmInstance153.new);
+  instances.addBuilder<TestBaseMvvmInstance153>(TestBaseMvvmInstance153.new);
 
-  instances.addBuilder<TestMvvmInstance154>(TestMvvmInstance154.new);
+  instances.addBuilder<TestBaseMvvmInstance154>(TestBaseMvvmInstance154.new);
 
-  instances.addBuilder<TestMvvmInstance155>(TestMvvmInstance155.new);
+  instances.addBuilder<TestBaseMvvmInstance155>(TestBaseMvvmInstance155.new);
 
-  instances.addBuilder<TestMvvmInstance156>(TestMvvmInstance156.new);
+  instances.addBuilder<TestBaseMvvmInstance156>(TestBaseMvvmInstance156.new);
 
-  instances.addBuilder<TestMvvmInstance157>(TestMvvmInstance157.new);
+  instances.addBuilder<TestBaseMvvmInstance157>(TestBaseMvvmInstance157.new);
 
-  instances.addBuilder<TestMvvmInstance158>(TestMvvmInstance158.new);
+  instances.addBuilder<TestBaseMvvmInstance158>(TestBaseMvvmInstance158.new);
 
-  instances.addBuilder<TestMvvmInstance159>(TestMvvmInstance159.new);
+  instances.addBuilder<TestBaseMvvmInstance159>(TestBaseMvvmInstance159.new);
 
-  instances.addBuilder<TestMvvmInstance160>(TestMvvmInstance160.new);
+  instances.addBuilder<TestBaseMvvmInstance160>(TestBaseMvvmInstance160.new);
 
-  instances.addBuilder<TestMvvmInstance161>(TestMvvmInstance161.new);
+  instances.addBuilder<TestBaseMvvmInstance161>(TestBaseMvvmInstance161.new);
 
-  instances.addBuilder<TestMvvmInstance162>(TestMvvmInstance162.new);
+  instances.addBuilder<TestBaseMvvmInstance162>(TestBaseMvvmInstance162.new);
 
-  instances.addBuilder<TestMvvmInstance163>(TestMvvmInstance163.new);
+  instances.addBuilder<TestBaseMvvmInstance163>(TestBaseMvvmInstance163.new);
 
-  instances.addBuilder<TestMvvmInstance164>(TestMvvmInstance164.new);
+  instances.addBuilder<TestBaseMvvmInstance164>(TestBaseMvvmInstance164.new);
 
-  instances.addBuilder<TestMvvmInstance165>(TestMvvmInstance165.new);
+  instances.addBuilder<TestBaseMvvmInstance165>(TestBaseMvvmInstance165.new);
 
-  instances.addBuilder<TestMvvmInstance166>(TestMvvmInstance166.new);
+  instances.addBuilder<TestBaseMvvmInstance166>(TestBaseMvvmInstance166.new);
 
-  instances.addBuilder<TestMvvmInstance167>(TestMvvmInstance167.new);
+  instances.addBuilder<TestBaseMvvmInstance167>(TestBaseMvvmInstance167.new);
 
-  instances.addBuilder<TestMvvmInstance168>(TestMvvmInstance168.new);
+  instances.addBuilder<TestBaseMvvmInstance168>(TestBaseMvvmInstance168.new);
 
-  instances.addBuilder<TestMvvmInstance169>(TestMvvmInstance169.new);
+  instances.addBuilder<TestBaseMvvmInstance169>(TestBaseMvvmInstance169.new);
 
-  instances.addBuilder<TestMvvmInstance170>(TestMvvmInstance170.new);
+  instances.addBuilder<TestBaseMvvmInstance170>(TestBaseMvvmInstance170.new);
 
-  instances.addBuilder<TestMvvmInstance171>(TestMvvmInstance171.new);
+  instances.addBuilder<TestBaseMvvmInstance171>(TestBaseMvvmInstance171.new);
 
-  instances.addBuilder<TestMvvmInstance172>(TestMvvmInstance172.new);
+  instances.addBuilder<TestBaseMvvmInstance172>(TestBaseMvvmInstance172.new);
 
-  instances.addBuilder<TestMvvmInstance173>(TestMvvmInstance173.new);
+  instances.addBuilder<TestBaseMvvmInstance173>(TestBaseMvvmInstance173.new);
 
-  instances.addBuilder<TestMvvmInstance174>(TestMvvmInstance174.new);
+  instances.addBuilder<TestBaseMvvmInstance174>(TestBaseMvvmInstance174.new);
 
-  instances.addBuilder<TestMvvmInstance175>(TestMvvmInstance175.new);
+  instances.addBuilder<TestBaseMvvmInstance175>(TestBaseMvvmInstance175.new);
 
-  instances.addBuilder<TestMvvmInstance176>(TestMvvmInstance176.new);
+  instances.addBuilder<TestBaseMvvmInstance176>(TestBaseMvvmInstance176.new);
 
-  instances.addBuilder<TestMvvmInstance177>(TestMvvmInstance177.new);
+  instances.addBuilder<TestBaseMvvmInstance177>(TestBaseMvvmInstance177.new);
 
-  instances.addBuilder<TestMvvmInstance178>(TestMvvmInstance178.new);
+  instances.addBuilder<TestBaseMvvmInstance178>(TestBaseMvvmInstance178.new);
 
-  instances.addBuilder<TestMvvmInstance179>(TestMvvmInstance179.new);
+  instances.addBuilder<TestBaseMvvmInstance179>(TestBaseMvvmInstance179.new);
 
-  instances.addBuilder<TestMvvmInstance180>(TestMvvmInstance180.new);
+  instances.addBuilder<TestBaseMvvmInstance180>(TestBaseMvvmInstance180.new);
 
-  instances.addBuilder<TestMvvmInstance181>(TestMvvmInstance181.new);
+  instances.addBuilder<TestBaseMvvmInstance181>(TestBaseMvvmInstance181.new);
 
-  instances.addBuilder<TestMvvmInstance182>(TestMvvmInstance182.new);
+  instances.addBuilder<TestBaseMvvmInstance182>(TestBaseMvvmInstance182.new);
 
-  instances.addBuilder<TestMvvmInstance183>(TestMvvmInstance183.new);
+  instances.addBuilder<TestBaseMvvmInstance183>(TestBaseMvvmInstance183.new);
 
-  instances.addBuilder<TestMvvmInstance184>(TestMvvmInstance184.new);
+  instances.addBuilder<TestBaseMvvmInstance184>(TestBaseMvvmInstance184.new);
 
-  instances.addBuilder<TestMvvmInstance185>(TestMvvmInstance185.new);
+  instances.addBuilder<TestBaseMvvmInstance185>(TestBaseMvvmInstance185.new);
 
-  instances.addBuilder<TestMvvmInstance186>(TestMvvmInstance186.new);
+  instances.addBuilder<TestBaseMvvmInstance186>(TestBaseMvvmInstance186.new);
 
-  instances.addBuilder<TestMvvmInstance187>(TestMvvmInstance187.new);
+  instances.addBuilder<TestBaseMvvmInstance187>(TestBaseMvvmInstance187.new);
 
-  instances.addBuilder<TestMvvmInstance188>(TestMvvmInstance188.new);
+  instances.addBuilder<TestBaseMvvmInstance188>(TestBaseMvvmInstance188.new);
 
-  instances.addBuilder<TestMvvmInstance189>(TestMvvmInstance189.new);
+  instances.addBuilder<TestBaseMvvmInstance189>(TestBaseMvvmInstance189.new);
 
-  instances.addBuilder<TestMvvmInstance190>(TestMvvmInstance190.new);
+  instances.addBuilder<TestBaseMvvmInstance190>(TestBaseMvvmInstance190.new);
 
-  instances.addBuilder<TestMvvmInstance191>(TestMvvmInstance191.new);
+  instances.addBuilder<TestBaseMvvmInstance191>(TestBaseMvvmInstance191.new);
 
-  instances.addBuilder<TestMvvmInstance192>(TestMvvmInstance192.new);
+  instances.addBuilder<TestBaseMvvmInstance192>(TestBaseMvvmInstance192.new);
 
-  instances.addBuilder<TestMvvmInstance193>(TestMvvmInstance193.new);
+  instances.addBuilder<TestBaseMvvmInstance193>(TestBaseMvvmInstance193.new);
 
-  instances.addBuilder<TestMvvmInstance194>(TestMvvmInstance194.new);
+  instances.addBuilder<TestBaseMvvmInstance194>(TestBaseMvvmInstance194.new);
 
-  instances.addBuilder<TestMvvmInstance195>(TestMvvmInstance195.new);
+  instances.addBuilder<TestBaseMvvmInstance195>(TestBaseMvvmInstance195.new);
 
-  instances.addBuilder<TestMvvmInstance196>(TestMvvmInstance196.new);
+  instances.addBuilder<TestBaseMvvmInstance196>(TestBaseMvvmInstance196.new);
 
-  instances.addBuilder<TestMvvmInstance197>(TestMvvmInstance197.new);
+  instances.addBuilder<TestBaseMvvmInstance197>(TestBaseMvvmInstance197.new);
 
-  instances.addBuilder<TestMvvmInstance198>(TestMvvmInstance198.new);
+  instances.addBuilder<TestBaseMvvmInstance198>(TestBaseMvvmInstance198.new);
 
-  instances.addBuilder<TestMvvmInstance199>(TestMvvmInstance199.new);
+  instances.addBuilder<TestBaseMvvmInstance199>(TestBaseMvvmInstance199.new);
 
-  instances.addBuilder<TestMvvmInstance200>(TestMvvmInstance200.new);
+  instances.addBuilder<TestBaseMvvmInstance200>(TestBaseMvvmInstance200.new);
 
-  instances.addBuilder<TestMvvmInstance201>(TestMvvmInstance201.new);
+  instances.addBuilder<TestBaseMvvmInstance201>(TestBaseMvvmInstance201.new);
 
-  instances.addBuilder<TestMvvmInstance202>(TestMvvmInstance202.new);
+  instances.addBuilder<TestBaseMvvmInstance202>(TestBaseMvvmInstance202.new);
 
-  instances.addBuilder<TestMvvmInstance203>(TestMvvmInstance203.new);
+  instances.addBuilder<TestBaseMvvmInstance203>(TestBaseMvvmInstance203.new);
 
-  instances.addBuilder<TestMvvmInstance204>(TestMvvmInstance204.new);
+  instances.addBuilder<TestBaseMvvmInstance204>(TestBaseMvvmInstance204.new);
 
-  instances.addBuilder<TestMvvmInstance205>(TestMvvmInstance205.new);
+  instances.addBuilder<TestBaseMvvmInstance205>(TestBaseMvvmInstance205.new);
 
-  instances.addBuilder<TestMvvmInstance206>(TestMvvmInstance206.new);
+  instances.addBuilder<TestBaseMvvmInstance206>(TestBaseMvvmInstance206.new);
 
-  instances.addBuilder<TestMvvmInstance207>(TestMvvmInstance207.new);
+  instances.addBuilder<TestBaseMvvmInstance207>(TestBaseMvvmInstance207.new);
 
-  instances.addBuilder<TestMvvmInstance208>(TestMvvmInstance208.new);
+  instances.addBuilder<TestBaseMvvmInstance208>(TestBaseMvvmInstance208.new);
 
-  instances.addBuilder<TestMvvmInstance209>(TestMvvmInstance209.new);
+  instances.addBuilder<TestBaseMvvmInstance209>(TestBaseMvvmInstance209.new);
 
-  instances.addBuilder<TestMvvmInstance210>(TestMvvmInstance210.new);
+  instances.addBuilder<TestBaseMvvmInstance210>(TestBaseMvvmInstance210.new);
 
-  instances.addBuilder<TestMvvmInstance211>(TestMvvmInstance211.new);
+  instances.addBuilder<TestBaseMvvmInstance211>(TestBaseMvvmInstance211.new);
 
-  instances.addBuilder<TestMvvmInstance212>(TestMvvmInstance212.new);
+  instances.addBuilder<TestBaseMvvmInstance212>(TestBaseMvvmInstance212.new);
 
-  instances.addBuilder<TestMvvmInstance213>(TestMvvmInstance213.new);
+  instances.addBuilder<TestBaseMvvmInstance213>(TestBaseMvvmInstance213.new);
 
-  instances.addBuilder<TestMvvmInstance214>(TestMvvmInstance214.new);
+  instances.addBuilder<TestBaseMvvmInstance214>(TestBaseMvvmInstance214.new);
 
-  instances.addBuilder<TestMvvmInstance215>(TestMvvmInstance215.new);
+  instances.addBuilder<TestBaseMvvmInstance215>(TestBaseMvvmInstance215.new);
 
-  instances.addBuilder<TestMvvmInstance216>(TestMvvmInstance216.new);
+  instances.addBuilder<TestBaseMvvmInstance216>(TestBaseMvvmInstance216.new);
 
-  instances.addBuilder<TestMvvmInstance217>(TestMvvmInstance217.new);
+  instances.addBuilder<TestBaseMvvmInstance217>(TestBaseMvvmInstance217.new);
 
-  instances.addBuilder<TestMvvmInstance218>(TestMvvmInstance218.new);
+  instances.addBuilder<TestBaseMvvmInstance218>(TestBaseMvvmInstance218.new);
 
-  instances.addBuilder<TestMvvmInstance219>(TestMvvmInstance219.new);
+  instances.addBuilder<TestBaseMvvmInstance219>(TestBaseMvvmInstance219.new);
 
-  instances.addBuilder<TestMvvmInstance220>(TestMvvmInstance220.new);
+  instances.addBuilder<TestBaseMvvmInstance220>(TestBaseMvvmInstance220.new);
 
-  instances.addBuilder<TestMvvmInstance221>(TestMvvmInstance221.new);
+  instances.addBuilder<TestBaseMvvmInstance221>(TestBaseMvvmInstance221.new);
 
-  instances.addBuilder<TestMvvmInstance222>(TestMvvmInstance222.new);
+  instances.addBuilder<TestBaseMvvmInstance222>(TestBaseMvvmInstance222.new);
 
-  instances.addBuilder<TestMvvmInstance223>(TestMvvmInstance223.new);
+  instances.addBuilder<TestBaseMvvmInstance223>(TestBaseMvvmInstance223.new);
 
-  instances.addBuilder<TestMvvmInstance224>(TestMvvmInstance224.new);
+  instances.addBuilder<TestBaseMvvmInstance224>(TestBaseMvvmInstance224.new);
 
-  instances.addBuilder<TestMvvmInstance225>(TestMvvmInstance225.new);
+  instances.addBuilder<TestBaseMvvmInstance225>(TestBaseMvvmInstance225.new);
 
-  instances.addBuilder<TestMvvmInstance226>(TestMvvmInstance226.new);
+  instances.addBuilder<TestBaseMvvmInstance226>(TestBaseMvvmInstance226.new);
 
-  instances.addBuilder<TestMvvmInstance227>(TestMvvmInstance227.new);
+  instances.addBuilder<TestBaseMvvmInstance227>(TestBaseMvvmInstance227.new);
 
-  instances.addBuilder<TestMvvmInstance228>(TestMvvmInstance228.new);
+  instances.addBuilder<TestBaseMvvmInstance228>(TestBaseMvvmInstance228.new);
 
-  instances.addBuilder<TestMvvmInstance229>(TestMvvmInstance229.new);
+  instances.addBuilder<TestBaseMvvmInstance229>(TestBaseMvvmInstance229.new);
 
-  instances.addBuilder<TestMvvmInstance230>(TestMvvmInstance230.new);
+  instances.addBuilder<TestBaseMvvmInstance230>(TestBaseMvvmInstance230.new);
 
-  instances.addBuilder<TestMvvmInstance231>(TestMvvmInstance231.new);
+  instances.addBuilder<TestBaseMvvmInstance231>(TestBaseMvvmInstance231.new);
 
-  instances.addBuilder<TestMvvmInstance232>(TestMvvmInstance232.new);
+  instances.addBuilder<TestBaseMvvmInstance232>(TestBaseMvvmInstance232.new);
 
-  instances.addBuilder<TestMvvmInstance233>(TestMvvmInstance233.new);
+  instances.addBuilder<TestBaseMvvmInstance233>(TestBaseMvvmInstance233.new);
 
-  instances.addBuilder<TestMvvmInstance234>(TestMvvmInstance234.new);
+  instances.addBuilder<TestBaseMvvmInstance234>(TestBaseMvvmInstance234.new);
 
-  instances.addBuilder<TestMvvmInstance235>(TestMvvmInstance235.new);
+  instances.addBuilder<TestBaseMvvmInstance235>(TestBaseMvvmInstance235.new);
 
-  instances.addBuilder<TestMvvmInstance236>(TestMvvmInstance236.new);
+  instances.addBuilder<TestBaseMvvmInstance236>(TestBaseMvvmInstance236.new);
 
-  instances.addBuilder<TestMvvmInstance237>(TestMvvmInstance237.new);
+  instances.addBuilder<TestBaseMvvmInstance237>(TestBaseMvvmInstance237.new);
 
-  instances.addBuilder<TestMvvmInstance238>(TestMvvmInstance238.new);
+  instances.addBuilder<TestBaseMvvmInstance238>(TestBaseMvvmInstance238.new);
 
-  instances.addBuilder<TestMvvmInstance239>(TestMvvmInstance239.new);
+  instances.addBuilder<TestBaseMvvmInstance239>(TestBaseMvvmInstance239.new);
 
-  instances.addBuilder<TestMvvmInstance240>(TestMvvmInstance240.new);
+  instances.addBuilder<TestBaseMvvmInstance240>(TestBaseMvvmInstance240.new);
 
-  instances.addBuilder<TestMvvmInstance241>(TestMvvmInstance241.new);
+  instances.addBuilder<TestBaseMvvmInstance241>(TestBaseMvvmInstance241.new);
 
-  instances.addBuilder<TestMvvmInstance242>(TestMvvmInstance242.new);
+  instances.addBuilder<TestBaseMvvmInstance242>(TestBaseMvvmInstance242.new);
 
-  instances.addBuilder<TestMvvmInstance243>(TestMvvmInstance243.new);
+  instances.addBuilder<TestBaseMvvmInstance243>(TestBaseMvvmInstance243.new);
 
-  instances.addBuilder<TestMvvmInstance244>(TestMvvmInstance244.new);
+  instances.addBuilder<TestBaseMvvmInstance244>(TestBaseMvvmInstance244.new);
 
-  instances.addBuilder<TestMvvmInstance245>(TestMvvmInstance245.new);
+  instances.addBuilder<TestBaseMvvmInstance245>(TestBaseMvvmInstance245.new);
 
-  instances.addBuilder<TestMvvmInstance246>(TestMvvmInstance246.new);
+  instances.addBuilder<TestBaseMvvmInstance246>(TestBaseMvvmInstance246.new);
 
-  instances.addBuilder<TestMvvmInstance247>(TestMvvmInstance247.new);
+  instances.addBuilder<TestBaseMvvmInstance247>(TestBaseMvvmInstance247.new);
 
-  instances.addBuilder<TestMvvmInstance248>(TestMvvmInstance248.new);
+  instances.addBuilder<TestBaseMvvmInstance248>(TestBaseMvvmInstance248.new);
 
-  instances.addBuilder<TestMvvmInstance249>(TestMvvmInstance249.new);
+  instances.addBuilder<TestBaseMvvmInstance249>(TestBaseMvvmInstance249.new);
 
-  instances.addBuilder<TestMvvmInstance250>(TestMvvmInstance250.new);
+  instances.addBuilder<TestBaseMvvmInstance250>(TestBaseMvvmInstance250.new);
 
-  instances.addBuilder<TestMvvmInstance251>(TestMvvmInstance251.new);
+  instances.addBuilder<TestBaseMvvmInstance251>(TestBaseMvvmInstance251.new);
 
-  instances.addBuilder<TestMvvmInstance252>(TestMvvmInstance252.new);
+  instances.addBuilder<TestBaseMvvmInstance252>(TestBaseMvvmInstance252.new);
 
-  instances.addBuilder<TestMvvmInstance253>(TestMvvmInstance253.new);
+  instances.addBuilder<TestBaseMvvmInstance253>(TestBaseMvvmInstance253.new);
 
-  instances.addBuilder<TestMvvmInstance254>(TestMvvmInstance254.new);
+  instances.addBuilder<TestBaseMvvmInstance254>(TestBaseMvvmInstance254.new);
 
-  instances.addBuilder<TestMvvmInstance255>(TestMvvmInstance255.new);
+  instances.addBuilder<TestBaseMvvmInstance255>(TestBaseMvvmInstance255.new);
 
-  instances.addBuilder<TestMvvmInstance256>(TestMvvmInstance256.new);
+  instances.addBuilder<TestBaseMvvmInstance256>(TestBaseMvvmInstance256.new);
 
-  instances.addBuilder<TestMvvmInstance257>(TestMvvmInstance257.new);
+  instances.addBuilder<TestBaseMvvmInstance257>(TestBaseMvvmInstance257.new);
 
-  instances.addBuilder<TestMvvmInstance258>(TestMvvmInstance258.new);
+  instances.addBuilder<TestBaseMvvmInstance258>(TestBaseMvvmInstance258.new);
 
-  instances.addBuilder<TestMvvmInstance259>(TestMvvmInstance259.new);
+  instances.addBuilder<TestBaseMvvmInstance259>(TestBaseMvvmInstance259.new);
 
-  instances.addBuilder<TestMvvmInstance260>(TestMvvmInstance260.new);
+  instances.addBuilder<TestBaseMvvmInstance260>(TestBaseMvvmInstance260.new);
 
-  instances.addBuilder<TestMvvmInstance261>(TestMvvmInstance261.new);
+  instances.addBuilder<TestBaseMvvmInstance261>(TestBaseMvvmInstance261.new);
 
-  instances.addBuilder<TestMvvmInstance262>(TestMvvmInstance262.new);
+  instances.addBuilder<TestBaseMvvmInstance262>(TestBaseMvvmInstance262.new);
 
-  instances.addBuilder<TestMvvmInstance263>(TestMvvmInstance263.new);
+  instances.addBuilder<TestBaseMvvmInstance263>(TestBaseMvvmInstance263.new);
 
-  instances.addBuilder<TestMvvmInstance264>(TestMvvmInstance264.new);
+  instances.addBuilder<TestBaseMvvmInstance264>(TestBaseMvvmInstance264.new);
 
-  instances.addBuilder<TestMvvmInstance265>(TestMvvmInstance265.new);
+  instances.addBuilder<TestBaseMvvmInstance265>(TestBaseMvvmInstance265.new);
 
-  instances.addBuilder<TestMvvmInstance266>(TestMvvmInstance266.new);
+  instances.addBuilder<TestBaseMvvmInstance266>(TestBaseMvvmInstance266.new);
 
-  instances.addBuilder<TestMvvmInstance267>(TestMvvmInstance267.new);
+  instances.addBuilder<TestBaseMvvmInstance267>(TestBaseMvvmInstance267.new);
 
-  instances.addBuilder<TestMvvmInstance268>(TestMvvmInstance268.new);
+  instances.addBuilder<TestBaseMvvmInstance268>(TestBaseMvvmInstance268.new);
 
-  instances.addBuilder<TestMvvmInstance269>(TestMvvmInstance269.new);
+  instances.addBuilder<TestBaseMvvmInstance269>(TestBaseMvvmInstance269.new);
 
-  instances.addBuilder<TestMvvmInstance270>(TestMvvmInstance270.new);
+  instances.addBuilder<TestBaseMvvmInstance270>(TestBaseMvvmInstance270.new);
 
-  instances.addBuilder<TestMvvmInstance271>(TestMvvmInstance271.new);
+  instances.addBuilder<TestBaseMvvmInstance271>(TestBaseMvvmInstance271.new);
 
-  instances.addBuilder<TestMvvmInstance272>(TestMvvmInstance272.new);
+  instances.addBuilder<TestBaseMvvmInstance272>(TestBaseMvvmInstance272.new);
 
-  instances.addBuilder<TestMvvmInstance273>(TestMvvmInstance273.new);
+  instances.addBuilder<TestBaseMvvmInstance273>(TestBaseMvvmInstance273.new);
 
-  instances.addBuilder<TestMvvmInstance274>(TestMvvmInstance274.new);
+  instances.addBuilder<TestBaseMvvmInstance274>(TestBaseMvvmInstance274.new);
 
-  instances.addBuilder<TestMvvmInstance275>(TestMvvmInstance275.new);
+  instances.addBuilder<TestBaseMvvmInstance275>(TestBaseMvvmInstance275.new);
 
-  instances.addBuilder<TestMvvmInstance276>(TestMvvmInstance276.new);
+  instances.addBuilder<TestBaseMvvmInstance276>(TestBaseMvvmInstance276.new);
 
-  instances.addBuilder<TestMvvmInstance277>(TestMvvmInstance277.new);
+  instances.addBuilder<TestBaseMvvmInstance277>(TestBaseMvvmInstance277.new);
 
-  instances.addBuilder<TestMvvmInstance278>(TestMvvmInstance278.new);
+  instances.addBuilder<TestBaseMvvmInstance278>(TestBaseMvvmInstance278.new);
 
-  instances.addBuilder<TestMvvmInstance279>(TestMvvmInstance279.new);
+  instances.addBuilder<TestBaseMvvmInstance279>(TestBaseMvvmInstance279.new);
 
-  instances.addBuilder<TestMvvmInstance280>(TestMvvmInstance280.new);
+  instances.addBuilder<TestBaseMvvmInstance280>(TestBaseMvvmInstance280.new);
 
-  instances.addBuilder<TestMvvmInstance281>(TestMvvmInstance281.new);
+  instances.addBuilder<TestBaseMvvmInstance281>(TestBaseMvvmInstance281.new);
 
-  instances.addBuilder<TestMvvmInstance282>(TestMvvmInstance282.new);
+  instances.addBuilder<TestBaseMvvmInstance282>(TestBaseMvvmInstance282.new);
 
-  instances.addBuilder<TestMvvmInstance283>(TestMvvmInstance283.new);
+  instances.addBuilder<TestBaseMvvmInstance283>(TestBaseMvvmInstance283.new);
 
-  instances.addBuilder<TestMvvmInstance284>(TestMvvmInstance284.new);
+  instances.addBuilder<TestBaseMvvmInstance284>(TestBaseMvvmInstance284.new);
 
-  instances.addBuilder<TestMvvmInstance285>(TestMvvmInstance285.new);
+  instances.addBuilder<TestBaseMvvmInstance285>(TestBaseMvvmInstance285.new);
 
-  instances.addBuilder<TestMvvmInstance286>(TestMvvmInstance286.new);
+  instances.addBuilder<TestBaseMvvmInstance286>(TestBaseMvvmInstance286.new);
 
-  instances.addBuilder<TestMvvmInstance287>(TestMvvmInstance287.new);
+  instances.addBuilder<TestBaseMvvmInstance287>(TestBaseMvvmInstance287.new);
 
-  instances.addBuilder<TestMvvmInstance288>(TestMvvmInstance288.new);
+  instances.addBuilder<TestBaseMvvmInstance288>(TestBaseMvvmInstance288.new);
 
-  instances.addBuilder<TestMvvmInstance289>(TestMvvmInstance289.new);
+  instances.addBuilder<TestBaseMvvmInstance289>(TestBaseMvvmInstance289.new);
 
-  instances.addBuilder<TestMvvmInstance290>(TestMvvmInstance290.new);
+  instances.addBuilder<TestBaseMvvmInstance290>(TestBaseMvvmInstance290.new);
 
-  instances.addBuilder<TestMvvmInstance291>(TestMvvmInstance291.new);
+  instances.addBuilder<TestBaseMvvmInstance291>(TestBaseMvvmInstance291.new);
 
-  instances.addBuilder<TestMvvmInstance292>(TestMvvmInstance292.new);
+  instances.addBuilder<TestBaseMvvmInstance292>(TestBaseMvvmInstance292.new);
 
-  instances.addBuilder<TestMvvmInstance293>(TestMvvmInstance293.new);
+  instances.addBuilder<TestBaseMvvmInstance293>(TestBaseMvvmInstance293.new);
 
-  instances.addBuilder<TestMvvmInstance294>(TestMvvmInstance294.new);
+  instances.addBuilder<TestBaseMvvmInstance294>(TestBaseMvvmInstance294.new);
 
-  instances.addBuilder<TestMvvmInstance295>(TestMvvmInstance295.new);
+  instances.addBuilder<TestBaseMvvmInstance295>(TestBaseMvvmInstance295.new);
 
-  instances.addBuilder<TestMvvmInstance296>(TestMvvmInstance296.new);
+  instances.addBuilder<TestBaseMvvmInstance296>(TestBaseMvvmInstance296.new);
 
-  instances.addBuilder<TestMvvmInstance297>(TestMvvmInstance297.new);
+  instances.addBuilder<TestBaseMvvmInstance297>(TestBaseMvvmInstance297.new);
 
-  instances.addBuilder<TestMvvmInstance298>(TestMvvmInstance298.new);
+  instances.addBuilder<TestBaseMvvmInstance298>(TestBaseMvvmInstance298.new);
 
-  instances.addBuilder<TestMvvmInstance299>(TestMvvmInstance299.new);
+  instances.addBuilder<TestBaseMvvmInstance299>(TestBaseMvvmInstance299.new);
 
-  instances.addBuilder<TestMvvmInstance300>(TestMvvmInstance300.new);
+  instances.addBuilder<TestBaseMvvmInstance300>(TestBaseMvvmInstance300.new);
 
-  instances.addBuilder<TestMvvmInstance301>(TestMvvmInstance301.new);
+  instances.addBuilder<TestBaseMvvmInstance301>(TestBaseMvvmInstance301.new);
 
-  instances.addBuilder<TestMvvmInstance302>(TestMvvmInstance302.new);
+  instances.addBuilder<TestBaseMvvmInstance302>(TestBaseMvvmInstance302.new);
 
-  instances.addBuilder<TestMvvmInstance303>(TestMvvmInstance303.new);
+  instances.addBuilder<TestBaseMvvmInstance303>(TestBaseMvvmInstance303.new);
 
-  instances.addBuilder<TestMvvmInstance304>(TestMvvmInstance304.new);
+  instances.addBuilder<TestBaseMvvmInstance304>(TestBaseMvvmInstance304.new);
 
-  instances.addBuilder<TestMvvmInstance305>(TestMvvmInstance305.new);
+  instances.addBuilder<TestBaseMvvmInstance305>(TestBaseMvvmInstance305.new);
 
-  instances.addBuilder<TestMvvmInstance306>(TestMvvmInstance306.new);
+  instances.addBuilder<TestBaseMvvmInstance306>(TestBaseMvvmInstance306.new);
 
-  instances.addBuilder<TestMvvmInstance307>(TestMvvmInstance307.new);
+  instances.addBuilder<TestBaseMvvmInstance307>(TestBaseMvvmInstance307.new);
 
-  instances.addBuilder<TestMvvmInstance308>(TestMvvmInstance308.new);
+  instances.addBuilder<TestBaseMvvmInstance308>(TestBaseMvvmInstance308.new);
 
-  instances.addBuilder<TestMvvmInstance309>(TestMvvmInstance309.new);
+  instances.addBuilder<TestBaseMvvmInstance309>(TestBaseMvvmInstance309.new);
 
-  instances.addBuilder<TestMvvmInstance310>(TestMvvmInstance310.new);
+  instances.addBuilder<TestBaseMvvmInstance310>(TestBaseMvvmInstance310.new);
 
-  instances.addBuilder<TestMvvmInstance311>(TestMvvmInstance311.new);
+  instances.addBuilder<TestBaseMvvmInstance311>(TestBaseMvvmInstance311.new);
 
-  instances.addBuilder<TestMvvmInstance312>(TestMvvmInstance312.new);
+  instances.addBuilder<TestBaseMvvmInstance312>(TestBaseMvvmInstance312.new);
 
-  instances.addBuilder<TestMvvmInstance313>(TestMvvmInstance313.new);
+  instances.addBuilder<TestBaseMvvmInstance313>(TestBaseMvvmInstance313.new);
 
-  instances.addBuilder<TestMvvmInstance314>(TestMvvmInstance314.new);
+  instances.addBuilder<TestBaseMvvmInstance314>(TestBaseMvvmInstance314.new);
 
-  instances.addBuilder<TestMvvmInstance315>(TestMvvmInstance315.new);
+  instances.addBuilder<TestBaseMvvmInstance315>(TestBaseMvvmInstance315.new);
 
-  instances.addBuilder<TestMvvmInstance316>(TestMvvmInstance316.new);
+  instances.addBuilder<TestBaseMvvmInstance316>(TestBaseMvvmInstance316.new);
 
-  instances.addBuilder<TestMvvmInstance317>(TestMvvmInstance317.new);
+  instances.addBuilder<TestBaseMvvmInstance317>(TestBaseMvvmInstance317.new);
 
-  instances.addBuilder<TestMvvmInstance318>(TestMvvmInstance318.new);
+  instances.addBuilder<TestBaseMvvmInstance318>(TestBaseMvvmInstance318.new);
 
-  instances.addBuilder<TestMvvmInstance319>(TestMvvmInstance319.new);
+  instances.addBuilder<TestBaseMvvmInstance319>(TestBaseMvvmInstance319.new);
 
-  instances.addBuilder<TestMvvmInstance320>(TestMvvmInstance320.new);
+  instances.addBuilder<TestBaseMvvmInstance320>(TestBaseMvvmInstance320.new);
 
-  instances.addBuilder<TestMvvmInstance321>(TestMvvmInstance321.new);
+  instances.addBuilder<TestBaseMvvmInstance321>(TestBaseMvvmInstance321.new);
 
-  instances.addBuilder<TestMvvmInstance322>(TestMvvmInstance322.new);
+  instances.addBuilder<TestBaseMvvmInstance322>(TestBaseMvvmInstance322.new);
 
-  instances.addBuilder<TestMvvmInstance323>(TestMvvmInstance323.new);
+  instances.addBuilder<TestBaseMvvmInstance323>(TestBaseMvvmInstance323.new);
 
-  instances.addBuilder<TestMvvmInstance324>(TestMvvmInstance324.new);
+  instances.addBuilder<TestBaseMvvmInstance324>(TestBaseMvvmInstance324.new);
 
-  instances.addBuilder<TestMvvmInstance325>(TestMvvmInstance325.new);
+  instances.addBuilder<TestBaseMvvmInstance325>(TestBaseMvvmInstance325.new);
 
-  instances.addBuilder<TestMvvmInstance326>(TestMvvmInstance326.new);
+  instances.addBuilder<TestBaseMvvmInstance326>(TestBaseMvvmInstance326.new);
 
-  instances.addBuilder<TestMvvmInstance327>(TestMvvmInstance327.new);
+  instances.addBuilder<TestBaseMvvmInstance327>(TestBaseMvvmInstance327.new);
 
-  instances.addBuilder<TestMvvmInstance328>(TestMvvmInstance328.new);
+  instances.addBuilder<TestBaseMvvmInstance328>(TestBaseMvvmInstance328.new);
 
-  instances.addBuilder<TestMvvmInstance329>(TestMvvmInstance329.new);
+  instances.addBuilder<TestBaseMvvmInstance329>(TestBaseMvvmInstance329.new);
 
-  instances.addBuilder<TestMvvmInstance330>(TestMvvmInstance330.new);
+  instances.addBuilder<TestBaseMvvmInstance330>(TestBaseMvvmInstance330.new);
 
-  instances.addBuilder<TestMvvmInstance331>(TestMvvmInstance331.new);
+  instances.addBuilder<TestBaseMvvmInstance331>(TestBaseMvvmInstance331.new);
 
-  instances.addBuilder<TestMvvmInstance332>(TestMvvmInstance332.new);
+  instances.addBuilder<TestBaseMvvmInstance332>(TestBaseMvvmInstance332.new);
 
-  instances.addBuilder<TestMvvmInstance333>(TestMvvmInstance333.new);
+  instances.addBuilder<TestBaseMvvmInstance333>(TestBaseMvvmInstance333.new);
 
-  instances.addBuilder<TestMvvmInstance334>(TestMvvmInstance334.new);
+  instances.addBuilder<TestBaseMvvmInstance334>(TestBaseMvvmInstance334.new);
 
-  instances.addBuilder<TestMvvmInstance335>(TestMvvmInstance335.new);
+  instances.addBuilder<TestBaseMvvmInstance335>(TestBaseMvvmInstance335.new);
 
-  instances.addBuilder<TestMvvmInstance336>(TestMvvmInstance336.new);
+  instances.addBuilder<TestBaseMvvmInstance336>(TestBaseMvvmInstance336.new);
 
-  instances.addBuilder<TestMvvmInstance337>(TestMvvmInstance337.new);
+  instances.addBuilder<TestBaseMvvmInstance337>(TestBaseMvvmInstance337.new);
 
-  instances.addBuilder<TestMvvmInstance338>(TestMvvmInstance338.new);
+  instances.addBuilder<TestBaseMvvmInstance338>(TestBaseMvvmInstance338.new);
 
-  instances.addBuilder<TestMvvmInstance339>(TestMvvmInstance339.new);
+  instances.addBuilder<TestBaseMvvmInstance339>(TestBaseMvvmInstance339.new);
 
-  instances.addBuilder<TestMvvmInstance340>(TestMvvmInstance340.new);
+  instances.addBuilder<TestBaseMvvmInstance340>(TestBaseMvvmInstance340.new);
 
-  instances.addBuilder<TestMvvmInstance341>(TestMvvmInstance341.new);
+  instances.addBuilder<TestBaseMvvmInstance341>(TestBaseMvvmInstance341.new);
 
-  instances.addBuilder<TestMvvmInstance342>(TestMvvmInstance342.new);
+  instances.addBuilder<TestBaseMvvmInstance342>(TestBaseMvvmInstance342.new);
 
-  instances.addBuilder<TestMvvmInstance343>(TestMvvmInstance343.new);
+  instances.addBuilder<TestBaseMvvmInstance343>(TestBaseMvvmInstance343.new);
 
-  instances.addBuilder<TestMvvmInstance344>(TestMvvmInstance344.new);
+  instances.addBuilder<TestBaseMvvmInstance344>(TestBaseMvvmInstance344.new);
 
-  instances.addBuilder<TestMvvmInstance345>(TestMvvmInstance345.new);
+  instances.addBuilder<TestBaseMvvmInstance345>(TestBaseMvvmInstance345.new);
 
-  instances.addBuilder<TestMvvmInstance346>(TestMvvmInstance346.new);
+  instances.addBuilder<TestBaseMvvmInstance346>(TestBaseMvvmInstance346.new);
 
-  instances.addBuilder<TestMvvmInstance347>(TestMvvmInstance347.new);
+  instances.addBuilder<TestBaseMvvmInstance347>(TestBaseMvvmInstance347.new);
 
-  instances.addBuilder<TestMvvmInstance348>(TestMvvmInstance348.new);
+  instances.addBuilder<TestBaseMvvmInstance348>(TestBaseMvvmInstance348.new);
 
-  instances.addBuilder<TestMvvmInstance349>(TestMvvmInstance349.new);
+  instances.addBuilder<TestBaseMvvmInstance349>(TestBaseMvvmInstance349.new);
 
-  instances.addBuilder<TestMvvmInstance350>(TestMvvmInstance350.new);
+  instances.addBuilder<TestBaseMvvmInstance350>(TestBaseMvvmInstance350.new);
 
-  instances.addBuilder<TestMvvmInstance351>(TestMvvmInstance351.new);
+  instances.addBuilder<TestBaseMvvmInstance351>(TestBaseMvvmInstance351.new);
 
-  instances.addBuilder<TestMvvmInstance352>(TestMvvmInstance352.new);
+  instances.addBuilder<TestBaseMvvmInstance352>(TestBaseMvvmInstance352.new);
 
-  instances.addBuilder<TestMvvmInstance353>(TestMvvmInstance353.new);
+  instances.addBuilder<TestBaseMvvmInstance353>(TestBaseMvvmInstance353.new);
 
-  instances.addBuilder<TestMvvmInstance354>(TestMvvmInstance354.new);
+  instances.addBuilder<TestBaseMvvmInstance354>(TestBaseMvvmInstance354.new);
 
-  instances.addBuilder<TestMvvmInstance355>(TestMvvmInstance355.new);
+  instances.addBuilder<TestBaseMvvmInstance355>(TestBaseMvvmInstance355.new);
 
-  instances.addBuilder<TestMvvmInstance356>(TestMvvmInstance356.new);
+  instances.addBuilder<TestBaseMvvmInstance356>(TestBaseMvvmInstance356.new);
 
-  instances.addBuilder<TestMvvmInstance357>(TestMvvmInstance357.new);
+  instances.addBuilder<TestBaseMvvmInstance357>(TestBaseMvvmInstance357.new);
 
-  instances.addBuilder<TestMvvmInstance358>(TestMvvmInstance358.new);
+  instances.addBuilder<TestBaseMvvmInstance358>(TestBaseMvvmInstance358.new);
 
-  instances.addBuilder<TestMvvmInstance359>(TestMvvmInstance359.new);
+  instances.addBuilder<TestBaseMvvmInstance359>(TestBaseMvvmInstance359.new);
 
-  instances.addBuilder<TestMvvmInstance360>(TestMvvmInstance360.new);
+  instances.addBuilder<TestBaseMvvmInstance360>(TestBaseMvvmInstance360.new);
 
-  instances.addBuilder<TestMvvmInstance361>(TestMvvmInstance361.new);
+  instances.addBuilder<TestBaseMvvmInstance361>(TestBaseMvvmInstance361.new);
 
-  instances.addBuilder<TestMvvmInstance362>(TestMvvmInstance362.new);
+  instances.addBuilder<TestBaseMvvmInstance362>(TestBaseMvvmInstance362.new);
 
-  instances.addBuilder<TestMvvmInstance363>(TestMvvmInstance363.new);
+  instances.addBuilder<TestBaseMvvmInstance363>(TestBaseMvvmInstance363.new);
 
-  instances.addBuilder<TestMvvmInstance364>(TestMvvmInstance364.new);
+  instances.addBuilder<TestBaseMvvmInstance364>(TestBaseMvvmInstance364.new);
 
-  instances.addBuilder<TestMvvmInstance365>(TestMvvmInstance365.new);
+  instances.addBuilder<TestBaseMvvmInstance365>(TestBaseMvvmInstance365.new);
 
-  instances.addBuilder<TestMvvmInstance366>(TestMvvmInstance366.new);
+  instances.addBuilder<TestBaseMvvmInstance366>(TestBaseMvvmInstance366.new);
 
-  instances.addBuilder<TestMvvmInstance367>(TestMvvmInstance367.new);
+  instances.addBuilder<TestBaseMvvmInstance367>(TestBaseMvvmInstance367.new);
 
-  instances.addBuilder<TestMvvmInstance368>(TestMvvmInstance368.new);
+  instances.addBuilder<TestBaseMvvmInstance368>(TestBaseMvvmInstance368.new);
 
-  instances.addBuilder<TestMvvmInstance369>(TestMvvmInstance369.new);
+  instances.addBuilder<TestBaseMvvmInstance369>(TestBaseMvvmInstance369.new);
 
-  instances.addBuilder<TestMvvmInstance370>(TestMvvmInstance370.new);
+  instances.addBuilder<TestBaseMvvmInstance370>(TestBaseMvvmInstance370.new);
 
-  instances.addBuilder<TestMvvmInstance371>(TestMvvmInstance371.new);
+  instances.addBuilder<TestBaseMvvmInstance371>(TestBaseMvvmInstance371.new);
 
-  instances.addBuilder<TestMvvmInstance372>(TestMvvmInstance372.new);
+  instances.addBuilder<TestBaseMvvmInstance372>(TestBaseMvvmInstance372.new);
 
-  instances.addBuilder<TestMvvmInstance373>(TestMvvmInstance373.new);
+  instances.addBuilder<TestBaseMvvmInstance373>(TestBaseMvvmInstance373.new);
 
-  instances.addBuilder<TestMvvmInstance374>(TestMvvmInstance374.new);
+  instances.addBuilder<TestBaseMvvmInstance374>(TestBaseMvvmInstance374.new);
 
-  instances.addBuilder<TestMvvmInstance375>(TestMvvmInstance375.new);
+  instances.addBuilder<TestBaseMvvmInstance375>(TestBaseMvvmInstance375.new);
 
-  instances.addBuilder<TestMvvmInstance376>(TestMvvmInstance376.new);
+  instances.addBuilder<TestBaseMvvmInstance376>(TestBaseMvvmInstance376.new);
 
-  instances.addBuilder<TestMvvmInstance377>(TestMvvmInstance377.new);
+  instances.addBuilder<TestBaseMvvmInstance377>(TestBaseMvvmInstance377.new);
 
-  instances.addBuilder<TestMvvmInstance378>(TestMvvmInstance378.new);
+  instances.addBuilder<TestBaseMvvmInstance378>(TestBaseMvvmInstance378.new);
 
-  instances.addBuilder<TestMvvmInstance379>(TestMvvmInstance379.new);
+  instances.addBuilder<TestBaseMvvmInstance379>(TestBaseMvvmInstance379.new);
 
-  instances.addBuilder<TestMvvmInstance380>(TestMvvmInstance380.new);
+  instances.addBuilder<TestBaseMvvmInstance380>(TestBaseMvvmInstance380.new);
 
-  instances.addBuilder<TestMvvmInstance381>(TestMvvmInstance381.new);
+  instances.addBuilder<TestBaseMvvmInstance381>(TestBaseMvvmInstance381.new);
 
-  instances.addBuilder<TestMvvmInstance382>(TestMvvmInstance382.new);
+  instances.addBuilder<TestBaseMvvmInstance382>(TestBaseMvvmInstance382.new);
 
-  instances.addBuilder<TestMvvmInstance383>(TestMvvmInstance383.new);
+  instances.addBuilder<TestBaseMvvmInstance383>(TestBaseMvvmInstance383.new);
 
-  instances.addBuilder<TestMvvmInstance384>(TestMvvmInstance384.new);
+  instances.addBuilder<TestBaseMvvmInstance384>(TestBaseMvvmInstance384.new);
 
-  instances.addBuilder<TestMvvmInstance385>(TestMvvmInstance385.new);
+  instances.addBuilder<TestBaseMvvmInstance385>(TestBaseMvvmInstance385.new);
 
-  instances.addBuilder<TestMvvmInstance386>(TestMvvmInstance386.new);
+  instances.addBuilder<TestBaseMvvmInstance386>(TestBaseMvvmInstance386.new);
 
-  instances.addBuilder<TestMvvmInstance387>(TestMvvmInstance387.new);
+  instances.addBuilder<TestBaseMvvmInstance387>(TestBaseMvvmInstance387.new);
 
-  instances.addBuilder<TestMvvmInstance388>(TestMvvmInstance388.new);
+  instances.addBuilder<TestBaseMvvmInstance388>(TestBaseMvvmInstance388.new);
 
-  instances.addBuilder<TestMvvmInstance389>(TestMvvmInstance389.new);
+  instances.addBuilder<TestBaseMvvmInstance389>(TestBaseMvvmInstance389.new);
 
-  instances.addBuilder<TestMvvmInstance390>(TestMvvmInstance390.new);
+  instances.addBuilder<TestBaseMvvmInstance390>(TestBaseMvvmInstance390.new);
 
-  instances.addBuilder<TestMvvmInstance391>(TestMvvmInstance391.new);
+  instances.addBuilder<TestBaseMvvmInstance391>(TestBaseMvvmInstance391.new);
 
-  instances.addBuilder<TestMvvmInstance392>(TestMvvmInstance392.new);
+  instances.addBuilder<TestBaseMvvmInstance392>(TestBaseMvvmInstance392.new);
 
-  instances.addBuilder<TestMvvmInstance393>(TestMvvmInstance393.new);
+  instances.addBuilder<TestBaseMvvmInstance393>(TestBaseMvvmInstance393.new);
 
-  instances.addBuilder<TestMvvmInstance394>(TestMvvmInstance394.new);
+  instances.addBuilder<TestBaseMvvmInstance394>(TestBaseMvvmInstance394.new);
 
-  instances.addBuilder<TestMvvmInstance395>(TestMvvmInstance395.new);
+  instances.addBuilder<TestBaseMvvmInstance395>(TestBaseMvvmInstance395.new);
 
-  instances.addBuilder<TestMvvmInstance396>(TestMvvmInstance396.new);
+  instances.addBuilder<TestBaseMvvmInstance396>(TestBaseMvvmInstance396.new);
 
-  instances.addBuilder<TestMvvmInstance397>(TestMvvmInstance397.new);
+  instances.addBuilder<TestBaseMvvmInstance397>(TestBaseMvvmInstance397.new);
 
-  instances.addBuilder<TestMvvmInstance398>(TestMvvmInstance398.new);
+  instances.addBuilder<TestBaseMvvmInstance398>(TestBaseMvvmInstance398.new);
 
-  instances.addBuilder<TestMvvmInstance399>(TestMvvmInstance399.new);
+  instances.addBuilder<TestBaseMvvmInstance399>(TestBaseMvvmInstance399.new);
 
-  instances.addBuilder<TestMvvmInstance400>(TestMvvmInstance400.new);
+  instances.addBuilder<TestBaseMvvmInstance400>(TestBaseMvvmInstance400.new);
 
-  instances.addBuilder<TestMvvmInstance401>(TestMvvmInstance401.new);
+  instances.addBuilder<TestBaseMvvmInstance401>(TestBaseMvvmInstance401.new);
 
-  instances.addBuilder<TestMvvmInstance402>(TestMvvmInstance402.new);
+  instances.addBuilder<TestBaseMvvmInstance402>(TestBaseMvvmInstance402.new);
 
-  instances.addBuilder<TestMvvmInstance403>(TestMvvmInstance403.new);
+  instances.addBuilder<TestBaseMvvmInstance403>(TestBaseMvvmInstance403.new);
 
-  instances.addBuilder<TestMvvmInstance404>(TestMvvmInstance404.new);
+  instances.addBuilder<TestBaseMvvmInstance404>(TestBaseMvvmInstance404.new);
 
-  instances.addBuilder<TestMvvmInstance405>(TestMvvmInstance405.new);
+  instances.addBuilder<TestBaseMvvmInstance405>(TestBaseMvvmInstance405.new);
 
-  instances.addBuilder<TestMvvmInstance406>(TestMvvmInstance406.new);
+  instances.addBuilder<TestBaseMvvmInstance406>(TestBaseMvvmInstance406.new);
 
-  instances.addBuilder<TestMvvmInstance407>(TestMvvmInstance407.new);
+  instances.addBuilder<TestBaseMvvmInstance407>(TestBaseMvvmInstance407.new);
 
-  instances.addBuilder<TestMvvmInstance408>(TestMvvmInstance408.new);
+  instances.addBuilder<TestBaseMvvmInstance408>(TestBaseMvvmInstance408.new);
 
-  instances.addBuilder<TestMvvmInstance409>(TestMvvmInstance409.new);
+  instances.addBuilder<TestBaseMvvmInstance409>(TestBaseMvvmInstance409.new);
 
-  instances.addBuilder<TestMvvmInstance410>(TestMvvmInstance410.new);
+  instances.addBuilder<TestBaseMvvmInstance410>(TestBaseMvvmInstance410.new);
 
-  instances.addBuilder<TestMvvmInstance411>(TestMvvmInstance411.new);
+  instances.addBuilder<TestBaseMvvmInstance411>(TestBaseMvvmInstance411.new);
 
-  instances.addBuilder<TestMvvmInstance412>(TestMvvmInstance412.new);
+  instances.addBuilder<TestBaseMvvmInstance412>(TestBaseMvvmInstance412.new);
 
-  instances.addBuilder<TestMvvmInstance413>(TestMvvmInstance413.new);
+  instances.addBuilder<TestBaseMvvmInstance413>(TestBaseMvvmInstance413.new);
 
-  instances.addBuilder<TestMvvmInstance414>(TestMvvmInstance414.new);
+  instances.addBuilder<TestBaseMvvmInstance414>(TestBaseMvvmInstance414.new);
 
-  instances.addBuilder<TestMvvmInstance415>(TestMvvmInstance415.new);
+  instances.addBuilder<TestBaseMvvmInstance415>(TestBaseMvvmInstance415.new);
 
-  instances.addBuilder<TestMvvmInstance416>(TestMvvmInstance416.new);
+  instances.addBuilder<TestBaseMvvmInstance416>(TestBaseMvvmInstance416.new);
 
-  instances.addBuilder<TestMvvmInstance417>(TestMvvmInstance417.new);
+  instances.addBuilder<TestBaseMvvmInstance417>(TestBaseMvvmInstance417.new);
 
-  instances.addBuilder<TestMvvmInstance418>(TestMvvmInstance418.new);
+  instances.addBuilder<TestBaseMvvmInstance418>(TestBaseMvvmInstance418.new);
 
-  instances.addBuilder<TestMvvmInstance419>(TestMvvmInstance419.new);
+  instances.addBuilder<TestBaseMvvmInstance419>(TestBaseMvvmInstance419.new);
 
-  instances.addBuilder<TestMvvmInstance420>(TestMvvmInstance420.new);
+  instances.addBuilder<TestBaseMvvmInstance420>(TestBaseMvvmInstance420.new);
 
-  instances.addBuilder<TestMvvmInstance421>(TestMvvmInstance421.new);
+  instances.addBuilder<TestBaseMvvmInstance421>(TestBaseMvvmInstance421.new);
 
-  instances.addBuilder<TestMvvmInstance422>(TestMvvmInstance422.new);
+  instances.addBuilder<TestBaseMvvmInstance422>(TestBaseMvvmInstance422.new);
 
-  instances.addBuilder<TestMvvmInstance423>(TestMvvmInstance423.new);
+  instances.addBuilder<TestBaseMvvmInstance423>(TestBaseMvvmInstance423.new);
 
-  instances.addBuilder<TestMvvmInstance424>(TestMvvmInstance424.new);
+  instances.addBuilder<TestBaseMvvmInstance424>(TestBaseMvvmInstance424.new);
 
-  instances.addBuilder<TestMvvmInstance425>(TestMvvmInstance425.new);
+  instances.addBuilder<TestBaseMvvmInstance425>(TestBaseMvvmInstance425.new);
 
-  instances.addBuilder<TestMvvmInstance426>(TestMvvmInstance426.new);
+  instances.addBuilder<TestBaseMvvmInstance426>(TestBaseMvvmInstance426.new);
 
-  instances.addBuilder<TestMvvmInstance427>(TestMvvmInstance427.new);
+  instances.addBuilder<TestBaseMvvmInstance427>(TestBaseMvvmInstance427.new);
 
-  instances.addBuilder<TestMvvmInstance428>(TestMvvmInstance428.new);
+  instances.addBuilder<TestBaseMvvmInstance428>(TestBaseMvvmInstance428.new);
 
-  instances.addBuilder<TestMvvmInstance429>(TestMvvmInstance429.new);
+  instances.addBuilder<TestBaseMvvmInstance429>(TestBaseMvvmInstance429.new);
 
-  instances.addBuilder<TestMvvmInstance430>(TestMvvmInstance430.new);
+  instances.addBuilder<TestBaseMvvmInstance430>(TestBaseMvvmInstance430.new);
 
-  instances.addBuilder<TestMvvmInstance431>(TestMvvmInstance431.new);
+  instances.addBuilder<TestBaseMvvmInstance431>(TestBaseMvvmInstance431.new);
 
-  instances.addBuilder<TestMvvmInstance432>(TestMvvmInstance432.new);
+  instances.addBuilder<TestBaseMvvmInstance432>(TestBaseMvvmInstance432.new);
 
-  instances.addBuilder<TestMvvmInstance433>(TestMvvmInstance433.new);
+  instances.addBuilder<TestBaseMvvmInstance433>(TestBaseMvvmInstance433.new);
 
-  instances.addBuilder<TestMvvmInstance434>(TestMvvmInstance434.new);
+  instances.addBuilder<TestBaseMvvmInstance434>(TestBaseMvvmInstance434.new);
 
-  instances.addBuilder<TestMvvmInstance435>(TestMvvmInstance435.new);
+  instances.addBuilder<TestBaseMvvmInstance435>(TestBaseMvvmInstance435.new);
 
-  instances.addBuilder<TestMvvmInstance436>(TestMvvmInstance436.new);
+  instances.addBuilder<TestBaseMvvmInstance436>(TestBaseMvvmInstance436.new);
 
-  instances.addBuilder<TestMvvmInstance437>(TestMvvmInstance437.new);
+  instances.addBuilder<TestBaseMvvmInstance437>(TestBaseMvvmInstance437.new);
 
-  instances.addBuilder<TestMvvmInstance438>(TestMvvmInstance438.new);
+  instances.addBuilder<TestBaseMvvmInstance438>(TestBaseMvvmInstance438.new);
 
-  instances.addBuilder<TestMvvmInstance439>(TestMvvmInstance439.new);
+  instances.addBuilder<TestBaseMvvmInstance439>(TestBaseMvvmInstance439.new);
 
-  instances.addBuilder<TestMvvmInstance440>(TestMvvmInstance440.new);
+  instances.addBuilder<TestBaseMvvmInstance440>(TestBaseMvvmInstance440.new);
 
-  instances.addBuilder<TestMvvmInstance441>(TestMvvmInstance441.new);
+  instances.addBuilder<TestBaseMvvmInstance441>(TestBaseMvvmInstance441.new);
 
-  instances.addBuilder<TestMvvmInstance442>(TestMvvmInstance442.new);
+  instances.addBuilder<TestBaseMvvmInstance442>(TestBaseMvvmInstance442.new);
 
-  instances.addBuilder<TestMvvmInstance443>(TestMvvmInstance443.new);
+  instances.addBuilder<TestBaseMvvmInstance443>(TestBaseMvvmInstance443.new);
 
-  instances.addBuilder<TestMvvmInstance444>(TestMvvmInstance444.new);
+  instances.addBuilder<TestBaseMvvmInstance444>(TestBaseMvvmInstance444.new);
 
-  instances.addBuilder<TestMvvmInstance445>(TestMvvmInstance445.new);
+  instances.addBuilder<TestBaseMvvmInstance445>(TestBaseMvvmInstance445.new);
 
-  instances.addBuilder<TestMvvmInstance446>(TestMvvmInstance446.new);
+  instances.addBuilder<TestBaseMvvmInstance446>(TestBaseMvvmInstance446.new);
 
-  instances.addBuilder<TestMvvmInstance447>(TestMvvmInstance447.new);
+  instances.addBuilder<TestBaseMvvmInstance447>(TestBaseMvvmInstance447.new);
 
-  instances.addBuilder<TestMvvmInstance448>(TestMvvmInstance448.new);
+  instances.addBuilder<TestBaseMvvmInstance448>(TestBaseMvvmInstance448.new);
 
-  instances.addBuilder<TestMvvmInstance449>(TestMvvmInstance449.new);
+  instances.addBuilder<TestBaseMvvmInstance449>(TestBaseMvvmInstance449.new);
 
-  instances.addBuilder<TestMvvmInstance450>(TestMvvmInstance450.new);
+  instances.addBuilder<TestBaseMvvmInstance450>(TestBaseMvvmInstance450.new);
 
-  instances.addBuilder<TestMvvmInstance451>(TestMvvmInstance451.new);
+  instances.addBuilder<TestBaseMvvmInstance451>(TestBaseMvvmInstance451.new);
 
-  instances.addBuilder<TestMvvmInstance452>(TestMvvmInstance452.new);
+  instances.addBuilder<TestBaseMvvmInstance452>(TestBaseMvvmInstance452.new);
 
-  instances.addBuilder<TestMvvmInstance453>(TestMvvmInstance453.new);
+  instances.addBuilder<TestBaseMvvmInstance453>(TestBaseMvvmInstance453.new);
 
-  instances.addBuilder<TestMvvmInstance454>(TestMvvmInstance454.new);
+  instances.addBuilder<TestBaseMvvmInstance454>(TestBaseMvvmInstance454.new);
 
-  instances.addBuilder<TestMvvmInstance455>(TestMvvmInstance455.new);
+  instances.addBuilder<TestBaseMvvmInstance455>(TestBaseMvvmInstance455.new);
 
-  instances.addBuilder<TestMvvmInstance456>(TestMvvmInstance456.new);
+  instances.addBuilder<TestBaseMvvmInstance456>(TestBaseMvvmInstance456.new);
 
-  instances.addBuilder<TestMvvmInstance457>(TestMvvmInstance457.new);
+  instances.addBuilder<TestBaseMvvmInstance457>(TestBaseMvvmInstance457.new);
 
-  instances.addBuilder<TestMvvmInstance458>(TestMvvmInstance458.new);
+  instances.addBuilder<TestBaseMvvmInstance458>(TestBaseMvvmInstance458.new);
 
-  instances.addBuilder<TestMvvmInstance459>(TestMvvmInstance459.new);
+  instances.addBuilder<TestBaseMvvmInstance459>(TestBaseMvvmInstance459.new);
 
-  instances.addBuilder<TestMvvmInstance460>(TestMvvmInstance460.new);
+  instances.addBuilder<TestBaseMvvmInstance460>(TestBaseMvvmInstance460.new);
 
-  instances.addBuilder<TestMvvmInstance461>(TestMvvmInstance461.new);
+  instances.addBuilder<TestBaseMvvmInstance461>(TestBaseMvvmInstance461.new);
 
-  instances.addBuilder<TestMvvmInstance462>(TestMvvmInstance462.new);
+  instances.addBuilder<TestBaseMvvmInstance462>(TestBaseMvvmInstance462.new);
 
-  instances.addBuilder<TestMvvmInstance463>(TestMvvmInstance463.new);
+  instances.addBuilder<TestBaseMvvmInstance463>(TestBaseMvvmInstance463.new);
 
-  instances.addBuilder<TestMvvmInstance464>(TestMvvmInstance464.new);
+  instances.addBuilder<TestBaseMvvmInstance464>(TestBaseMvvmInstance464.new);
 
-  instances.addBuilder<TestMvvmInstance465>(TestMvvmInstance465.new);
+  instances.addBuilder<TestBaseMvvmInstance465>(TestBaseMvvmInstance465.new);
 
-  instances.addBuilder<TestMvvmInstance466>(TestMvvmInstance466.new);
+  instances.addBuilder<TestBaseMvvmInstance466>(TestBaseMvvmInstance466.new);
 
-  instances.addBuilder<TestMvvmInstance467>(TestMvvmInstance467.new);
+  instances.addBuilder<TestBaseMvvmInstance467>(TestBaseMvvmInstance467.new);
 
-  instances.addBuilder<TestMvvmInstance468>(TestMvvmInstance468.new);
+  instances.addBuilder<TestBaseMvvmInstance468>(TestBaseMvvmInstance468.new);
 
-  instances.addBuilder<TestMvvmInstance469>(TestMvvmInstance469.new);
+  instances.addBuilder<TestBaseMvvmInstance469>(TestBaseMvvmInstance469.new);
 
-  instances.addBuilder<TestMvvmInstance470>(TestMvvmInstance470.new);
+  instances.addBuilder<TestBaseMvvmInstance470>(TestBaseMvvmInstance470.new);
 
-  instances.addBuilder<TestMvvmInstance471>(TestMvvmInstance471.new);
+  instances.addBuilder<TestBaseMvvmInstance471>(TestBaseMvvmInstance471.new);
 
-  instances.addBuilder<TestMvvmInstance472>(TestMvvmInstance472.new);
+  instances.addBuilder<TestBaseMvvmInstance472>(TestBaseMvvmInstance472.new);
 
-  instances.addBuilder<TestMvvmInstance473>(TestMvvmInstance473.new);
+  instances.addBuilder<TestBaseMvvmInstance473>(TestBaseMvvmInstance473.new);
 
-  instances.addBuilder<TestMvvmInstance474>(TestMvvmInstance474.new);
+  instances.addBuilder<TestBaseMvvmInstance474>(TestBaseMvvmInstance474.new);
 
-  instances.addBuilder<TestMvvmInstance475>(TestMvvmInstance475.new);
+  instances.addBuilder<TestBaseMvvmInstance475>(TestBaseMvvmInstance475.new);
 
-  instances.addBuilder<TestMvvmInstance476>(TestMvvmInstance476.new);
+  instances.addBuilder<TestBaseMvvmInstance476>(TestBaseMvvmInstance476.new);
 
-  instances.addBuilder<TestMvvmInstance477>(TestMvvmInstance477.new);
+  instances.addBuilder<TestBaseMvvmInstance477>(TestBaseMvvmInstance477.new);
 
-  instances.addBuilder<TestMvvmInstance478>(TestMvvmInstance478.new);
+  instances.addBuilder<TestBaseMvvmInstance478>(TestBaseMvvmInstance478.new);
 
-  instances.addBuilder<TestMvvmInstance479>(TestMvvmInstance479.new);
+  instances.addBuilder<TestBaseMvvmInstance479>(TestBaseMvvmInstance479.new);
 
-  instances.addBuilder<TestMvvmInstance480>(TestMvvmInstance480.new);
+  instances.addBuilder<TestBaseMvvmInstance480>(TestBaseMvvmInstance480.new);
 
-  instances.addBuilder<TestMvvmInstance481>(TestMvvmInstance481.new);
+  instances.addBuilder<TestBaseMvvmInstance481>(TestBaseMvvmInstance481.new);
 
-  instances.addBuilder<TestMvvmInstance482>(TestMvvmInstance482.new);
+  instances.addBuilder<TestBaseMvvmInstance482>(TestBaseMvvmInstance482.new);
 
-  instances.addBuilder<TestMvvmInstance483>(TestMvvmInstance483.new);
+  instances.addBuilder<TestBaseMvvmInstance483>(TestBaseMvvmInstance483.new);
 
-  instances.addBuilder<TestMvvmInstance484>(TestMvvmInstance484.new);
+  instances.addBuilder<TestBaseMvvmInstance484>(TestBaseMvvmInstance484.new);
 
-  instances.addBuilder<TestMvvmInstance485>(TestMvvmInstance485.new);
+  instances.addBuilder<TestBaseMvvmInstance485>(TestBaseMvvmInstance485.new);
 
-  instances.addBuilder<TestMvvmInstance486>(TestMvvmInstance486.new);
+  instances.addBuilder<TestBaseMvvmInstance486>(TestBaseMvvmInstance486.new);
 
-  instances.addBuilder<TestMvvmInstance487>(TestMvvmInstance487.new);
+  instances.addBuilder<TestBaseMvvmInstance487>(TestBaseMvvmInstance487.new);
 
-  instances.addBuilder<TestMvvmInstance488>(TestMvvmInstance488.new);
+  instances.addBuilder<TestBaseMvvmInstance488>(TestBaseMvvmInstance488.new);
 
-  instances.addBuilder<TestMvvmInstance489>(TestMvvmInstance489.new);
+  instances.addBuilder<TestBaseMvvmInstance489>(TestBaseMvvmInstance489.new);
 
-  instances.addBuilder<TestMvvmInstance490>(TestMvvmInstance490.new);
+  instances.addBuilder<TestBaseMvvmInstance490>(TestBaseMvvmInstance490.new);
 
-  instances.addBuilder<TestMvvmInstance491>(TestMvvmInstance491.new);
+  instances.addBuilder<TestBaseMvvmInstance491>(TestBaseMvvmInstance491.new);
 
-  instances.addBuilder<TestMvvmInstance492>(TestMvvmInstance492.new);
+  instances.addBuilder<TestBaseMvvmInstance492>(TestBaseMvvmInstance492.new);
 
-  instances.addBuilder<TestMvvmInstance493>(TestMvvmInstance493.new);
+  instances.addBuilder<TestBaseMvvmInstance493>(TestBaseMvvmInstance493.new);
 
-  instances.addBuilder<TestMvvmInstance494>(TestMvvmInstance494.new);
+  instances.addBuilder<TestBaseMvvmInstance494>(TestBaseMvvmInstance494.new);
 
-  instances.addBuilder<TestMvvmInstance495>(TestMvvmInstance495.new);
+  instances.addBuilder<TestBaseMvvmInstance495>(TestBaseMvvmInstance495.new);
 
-  instances.addBuilder<TestMvvmInstance496>(TestMvvmInstance496.new);
+  instances.addBuilder<TestBaseMvvmInstance496>(TestBaseMvvmInstance496.new);
 
-  instances.addBuilder<TestMvvmInstance497>(TestMvvmInstance497.new);
+  instances.addBuilder<TestBaseMvvmInstance497>(TestBaseMvvmInstance497.new);
 
-  instances.addBuilder<TestMvvmInstance498>(TestMvvmInstance498.new);
+  instances.addBuilder<TestBaseMvvmInstance498>(TestBaseMvvmInstance498.new);
 
-  instances.addBuilder<TestMvvmInstance499>(TestMvvmInstance499.new);
+  instances.addBuilder<TestBaseMvvmInstance499>(TestBaseMvvmInstance499.new);
 
-  instances.addBuilder<TestMvvmInstance500>(TestMvvmInstance500.new);
+  instances.addBuilder<TestBaseMvvmInstance500>(TestBaseMvvmInstance500.new);
 
-  instances.addBuilder<TestMvvmInstance501>(TestMvvmInstance501.new);
+  instances.addBuilder<TestBaseMvvmInstance501>(TestBaseMvvmInstance501.new);
 
-  instances.addBuilder<TestMvvmInstance502>(TestMvvmInstance502.new);
+  instances.addBuilder<TestBaseMvvmInstance502>(TestBaseMvvmInstance502.new);
 
-  instances.addBuilder<TestMvvmInstance503>(TestMvvmInstance503.new);
+  instances.addBuilder<TestBaseMvvmInstance503>(TestBaseMvvmInstance503.new);
 
-  instances.addBuilder<TestMvvmInstance504>(TestMvvmInstance504.new);
+  instances.addBuilder<TestBaseMvvmInstance504>(TestBaseMvvmInstance504.new);
 
-  instances.addBuilder<TestMvvmInstance505>(TestMvvmInstance505.new);
+  instances.addBuilder<TestBaseMvvmInstance505>(TestBaseMvvmInstance505.new);
 
-  instances.addBuilder<TestMvvmInstance506>(TestMvvmInstance506.new);
+  instances.addBuilder<TestBaseMvvmInstance506>(TestBaseMvvmInstance506.new);
 
-  instances.addBuilder<TestMvvmInstance507>(TestMvvmInstance507.new);
+  instances.addBuilder<TestBaseMvvmInstance507>(TestBaseMvvmInstance507.new);
 
-  instances.addBuilder<TestMvvmInstance508>(TestMvvmInstance508.new);
+  instances.addBuilder<TestBaseMvvmInstance508>(TestBaseMvvmInstance508.new);
 
-  instances.addBuilder<TestMvvmInstance509>(TestMvvmInstance509.new);
+  instances.addBuilder<TestBaseMvvmInstance509>(TestBaseMvvmInstance509.new);
 
-  instances.addBuilder<TestMvvmInstance510>(TestMvvmInstance510.new);
+  instances.addBuilder<TestBaseMvvmInstance510>(TestBaseMvvmInstance510.new);
 
-  instances.addBuilder<TestMvvmInstance511>(TestMvvmInstance511.new);
+  instances.addBuilder<TestBaseMvvmInstance511>(TestBaseMvvmInstance511.new);
 
-  instances.addBuilder<TestMvvmInstance512>(TestMvvmInstance512.new);
+  instances.addBuilder<TestBaseMvvmInstance512>(TestBaseMvvmInstance512.new);
 
-  instances.addBuilder<TestMvvmInstance513>(TestMvvmInstance513.new);
+  instances.addBuilder<TestBaseMvvmInstance513>(TestBaseMvvmInstance513.new);
 
-  instances.addBuilder<TestMvvmInstance514>(TestMvvmInstance514.new);
+  instances.addBuilder<TestBaseMvvmInstance514>(TestBaseMvvmInstance514.new);
 
-  instances.addBuilder<TestMvvmInstance515>(TestMvvmInstance515.new);
+  instances.addBuilder<TestBaseMvvmInstance515>(TestBaseMvvmInstance515.new);
 
-  instances.addBuilder<TestMvvmInstance516>(TestMvvmInstance516.new);
+  instances.addBuilder<TestBaseMvvmInstance516>(TestBaseMvvmInstance516.new);
 
-  instances.addBuilder<TestMvvmInstance517>(TestMvvmInstance517.new);
+  instances.addBuilder<TestBaseMvvmInstance517>(TestBaseMvvmInstance517.new);
 
-  instances.addBuilder<TestMvvmInstance518>(TestMvvmInstance518.new);
+  instances.addBuilder<TestBaseMvvmInstance518>(TestBaseMvvmInstance518.new);
 
-  instances.addBuilder<TestMvvmInstance519>(TestMvvmInstance519.new);
+  instances.addBuilder<TestBaseMvvmInstance519>(TestBaseMvvmInstance519.new);
 
-  instances.addBuilder<TestMvvmInstance520>(TestMvvmInstance520.new);
+  instances.addBuilder<TestBaseMvvmInstance520>(TestBaseMvvmInstance520.new);
 
-  instances.addBuilder<TestMvvmInstance521>(TestMvvmInstance521.new);
+  instances.addBuilder<TestBaseMvvmInstance521>(TestBaseMvvmInstance521.new);
 
-  instances.addBuilder<TestMvvmInstance522>(TestMvvmInstance522.new);
+  instances.addBuilder<TestBaseMvvmInstance522>(TestBaseMvvmInstance522.new);
 
-  instances.addBuilder<TestMvvmInstance523>(TestMvvmInstance523.new);
+  instances.addBuilder<TestBaseMvvmInstance523>(TestBaseMvvmInstance523.new);
 
-  instances.addBuilder<TestMvvmInstance524>(TestMvvmInstance524.new);
+  instances.addBuilder<TestBaseMvvmInstance524>(TestBaseMvvmInstance524.new);
 
-  instances.addBuilder<TestMvvmInstance525>(TestMvvmInstance525.new);
+  instances.addBuilder<TestBaseMvvmInstance525>(TestBaseMvvmInstance525.new);
 
-  instances.addBuilder<TestMvvmInstance526>(TestMvvmInstance526.new);
+  instances.addBuilder<TestBaseMvvmInstance526>(TestBaseMvvmInstance526.new);
 
-  instances.addBuilder<TestMvvmInstance527>(TestMvvmInstance527.new);
+  instances.addBuilder<TestBaseMvvmInstance527>(TestBaseMvvmInstance527.new);
 
-  instances.addBuilder<TestMvvmInstance528>(TestMvvmInstance528.new);
+  instances.addBuilder<TestBaseMvvmInstance528>(TestBaseMvvmInstance528.new);
 
-  instances.addBuilder<TestMvvmInstance529>(TestMvvmInstance529.new);
+  instances.addBuilder<TestBaseMvvmInstance529>(TestBaseMvvmInstance529.new);
 
-  instances.addBuilder<TestMvvmInstance530>(TestMvvmInstance530.new);
+  instances.addBuilder<TestBaseMvvmInstance530>(TestBaseMvvmInstance530.new);
 
-  instances.addBuilder<TestMvvmInstance531>(TestMvvmInstance531.new);
+  instances.addBuilder<TestBaseMvvmInstance531>(TestBaseMvvmInstance531.new);
 
-  instances.addBuilder<TestMvvmInstance532>(TestMvvmInstance532.new);
+  instances.addBuilder<TestBaseMvvmInstance532>(TestBaseMvvmInstance532.new);
 
-  instances.addBuilder<TestMvvmInstance533>(TestMvvmInstance533.new);
+  instances.addBuilder<TestBaseMvvmInstance533>(TestBaseMvvmInstance533.new);
 
-  instances.addBuilder<TestMvvmInstance534>(TestMvvmInstance534.new);
+  instances.addBuilder<TestBaseMvvmInstance534>(TestBaseMvvmInstance534.new);
 
-  instances.addBuilder<TestMvvmInstance535>(TestMvvmInstance535.new);
+  instances.addBuilder<TestBaseMvvmInstance535>(TestBaseMvvmInstance535.new);
 
-  instances.addBuilder<TestMvvmInstance536>(TestMvvmInstance536.new);
+  instances.addBuilder<TestBaseMvvmInstance536>(TestBaseMvvmInstance536.new);
 
-  instances.addBuilder<TestMvvmInstance537>(TestMvvmInstance537.new);
+  instances.addBuilder<TestBaseMvvmInstance537>(TestBaseMvvmInstance537.new);
 
-  instances.addBuilder<TestMvvmInstance538>(TestMvvmInstance538.new);
+  instances.addBuilder<TestBaseMvvmInstance538>(TestBaseMvvmInstance538.new);
 
-  instances.addBuilder<TestMvvmInstance539>(TestMvvmInstance539.new);
+  instances.addBuilder<TestBaseMvvmInstance539>(TestBaseMvvmInstance539.new);
 
-  instances.addBuilder<TestMvvmInstance540>(TestMvvmInstance540.new);
+  instances.addBuilder<TestBaseMvvmInstance540>(TestBaseMvvmInstance540.new);
 
-  instances.addBuilder<TestMvvmInstance541>(TestMvvmInstance541.new);
+  instances.addBuilder<TestBaseMvvmInstance541>(TestBaseMvvmInstance541.new);
 
-  instances.addBuilder<TestMvvmInstance542>(TestMvvmInstance542.new);
+  instances.addBuilder<TestBaseMvvmInstance542>(TestBaseMvvmInstance542.new);
 
-  instances.addBuilder<TestMvvmInstance543>(TestMvvmInstance543.new);
+  instances.addBuilder<TestBaseMvvmInstance543>(TestBaseMvvmInstance543.new);
 
-  instances.addBuilder<TestMvvmInstance544>(TestMvvmInstance544.new);
+  instances.addBuilder<TestBaseMvvmInstance544>(TestBaseMvvmInstance544.new);
 
-  instances.addBuilder<TestMvvmInstance545>(TestMvvmInstance545.new);
+  instances.addBuilder<TestBaseMvvmInstance545>(TestBaseMvvmInstance545.new);
 
-  instances.addBuilder<TestMvvmInstance546>(TestMvvmInstance546.new);
+  instances.addBuilder<TestBaseMvvmInstance546>(TestBaseMvvmInstance546.new);
 
-  instances.addBuilder<TestMvvmInstance547>(TestMvvmInstance547.new);
+  instances.addBuilder<TestBaseMvvmInstance547>(TestBaseMvvmInstance547.new);
 
-  instances.addBuilder<TestMvvmInstance548>(TestMvvmInstance548.new);
+  instances.addBuilder<TestBaseMvvmInstance548>(TestBaseMvvmInstance548.new);
 
-  instances.addBuilder<TestMvvmInstance549>(TestMvvmInstance549.new);
+  instances.addBuilder<TestBaseMvvmInstance549>(TestBaseMvvmInstance549.new);
 
-  instances.addBuilder<TestMvvmInstance550>(TestMvvmInstance550.new);
+  instances.addBuilder<TestBaseMvvmInstance550>(TestBaseMvvmInstance550.new);
 
-  instances.addBuilder<TestMvvmInstance551>(TestMvvmInstance551.new);
+  instances.addBuilder<TestBaseMvvmInstance551>(TestBaseMvvmInstance551.new);
 
-  instances.addBuilder<TestMvvmInstance552>(TestMvvmInstance552.new);
+  instances.addBuilder<TestBaseMvvmInstance552>(TestBaseMvvmInstance552.new);
 
-  instances.addBuilder<TestMvvmInstance553>(TestMvvmInstance553.new);
+  instances.addBuilder<TestBaseMvvmInstance553>(TestBaseMvvmInstance553.new);
 
-  instances.addBuilder<TestMvvmInstance554>(TestMvvmInstance554.new);
+  instances.addBuilder<TestBaseMvvmInstance554>(TestBaseMvvmInstance554.new);
 
-  instances.addBuilder<TestMvvmInstance555>(TestMvvmInstance555.new);
+  instances.addBuilder<TestBaseMvvmInstance555>(TestBaseMvvmInstance555.new);
 
-  instances.addBuilder<TestMvvmInstance556>(TestMvvmInstance556.new);
+  instances.addBuilder<TestBaseMvvmInstance556>(TestBaseMvvmInstance556.new);
 
-  instances.addBuilder<TestMvvmInstance557>(TestMvvmInstance557.new);
+  instances.addBuilder<TestBaseMvvmInstance557>(TestBaseMvvmInstance557.new);
 
-  instances.addBuilder<TestMvvmInstance558>(TestMvvmInstance558.new);
+  instances.addBuilder<TestBaseMvvmInstance558>(TestBaseMvvmInstance558.new);
 
-  instances.addBuilder<TestMvvmInstance559>(TestMvvmInstance559.new);
+  instances.addBuilder<TestBaseMvvmInstance559>(TestBaseMvvmInstance559.new);
 
-  instances.addBuilder<TestMvvmInstance560>(TestMvvmInstance560.new);
+  instances.addBuilder<TestBaseMvvmInstance560>(TestBaseMvvmInstance560.new);
 
-  instances.addBuilder<TestMvvmInstance561>(TestMvvmInstance561.new);
+  instances.addBuilder<TestBaseMvvmInstance561>(TestBaseMvvmInstance561.new);
 
-  instances.addBuilder<TestMvvmInstance562>(TestMvvmInstance562.new);
+  instances.addBuilder<TestBaseMvvmInstance562>(TestBaseMvvmInstance562.new);
 
-  instances.addBuilder<TestMvvmInstance563>(TestMvvmInstance563.new);
+  instances.addBuilder<TestBaseMvvmInstance563>(TestBaseMvvmInstance563.new);
 
-  instances.addBuilder<TestMvvmInstance564>(TestMvvmInstance564.new);
+  instances.addBuilder<TestBaseMvvmInstance564>(TestBaseMvvmInstance564.new);
 
-  instances.addBuilder<TestMvvmInstance565>(TestMvvmInstance565.new);
+  instances.addBuilder<TestBaseMvvmInstance565>(TestBaseMvvmInstance565.new);
 
-  instances.addBuilder<TestMvvmInstance566>(TestMvvmInstance566.new);
+  instances.addBuilder<TestBaseMvvmInstance566>(TestBaseMvvmInstance566.new);
 
-  instances.addBuilder<TestMvvmInstance567>(TestMvvmInstance567.new);
+  instances.addBuilder<TestBaseMvvmInstance567>(TestBaseMvvmInstance567.new);
 
-  instances.addBuilder<TestMvvmInstance568>(TestMvvmInstance568.new);
+  instances.addBuilder<TestBaseMvvmInstance568>(TestBaseMvvmInstance568.new);
 
-  instances.addBuilder<TestMvvmInstance569>(TestMvvmInstance569.new);
+  instances.addBuilder<TestBaseMvvmInstance569>(TestBaseMvvmInstance569.new);
 
-  instances.addBuilder<TestMvvmInstance570>(TestMvvmInstance570.new);
+  instances.addBuilder<TestBaseMvvmInstance570>(TestBaseMvvmInstance570.new);
 
-  instances.addBuilder<TestMvvmInstance571>(TestMvvmInstance571.new);
+  instances.addBuilder<TestBaseMvvmInstance571>(TestBaseMvvmInstance571.new);
 
-  instances.addBuilder<TestMvvmInstance572>(TestMvvmInstance572.new);
+  instances.addBuilder<TestBaseMvvmInstance572>(TestBaseMvvmInstance572.new);
 
-  instances.addBuilder<TestMvvmInstance573>(TestMvvmInstance573.new);
+  instances.addBuilder<TestBaseMvvmInstance573>(TestBaseMvvmInstance573.new);
 
-  instances.addBuilder<TestMvvmInstance574>(TestMvvmInstance574.new);
+  instances.addBuilder<TestBaseMvvmInstance574>(TestBaseMvvmInstance574.new);
 
-  instances.addBuilder<TestMvvmInstance575>(TestMvvmInstance575.new);
+  instances.addBuilder<TestBaseMvvmInstance575>(TestBaseMvvmInstance575.new);
 
-  instances.addBuilder<TestMvvmInstance576>(TestMvvmInstance576.new);
+  instances.addBuilder<TestBaseMvvmInstance576>(TestBaseMvvmInstance576.new);
 
-  instances.addBuilder<TestMvvmInstance577>(TestMvvmInstance577.new);
+  instances.addBuilder<TestBaseMvvmInstance577>(TestBaseMvvmInstance577.new);
 
-  instances.addBuilder<TestMvvmInstance578>(TestMvvmInstance578.new);
+  instances.addBuilder<TestBaseMvvmInstance578>(TestBaseMvvmInstance578.new);
 
-  instances.addBuilder<TestMvvmInstance579>(TestMvvmInstance579.new);
+  instances.addBuilder<TestBaseMvvmInstance579>(TestBaseMvvmInstance579.new);
 
-  instances.addBuilder<TestMvvmInstance580>(TestMvvmInstance580.new);
+  instances.addBuilder<TestBaseMvvmInstance580>(TestBaseMvvmInstance580.new);
 
-  instances.addBuilder<TestMvvmInstance581>(TestMvvmInstance581.new);
+  instances.addBuilder<TestBaseMvvmInstance581>(TestBaseMvvmInstance581.new);
 
-  instances.addBuilder<TestMvvmInstance582>(TestMvvmInstance582.new);
+  instances.addBuilder<TestBaseMvvmInstance582>(TestBaseMvvmInstance582.new);
 
-  instances.addBuilder<TestMvvmInstance583>(TestMvvmInstance583.new);
+  instances.addBuilder<TestBaseMvvmInstance583>(TestBaseMvvmInstance583.new);
 
-  instances.addBuilder<TestMvvmInstance584>(TestMvvmInstance584.new);
+  instances.addBuilder<TestBaseMvvmInstance584>(TestBaseMvvmInstance584.new);
 
-  instances.addBuilder<TestMvvmInstance585>(TestMvvmInstance585.new);
+  instances.addBuilder<TestBaseMvvmInstance585>(TestBaseMvvmInstance585.new);
 
-  instances.addBuilder<TestMvvmInstance586>(TestMvvmInstance586.new);
+  instances.addBuilder<TestBaseMvvmInstance586>(TestBaseMvvmInstance586.new);
 
-  instances.addBuilder<TestMvvmInstance587>(TestMvvmInstance587.new);
+  instances.addBuilder<TestBaseMvvmInstance587>(TestBaseMvvmInstance587.new);
 
-  instances.addBuilder<TestMvvmInstance588>(TestMvvmInstance588.new);
+  instances.addBuilder<TestBaseMvvmInstance588>(TestBaseMvvmInstance588.new);
 
-  instances.addBuilder<TestMvvmInstance589>(TestMvvmInstance589.new);
+  instances.addBuilder<TestBaseMvvmInstance589>(TestBaseMvvmInstance589.new);
 
-  instances.addBuilder<TestMvvmInstance590>(TestMvvmInstance590.new);
+  instances.addBuilder<TestBaseMvvmInstance590>(TestBaseMvvmInstance590.new);
 
-  instances.addBuilder<TestMvvmInstance591>(TestMvvmInstance591.new);
+  instances.addBuilder<TestBaseMvvmInstance591>(TestBaseMvvmInstance591.new);
 
-  instances.addBuilder<TestMvvmInstance592>(TestMvvmInstance592.new);
+  instances.addBuilder<TestBaseMvvmInstance592>(TestBaseMvvmInstance592.new);
 
-  instances.addBuilder<TestMvvmInstance593>(TestMvvmInstance593.new);
+  instances.addBuilder<TestBaseMvvmInstance593>(TestBaseMvvmInstance593.new);
 
-  instances.addBuilder<TestMvvmInstance594>(TestMvvmInstance594.new);
+  instances.addBuilder<TestBaseMvvmInstance594>(TestBaseMvvmInstance594.new);
 
-  instances.addBuilder<TestMvvmInstance595>(TestMvvmInstance595.new);
+  instances.addBuilder<TestBaseMvvmInstance595>(TestBaseMvvmInstance595.new);
 
-  instances.addBuilder<TestMvvmInstance596>(TestMvvmInstance596.new);
+  instances.addBuilder<TestBaseMvvmInstance596>(TestBaseMvvmInstance596.new);
 
-  instances.addBuilder<TestMvvmInstance597>(TestMvvmInstance597.new);
+  instances.addBuilder<TestBaseMvvmInstance597>(TestBaseMvvmInstance597.new);
 
-  instances.addBuilder<TestMvvmInstance598>(TestMvvmInstance598.new);
+  instances.addBuilder<TestBaseMvvmInstance598>(TestBaseMvvmInstance598.new);
 
-  instances.addBuilder<TestMvvmInstance599>(TestMvvmInstance599.new);
+  instances.addBuilder<TestBaseMvvmInstance599>(TestBaseMvvmInstance599.new);
 
-  instances.addBuilder<TestMvvmInstance600>(TestMvvmInstance600.new);
+  instances.addBuilder<TestBaseMvvmInstance600>(TestBaseMvvmInstance600.new);
 
-  instances.addBuilder<TestMvvmInstance601>(TestMvvmInstance601.new);
+  instances.addBuilder<TestBaseMvvmInstance601>(TestBaseMvvmInstance601.new);
 
-  instances.addBuilder<TestMvvmInstance602>(TestMvvmInstance602.new);
+  instances.addBuilder<TestBaseMvvmInstance602>(TestBaseMvvmInstance602.new);
 
-  instances.addBuilder<TestMvvmInstance603>(TestMvvmInstance603.new);
+  instances.addBuilder<TestBaseMvvmInstance603>(TestBaseMvvmInstance603.new);
 
-  instances.addBuilder<TestMvvmInstance604>(TestMvvmInstance604.new);
+  instances.addBuilder<TestBaseMvvmInstance604>(TestBaseMvvmInstance604.new);
 
-  instances.addBuilder<TestMvvmInstance605>(TestMvvmInstance605.new);
+  instances.addBuilder<TestBaseMvvmInstance605>(TestBaseMvvmInstance605.new);
 
-  instances.addBuilder<TestMvvmInstance606>(TestMvvmInstance606.new);
+  instances.addBuilder<TestBaseMvvmInstance606>(TestBaseMvvmInstance606.new);
 
-  instances.addBuilder<TestMvvmInstance607>(TestMvvmInstance607.new);
+  instances.addBuilder<TestBaseMvvmInstance607>(TestBaseMvvmInstance607.new);
 
-  instances.addBuilder<TestMvvmInstance608>(TestMvvmInstance608.new);
+  instances.addBuilder<TestBaseMvvmInstance608>(TestBaseMvvmInstance608.new);
 
-  instances.addBuilder<TestMvvmInstance609>(TestMvvmInstance609.new);
+  instances.addBuilder<TestBaseMvvmInstance609>(TestBaseMvvmInstance609.new);
 
-  instances.addBuilder<TestMvvmInstance610>(TestMvvmInstance610.new);
+  instances.addBuilder<TestBaseMvvmInstance610>(TestBaseMvvmInstance610.new);
 
-  instances.addBuilder<TestMvvmInstance611>(TestMvvmInstance611.new);
+  instances.addBuilder<TestBaseMvvmInstance611>(TestBaseMvvmInstance611.new);
 
-  instances.addBuilder<TestMvvmInstance612>(TestMvvmInstance612.new);
+  instances.addBuilder<TestBaseMvvmInstance612>(TestBaseMvvmInstance612.new);
 
-  instances.addBuilder<TestMvvmInstance613>(TestMvvmInstance613.new);
+  instances.addBuilder<TestBaseMvvmInstance613>(TestBaseMvvmInstance613.new);
 
-  instances.addBuilder<TestMvvmInstance614>(TestMvvmInstance614.new);
+  instances.addBuilder<TestBaseMvvmInstance614>(TestBaseMvvmInstance614.new);
 
-  instances.addBuilder<TestMvvmInstance615>(TestMvvmInstance615.new);
+  instances.addBuilder<TestBaseMvvmInstance615>(TestBaseMvvmInstance615.new);
 
-  instances.addBuilder<TestMvvmInstance616>(TestMvvmInstance616.new);
+  instances.addBuilder<TestBaseMvvmInstance616>(TestBaseMvvmInstance616.new);
 
-  instances.addBuilder<TestMvvmInstance617>(TestMvvmInstance617.new);
+  instances.addBuilder<TestBaseMvvmInstance617>(TestBaseMvvmInstance617.new);
 
-  instances.addBuilder<TestMvvmInstance618>(TestMvvmInstance618.new);
+  instances.addBuilder<TestBaseMvvmInstance618>(TestBaseMvvmInstance618.new);
 
-  instances.addBuilder<TestMvvmInstance619>(TestMvvmInstance619.new);
+  instances.addBuilder<TestBaseMvvmInstance619>(TestBaseMvvmInstance619.new);
 
-  instances.addBuilder<TestMvvmInstance620>(TestMvvmInstance620.new);
+  instances.addBuilder<TestBaseMvvmInstance620>(TestBaseMvvmInstance620.new);
 
-  instances.addBuilder<TestMvvmInstance621>(TestMvvmInstance621.new);
+  instances.addBuilder<TestBaseMvvmInstance621>(TestBaseMvvmInstance621.new);
 
-  instances.addBuilder<TestMvvmInstance622>(TestMvvmInstance622.new);
+  instances.addBuilder<TestBaseMvvmInstance622>(TestBaseMvvmInstance622.new);
 
-  instances.addBuilder<TestMvvmInstance623>(TestMvvmInstance623.new);
+  instances.addBuilder<TestBaseMvvmInstance623>(TestBaseMvvmInstance623.new);
 
-  instances.addBuilder<TestMvvmInstance624>(TestMvvmInstance624.new);
+  instances.addBuilder<TestBaseMvvmInstance624>(TestBaseMvvmInstance624.new);
 
-  instances.addBuilder<TestMvvmInstance625>(TestMvvmInstance625.new);
+  instances.addBuilder<TestBaseMvvmInstance625>(TestBaseMvvmInstance625.new);
 
-  instances.addBuilder<TestMvvmInstance626>(TestMvvmInstance626.new);
+  instances.addBuilder<TestBaseMvvmInstance626>(TestBaseMvvmInstance626.new);
 
-  instances.addBuilder<TestMvvmInstance627>(TestMvvmInstance627.new);
+  instances.addBuilder<TestBaseMvvmInstance627>(TestBaseMvvmInstance627.new);
 
-  instances.addBuilder<TestMvvmInstance628>(TestMvvmInstance628.new);
+  instances.addBuilder<TestBaseMvvmInstance628>(TestBaseMvvmInstance628.new);
 
-  instances.addBuilder<TestMvvmInstance629>(TestMvvmInstance629.new);
+  instances.addBuilder<TestBaseMvvmInstance629>(TestBaseMvvmInstance629.new);
 
-  instances.addBuilder<TestMvvmInstance630>(TestMvvmInstance630.new);
+  instances.addBuilder<TestBaseMvvmInstance630>(TestBaseMvvmInstance630.new);
 
-  instances.addBuilder<TestMvvmInstance631>(TestMvvmInstance631.new);
+  instances.addBuilder<TestBaseMvvmInstance631>(TestBaseMvvmInstance631.new);
 
-  instances.addBuilder<TestMvvmInstance632>(TestMvvmInstance632.new);
+  instances.addBuilder<TestBaseMvvmInstance632>(TestBaseMvvmInstance632.new);
 
-  instances.addBuilder<TestMvvmInstance633>(TestMvvmInstance633.new);
+  instances.addBuilder<TestBaseMvvmInstance633>(TestBaseMvvmInstance633.new);
 
-  instances.addBuilder<TestMvvmInstance634>(TestMvvmInstance634.new);
+  instances.addBuilder<TestBaseMvvmInstance634>(TestBaseMvvmInstance634.new);
 
-  instances.addBuilder<TestMvvmInstance635>(TestMvvmInstance635.new);
+  instances.addBuilder<TestBaseMvvmInstance635>(TestBaseMvvmInstance635.new);
 
-  instances.addBuilder<TestMvvmInstance636>(TestMvvmInstance636.new);
+  instances.addBuilder<TestBaseMvvmInstance636>(TestBaseMvvmInstance636.new);
 
-  instances.addBuilder<TestMvvmInstance637>(TestMvvmInstance637.new);
+  instances.addBuilder<TestBaseMvvmInstance637>(TestBaseMvvmInstance637.new);
 
-  instances.addBuilder<TestMvvmInstance638>(TestMvvmInstance638.new);
+  instances.addBuilder<TestBaseMvvmInstance638>(TestBaseMvvmInstance638.new);
 
-  instances.addBuilder<TestMvvmInstance639>(TestMvvmInstance639.new);
+  instances.addBuilder<TestBaseMvvmInstance639>(TestBaseMvvmInstance639.new);
 
-  instances.addBuilder<TestMvvmInstance640>(TestMvvmInstance640.new);
+  instances.addBuilder<TestBaseMvvmInstance640>(TestBaseMvvmInstance640.new);
 
-  instances.addBuilder<TestMvvmInstance641>(TestMvvmInstance641.new);
+  instances.addBuilder<TestBaseMvvmInstance641>(TestBaseMvvmInstance641.new);
 
-  instances.addBuilder<TestMvvmInstance642>(TestMvvmInstance642.new);
+  instances.addBuilder<TestBaseMvvmInstance642>(TestBaseMvvmInstance642.new);
 
-  instances.addBuilder<TestMvvmInstance643>(TestMvvmInstance643.new);
+  instances.addBuilder<TestBaseMvvmInstance643>(TestBaseMvvmInstance643.new);
 
-  instances.addBuilder<TestMvvmInstance644>(TestMvvmInstance644.new);
+  instances.addBuilder<TestBaseMvvmInstance644>(TestBaseMvvmInstance644.new);
 
-  instances.addBuilder<TestMvvmInstance645>(TestMvvmInstance645.new);
+  instances.addBuilder<TestBaseMvvmInstance645>(TestBaseMvvmInstance645.new);
 
-  instances.addBuilder<TestMvvmInstance646>(TestMvvmInstance646.new);
+  instances.addBuilder<TestBaseMvvmInstance646>(TestBaseMvvmInstance646.new);
 
-  instances.addBuilder<TestMvvmInstance647>(TestMvvmInstance647.new);
+  instances.addBuilder<TestBaseMvvmInstance647>(TestBaseMvvmInstance647.new);
 
-  instances.addBuilder<TestMvvmInstance648>(TestMvvmInstance648.new);
+  instances.addBuilder<TestBaseMvvmInstance648>(TestBaseMvvmInstance648.new);
 
-  instances.addBuilder<TestMvvmInstance649>(TestMvvmInstance649.new);
+  instances.addBuilder<TestBaseMvvmInstance649>(TestBaseMvvmInstance649.new);
 
-  instances.addBuilder<TestMvvmInstance650>(TestMvvmInstance650.new);
+  instances.addBuilder<TestBaseMvvmInstance650>(TestBaseMvvmInstance650.new);
 
-  instances.addBuilder<TestMvvmInstance651>(TestMvvmInstance651.new);
+  instances.addBuilder<TestBaseMvvmInstance651>(TestBaseMvvmInstance651.new);
 
-  instances.addBuilder<TestMvvmInstance652>(TestMvvmInstance652.new);
+  instances.addBuilder<TestBaseMvvmInstance652>(TestBaseMvvmInstance652.new);
 
-  instances.addBuilder<TestMvvmInstance653>(TestMvvmInstance653.new);
+  instances.addBuilder<TestBaseMvvmInstance653>(TestBaseMvvmInstance653.new);
 
-  instances.addBuilder<TestMvvmInstance654>(TestMvvmInstance654.new);
+  instances.addBuilder<TestBaseMvvmInstance654>(TestBaseMvvmInstance654.new);
 
-  instances.addBuilder<TestMvvmInstance655>(TestMvvmInstance655.new);
+  instances.addBuilder<TestBaseMvvmInstance655>(TestBaseMvvmInstance655.new);
 
-  instances.addBuilder<TestMvvmInstance656>(TestMvvmInstance656.new);
+  instances.addBuilder<TestBaseMvvmInstance656>(TestBaseMvvmInstance656.new);
 
-  instances.addBuilder<TestMvvmInstance657>(TestMvvmInstance657.new);
+  instances.addBuilder<TestBaseMvvmInstance657>(TestBaseMvvmInstance657.new);
 
-  instances.addBuilder<TestMvvmInstance658>(TestMvvmInstance658.new);
+  instances.addBuilder<TestBaseMvvmInstance658>(TestBaseMvvmInstance658.new);
 
-  instances.addBuilder<TestMvvmInstance659>(TestMvvmInstance659.new);
+  instances.addBuilder<TestBaseMvvmInstance659>(TestBaseMvvmInstance659.new);
 
-  instances.addBuilder<TestMvvmInstance660>(TestMvvmInstance660.new);
+  instances.addBuilder<TestBaseMvvmInstance660>(TestBaseMvvmInstance660.new);
 
-  instances.addBuilder<TestMvvmInstance661>(TestMvvmInstance661.new);
+  instances.addBuilder<TestBaseMvvmInstance661>(TestBaseMvvmInstance661.new);
 
-  instances.addBuilder<TestMvvmInstance662>(TestMvvmInstance662.new);
+  instances.addBuilder<TestBaseMvvmInstance662>(TestBaseMvvmInstance662.new);
 
-  instances.addBuilder<TestMvvmInstance663>(TestMvvmInstance663.new);
+  instances.addBuilder<TestBaseMvvmInstance663>(TestBaseMvvmInstance663.new);
 
-  instances.addBuilder<TestMvvmInstance664>(TestMvvmInstance664.new);
+  instances.addBuilder<TestBaseMvvmInstance664>(TestBaseMvvmInstance664.new);
 
-  instances.addBuilder<TestMvvmInstance665>(TestMvvmInstance665.new);
+  instances.addBuilder<TestBaseMvvmInstance665>(TestBaseMvvmInstance665.new);
 
-  instances.addBuilder<TestMvvmInstance666>(TestMvvmInstance666.new);
+  instances.addBuilder<TestBaseMvvmInstance666>(TestBaseMvvmInstance666.new);
 
-  instances.addBuilder<TestMvvmInstance667>(TestMvvmInstance667.new);
+  instances.addBuilder<TestBaseMvvmInstance667>(TestBaseMvvmInstance667.new);
 
-  instances.addBuilder<TestMvvmInstance668>(TestMvvmInstance668.new);
+  instances.addBuilder<TestBaseMvvmInstance668>(TestBaseMvvmInstance668.new);
 
-  instances.addBuilder<TestMvvmInstance669>(TestMvvmInstance669.new);
+  instances.addBuilder<TestBaseMvvmInstance669>(TestBaseMvvmInstance669.new);
 
-  instances.addBuilder<TestMvvmInstance670>(TestMvvmInstance670.new);
+  instances.addBuilder<TestBaseMvvmInstance670>(TestBaseMvvmInstance670.new);
 
-  instances.addBuilder<TestMvvmInstance671>(TestMvvmInstance671.new);
+  instances.addBuilder<TestBaseMvvmInstance671>(TestBaseMvvmInstance671.new);
 
-  instances.addBuilder<TestMvvmInstance672>(TestMvvmInstance672.new);
+  instances.addBuilder<TestBaseMvvmInstance672>(TestBaseMvvmInstance672.new);
 
-  instances.addBuilder<TestMvvmInstance673>(TestMvvmInstance673.new);
+  instances.addBuilder<TestBaseMvvmInstance673>(TestBaseMvvmInstance673.new);
 
-  instances.addBuilder<TestMvvmInstance674>(TestMvvmInstance674.new);
+  instances.addBuilder<TestBaseMvvmInstance674>(TestBaseMvvmInstance674.new);
 
-  instances.addBuilder<TestMvvmInstance675>(TestMvvmInstance675.new);
+  instances.addBuilder<TestBaseMvvmInstance675>(TestBaseMvvmInstance675.new);
 
-  instances.addBuilder<TestMvvmInstance676>(TestMvvmInstance676.new);
+  instances.addBuilder<TestBaseMvvmInstance676>(TestBaseMvvmInstance676.new);
 
-  instances.addBuilder<TestMvvmInstance677>(TestMvvmInstance677.new);
+  instances.addBuilder<TestBaseMvvmInstance677>(TestBaseMvvmInstance677.new);
 
-  instances.addBuilder<TestMvvmInstance678>(TestMvvmInstance678.new);
+  instances.addBuilder<TestBaseMvvmInstance678>(TestBaseMvvmInstance678.new);
 
-  instances.addBuilder<TestMvvmInstance679>(TestMvvmInstance679.new);
+  instances.addBuilder<TestBaseMvvmInstance679>(TestBaseMvvmInstance679.new);
 
-  instances.addBuilder<TestMvvmInstance680>(TestMvvmInstance680.new);
+  instances.addBuilder<TestBaseMvvmInstance680>(TestBaseMvvmInstance680.new);
 
-  instances.addBuilder<TestMvvmInstance681>(TestMvvmInstance681.new);
+  instances.addBuilder<TestBaseMvvmInstance681>(TestBaseMvvmInstance681.new);
 
-  instances.addBuilder<TestMvvmInstance682>(TestMvvmInstance682.new);
+  instances.addBuilder<TestBaseMvvmInstance682>(TestBaseMvvmInstance682.new);
 
-  instances.addBuilder<TestMvvmInstance683>(TestMvvmInstance683.new);
+  instances.addBuilder<TestBaseMvvmInstance683>(TestBaseMvvmInstance683.new);
 
-  instances.addBuilder<TestMvvmInstance684>(TestMvvmInstance684.new);
+  instances.addBuilder<TestBaseMvvmInstance684>(TestBaseMvvmInstance684.new);
 
-  instances.addBuilder<TestMvvmInstance685>(TestMvvmInstance685.new);
+  instances.addBuilder<TestBaseMvvmInstance685>(TestBaseMvvmInstance685.new);
 
-  instances.addBuilder<TestMvvmInstance686>(TestMvvmInstance686.new);
+  instances.addBuilder<TestBaseMvvmInstance686>(TestBaseMvvmInstance686.new);
 
-  instances.addBuilder<TestMvvmInstance687>(TestMvvmInstance687.new);
+  instances.addBuilder<TestBaseMvvmInstance687>(TestBaseMvvmInstance687.new);
 
-  instances.addBuilder<TestMvvmInstance688>(TestMvvmInstance688.new);
+  instances.addBuilder<TestBaseMvvmInstance688>(TestBaseMvvmInstance688.new);
 
-  instances.addBuilder<TestMvvmInstance689>(TestMvvmInstance689.new);
+  instances.addBuilder<TestBaseMvvmInstance689>(TestBaseMvvmInstance689.new);
 
-  instances.addBuilder<TestMvvmInstance690>(TestMvvmInstance690.new);
+  instances.addBuilder<TestBaseMvvmInstance690>(TestBaseMvvmInstance690.new);
 
-  instances.addBuilder<TestMvvmInstance691>(TestMvvmInstance691.new);
+  instances.addBuilder<TestBaseMvvmInstance691>(TestBaseMvvmInstance691.new);
 
-  instances.addBuilder<TestMvvmInstance692>(TestMvvmInstance692.new);
+  instances.addBuilder<TestBaseMvvmInstance692>(TestBaseMvvmInstance692.new);
 
-  instances.addBuilder<TestMvvmInstance693>(TestMvvmInstance693.new);
+  instances.addBuilder<TestBaseMvvmInstance693>(TestBaseMvvmInstance693.new);
 
-  instances.addBuilder<TestMvvmInstance694>(TestMvvmInstance694.new);
+  instances.addBuilder<TestBaseMvvmInstance694>(TestBaseMvvmInstance694.new);
 
-  instances.addBuilder<TestMvvmInstance695>(TestMvvmInstance695.new);
+  instances.addBuilder<TestBaseMvvmInstance695>(TestBaseMvvmInstance695.new);
 
-  instances.addBuilder<TestMvvmInstance696>(TestMvvmInstance696.new);
+  instances.addBuilder<TestBaseMvvmInstance696>(TestBaseMvvmInstance696.new);
 
-  instances.addBuilder<TestMvvmInstance697>(TestMvvmInstance697.new);
+  instances.addBuilder<TestBaseMvvmInstance697>(TestBaseMvvmInstance697.new);
 
-  instances.addBuilder<TestMvvmInstance698>(TestMvvmInstance698.new);
+  instances.addBuilder<TestBaseMvvmInstance698>(TestBaseMvvmInstance698.new);
 
-  instances.addBuilder<TestMvvmInstance699>(TestMvvmInstance699.new);
+  instances.addBuilder<TestBaseMvvmInstance699>(TestBaseMvvmInstance699.new);
 
-  instances.addBuilder<TestMvvmInstance700>(TestMvvmInstance700.new);
+  instances.addBuilder<TestBaseMvvmInstance700>(TestBaseMvvmInstance700.new);
 
-  instances.addBuilder<TestMvvmInstance701>(TestMvvmInstance701.new);
+  instances.addBuilder<TestBaseMvvmInstance701>(TestBaseMvvmInstance701.new);
 
-  instances.addBuilder<TestMvvmInstance702>(TestMvvmInstance702.new);
+  instances.addBuilder<TestBaseMvvmInstance702>(TestBaseMvvmInstance702.new);
 
-  instances.addBuilder<TestMvvmInstance703>(TestMvvmInstance703.new);
+  instances.addBuilder<TestBaseMvvmInstance703>(TestBaseMvvmInstance703.new);
 
-  instances.addBuilder<TestMvvmInstance704>(TestMvvmInstance704.new);
+  instances.addBuilder<TestBaseMvvmInstance704>(TestBaseMvvmInstance704.new);
 
-  instances.addBuilder<TestMvvmInstance705>(TestMvvmInstance705.new);
+  instances.addBuilder<TestBaseMvvmInstance705>(TestBaseMvvmInstance705.new);
 
-  instances.addBuilder<TestMvvmInstance706>(TestMvvmInstance706.new);
+  instances.addBuilder<TestBaseMvvmInstance706>(TestBaseMvvmInstance706.new);
 
-  instances.addBuilder<TestMvvmInstance707>(TestMvvmInstance707.new);
+  instances.addBuilder<TestBaseMvvmInstance707>(TestBaseMvvmInstance707.new);
 
-  instances.addBuilder<TestMvvmInstance708>(TestMvvmInstance708.new);
+  instances.addBuilder<TestBaseMvvmInstance708>(TestBaseMvvmInstance708.new);
 
-  instances.addBuilder<TestMvvmInstance709>(TestMvvmInstance709.new);
+  instances.addBuilder<TestBaseMvvmInstance709>(TestBaseMvvmInstance709.new);
 
-  instances.addBuilder<TestMvvmInstance710>(TestMvvmInstance710.new);
+  instances.addBuilder<TestBaseMvvmInstance710>(TestBaseMvvmInstance710.new);
 
-  instances.addBuilder<TestMvvmInstance711>(TestMvvmInstance711.new);
+  instances.addBuilder<TestBaseMvvmInstance711>(TestBaseMvvmInstance711.new);
 
-  instances.addBuilder<TestMvvmInstance712>(TestMvvmInstance712.new);
+  instances.addBuilder<TestBaseMvvmInstance712>(TestBaseMvvmInstance712.new);
 
-  instances.addBuilder<TestMvvmInstance713>(TestMvvmInstance713.new);
+  instances.addBuilder<TestBaseMvvmInstance713>(TestBaseMvvmInstance713.new);
 
-  instances.addBuilder<TestMvvmInstance714>(TestMvvmInstance714.new);
+  instances.addBuilder<TestBaseMvvmInstance714>(TestBaseMvvmInstance714.new);
 
-  instances.addBuilder<TestMvvmInstance715>(TestMvvmInstance715.new);
+  instances.addBuilder<TestBaseMvvmInstance715>(TestBaseMvvmInstance715.new);
 
-  instances.addBuilder<TestMvvmInstance716>(TestMvvmInstance716.new);
+  instances.addBuilder<TestBaseMvvmInstance716>(TestBaseMvvmInstance716.new);
 
-  instances.addBuilder<TestMvvmInstance717>(TestMvvmInstance717.new);
+  instances.addBuilder<TestBaseMvvmInstance717>(TestBaseMvvmInstance717.new);
 
-  instances.addBuilder<TestMvvmInstance718>(TestMvvmInstance718.new);
+  instances.addBuilder<TestBaseMvvmInstance718>(TestBaseMvvmInstance718.new);
 
-  instances.addBuilder<TestMvvmInstance719>(TestMvvmInstance719.new);
+  instances.addBuilder<TestBaseMvvmInstance719>(TestBaseMvvmInstance719.new);
 
-  instances.addBuilder<TestMvvmInstance720>(TestMvvmInstance720.new);
+  instances.addBuilder<TestBaseMvvmInstance720>(TestBaseMvvmInstance720.new);
 
-  instances.addBuilder<TestMvvmInstance721>(TestMvvmInstance721.new);
+  instances.addBuilder<TestBaseMvvmInstance721>(TestBaseMvvmInstance721.new);
 
-  instances.addBuilder<TestMvvmInstance722>(TestMvvmInstance722.new);
+  instances.addBuilder<TestBaseMvvmInstance722>(TestBaseMvvmInstance722.new);
 
-  instances.addBuilder<TestMvvmInstance723>(TestMvvmInstance723.new);
+  instances.addBuilder<TestBaseMvvmInstance723>(TestBaseMvvmInstance723.new);
 
-  instances.addBuilder<TestMvvmInstance724>(TestMvvmInstance724.new);
+  instances.addBuilder<TestBaseMvvmInstance724>(TestBaseMvvmInstance724.new);
 
-  instances.addBuilder<TestMvvmInstance725>(TestMvvmInstance725.new);
+  instances.addBuilder<TestBaseMvvmInstance725>(TestBaseMvvmInstance725.new);
 
-  instances.addBuilder<TestMvvmInstance726>(TestMvvmInstance726.new);
+  instances.addBuilder<TestBaseMvvmInstance726>(TestBaseMvvmInstance726.new);
 
-  instances.addBuilder<TestMvvmInstance727>(TestMvvmInstance727.new);
+  instances.addBuilder<TestBaseMvvmInstance727>(TestBaseMvvmInstance727.new);
 
-  instances.addBuilder<TestMvvmInstance728>(TestMvvmInstance728.new);
+  instances.addBuilder<TestBaseMvvmInstance728>(TestBaseMvvmInstance728.new);
 
-  instances.addBuilder<TestMvvmInstance729>(TestMvvmInstance729.new);
+  instances.addBuilder<TestBaseMvvmInstance729>(TestBaseMvvmInstance729.new);
 
-  instances.addBuilder<TestMvvmInstance730>(TestMvvmInstance730.new);
+  instances.addBuilder<TestBaseMvvmInstance730>(TestBaseMvvmInstance730.new);
 
-  instances.addBuilder<TestMvvmInstance731>(TestMvvmInstance731.new);
+  instances.addBuilder<TestBaseMvvmInstance731>(TestBaseMvvmInstance731.new);
 
-  instances.addBuilder<TestMvvmInstance732>(TestMvvmInstance732.new);
+  instances.addBuilder<TestBaseMvvmInstance732>(TestBaseMvvmInstance732.new);
 
-  instances.addBuilder<TestMvvmInstance733>(TestMvvmInstance733.new);
+  instances.addBuilder<TestBaseMvvmInstance733>(TestBaseMvvmInstance733.new);
 
-  instances.addBuilder<TestMvvmInstance734>(TestMvvmInstance734.new);
+  instances.addBuilder<TestBaseMvvmInstance734>(TestBaseMvvmInstance734.new);
 
-  instances.addBuilder<TestMvvmInstance735>(TestMvvmInstance735.new);
+  instances.addBuilder<TestBaseMvvmInstance735>(TestBaseMvvmInstance735.new);
 
-  instances.addBuilder<TestMvvmInstance736>(TestMvvmInstance736.new);
+  instances.addBuilder<TestBaseMvvmInstance736>(TestBaseMvvmInstance736.new);
 
-  instances.addBuilder<TestMvvmInstance737>(TestMvvmInstance737.new);
+  instances.addBuilder<TestBaseMvvmInstance737>(TestBaseMvvmInstance737.new);
 
-  instances.addBuilder<TestMvvmInstance738>(TestMvvmInstance738.new);
+  instances.addBuilder<TestBaseMvvmInstance738>(TestBaseMvvmInstance738.new);
 
-  instances.addBuilder<TestMvvmInstance739>(TestMvvmInstance739.new);
+  instances.addBuilder<TestBaseMvvmInstance739>(TestBaseMvvmInstance739.new);
 
-  instances.addBuilder<TestMvvmInstance740>(TestMvvmInstance740.new);
+  instances.addBuilder<TestBaseMvvmInstance740>(TestBaseMvvmInstance740.new);
 
-  instances.addBuilder<TestMvvmInstance741>(TestMvvmInstance741.new);
+  instances.addBuilder<TestBaseMvvmInstance741>(TestBaseMvvmInstance741.new);
 
-  instances.addBuilder<TestMvvmInstance742>(TestMvvmInstance742.new);
+  instances.addBuilder<TestBaseMvvmInstance742>(TestBaseMvvmInstance742.new);
 
-  instances.addBuilder<TestMvvmInstance743>(TestMvvmInstance743.new);
+  instances.addBuilder<TestBaseMvvmInstance743>(TestBaseMvvmInstance743.new);
 
-  instances.addBuilder<TestMvvmInstance744>(TestMvvmInstance744.new);
+  instances.addBuilder<TestBaseMvvmInstance744>(TestBaseMvvmInstance744.new);
 
-  instances.addBuilder<TestMvvmInstance745>(TestMvvmInstance745.new);
+  instances.addBuilder<TestBaseMvvmInstance745>(TestBaseMvvmInstance745.new);
 
-  instances.addBuilder<TestMvvmInstance746>(TestMvvmInstance746.new);
+  instances.addBuilder<TestBaseMvvmInstance746>(TestBaseMvvmInstance746.new);
 
-  instances.addBuilder<TestMvvmInstance747>(TestMvvmInstance747.new);
+  instances.addBuilder<TestBaseMvvmInstance747>(TestBaseMvvmInstance747.new);
 
-  instances.addBuilder<TestMvvmInstance748>(TestMvvmInstance748.new);
+  instances.addBuilder<TestBaseMvvmInstance748>(TestBaseMvvmInstance748.new);
 
-  instances.addBuilder<TestMvvmInstance749>(TestMvvmInstance749.new);
+  instances.addBuilder<TestBaseMvvmInstance749>(TestBaseMvvmInstance749.new);
 
-  instances.addBuilder<TestMvvmInstance750>(TestMvvmInstance750.new);
+  instances.addBuilder<TestBaseMvvmInstance750>(TestBaseMvvmInstance750.new);
 
-  instances.addBuilder<TestMvvmInstance751>(TestMvvmInstance751.new);
+  instances.addBuilder<TestBaseMvvmInstance751>(TestBaseMvvmInstance751.new);
 
-  instances.addBuilder<TestMvvmInstance752>(TestMvvmInstance752.new);
+  instances.addBuilder<TestBaseMvvmInstance752>(TestBaseMvvmInstance752.new);
 
-  instances.addBuilder<TestMvvmInstance753>(TestMvvmInstance753.new);
+  instances.addBuilder<TestBaseMvvmInstance753>(TestBaseMvvmInstance753.new);
 
-  instances.addBuilder<TestMvvmInstance754>(TestMvvmInstance754.new);
+  instances.addBuilder<TestBaseMvvmInstance754>(TestBaseMvvmInstance754.new);
 
-  instances.addBuilder<TestMvvmInstance755>(TestMvvmInstance755.new);
+  instances.addBuilder<TestBaseMvvmInstance755>(TestBaseMvvmInstance755.new);
 
-  instances.addBuilder<TestMvvmInstance756>(TestMvvmInstance756.new);
+  instances.addBuilder<TestBaseMvvmInstance756>(TestBaseMvvmInstance756.new);
 
-  instances.addBuilder<TestMvvmInstance757>(TestMvvmInstance757.new);
+  instances.addBuilder<TestBaseMvvmInstance757>(TestBaseMvvmInstance757.new);
 
-  instances.addBuilder<TestMvvmInstance758>(TestMvvmInstance758.new);
+  instances.addBuilder<TestBaseMvvmInstance758>(TestBaseMvvmInstance758.new);
 
-  instances.addBuilder<TestMvvmInstance759>(TestMvvmInstance759.new);
+  instances.addBuilder<TestBaseMvvmInstance759>(TestBaseMvvmInstance759.new);
 
-  instances.addBuilder<TestMvvmInstance760>(TestMvvmInstance760.new);
+  instances.addBuilder<TestBaseMvvmInstance760>(TestBaseMvvmInstance760.new);
 
-  instances.addBuilder<TestMvvmInstance761>(TestMvvmInstance761.new);
+  instances.addBuilder<TestBaseMvvmInstance761>(TestBaseMvvmInstance761.new);
 
-  instances.addBuilder<TestMvvmInstance762>(TestMvvmInstance762.new);
+  instances.addBuilder<TestBaseMvvmInstance762>(TestBaseMvvmInstance762.new);
 
-  instances.addBuilder<TestMvvmInstance763>(TestMvvmInstance763.new);
+  instances.addBuilder<TestBaseMvvmInstance763>(TestBaseMvvmInstance763.new);
 
-  instances.addBuilder<TestMvvmInstance764>(TestMvvmInstance764.new);
+  instances.addBuilder<TestBaseMvvmInstance764>(TestBaseMvvmInstance764.new);
 
-  instances.addBuilder<TestMvvmInstance765>(TestMvvmInstance765.new);
+  instances.addBuilder<TestBaseMvvmInstance765>(TestBaseMvvmInstance765.new);
 
-  instances.addBuilder<TestMvvmInstance766>(TestMvvmInstance766.new);
+  instances.addBuilder<TestBaseMvvmInstance766>(TestBaseMvvmInstance766.new);
 
-  instances.addBuilder<TestMvvmInstance767>(TestMvvmInstance767.new);
+  instances.addBuilder<TestBaseMvvmInstance767>(TestBaseMvvmInstance767.new);
 
-  instances.addBuilder<TestMvvmInstance768>(TestMvvmInstance768.new);
+  instances.addBuilder<TestBaseMvvmInstance768>(TestBaseMvvmInstance768.new);
 
-  instances.addBuilder<TestMvvmInstance769>(TestMvvmInstance769.new);
+  instances.addBuilder<TestBaseMvvmInstance769>(TestBaseMvvmInstance769.new);
 
-  instances.addBuilder<TestMvvmInstance770>(TestMvvmInstance770.new);
+  instances.addBuilder<TestBaseMvvmInstance770>(TestBaseMvvmInstance770.new);
 
-  instances.addBuilder<TestMvvmInstance771>(TestMvvmInstance771.new);
+  instances.addBuilder<TestBaseMvvmInstance771>(TestBaseMvvmInstance771.new);
 
-  instances.addBuilder<TestMvvmInstance772>(TestMvvmInstance772.new);
+  instances.addBuilder<TestBaseMvvmInstance772>(TestBaseMvvmInstance772.new);
 
-  instances.addBuilder<TestMvvmInstance773>(TestMvvmInstance773.new);
+  instances.addBuilder<TestBaseMvvmInstance773>(TestBaseMvvmInstance773.new);
 
-  instances.addBuilder<TestMvvmInstance774>(TestMvvmInstance774.new);
+  instances.addBuilder<TestBaseMvvmInstance774>(TestBaseMvvmInstance774.new);
 
-  instances.addBuilder<TestMvvmInstance775>(TestMvvmInstance775.new);
+  instances.addBuilder<TestBaseMvvmInstance775>(TestBaseMvvmInstance775.new);
 
-  instances.addBuilder<TestMvvmInstance776>(TestMvvmInstance776.new);
+  instances.addBuilder<TestBaseMvvmInstance776>(TestBaseMvvmInstance776.new);
 
-  instances.addBuilder<TestMvvmInstance777>(TestMvvmInstance777.new);
+  instances.addBuilder<TestBaseMvvmInstance777>(TestBaseMvvmInstance777.new);
 
-  instances.addBuilder<TestMvvmInstance778>(TestMvvmInstance778.new);
+  instances.addBuilder<TestBaseMvvmInstance778>(TestBaseMvvmInstance778.new);
 
-  instances.addBuilder<TestMvvmInstance779>(TestMvvmInstance779.new);
+  instances.addBuilder<TestBaseMvvmInstance779>(TestBaseMvvmInstance779.new);
 
-  instances.addBuilder<TestMvvmInstance780>(TestMvvmInstance780.new);
+  instances.addBuilder<TestBaseMvvmInstance780>(TestBaseMvvmInstance780.new);
 
-  instances.addBuilder<TestMvvmInstance781>(TestMvvmInstance781.new);
+  instances.addBuilder<TestBaseMvvmInstance781>(TestBaseMvvmInstance781.new);
 
-  instances.addBuilder<TestMvvmInstance782>(TestMvvmInstance782.new);
+  instances.addBuilder<TestBaseMvvmInstance782>(TestBaseMvvmInstance782.new);
 
-  instances.addBuilder<TestMvvmInstance783>(TestMvvmInstance783.new);
+  instances.addBuilder<TestBaseMvvmInstance783>(TestBaseMvvmInstance783.new);
 
-  instances.addBuilder<TestMvvmInstance784>(TestMvvmInstance784.new);
+  instances.addBuilder<TestBaseMvvmInstance784>(TestBaseMvvmInstance784.new);
 
-  instances.addBuilder<TestMvvmInstance785>(TestMvvmInstance785.new);
+  instances.addBuilder<TestBaseMvvmInstance785>(TestBaseMvvmInstance785.new);
 
-  instances.addBuilder<TestMvvmInstance786>(TestMvvmInstance786.new);
+  instances.addBuilder<TestBaseMvvmInstance786>(TestBaseMvvmInstance786.new);
 
-  instances.addBuilder<TestMvvmInstance787>(TestMvvmInstance787.new);
+  instances.addBuilder<TestBaseMvvmInstance787>(TestBaseMvvmInstance787.new);
 
-  instances.addBuilder<TestMvvmInstance788>(TestMvvmInstance788.new);
+  instances.addBuilder<TestBaseMvvmInstance788>(TestBaseMvvmInstance788.new);
 
-  instances.addBuilder<TestMvvmInstance789>(TestMvvmInstance789.new);
+  instances.addBuilder<TestBaseMvvmInstance789>(TestBaseMvvmInstance789.new);
 
-  instances.addBuilder<TestMvvmInstance790>(TestMvvmInstance790.new);
+  instances.addBuilder<TestBaseMvvmInstance790>(TestBaseMvvmInstance790.new);
 
-  instances.addBuilder<TestMvvmInstance791>(TestMvvmInstance791.new);
+  instances.addBuilder<TestBaseMvvmInstance791>(TestBaseMvvmInstance791.new);
 
-  instances.addBuilder<TestMvvmInstance792>(TestMvvmInstance792.new);
+  instances.addBuilder<TestBaseMvvmInstance792>(TestBaseMvvmInstance792.new);
 
-  instances.addBuilder<TestMvvmInstance793>(TestMvvmInstance793.new);
+  instances.addBuilder<TestBaseMvvmInstance793>(TestBaseMvvmInstance793.new);
 
-  instances.addBuilder<TestMvvmInstance794>(TestMvvmInstance794.new);
+  instances.addBuilder<TestBaseMvvmInstance794>(TestBaseMvvmInstance794.new);
 
-  instances.addBuilder<TestMvvmInstance795>(TestMvvmInstance795.new);
+  instances.addBuilder<TestBaseMvvmInstance795>(TestBaseMvvmInstance795.new);
 
-  instances.addBuilder<TestMvvmInstance796>(TestMvvmInstance796.new);
+  instances.addBuilder<TestBaseMvvmInstance796>(TestBaseMvvmInstance796.new);
 
-  instances.addBuilder<TestMvvmInstance797>(TestMvvmInstance797.new);
+  instances.addBuilder<TestBaseMvvmInstance797>(TestBaseMvvmInstance797.new);
 
-  instances.addBuilder<TestMvvmInstance798>(TestMvvmInstance798.new);
+  instances.addBuilder<TestBaseMvvmInstance798>(TestBaseMvvmInstance798.new);
 
-  instances.addBuilder<TestMvvmInstance799>(TestMvvmInstance799.new);
+  instances.addBuilder<TestBaseMvvmInstance799>(TestBaseMvvmInstance799.new);
 
-  instances.addBuilder<TestMvvmInstance800>(TestMvvmInstance800.new);
+  instances.addBuilder<TestBaseMvvmInstance800>(TestBaseMvvmInstance800.new);
 
-  instances.addBuilder<TestMvvmInstance801>(TestMvvmInstance801.new);
+  instances.addBuilder<TestBaseMvvmInstance801>(TestBaseMvvmInstance801.new);
 
-  instances.addBuilder<TestMvvmInstance802>(TestMvvmInstance802.new);
+  instances.addBuilder<TestBaseMvvmInstance802>(TestBaseMvvmInstance802.new);
 
-  instances.addBuilder<TestMvvmInstance803>(TestMvvmInstance803.new);
+  instances.addBuilder<TestBaseMvvmInstance803>(TestBaseMvvmInstance803.new);
 
-  instances.addBuilder<TestMvvmInstance804>(TestMvvmInstance804.new);
+  instances.addBuilder<TestBaseMvvmInstance804>(TestBaseMvvmInstance804.new);
 
-  instances.addBuilder<TestMvvmInstance805>(TestMvvmInstance805.new);
+  instances.addBuilder<TestBaseMvvmInstance805>(TestBaseMvvmInstance805.new);
 
-  instances.addBuilder<TestMvvmInstance806>(TestMvvmInstance806.new);
+  instances.addBuilder<TestBaseMvvmInstance806>(TestBaseMvvmInstance806.new);
 
-  instances.addBuilder<TestMvvmInstance807>(TestMvvmInstance807.new);
+  instances.addBuilder<TestBaseMvvmInstance807>(TestBaseMvvmInstance807.new);
 
-  instances.addBuilder<TestMvvmInstance808>(TestMvvmInstance808.new);
+  instances.addBuilder<TestBaseMvvmInstance808>(TestBaseMvvmInstance808.new);
 
-  instances.addBuilder<TestMvvmInstance809>(TestMvvmInstance809.new);
+  instances.addBuilder<TestBaseMvvmInstance809>(TestBaseMvvmInstance809.new);
 
-  instances.addBuilder<TestMvvmInstance810>(TestMvvmInstance810.new);
+  instances.addBuilder<TestBaseMvvmInstance810>(TestBaseMvvmInstance810.new);
 
-  instances.addBuilder<TestMvvmInstance811>(TestMvvmInstance811.new);
+  instances.addBuilder<TestBaseMvvmInstance811>(TestBaseMvvmInstance811.new);
 
-  instances.addBuilder<TestMvvmInstance812>(TestMvvmInstance812.new);
+  instances.addBuilder<TestBaseMvvmInstance812>(TestBaseMvvmInstance812.new);
 
-  instances.addBuilder<TestMvvmInstance813>(TestMvvmInstance813.new);
+  instances.addBuilder<TestBaseMvvmInstance813>(TestBaseMvvmInstance813.new);
 
-  instances.addBuilder<TestMvvmInstance814>(TestMvvmInstance814.new);
+  instances.addBuilder<TestBaseMvvmInstance814>(TestBaseMvvmInstance814.new);
 
-  instances.addBuilder<TestMvvmInstance815>(TestMvvmInstance815.new);
+  instances.addBuilder<TestBaseMvvmInstance815>(TestBaseMvvmInstance815.new);
 
-  instances.addBuilder<TestMvvmInstance816>(TestMvvmInstance816.new);
+  instances.addBuilder<TestBaseMvvmInstance816>(TestBaseMvvmInstance816.new);
 
-  instances.addBuilder<TestMvvmInstance817>(TestMvvmInstance817.new);
+  instances.addBuilder<TestBaseMvvmInstance817>(TestBaseMvvmInstance817.new);
 
-  instances.addBuilder<TestMvvmInstance818>(TestMvvmInstance818.new);
+  instances.addBuilder<TestBaseMvvmInstance818>(TestBaseMvvmInstance818.new);
 
-  instances.addBuilder<TestMvvmInstance819>(TestMvvmInstance819.new);
+  instances.addBuilder<TestBaseMvvmInstance819>(TestBaseMvvmInstance819.new);
 
-  instances.addBuilder<TestMvvmInstance820>(TestMvvmInstance820.new);
+  instances.addBuilder<TestBaseMvvmInstance820>(TestBaseMvvmInstance820.new);
 
-  instances.addBuilder<TestMvvmInstance821>(TestMvvmInstance821.new);
+  instances.addBuilder<TestBaseMvvmInstance821>(TestBaseMvvmInstance821.new);
 
-  instances.addBuilder<TestMvvmInstance822>(TestMvvmInstance822.new);
+  instances.addBuilder<TestBaseMvvmInstance822>(TestBaseMvvmInstance822.new);
 
-  instances.addBuilder<TestMvvmInstance823>(TestMvvmInstance823.new);
+  instances.addBuilder<TestBaseMvvmInstance823>(TestBaseMvvmInstance823.new);
 
-  instances.addBuilder<TestMvvmInstance824>(TestMvvmInstance824.new);
+  instances.addBuilder<TestBaseMvvmInstance824>(TestBaseMvvmInstance824.new);
 
-  instances.addBuilder<TestMvvmInstance825>(TestMvvmInstance825.new);
+  instances.addBuilder<TestBaseMvvmInstance825>(TestBaseMvvmInstance825.new);
 
-  instances.addBuilder<TestMvvmInstance826>(TestMvvmInstance826.new);
+  instances.addBuilder<TestBaseMvvmInstance826>(TestBaseMvvmInstance826.new);
 
-  instances.addBuilder<TestMvvmInstance827>(TestMvvmInstance827.new);
+  instances.addBuilder<TestBaseMvvmInstance827>(TestBaseMvvmInstance827.new);
 
-  instances.addBuilder<TestMvvmInstance828>(TestMvvmInstance828.new);
+  instances.addBuilder<TestBaseMvvmInstance828>(TestBaseMvvmInstance828.new);
 
-  instances.addBuilder<TestMvvmInstance829>(TestMvvmInstance829.new);
+  instances.addBuilder<TestBaseMvvmInstance829>(TestBaseMvvmInstance829.new);
 
-  instances.addBuilder<TestMvvmInstance830>(TestMvvmInstance830.new);
+  instances.addBuilder<TestBaseMvvmInstance830>(TestBaseMvvmInstance830.new);
 
-  instances.addBuilder<TestMvvmInstance831>(TestMvvmInstance831.new);
+  instances.addBuilder<TestBaseMvvmInstance831>(TestBaseMvvmInstance831.new);
 
-  instances.addBuilder<TestMvvmInstance832>(TestMvvmInstance832.new);
+  instances.addBuilder<TestBaseMvvmInstance832>(TestBaseMvvmInstance832.new);
 
-  instances.addBuilder<TestMvvmInstance833>(TestMvvmInstance833.new);
+  instances.addBuilder<TestBaseMvvmInstance833>(TestBaseMvvmInstance833.new);
 
-  instances.addBuilder<TestMvvmInstance834>(TestMvvmInstance834.new);
+  instances.addBuilder<TestBaseMvvmInstance834>(TestBaseMvvmInstance834.new);
 
-  instances.addBuilder<TestMvvmInstance835>(TestMvvmInstance835.new);
+  instances.addBuilder<TestBaseMvvmInstance835>(TestBaseMvvmInstance835.new);
 
-  instances.addBuilder<TestMvvmInstance836>(TestMvvmInstance836.new);
+  instances.addBuilder<TestBaseMvvmInstance836>(TestBaseMvvmInstance836.new);
 
-  instances.addBuilder<TestMvvmInstance837>(TestMvvmInstance837.new);
+  instances.addBuilder<TestBaseMvvmInstance837>(TestBaseMvvmInstance837.new);
 
-  instances.addBuilder<TestMvvmInstance838>(TestMvvmInstance838.new);
+  instances.addBuilder<TestBaseMvvmInstance838>(TestBaseMvvmInstance838.new);
 
-  instances.addBuilder<TestMvvmInstance839>(TestMvvmInstance839.new);
+  instances.addBuilder<TestBaseMvvmInstance839>(TestBaseMvvmInstance839.new);
 
-  instances.addBuilder<TestMvvmInstance840>(TestMvvmInstance840.new);
+  instances.addBuilder<TestBaseMvvmInstance840>(TestBaseMvvmInstance840.new);
 
-  instances.addBuilder<TestMvvmInstance841>(TestMvvmInstance841.new);
+  instances.addBuilder<TestBaseMvvmInstance841>(TestBaseMvvmInstance841.new);
 
-  instances.addBuilder<TestMvvmInstance842>(TestMvvmInstance842.new);
+  instances.addBuilder<TestBaseMvvmInstance842>(TestBaseMvvmInstance842.new);
 
-  instances.addBuilder<TestMvvmInstance843>(TestMvvmInstance843.new);
+  instances.addBuilder<TestBaseMvvmInstance843>(TestBaseMvvmInstance843.new);
 
-  instances.addBuilder<TestMvvmInstance844>(TestMvvmInstance844.new);
+  instances.addBuilder<TestBaseMvvmInstance844>(TestBaseMvvmInstance844.new);
 
-  instances.addBuilder<TestMvvmInstance845>(TestMvvmInstance845.new);
+  instances.addBuilder<TestBaseMvvmInstance845>(TestBaseMvvmInstance845.new);
 
-  instances.addBuilder<TestMvvmInstance846>(TestMvvmInstance846.new);
+  instances.addBuilder<TestBaseMvvmInstance846>(TestBaseMvvmInstance846.new);
 
-  instances.addBuilder<TestMvvmInstance847>(TestMvvmInstance847.new);
+  instances.addBuilder<TestBaseMvvmInstance847>(TestBaseMvvmInstance847.new);
 
-  instances.addBuilder<TestMvvmInstance848>(TestMvvmInstance848.new);
+  instances.addBuilder<TestBaseMvvmInstance848>(TestBaseMvvmInstance848.new);
 
-  instances.addBuilder<TestMvvmInstance849>(TestMvvmInstance849.new);
+  instances.addBuilder<TestBaseMvvmInstance849>(TestBaseMvvmInstance849.new);
 
-  instances.addBuilder<TestMvvmInstance850>(TestMvvmInstance850.new);
+  instances.addBuilder<TestBaseMvvmInstance850>(TestBaseMvvmInstance850.new);
 
-  instances.addBuilder<TestMvvmInstance851>(TestMvvmInstance851.new);
+  instances.addBuilder<TestBaseMvvmInstance851>(TestBaseMvvmInstance851.new);
 
-  instances.addBuilder<TestMvvmInstance852>(TestMvvmInstance852.new);
+  instances.addBuilder<TestBaseMvvmInstance852>(TestBaseMvvmInstance852.new);
 
-  instances.addBuilder<TestMvvmInstance853>(TestMvvmInstance853.new);
+  instances.addBuilder<TestBaseMvvmInstance853>(TestBaseMvvmInstance853.new);
 
-  instances.addBuilder<TestMvvmInstance854>(TestMvvmInstance854.new);
+  instances.addBuilder<TestBaseMvvmInstance854>(TestBaseMvvmInstance854.new);
 
-  instances.addBuilder<TestMvvmInstance855>(TestMvvmInstance855.new);
+  instances.addBuilder<TestBaseMvvmInstance855>(TestBaseMvvmInstance855.new);
 
-  instances.addBuilder<TestMvvmInstance856>(TestMvvmInstance856.new);
+  instances.addBuilder<TestBaseMvvmInstance856>(TestBaseMvvmInstance856.new);
 
-  instances.addBuilder<TestMvvmInstance857>(TestMvvmInstance857.new);
+  instances.addBuilder<TestBaseMvvmInstance857>(TestBaseMvvmInstance857.new);
 
-  instances.addBuilder<TestMvvmInstance858>(TestMvvmInstance858.new);
+  instances.addBuilder<TestBaseMvvmInstance858>(TestBaseMvvmInstance858.new);
 
-  instances.addBuilder<TestMvvmInstance859>(TestMvvmInstance859.new);
+  instances.addBuilder<TestBaseMvvmInstance859>(TestBaseMvvmInstance859.new);
 
-  instances.addBuilder<TestMvvmInstance860>(TestMvvmInstance860.new);
+  instances.addBuilder<TestBaseMvvmInstance860>(TestBaseMvvmInstance860.new);
 
-  instances.addBuilder<TestMvvmInstance861>(TestMvvmInstance861.new);
+  instances.addBuilder<TestBaseMvvmInstance861>(TestBaseMvvmInstance861.new);
 
-  instances.addBuilder<TestMvvmInstance862>(TestMvvmInstance862.new);
+  instances.addBuilder<TestBaseMvvmInstance862>(TestBaseMvvmInstance862.new);
 
-  instances.addBuilder<TestMvvmInstance863>(TestMvvmInstance863.new);
+  instances.addBuilder<TestBaseMvvmInstance863>(TestBaseMvvmInstance863.new);
 
-  instances.addBuilder<TestMvvmInstance864>(TestMvvmInstance864.new);
+  instances.addBuilder<TestBaseMvvmInstance864>(TestBaseMvvmInstance864.new);
 
-  instances.addBuilder<TestMvvmInstance865>(TestMvvmInstance865.new);
+  instances.addBuilder<TestBaseMvvmInstance865>(TestBaseMvvmInstance865.new);
 
-  instances.addBuilder<TestMvvmInstance866>(TestMvvmInstance866.new);
+  instances.addBuilder<TestBaseMvvmInstance866>(TestBaseMvvmInstance866.new);
 
-  instances.addBuilder<TestMvvmInstance867>(TestMvvmInstance867.new);
+  instances.addBuilder<TestBaseMvvmInstance867>(TestBaseMvvmInstance867.new);
 
-  instances.addBuilder<TestMvvmInstance868>(TestMvvmInstance868.new);
+  instances.addBuilder<TestBaseMvvmInstance868>(TestBaseMvvmInstance868.new);
 
-  instances.addBuilder<TestMvvmInstance869>(TestMvvmInstance869.new);
+  instances.addBuilder<TestBaseMvvmInstance869>(TestBaseMvvmInstance869.new);
 
-  instances.addBuilder<TestMvvmInstance870>(TestMvvmInstance870.new);
+  instances.addBuilder<TestBaseMvvmInstance870>(TestBaseMvvmInstance870.new);
 
-  instances.addBuilder<TestMvvmInstance871>(TestMvvmInstance871.new);
+  instances.addBuilder<TestBaseMvvmInstance871>(TestBaseMvvmInstance871.new);
 
-  instances.addBuilder<TestMvvmInstance872>(TestMvvmInstance872.new);
+  instances.addBuilder<TestBaseMvvmInstance872>(TestBaseMvvmInstance872.new);
 
-  instances.addBuilder<TestMvvmInstance873>(TestMvvmInstance873.new);
+  instances.addBuilder<TestBaseMvvmInstance873>(TestBaseMvvmInstance873.new);
 
-  instances.addBuilder<TestMvvmInstance874>(TestMvvmInstance874.new);
+  instances.addBuilder<TestBaseMvvmInstance874>(TestBaseMvvmInstance874.new);
 
-  instances.addBuilder<TestMvvmInstance875>(TestMvvmInstance875.new);
+  instances.addBuilder<TestBaseMvvmInstance875>(TestBaseMvvmInstance875.new);
 
-  instances.addBuilder<TestMvvmInstance876>(TestMvvmInstance876.new);
+  instances.addBuilder<TestBaseMvvmInstance876>(TestBaseMvvmInstance876.new);
 
-  instances.addBuilder<TestMvvmInstance877>(TestMvvmInstance877.new);
+  instances.addBuilder<TestBaseMvvmInstance877>(TestBaseMvvmInstance877.new);
 
-  instances.addBuilder<TestMvvmInstance878>(TestMvvmInstance878.new);
+  instances.addBuilder<TestBaseMvvmInstance878>(TestBaseMvvmInstance878.new);
 
-  instances.addBuilder<TestMvvmInstance879>(TestMvvmInstance879.new);
+  instances.addBuilder<TestBaseMvvmInstance879>(TestBaseMvvmInstance879.new);
 
-  instances.addBuilder<TestMvvmInstance880>(TestMvvmInstance880.new);
+  instances.addBuilder<TestBaseMvvmInstance880>(TestBaseMvvmInstance880.new);
 
-  instances.addBuilder<TestMvvmInstance881>(TestMvvmInstance881.new);
+  instances.addBuilder<TestBaseMvvmInstance881>(TestBaseMvvmInstance881.new);
 
-  instances.addBuilder<TestMvvmInstance882>(TestMvvmInstance882.new);
+  instances.addBuilder<TestBaseMvvmInstance882>(TestBaseMvvmInstance882.new);
 
-  instances.addBuilder<TestMvvmInstance883>(TestMvvmInstance883.new);
+  instances.addBuilder<TestBaseMvvmInstance883>(TestBaseMvvmInstance883.new);
 
-  instances.addBuilder<TestMvvmInstance884>(TestMvvmInstance884.new);
+  instances.addBuilder<TestBaseMvvmInstance884>(TestBaseMvvmInstance884.new);
 
-  instances.addBuilder<TestMvvmInstance885>(TestMvvmInstance885.new);
+  instances.addBuilder<TestBaseMvvmInstance885>(TestBaseMvvmInstance885.new);
 
-  instances.addBuilder<TestMvvmInstance886>(TestMvvmInstance886.new);
+  instances.addBuilder<TestBaseMvvmInstance886>(TestBaseMvvmInstance886.new);
 
-  instances.addBuilder<TestMvvmInstance887>(TestMvvmInstance887.new);
+  instances.addBuilder<TestBaseMvvmInstance887>(TestBaseMvvmInstance887.new);
 
-  instances.addBuilder<TestMvvmInstance888>(TestMvvmInstance888.new);
+  instances.addBuilder<TestBaseMvvmInstance888>(TestBaseMvvmInstance888.new);
 
-  instances.addBuilder<TestMvvmInstance889>(TestMvvmInstance889.new);
+  instances.addBuilder<TestBaseMvvmInstance889>(TestBaseMvvmInstance889.new);
 
-  instances.addBuilder<TestMvvmInstance890>(TestMvvmInstance890.new);
+  instances.addBuilder<TestBaseMvvmInstance890>(TestBaseMvvmInstance890.new);
 
-  instances.addBuilder<TestMvvmInstance891>(TestMvvmInstance891.new);
+  instances.addBuilder<TestBaseMvvmInstance891>(TestBaseMvvmInstance891.new);
 
-  instances.addBuilder<TestMvvmInstance892>(TestMvvmInstance892.new);
+  instances.addBuilder<TestBaseMvvmInstance892>(TestBaseMvvmInstance892.new);
 
-  instances.addBuilder<TestMvvmInstance893>(TestMvvmInstance893.new);
+  instances.addBuilder<TestBaseMvvmInstance893>(TestBaseMvvmInstance893.new);
 
-  instances.addBuilder<TestMvvmInstance894>(TestMvvmInstance894.new);
+  instances.addBuilder<TestBaseMvvmInstance894>(TestBaseMvvmInstance894.new);
 
-  instances.addBuilder<TestMvvmInstance895>(TestMvvmInstance895.new);
+  instances.addBuilder<TestBaseMvvmInstance895>(TestBaseMvvmInstance895.new);
 
-  instances.addBuilder<TestMvvmInstance896>(TestMvvmInstance896.new);
+  instances.addBuilder<TestBaseMvvmInstance896>(TestBaseMvvmInstance896.new);
 
-  instances.addBuilder<TestMvvmInstance897>(TestMvvmInstance897.new);
+  instances.addBuilder<TestBaseMvvmInstance897>(TestBaseMvvmInstance897.new);
 
-  instances.addBuilder<TestMvvmInstance898>(TestMvvmInstance898.new);
+  instances.addBuilder<TestBaseMvvmInstance898>(TestBaseMvvmInstance898.new);
 
-  instances.addBuilder<TestMvvmInstance899>(TestMvvmInstance899.new);
+  instances.addBuilder<TestBaseMvvmInstance899>(TestBaseMvvmInstance899.new);
 
-  instances.addBuilder<TestMvvmInstance900>(TestMvvmInstance900.new);
+  instances.addBuilder<TestBaseMvvmInstance900>(TestBaseMvvmInstance900.new);
 
-  instances.addBuilder<TestMvvmInstance901>(TestMvvmInstance901.new);
+  instances.addBuilder<TestBaseMvvmInstance901>(TestBaseMvvmInstance901.new);
 
-  instances.addBuilder<TestMvvmInstance902>(TestMvvmInstance902.new);
+  instances.addBuilder<TestBaseMvvmInstance902>(TestBaseMvvmInstance902.new);
 
-  instances.addBuilder<TestMvvmInstance903>(TestMvvmInstance903.new);
+  instances.addBuilder<TestBaseMvvmInstance903>(TestBaseMvvmInstance903.new);
 
-  instances.addBuilder<TestMvvmInstance904>(TestMvvmInstance904.new);
+  instances.addBuilder<TestBaseMvvmInstance904>(TestBaseMvvmInstance904.new);
 
-  instances.addBuilder<TestMvvmInstance905>(TestMvvmInstance905.new);
+  instances.addBuilder<TestBaseMvvmInstance905>(TestBaseMvvmInstance905.new);
 
-  instances.addBuilder<TestMvvmInstance906>(TestMvvmInstance906.new);
+  instances.addBuilder<TestBaseMvvmInstance906>(TestBaseMvvmInstance906.new);
 
-  instances.addBuilder<TestMvvmInstance907>(TestMvvmInstance907.new);
+  instances.addBuilder<TestBaseMvvmInstance907>(TestBaseMvvmInstance907.new);
 
-  instances.addBuilder<TestMvvmInstance908>(TestMvvmInstance908.new);
+  instances.addBuilder<TestBaseMvvmInstance908>(TestBaseMvvmInstance908.new);
 
-  instances.addBuilder<TestMvvmInstance909>(TestMvvmInstance909.new);
+  instances.addBuilder<TestBaseMvvmInstance909>(TestBaseMvvmInstance909.new);
 
-  instances.addBuilder<TestMvvmInstance910>(TestMvvmInstance910.new);
+  instances.addBuilder<TestBaseMvvmInstance910>(TestBaseMvvmInstance910.new);
 
-  instances.addBuilder<TestMvvmInstance911>(TestMvvmInstance911.new);
+  instances.addBuilder<TestBaseMvvmInstance911>(TestBaseMvvmInstance911.new);
 
-  instances.addBuilder<TestMvvmInstance912>(TestMvvmInstance912.new);
+  instances.addBuilder<TestBaseMvvmInstance912>(TestBaseMvvmInstance912.new);
 
-  instances.addBuilder<TestMvvmInstance913>(TestMvvmInstance913.new);
+  instances.addBuilder<TestBaseMvvmInstance913>(TestBaseMvvmInstance913.new);
 
-  instances.addBuilder<TestMvvmInstance914>(TestMvvmInstance914.new);
+  instances.addBuilder<TestBaseMvvmInstance914>(TestBaseMvvmInstance914.new);
 
-  instances.addBuilder<TestMvvmInstance915>(TestMvvmInstance915.new);
+  instances.addBuilder<TestBaseMvvmInstance915>(TestBaseMvvmInstance915.new);
 
-  instances.addBuilder<TestMvvmInstance916>(TestMvvmInstance916.new);
+  instances.addBuilder<TestBaseMvvmInstance916>(TestBaseMvvmInstance916.new);
 
-  instances.addBuilder<TestMvvmInstance917>(TestMvvmInstance917.new);
+  instances.addBuilder<TestBaseMvvmInstance917>(TestBaseMvvmInstance917.new);
 
-  instances.addBuilder<TestMvvmInstance918>(TestMvvmInstance918.new);
+  instances.addBuilder<TestBaseMvvmInstance918>(TestBaseMvvmInstance918.new);
 
-  instances.addBuilder<TestMvvmInstance919>(TestMvvmInstance919.new);
+  instances.addBuilder<TestBaseMvvmInstance919>(TestBaseMvvmInstance919.new);
 
-  instances.addBuilder<TestMvvmInstance920>(TestMvvmInstance920.new);
+  instances.addBuilder<TestBaseMvvmInstance920>(TestBaseMvvmInstance920.new);
 
-  instances.addBuilder<TestMvvmInstance921>(TestMvvmInstance921.new);
+  instances.addBuilder<TestBaseMvvmInstance921>(TestBaseMvvmInstance921.new);
 
-  instances.addBuilder<TestMvvmInstance922>(TestMvvmInstance922.new);
+  instances.addBuilder<TestBaseMvvmInstance922>(TestBaseMvvmInstance922.new);
 
-  instances.addBuilder<TestMvvmInstance923>(TestMvvmInstance923.new);
+  instances.addBuilder<TestBaseMvvmInstance923>(TestBaseMvvmInstance923.new);
 
-  instances.addBuilder<TestMvvmInstance924>(TestMvvmInstance924.new);
+  instances.addBuilder<TestBaseMvvmInstance924>(TestBaseMvvmInstance924.new);
 
-  instances.addBuilder<TestMvvmInstance925>(TestMvvmInstance925.new);
+  instances.addBuilder<TestBaseMvvmInstance925>(TestBaseMvvmInstance925.new);
 
-  instances.addBuilder<TestMvvmInstance926>(TestMvvmInstance926.new);
+  instances.addBuilder<TestBaseMvvmInstance926>(TestBaseMvvmInstance926.new);
 
-  instances.addBuilder<TestMvvmInstance927>(TestMvvmInstance927.new);
+  instances.addBuilder<TestBaseMvvmInstance927>(TestBaseMvvmInstance927.new);
 
-  instances.addBuilder<TestMvvmInstance928>(TestMvvmInstance928.new);
+  instances.addBuilder<TestBaseMvvmInstance928>(TestBaseMvvmInstance928.new);
 
-  instances.addBuilder<TestMvvmInstance929>(TestMvvmInstance929.new);
+  instances.addBuilder<TestBaseMvvmInstance929>(TestBaseMvvmInstance929.new);
 
-  instances.addBuilder<TestMvvmInstance930>(TestMvvmInstance930.new);
+  instances.addBuilder<TestBaseMvvmInstance930>(TestBaseMvvmInstance930.new);
 
-  instances.addBuilder<TestMvvmInstance931>(TestMvvmInstance931.new);
+  instances.addBuilder<TestBaseMvvmInstance931>(TestBaseMvvmInstance931.new);
 
-  instances.addBuilder<TestMvvmInstance932>(TestMvvmInstance932.new);
+  instances.addBuilder<TestBaseMvvmInstance932>(TestBaseMvvmInstance932.new);
 
-  instances.addBuilder<TestMvvmInstance933>(TestMvvmInstance933.new);
+  instances.addBuilder<TestBaseMvvmInstance933>(TestBaseMvvmInstance933.new);
 
-  instances.addBuilder<TestMvvmInstance934>(TestMvvmInstance934.new);
+  instances.addBuilder<TestBaseMvvmInstance934>(TestBaseMvvmInstance934.new);
 
-  instances.addBuilder<TestMvvmInstance935>(TestMvvmInstance935.new);
+  instances.addBuilder<TestBaseMvvmInstance935>(TestBaseMvvmInstance935.new);
 
-  instances.addBuilder<TestMvvmInstance936>(TestMvvmInstance936.new);
+  instances.addBuilder<TestBaseMvvmInstance936>(TestBaseMvvmInstance936.new);
 
-  instances.addBuilder<TestMvvmInstance937>(TestMvvmInstance937.new);
+  instances.addBuilder<TestBaseMvvmInstance937>(TestBaseMvvmInstance937.new);
 
-  instances.addBuilder<TestMvvmInstance938>(TestMvvmInstance938.new);
+  instances.addBuilder<TestBaseMvvmInstance938>(TestBaseMvvmInstance938.new);
 
-  instances.addBuilder<TestMvvmInstance939>(TestMvvmInstance939.new);
+  instances.addBuilder<TestBaseMvvmInstance939>(TestBaseMvvmInstance939.new);
 
-  instances.addBuilder<TestMvvmInstance940>(TestMvvmInstance940.new);
+  instances.addBuilder<TestBaseMvvmInstance940>(TestBaseMvvmInstance940.new);
 
-  instances.addBuilder<TestMvvmInstance941>(TestMvvmInstance941.new);
+  instances.addBuilder<TestBaseMvvmInstance941>(TestBaseMvvmInstance941.new);
 
-  instances.addBuilder<TestMvvmInstance942>(TestMvvmInstance942.new);
+  instances.addBuilder<TestBaseMvvmInstance942>(TestBaseMvvmInstance942.new);
 
-  instances.addBuilder<TestMvvmInstance943>(TestMvvmInstance943.new);
+  instances.addBuilder<TestBaseMvvmInstance943>(TestBaseMvvmInstance943.new);
 
-  instances.addBuilder<TestMvvmInstance944>(TestMvvmInstance944.new);
+  instances.addBuilder<TestBaseMvvmInstance944>(TestBaseMvvmInstance944.new);
 
-  instances.addBuilder<TestMvvmInstance945>(TestMvvmInstance945.new);
+  instances.addBuilder<TestBaseMvvmInstance945>(TestBaseMvvmInstance945.new);
 
-  instances.addBuilder<TestMvvmInstance946>(TestMvvmInstance946.new);
+  instances.addBuilder<TestBaseMvvmInstance946>(TestBaseMvvmInstance946.new);
 
-  instances.addBuilder<TestMvvmInstance947>(TestMvvmInstance947.new);
+  instances.addBuilder<TestBaseMvvmInstance947>(TestBaseMvvmInstance947.new);
 
-  instances.addBuilder<TestMvvmInstance948>(TestMvvmInstance948.new);
+  instances.addBuilder<TestBaseMvvmInstance948>(TestBaseMvvmInstance948.new);
 
-  instances.addBuilder<TestMvvmInstance949>(TestMvvmInstance949.new);
+  instances.addBuilder<TestBaseMvvmInstance949>(TestBaseMvvmInstance949.new);
 
-  instances.addBuilder<TestMvvmInstance950>(TestMvvmInstance950.new);
+  instances.addBuilder<TestBaseMvvmInstance950>(TestBaseMvvmInstance950.new);
 
-  instances.addBuilder<TestMvvmInstance951>(TestMvvmInstance951.new);
+  instances.addBuilder<TestBaseMvvmInstance951>(TestBaseMvvmInstance951.new);
 
-  instances.addBuilder<TestMvvmInstance952>(TestMvvmInstance952.new);
+  instances.addBuilder<TestBaseMvvmInstance952>(TestBaseMvvmInstance952.new);
 
-  instances.addBuilder<TestMvvmInstance953>(TestMvvmInstance953.new);
+  instances.addBuilder<TestBaseMvvmInstance953>(TestBaseMvvmInstance953.new);
 
-  instances.addBuilder<TestMvvmInstance954>(TestMvvmInstance954.new);
+  instances.addBuilder<TestBaseMvvmInstance954>(TestBaseMvvmInstance954.new);
 
-  instances.addBuilder<TestMvvmInstance955>(TestMvvmInstance955.new);
+  instances.addBuilder<TestBaseMvvmInstance955>(TestBaseMvvmInstance955.new);
 
-  instances.addBuilder<TestMvvmInstance956>(TestMvvmInstance956.new);
+  instances.addBuilder<TestBaseMvvmInstance956>(TestBaseMvvmInstance956.new);
 
-  instances.addBuilder<TestMvvmInstance957>(TestMvvmInstance957.new);
+  instances.addBuilder<TestBaseMvvmInstance957>(TestBaseMvvmInstance957.new);
 
-  instances.addBuilder<TestMvvmInstance958>(TestMvvmInstance958.new);
+  instances.addBuilder<TestBaseMvvmInstance958>(TestBaseMvvmInstance958.new);
 
-  instances.addBuilder<TestMvvmInstance959>(TestMvvmInstance959.new);
+  instances.addBuilder<TestBaseMvvmInstance959>(TestBaseMvvmInstance959.new);
 
-  instances.addBuilder<TestMvvmInstance960>(TestMvvmInstance960.new);
+  instances.addBuilder<TestBaseMvvmInstance960>(TestBaseMvvmInstance960.new);
 
-  instances.addBuilder<TestMvvmInstance961>(TestMvvmInstance961.new);
+  instances.addBuilder<TestBaseMvvmInstance961>(TestBaseMvvmInstance961.new);
 
-  instances.addBuilder<TestMvvmInstance962>(TestMvvmInstance962.new);
+  instances.addBuilder<TestBaseMvvmInstance962>(TestBaseMvvmInstance962.new);
 
-  instances.addBuilder<TestMvvmInstance963>(TestMvvmInstance963.new);
+  instances.addBuilder<TestBaseMvvmInstance963>(TestBaseMvvmInstance963.new);
 
-  instances.addBuilder<TestMvvmInstance964>(TestMvvmInstance964.new);
+  instances.addBuilder<TestBaseMvvmInstance964>(TestBaseMvvmInstance964.new);
 
-  instances.addBuilder<TestMvvmInstance965>(TestMvvmInstance965.new);
+  instances.addBuilder<TestBaseMvvmInstance965>(TestBaseMvvmInstance965.new);
 
-  instances.addBuilder<TestMvvmInstance966>(TestMvvmInstance966.new);
+  instances.addBuilder<TestBaseMvvmInstance966>(TestBaseMvvmInstance966.new);
 
-  instances.addBuilder<TestMvvmInstance967>(TestMvvmInstance967.new);
+  instances.addBuilder<TestBaseMvvmInstance967>(TestBaseMvvmInstance967.new);
 
-  instances.addBuilder<TestMvvmInstance968>(TestMvvmInstance968.new);
+  instances.addBuilder<TestBaseMvvmInstance968>(TestBaseMvvmInstance968.new);
 
-  instances.addBuilder<TestMvvmInstance969>(TestMvvmInstance969.new);
+  instances.addBuilder<TestBaseMvvmInstance969>(TestBaseMvvmInstance969.new);
 
-  instances.addBuilder<TestMvvmInstance970>(TestMvvmInstance970.new);
+  instances.addBuilder<TestBaseMvvmInstance970>(TestBaseMvvmInstance970.new);
 
-  instances.addBuilder<TestMvvmInstance971>(TestMvvmInstance971.new);
+  instances.addBuilder<TestBaseMvvmInstance971>(TestBaseMvvmInstance971.new);
 
-  instances.addBuilder<TestMvvmInstance972>(TestMvvmInstance972.new);
+  instances.addBuilder<TestBaseMvvmInstance972>(TestBaseMvvmInstance972.new);
 
-  instances.addBuilder<TestMvvmInstance973>(TestMvvmInstance973.new);
+  instances.addBuilder<TestBaseMvvmInstance973>(TestBaseMvvmInstance973.new);
 
-  instances.addBuilder<TestMvvmInstance974>(TestMvvmInstance974.new);
+  instances.addBuilder<TestBaseMvvmInstance974>(TestBaseMvvmInstance974.new);
 
-  instances.addBuilder<TestMvvmInstance975>(TestMvvmInstance975.new);
+  instances.addBuilder<TestBaseMvvmInstance975>(TestBaseMvvmInstance975.new);
 
-  instances.addBuilder<TestMvvmInstance976>(TestMvvmInstance976.new);
+  instances.addBuilder<TestBaseMvvmInstance976>(TestBaseMvvmInstance976.new);
 
-  instances.addBuilder<TestMvvmInstance977>(TestMvvmInstance977.new);
+  instances.addBuilder<TestBaseMvvmInstance977>(TestBaseMvvmInstance977.new);
 
-  instances.addBuilder<TestMvvmInstance978>(TestMvvmInstance978.new);
+  instances.addBuilder<TestBaseMvvmInstance978>(TestBaseMvvmInstance978.new);
 
-  instances.addBuilder<TestMvvmInstance979>(TestMvvmInstance979.new);
+  instances.addBuilder<TestBaseMvvmInstance979>(TestBaseMvvmInstance979.new);
 
-  instances.addBuilder<TestMvvmInstance980>(TestMvvmInstance980.new);
+  instances.addBuilder<TestBaseMvvmInstance980>(TestBaseMvvmInstance980.new);
 
-  instances.addBuilder<TestMvvmInstance981>(TestMvvmInstance981.new);
+  instances.addBuilder<TestBaseMvvmInstance981>(TestBaseMvvmInstance981.new);
 
-  instances.addBuilder<TestMvvmInstance982>(TestMvvmInstance982.new);
+  instances.addBuilder<TestBaseMvvmInstance982>(TestBaseMvvmInstance982.new);
 
-  instances.addBuilder<TestMvvmInstance983>(TestMvvmInstance983.new);
+  instances.addBuilder<TestBaseMvvmInstance983>(TestBaseMvvmInstance983.new);
 
-  instances.addBuilder<TestMvvmInstance984>(TestMvvmInstance984.new);
+  instances.addBuilder<TestBaseMvvmInstance984>(TestBaseMvvmInstance984.new);
 
-  instances.addBuilder<TestMvvmInstance985>(TestMvvmInstance985.new);
+  instances.addBuilder<TestBaseMvvmInstance985>(TestBaseMvvmInstance985.new);
 
-  instances.addBuilder<TestMvvmInstance986>(TestMvvmInstance986.new);
+  instances.addBuilder<TestBaseMvvmInstance986>(TestBaseMvvmInstance986.new);
 
-  instances.addBuilder<TestMvvmInstance987>(TestMvvmInstance987.new);
+  instances.addBuilder<TestBaseMvvmInstance987>(TestBaseMvvmInstance987.new);
 
-  instances.addBuilder<TestMvvmInstance988>(TestMvvmInstance988.new);
+  instances.addBuilder<TestBaseMvvmInstance988>(TestBaseMvvmInstance988.new);
 
-  instances.addBuilder<TestMvvmInstance989>(TestMvvmInstance989.new);
+  instances.addBuilder<TestBaseMvvmInstance989>(TestBaseMvvmInstance989.new);
 
-  instances.addBuilder<TestMvvmInstance990>(TestMvvmInstance990.new);
+  instances.addBuilder<TestBaseMvvmInstance990>(TestBaseMvvmInstance990.new);
 
-  instances.addBuilder<TestMvvmInstance991>(TestMvvmInstance991.new);
+  instances.addBuilder<TestBaseMvvmInstance991>(TestBaseMvvmInstance991.new);
 
-  instances.addBuilder<TestMvvmInstance992>(TestMvvmInstance992.new);
+  instances.addBuilder<TestBaseMvvmInstance992>(TestBaseMvvmInstance992.new);
 
-  instances.addBuilder<TestMvvmInstance993>(TestMvvmInstance993.new);
+  instances.addBuilder<TestBaseMvvmInstance993>(TestBaseMvvmInstance993.new);
 
-  instances.addBuilder<TestMvvmInstance994>(TestMvvmInstance994.new);
+  instances.addBuilder<TestBaseMvvmInstance994>(TestBaseMvvmInstance994.new);
 
-  instances.addBuilder<TestMvvmInstance995>(TestMvvmInstance995.new);
+  instances.addBuilder<TestBaseMvvmInstance995>(TestBaseMvvmInstance995.new);
 
-  instances.addBuilder<TestMvvmInstance996>(TestMvvmInstance996.new);
+  instances.addBuilder<TestBaseMvvmInstance996>(TestBaseMvvmInstance996.new);
 
-  instances.addBuilder<TestMvvmInstance997>(TestMvvmInstance997.new);
+  instances.addBuilder<TestBaseMvvmInstance997>(TestBaseMvvmInstance997.new);
 
-  instances.addBuilder<TestMvvmInstance998>(TestMvvmInstance998.new);
+  instances.addBuilder<TestBaseMvvmInstance998>(TestBaseMvvmInstance998.new);
 
-  instances.addBuilder<TestMvvmInstance999>(TestMvvmInstance999.new);
+  instances.addBuilder<TestBaseMvvmInstance999>(TestBaseMvvmInstance999.new);
 
-  instances.get<TestMvvmInstance0>();
+  instances.get<TestBaseMvvmInstance0>();
 
-  instances.get<TestMvvmInstance1>();
+  instances.get<TestBaseMvvmInstance1>();
 
-  instances.get<TestMvvmInstance2>();
+  instances.get<TestBaseMvvmInstance2>();
 
-  instances.get<TestMvvmInstance3>();
+  instances.get<TestBaseMvvmInstance3>();
 
-  instances.get<TestMvvmInstance4>();
+  instances.get<TestBaseMvvmInstance4>();
 
-  instances.get<TestMvvmInstance5>();
+  instances.get<TestBaseMvvmInstance5>();
 
-  instances.get<TestMvvmInstance6>();
+  instances.get<TestBaseMvvmInstance6>();
 
-  instances.get<TestMvvmInstance7>();
+  instances.get<TestBaseMvvmInstance7>();
 
-  instances.get<TestMvvmInstance8>();
+  instances.get<TestBaseMvvmInstance8>();
 
-  instances.get<TestMvvmInstance9>();
+  instances.get<TestBaseMvvmInstance9>();
 
-  instances.get<TestMvvmInstance10>();
+  instances.get<TestBaseMvvmInstance10>();
 
-  instances.get<TestMvvmInstance11>();
+  instances.get<TestBaseMvvmInstance11>();
 
-  instances.get<TestMvvmInstance12>();
+  instances.get<TestBaseMvvmInstance12>();
 
-  instances.get<TestMvvmInstance13>();
+  instances.get<TestBaseMvvmInstance13>();
 
-  instances.get<TestMvvmInstance14>();
+  instances.get<TestBaseMvvmInstance14>();
 
-  instances.get<TestMvvmInstance15>();
+  instances.get<TestBaseMvvmInstance15>();
 
-  instances.get<TestMvvmInstance16>();
+  instances.get<TestBaseMvvmInstance16>();
 
-  instances.get<TestMvvmInstance17>();
+  instances.get<TestBaseMvvmInstance17>();
 
-  instances.get<TestMvvmInstance18>();
+  instances.get<TestBaseMvvmInstance18>();
 
-  instances.get<TestMvvmInstance19>();
+  instances.get<TestBaseMvvmInstance19>();
 
-  instances.get<TestMvvmInstance20>();
+  instances.get<TestBaseMvvmInstance20>();
 
-  instances.get<TestMvvmInstance21>();
+  instances.get<TestBaseMvvmInstance21>();
 
-  instances.get<TestMvvmInstance22>();
+  instances.get<TestBaseMvvmInstance22>();
 
-  instances.get<TestMvvmInstance23>();
+  instances.get<TestBaseMvvmInstance23>();
 
-  instances.get<TestMvvmInstance24>();
+  instances.get<TestBaseMvvmInstance24>();
 
-  instances.get<TestMvvmInstance25>();
+  instances.get<TestBaseMvvmInstance25>();
 
-  instances.get<TestMvvmInstance26>();
+  instances.get<TestBaseMvvmInstance26>();
 
-  instances.get<TestMvvmInstance27>();
+  instances.get<TestBaseMvvmInstance27>();
 
-  instances.get<TestMvvmInstance28>();
+  instances.get<TestBaseMvvmInstance28>();
 
-  instances.get<TestMvvmInstance29>();
+  instances.get<TestBaseMvvmInstance29>();
 
-  instances.get<TestMvvmInstance30>();
+  instances.get<TestBaseMvvmInstance30>();
 
-  instances.get<TestMvvmInstance31>();
+  instances.get<TestBaseMvvmInstance31>();
 
-  instances.get<TestMvvmInstance32>();
+  instances.get<TestBaseMvvmInstance32>();
 
-  instances.get<TestMvvmInstance33>();
+  instances.get<TestBaseMvvmInstance33>();
 
-  instances.get<TestMvvmInstance34>();
+  instances.get<TestBaseMvvmInstance34>();
 
-  instances.get<TestMvvmInstance35>();
+  instances.get<TestBaseMvvmInstance35>();
 
-  instances.get<TestMvvmInstance36>();
+  instances.get<TestBaseMvvmInstance36>();
 
-  instances.get<TestMvvmInstance37>();
+  instances.get<TestBaseMvvmInstance37>();
 
-  instances.get<TestMvvmInstance38>();
+  instances.get<TestBaseMvvmInstance38>();
 
-  instances.get<TestMvvmInstance39>();
+  instances.get<TestBaseMvvmInstance39>();
 
-  instances.get<TestMvvmInstance40>();
+  instances.get<TestBaseMvvmInstance40>();
 
-  instances.get<TestMvvmInstance41>();
+  instances.get<TestBaseMvvmInstance41>();
 
-  instances.get<TestMvvmInstance42>();
+  instances.get<TestBaseMvvmInstance42>();
 
-  instances.get<TestMvvmInstance43>();
+  instances.get<TestBaseMvvmInstance43>();
 
-  instances.get<TestMvvmInstance44>();
+  instances.get<TestBaseMvvmInstance44>();
 
-  instances.get<TestMvvmInstance45>();
+  instances.get<TestBaseMvvmInstance45>();
 
-  instances.get<TestMvvmInstance46>();
+  instances.get<TestBaseMvvmInstance46>();
 
-  instances.get<TestMvvmInstance47>();
+  instances.get<TestBaseMvvmInstance47>();
 
-  instances.get<TestMvvmInstance48>();
+  instances.get<TestBaseMvvmInstance48>();
 
-  instances.get<TestMvvmInstance49>();
+  instances.get<TestBaseMvvmInstance49>();
 
-  instances.get<TestMvvmInstance50>();
+  instances.get<TestBaseMvvmInstance50>();
 
-  instances.get<TestMvvmInstance51>();
+  instances.get<TestBaseMvvmInstance51>();
 
-  instances.get<TestMvvmInstance52>();
+  instances.get<TestBaseMvvmInstance52>();
 
-  instances.get<TestMvvmInstance53>();
+  instances.get<TestBaseMvvmInstance53>();
 
-  instances.get<TestMvvmInstance54>();
+  instances.get<TestBaseMvvmInstance54>();
 
-  instances.get<TestMvvmInstance55>();
+  instances.get<TestBaseMvvmInstance55>();
 
-  instances.get<TestMvvmInstance56>();
+  instances.get<TestBaseMvvmInstance56>();
 
-  instances.get<TestMvvmInstance57>();
+  instances.get<TestBaseMvvmInstance57>();
 
-  instances.get<TestMvvmInstance58>();
+  instances.get<TestBaseMvvmInstance58>();
 
-  instances.get<TestMvvmInstance59>();
+  instances.get<TestBaseMvvmInstance59>();
 
-  instances.get<TestMvvmInstance60>();
+  instances.get<TestBaseMvvmInstance60>();
 
-  instances.get<TestMvvmInstance61>();
+  instances.get<TestBaseMvvmInstance61>();
 
-  instances.get<TestMvvmInstance62>();
+  instances.get<TestBaseMvvmInstance62>();
 
-  instances.get<TestMvvmInstance63>();
+  instances.get<TestBaseMvvmInstance63>();
 
-  instances.get<TestMvvmInstance64>();
+  instances.get<TestBaseMvvmInstance64>();
 
-  instances.get<TestMvvmInstance65>();
+  instances.get<TestBaseMvvmInstance65>();
 
-  instances.get<TestMvvmInstance66>();
+  instances.get<TestBaseMvvmInstance66>();
 
-  instances.get<TestMvvmInstance67>();
+  instances.get<TestBaseMvvmInstance67>();
 
-  instances.get<TestMvvmInstance68>();
+  instances.get<TestBaseMvvmInstance68>();
 
-  instances.get<TestMvvmInstance69>();
+  instances.get<TestBaseMvvmInstance69>();
 
-  instances.get<TestMvvmInstance70>();
+  instances.get<TestBaseMvvmInstance70>();
 
-  instances.get<TestMvvmInstance71>();
+  instances.get<TestBaseMvvmInstance71>();
 
-  instances.get<TestMvvmInstance72>();
+  instances.get<TestBaseMvvmInstance72>();
 
-  instances.get<TestMvvmInstance73>();
+  instances.get<TestBaseMvvmInstance73>();
 
-  instances.get<TestMvvmInstance74>();
+  instances.get<TestBaseMvvmInstance74>();
 
-  instances.get<TestMvvmInstance75>();
+  instances.get<TestBaseMvvmInstance75>();
 
-  instances.get<TestMvvmInstance76>();
+  instances.get<TestBaseMvvmInstance76>();
 
-  instances.get<TestMvvmInstance77>();
+  instances.get<TestBaseMvvmInstance77>();
 
-  instances.get<TestMvvmInstance78>();
+  instances.get<TestBaseMvvmInstance78>();
 
-  instances.get<TestMvvmInstance79>();
+  instances.get<TestBaseMvvmInstance79>();
 
-  instances.get<TestMvvmInstance80>();
+  instances.get<TestBaseMvvmInstance80>();
 
-  instances.get<TestMvvmInstance81>();
+  instances.get<TestBaseMvvmInstance81>();
 
-  instances.get<TestMvvmInstance82>();
+  instances.get<TestBaseMvvmInstance82>();
 
-  instances.get<TestMvvmInstance83>();
+  instances.get<TestBaseMvvmInstance83>();
 
-  instances.get<TestMvvmInstance84>();
+  instances.get<TestBaseMvvmInstance84>();
 
-  instances.get<TestMvvmInstance85>();
+  instances.get<TestBaseMvvmInstance85>();
 
-  instances.get<TestMvvmInstance86>();
+  instances.get<TestBaseMvvmInstance86>();
 
-  instances.get<TestMvvmInstance87>();
+  instances.get<TestBaseMvvmInstance87>();
 
-  instances.get<TestMvvmInstance88>();
+  instances.get<TestBaseMvvmInstance88>();
 
-  instances.get<TestMvvmInstance89>();
+  instances.get<TestBaseMvvmInstance89>();
 
-  instances.get<TestMvvmInstance90>();
+  instances.get<TestBaseMvvmInstance90>();
 
-  instances.get<TestMvvmInstance91>();
+  instances.get<TestBaseMvvmInstance91>();
 
-  instances.get<TestMvvmInstance92>();
+  instances.get<TestBaseMvvmInstance92>();
 
-  instances.get<TestMvvmInstance93>();
+  instances.get<TestBaseMvvmInstance93>();
 
-  instances.get<TestMvvmInstance94>();
+  instances.get<TestBaseMvvmInstance94>();
 
-  instances.get<TestMvvmInstance95>();
+  instances.get<TestBaseMvvmInstance95>();
 
-  instances.get<TestMvvmInstance96>();
+  instances.get<TestBaseMvvmInstance96>();
 
-  instances.get<TestMvvmInstance97>();
+  instances.get<TestBaseMvvmInstance97>();
 
-  instances.get<TestMvvmInstance98>();
+  instances.get<TestBaseMvvmInstance98>();
 
-  instances.get<TestMvvmInstance99>();
+  instances.get<TestBaseMvvmInstance99>();
 
-  instances.get<TestMvvmInstance100>();
+  instances.get<TestBaseMvvmInstance100>();
 
-  instances.get<TestMvvmInstance101>();
+  instances.get<TestBaseMvvmInstance101>();
 
-  instances.get<TestMvvmInstance102>();
+  instances.get<TestBaseMvvmInstance102>();
 
-  instances.get<TestMvvmInstance103>();
+  instances.get<TestBaseMvvmInstance103>();
 
-  instances.get<TestMvvmInstance104>();
+  instances.get<TestBaseMvvmInstance104>();
 
-  instances.get<TestMvvmInstance105>();
+  instances.get<TestBaseMvvmInstance105>();
 
-  instances.get<TestMvvmInstance106>();
+  instances.get<TestBaseMvvmInstance106>();
 
-  instances.get<TestMvvmInstance107>();
+  instances.get<TestBaseMvvmInstance107>();
 
-  instances.get<TestMvvmInstance108>();
+  instances.get<TestBaseMvvmInstance108>();
 
-  instances.get<TestMvvmInstance109>();
+  instances.get<TestBaseMvvmInstance109>();
 
-  instances.get<TestMvvmInstance110>();
+  instances.get<TestBaseMvvmInstance110>();
 
-  instances.get<TestMvvmInstance111>();
+  instances.get<TestBaseMvvmInstance111>();
 
-  instances.get<TestMvvmInstance112>();
+  instances.get<TestBaseMvvmInstance112>();
 
-  instances.get<TestMvvmInstance113>();
+  instances.get<TestBaseMvvmInstance113>();
 
-  instances.get<TestMvvmInstance114>();
+  instances.get<TestBaseMvvmInstance114>();
 
-  instances.get<TestMvvmInstance115>();
+  instances.get<TestBaseMvvmInstance115>();
 
-  instances.get<TestMvvmInstance116>();
+  instances.get<TestBaseMvvmInstance116>();
 
-  instances.get<TestMvvmInstance117>();
+  instances.get<TestBaseMvvmInstance117>();
 
-  instances.get<TestMvvmInstance118>();
+  instances.get<TestBaseMvvmInstance118>();
 
-  instances.get<TestMvvmInstance119>();
+  instances.get<TestBaseMvvmInstance119>();
 
-  instances.get<TestMvvmInstance120>();
+  instances.get<TestBaseMvvmInstance120>();
 
-  instances.get<TestMvvmInstance121>();
+  instances.get<TestBaseMvvmInstance121>();
 
-  instances.get<TestMvvmInstance122>();
+  instances.get<TestBaseMvvmInstance122>();
 
-  instances.get<TestMvvmInstance123>();
+  instances.get<TestBaseMvvmInstance123>();
 
-  instances.get<TestMvvmInstance124>();
+  instances.get<TestBaseMvvmInstance124>();
 
-  instances.get<TestMvvmInstance125>();
+  instances.get<TestBaseMvvmInstance125>();
 
-  instances.get<TestMvvmInstance126>();
+  instances.get<TestBaseMvvmInstance126>();
 
-  instances.get<TestMvvmInstance127>();
+  instances.get<TestBaseMvvmInstance127>();
 
-  instances.get<TestMvvmInstance128>();
+  instances.get<TestBaseMvvmInstance128>();
 
-  instances.get<TestMvvmInstance129>();
+  instances.get<TestBaseMvvmInstance129>();
 
-  instances.get<TestMvvmInstance130>();
+  instances.get<TestBaseMvvmInstance130>();
 
-  instances.get<TestMvvmInstance131>();
+  instances.get<TestBaseMvvmInstance131>();
 
-  instances.get<TestMvvmInstance132>();
+  instances.get<TestBaseMvvmInstance132>();
 
-  instances.get<TestMvvmInstance133>();
+  instances.get<TestBaseMvvmInstance133>();
 
-  instances.get<TestMvvmInstance134>();
+  instances.get<TestBaseMvvmInstance134>();
 
-  instances.get<TestMvvmInstance135>();
+  instances.get<TestBaseMvvmInstance135>();
 
-  instances.get<TestMvvmInstance136>();
+  instances.get<TestBaseMvvmInstance136>();
 
-  instances.get<TestMvvmInstance137>();
+  instances.get<TestBaseMvvmInstance137>();
 
-  instances.get<TestMvvmInstance138>();
+  instances.get<TestBaseMvvmInstance138>();
 
-  instances.get<TestMvvmInstance139>();
+  instances.get<TestBaseMvvmInstance139>();
 
-  instances.get<TestMvvmInstance140>();
+  instances.get<TestBaseMvvmInstance140>();
 
-  instances.get<TestMvvmInstance141>();
+  instances.get<TestBaseMvvmInstance141>();
 
-  instances.get<TestMvvmInstance142>();
+  instances.get<TestBaseMvvmInstance142>();
 
-  instances.get<TestMvvmInstance143>();
+  instances.get<TestBaseMvvmInstance143>();
 
-  instances.get<TestMvvmInstance144>();
+  instances.get<TestBaseMvvmInstance144>();
 
-  instances.get<TestMvvmInstance145>();
+  instances.get<TestBaseMvvmInstance145>();
 
-  instances.get<TestMvvmInstance146>();
+  instances.get<TestBaseMvvmInstance146>();
 
-  instances.get<TestMvvmInstance147>();
+  instances.get<TestBaseMvvmInstance147>();
 
-  instances.get<TestMvvmInstance148>();
+  instances.get<TestBaseMvvmInstance148>();
 
-  instances.get<TestMvvmInstance149>();
+  instances.get<TestBaseMvvmInstance149>();
 
-  instances.get<TestMvvmInstance150>();
+  instances.get<TestBaseMvvmInstance150>();
 
-  instances.get<TestMvvmInstance151>();
+  instances.get<TestBaseMvvmInstance151>();
 
-  instances.get<TestMvvmInstance152>();
+  instances.get<TestBaseMvvmInstance152>();
 
-  instances.get<TestMvvmInstance153>();
+  instances.get<TestBaseMvvmInstance153>();
 
-  instances.get<TestMvvmInstance154>();
+  instances.get<TestBaseMvvmInstance154>();
 
-  instances.get<TestMvvmInstance155>();
+  instances.get<TestBaseMvvmInstance155>();
 
-  instances.get<TestMvvmInstance156>();
+  instances.get<TestBaseMvvmInstance156>();
 
-  instances.get<TestMvvmInstance157>();
+  instances.get<TestBaseMvvmInstance157>();
 
-  instances.get<TestMvvmInstance158>();
+  instances.get<TestBaseMvvmInstance158>();
 
-  instances.get<TestMvvmInstance159>();
+  instances.get<TestBaseMvvmInstance159>();
 
-  instances.get<TestMvvmInstance160>();
+  instances.get<TestBaseMvvmInstance160>();
 
-  instances.get<TestMvvmInstance161>();
+  instances.get<TestBaseMvvmInstance161>();
 
-  instances.get<TestMvvmInstance162>();
+  instances.get<TestBaseMvvmInstance162>();
 
-  instances.get<TestMvvmInstance163>();
+  instances.get<TestBaseMvvmInstance163>();
 
-  instances.get<TestMvvmInstance164>();
+  instances.get<TestBaseMvvmInstance164>();
 
-  instances.get<TestMvvmInstance165>();
+  instances.get<TestBaseMvvmInstance165>();
 
-  instances.get<TestMvvmInstance166>();
+  instances.get<TestBaseMvvmInstance166>();
 
-  instances.get<TestMvvmInstance167>();
+  instances.get<TestBaseMvvmInstance167>();
 
-  instances.get<TestMvvmInstance168>();
+  instances.get<TestBaseMvvmInstance168>();
 
-  instances.get<TestMvvmInstance169>();
+  instances.get<TestBaseMvvmInstance169>();
 
-  instances.get<TestMvvmInstance170>();
+  instances.get<TestBaseMvvmInstance170>();
 
-  instances.get<TestMvvmInstance171>();
+  instances.get<TestBaseMvvmInstance171>();
 
-  instances.get<TestMvvmInstance172>();
+  instances.get<TestBaseMvvmInstance172>();
 
-  instances.get<TestMvvmInstance173>();
+  instances.get<TestBaseMvvmInstance173>();
 
-  instances.get<TestMvvmInstance174>();
+  instances.get<TestBaseMvvmInstance174>();
 
-  instances.get<TestMvvmInstance175>();
+  instances.get<TestBaseMvvmInstance175>();
 
-  instances.get<TestMvvmInstance176>();
+  instances.get<TestBaseMvvmInstance176>();
 
-  instances.get<TestMvvmInstance177>();
+  instances.get<TestBaseMvvmInstance177>();
 
-  instances.get<TestMvvmInstance178>();
+  instances.get<TestBaseMvvmInstance178>();
 
-  instances.get<TestMvvmInstance179>();
+  instances.get<TestBaseMvvmInstance179>();
 
-  instances.get<TestMvvmInstance180>();
+  instances.get<TestBaseMvvmInstance180>();
 
-  instances.get<TestMvvmInstance181>();
+  instances.get<TestBaseMvvmInstance181>();
 
-  instances.get<TestMvvmInstance182>();
+  instances.get<TestBaseMvvmInstance182>();
 
-  instances.get<TestMvvmInstance183>();
+  instances.get<TestBaseMvvmInstance183>();
 
-  instances.get<TestMvvmInstance184>();
+  instances.get<TestBaseMvvmInstance184>();
 
-  instances.get<TestMvvmInstance185>();
+  instances.get<TestBaseMvvmInstance185>();
 
-  instances.get<TestMvvmInstance186>();
+  instances.get<TestBaseMvvmInstance186>();
 
-  instances.get<TestMvvmInstance187>();
+  instances.get<TestBaseMvvmInstance187>();
 
-  instances.get<TestMvvmInstance188>();
+  instances.get<TestBaseMvvmInstance188>();
 
-  instances.get<TestMvvmInstance189>();
+  instances.get<TestBaseMvvmInstance189>();
 
-  instances.get<TestMvvmInstance190>();
+  instances.get<TestBaseMvvmInstance190>();
 
-  instances.get<TestMvvmInstance191>();
+  instances.get<TestBaseMvvmInstance191>();
 
-  instances.get<TestMvvmInstance192>();
+  instances.get<TestBaseMvvmInstance192>();
 
-  instances.get<TestMvvmInstance193>();
+  instances.get<TestBaseMvvmInstance193>();
 
-  instances.get<TestMvvmInstance194>();
+  instances.get<TestBaseMvvmInstance194>();
 
-  instances.get<TestMvvmInstance195>();
+  instances.get<TestBaseMvvmInstance195>();
 
-  instances.get<TestMvvmInstance196>();
+  instances.get<TestBaseMvvmInstance196>();
 
-  instances.get<TestMvvmInstance197>();
+  instances.get<TestBaseMvvmInstance197>();
 
-  instances.get<TestMvvmInstance198>();
+  instances.get<TestBaseMvvmInstance198>();
 
-  instances.get<TestMvvmInstance199>();
+  instances.get<TestBaseMvvmInstance199>();
 
-  instances.get<TestMvvmInstance200>();
+  instances.get<TestBaseMvvmInstance200>();
 
-  instances.get<TestMvvmInstance201>();
+  instances.get<TestBaseMvvmInstance201>();
 
-  instances.get<TestMvvmInstance202>();
+  instances.get<TestBaseMvvmInstance202>();
 
-  instances.get<TestMvvmInstance203>();
+  instances.get<TestBaseMvvmInstance203>();
 
-  instances.get<TestMvvmInstance204>();
+  instances.get<TestBaseMvvmInstance204>();
 
-  instances.get<TestMvvmInstance205>();
+  instances.get<TestBaseMvvmInstance205>();
 
-  instances.get<TestMvvmInstance206>();
+  instances.get<TestBaseMvvmInstance206>();
 
-  instances.get<TestMvvmInstance207>();
+  instances.get<TestBaseMvvmInstance207>();
 
-  instances.get<TestMvvmInstance208>();
+  instances.get<TestBaseMvvmInstance208>();
 
-  instances.get<TestMvvmInstance209>();
+  instances.get<TestBaseMvvmInstance209>();
 
-  instances.get<TestMvvmInstance210>();
+  instances.get<TestBaseMvvmInstance210>();
 
-  instances.get<TestMvvmInstance211>();
+  instances.get<TestBaseMvvmInstance211>();
 
-  instances.get<TestMvvmInstance212>();
+  instances.get<TestBaseMvvmInstance212>();
 
-  instances.get<TestMvvmInstance213>();
+  instances.get<TestBaseMvvmInstance213>();
 
-  instances.get<TestMvvmInstance214>();
+  instances.get<TestBaseMvvmInstance214>();
 
-  instances.get<TestMvvmInstance215>();
+  instances.get<TestBaseMvvmInstance215>();
 
-  instances.get<TestMvvmInstance216>();
+  instances.get<TestBaseMvvmInstance216>();
 
-  instances.get<TestMvvmInstance217>();
+  instances.get<TestBaseMvvmInstance217>();
 
-  instances.get<TestMvvmInstance218>();
+  instances.get<TestBaseMvvmInstance218>();
 
-  instances.get<TestMvvmInstance219>();
+  instances.get<TestBaseMvvmInstance219>();
 
-  instances.get<TestMvvmInstance220>();
+  instances.get<TestBaseMvvmInstance220>();
 
-  instances.get<TestMvvmInstance221>();
+  instances.get<TestBaseMvvmInstance221>();
 
-  instances.get<TestMvvmInstance222>();
+  instances.get<TestBaseMvvmInstance222>();
 
-  instances.get<TestMvvmInstance223>();
+  instances.get<TestBaseMvvmInstance223>();
 
-  instances.get<TestMvvmInstance224>();
+  instances.get<TestBaseMvvmInstance224>();
 
-  instances.get<TestMvvmInstance225>();
+  instances.get<TestBaseMvvmInstance225>();
 
-  instances.get<TestMvvmInstance226>();
+  instances.get<TestBaseMvvmInstance226>();
 
-  instances.get<TestMvvmInstance227>();
+  instances.get<TestBaseMvvmInstance227>();
 
-  instances.get<TestMvvmInstance228>();
+  instances.get<TestBaseMvvmInstance228>();
 
-  instances.get<TestMvvmInstance229>();
+  instances.get<TestBaseMvvmInstance229>();
 
-  instances.get<TestMvvmInstance230>();
+  instances.get<TestBaseMvvmInstance230>();
 
-  instances.get<TestMvvmInstance231>();
+  instances.get<TestBaseMvvmInstance231>();
 
-  instances.get<TestMvvmInstance232>();
+  instances.get<TestBaseMvvmInstance232>();
 
-  instances.get<TestMvvmInstance233>();
+  instances.get<TestBaseMvvmInstance233>();
 
-  instances.get<TestMvvmInstance234>();
+  instances.get<TestBaseMvvmInstance234>();
 
-  instances.get<TestMvvmInstance235>();
+  instances.get<TestBaseMvvmInstance235>();
 
-  instances.get<TestMvvmInstance236>();
+  instances.get<TestBaseMvvmInstance236>();
 
-  instances.get<TestMvvmInstance237>();
+  instances.get<TestBaseMvvmInstance237>();
 
-  instances.get<TestMvvmInstance238>();
+  instances.get<TestBaseMvvmInstance238>();
 
-  instances.get<TestMvvmInstance239>();
+  instances.get<TestBaseMvvmInstance239>();
 
-  instances.get<TestMvvmInstance240>();
+  instances.get<TestBaseMvvmInstance240>();
 
-  instances.get<TestMvvmInstance241>();
+  instances.get<TestBaseMvvmInstance241>();
 
-  instances.get<TestMvvmInstance242>();
+  instances.get<TestBaseMvvmInstance242>();
 
-  instances.get<TestMvvmInstance243>();
+  instances.get<TestBaseMvvmInstance243>();
 
-  instances.get<TestMvvmInstance244>();
+  instances.get<TestBaseMvvmInstance244>();
 
-  instances.get<TestMvvmInstance245>();
+  instances.get<TestBaseMvvmInstance245>();
 
-  instances.get<TestMvvmInstance246>();
+  instances.get<TestBaseMvvmInstance246>();
 
-  instances.get<TestMvvmInstance247>();
+  instances.get<TestBaseMvvmInstance247>();
 
-  instances.get<TestMvvmInstance248>();
+  instances.get<TestBaseMvvmInstance248>();
 
-  instances.get<TestMvvmInstance249>();
+  instances.get<TestBaseMvvmInstance249>();
 
-  instances.get<TestMvvmInstance250>();
+  instances.get<TestBaseMvvmInstance250>();
 
-  instances.get<TestMvvmInstance251>();
+  instances.get<TestBaseMvvmInstance251>();
 
-  instances.get<TestMvvmInstance252>();
+  instances.get<TestBaseMvvmInstance252>();
 
-  instances.get<TestMvvmInstance253>();
+  instances.get<TestBaseMvvmInstance253>();
 
-  instances.get<TestMvvmInstance254>();
+  instances.get<TestBaseMvvmInstance254>();
 
-  instances.get<TestMvvmInstance255>();
+  instances.get<TestBaseMvvmInstance255>();
 
-  instances.get<TestMvvmInstance256>();
+  instances.get<TestBaseMvvmInstance256>();
 
-  instances.get<TestMvvmInstance257>();
+  instances.get<TestBaseMvvmInstance257>();
 
-  instances.get<TestMvvmInstance258>();
+  instances.get<TestBaseMvvmInstance258>();
 
-  instances.get<TestMvvmInstance259>();
+  instances.get<TestBaseMvvmInstance259>();
 
-  instances.get<TestMvvmInstance260>();
+  instances.get<TestBaseMvvmInstance260>();
 
-  instances.get<TestMvvmInstance261>();
+  instances.get<TestBaseMvvmInstance261>();
 
-  instances.get<TestMvvmInstance262>();
+  instances.get<TestBaseMvvmInstance262>();
 
-  instances.get<TestMvvmInstance263>();
+  instances.get<TestBaseMvvmInstance263>();
 
-  instances.get<TestMvvmInstance264>();
+  instances.get<TestBaseMvvmInstance264>();
 
-  instances.get<TestMvvmInstance265>();
+  instances.get<TestBaseMvvmInstance265>();
 
-  instances.get<TestMvvmInstance266>();
+  instances.get<TestBaseMvvmInstance266>();
 
-  instances.get<TestMvvmInstance267>();
+  instances.get<TestBaseMvvmInstance267>();
 
-  instances.get<TestMvvmInstance268>();
+  instances.get<TestBaseMvvmInstance268>();
 
-  instances.get<TestMvvmInstance269>();
+  instances.get<TestBaseMvvmInstance269>();
 
-  instances.get<TestMvvmInstance270>();
+  instances.get<TestBaseMvvmInstance270>();
 
-  instances.get<TestMvvmInstance271>();
+  instances.get<TestBaseMvvmInstance271>();
 
-  instances.get<TestMvvmInstance272>();
+  instances.get<TestBaseMvvmInstance272>();
 
-  instances.get<TestMvvmInstance273>();
+  instances.get<TestBaseMvvmInstance273>();
 
-  instances.get<TestMvvmInstance274>();
+  instances.get<TestBaseMvvmInstance274>();
 
-  instances.get<TestMvvmInstance275>();
+  instances.get<TestBaseMvvmInstance275>();
 
-  instances.get<TestMvvmInstance276>();
+  instances.get<TestBaseMvvmInstance276>();
 
-  instances.get<TestMvvmInstance277>();
+  instances.get<TestBaseMvvmInstance277>();
 
-  instances.get<TestMvvmInstance278>();
+  instances.get<TestBaseMvvmInstance278>();
 
-  instances.get<TestMvvmInstance279>();
+  instances.get<TestBaseMvvmInstance279>();
 
-  instances.get<TestMvvmInstance280>();
+  instances.get<TestBaseMvvmInstance280>();
 
-  instances.get<TestMvvmInstance281>();
+  instances.get<TestBaseMvvmInstance281>();
 
-  instances.get<TestMvvmInstance282>();
+  instances.get<TestBaseMvvmInstance282>();
 
-  instances.get<TestMvvmInstance283>();
+  instances.get<TestBaseMvvmInstance283>();
 
-  instances.get<TestMvvmInstance284>();
+  instances.get<TestBaseMvvmInstance284>();
 
-  instances.get<TestMvvmInstance285>();
+  instances.get<TestBaseMvvmInstance285>();
 
-  instances.get<TestMvvmInstance286>();
+  instances.get<TestBaseMvvmInstance286>();
 
-  instances.get<TestMvvmInstance287>();
+  instances.get<TestBaseMvvmInstance287>();
 
-  instances.get<TestMvvmInstance288>();
+  instances.get<TestBaseMvvmInstance288>();
 
-  instances.get<TestMvvmInstance289>();
+  instances.get<TestBaseMvvmInstance289>();
 
-  instances.get<TestMvvmInstance290>();
+  instances.get<TestBaseMvvmInstance290>();
 
-  instances.get<TestMvvmInstance291>();
+  instances.get<TestBaseMvvmInstance291>();
 
-  instances.get<TestMvvmInstance292>();
+  instances.get<TestBaseMvvmInstance292>();
 
-  instances.get<TestMvvmInstance293>();
+  instances.get<TestBaseMvvmInstance293>();
 
-  instances.get<TestMvvmInstance294>();
+  instances.get<TestBaseMvvmInstance294>();
 
-  instances.get<TestMvvmInstance295>();
+  instances.get<TestBaseMvvmInstance295>();
 
-  instances.get<TestMvvmInstance296>();
+  instances.get<TestBaseMvvmInstance296>();
 
-  instances.get<TestMvvmInstance297>();
+  instances.get<TestBaseMvvmInstance297>();
 
-  instances.get<TestMvvmInstance298>();
+  instances.get<TestBaseMvvmInstance298>();
 
-  instances.get<TestMvvmInstance299>();
+  instances.get<TestBaseMvvmInstance299>();
 
-  instances.get<TestMvvmInstance300>();
+  instances.get<TestBaseMvvmInstance300>();
 
-  instances.get<TestMvvmInstance301>();
+  instances.get<TestBaseMvvmInstance301>();
 
-  instances.get<TestMvvmInstance302>();
+  instances.get<TestBaseMvvmInstance302>();
 
-  instances.get<TestMvvmInstance303>();
+  instances.get<TestBaseMvvmInstance303>();
 
-  instances.get<TestMvvmInstance304>();
+  instances.get<TestBaseMvvmInstance304>();
 
-  instances.get<TestMvvmInstance305>();
+  instances.get<TestBaseMvvmInstance305>();
 
-  instances.get<TestMvvmInstance306>();
+  instances.get<TestBaseMvvmInstance306>();
 
-  instances.get<TestMvvmInstance307>();
+  instances.get<TestBaseMvvmInstance307>();
 
-  instances.get<TestMvvmInstance308>();
+  instances.get<TestBaseMvvmInstance308>();
 
-  instances.get<TestMvvmInstance309>();
+  instances.get<TestBaseMvvmInstance309>();
 
-  instances.get<TestMvvmInstance310>();
+  instances.get<TestBaseMvvmInstance310>();
 
-  instances.get<TestMvvmInstance311>();
+  instances.get<TestBaseMvvmInstance311>();
 
-  instances.get<TestMvvmInstance312>();
+  instances.get<TestBaseMvvmInstance312>();
 
-  instances.get<TestMvvmInstance313>();
+  instances.get<TestBaseMvvmInstance313>();
 
-  instances.get<TestMvvmInstance314>();
+  instances.get<TestBaseMvvmInstance314>();
 
-  instances.get<TestMvvmInstance315>();
+  instances.get<TestBaseMvvmInstance315>();
 
-  instances.get<TestMvvmInstance316>();
+  instances.get<TestBaseMvvmInstance316>();
 
-  instances.get<TestMvvmInstance317>();
+  instances.get<TestBaseMvvmInstance317>();
 
-  instances.get<TestMvvmInstance318>();
+  instances.get<TestBaseMvvmInstance318>();
 
-  instances.get<TestMvvmInstance319>();
+  instances.get<TestBaseMvvmInstance319>();
 
-  instances.get<TestMvvmInstance320>();
+  instances.get<TestBaseMvvmInstance320>();
 
-  instances.get<TestMvvmInstance321>();
+  instances.get<TestBaseMvvmInstance321>();
 
-  instances.get<TestMvvmInstance322>();
+  instances.get<TestBaseMvvmInstance322>();
 
-  instances.get<TestMvvmInstance323>();
+  instances.get<TestBaseMvvmInstance323>();
 
-  instances.get<TestMvvmInstance324>();
+  instances.get<TestBaseMvvmInstance324>();
 
-  instances.get<TestMvvmInstance325>();
+  instances.get<TestBaseMvvmInstance325>();
 
-  instances.get<TestMvvmInstance326>();
+  instances.get<TestBaseMvvmInstance326>();
 
-  instances.get<TestMvvmInstance327>();
+  instances.get<TestBaseMvvmInstance327>();
 
-  instances.get<TestMvvmInstance328>();
+  instances.get<TestBaseMvvmInstance328>();
 
-  instances.get<TestMvvmInstance329>();
+  instances.get<TestBaseMvvmInstance329>();
 
-  instances.get<TestMvvmInstance330>();
+  instances.get<TestBaseMvvmInstance330>();
 
-  instances.get<TestMvvmInstance331>();
+  instances.get<TestBaseMvvmInstance331>();
 
-  instances.get<TestMvvmInstance332>();
+  instances.get<TestBaseMvvmInstance332>();
 
-  instances.get<TestMvvmInstance333>();
+  instances.get<TestBaseMvvmInstance333>();
 
-  instances.get<TestMvvmInstance334>();
+  instances.get<TestBaseMvvmInstance334>();
 
-  instances.get<TestMvvmInstance335>();
+  instances.get<TestBaseMvvmInstance335>();
 
-  instances.get<TestMvvmInstance336>();
+  instances.get<TestBaseMvvmInstance336>();
 
-  instances.get<TestMvvmInstance337>();
+  instances.get<TestBaseMvvmInstance337>();
 
-  instances.get<TestMvvmInstance338>();
+  instances.get<TestBaseMvvmInstance338>();
 
-  instances.get<TestMvvmInstance339>();
+  instances.get<TestBaseMvvmInstance339>();
 
-  instances.get<TestMvvmInstance340>();
+  instances.get<TestBaseMvvmInstance340>();
 
-  instances.get<TestMvvmInstance341>();
+  instances.get<TestBaseMvvmInstance341>();
 
-  instances.get<TestMvvmInstance342>();
+  instances.get<TestBaseMvvmInstance342>();
 
-  instances.get<TestMvvmInstance343>();
+  instances.get<TestBaseMvvmInstance343>();
 
-  instances.get<TestMvvmInstance344>();
+  instances.get<TestBaseMvvmInstance344>();
 
-  instances.get<TestMvvmInstance345>();
+  instances.get<TestBaseMvvmInstance345>();
 
-  instances.get<TestMvvmInstance346>();
+  instances.get<TestBaseMvvmInstance346>();
 
-  instances.get<TestMvvmInstance347>();
+  instances.get<TestBaseMvvmInstance347>();
 
-  instances.get<TestMvvmInstance348>();
+  instances.get<TestBaseMvvmInstance348>();
 
-  instances.get<TestMvvmInstance349>();
+  instances.get<TestBaseMvvmInstance349>();
 
-  instances.get<TestMvvmInstance350>();
+  instances.get<TestBaseMvvmInstance350>();
 
-  instances.get<TestMvvmInstance351>();
+  instances.get<TestBaseMvvmInstance351>();
 
-  instances.get<TestMvvmInstance352>();
+  instances.get<TestBaseMvvmInstance352>();
 
-  instances.get<TestMvvmInstance353>();
+  instances.get<TestBaseMvvmInstance353>();
 
-  instances.get<TestMvvmInstance354>();
+  instances.get<TestBaseMvvmInstance354>();
 
-  instances.get<TestMvvmInstance355>();
+  instances.get<TestBaseMvvmInstance355>();
 
-  instances.get<TestMvvmInstance356>();
+  instances.get<TestBaseMvvmInstance356>();
 
-  instances.get<TestMvvmInstance357>();
+  instances.get<TestBaseMvvmInstance357>();
 
-  instances.get<TestMvvmInstance358>();
+  instances.get<TestBaseMvvmInstance358>();
 
-  instances.get<TestMvvmInstance359>();
+  instances.get<TestBaseMvvmInstance359>();
 
-  instances.get<TestMvvmInstance360>();
+  instances.get<TestBaseMvvmInstance360>();
 
-  instances.get<TestMvvmInstance361>();
+  instances.get<TestBaseMvvmInstance361>();
 
-  instances.get<TestMvvmInstance362>();
+  instances.get<TestBaseMvvmInstance362>();
 
-  instances.get<TestMvvmInstance363>();
+  instances.get<TestBaseMvvmInstance363>();
 
-  instances.get<TestMvvmInstance364>();
+  instances.get<TestBaseMvvmInstance364>();
 
-  instances.get<TestMvvmInstance365>();
+  instances.get<TestBaseMvvmInstance365>();
 
-  instances.get<TestMvvmInstance366>();
+  instances.get<TestBaseMvvmInstance366>();
 
-  instances.get<TestMvvmInstance367>();
+  instances.get<TestBaseMvvmInstance367>();
 
-  instances.get<TestMvvmInstance368>();
+  instances.get<TestBaseMvvmInstance368>();
 
-  instances.get<TestMvvmInstance369>();
+  instances.get<TestBaseMvvmInstance369>();
 
-  instances.get<TestMvvmInstance370>();
+  instances.get<TestBaseMvvmInstance370>();
 
-  instances.get<TestMvvmInstance371>();
+  instances.get<TestBaseMvvmInstance371>();
 
-  instances.get<TestMvvmInstance372>();
+  instances.get<TestBaseMvvmInstance372>();
 
-  instances.get<TestMvvmInstance373>();
+  instances.get<TestBaseMvvmInstance373>();
 
-  instances.get<TestMvvmInstance374>();
+  instances.get<TestBaseMvvmInstance374>();
 
-  instances.get<TestMvvmInstance375>();
+  instances.get<TestBaseMvvmInstance375>();
 
-  instances.get<TestMvvmInstance376>();
+  instances.get<TestBaseMvvmInstance376>();
 
-  instances.get<TestMvvmInstance377>();
+  instances.get<TestBaseMvvmInstance377>();
 
-  instances.get<TestMvvmInstance378>();
+  instances.get<TestBaseMvvmInstance378>();
 
-  instances.get<TestMvvmInstance379>();
+  instances.get<TestBaseMvvmInstance379>();
 
-  instances.get<TestMvvmInstance380>();
+  instances.get<TestBaseMvvmInstance380>();
 
-  instances.get<TestMvvmInstance381>();
+  instances.get<TestBaseMvvmInstance381>();
 
-  instances.get<TestMvvmInstance382>();
+  instances.get<TestBaseMvvmInstance382>();
 
-  instances.get<TestMvvmInstance383>();
+  instances.get<TestBaseMvvmInstance383>();
 
-  instances.get<TestMvvmInstance384>();
+  instances.get<TestBaseMvvmInstance384>();
 
-  instances.get<TestMvvmInstance385>();
+  instances.get<TestBaseMvvmInstance385>();
 
-  instances.get<TestMvvmInstance386>();
+  instances.get<TestBaseMvvmInstance386>();
 
-  instances.get<TestMvvmInstance387>();
+  instances.get<TestBaseMvvmInstance387>();
 
-  instances.get<TestMvvmInstance388>();
+  instances.get<TestBaseMvvmInstance388>();
 
-  instances.get<TestMvvmInstance389>();
+  instances.get<TestBaseMvvmInstance389>();
 
-  instances.get<TestMvvmInstance390>();
+  instances.get<TestBaseMvvmInstance390>();
 
-  instances.get<TestMvvmInstance391>();
+  instances.get<TestBaseMvvmInstance391>();
 
-  instances.get<TestMvvmInstance392>();
+  instances.get<TestBaseMvvmInstance392>();
 
-  instances.get<TestMvvmInstance393>();
+  instances.get<TestBaseMvvmInstance393>();
 
-  instances.get<TestMvvmInstance394>();
+  instances.get<TestBaseMvvmInstance394>();
 
-  instances.get<TestMvvmInstance395>();
+  instances.get<TestBaseMvvmInstance395>();
 
-  instances.get<TestMvvmInstance396>();
+  instances.get<TestBaseMvvmInstance396>();
 
-  instances.get<TestMvvmInstance397>();
+  instances.get<TestBaseMvvmInstance397>();
 
-  instances.get<TestMvvmInstance398>();
+  instances.get<TestBaseMvvmInstance398>();
 
-  instances.get<TestMvvmInstance399>();
+  instances.get<TestBaseMvvmInstance399>();
 
-  instances.get<TestMvvmInstance400>();
+  instances.get<TestBaseMvvmInstance400>();
 
-  instances.get<TestMvvmInstance401>();
+  instances.get<TestBaseMvvmInstance401>();
 
-  instances.get<TestMvvmInstance402>();
+  instances.get<TestBaseMvvmInstance402>();
 
-  instances.get<TestMvvmInstance403>();
+  instances.get<TestBaseMvvmInstance403>();
 
-  instances.get<TestMvvmInstance404>();
+  instances.get<TestBaseMvvmInstance404>();
 
-  instances.get<TestMvvmInstance405>();
+  instances.get<TestBaseMvvmInstance405>();
 
-  instances.get<TestMvvmInstance406>();
+  instances.get<TestBaseMvvmInstance406>();
 
-  instances.get<TestMvvmInstance407>();
+  instances.get<TestBaseMvvmInstance407>();
 
-  instances.get<TestMvvmInstance408>();
+  instances.get<TestBaseMvvmInstance408>();
 
-  instances.get<TestMvvmInstance409>();
+  instances.get<TestBaseMvvmInstance409>();
 
-  instances.get<TestMvvmInstance410>();
+  instances.get<TestBaseMvvmInstance410>();
 
-  instances.get<TestMvvmInstance411>();
+  instances.get<TestBaseMvvmInstance411>();
 
-  instances.get<TestMvvmInstance412>();
+  instances.get<TestBaseMvvmInstance412>();
 
-  instances.get<TestMvvmInstance413>();
+  instances.get<TestBaseMvvmInstance413>();
 
-  instances.get<TestMvvmInstance414>();
+  instances.get<TestBaseMvvmInstance414>();
 
-  instances.get<TestMvvmInstance415>();
+  instances.get<TestBaseMvvmInstance415>();
 
-  instances.get<TestMvvmInstance416>();
+  instances.get<TestBaseMvvmInstance416>();
 
-  instances.get<TestMvvmInstance417>();
+  instances.get<TestBaseMvvmInstance417>();
 
-  instances.get<TestMvvmInstance418>();
+  instances.get<TestBaseMvvmInstance418>();
 
-  instances.get<TestMvvmInstance419>();
+  instances.get<TestBaseMvvmInstance419>();
 
-  instances.get<TestMvvmInstance420>();
+  instances.get<TestBaseMvvmInstance420>();
 
-  instances.get<TestMvvmInstance421>();
+  instances.get<TestBaseMvvmInstance421>();
 
-  instances.get<TestMvvmInstance422>();
+  instances.get<TestBaseMvvmInstance422>();
 
-  instances.get<TestMvvmInstance423>();
+  instances.get<TestBaseMvvmInstance423>();
 
-  instances.get<TestMvvmInstance424>();
+  instances.get<TestBaseMvvmInstance424>();
 
-  instances.get<TestMvvmInstance425>();
+  instances.get<TestBaseMvvmInstance425>();
 
-  instances.get<TestMvvmInstance426>();
+  instances.get<TestBaseMvvmInstance426>();
 
-  instances.get<TestMvvmInstance427>();
+  instances.get<TestBaseMvvmInstance427>();
 
-  instances.get<TestMvvmInstance428>();
+  instances.get<TestBaseMvvmInstance428>();
 
-  instances.get<TestMvvmInstance429>();
+  instances.get<TestBaseMvvmInstance429>();
 
-  instances.get<TestMvvmInstance430>();
+  instances.get<TestBaseMvvmInstance430>();
 
-  instances.get<TestMvvmInstance431>();
+  instances.get<TestBaseMvvmInstance431>();
 
-  instances.get<TestMvvmInstance432>();
+  instances.get<TestBaseMvvmInstance432>();
 
-  instances.get<TestMvvmInstance433>();
+  instances.get<TestBaseMvvmInstance433>();
 
-  instances.get<TestMvvmInstance434>();
+  instances.get<TestBaseMvvmInstance434>();
 
-  instances.get<TestMvvmInstance435>();
+  instances.get<TestBaseMvvmInstance435>();
 
-  instances.get<TestMvvmInstance436>();
+  instances.get<TestBaseMvvmInstance436>();
 
-  instances.get<TestMvvmInstance437>();
+  instances.get<TestBaseMvvmInstance437>();
 
-  instances.get<TestMvvmInstance438>();
+  instances.get<TestBaseMvvmInstance438>();
 
-  instances.get<TestMvvmInstance439>();
+  instances.get<TestBaseMvvmInstance439>();
 
-  instances.get<TestMvvmInstance440>();
+  instances.get<TestBaseMvvmInstance440>();
 
-  instances.get<TestMvvmInstance441>();
+  instances.get<TestBaseMvvmInstance441>();
 
-  instances.get<TestMvvmInstance442>();
+  instances.get<TestBaseMvvmInstance442>();
 
-  instances.get<TestMvvmInstance443>();
+  instances.get<TestBaseMvvmInstance443>();
 
-  instances.get<TestMvvmInstance444>();
+  instances.get<TestBaseMvvmInstance444>();
 
-  instances.get<TestMvvmInstance445>();
+  instances.get<TestBaseMvvmInstance445>();
 
-  instances.get<TestMvvmInstance446>();
+  instances.get<TestBaseMvvmInstance446>();
 
-  instances.get<TestMvvmInstance447>();
+  instances.get<TestBaseMvvmInstance447>();
 
-  instances.get<TestMvvmInstance448>();
+  instances.get<TestBaseMvvmInstance448>();
 
-  instances.get<TestMvvmInstance449>();
+  instances.get<TestBaseMvvmInstance449>();
 
-  instances.get<TestMvvmInstance450>();
+  instances.get<TestBaseMvvmInstance450>();
 
-  instances.get<TestMvvmInstance451>();
+  instances.get<TestBaseMvvmInstance451>();
 
-  instances.get<TestMvvmInstance452>();
+  instances.get<TestBaseMvvmInstance452>();
 
-  instances.get<TestMvvmInstance453>();
+  instances.get<TestBaseMvvmInstance453>();
 
-  instances.get<TestMvvmInstance454>();
+  instances.get<TestBaseMvvmInstance454>();
 
-  instances.get<TestMvvmInstance455>();
+  instances.get<TestBaseMvvmInstance455>();
 
-  instances.get<TestMvvmInstance456>();
+  instances.get<TestBaseMvvmInstance456>();
 
-  instances.get<TestMvvmInstance457>();
+  instances.get<TestBaseMvvmInstance457>();
 
-  instances.get<TestMvvmInstance458>();
+  instances.get<TestBaseMvvmInstance458>();
 
-  instances.get<TestMvvmInstance459>();
+  instances.get<TestBaseMvvmInstance459>();
 
-  instances.get<TestMvvmInstance460>();
+  instances.get<TestBaseMvvmInstance460>();
 
-  instances.get<TestMvvmInstance461>();
+  instances.get<TestBaseMvvmInstance461>();
 
-  instances.get<TestMvvmInstance462>();
+  instances.get<TestBaseMvvmInstance462>();
 
-  instances.get<TestMvvmInstance463>();
+  instances.get<TestBaseMvvmInstance463>();
 
-  instances.get<TestMvvmInstance464>();
+  instances.get<TestBaseMvvmInstance464>();
 
-  instances.get<TestMvvmInstance465>();
+  instances.get<TestBaseMvvmInstance465>();
 
-  instances.get<TestMvvmInstance466>();
+  instances.get<TestBaseMvvmInstance466>();
 
-  instances.get<TestMvvmInstance467>();
+  instances.get<TestBaseMvvmInstance467>();
 
-  instances.get<TestMvvmInstance468>();
+  instances.get<TestBaseMvvmInstance468>();
 
-  instances.get<TestMvvmInstance469>();
+  instances.get<TestBaseMvvmInstance469>();
 
-  instances.get<TestMvvmInstance470>();
+  instances.get<TestBaseMvvmInstance470>();
 
-  instances.get<TestMvvmInstance471>();
+  instances.get<TestBaseMvvmInstance471>();
 
-  instances.get<TestMvvmInstance472>();
+  instances.get<TestBaseMvvmInstance472>();
 
-  instances.get<TestMvvmInstance473>();
+  instances.get<TestBaseMvvmInstance473>();
 
-  instances.get<TestMvvmInstance474>();
+  instances.get<TestBaseMvvmInstance474>();
 
-  instances.get<TestMvvmInstance475>();
+  instances.get<TestBaseMvvmInstance475>();
 
-  instances.get<TestMvvmInstance476>();
+  instances.get<TestBaseMvvmInstance476>();
 
-  instances.get<TestMvvmInstance477>();
+  instances.get<TestBaseMvvmInstance477>();
 
-  instances.get<TestMvvmInstance478>();
+  instances.get<TestBaseMvvmInstance478>();
 
-  instances.get<TestMvvmInstance479>();
+  instances.get<TestBaseMvvmInstance479>();
 
-  instances.get<TestMvvmInstance480>();
+  instances.get<TestBaseMvvmInstance480>();
 
-  instances.get<TestMvvmInstance481>();
+  instances.get<TestBaseMvvmInstance481>();
 
-  instances.get<TestMvvmInstance482>();
+  instances.get<TestBaseMvvmInstance482>();
 
-  instances.get<TestMvvmInstance483>();
+  instances.get<TestBaseMvvmInstance483>();
 
-  instances.get<TestMvvmInstance484>();
+  instances.get<TestBaseMvvmInstance484>();
 
-  instances.get<TestMvvmInstance485>();
+  instances.get<TestBaseMvvmInstance485>();
 
-  instances.get<TestMvvmInstance486>();
+  instances.get<TestBaseMvvmInstance486>();
 
-  instances.get<TestMvvmInstance487>();
+  instances.get<TestBaseMvvmInstance487>();
 
-  instances.get<TestMvvmInstance488>();
+  instances.get<TestBaseMvvmInstance488>();
 
-  instances.get<TestMvvmInstance489>();
+  instances.get<TestBaseMvvmInstance489>();
 
-  instances.get<TestMvvmInstance490>();
+  instances.get<TestBaseMvvmInstance490>();
 
-  instances.get<TestMvvmInstance491>();
+  instances.get<TestBaseMvvmInstance491>();
 
-  instances.get<TestMvvmInstance492>();
+  instances.get<TestBaseMvvmInstance492>();
 
-  instances.get<TestMvvmInstance493>();
+  instances.get<TestBaseMvvmInstance493>();
 
-  instances.get<TestMvvmInstance494>();
+  instances.get<TestBaseMvvmInstance494>();
 
-  instances.get<TestMvvmInstance495>();
+  instances.get<TestBaseMvvmInstance495>();
 
-  instances.get<TestMvvmInstance496>();
+  instances.get<TestBaseMvvmInstance496>();
 
-  instances.get<TestMvvmInstance497>();
+  instances.get<TestBaseMvvmInstance497>();
 
-  instances.get<TestMvvmInstance498>();
+  instances.get<TestBaseMvvmInstance498>();
 
-  instances.get<TestMvvmInstance499>();
+  instances.get<TestBaseMvvmInstance499>();
 
-  instances.get<TestMvvmInstance500>();
+  instances.get<TestBaseMvvmInstance500>();
 
-  instances.get<TestMvvmInstance501>();
+  instances.get<TestBaseMvvmInstance501>();
 
-  instances.get<TestMvvmInstance502>();
+  instances.get<TestBaseMvvmInstance502>();
 
-  instances.get<TestMvvmInstance503>();
+  instances.get<TestBaseMvvmInstance503>();
 
-  instances.get<TestMvvmInstance504>();
+  instances.get<TestBaseMvvmInstance504>();
 
-  instances.get<TestMvvmInstance505>();
+  instances.get<TestBaseMvvmInstance505>();
 
-  instances.get<TestMvvmInstance506>();
+  instances.get<TestBaseMvvmInstance506>();
 
-  instances.get<TestMvvmInstance507>();
+  instances.get<TestBaseMvvmInstance507>();
 
-  instances.get<TestMvvmInstance508>();
+  instances.get<TestBaseMvvmInstance508>();
 
-  instances.get<TestMvvmInstance509>();
+  instances.get<TestBaseMvvmInstance509>();
 
-  instances.get<TestMvvmInstance510>();
+  instances.get<TestBaseMvvmInstance510>();
 
-  instances.get<TestMvvmInstance511>();
+  instances.get<TestBaseMvvmInstance511>();
 
-  instances.get<TestMvvmInstance512>();
+  instances.get<TestBaseMvvmInstance512>();
 
-  instances.get<TestMvvmInstance513>();
+  instances.get<TestBaseMvvmInstance513>();
 
-  instances.get<TestMvvmInstance514>();
+  instances.get<TestBaseMvvmInstance514>();
 
-  instances.get<TestMvvmInstance515>();
+  instances.get<TestBaseMvvmInstance515>();
 
-  instances.get<TestMvvmInstance516>();
+  instances.get<TestBaseMvvmInstance516>();
 
-  instances.get<TestMvvmInstance517>();
+  instances.get<TestBaseMvvmInstance517>();
 
-  instances.get<TestMvvmInstance518>();
+  instances.get<TestBaseMvvmInstance518>();
 
-  instances.get<TestMvvmInstance519>();
+  instances.get<TestBaseMvvmInstance519>();
 
-  instances.get<TestMvvmInstance520>();
+  instances.get<TestBaseMvvmInstance520>();
 
-  instances.get<TestMvvmInstance521>();
+  instances.get<TestBaseMvvmInstance521>();
 
-  instances.get<TestMvvmInstance522>();
+  instances.get<TestBaseMvvmInstance522>();
 
-  instances.get<TestMvvmInstance523>();
+  instances.get<TestBaseMvvmInstance523>();
 
-  instances.get<TestMvvmInstance524>();
+  instances.get<TestBaseMvvmInstance524>();
 
-  instances.get<TestMvvmInstance525>();
+  instances.get<TestBaseMvvmInstance525>();
 
-  instances.get<TestMvvmInstance526>();
+  instances.get<TestBaseMvvmInstance526>();
 
-  instances.get<TestMvvmInstance527>();
+  instances.get<TestBaseMvvmInstance527>();
 
-  instances.get<TestMvvmInstance528>();
+  instances.get<TestBaseMvvmInstance528>();
 
-  instances.get<TestMvvmInstance529>();
+  instances.get<TestBaseMvvmInstance529>();
 
-  instances.get<TestMvvmInstance530>();
+  instances.get<TestBaseMvvmInstance530>();
 
-  instances.get<TestMvvmInstance531>();
+  instances.get<TestBaseMvvmInstance531>();
 
-  instances.get<TestMvvmInstance532>();
+  instances.get<TestBaseMvvmInstance532>();
 
-  instances.get<TestMvvmInstance533>();
+  instances.get<TestBaseMvvmInstance533>();
 
-  instances.get<TestMvvmInstance534>();
+  instances.get<TestBaseMvvmInstance534>();
 
-  instances.get<TestMvvmInstance535>();
+  instances.get<TestBaseMvvmInstance535>();
 
-  instances.get<TestMvvmInstance536>();
+  instances.get<TestBaseMvvmInstance536>();
 
-  instances.get<TestMvvmInstance537>();
+  instances.get<TestBaseMvvmInstance537>();
 
-  instances.get<TestMvvmInstance538>();
+  instances.get<TestBaseMvvmInstance538>();
 
-  instances.get<TestMvvmInstance539>();
+  instances.get<TestBaseMvvmInstance539>();
 
-  instances.get<TestMvvmInstance540>();
+  instances.get<TestBaseMvvmInstance540>();
 
-  instances.get<TestMvvmInstance541>();
+  instances.get<TestBaseMvvmInstance541>();
 
-  instances.get<TestMvvmInstance542>();
+  instances.get<TestBaseMvvmInstance542>();
 
-  instances.get<TestMvvmInstance543>();
+  instances.get<TestBaseMvvmInstance543>();
 
-  instances.get<TestMvvmInstance544>();
+  instances.get<TestBaseMvvmInstance544>();
 
-  instances.get<TestMvvmInstance545>();
+  instances.get<TestBaseMvvmInstance545>();
 
-  instances.get<TestMvvmInstance546>();
+  instances.get<TestBaseMvvmInstance546>();
 
-  instances.get<TestMvvmInstance547>();
+  instances.get<TestBaseMvvmInstance547>();
 
-  instances.get<TestMvvmInstance548>();
+  instances.get<TestBaseMvvmInstance548>();
 
-  instances.get<TestMvvmInstance549>();
+  instances.get<TestBaseMvvmInstance549>();
 
-  instances.get<TestMvvmInstance550>();
+  instances.get<TestBaseMvvmInstance550>();
 
-  instances.get<TestMvvmInstance551>();
+  instances.get<TestBaseMvvmInstance551>();
 
-  instances.get<TestMvvmInstance552>();
+  instances.get<TestBaseMvvmInstance552>();
 
-  instances.get<TestMvvmInstance553>();
+  instances.get<TestBaseMvvmInstance553>();
 
-  instances.get<TestMvvmInstance554>();
+  instances.get<TestBaseMvvmInstance554>();
 
-  instances.get<TestMvvmInstance555>();
+  instances.get<TestBaseMvvmInstance555>();
 
-  instances.get<TestMvvmInstance556>();
+  instances.get<TestBaseMvvmInstance556>();
 
-  instances.get<TestMvvmInstance557>();
+  instances.get<TestBaseMvvmInstance557>();
 
-  instances.get<TestMvvmInstance558>();
+  instances.get<TestBaseMvvmInstance558>();
 
-  instances.get<TestMvvmInstance559>();
+  instances.get<TestBaseMvvmInstance559>();
 
-  instances.get<TestMvvmInstance560>();
+  instances.get<TestBaseMvvmInstance560>();
 
-  instances.get<TestMvvmInstance561>();
+  instances.get<TestBaseMvvmInstance561>();
 
-  instances.get<TestMvvmInstance562>();
+  instances.get<TestBaseMvvmInstance562>();
 
-  instances.get<TestMvvmInstance563>();
+  instances.get<TestBaseMvvmInstance563>();
 
-  instances.get<TestMvvmInstance564>();
+  instances.get<TestBaseMvvmInstance564>();
 
-  instances.get<TestMvvmInstance565>();
+  instances.get<TestBaseMvvmInstance565>();
 
-  instances.get<TestMvvmInstance566>();
+  instances.get<TestBaseMvvmInstance566>();
 
-  instances.get<TestMvvmInstance567>();
+  instances.get<TestBaseMvvmInstance567>();
 
-  instances.get<TestMvvmInstance568>();
+  instances.get<TestBaseMvvmInstance568>();
 
-  instances.get<TestMvvmInstance569>();
+  instances.get<TestBaseMvvmInstance569>();
 
-  instances.get<TestMvvmInstance570>();
+  instances.get<TestBaseMvvmInstance570>();
 
-  instances.get<TestMvvmInstance571>();
+  instances.get<TestBaseMvvmInstance571>();
 
-  instances.get<TestMvvmInstance572>();
+  instances.get<TestBaseMvvmInstance572>();
 
-  instances.get<TestMvvmInstance573>();
+  instances.get<TestBaseMvvmInstance573>();
 
-  instances.get<TestMvvmInstance574>();
+  instances.get<TestBaseMvvmInstance574>();
 
-  instances.get<TestMvvmInstance575>();
+  instances.get<TestBaseMvvmInstance575>();
 
-  instances.get<TestMvvmInstance576>();
+  instances.get<TestBaseMvvmInstance576>();
 
-  instances.get<TestMvvmInstance577>();
+  instances.get<TestBaseMvvmInstance577>();
 
-  instances.get<TestMvvmInstance578>();
+  instances.get<TestBaseMvvmInstance578>();
 
-  instances.get<TestMvvmInstance579>();
+  instances.get<TestBaseMvvmInstance579>();
 
-  instances.get<TestMvvmInstance580>();
+  instances.get<TestBaseMvvmInstance580>();
 
-  instances.get<TestMvvmInstance581>();
+  instances.get<TestBaseMvvmInstance581>();
 
-  instances.get<TestMvvmInstance582>();
+  instances.get<TestBaseMvvmInstance582>();
 
-  instances.get<TestMvvmInstance583>();
+  instances.get<TestBaseMvvmInstance583>();
 
-  instances.get<TestMvvmInstance584>();
+  instances.get<TestBaseMvvmInstance584>();
 
-  instances.get<TestMvvmInstance585>();
+  instances.get<TestBaseMvvmInstance585>();
 
-  instances.get<TestMvvmInstance586>();
+  instances.get<TestBaseMvvmInstance586>();
 
-  instances.get<TestMvvmInstance587>();
+  instances.get<TestBaseMvvmInstance587>();
 
-  instances.get<TestMvvmInstance588>();
+  instances.get<TestBaseMvvmInstance588>();
 
-  instances.get<TestMvvmInstance589>();
+  instances.get<TestBaseMvvmInstance589>();
 
-  instances.get<TestMvvmInstance590>();
+  instances.get<TestBaseMvvmInstance590>();
 
-  instances.get<TestMvvmInstance591>();
+  instances.get<TestBaseMvvmInstance591>();
 
-  instances.get<TestMvvmInstance592>();
+  instances.get<TestBaseMvvmInstance592>();
 
-  instances.get<TestMvvmInstance593>();
+  instances.get<TestBaseMvvmInstance593>();
 
-  instances.get<TestMvvmInstance594>();
+  instances.get<TestBaseMvvmInstance594>();
 
-  instances.get<TestMvvmInstance595>();
+  instances.get<TestBaseMvvmInstance595>();
 
-  instances.get<TestMvvmInstance596>();
+  instances.get<TestBaseMvvmInstance596>();
 
-  instances.get<TestMvvmInstance597>();
+  instances.get<TestBaseMvvmInstance597>();
 
-  instances.get<TestMvvmInstance598>();
+  instances.get<TestBaseMvvmInstance598>();
 
-  instances.get<TestMvvmInstance599>();
+  instances.get<TestBaseMvvmInstance599>();
 
-  instances.get<TestMvvmInstance600>();
+  instances.get<TestBaseMvvmInstance600>();
 
-  instances.get<TestMvvmInstance601>();
+  instances.get<TestBaseMvvmInstance601>();
 
-  instances.get<TestMvvmInstance602>();
+  instances.get<TestBaseMvvmInstance602>();
 
-  instances.get<TestMvvmInstance603>();
+  instances.get<TestBaseMvvmInstance603>();
 
-  instances.get<TestMvvmInstance604>();
+  instances.get<TestBaseMvvmInstance604>();
 
-  instances.get<TestMvvmInstance605>();
+  instances.get<TestBaseMvvmInstance605>();
 
-  instances.get<TestMvvmInstance606>();
+  instances.get<TestBaseMvvmInstance606>();
 
-  instances.get<TestMvvmInstance607>();
+  instances.get<TestBaseMvvmInstance607>();
 
-  instances.get<TestMvvmInstance608>();
+  instances.get<TestBaseMvvmInstance608>();
 
-  instances.get<TestMvvmInstance609>();
+  instances.get<TestBaseMvvmInstance609>();
 
-  instances.get<TestMvvmInstance610>();
+  instances.get<TestBaseMvvmInstance610>();
 
-  instances.get<TestMvvmInstance611>();
+  instances.get<TestBaseMvvmInstance611>();
 
-  instances.get<TestMvvmInstance612>();
+  instances.get<TestBaseMvvmInstance612>();
 
-  instances.get<TestMvvmInstance613>();
+  instances.get<TestBaseMvvmInstance613>();
 
-  instances.get<TestMvvmInstance614>();
+  instances.get<TestBaseMvvmInstance614>();
 
-  instances.get<TestMvvmInstance615>();
+  instances.get<TestBaseMvvmInstance615>();
 
-  instances.get<TestMvvmInstance616>();
+  instances.get<TestBaseMvvmInstance616>();
 
-  instances.get<TestMvvmInstance617>();
+  instances.get<TestBaseMvvmInstance617>();
 
-  instances.get<TestMvvmInstance618>();
+  instances.get<TestBaseMvvmInstance618>();
 
-  instances.get<TestMvvmInstance619>();
+  instances.get<TestBaseMvvmInstance619>();
 
-  instances.get<TestMvvmInstance620>();
+  instances.get<TestBaseMvvmInstance620>();
 
-  instances.get<TestMvvmInstance621>();
+  instances.get<TestBaseMvvmInstance621>();
 
-  instances.get<TestMvvmInstance622>();
+  instances.get<TestBaseMvvmInstance622>();
 
-  instances.get<TestMvvmInstance623>();
+  instances.get<TestBaseMvvmInstance623>();
 
-  instances.get<TestMvvmInstance624>();
+  instances.get<TestBaseMvvmInstance624>();
 
-  instances.get<TestMvvmInstance625>();
+  instances.get<TestBaseMvvmInstance625>();
 
-  instances.get<TestMvvmInstance626>();
+  instances.get<TestBaseMvvmInstance626>();
 
-  instances.get<TestMvvmInstance627>();
+  instances.get<TestBaseMvvmInstance627>();
 
-  instances.get<TestMvvmInstance628>();
+  instances.get<TestBaseMvvmInstance628>();
 
-  instances.get<TestMvvmInstance629>();
+  instances.get<TestBaseMvvmInstance629>();
 
-  instances.get<TestMvvmInstance630>();
+  instances.get<TestBaseMvvmInstance630>();
 
-  instances.get<TestMvvmInstance631>();
+  instances.get<TestBaseMvvmInstance631>();
 
-  instances.get<TestMvvmInstance632>();
+  instances.get<TestBaseMvvmInstance632>();
 
-  instances.get<TestMvvmInstance633>();
+  instances.get<TestBaseMvvmInstance633>();
 
-  instances.get<TestMvvmInstance634>();
+  instances.get<TestBaseMvvmInstance634>();
 
-  instances.get<TestMvvmInstance635>();
+  instances.get<TestBaseMvvmInstance635>();
 
-  instances.get<TestMvvmInstance636>();
+  instances.get<TestBaseMvvmInstance636>();
 
-  instances.get<TestMvvmInstance637>();
+  instances.get<TestBaseMvvmInstance637>();
 
-  instances.get<TestMvvmInstance638>();
+  instances.get<TestBaseMvvmInstance638>();
 
-  instances.get<TestMvvmInstance639>();
+  instances.get<TestBaseMvvmInstance639>();
 
-  instances.get<TestMvvmInstance640>();
+  instances.get<TestBaseMvvmInstance640>();
 
-  instances.get<TestMvvmInstance641>();
+  instances.get<TestBaseMvvmInstance641>();
 
-  instances.get<TestMvvmInstance642>();
+  instances.get<TestBaseMvvmInstance642>();
 
-  instances.get<TestMvvmInstance643>();
+  instances.get<TestBaseMvvmInstance643>();
 
-  instances.get<TestMvvmInstance644>();
+  instances.get<TestBaseMvvmInstance644>();
 
-  instances.get<TestMvvmInstance645>();
+  instances.get<TestBaseMvvmInstance645>();
 
-  instances.get<TestMvvmInstance646>();
+  instances.get<TestBaseMvvmInstance646>();
 
-  instances.get<TestMvvmInstance647>();
+  instances.get<TestBaseMvvmInstance647>();
 
-  instances.get<TestMvvmInstance648>();
+  instances.get<TestBaseMvvmInstance648>();
 
-  instances.get<TestMvvmInstance649>();
+  instances.get<TestBaseMvvmInstance649>();
 
-  instances.get<TestMvvmInstance650>();
+  instances.get<TestBaseMvvmInstance650>();
 
-  instances.get<TestMvvmInstance651>();
+  instances.get<TestBaseMvvmInstance651>();
 
-  instances.get<TestMvvmInstance652>();
+  instances.get<TestBaseMvvmInstance652>();
 
-  instances.get<TestMvvmInstance653>();
+  instances.get<TestBaseMvvmInstance653>();
 
-  instances.get<TestMvvmInstance654>();
+  instances.get<TestBaseMvvmInstance654>();
 
-  instances.get<TestMvvmInstance655>();
+  instances.get<TestBaseMvvmInstance655>();
 
-  instances.get<TestMvvmInstance656>();
+  instances.get<TestBaseMvvmInstance656>();
 
-  instances.get<TestMvvmInstance657>();
+  instances.get<TestBaseMvvmInstance657>();
 
-  instances.get<TestMvvmInstance658>();
+  instances.get<TestBaseMvvmInstance658>();
 
-  instances.get<TestMvvmInstance659>();
+  instances.get<TestBaseMvvmInstance659>();
 
-  instances.get<TestMvvmInstance660>();
+  instances.get<TestBaseMvvmInstance660>();
 
-  instances.get<TestMvvmInstance661>();
+  instances.get<TestBaseMvvmInstance661>();
 
-  instances.get<TestMvvmInstance662>();
+  instances.get<TestBaseMvvmInstance662>();
 
-  instances.get<TestMvvmInstance663>();
+  instances.get<TestBaseMvvmInstance663>();
 
-  instances.get<TestMvvmInstance664>();
+  instances.get<TestBaseMvvmInstance664>();
 
-  instances.get<TestMvvmInstance665>();
+  instances.get<TestBaseMvvmInstance665>();
 
-  instances.get<TestMvvmInstance666>();
+  instances.get<TestBaseMvvmInstance666>();
 
-  instances.get<TestMvvmInstance667>();
+  instances.get<TestBaseMvvmInstance667>();
 
-  instances.get<TestMvvmInstance668>();
+  instances.get<TestBaseMvvmInstance668>();
 
-  instances.get<TestMvvmInstance669>();
+  instances.get<TestBaseMvvmInstance669>();
 
-  instances.get<TestMvvmInstance670>();
+  instances.get<TestBaseMvvmInstance670>();
 
-  instances.get<TestMvvmInstance671>();
+  instances.get<TestBaseMvvmInstance671>();
 
-  instances.get<TestMvvmInstance672>();
+  instances.get<TestBaseMvvmInstance672>();
 
-  instances.get<TestMvvmInstance673>();
+  instances.get<TestBaseMvvmInstance673>();
 
-  instances.get<TestMvvmInstance674>();
+  instances.get<TestBaseMvvmInstance674>();
 
-  instances.get<TestMvvmInstance675>();
+  instances.get<TestBaseMvvmInstance675>();
 
-  instances.get<TestMvvmInstance676>();
+  instances.get<TestBaseMvvmInstance676>();
 
-  instances.get<TestMvvmInstance677>();
+  instances.get<TestBaseMvvmInstance677>();
 
-  instances.get<TestMvvmInstance678>();
+  instances.get<TestBaseMvvmInstance678>();
 
-  instances.get<TestMvvmInstance679>();
+  instances.get<TestBaseMvvmInstance679>();
 
-  instances.get<TestMvvmInstance680>();
+  instances.get<TestBaseMvvmInstance680>();
 
-  instances.get<TestMvvmInstance681>();
+  instances.get<TestBaseMvvmInstance681>();
 
-  instances.get<TestMvvmInstance682>();
+  instances.get<TestBaseMvvmInstance682>();
 
-  instances.get<TestMvvmInstance683>();
+  instances.get<TestBaseMvvmInstance683>();
 
-  instances.get<TestMvvmInstance684>();
+  instances.get<TestBaseMvvmInstance684>();
 
-  instances.get<TestMvvmInstance685>();
+  instances.get<TestBaseMvvmInstance685>();
 
-  instances.get<TestMvvmInstance686>();
+  instances.get<TestBaseMvvmInstance686>();
 
-  instances.get<TestMvvmInstance687>();
+  instances.get<TestBaseMvvmInstance687>();
 
-  instances.get<TestMvvmInstance688>();
+  instances.get<TestBaseMvvmInstance688>();
 
-  instances.get<TestMvvmInstance689>();
+  instances.get<TestBaseMvvmInstance689>();
 
-  instances.get<TestMvvmInstance690>();
+  instances.get<TestBaseMvvmInstance690>();
 
-  instances.get<TestMvvmInstance691>();
+  instances.get<TestBaseMvvmInstance691>();
 
-  instances.get<TestMvvmInstance692>();
+  instances.get<TestBaseMvvmInstance692>();
 
-  instances.get<TestMvvmInstance693>();
+  instances.get<TestBaseMvvmInstance693>();
 
-  instances.get<TestMvvmInstance694>();
+  instances.get<TestBaseMvvmInstance694>();
 
-  instances.get<TestMvvmInstance695>();
+  instances.get<TestBaseMvvmInstance695>();
 
-  instances.get<TestMvvmInstance696>();
+  instances.get<TestBaseMvvmInstance696>();
 
-  instances.get<TestMvvmInstance697>();
+  instances.get<TestBaseMvvmInstance697>();
 
-  instances.get<TestMvvmInstance698>();
+  instances.get<TestBaseMvvmInstance698>();
 
-  instances.get<TestMvvmInstance699>();
+  instances.get<TestBaseMvvmInstance699>();
 
-  instances.get<TestMvvmInstance700>();
+  instances.get<TestBaseMvvmInstance700>();
 
-  instances.get<TestMvvmInstance701>();
+  instances.get<TestBaseMvvmInstance701>();
 
-  instances.get<TestMvvmInstance702>();
+  instances.get<TestBaseMvvmInstance702>();
 
-  instances.get<TestMvvmInstance703>();
+  instances.get<TestBaseMvvmInstance703>();
 
-  instances.get<TestMvvmInstance704>();
+  instances.get<TestBaseMvvmInstance704>();
 
-  instances.get<TestMvvmInstance705>();
+  instances.get<TestBaseMvvmInstance705>();
 
-  instances.get<TestMvvmInstance706>();
+  instances.get<TestBaseMvvmInstance706>();
 
-  instances.get<TestMvvmInstance707>();
+  instances.get<TestBaseMvvmInstance707>();
 
-  instances.get<TestMvvmInstance708>();
+  instances.get<TestBaseMvvmInstance708>();
 
-  instances.get<TestMvvmInstance709>();
+  instances.get<TestBaseMvvmInstance709>();
 
-  instances.get<TestMvvmInstance710>();
+  instances.get<TestBaseMvvmInstance710>();
 
-  instances.get<TestMvvmInstance711>();
+  instances.get<TestBaseMvvmInstance711>();
 
-  instances.get<TestMvvmInstance712>();
+  instances.get<TestBaseMvvmInstance712>();
 
-  instances.get<TestMvvmInstance713>();
+  instances.get<TestBaseMvvmInstance713>();
 
-  instances.get<TestMvvmInstance714>();
+  instances.get<TestBaseMvvmInstance714>();
 
-  instances.get<TestMvvmInstance715>();
+  instances.get<TestBaseMvvmInstance715>();
 
-  instances.get<TestMvvmInstance716>();
+  instances.get<TestBaseMvvmInstance716>();
 
-  instances.get<TestMvvmInstance717>();
+  instances.get<TestBaseMvvmInstance717>();
 
-  instances.get<TestMvvmInstance718>();
+  instances.get<TestBaseMvvmInstance718>();
 
-  instances.get<TestMvvmInstance719>();
+  instances.get<TestBaseMvvmInstance719>();
 
-  instances.get<TestMvvmInstance720>();
+  instances.get<TestBaseMvvmInstance720>();
 
-  instances.get<TestMvvmInstance721>();
+  instances.get<TestBaseMvvmInstance721>();
 
-  instances.get<TestMvvmInstance722>();
+  instances.get<TestBaseMvvmInstance722>();
 
-  instances.get<TestMvvmInstance723>();
+  instances.get<TestBaseMvvmInstance723>();
 
-  instances.get<TestMvvmInstance724>();
+  instances.get<TestBaseMvvmInstance724>();
 
-  instances.get<TestMvvmInstance725>();
+  instances.get<TestBaseMvvmInstance725>();
 
-  instances.get<TestMvvmInstance726>();
+  instances.get<TestBaseMvvmInstance726>();
 
-  instances.get<TestMvvmInstance727>();
+  instances.get<TestBaseMvvmInstance727>();
 
-  instances.get<TestMvvmInstance728>();
+  instances.get<TestBaseMvvmInstance728>();
 
-  instances.get<TestMvvmInstance729>();
+  instances.get<TestBaseMvvmInstance729>();
 
-  instances.get<TestMvvmInstance730>();
+  instances.get<TestBaseMvvmInstance730>();
 
-  instances.get<TestMvvmInstance731>();
+  instances.get<TestBaseMvvmInstance731>();
 
-  instances.get<TestMvvmInstance732>();
+  instances.get<TestBaseMvvmInstance732>();
 
-  instances.get<TestMvvmInstance733>();
+  instances.get<TestBaseMvvmInstance733>();
 
-  instances.get<TestMvvmInstance734>();
+  instances.get<TestBaseMvvmInstance734>();
 
-  instances.get<TestMvvmInstance735>();
+  instances.get<TestBaseMvvmInstance735>();
 
-  instances.get<TestMvvmInstance736>();
+  instances.get<TestBaseMvvmInstance736>();
 
-  instances.get<TestMvvmInstance737>();
+  instances.get<TestBaseMvvmInstance737>();
 
-  instances.get<TestMvvmInstance738>();
+  instances.get<TestBaseMvvmInstance738>();
 
-  instances.get<TestMvvmInstance739>();
+  instances.get<TestBaseMvvmInstance739>();
 
-  instances.get<TestMvvmInstance740>();
+  instances.get<TestBaseMvvmInstance740>();
 
-  instances.get<TestMvvmInstance741>();
+  instances.get<TestBaseMvvmInstance741>();
 
-  instances.get<TestMvvmInstance742>();
+  instances.get<TestBaseMvvmInstance742>();
 
-  instances.get<TestMvvmInstance743>();
+  instances.get<TestBaseMvvmInstance743>();
 
-  instances.get<TestMvvmInstance744>();
+  instances.get<TestBaseMvvmInstance744>();
 
-  instances.get<TestMvvmInstance745>();
+  instances.get<TestBaseMvvmInstance745>();
 
-  instances.get<TestMvvmInstance746>();
+  instances.get<TestBaseMvvmInstance746>();
 
-  instances.get<TestMvvmInstance747>();
+  instances.get<TestBaseMvvmInstance747>();
 
-  instances.get<TestMvvmInstance748>();
+  instances.get<TestBaseMvvmInstance748>();
 
-  instances.get<TestMvvmInstance749>();
+  instances.get<TestBaseMvvmInstance749>();
 
-  instances.get<TestMvvmInstance750>();
+  instances.get<TestBaseMvvmInstance750>();
 
-  instances.get<TestMvvmInstance751>();
+  instances.get<TestBaseMvvmInstance751>();
 
-  instances.get<TestMvvmInstance752>();
+  instances.get<TestBaseMvvmInstance752>();
 
-  instances.get<TestMvvmInstance753>();
+  instances.get<TestBaseMvvmInstance753>();
 
-  instances.get<TestMvvmInstance754>();
+  instances.get<TestBaseMvvmInstance754>();
 
-  instances.get<TestMvvmInstance755>();
+  instances.get<TestBaseMvvmInstance755>();
 
-  instances.get<TestMvvmInstance756>();
+  instances.get<TestBaseMvvmInstance756>();
 
-  instances.get<TestMvvmInstance757>();
+  instances.get<TestBaseMvvmInstance757>();
 
-  instances.get<TestMvvmInstance758>();
+  instances.get<TestBaseMvvmInstance758>();
 
-  instances.get<TestMvvmInstance759>();
+  instances.get<TestBaseMvvmInstance759>();
 
-  instances.get<TestMvvmInstance760>();
+  instances.get<TestBaseMvvmInstance760>();
 
-  instances.get<TestMvvmInstance761>();
+  instances.get<TestBaseMvvmInstance761>();
 
-  instances.get<TestMvvmInstance762>();
+  instances.get<TestBaseMvvmInstance762>();
 
-  instances.get<TestMvvmInstance763>();
+  instances.get<TestBaseMvvmInstance763>();
 
-  instances.get<TestMvvmInstance764>();
+  instances.get<TestBaseMvvmInstance764>();
 
-  instances.get<TestMvvmInstance765>();
+  instances.get<TestBaseMvvmInstance765>();
 
-  instances.get<TestMvvmInstance766>();
+  instances.get<TestBaseMvvmInstance766>();
 
-  instances.get<TestMvvmInstance767>();
+  instances.get<TestBaseMvvmInstance767>();
 
-  instances.get<TestMvvmInstance768>();
+  instances.get<TestBaseMvvmInstance768>();
 
-  instances.get<TestMvvmInstance769>();
+  instances.get<TestBaseMvvmInstance769>();
 
-  instances.get<TestMvvmInstance770>();
+  instances.get<TestBaseMvvmInstance770>();
 
-  instances.get<TestMvvmInstance771>();
+  instances.get<TestBaseMvvmInstance771>();
 
-  instances.get<TestMvvmInstance772>();
+  instances.get<TestBaseMvvmInstance772>();
 
-  instances.get<TestMvvmInstance773>();
+  instances.get<TestBaseMvvmInstance773>();
 
-  instances.get<TestMvvmInstance774>();
+  instances.get<TestBaseMvvmInstance774>();
 
-  instances.get<TestMvvmInstance775>();
+  instances.get<TestBaseMvvmInstance775>();
 
-  instances.get<TestMvvmInstance776>();
+  instances.get<TestBaseMvvmInstance776>();
 
-  instances.get<TestMvvmInstance777>();
+  instances.get<TestBaseMvvmInstance777>();
 
-  instances.get<TestMvvmInstance778>();
+  instances.get<TestBaseMvvmInstance778>();
 
-  instances.get<TestMvvmInstance779>();
+  instances.get<TestBaseMvvmInstance779>();
 
-  instances.get<TestMvvmInstance780>();
+  instances.get<TestBaseMvvmInstance780>();
 
-  instances.get<TestMvvmInstance781>();
+  instances.get<TestBaseMvvmInstance781>();
 
-  instances.get<TestMvvmInstance782>();
+  instances.get<TestBaseMvvmInstance782>();
 
-  instances.get<TestMvvmInstance783>();
+  instances.get<TestBaseMvvmInstance783>();
 
-  instances.get<TestMvvmInstance784>();
+  instances.get<TestBaseMvvmInstance784>();
 
-  instances.get<TestMvvmInstance785>();
+  instances.get<TestBaseMvvmInstance785>();
 
-  instances.get<TestMvvmInstance786>();
+  instances.get<TestBaseMvvmInstance786>();
 
-  instances.get<TestMvvmInstance787>();
+  instances.get<TestBaseMvvmInstance787>();
 
-  instances.get<TestMvvmInstance788>();
+  instances.get<TestBaseMvvmInstance788>();
 
-  instances.get<TestMvvmInstance789>();
+  instances.get<TestBaseMvvmInstance789>();
 
-  instances.get<TestMvvmInstance790>();
+  instances.get<TestBaseMvvmInstance790>();
 
-  instances.get<TestMvvmInstance791>();
+  instances.get<TestBaseMvvmInstance791>();
 
-  instances.get<TestMvvmInstance792>();
+  instances.get<TestBaseMvvmInstance792>();
 
-  instances.get<TestMvvmInstance793>();
+  instances.get<TestBaseMvvmInstance793>();
 
-  instances.get<TestMvvmInstance794>();
+  instances.get<TestBaseMvvmInstance794>();
 
-  instances.get<TestMvvmInstance795>();
+  instances.get<TestBaseMvvmInstance795>();
 
-  instances.get<TestMvvmInstance796>();
+  instances.get<TestBaseMvvmInstance796>();
 
-  instances.get<TestMvvmInstance797>();
+  instances.get<TestBaseMvvmInstance797>();
 
-  instances.get<TestMvvmInstance798>();
+  instances.get<TestBaseMvvmInstance798>();
 
-  instances.get<TestMvvmInstance799>();
+  instances.get<TestBaseMvvmInstance799>();
 
-  instances.get<TestMvvmInstance800>();
+  instances.get<TestBaseMvvmInstance800>();
 
-  instances.get<TestMvvmInstance801>();
+  instances.get<TestBaseMvvmInstance801>();
 
-  instances.get<TestMvvmInstance802>();
+  instances.get<TestBaseMvvmInstance802>();
 
-  instances.get<TestMvvmInstance803>();
+  instances.get<TestBaseMvvmInstance803>();
 
-  instances.get<TestMvvmInstance804>();
+  instances.get<TestBaseMvvmInstance804>();
 
-  instances.get<TestMvvmInstance805>();
+  instances.get<TestBaseMvvmInstance805>();
 
-  instances.get<TestMvvmInstance806>();
+  instances.get<TestBaseMvvmInstance806>();
 
-  instances.get<TestMvvmInstance807>();
+  instances.get<TestBaseMvvmInstance807>();
 
-  instances.get<TestMvvmInstance808>();
+  instances.get<TestBaseMvvmInstance808>();
 
-  instances.get<TestMvvmInstance809>();
+  instances.get<TestBaseMvvmInstance809>();
 
-  instances.get<TestMvvmInstance810>();
+  instances.get<TestBaseMvvmInstance810>();
 
-  instances.get<TestMvvmInstance811>();
+  instances.get<TestBaseMvvmInstance811>();
 
-  instances.get<TestMvvmInstance812>();
+  instances.get<TestBaseMvvmInstance812>();
 
-  instances.get<TestMvvmInstance813>();
+  instances.get<TestBaseMvvmInstance813>();
 
-  instances.get<TestMvvmInstance814>();
+  instances.get<TestBaseMvvmInstance814>();
 
-  instances.get<TestMvvmInstance815>();
+  instances.get<TestBaseMvvmInstance815>();
 
-  instances.get<TestMvvmInstance816>();
+  instances.get<TestBaseMvvmInstance816>();
 
-  instances.get<TestMvvmInstance817>();
+  instances.get<TestBaseMvvmInstance817>();
 
-  instances.get<TestMvvmInstance818>();
+  instances.get<TestBaseMvvmInstance818>();
 
-  instances.get<TestMvvmInstance819>();
+  instances.get<TestBaseMvvmInstance819>();
 
-  instances.get<TestMvvmInstance820>();
+  instances.get<TestBaseMvvmInstance820>();
 
-  instances.get<TestMvvmInstance821>();
+  instances.get<TestBaseMvvmInstance821>();
 
-  instances.get<TestMvvmInstance822>();
+  instances.get<TestBaseMvvmInstance822>();
 
-  instances.get<TestMvvmInstance823>();
+  instances.get<TestBaseMvvmInstance823>();
 
-  instances.get<TestMvvmInstance824>();
+  instances.get<TestBaseMvvmInstance824>();
 
-  instances.get<TestMvvmInstance825>();
+  instances.get<TestBaseMvvmInstance825>();
 
-  instances.get<TestMvvmInstance826>();
+  instances.get<TestBaseMvvmInstance826>();
 
-  instances.get<TestMvvmInstance827>();
+  instances.get<TestBaseMvvmInstance827>();
 
-  instances.get<TestMvvmInstance828>();
+  instances.get<TestBaseMvvmInstance828>();
 
-  instances.get<TestMvvmInstance829>();
+  instances.get<TestBaseMvvmInstance829>();
 
-  instances.get<TestMvvmInstance830>();
+  instances.get<TestBaseMvvmInstance830>();
 
-  instances.get<TestMvvmInstance831>();
+  instances.get<TestBaseMvvmInstance831>();
 
-  instances.get<TestMvvmInstance832>();
+  instances.get<TestBaseMvvmInstance832>();
 
-  instances.get<TestMvvmInstance833>();
+  instances.get<TestBaseMvvmInstance833>();
 
-  instances.get<TestMvvmInstance834>();
+  instances.get<TestBaseMvvmInstance834>();
 
-  instances.get<TestMvvmInstance835>();
+  instances.get<TestBaseMvvmInstance835>();
 
-  instances.get<TestMvvmInstance836>();
+  instances.get<TestBaseMvvmInstance836>();
 
-  instances.get<TestMvvmInstance837>();
+  instances.get<TestBaseMvvmInstance837>();
 
-  instances.get<TestMvvmInstance838>();
+  instances.get<TestBaseMvvmInstance838>();
 
-  instances.get<TestMvvmInstance839>();
+  instances.get<TestBaseMvvmInstance839>();
 
-  instances.get<TestMvvmInstance840>();
+  instances.get<TestBaseMvvmInstance840>();
 
-  instances.get<TestMvvmInstance841>();
+  instances.get<TestBaseMvvmInstance841>();
 
-  instances.get<TestMvvmInstance842>();
+  instances.get<TestBaseMvvmInstance842>();
 
-  instances.get<TestMvvmInstance843>();
+  instances.get<TestBaseMvvmInstance843>();
 
-  instances.get<TestMvvmInstance844>();
+  instances.get<TestBaseMvvmInstance844>();
 
-  instances.get<TestMvvmInstance845>();
+  instances.get<TestBaseMvvmInstance845>();
 
-  instances.get<TestMvvmInstance846>();
+  instances.get<TestBaseMvvmInstance846>();
 
-  instances.get<TestMvvmInstance847>();
+  instances.get<TestBaseMvvmInstance847>();
 
-  instances.get<TestMvvmInstance848>();
+  instances.get<TestBaseMvvmInstance848>();
 
-  instances.get<TestMvvmInstance849>();
+  instances.get<TestBaseMvvmInstance849>();
 
-  instances.get<TestMvvmInstance850>();
+  instances.get<TestBaseMvvmInstance850>();
 
-  instances.get<TestMvvmInstance851>();
+  instances.get<TestBaseMvvmInstance851>();
 
-  instances.get<TestMvvmInstance852>();
+  instances.get<TestBaseMvvmInstance852>();
 
-  instances.get<TestMvvmInstance853>();
+  instances.get<TestBaseMvvmInstance853>();
 
-  instances.get<TestMvvmInstance854>();
+  instances.get<TestBaseMvvmInstance854>();
 
-  instances.get<TestMvvmInstance855>();
+  instances.get<TestBaseMvvmInstance855>();
 
-  instances.get<TestMvvmInstance856>();
+  instances.get<TestBaseMvvmInstance856>();
 
-  instances.get<TestMvvmInstance857>();
+  instances.get<TestBaseMvvmInstance857>();
 
-  instances.get<TestMvvmInstance858>();
+  instances.get<TestBaseMvvmInstance858>();
 
-  instances.get<TestMvvmInstance859>();
+  instances.get<TestBaseMvvmInstance859>();
 
-  instances.get<TestMvvmInstance860>();
+  instances.get<TestBaseMvvmInstance860>();
 
-  instances.get<TestMvvmInstance861>();
+  instances.get<TestBaseMvvmInstance861>();
 
-  instances.get<TestMvvmInstance862>();
+  instances.get<TestBaseMvvmInstance862>();
 
-  instances.get<TestMvvmInstance863>();
+  instances.get<TestBaseMvvmInstance863>();
 
-  instances.get<TestMvvmInstance864>();
+  instances.get<TestBaseMvvmInstance864>();
 
-  instances.get<TestMvvmInstance865>();
+  instances.get<TestBaseMvvmInstance865>();
 
-  instances.get<TestMvvmInstance866>();
+  instances.get<TestBaseMvvmInstance866>();
 
-  instances.get<TestMvvmInstance867>();
+  instances.get<TestBaseMvvmInstance867>();
 
-  instances.get<TestMvvmInstance868>();
+  instances.get<TestBaseMvvmInstance868>();
 
-  instances.get<TestMvvmInstance869>();
+  instances.get<TestBaseMvvmInstance869>();
 
-  instances.get<TestMvvmInstance870>();
+  instances.get<TestBaseMvvmInstance870>();
 
-  instances.get<TestMvvmInstance871>();
+  instances.get<TestBaseMvvmInstance871>();
 
-  instances.get<TestMvvmInstance872>();
+  instances.get<TestBaseMvvmInstance872>();
 
-  instances.get<TestMvvmInstance873>();
+  instances.get<TestBaseMvvmInstance873>();
 
-  instances.get<TestMvvmInstance874>();
+  instances.get<TestBaseMvvmInstance874>();
 
-  instances.get<TestMvvmInstance875>();
+  instances.get<TestBaseMvvmInstance875>();
 
-  instances.get<TestMvvmInstance876>();
+  instances.get<TestBaseMvvmInstance876>();
 
-  instances.get<TestMvvmInstance877>();
+  instances.get<TestBaseMvvmInstance877>();
 
-  instances.get<TestMvvmInstance878>();
+  instances.get<TestBaseMvvmInstance878>();
 
-  instances.get<TestMvvmInstance879>();
+  instances.get<TestBaseMvvmInstance879>();
 
-  instances.get<TestMvvmInstance880>();
+  instances.get<TestBaseMvvmInstance880>();
 
-  instances.get<TestMvvmInstance881>();
+  instances.get<TestBaseMvvmInstance881>();
 
-  instances.get<TestMvvmInstance882>();
+  instances.get<TestBaseMvvmInstance882>();
 
-  instances.get<TestMvvmInstance883>();
+  instances.get<TestBaseMvvmInstance883>();
 
-  instances.get<TestMvvmInstance884>();
+  instances.get<TestBaseMvvmInstance884>();
 
-  instances.get<TestMvvmInstance885>();
+  instances.get<TestBaseMvvmInstance885>();
 
-  instances.get<TestMvvmInstance886>();
+  instances.get<TestBaseMvvmInstance886>();
 
-  instances.get<TestMvvmInstance887>();
+  instances.get<TestBaseMvvmInstance887>();
 
-  instances.get<TestMvvmInstance888>();
+  instances.get<TestBaseMvvmInstance888>();
 
-  instances.get<TestMvvmInstance889>();
+  instances.get<TestBaseMvvmInstance889>();
 
-  instances.get<TestMvvmInstance890>();
+  instances.get<TestBaseMvvmInstance890>();
 
-  instances.get<TestMvvmInstance891>();
+  instances.get<TestBaseMvvmInstance891>();
 
-  instances.get<TestMvvmInstance892>();
+  instances.get<TestBaseMvvmInstance892>();
 
-  instances.get<TestMvvmInstance893>();
+  instances.get<TestBaseMvvmInstance893>();
 
-  instances.get<TestMvvmInstance894>();
+  instances.get<TestBaseMvvmInstance894>();
 
-  instances.get<TestMvvmInstance895>();
+  instances.get<TestBaseMvvmInstance895>();
 
-  instances.get<TestMvvmInstance896>();
+  instances.get<TestBaseMvvmInstance896>();
 
-  instances.get<TestMvvmInstance897>();
+  instances.get<TestBaseMvvmInstance897>();
 
-  instances.get<TestMvvmInstance898>();
+  instances.get<TestBaseMvvmInstance898>();
 
-  instances.get<TestMvvmInstance899>();
+  instances.get<TestBaseMvvmInstance899>();
 
-  instances.get<TestMvvmInstance900>();
+  instances.get<TestBaseMvvmInstance900>();
 
-  instances.get<TestMvvmInstance901>();
+  instances.get<TestBaseMvvmInstance901>();
 
-  instances.get<TestMvvmInstance902>();
+  instances.get<TestBaseMvvmInstance902>();
 
-  instances.get<TestMvvmInstance903>();
+  instances.get<TestBaseMvvmInstance903>();
 
-  instances.get<TestMvvmInstance904>();
+  instances.get<TestBaseMvvmInstance904>();
 
-  instances.get<TestMvvmInstance905>();
+  instances.get<TestBaseMvvmInstance905>();
 
-  instances.get<TestMvvmInstance906>();
+  instances.get<TestBaseMvvmInstance906>();
 
-  instances.get<TestMvvmInstance907>();
+  instances.get<TestBaseMvvmInstance907>();
 
-  instances.get<TestMvvmInstance908>();
+  instances.get<TestBaseMvvmInstance908>();
 
-  instances.get<TestMvvmInstance909>();
+  instances.get<TestBaseMvvmInstance909>();
 
-  instances.get<TestMvvmInstance910>();
+  instances.get<TestBaseMvvmInstance910>();
 
-  instances.get<TestMvvmInstance911>();
+  instances.get<TestBaseMvvmInstance911>();
 
-  instances.get<TestMvvmInstance912>();
+  instances.get<TestBaseMvvmInstance912>();
 
-  instances.get<TestMvvmInstance913>();
+  instances.get<TestBaseMvvmInstance913>();
 
-  instances.get<TestMvvmInstance914>();
+  instances.get<TestBaseMvvmInstance914>();
 
-  instances.get<TestMvvmInstance915>();
+  instances.get<TestBaseMvvmInstance915>();
 
-  instances.get<TestMvvmInstance916>();
+  instances.get<TestBaseMvvmInstance916>();
 
-  instances.get<TestMvvmInstance917>();
+  instances.get<TestBaseMvvmInstance917>();
 
-  instances.get<TestMvvmInstance918>();
+  instances.get<TestBaseMvvmInstance918>();
 
-  instances.get<TestMvvmInstance919>();
+  instances.get<TestBaseMvvmInstance919>();
 
-  instances.get<TestMvvmInstance920>();
+  instances.get<TestBaseMvvmInstance920>();
 
-  instances.get<TestMvvmInstance921>();
+  instances.get<TestBaseMvvmInstance921>();
 
-  instances.get<TestMvvmInstance922>();
+  instances.get<TestBaseMvvmInstance922>();
 
-  instances.get<TestMvvmInstance923>();
+  instances.get<TestBaseMvvmInstance923>();
 
-  instances.get<TestMvvmInstance924>();
+  instances.get<TestBaseMvvmInstance924>();
 
-  instances.get<TestMvvmInstance925>();
+  instances.get<TestBaseMvvmInstance925>();
 
-  instances.get<TestMvvmInstance926>();
+  instances.get<TestBaseMvvmInstance926>();
 
-  instances.get<TestMvvmInstance927>();
+  instances.get<TestBaseMvvmInstance927>();
 
-  instances.get<TestMvvmInstance928>();
+  instances.get<TestBaseMvvmInstance928>();
 
-  instances.get<TestMvvmInstance929>();
+  instances.get<TestBaseMvvmInstance929>();
 
-  instances.get<TestMvvmInstance930>();
+  instances.get<TestBaseMvvmInstance930>();
 
-  instances.get<TestMvvmInstance931>();
+  instances.get<TestBaseMvvmInstance931>();
 
-  instances.get<TestMvvmInstance932>();
+  instances.get<TestBaseMvvmInstance932>();
 
-  instances.get<TestMvvmInstance933>();
+  instances.get<TestBaseMvvmInstance933>();
 
-  instances.get<TestMvvmInstance934>();
+  instances.get<TestBaseMvvmInstance934>();
 
-  instances.get<TestMvvmInstance935>();
+  instances.get<TestBaseMvvmInstance935>();
 
-  instances.get<TestMvvmInstance936>();
+  instances.get<TestBaseMvvmInstance936>();
 
-  instances.get<TestMvvmInstance937>();
+  instances.get<TestBaseMvvmInstance937>();
 
-  instances.get<TestMvvmInstance938>();
+  instances.get<TestBaseMvvmInstance938>();
 
-  instances.get<TestMvvmInstance939>();
+  instances.get<TestBaseMvvmInstance939>();
 
-  instances.get<TestMvvmInstance940>();
+  instances.get<TestBaseMvvmInstance940>();
 
-  instances.get<TestMvvmInstance941>();
+  instances.get<TestBaseMvvmInstance941>();
 
-  instances.get<TestMvvmInstance942>();
+  instances.get<TestBaseMvvmInstance942>();
 
-  instances.get<TestMvvmInstance943>();
+  instances.get<TestBaseMvvmInstance943>();
 
-  instances.get<TestMvvmInstance944>();
+  instances.get<TestBaseMvvmInstance944>();
 
-  instances.get<TestMvvmInstance945>();
+  instances.get<TestBaseMvvmInstance945>();
 
-  instances.get<TestMvvmInstance946>();
+  instances.get<TestBaseMvvmInstance946>();
 
-  instances.get<TestMvvmInstance947>();
+  instances.get<TestBaseMvvmInstance947>();
 
-  instances.get<TestMvvmInstance948>();
+  instances.get<TestBaseMvvmInstance948>();
 
-  instances.get<TestMvvmInstance949>();
+  instances.get<TestBaseMvvmInstance949>();
 
-  instances.get<TestMvvmInstance950>();
+  instances.get<TestBaseMvvmInstance950>();
 
-  instances.get<TestMvvmInstance951>();
+  instances.get<TestBaseMvvmInstance951>();
 
-  instances.get<TestMvvmInstance952>();
+  instances.get<TestBaseMvvmInstance952>();
 
-  instances.get<TestMvvmInstance953>();
+  instances.get<TestBaseMvvmInstance953>();
 
-  instances.get<TestMvvmInstance954>();
+  instances.get<TestBaseMvvmInstance954>();
 
-  instances.get<TestMvvmInstance955>();
+  instances.get<TestBaseMvvmInstance955>();
 
-  instances.get<TestMvvmInstance956>();
+  instances.get<TestBaseMvvmInstance956>();
 
-  instances.get<TestMvvmInstance957>();
+  instances.get<TestBaseMvvmInstance957>();
 
-  instances.get<TestMvvmInstance958>();
+  instances.get<TestBaseMvvmInstance958>();
 
-  instances.get<TestMvvmInstance959>();
+  instances.get<TestBaseMvvmInstance959>();
 
-  instances.get<TestMvvmInstance960>();
+  instances.get<TestBaseMvvmInstance960>();
 
-  instances.get<TestMvvmInstance961>();
+  instances.get<TestBaseMvvmInstance961>();
 
-  instances.get<TestMvvmInstance962>();
+  instances.get<TestBaseMvvmInstance962>();
 
-  instances.get<TestMvvmInstance963>();
+  instances.get<TestBaseMvvmInstance963>();
 
-  instances.get<TestMvvmInstance964>();
+  instances.get<TestBaseMvvmInstance964>();
 
-  instances.get<TestMvvmInstance965>();
+  instances.get<TestBaseMvvmInstance965>();
 
-  instances.get<TestMvvmInstance966>();
+  instances.get<TestBaseMvvmInstance966>();
 
-  instances.get<TestMvvmInstance967>();
+  instances.get<TestBaseMvvmInstance967>();
 
-  instances.get<TestMvvmInstance968>();
+  instances.get<TestBaseMvvmInstance968>();
 
-  instances.get<TestMvvmInstance969>();
+  instances.get<TestBaseMvvmInstance969>();
 
-  instances.get<TestMvvmInstance970>();
+  instances.get<TestBaseMvvmInstance970>();
 
-  instances.get<TestMvvmInstance971>();
+  instances.get<TestBaseMvvmInstance971>();
 
-  instances.get<TestMvvmInstance972>();
+  instances.get<TestBaseMvvmInstance972>();
 
-  instances.get<TestMvvmInstance973>();
+  instances.get<TestBaseMvvmInstance973>();
 
-  instances.get<TestMvvmInstance974>();
+  instances.get<TestBaseMvvmInstance974>();
 
-  instances.get<TestMvvmInstance975>();
+  instances.get<TestBaseMvvmInstance975>();
 
-  instances.get<TestMvvmInstance976>();
+  instances.get<TestBaseMvvmInstance976>();
 
-  instances.get<TestMvvmInstance977>();
+  instances.get<TestBaseMvvmInstance977>();
 
-  instances.get<TestMvvmInstance978>();
+  instances.get<TestBaseMvvmInstance978>();
 
-  instances.get<TestMvvmInstance979>();
+  instances.get<TestBaseMvvmInstance979>();
 
-  instances.get<TestMvvmInstance980>();
+  instances.get<TestBaseMvvmInstance980>();
 
-  instances.get<TestMvvmInstance981>();
+  instances.get<TestBaseMvvmInstance981>();
 
-  instances.get<TestMvvmInstance982>();
+  instances.get<TestBaseMvvmInstance982>();
 
-  instances.get<TestMvvmInstance983>();
+  instances.get<TestBaseMvvmInstance983>();
 
-  instances.get<TestMvvmInstance984>();
+  instances.get<TestBaseMvvmInstance984>();
 
-  instances.get<TestMvvmInstance985>();
+  instances.get<TestBaseMvvmInstance985>();
 
-  instances.get<TestMvvmInstance986>();
+  instances.get<TestBaseMvvmInstance986>();
 
-  instances.get<TestMvvmInstance987>();
+  instances.get<TestBaseMvvmInstance987>();
 
-  instances.get<TestMvvmInstance988>();
+  instances.get<TestBaseMvvmInstance988>();
 
-  instances.get<TestMvvmInstance989>();
+  instances.get<TestBaseMvvmInstance989>();
 
-  instances.get<TestMvvmInstance990>();
+  instances.get<TestBaseMvvmInstance990>();
 
-  instances.get<TestMvvmInstance991>();
+  instances.get<TestBaseMvvmInstance991>();
 
-  instances.get<TestMvvmInstance992>();
+  instances.get<TestBaseMvvmInstance992>();
 
-  instances.get<TestMvvmInstance993>();
+  instances.get<TestBaseMvvmInstance993>();
 
-  instances.get<TestMvvmInstance994>();
+  instances.get<TestBaseMvvmInstance994>();
 
-  instances.get<TestMvvmInstance995>();
+  instances.get<TestBaseMvvmInstance995>();
 
-  instances.get<TestMvvmInstance996>();
+  instances.get<TestBaseMvvmInstance996>();
 
-  instances.get<TestMvvmInstance997>();
+  instances.get<TestBaseMvvmInstance997>();
 
-  instances.get<TestMvvmInstance998>();
+  instances.get<TestBaseMvvmInstance998>();
 
-  instances.get<TestMvvmInstance999>();
+  instances.get<TestBaseMvvmInstance999>();
 }

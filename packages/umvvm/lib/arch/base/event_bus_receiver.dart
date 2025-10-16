@@ -5,8 +5,8 @@ import 'package:umvvm/umvvm.dart';
 
 typedef EventBusSubscriber<T> = void Function(T event);
 
-/// Base class that subscribe to event bus events
-abstract class EventBusReceiver {
+/// Mixin that subscribe to event bus events
+mixin EventBusReceiver {
   /// [Map] of [EventBus] events and function to be executed for this events
   ///
   /// ```dart

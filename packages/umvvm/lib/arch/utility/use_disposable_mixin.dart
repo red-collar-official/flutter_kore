@@ -3,8 +3,8 @@ import 'package:umvvm/umvvm.dart';
 
 /// Mixin with methods to create disposable instances that will be disposed
 /// when instance is disposed
-mixin UseDisposableMixin<Widget extends StatefulWidget>
-    on MvvmInstance<Widget> {
+mixin UseDisposableMixin<MWidget extends StatefulWidget, MState>
+    on BaseViewModel<MWidget, MState> {
   final _textEditingControllers = <TextEditingController>[];
   final _scrollControllers = <ScrollController>[];
   final _debouncers = <Debouncer>[];
