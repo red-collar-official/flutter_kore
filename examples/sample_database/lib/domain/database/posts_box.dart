@@ -2,7 +2,11 @@ import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 
 class PostsBox {
-  static Future<List<Post>> getPostsDelegate(int offset, int limit, Map? headers) async {
+  static Future<List<Post>> getPostsDelegate(
+    int offset,
+    int limit,
+    Map? headers,
+  ) async {
     final postsBox = app.objectBox.store.box<Post>();
 
     final query = postsBox.query().build();

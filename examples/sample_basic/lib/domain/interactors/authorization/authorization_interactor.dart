@@ -10,5 +10,5 @@ class AuthorizationInteractor
   }
 
   @override
-  AuthorizationState get initialState => AuthorizationState();
+  AuthorizationState get initialState => const AuthorizationState();
 }

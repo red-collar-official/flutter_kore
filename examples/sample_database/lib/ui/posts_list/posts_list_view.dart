@@ -8,10 +8,7 @@ import 'posts_list_view_model.dart';
 import 'posts_list_view_state.dart';
 
 class PostsListView extends BaseWidget {
-  const PostsListView({
-    super.key,
-    super.viewModel,
-  });
+  const PostsListView({super.key, super.viewModel});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,15 +16,14 @@ class PostsListView extends BaseWidget {
   }
 }
 
-class _PostsListViewWidgetState extends NavigationView<PostsListView,
-    PostsListViewState, PostsListViewModel> {
+class _PostsListViewWidgetState
+    extends
+        NavigationView<PostsListView, PostsListViewState, PostsListViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 232, 232, 232),
-      appBar: AppBar(
-        title: const Text('Posts'),
-      ),
+      appBar: AppBar(title: const Text('Posts')),
       body: KoreStreamBuilder<StatefulData<List<Post>>?>(
         streamWrap: viewModel.posts,
         builder: (context, snapshot) {

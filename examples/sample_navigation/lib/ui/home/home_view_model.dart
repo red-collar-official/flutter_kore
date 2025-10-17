@@ -26,9 +26,9 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
     app.navigation.setCurrentTab(tab);
   }
 
-  late final currentTab = app.instances
-      .get<NavigationInteractor>()
-      .wrapUpdates((state) => state.currentTab);
+  late final currentTab = app.instances.get<NavigationInteractor>().wrapUpdates(
+    (state) => state.currentTab,
+  );
 
   @override
   HomeViewState get initialState => HomeViewState();

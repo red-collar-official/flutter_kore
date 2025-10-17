@@ -4,10 +4,9 @@ part 'authorization_state.g.dart';
 part 'authorization_state.freezed.dart';
 
 @freezed
-class AuthorizationState with _$AuthorizationState {
-  factory AuthorizationState({
-    String? token,
-  }) = _AuthorizationState;
+abstract class AuthorizationState with _$AuthorizationState {
+  factory AuthorizationState({String? token}) = _AuthorizationState;
 
-  factory AuthorizationState.fromJson(Map<String, dynamic> json) => _$AuthorizationStateFromJson(json);
+  factory AuthorizationState.fromJson(Map<String, dynamic> json) =>
+      _$AuthorizationStateFromJson(json);
 }

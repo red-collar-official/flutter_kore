@@ -7,6 +7,7 @@ import 'package:sample_database/domain/global/apis.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
+import '../data/post.dart';
 
 part 'global_app.kore.dart';
 

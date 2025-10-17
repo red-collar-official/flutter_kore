@@ -5,6 +5,7 @@ import 'package:sample_navigation/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
+import '../data/post.dart';
 import 'apis.dart';
 
 part 'global_app.kore.dart';

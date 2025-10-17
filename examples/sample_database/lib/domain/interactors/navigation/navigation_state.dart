@@ -4,8 +4,6 @@ import 'package:sample_database/domain/data/app_tab.dart';
 part 'navigation_state.freezed.dart';
 
 @freezed
-class NavigationState with _$NavigationState {
-  factory NavigationState({
-    required AppTab currentTab,
-  }) = _NavigationState;
+abstract class NavigationState with _$NavigationState {
+  factory NavigationState({required AppTab currentTab}) = _NavigationState;
 }

@@ -9,10 +9,7 @@ import 'home_view_model.dart';
 import 'home_view_state.dart';
 
 class HomeView extends BaseWidget {
-  const HomeView({
-    super.key,
-    super.viewModel,
-  });
+  const HomeView({super.key, super.viewModel});
 
   @override
   State<StatefulWidget> createState() {
@@ -36,13 +33,15 @@ class _HomeViewWidgetState
         builder: (context, snapshot) {
           return Stack(
             children: AppTabs.tabs
-                .map((tab) => tabNavigationContainer(
-                      offstage: snapshot.data?.index != tab.index,
-                      navigationKey: viewModel.getNavigatorKey(tab),
-                      view: tabViews[tab]!,
-                      name: tab.name,
-                      tab: tab,
-                    ))
+                .map(
+                  (tab) => tabNavigationContainer(
+                    offstage: snapshot.data?.index != tab.index,
+                    navigationKey: viewModel.getNavigatorKey(tab),
+                    view: tabViews[tab]!,
+                    name: tab.name,
+                    tab: tab,
+                  ),
+                )
                 .toList(),
           );
         },

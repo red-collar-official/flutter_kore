@@ -12,17 +12,20 @@ import 'components/screens/routes.dart';
 import 'navigation_state.dart';
 
 @singleton
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    Routes,
-    Dialogs,
-    BottomSheets,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames,
-    BaseDeepLinksInteractor> {
+class NavigationInteractor
+    extends
+        BaseNavigationInteractor<
+          NavigationState,
+          Map<String, dynamic>,
+          AppTab,
+          Routes,
+          Dialogs,
+          BottomSheets,
+          RouteNames,
+          DialogNames,
+          BottomSheetNames,
+          BaseDeepLinksInteractor
+        > {
   final _routes = Routes();
   final _dialogs = Dialogs();
   final _bottomSheets = BottomSheets();
@@ -32,15 +35,15 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   NavigationInteractorSettings get settings => NavigationInteractorSettings(
-        initialRoute: RouteNames.home,
-        tabs: AppTabs.tabs,
-        tabViewHomeRoute: RouteNames.home,
-        initialTabRoutes: {
-          AppTabs.posts: RouteNames.posts,
-          AppTabs.likedPosts: RouteNames.likedPosts,
-        },
-        appContainsTabNavigation: true,
-      );
+    initialRoute: RouteNames.home,
+    tabs: AppTabs.tabs,
+    tabViewHomeRoute: RouteNames.home,
+    initialTabRoutes: {
+      AppTabs.posts: RouteNames.posts,
+      AppTabs.likedPosts: RouteNames.likedPosts,
+    },
+    appContainsTabNavigation: true,
+  );
 
   @override
   BottomSheets get bottomSheets => _bottomSheets;
@@ -72,7 +75,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
   }
 
   @override
-  NavigationState get initialState => NavigationState(
-        currentTab: AppTabs.posts,
-      );
+  NavigationState get initialState =>
+      NavigationState(currentTab: AppTabs.posts);
 }

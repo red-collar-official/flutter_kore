@@ -1,11 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'post.g.dart';
-part 'post.freezed.dart';
+part 'post.mapper.dart';
 
-@freezed
-class Post with _$Post {
-  factory Post({String? title, String? body, int? id, @Default(false) bool isLiked}) = _Post;
+@MappableClass()
+class Post with PostMappable {
+  const Post({this.title, this.body, this.id, this.isLiked = false});
 
-  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+  final String? title;
+  final String? body;
+  final int? id;
+  final bool isLiked;
+
+  static const fromMap = PostMapper.fromMap;
 }

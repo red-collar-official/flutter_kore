@@ -30,12 +30,7 @@ class PostCard extends StatelessWidget {
             children: [
               _buildUserHeader(),
               const SizedBox(height: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
+              Text(title, style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 8),
               Text(body),
               const SizedBox(height: 8),
@@ -48,27 +43,22 @@ class PostCard extends StatelessWidget {
   }
 
   Widget _buildControls() => Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          GestureDetector(
-            onTap: onLikeTap,
-            child: Icon(
-              Icons.heart_broken,
-              color: isLiked ? Colors.red : Colors.grey,
-            ),
-          ),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      GestureDetector(
+        onTap: onLikeTap,
+        child: Icon(
+          Icons.heart_broken,
+          color: isLiked ? Colors.red : Colors.grey,
+        ),
+      ),
+    ],
+  );
 
   Widget _buildUserHeader() => const Row(
-        children: [
-          Icon(Icons.person),
-          Text(
-            'Unnamed user',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      );
+    children: [
+      Icon(Icons.person),
+      Text('Unnamed user', style: TextStyle(fontWeight: FontWeight.bold)),
+    ],
+  );
 }

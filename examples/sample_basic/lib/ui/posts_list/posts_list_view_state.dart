@@ -1,13 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'posts_list_view_state.g.dart';
-part 'posts_list_view_state.freezed.dart';
+part 'posts_list_view_state.mapper.dart';
 
-@freezed
-class PostsListViewState with _$PostsListViewState {
-  factory PostsListViewState({
-    @Default(false) bool darkMode,
-  }) = _PostsListViewState;
+@MappableClass()
+class PostsListViewState with PostsListViewStateMappable {
+  const PostsListViewState({this.darkMode = false});
 
-  factory PostsListViewState.fromJson(Map<String, dynamic> json) => _$PostsListViewStateFromJson(json);
+  final bool darkMode;
+
+  static const fromMap = PostsListViewStateMapper.fromMap;
 }

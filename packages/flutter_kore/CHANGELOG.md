@@ -1,3 +1,9 @@
+## 1.4.1
+
+- Update main example
+- Update additional examples
+- Update template
+
 ## 1.4.0
 
 - Rename package

@@ -22,15 +22,15 @@ class NavigationInteractor
 
   @override
   NavigationInteractorSettings get settings => NavigationInteractorSettings(
-        initialRoute: RouteNames.home,
-        tabs: AppTabs.tabs,
-        tabViewHomeRoute: RouteNames.home,
-        initialTabRoutes: {
-          AppTabs.posts: RouteNames.posts,
-          AppTabs.likedPosts: RouteNames.likedPosts,
-        },
-        appContainsTabNavigation: true,
-      );
+    initialRoute: RouteNames.home,
+    tabs: AppTabs.tabs,
+    tabViewHomeRoute: RouteNames.home,
+    initialTabRoutes: {
+      AppTabs.posts: RouteNames.posts,
+      AppTabs.likedPosts: RouteNames.likedPosts,
+    },
+    appContainsTabNavigation: true,
+  );
 
   @override
   Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route) async {
@@ -55,7 +55,6 @@ class NavigationInteractor
   }
 
   @override
-  NavigationState get initialState => NavigationState(
-        currentTab: AppTabs.posts,
-      );
+  NavigationState get initialState =>
+      NavigationState(currentTab: AppTabs.posts);
 }

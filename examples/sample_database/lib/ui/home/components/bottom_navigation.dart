@@ -6,9 +6,7 @@ typedef OnTabChangedCallback = void Function(AppTab appTab);
 class BottomNavigationItemData {
   final AppTab appTabValue;
 
-  const BottomNavigationItemData(
-    this.appTabValue,
-  );
+  const BottomNavigationItemData(this.appTabValue);
 }
 
 class BottomNavigation extends StatelessWidget {
@@ -29,7 +27,10 @@ class BottomNavigation extends StatelessWidget {
       height: 82,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.08),
@@ -38,7 +39,12 @@ class BottomNavigation extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 12, left: 12, bottom: 22),
+        padding: const EdgeInsets.only(
+          top: 20,
+          right: 12,
+          left: 12,
+          bottom: 22,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: items
@@ -89,11 +95,7 @@ class BottomNavigationItem extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           clipBehavior: Clip.antiAlias,
-          children: [
-            Positioned.fill(
-              child: buildIcon(),
-            ),
-          ],
+          children: [Positioned.fill(child: buildIcon())],
         ),
       ),
     );

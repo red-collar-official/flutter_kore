@@ -22,17 +22,15 @@ class PostsApi {
 
           return list;
         }
-        ..databaseGetDelegate =
-            ((headers) => PostsBox.getPostsDelegate(offset, limit, headers))
+        ..databaseGetDelegate = ((headers) =>
+            PostsBox.getPostsDelegate(offset, limit, headers))
         ..databasePutDelegate = (PostsBox.putPostsDelegate);
 
   HttpRequest<Post?> likePost(int id) => HttpRequest<Post?>()
     ..method = RequestMethod.post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts'
-    ..body = {
-      'id': id,
-    }
+    ..body = {'id': id}
     ..parser = (result, headers) async {
       if (result == null) {
         return null;
@@ -42,21 +40,14 @@ class PostsApi {
     }
     ..simulateResult = Response(
       code: 200,
-      result: Post(
-        title: 'qwerty',
-        body: 'qwerty',
-        id: id,
-        isLiked: true,
-      ),
+      result: Post(title: 'qwerty', body: 'qwerty', id: id, isLiked: true),
     );
 
   HttpRequest<Post?> getPost(int id) => HttpRequest<Post?>()
     ..method = RequestMethod.post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts/$id'
-    ..body = {
-      'id': id,
-    }
+    ..body = {'id': id}
     ..parser = (result, headers) async {
       if (result == null) {
         return null;
@@ -66,12 +57,7 @@ class PostsApi {
     }
     ..simulateResult = Response(
       code: 200,
-      result: Post(
-        title: 'qwerty',
-        body: 'qwerty',
-        id: id,
-        isLiked: true,
-      ),
+      result: Post(title: 'qwerty', body: 'qwerty', id: id, isLiked: true),
     )
     ..databaseGetDelegate = ((headers) => PostsBox.getPostDelegate(id))
     ..databasePutDelegate = (PostsBox.putPostDelegate);

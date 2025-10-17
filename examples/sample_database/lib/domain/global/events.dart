@@ -7,7 +7,5 @@ class PostLikedEvent {
 class GlobalRoutePushedEvent {
   final bool replace;
 
-  const GlobalRoutePushedEvent({
-    this.replace = false,
-  });
+  const GlobalRoutePushedEvent({this.replace = false});
 }

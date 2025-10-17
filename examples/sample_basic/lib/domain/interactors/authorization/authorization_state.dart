@@ -1,13 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'authorization_state.g.dart';
-part 'authorization_state.freezed.dart';
+part 'authorization_state.mapper.dart';
 
-@freezed
-class AuthorizationState with _$AuthorizationState {
-  factory AuthorizationState({
-    String? token,
-  }) = _AuthorizationState;
+@MappableClass()
+class AuthorizationState with AuthorizationStateMappable {
+  const AuthorizationState({this.token});
 
-  factory AuthorizationState.fromJson(Map<String, dynamic> json) => _$AuthorizationStateFromJson(json);
+  final String? token;
+
+  static const fromMap = AuthorizationStateMapper.fromMap;
 }

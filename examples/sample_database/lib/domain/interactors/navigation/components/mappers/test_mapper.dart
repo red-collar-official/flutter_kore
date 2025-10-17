@@ -14,13 +14,9 @@ class TestMapper extends LinkMapper {
   }
 
   @override
-  LinkParams mapParamsFromUrl(
-    String url,
-  ) {
+  LinkParams mapParamsFromUrl(String url) {
     return const LinkParams(
-      pathParams: {
-        'testParam': 'qwerty',
-      },
+      pathParams: {'testParam': 'qwerty'},
       queryParams: {},
       state: null,
     );

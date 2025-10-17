@@ -1,23 +1,19 @@
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'app_tab.freezed.dart';
+part 'app_tab.mapper.dart';
 
-@freezed
-class AppTab with _$AppTab {
-  const factory AppTab({
-    required String name,
-    required int index,
-    required IconData icon,
-  }) = _AppTab;
+@MappableClass()
+class AppTab with AppTabMappable {
+  const AppTab({required this.name, required this.index, required this.icon});
+
+  final String name;
+  final int index;
+  final IconData icon;
 }
 
 class AppTabs {
-  static const AppTab posts = AppTab(
-    name: 'posts',
-    index: 0,
-    icon: Icons.feed,
-  );
+  static const AppTab posts = AppTab(name: 'posts', index: 0, icon: Icons.feed);
 
   static const AppTab likedPosts = AppTab(
     name: 'liked_posts',
@@ -25,8 +21,5 @@ class AppTabs {
     icon: Icons.feed,
   );
 
-  static const List<AppTab> tabs = [
-    posts,
-    likedPosts,
-  ];
+  static const List<AppTab> tabs = [posts, likedPosts];
 }

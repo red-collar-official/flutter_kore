@@ -45,7 +45,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?>
   }
 
   @override
-  PostsState get initialState => PostsState();
+  PostsState get initialState => const PostsState();
 
   @override
   List<EventBusSubscriber> subscribe() => [

@@ -41,6 +41,7 @@ app.*.map.json
 #Dart generated file
 lib/**/*.g.dart
 lib/**/*.freezed.dart
+lib/**/*.mapper.dart
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

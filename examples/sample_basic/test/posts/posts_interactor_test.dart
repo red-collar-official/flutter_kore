@@ -12,7 +12,7 @@ class MockPostsApi extends PostsApi {
       super.getPosts(offset, limit)
         ..simulateResult = Response(
           code: 200,
-          result: [Post(title: '', body: '', id: 1)],
+          result: const [Post(title: '', body: '', id: 1)],
         );
 }
 

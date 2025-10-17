@@ -16,7 +16,7 @@ class PostsApi {
           final list = <Post>[];
 
           result?.forEach((data) {
-            list.add(Post.fromJson(data));
+            list.add(Post.fromMap(data));
           });
 
           return list;
@@ -32,7 +32,7 @@ class PostsApi {
         return null;
       }
 
-      return Post.fromJson(result);
+      return Post.fromMap(result);
     }
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
@@ -50,7 +50,7 @@ class PostsApi {
         return null;
       }
 
-      return Post.fromJson(result);
+      return Post.fromMap(result);
     }
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(

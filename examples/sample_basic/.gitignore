@@ -23,6 +23,7 @@
 **/*.freezed.dart
 lib/**/*.kore.dart
 lib/**/*.api.dart
+lib/**/*.mapper.dart
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -41,6 +42,7 @@ lib/**/*.api.dart
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/android/build
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

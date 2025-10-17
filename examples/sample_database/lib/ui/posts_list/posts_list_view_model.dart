@@ -11,9 +11,7 @@ class PostsListViewModel
   @override
   DependentKoreInstanceConfiguration get configuration =>
       DependentKoreInstanceConfiguration(
-        dependencies: [
-          app.connectors.postsInteractorConnector(),
-        ],
+        dependencies: [app.connectors.postsInteractorConnector()],
       );
 
   late final postsInteractor = useLocalInstance<PostsInteractor>();

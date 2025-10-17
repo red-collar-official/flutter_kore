@@ -45,5 +45,5 @@ class PostsListViewModel
   late final posts = postsInteractor.wrapUpdates((state) => state.posts);
 
   @override
-  PostsListViewState get initialState => PostsListViewState();
+  PostsListViewState get initialState => const PostsListViewState();
 }

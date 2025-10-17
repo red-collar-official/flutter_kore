@@ -1,13 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'user_defaults_state.g.dart';
-part 'user_defaults_state.freezed.dart';
+part 'user_defaults_state.mapper.dart';
 
-@freezed
-class UserDefaultsState with _$UserDefaultsState {
-  factory UserDefaultsState({
-    @Default(false) bool firstAppLaunch,
-  }) = _UserDefaultsState;
+@MappableClass()
+class UserDefaultsState with UserDefaultsStateMappable {
+  const UserDefaultsState({this.firstAppLaunch = false});
 
-  factory UserDefaultsState.fromJson(Map<String, dynamic> json) => _$UserDefaultsStateFromJson(json);
+  final bool firstAppLaunch;
+
+  static const fromMap = UserDefaultsStateMapper.fromMap;
 }

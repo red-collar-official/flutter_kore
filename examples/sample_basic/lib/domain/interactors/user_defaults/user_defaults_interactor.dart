@@ -7,7 +7,7 @@ class UserDefaultsInteractor
     extends BaseInteractor<UserDefaultsState, Map<String, dynamic>?> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
-    updateState(UserDefaultsState.fromJson(savedStateObject));
+    updateState(UserDefaultsState.fromMap(savedStateObject));
   }
 
   void saveFirstAppLaunch() {
@@ -15,10 +15,10 @@ class UserDefaultsInteractor
   }
 
   @override
-  UserDefaultsState get initialState => UserDefaultsState();
+  UserDefaultsState get initialState => const UserDefaultsState();
 
   @override
-  Map<String, dynamic> get savedStateObject => state.toJson();
+  Map<String, dynamic> get savedStateObject => state.toMap();
 
   @override
   StateFulInstanceSettings get stateFulInstanceSettings =>

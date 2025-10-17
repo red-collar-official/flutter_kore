@@ -12,13 +12,10 @@ class MockPostsApi extends PostsApi {
   @override
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       HttpRequest<List<Post>>()
-        ..simulateResult = Response(code: 200, result: [
-          Post(
-            title: 'TestTitle',
-            body: 'TestBody',
-            id: 1,
-          )
-        ]);
+        ..simulateResult = Response(
+          code: 200,
+          result: [Post(title: 'TestTitle', body: 'TestBody', id: 1)],
+        );
 }
 
 void main() {
@@ -35,9 +32,9 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      await tester.pumpWidget(const MaterialApp(
-        home: Material(child: PostsListView()),
-      ));
+      await tester.pumpWidget(
+        const MaterialApp(home: Material(child: PostsListView())),
+      );
 
       await Future.delayed(const Duration(seconds: 3), () {});
 

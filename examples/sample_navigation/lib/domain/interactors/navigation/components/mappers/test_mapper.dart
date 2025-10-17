@@ -7,20 +7,16 @@ class TestMapper extends LinkMapper {
   @override
   UIRoute constructRoute(LinkParams params) {
     return UIRoute<RouteNames>(
-      name: RouteNames.postsRegex,
+      name: RouteNames.posts,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
   }
 
   @override
-  LinkParams mapParamsFromUrl(
-    String url,
-  ) {
+  LinkParams mapParamsFromUrl(String url) {
     return const LinkParams(
-      pathParams: {
-        'testParam': 'qwerty',
-      },
+      pathParams: {'testParam': 'qwerty'},
       queryParams: {},
       state: null,
     );

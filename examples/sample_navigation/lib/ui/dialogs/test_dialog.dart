@@ -15,10 +15,11 @@ class TestDialog extends StatelessWidget {
           children: [
             const Text('Test dialog'),
             TextButton(
-                onPressed: () {
-                  app.navigation.pop();
-                },
-                child: const Text('Close'))
+              onPressed: () {
+                app.navigation.pop();
+              },
+              child: const Text('Close'),
+            ),
           ],
         ),
       ),

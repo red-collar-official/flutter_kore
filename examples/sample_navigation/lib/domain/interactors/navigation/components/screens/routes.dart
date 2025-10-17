@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample_navigation/domain/interactors/navigation/components/mappers/test_mapper.dart';
 import 'package:sample_navigation/ui/post/post_view.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/data/post.dart';
@@ -9,25 +8,15 @@ part 'routes.navigation.dart';
 
 @routes
 class Routes extends RoutesBase with RoutesGen {
-  UIRoute<RouteNames> post({
-    Post? post,
-    int? id,
-    int? filter,
-  }) {
+  UIRoute<RouteNames> post({Post? post, int? id}) {
     return UIRoute(
       name: RouteNames.post,
       defaultSettings: const UIRouteSettings(),
-      child: PostView(
-        post: post,
-        id: id,
-        filter: filter,
-      ),
+      child: PostView(post: post, id: id),
     );
   }
 
-  @Link(
-    paths: ['posts'],
-  )
+  @Link(paths: ['posts'])
   UIRoute<RouteNames> posts({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,

@@ -11,9 +11,7 @@ class PostsListViewModel
   @override
   DependentKoreInstanceConfiguration get configuration =>
       DependentKoreInstanceConfiguration(
-        dependencies: [
-          app.connectors.postsInteractorConnector(),
-        ],
+        dependencies: [app.connectors.postsInteractorConnector()],
       );
 
   late final postsInteractor = useLocalInstance<PostsInteractor>();
@@ -29,9 +27,7 @@ class PostsListViewModel
 
   void openPost(Post post) {
     app.navigation.routeTo(
-      app.navigation.routes.post(
-        post: post,
-      ),
+      app.navigation.routes.post(post: post),
       forceGlobal: true,
     );
   }

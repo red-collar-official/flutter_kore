@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sample_navigation/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/ui/home/home_view.dart';
-import 'app_view_model.dart';
-import 'app_view_state.dart';
 
-class AppView extends BaseWidget {
-  const AppView({
-    super.key,
-    super.viewModel,
-  });
+class AppView extends StatefulWidget {
+  const AppView({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,8 +12,7 @@ class AppView extends BaseWidget {
   }
 }
 
-class _AppViewWidgetState
-    extends NavigationView<AppView, AppViewState, AppViewModel> {
+class _AppViewWidgetState extends IndependentNavigationView<AppView> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(
@@ -28,10 +22,5 @@ class _AppViewWidgetState
         initialRoute: RouteNames.home.name,
       ),
     );
-  }
-
-  @override
-  AppViewModel createViewModel() {
-    return AppViewModel();
   }
 }

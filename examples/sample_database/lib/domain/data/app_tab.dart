@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'app_tab.freezed.dart';
 
 @freezed
-class AppTab with _$AppTab {
+abstract class AppTab with _$AppTab {
   const factory AppTab({
     required String name,
     required int index,
@@ -13,11 +13,7 @@ class AppTab with _$AppTab {
 }
 
 class AppTabs {
-  static const AppTab posts = AppTab(
-    name: 'posts',
-    index: 0,
-    icon: Icons.feed,
-  );
+  static const AppTab posts = AppTab(name: 'posts', index: 0, icon: Icons.feed);
 
   static const AppTab likedPosts = AppTab(
     name: 'liked_posts',
@@ -25,8 +21,5 @@ class AppTabs {
     icon: Icons.feed,
   );
 
-  static const List<AppTab> tabs = [
-    posts,
-    likedPosts,
-  ];
+  static const List<AppTab> tabs = [posts, likedPosts];
 }

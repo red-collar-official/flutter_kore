@@ -10,14 +10,12 @@ import 'package:sample_database/ui/post/post_view.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<Post?> getPost(int id) => super.getPost(id)
-    ..simulateResult = Response(
-        code: 200,
-        result: Post(
-          title: 'TestTitle',
-          body: 'TestBody',
-          id: 1,
-        ));
+  HttpRequest<Post?> getPost(int id) =>
+      super.getPost(id)
+        ..simulateResult = Response(
+          code: 200,
+          result: Post(title: 'TestTitle', body: 'TestBody', id: 1),
+        );
 }
 
 void main() {
@@ -37,9 +35,9 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      await tester.pumpWidget(const MaterialApp(
-        home: Material(child: PostView(id: 1)),
-      ));
+      await tester.pumpWidget(
+        const MaterialApp(home: Material(child: PostView(id: 1))),
+      );
 
       await Future.delayed(const Duration(seconds: 3), () {});
 

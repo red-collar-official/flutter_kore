@@ -26,9 +26,7 @@ class PostsApi {
     ..method = RequestMethod.post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts'
-    ..body = {
-      'id': id,
-    }
+    ..body = {'id': id}
     ..parser = (result, headers) async {
       if (result == null) {
         return null;
@@ -39,21 +37,14 @@ class PostsApi {
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
       code: 200,
-      result: Post(
-        title: 'qwerty',
-        body: 'qwerty',
-        id: id,
-        isLiked: true,
-      ),
+      result: Post(title: 'qwerty', body: 'qwerty', id: id, isLiked: true),
     );
 
   HttpRequest<Post?> getPost(int id) => HttpRequest<Post?>()
     ..method = RequestMethod.post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts/$id'
-    ..body = {
-      'id': id,
-    }
+    ..body = {'id': id}
     ..parser = (result, headers) async {
       if (result == null) {
         return null;
@@ -64,11 +55,6 @@ class PostsApi {
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
       code: 200,
-      result: Post(
-        title: 'qwerty',
-        body: 'qwerty',
-        id: id,
-        isLiked: true,
-      ),
+      result: Post(title: 'qwerty', body: 'qwerty', id: id, isLiked: true),
     );
 }

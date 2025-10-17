@@ -8,14 +8,12 @@ import 'package:test/test.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<Post?> getPost(int id) => super.getPost(id)
-    ..simulateResult = Response(
-        code: 200,
-        result: Post(
-          title: '',
-          body: '',
-          id: 1,
-        ));
+  HttpRequest<Post?> getPost(int id) =>
+      super.getPost(id)
+        ..simulateResult = Response(
+          code: 200,
+          result: Post(title: '', body: '', id: 1),
+        );
 }
 
 void main() {

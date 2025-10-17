@@ -5,8 +5,6 @@ import 'package:sample_database/domain/data/post.dart';
 part 'post_state.freezed.dart';
 
 @freezed
-class PostState with _$PostState {
-  factory PostState({
-    StatefulData<Post>? post,
-  }) = _PostState;
+abstract class PostState with _$PostState {
+  factory PostState({StatefulData<Post>? post}) = _PostState;
 }

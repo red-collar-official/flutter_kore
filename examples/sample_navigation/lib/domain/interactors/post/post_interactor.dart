@@ -6,8 +6,8 @@ import 'package:sample_navigation/domain/interactors/mixins/like_post_mixin.dart
 
 import 'post_state.dart';
 
-@basicInstance
-class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
+@Instance(inputType: Post)
+class PostInteractor extends BaseInteractor<PostState, Post>
     with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
     updateState(state.copyWith(post: const LoadingData()));
@@ -34,15 +34,16 @@ class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
   }
 
   @override
-  PostState get initialState => PostState();
+  PostState get initialState =>
+      PostState(post: input == null ? null : SuccessData(result: input!));
 
   @override
   List<EventBusSubscriber> subscribe() => [
-        on<PostLikedEvent>((event) {
-          if (state.post is SuccessData<Post> &&
-              event.id == (state.post as SuccessData<Post>).result.id) {
-            _onPostLiked();
-          }
-        }),
-      ];
+    on<PostLikedEvent>((event) {
+      if (state.post is SuccessData<Post> &&
+          event.id == (state.post as SuccessData<Post>).result.id) {
+        _onPostLiked();
+      }
+    }),
+  ];
 }

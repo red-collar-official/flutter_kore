@@ -23,7 +23,7 @@ class HttpRequest<T> extends DioRequest<T> {
   HttpRequest() : super();
 
   @override
-  RequestSettings get defaultSettings => RequestSettings(
+  RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
     logPrint: (message) {
       if (kDebugMode) {
         print(message);

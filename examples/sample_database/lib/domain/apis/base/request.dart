@@ -23,19 +23,19 @@ class HttpRequest<T> extends DioRequest<T> {
   HttpRequest() : super();
 
   @override
-  RequestSettings get defaultSettings => RequestSettings(
-        logPrint: (message) {
-          if (kDebugMode) {
-            print(message);
-          }
-        },
-        exceptionPrint: (error, trace) {
-          if (kDebugMode) {
-            print(error);
-            print(trace);
-          }
-        },
-      );
+  RequestSettings<Interceptor> get defaultSettings => RequestSettings(
+    logPrint: (message) {
+      if (kDebugMode) {
+        print(message);
+      }
+    },
+    exceptionPrint: (error, trace) {
+      if (kDebugMode) {
+        print(error);
+        print(trace);
+      }
+    },
+  );
 
   @override
   void onAuthorization(Dio dio) {
