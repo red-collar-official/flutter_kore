@@ -13,4 +13,4 @@ To generate test coverage report run <b>sh coverage.sh</b> in corresponding pack
 
 #### VSCode extension
 
-To generate common folders like view folders, interactors and wrappers you can use [VSCode extension](https://github.com/red-collar-official/flutter_kore-gen)
+To generate common folders like view folders, interactors and wrappers you can use [VSCode extension](https://github.com/red-collar-official/flutter_kore_gen)
