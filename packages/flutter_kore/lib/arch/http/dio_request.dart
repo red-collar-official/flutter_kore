@@ -37,7 +37,7 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///
 ///}
 /// ```
-abstract class DioRequest<T> 
+abstract class DioRequest<T>
     extends BaseRequest<T, dio.Interceptor, dio.Dio, dio.FormData> {
   /// Dio cancel token for this request
   /// changes after every [execute] call

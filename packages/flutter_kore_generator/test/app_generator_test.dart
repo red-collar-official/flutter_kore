@@ -16,17 +16,13 @@ void main() {
 import 'package:flutter_kore/annotations/kore_instance.dart';
 
 @singleton
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
-  @override
-  String provideInstance() {
-    return '';
-  }
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 }
           ''',
         },
         outputs: {
           'generated|lib/test_app.kore.json':
-              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]'
+              '[{"name":"StringWrapper","isSingleton":true,"isLazy":false,"isPart":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]'
         },
       );
 
@@ -35,7 +31,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.kore.json':
-              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]',
+              '[{"name":"StringWrapper","isSingleton":true,"isLazy":false,"isPart":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]',
           'test_app_main.dart': '''
 import 'package:flutter_kore/annotations/main_app.dart';
 
@@ -52,8 +48,8 @@ class App extends KoreApp with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.kore.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_app_main.dart';
 
@@ -94,18 +90,14 @@ mixin AppGen on KoreApp {
           'test_app.dart': '''
 import 'package:flutter_kore/annotations/kore_instance.dart';
 
-@Instance(singleton: true, awaitInitialization: true, initializationOrder: 1)
-class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
-  @override
-  String provideInstance() {
-    return '';
-  }
+@Instance(isSingleton: true, awaitInitialization: true, initializationOrder: 1)
+class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 }
           ''',
         },
         outputs: {
           'generated|lib/test_app.kore.json':
-              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]'
+              '[{"name":"StringWrapper","isSingleton":true,"isLazy":false,"isPart":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]'
         },
       );
 
@@ -114,7 +106,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.kore.json':
-              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
+              '[{"name":"StringWrapper","isSingleton":true,"isLazy":false,"isPart":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
 import 'package:flutter_kore/annotations/main_app.dart';
 
@@ -131,8 +123,8 @@ class App extends KoreApp with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.kore.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_app_main.dart';
 
@@ -176,7 +168,7 @@ mixin AppGen on KoreApp {
         generateMainApp(BuilderOptions.empty),
         {
           'test_app.kore.json':
-              '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
+              '[{"name":"StringWrapper","isSingleton":true,"isLazy":false,"isPart":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
 import 'package:flutter_kore/annotations/main_app.dart';
 
@@ -301,8 +293,8 @@ class App<T> extends KoreApp<NavigationInteractor> with AppGen {
         },
         outputs: {
           'generated|lib/test_app_main.kore.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_app_main.dart';
 

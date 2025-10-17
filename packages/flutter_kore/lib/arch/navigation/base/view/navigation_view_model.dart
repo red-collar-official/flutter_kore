@@ -86,12 +86,10 @@ abstract class IndependentNavigationView<KWidget extends StatefulWidget>
     try {
       final currentNavigatorKey = Navigator.of(context).widget.key;
 
-      if (currentNavigatorKey !=
-              navigationInteractor.globalNavigatorKey &&
+      if (currentNavigatorKey != navigationInteractor.globalNavigatorKey &&
           currentNavigatorKey !=
               navigationInteractor.bottomSheetDialogNavigatorKey) {
-        for (final entry
-            in navigationInteractor.currentTabKeys.entries) {
+        for (final entry in navigationInteractor.currentTabKeys.entries) {
           if (entry.value == currentNavigatorKey) {
             screenTab = entry.key;
           }

@@ -22,7 +22,7 @@ class InstancesCollectorGenerator extends Generator {
       final inputType =
           element.annotation.peek('inputType')?.typeValue.getDisplayString();
       final asyncValue = element.annotation.peek('isAsync')?.boolValue ?? false;
-      final partValue = element.annotation.peek('part')?.boolValue ?? false;
+      final partValue = element.annotation.peek('isPart')?.boolValue ?? false;
       final awaitInitialization =
           element.annotation.peek('awaitInitialization')?.boolValue ?? false;
       final order = element.annotation
@@ -31,18 +31,18 @@ class InstancesCollectorGenerator extends Generator {
           )
           ?.intValue;
       final singleton =
-          element.annotation.peek('singleton')?.boolValue ?? false;
+          element.annotation.peek('isSingleton')?.boolValue ?? false;
       final lazy = element.annotation.peek('isLazy')?.boolValue ?? false;
 
       instancesJsonModels.add(InstanceJsonModel(
         name: name,
-        singleton: singleton,
+        isSingleton: singleton,
         isLazy: lazy,
         inputType: inputType ?? '',
         awaitInitialization: awaitInitialization,
         initializationOrder: order,
         isAsync: asyncValue,
-        part: partValue,
+        isPart: partValue,
       ));
     }
 

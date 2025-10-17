@@ -16,7 +16,7 @@ import 'package:flutter_kore_generator/collectors/models/api_json_model.dart';
 import 'package:flutter_kore_generator/collectors/models/instance_json_model.dart';
 import 'package:flutter_kore_generator/utility/annotated_function_visitor.dart';
 
-final log = Logger('flutter_koreGen');
+final log = Logger('flutter_kore_gen');
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
@@ -86,7 +86,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     // ignore: prefer_foreach
     for (final element in instances) {
-      if (element.singleton && !element.isLazy && !element.part) {
+      if (element.isSingleton && !element.isLazy && !element.isPart) {
         classBuffer.writeln(
           'connectors.${uncapitalize(element.name)}Connector(),',
         );
@@ -146,7 +146,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
       final asyncValue = element.isAsync;
       final awaitInitializationValue = element.awaitInitialization;
       final orderValue = element.initializationOrder;
-      final partValue = element.part;
+      final partValue = element.isPart;
 
       String overridesString = '';
 

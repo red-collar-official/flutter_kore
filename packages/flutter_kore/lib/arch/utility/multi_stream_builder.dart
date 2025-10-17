@@ -49,12 +49,10 @@ class KoreMultiStreamBuilder extends StatefulWidget {
   final Widget Function(BuildContext, AsyncSnapshot<List>) builder;
 
   @override
-  State<KoreMultiStreamBuilder> createState() =>
-      _KoreMultiStreamBuilderState();
+  State<KoreMultiStreamBuilder> createState() => _KoreMultiStreamBuilderState();
 }
 
-class _KoreMultiStreamBuilderState
-    extends State<KoreMultiStreamBuilder> {
+class _KoreMultiStreamBuilderState extends State<KoreMultiStreamBuilder> {
   late StreamController<List> controller;
 
   void initBuilder() {

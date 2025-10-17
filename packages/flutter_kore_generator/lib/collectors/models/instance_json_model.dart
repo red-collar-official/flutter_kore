@@ -1,30 +1,30 @@
 class InstanceJsonModel {
   final String name;
-  final bool singleton;
+  final bool isSingleton;
   final bool isLazy;
   final String inputType;
   final bool awaitInitialization;
   final int? initializationOrder;
   final bool isAsync;
-  final bool part;
+  final bool isPart;
 
   InstanceJsonModel({
     required this.name,
-    required this.singleton,
+    required this.isSingleton,
     required this.isLazy,
     required this.inputType,
     required this.awaitInitialization,
     required this.initializationOrder,
     required this.isAsync,
-    required this.part,
+    required this.isPart,
   });
 
   factory InstanceJsonModel.fromJson(Map<dynamic, dynamic> json) {
     return InstanceJsonModel(
       name: json['name'],
       isAsync: json['isAsync'],
-      part: json['part'],
-      singleton: json['singleton'],
+      isPart: json['isPart'],
+      isSingleton: json['isSingleton'],
       isLazy: json['isLazy'],
       inputType: json['inputType'],
       awaitInitialization: json['awaitInitialization'],
@@ -34,9 +34,9 @@ class InstanceJsonModel {
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'singleton': singleton,
+        'isSingleton': isSingleton,
         'isLazy': isLazy,
-        'part': part,
+        'isPart': isPart,
         'isAsync': isAsync,
         'inputType': inputType,
         'awaitInitialization': awaitInitialization,

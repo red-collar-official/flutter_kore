@@ -407,8 +407,8 @@ class Routes extends RoutesBase with RoutesGen {
         },
         outputs: {
           'generated|lib/test_routes.navigation.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_routes.dart';
 
@@ -1185,8 +1185,8 @@ class NavigationInteractor
         },
         outputs: {
           'generated|lib/test_navigation_main.app_navigation.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_navigation_main.dart';
 

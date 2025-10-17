@@ -41,8 +41,8 @@ final apis = Apis();
         },
         outputs: {
           'generated|lib/test_api_main.api.dart': '''
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'test_api_main.dart';
 

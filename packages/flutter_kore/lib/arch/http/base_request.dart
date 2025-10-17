@@ -82,7 +82,7 @@ typedef DatabasePutDelegate<ItemType> = Future Function(ItemType parsedItem);
 typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 
 /// Main class for http requests
-/// 
+///
 /// T - return type of request
 /// I - interceptor type
 /// B - http instance type
