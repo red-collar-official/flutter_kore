@@ -20,7 +20,7 @@ class KoreInstanceConfiguration {
 
 /// Base mixin for kore instance
 ///
-/// Contains basic interface for init and dispose operations
+/// Contains basic interface for init and disposeInstance operations
 /// Also every kore instance connected to main app event bus
 mixin KoreInstance<T> on EventBusReceiver {
   /// Flag indicating that this instance is fully initialized
@@ -322,6 +322,10 @@ mixin KoreInstance<T> on EventBusReceiver {
   }
 }
 
+/// Base class for kore instances
+///
+/// Contains basic interface for init and dispose operations
+/// Also every kore instance connected to main app event bus
 abstract class BaseKoreInstance<Input>
     with EventBusReceiver, KoreInstance<Input> {
   @mustCallSuper

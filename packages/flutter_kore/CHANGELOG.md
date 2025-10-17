@@ -1,3 +1,8 @@
+## 1.4.3
+
+- Update readme
+- Update code comments
+
 ## 1.4.2
 
 - Update readme

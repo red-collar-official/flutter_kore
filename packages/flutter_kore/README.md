@@ -105,7 +105,7 @@ Future<void> main() async {
 
 class HttpRequest<T> extends DioRequest<T> {
   @override
-  RequestSettings<Interceptor> get defaultSettings => RequestSettings(
+  RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
         logPrint: (message) {
           print(message);
         },
@@ -144,7 +144,7 @@ class PostsState with PostsStateMappable {
 }
 
 @basicInstance
-class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>?> {
+class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 
