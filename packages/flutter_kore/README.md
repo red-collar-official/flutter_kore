@@ -230,7 +230,7 @@ class _PostsListViewWidgetState extends BaseIndependentView<PostsListView> {
 Learn about components:
 
 
-<img src="https://github.com/red-collar-official/flutter_kore/blob/main/packages/flutter_kore/doc/doc_images/ayers.png?raw=true" alt="layers" width="750"/>
+<img src="https://github.com/red-collar-official/flutter_kore/blob/main/packages/flutter_kore/doc/doc_images/layers.png?raw=true" alt="layers" width="750"/>
 
 
 <img src="https://github.com/red-collar-official/flutter_kore/blob/main/packages/flutter_kore/doc/doc_images/components.png?raw=true" alt="main" width="750"/>
