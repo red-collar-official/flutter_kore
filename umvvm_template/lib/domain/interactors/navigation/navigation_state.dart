@@ -1,5 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:umvvm_template/domain/data/app_tab.dart';
+import 'package:flutter_kore_template/domain/data/app_tab.dart';
 
 part 'navigation_state.mapper.dart';
 

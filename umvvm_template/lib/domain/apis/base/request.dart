@@ -2,12 +2,12 @@
 
 import 'dart:async';
 
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm_template/domain/interactors/interactors.dart';
-import 'package:umvvm_template/resources/app_settings.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore_template/domain/interactors/interactors.dart';
+import 'package:flutter_kore_template/resources/app_settings.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:umvvm/umvvm.dart';
-import 'package:umvvm_template/utilities/utilities.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore_template/utilities/utilities.dart';
 
 class HttpRequest<T> extends DioRequest<T> {
   HttpRequest({
@@ -31,7 +31,7 @@ class HttpRequest<T> extends DioRequest<T> {
     }
 
     // add logic for request auth
-    // example: 
+    // example:
 
     // final token = app.instances.get<AuthorizationInteractor>().state.jwt;
     //
@@ -53,7 +53,8 @@ class HttpRequest<T> extends DioRequest<T> {
     final statusCode = error.response?.statusCode;
 
     if (statusCode == 401 || statusCode == 403) {
-      final authorizationInteractor = app.instances.get<AuthorizationInteractor>();
+      final authorizationInteractor =
+          app.instances.get<AuthorizationInteractor>();
 
       await requestCollection.cancelAllRequests(
         retryRequestsAfterProcessing: true,

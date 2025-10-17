@@ -29,7 +29,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.example.umvvm_template"
+    namespace "com.example.flutter_kore_template"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -49,7 +49,7 @@ android {
     flavorDimensions = ["flavors"]
 
     defaultConfig {
-        applicationId "com.example.umvvm_template"
+        applicationId "com.example.flutter_kore_template"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

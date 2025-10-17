@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:umvvm/arch/http/base_request.dart';
+import 'package:flutter_kore/arch/http/base_request.dart';
 import 'package:sample_database/domain/apis/base/request.dart';
 import 'package:sample_database/domain/apis/posts_api.dart';
 import 'package:sample_database/domain/data/post.dart';
@@ -10,14 +10,15 @@ import 'package:sample_database/ui/posts_list/posts_list_view.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
-    ..simulateResult = Response(code: 200, result: [
-      Post(
-        title: 'TestTitle',
-        body: 'TestBody',
-        id: 1,
-      )
-    ]);
+  HttpRequest<List<Post>> getPosts(int offset, int limit) =>
+      HttpRequest<List<Post>>()
+        ..simulateResult = Response(code: 200, result: [
+          Post(
+            title: 'TestTitle',
+            body: 'TestBody',
+            id: 1,
+          )
+        ]);
 }
 
 void main() {

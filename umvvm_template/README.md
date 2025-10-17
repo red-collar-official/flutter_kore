@@ -1,6 +1,6 @@
-# umvvm_template
+# flutter_kore_template
 
-Template project for UMVVM.
+Template project for flutter_kore.
 
 ## Folder Structure
 
@@ -27,8 +27,8 @@ The global folder contains several files:
 1) `events.dart` - place definitions of events used in the app here—for example, like events or network change events;
 2) `exceptions.dart` - place definitions of exceptions used in the app here—for example, exceptions for AWS Cognito authorization;
 3) `flavors.dart` - place flavor definitions here. By default, there are four flavors: dev, stage, prod_test, and prod (prod_test is the prod flavor with logging enabled);
-4) `global_app.dart` - main UMVVM app logic—you can place initialization of app components that need to run on the native splash screen here—for example, initializing Firebase or global error handlers;
-5) `scopes.dart` - place your custom UMVVM scopes here.
+4) `global_app.dart` - main flutter_kore app logic—you can place initialization of app components that need to run on the native splash screen here—for example, initializing Firebase or global error handlers;
+5) `scopes.dart` - place your custom flutter_kore scopes here.
 
 #### interactors
 
@@ -90,7 +90,7 @@ Place dialog definitions here.
 
 ### utilities
 
-Place all utility classes here. For example, validations for email. A log utility is predefined. Also included is secure storage logic for UMVVM app component cache.
+Place all utility classes here. For example, validations for email. A log utility is predefined. Also included is secure storage logic for flutter_kore app component cache.
 
 There are also `main.dart` files for every flavor used in the app.
 

@@ -1,4 +1,4 @@
-import 'package:umvvm/arch/http/simulate_response.dart';
+import 'package:flutter_kore/arch/http/simulate_response.dart';
 import 'package:sample_navigation/domain/apis/base/request.dart';
 import 'package:sample_navigation/domain/apis/posts_api.dart';
 import 'package:sample_navigation/domain/data/post.dart';
@@ -7,12 +7,13 @@ import 'package:test/test.dart';
 
 class MockPostsApi extends PostsApi {
   @override
-  HttpRequest<List<Post>> getPosts(int offset, int limit) => super.getPosts(offset, limit)
-    ..simulateResponse = SimulateResponse(
-      data: [
-        {'id': 1, 'title': 'qwerty', 'body': 'qwerty'}
-      ],
-    );
+  HttpRequest<List<Post>> getPosts(int offset, int limit) =>
+      super.getPosts(offset, limit)
+        ..simulateResponse = SimulateResponse(
+          data: [
+            {'id': 1, 'title': 'qwerty', 'body': 'qwerty'}
+          ],
+        );
 }
 
 void main() {

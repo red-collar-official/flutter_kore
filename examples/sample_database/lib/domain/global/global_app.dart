@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/database/objectbox.dart';
 import 'package:sample_database/domain/flavors/base/flavor.dart';
 import 'package:sample_database/domain/flavors/test_flavor.dart';
@@ -8,10 +8,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interactors/interactors.dart';
 
-part 'global_app.mvvm.dart';
+part 'global_app.kore.dart';
 
 @MainApp(navigationInteractorType: NavigationInteractor)
-class App extends UMvvmApp<NavigationInteractor> with AppGen {
+class App extends KoreApp<NavigationInteractor> with AppGen {
   late SharedPreferences prefs;
   late ObjectBox objectBox;
   final apis = Apis();
@@ -46,11 +46,11 @@ Future<void> initApp({bool testMode = false}) async {
   app.prefs = await SharedPreferences.getInstance();
   app.objectBox = await ObjectBox.create();
 
-  UMvvmApp.cacheGetDelegate = (key) {
+  KoreApp.cacheGetDelegate = (key) {
     return app.prefs.getString(key) ?? '';
   };
 
-  UMvvmApp.cachePutDelegate = (key, value) async {
+  KoreApp.cachePutDelegate = (key, value) async {
     return app.prefs.setString(key, value);
   };
 

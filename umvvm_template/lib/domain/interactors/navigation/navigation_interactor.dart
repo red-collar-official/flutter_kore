@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
-import 'package:umvvm_template/domain/data/data.dart';
-import 'package:umvvm_template/domain/global/global.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore_template/domain/data/data.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
 
 import 'components/bottom_sheets/bottom_sheets.dart';
 import 'components/dialogs/dialogs.dart';
@@ -14,7 +14,8 @@ part 'navigation_interactor.app_navigation.dart';
 
 @singleton
 @AppNavigation(tabs: AppTab)
-class NavigationInteractor extends NavigationInteractorDeclaration<NavigationState> {
+class NavigationInteractor
+    extends NavigationInteractorDeclaration<NavigationState> {
   @override
   AppTab? get currentTab => state.currentTab;
 

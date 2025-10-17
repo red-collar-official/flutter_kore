@@ -1,0 +1,64 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+
+/// Main class to extend to create interactor
+///
+/// Interactors contain business logic for given state type
+/// Interactors can contain dependencies and receive events
+/// They also can contain parts
+///
+/// You also can execute requests and cancel them automatically when interactor will be disposed
+/// with [ApiCaller.executeAndCancelOnDispose] method
+///
+/// Also interactors can execute operations in sync with [SynchronizedKoreInstance.enqueue]
+///
+/// Example:
+///
+/// ```dart
+/// @basicInstance
+/// class TestInteractor extends BaseInteractor<int, String> {
+///   @override
+///   int get initialState => 1;
+/// }
+/// ```
+abstract class BaseInteractor<State, Input> extends BaseKoreInstance<Input?>
+    with
+        StatefulKoreInstance<State, Input?>,
+        DependentKoreInstance<Input?>,
+        SynchronizedKoreInstance<Input?>,
+        ApiCaller<Input?> {
+  @mustCallSuper
+  @override
+  void initialize(Input? input) {
+    super.initialize(input);
+
+    initializeDependencies();
+    initializeStatefulInstance();
+  }
+
+  @mustCallSuper
+  @override
+  void dispose() {
+    super.dispose();
+
+    disposeStore();
+    disposeDependencies();
+    cancelAllRequests();
+    cancelPendingOperations();
+  }
+
+  @mustCallSuper
+  @override
+  Future<void> initializeAsync() async {
+    await super.initializeAsync();
+    await initializeDependenciesAsync();
+  }
+
+  @mustCallSuper
+  @override
+  void initializeWithoutConnections(Input? input) {
+    super.initializeWithoutConnections(input);
+
+    initializeStore();
+  }
+}

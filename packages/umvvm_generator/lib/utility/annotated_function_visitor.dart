@@ -2,7 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/visitor2.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:analyzer/dart/constant/value.dart';
-import 'package:umvvm/arch/navigation/annotations/link.dart';
+import 'package:flutter_kore/arch/navigation/annotations/link.dart';
 
 class AnnotatedFunctionVisitor extends SimpleElementVisitor2<dynamic> {
   Map<String, ConstantReader> annotatedMethods = <String, ConstantReader>{};

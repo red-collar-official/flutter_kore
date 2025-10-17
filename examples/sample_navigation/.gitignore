@@ -21,7 +21,7 @@
 #Dart generated file
 **/*.g.dart
 **/*.freezed.dart
-lib/**/*.mvvm.dart
+lib/**/*.kore.dart
 lib/**/*.navigation.dart
 lib/**/*.app_navigation.dart
 lib/**/*.api.dart

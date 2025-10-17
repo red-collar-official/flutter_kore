@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
-import 'package:umvvm_template/domain/data/data.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore_template/domain/data/data.dart';
 
 import 'components/bottom_navigation_bar.dart';
 
@@ -19,7 +19,8 @@ class HomeView extends BaseWidget {
   }
 }
 
-class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
+class _HomeViewWidgetState
+    extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabViews = {
     AppTabs.posts: Container(),
     AppTabs.likedPosts: Container(),

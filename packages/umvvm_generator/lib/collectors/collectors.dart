@@ -3,12 +3,12 @@ import 'dart:convert';
 
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:umvvm/annotations/api.dart';
-import 'package:umvvm/annotations/mvvm_instance.dart';
+import 'package:flutter_kore/annotations/api.dart';
+import 'package:flutter_kore/annotations/kore_instance.dart';
 
-import 'package:umvvm_generator/collectors/models/api_json_model.dart';
-import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
-import 'package:umvvm_generator/utility/class_utility.dart';
+import 'package:flutter_kore_generator/collectors/models/api_json_model.dart';
+import 'package:flutter_kore_generator/collectors/models/instance_json_model.dart';
+import 'package:flutter_kore_generator/utility/class_utility.dart';
 
 class InstancesCollectorGenerator extends Generator {
   @override

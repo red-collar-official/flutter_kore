@@ -97,7 +97,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Umvvm template'**
+  /// **'flutter_kore template'**
   String get appTitle;
 }
 

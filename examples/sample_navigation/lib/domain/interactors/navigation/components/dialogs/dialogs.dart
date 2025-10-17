@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 part 'dialogs.navigation.dart';
 

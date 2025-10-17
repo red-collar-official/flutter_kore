@@ -1,7 +1,7 @@
 // coverage:ignore-file
 
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm_template/domain/interactors/interactors.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore_template/domain/interactors/interactors.dart';
 
 extension CommonNavigationExtension on NavigationInteractor {
   void openHomeScreen() {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'splash_view_model.dart';
 import 'splash_view_state.dart';
 
@@ -15,7 +15,8 @@ class SplashView extends BaseWidget {
   }
 }
 
-class _SplashViewWidgetState extends NavigationView<SplashView, SplashViewState, SplashViewModel> {
+class _SplashViewWidgetState
+    extends NavigationView<SplashView, SplashViewState, SplashViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Container();

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 /// Main class for http requests
 ///
@@ -24,18 +24,18 @@ class HttpRequest<T> extends DioRequest<T> {
 
   @override
   RequestSettings get defaultSettings => RequestSettings(
-        logPrint: (message) {
-          if (kDebugMode) {
-            print(message);
-          }
-        },
-        exceptionPrint: (error, trace) {
-          if (kDebugMode) {
-            print(error);
-            print(trace);
-          }
-        },
-      );
+    logPrint: (message) {
+      if (kDebugMode) {
+        print(message);
+      }
+    },
+    exceptionPrint: (error, trace) {
+      if (kDebugMode) {
+        print(error);
+        print(trace);
+      }
+    },
+  );
 
   @override
   void onAuthorization(dio.Dio dio) {

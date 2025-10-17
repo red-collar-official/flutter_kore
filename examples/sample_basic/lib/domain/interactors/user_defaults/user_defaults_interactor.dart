@@ -1,9 +1,10 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 import 'user_defaults_state.dart';
 
 @singleton
-class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<String, dynamic>?> {
+class UserDefaultsInteractor
+    extends BaseInteractor<UserDefaultsState, Map<String, dynamic>?> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(UserDefaultsState.fromJson(savedStateObject));
@@ -20,7 +21,8 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
   Map<String, dynamic> get savedStateObject => state.toJson();
 
   @override
-  StateFulInstanceSettings get stateFulInstanceSettings => StateFulInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         isRestores: true,
         stateId: 'UserDefaultsInteractor',
       );

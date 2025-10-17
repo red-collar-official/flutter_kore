@@ -1,7 +1,7 @@
 {
-    "umvvm-gen.base_view_model_class": "NavigationViewModel",
-    "umvvm-gen.base_view_class": "NavigationView",
-    "umvvm-gen.base_class_import": "package:umvvm_template/domain/global/global.dart",
+    "flutter_kore-gen.base_view_model_class": "NavigationViewModel",
+    "flutter_kore-gen.base_view_class": "NavigationView",
+    "flutter_kore-gen.base_class_import": "package:flutter_kore_template/domain/global/global.dart",
     "dart.lineLength": 120,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,

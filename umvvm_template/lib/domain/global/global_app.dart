@@ -1,20 +1,20 @@
 import 'dart:async';
 
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm_template/domain/interactors/interactors.dart';
-import 'package:umvvm_template/domain/wrappers/wrappers.dart';
-import 'package:umvvm_template/plugins/plugins.dart';
-import 'package:umvvm_template/resources/resources.dart';
-import 'package:umvvm_template/ui/widgets/widgets.dart';
-import 'package:umvvm_template/utilities/utilities.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore_template/domain/interactors/interactors.dart';
+import 'package:flutter_kore_template/domain/wrappers/wrappers.dart';
+import 'package:flutter_kore_template/plugins/plugins.dart';
+import 'package:flutter_kore_template/resources/resources.dart';
+import 'package:flutter_kore_template/ui/widgets/widgets.dart';
+import 'package:flutter_kore_template/utilities/utilities.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
-part 'global_app.mvvm.dart';
+part 'global_app.kore.dart';
 
 @MainApp(navigationInteractorType: NavigationInteractor)
-class App extends UMvvmApp<NavigationInteractor> with AppGen {
+class App extends KoreApp<NavigationInteractor> with AppGen {
   final localStorage = SecureStorage();
   final apis = Apis();
   final localization = AppLocalization.getInstance().localizations;
@@ -41,7 +41,7 @@ Future<void> initApp({
   Flavor flavor = Flavor.dev,
 }) async {
   currentFlavor = flavor;
-  UMvvmApp.isInTestMode = testMode;
+  KoreApp.isInTestMode = testMode;
 
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -78,6 +78,6 @@ void _initializeErrorHandler() {
 Future<void> _initLocalStorage() async {
   await app.localStorage.initialize();
 
-  UMvvmApp.cacheGetDelegate = app.localStorage.getString;
-  UMvvmApp.cachePutDelegate = app.localStorage.putString;
+  KoreApp.cacheGetDelegate = app.localStorage.getString;
+  KoreApp.cachePutDelegate = app.localStorage.putString;
 }

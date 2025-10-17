@@ -1,8 +1,8 @@
-import 'package:umvvm/umvvm_widgets.dart';
-import 'package:umvvm_template/ui/widgets/widgets.dart';
+import 'package:flutter_kore/flutter_kore_widgets.dart';
+import 'package:flutter_kore_template/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 abstract class BaseStreamContainer<T> extends StatefulWidget {
   const BaseStreamContainer({
@@ -55,13 +55,14 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
   final ScrollPhysics physics;
 }
 
-abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>> extends State<W> {
+abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>>
+    extends State<W> {
   bool isLoadingMore = false;
   int currentListLength = 0;
 
   @override
   Widget build(BuildContext context) {
-    return UmvvmStreamBuilder<StatefulData<T>?>(
+    return KoreStreamBuilder<StatefulData<T>?>(
       stream: widget.stream,
       // ignore: prefer_null_aware_operators
       initialData: widget.currentData != null ? widget.currentData! : null,
@@ -147,7 +148,8 @@ abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>> ext
         const SliverToBoxAdapter(
           child: UILoadMoreControl(),
         ),
-      if (widget.bottomSlivers != null) ...widget.bottomSlivers!(widget.length(result), result),
+      if (widget.bottomSlivers != null)
+        ...widget.bottomSlivers!(widget.length(result), result),
     ];
   }
 
@@ -161,7 +163,8 @@ abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>> ext
 
   List<Widget> _errorView() => [
         if (widget.header != null && widget.showHeaderWhenEmpty) widget.header!,
-        if (widget.onRefresh != null && widget.enableRefreshWhenError) _refreshControl(),
+        if (widget.onRefresh != null && widget.enableRefreshWhenError)
+          _refreshControl(),
         if (widget.title != null && widget.showTitleWhenEmpty) widget.title!,
         widget.errorView,
         if (widget.bottomSlivers != null) ...widget.bottomSlivers!(0, null),

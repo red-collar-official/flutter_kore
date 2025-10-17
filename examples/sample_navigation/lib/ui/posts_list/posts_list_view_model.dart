@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/global_app.dart';
 import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart';
@@ -6,15 +6,17 @@ import 'package:sample_navigation/domain/interactors/posts/posts_interactor.dart
 import 'posts_list_view.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListViewModel extends NavigationViewModel<PostsListView, PostsListViewState> {
+class PostsListViewModel
+    extends NavigationViewModel<PostsListView, PostsListViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
+  DependentKoreInstanceConfiguration get configuration =>
+      DependentKoreInstanceConfiguration(
         dependencies: [
           app.connectors.postsInteractorConnector(),
         ],
       );
 
-  late final postsInteractor = getLocalInstance<PostsInteractor>();
+  late final postsInteractor = useLocalInstance<PostsInteractor>();
 
   @override
   void onLaunch() {

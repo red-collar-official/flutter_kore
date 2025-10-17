@@ -1,5 +1,5 @@
-import 'package:umvvm_template/ui/widgets/base/base_streamable_container.dart';
-import 'package:umvvm_template/ui/widgets/widgets.dart';
+import 'package:flutter_kore_template/ui/widgets/base/base_streamable_container.dart';
+import 'package:flutter_kore_template/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class StreamList<T> extends BaseStreamContainer<T> {
@@ -33,7 +33,8 @@ class StreamList<T> extends BaseStreamContainer<T> {
   State<StreamList> createState() => _StreamListViewState<T>();
 }
 
-class _StreamListViewState<T> extends BaseStreamContainerState<T, StreamList<T>> {
+class _StreamListViewState<T>
+    extends BaseStreamContainerState<T, StreamList<T>> {
   @override
   Widget content(T object) {
     return SliverList(

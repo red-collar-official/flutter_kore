@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:umvvm_template/domain/data/data.dart';
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm_template/domain/interactors/interactors.dart';
+import 'package:flutter_kore_template/domain/data/data.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore_template/domain/interactors/interactors.dart';
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 import 'home_view.dart';
 import 'home_view_state.dart';
@@ -30,8 +30,9 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
 
   AppTab get initialTab => app.navigation.state.currentTab;
 
-  Stream<AppTab?> get currentTabStream =>
-      app.instances.get<NavigationInteractor>().updates((state) => state.currentTab);
+  Stream<AppTab?> get currentTabStream => app.instances
+      .get<NavigationInteractor>()
+      .updates((state) => state.currentTab);
 
   @override
   HomeViewState get initialState => const HomeViewState();

@@ -2,12 +2,13 @@
 
 import 'dart:async';
 
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 import 'authorization_state.dart';
 
 @singleton
-class AuthorizationInteractor extends BaseInteractor<AuthorizationState, Map<String, dynamic>> {
+class AuthorizationInteractor
+    extends BaseInteractor<AuthorizationState, Map<String, dynamic>> {
   @override
   void onRestore(Map<String, dynamic> savedStateObject) {
     updateState(AuthorizationState.fromMap(savedStateObject));
@@ -33,7 +34,8 @@ class AuthorizationInteractor extends BaseInteractor<AuthorizationState, Map<Str
   Map<String, dynamic> get savedStateObject => state.toMap();
 
   @override
-  StateFulInstanceSettings get stateFulInstanceSettings => StateFulInstanceSettings(
+  StateFulInstanceSettings get stateFulInstanceSettings =>
+      StateFulInstanceSettings(
         isRestores: true,
         stateId: 'AuthorizationInteractor',
       );

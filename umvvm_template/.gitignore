@@ -43,7 +43,7 @@ app.*.map.json
 #Dart generated file
 lib/**/*.g.dart
 lib/**/*.mapper.dart
-lib/**/*.mvvm.dart
+lib/**/*.kore.dart
 lib/**/*.api.dart
 lib/**/*.navigation.dart
 lib/**/*.app_navigation.dart

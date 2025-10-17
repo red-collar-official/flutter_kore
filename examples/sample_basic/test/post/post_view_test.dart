@@ -4,7 +4,7 @@
 // import 'package:flutter_test/flutter_test.dart';
 // import 'package:integration_test/integration_test.dart';
 // import 'package:sample_basic/ui/post/post_view_model.dart';
-// import 'package:umvvm/arch/http/base_request.dart';
+// import 'package:flutter_kore/arch/http/base_request.dart';
 // import 'package:sample_basic/domain/apis/base/request.dart';
 // import 'package:sample_basic/domain/apis/posts_api.dart';
 // import 'package:sample_basic/domain/data/post.dart';

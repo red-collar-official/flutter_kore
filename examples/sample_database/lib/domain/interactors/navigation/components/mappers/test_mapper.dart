@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 class TestMapper extends LinkMapper {
   @override

@@ -1,6 +1,6 @@
 import 'package:sample_basic/ui/post/post_view.dart';
 import 'package:sample_basic/ui/post/post_view_model.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/post/post_interactor.dart';
@@ -9,9 +9,7 @@ import 'package:test/test.dart';
 class PostInteractorMock extends PostInteractor {
   @override
   Future<void> loadPost(int id, {bool refresh = false}) async {
-    updateState(state.copyWith(
-      post: SuccessData(result: Post(id: 1)),
-    ));
+    updateState(state.copyWith(post: SuccessData(result: Post(id: 1))));
   }
 }
 

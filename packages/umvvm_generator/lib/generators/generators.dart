@@ -7,16 +7,16 @@ import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:umvvm/annotations/main_api.dart';
-import 'package:umvvm/annotations/main_app.dart';
-import 'package:umvvm/arch/navigation/annotations/annotations.dart';
-import 'package:umvvm_generator/utility/class_utility.dart';
-import 'package:umvvm_generator/utility/main_app_visitor.dart';
-import 'package:umvvm_generator/collectors/models/api_json_model.dart';
-import 'package:umvvm_generator/collectors/models/instance_json_model.dart';
-import 'package:umvvm_generator/utility/annotated_function_visitor.dart';
+import 'package:flutter_kore/annotations/main_api.dart';
+import 'package:flutter_kore/annotations/main_app.dart';
+import 'package:flutter_kore/arch/navigation/annotations/annotations.dart';
+import 'package:flutter_kore_generator/utility/class_utility.dart';
+import 'package:flutter_kore_generator/utility/main_app_visitor.dart';
+import 'package:flutter_kore_generator/collectors/models/api_json_model.dart';
+import 'package:flutter_kore_generator/collectors/models/instance_json_model.dart';
+import 'package:flutter_kore_generator/utility/annotated_function_visitor.dart';
 
-final log = Logger('UmvvmGen');
+final log = Logger('flutter_koreGen');
 
 class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
   @override
@@ -28,7 +28,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
     final className = '${ClassUtility.getClassName(element)}Gen';
     final classBuffer = StringBuffer();
 
-    final instanceJsons = Glob('lib/**.mvvm.json');
+    final instanceJsons = Glob('lib/**.kore.json');
 
     final jsonData = <Map>[];
 
@@ -69,11 +69,11 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     if (annotation.peek('navigationInteractorType') == null) {
       classBuffer.writeln(
-        'mixin $className on UMvvmApp {',
+        'mixin $className on KoreApp {',
       );
     } else {
       classBuffer.writeln(
-        'mixin $className on UMvvmApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString()}> {',
+        'mixin $className on KoreApp<${annotation.peek('navigationInteractorType')!.typeValue.getDisplayString()}> {',
       );
     }
 
@@ -128,7 +128,7 @@ class MainAppGenerator extends GeneratorForAnnotation<MainApp> {
 
     String printMessage = '';
 
-    printMessage += 'umvvm_generator:\nGenerated Umvvm app: ';
+    printMessage += 'flutter_kore_generator:\nGenerated flutter_kore app: ';
     printMessage += 'Instances count: ${instances.length}';
 
     log.info(printMessage);
@@ -620,7 +620,7 @@ if (pathSegmentPattern == '$element') {
 
     String printMessage = '';
 
-    printMessage += 'umvvm_generator:\nGenerated Navigation for app: ';
+    printMessage += 'flutter_kore_generator:\nGenerated Navigation for app: ';
     printMessage += '$className count: ${methodsVisitor.allMethods.length}';
     log.info(printMessage);
 
@@ -783,7 +783,7 @@ class MainApiGenerator extends GeneratorForAnnotation<MainApiAnnotation> {
 
     String printMessage = '';
 
-    printMessage += 'umvvm_generator:\nGenerated Apis for app: ';
+    printMessage += 'flutter_kore_generator:\nGenerated Apis for app: ';
     printMessage += 'Apis count: ${apis.length}';
 
     log.info(printMessage);

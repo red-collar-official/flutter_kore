@@ -1,6 +1,6 @@
 import 'package:sample_navigation/ui/post/post_view.dart';
 import 'package:sample_navigation/ui/post/post_view_model.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/global_app.dart';
 import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';

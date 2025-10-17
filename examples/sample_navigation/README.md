@@ -1,4 +1,4 @@
-Basic sample demonstating minimal setup for umvvm - here we are using http, DI, and navigation components.
+Basic sample demonstating minimal setup for flutter_kore - here we are using http, DI, and navigation components.
 
 To quickly rebuild generated files use <b>sh rebuild.sh</b>.
 

@@ -4,7 +4,7 @@ import 'generators.dart';
 
 Builder generateMainApp(BuilderOptions options) => PartBuilder(
       [MainAppGenerator()],
-      '.mvvm.dart',
+      '.kore.dart',
       allowSyntaxErrors: true,
     );
 Builder generateMainApi(BuilderOptions options) => PartBuilder(

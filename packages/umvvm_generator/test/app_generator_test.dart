@@ -1,7 +1,7 @@
 import 'package:build/build.dart';
 import 'package:test/test.dart';
-import 'package:umvvm_generator/collectors/builders.dart';
-import 'package:umvvm_generator/generators/builders.dart';
+import 'package:flutter_kore_generator/collectors/builders.dart';
+import 'package:flutter_kore_generator/generators/builders.dart';
 
 import 'components/test_generator.dart';
 
@@ -13,7 +13,7 @@ void main() {
         generateInstanceCollector(BuilderOptions.empty),
         {
           'test_app.dart': '''
-import 'package:umvvm/annotations/mvvm_instance.dart';
+import 'package:flutter_kore/annotations/kore_instance.dart';
 
 @singleton
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
@@ -25,7 +25,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
           ''',
         },
         outputs: {
-          'generated|lib/test_app.mvvm.json':
+          'generated|lib/test_app.kore.json':
               '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]'
         },
       );
@@ -34,15 +34,15 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         'test_app_main.dart',
         generateMainApp(BuilderOptions.empty),
         {
-          'test_app.mvvm.json':
+          'test_app.kore.json':
               '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":false,"initializationOrder":null}]',
           'test_app_main.dart': '''
-import 'package:umvvm/annotations/main_app.dart';
+import 'package:flutter_kore/annotations/main_app.dart';
 
-part 'test_app_main.mvvm.dart';
+part 'test_app_main.kore.dart';
 
 @MainApp()
-class App extends UMvvmApp with AppGen {
+class App extends KoreApp with AppGen {
   @override
   Future<void> initialize() async {
     await super.initialize();
@@ -51,7 +51,7 @@ class App extends UMvvmApp with AppGen {
           ''',
         },
         outputs: {
-          'generated|lib/test_app_main.mvvm.dart': '''
+          'generated|lib/test_app_main.kore.dart': '''
 // dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
@@ -68,7 +68,7 @@ class Connectors {
   late final stringWrapperConnector = StringWrapperConnector();
 }
 
-mixin AppGen on UMvvmApp {
+mixin AppGen on KoreApp {
   final connectors = Connectors();
 
   @override
@@ -92,7 +92,7 @@ mixin AppGen on UMvvmApp {
         generateInstanceCollector(BuilderOptions.empty),
         {
           'test_app.dart': '''
-import 'package:umvvm/annotations/mvvm_instance.dart';
+import 'package:flutter_kore/annotations/kore_instance.dart';
 
 @Instance(singleton: true, awaitInitialization: true, initializationOrder: 1)
 class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
@@ -104,7 +104,7 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
           ''',
         },
         outputs: {
-          'generated|lib/test_app.mvvm.json':
+          'generated|lib/test_app.kore.json':
               '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]'
         },
       );
@@ -113,15 +113,15 @@ class StringWrapper extends BaseHolderWrapper<String, Map<String, dynamic>?> {
         'test_app_main.dart',
         generateMainApp(BuilderOptions.empty),
         {
-          'test_app.mvvm.json':
+          'test_app.kore.json':
               '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
-import 'package:umvvm/annotations/main_app.dart';
+import 'package:flutter_kore/annotations/main_app.dart';
 
-part 'test_app_main.mvvm.dart';
+part 'test_app_main.kore.dart';
 
 @MainApp()
-class App extends UMvvmApp with AppGen {
+class App extends KoreApp with AppGen {
   @override
   Future<void> initialize() async {
     await super.initialize();
@@ -130,7 +130,7 @@ class App extends UMvvmApp with AppGen {
           ''',
         },
         outputs: {
-          'generated|lib/test_app_main.mvvm.dart': '''
+          'generated|lib/test_app_main.kore.dart': '''
 // dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
@@ -152,7 +152,7 @@ class Connectors {
   late final stringWrapperConnector = StringWrapperConnector();
 }
 
-mixin AppGen on UMvvmApp {
+mixin AppGen on KoreApp {
   final connectors = Connectors();
 
   @override
@@ -175,17 +175,17 @@ mixin AppGen on UMvvmApp {
         'test_app_main.dart',
         generateMainApp(BuilderOptions.empty),
         {
-          'test_app.mvvm.json':
+          'test_app.kore.json':
               '[{"name":"StringWrapper","singleton":true,"isLazy":false,"part":false,"isAsync":false,"inputType":"Map<String,dynamic>","awaitInitialization":true,"initializationOrder":1}]',
           'test_app_main.dart': '''
-import 'package:umvvm/annotations/main_app.dart';
+import 'package:flutter_kore/annotations/main_app.dart';
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
-part 'test_app_main.mvvm.dart';
+part 'test_app_main.kore.dart';
 
 class AppTab {
   const AppTab();
@@ -291,7 +291,7 @@ class NavigationInteractor
 }
 
 @MainApp(navigationInteractorType: NavigationInteractor)
-class App<T> extends UMvvmApp<NavigationInteractor> with AppGen {
+class App<T> extends KoreApp<NavigationInteractor> with AppGen {
   @override
   Future<void> initialize() async {
     await super.initialize();
@@ -300,7 +300,7 @@ class App<T> extends UMvvmApp<NavigationInteractor> with AppGen {
           ''',
         },
         outputs: {
-          'generated|lib/test_app_main.mvvm.dart': '''
+          'generated|lib/test_app_main.kore.dart': '''
 // dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
@@ -322,7 +322,7 @@ class Connectors {
   late final stringWrapperConnector = StringWrapperConnector();
 }
 
-mixin AppGen on UMvvmApp<NavigationInteractor> {
+mixin AppGen on KoreApp<NavigationInteractor> {
   final connectors = Connectors();
 
   @override

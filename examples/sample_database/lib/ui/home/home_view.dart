@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/ui/posts_list/posts_list_view.dart';
-import 'package:umvvm/umvvm_widgets.dart';
+import 'package:flutter_kore/flutter_kore_widgets.dart';
 
 import 'components/bottom_navigation.dart';
 import 'home_view_model.dart';
@@ -20,7 +20,8 @@ class HomeView extends BaseWidget {
   }
 }
 
-class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
+class _HomeViewWidgetState
+    extends NavigationView<HomeView, HomeViewState, HomeViewModel> {
   late final Map<AppTab, Widget> tabViews = {
     AppTabs.posts: const PostsListView(),
     AppTabs.likedPosts: const PostsListView(),
@@ -30,7 +31,7 @@ class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeV
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: UmvvmStreamBuilder<AppTab?>(
+      body: KoreStreamBuilder<AppTab?>(
         streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           return Stack(
@@ -46,7 +47,7 @@ class _HomeViewWidgetState extends NavigationView<HomeView, HomeViewState, HomeV
           );
         },
       ),
-      bottomNavigationBar: UmvvmStreamBuilder<AppTab?>(
+      bottomNavigationBar: KoreStreamBuilder<AppTab?>(
         streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           if (snapshot.data == null) {

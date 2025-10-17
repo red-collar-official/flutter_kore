@@ -1,6 +1,6 @@
 import Foundation
 
-private let CHANNEL_NAME = "com.umvvm_template.plugins/device_locale"
+private let CHANNEL_NAME = "com.flutter_kore_template.plugins/device_locale"
 
 class DeviceLocalePlugin {
     class func register(with registrar: (NSObject & FlutterPluginRegistrar)?) {

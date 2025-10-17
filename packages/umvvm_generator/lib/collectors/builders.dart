@@ -4,7 +4,7 @@ import 'collectors.dart';
 
 Builder generateInstanceCollector(BuilderOptions options) => LibraryBuilder(
       InstancesCollectorGenerator(),
-      generatedExtension: '.mvvm.json',
+      generatedExtension: '.kore.json',
       allowSyntaxErrors: true,
       formatOutput: (generated, version) =>
           generated.replaceAll(RegExp(r'//.*|\s'), ''),

@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/apis/base/request.dart';
 import 'package:sample_navigation/domain/apis/posts_api.dart';
 import 'package:sample_navigation/domain/data/post.dart';

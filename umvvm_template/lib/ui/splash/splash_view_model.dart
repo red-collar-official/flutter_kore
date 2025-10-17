@@ -1,6 +1,6 @@
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm/umvvm.dart';
-import 'package:umvvm_template/domain/interactors/interactors.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore_template/domain/interactors/interactors.dart';
 
 import 'splash_view.dart';
 import 'splash_view_state.dart';

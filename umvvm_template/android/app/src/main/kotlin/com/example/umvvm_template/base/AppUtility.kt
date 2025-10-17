@@ -1,4 +1,4 @@
-package com.example.umvvm_template.base
+package com.example.flutter_kore_template.base
 
 import android.annotation.SuppressLint
 import android.content.Context

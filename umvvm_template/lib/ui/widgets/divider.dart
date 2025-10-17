@@ -1,4 +1,4 @@
-import 'package:umvvm_template/resources/resources.dart';
+import 'package:flutter_kore_template/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class UIDivider extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/posts/posts_interactor.dart';
@@ -12,17 +12,15 @@ import 'posts_list_view_state.dart';
 class PostsListViewModel
     extends BaseViewModel<PostsListView, PostsListViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration =>
-      DependentMvvmInstanceConfiguration(
-        dependencies: [
-          app.connectors.postsInteractorConnector(),
-        ],
+  DependentKoreInstanceConfiguration get configuration =>
+      DependentKoreInstanceConfiguration(
+        dependencies: [app.connectors.postsInteractorConnector()],
       );
 
-  late final postsInteractor = getLocalInstance<PostsInteractor>();
+  late final postsInteractor = useLocalInstance<PostsInteractor>();
 
-  late final userDefaultsInteractor =
-      app.instances.get<UserDefaultsInteractor>();
+  late final userDefaultsInteractor = app.instances
+      .get<UserDefaultsInteractor>();
 
   @override
   void onLaunch() {
@@ -35,9 +33,13 @@ class PostsListViewModel
   }
 
   void openPost(BuildContext context, Post post) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return PostView(post: post);
-    }));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return PostView(post: post);
+        },
+      ),
+    );
   }
 
   late final posts = postsInteractor.wrapUpdates((state) => state.posts);

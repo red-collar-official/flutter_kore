@@ -8,16 +8,16 @@ targets:
 
 builders:
   generators:
-    import: "package:umvvm_generator/generators/builders.dart"
+    import: "package:flutter_kore_generator/generators/builders.dart"
     builder_factories: ["generateMainApp", "generateMainApi", "generateNavigation", "generateNavigationInteractor"]
-    build_extensions: { ".dart": [".mvvm.dart", ".api.dart", ".navigation.dart", ".app_navigation.dart"] }
+    build_extensions: { ".dart": [".kore.dart", ".api.dart", ".navigation.dart", ".app_navigation.dart"] }
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen:combining_builder"]
   collectors:
-    import: "package:umvvm_generator/collectors/builders.dart"
+    import: "package:flutter_kore_generator/collectors/builders.dart"
     builder_factories: ["generateInstanceCollector", "generateApiCollector"]
-    build_extensions: { ".dart": ["mvvm.json", "api.json"] }
+    build_extensions: { ".dart": ["kore.json", "api.json"] }
     auto_apply: dependents
     build_to: cache
     runs_before: [":generators"]

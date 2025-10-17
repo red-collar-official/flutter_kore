@@ -2,7 +2,7 @@
 
 import 'package:build/build.dart';
 import 'package:test/test.dart';
-import 'package:umvvm_generator/generators/builders.dart';
+import 'package:flutter_kore_generator/generators/builders.dart';
 
 import 'components/test_generator.dart';
 
@@ -14,7 +14,7 @@ void main() {
         generateNavigation(BuilderOptions.empty),
         {
           'test_routes.dart': '''
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 part 'test_routes.navigation.dart';
 
@@ -1099,7 +1099,7 @@ mixin RoutesGen on RoutesBase {
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 part 'test_navigation_main.app_navigation.dart';
 
@@ -1231,7 +1231,7 @@ abstract class NavigationInteractorDeclaration<NState>
           generateNavigation(BuilderOptions.empty),
           {
             'test_routes.dart': '''
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 part 'test_routes.navigation.dart';
 
@@ -1312,7 +1312,7 @@ class Routes extends RoutesBase with RoutesGen {
         generateNavigation(BuilderOptions.empty),
         {
           'test_routes.dart': '''
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 part 'test_routes.navigation.dart';
 

@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/global/events.dart';
 import 'package:sample_database/domain/global/global_app.dart';

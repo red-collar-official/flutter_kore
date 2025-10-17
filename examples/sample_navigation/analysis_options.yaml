@@ -8,7 +8,7 @@ analyzer:
     - lib/**.g.dart
     - lib/**.freezed.dart
     - lib/**.navigation.dart
-    - lib/**.mvvm.dart
+    - lib/**.kore.dart
     - lib/**.api.dart
 
 linter:

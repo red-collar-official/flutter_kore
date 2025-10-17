@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/data/post.dart';
 import 'package:sample_navigation/domain/global/events.dart';
 import 'package:sample_navigation/domain/global/global_app.dart';
@@ -7,7 +7,8 @@ import 'package:sample_navigation/domain/interactors/mixins/like_post_mixin.dart
 import 'post_state.dart';
 
 @basicInstance
-class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>> with LikePostMixin {
+class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>>
+    with LikePostMixin {
   Future<void> loadPost(int id, {bool refresh = false}) async {
     updateState(state.copyWith(post: const LoadingData()));
 
@@ -38,7 +39,8 @@ class PostInteractor extends BaseInteractor<PostState, Map<String, dynamic>> wit
   @override
   List<EventBusSubscriber> subscribe() => [
         on<PostLikedEvent>((event) {
-          if (state.post is SuccessData<Post> && event.id == (state.post as SuccessData<Post>).result.id) {
+          if (state.post is SuccessData<Post> &&
+              event.id == (state.post as SuccessData<Post>).result.id) {
             _onPostLiked();
           }
         }),

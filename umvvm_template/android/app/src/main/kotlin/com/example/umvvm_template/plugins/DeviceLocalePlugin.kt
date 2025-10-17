@@ -1,7 +1,7 @@
-package com.example.umvvm_template.plugins
+package com.example.flutter_kore_template.plugins
 
 import android.content.res.Resources
-import com.example.umvvm_template.base.AppUtility
+import com.example.flutter_kore_template.base.AppUtility
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -37,7 +37,7 @@ class DeviceLocalePlugin: FlutterPlugin, MethodCallHandler {
         }
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        val channel = MethodChannel(binding.binaryMessenger, "com.umvvm_template.plugins/device_locale")
+        val channel = MethodChannel(binding.binaryMessenger, "com.flutter_kore_template.plugins/device_locale")
         channel.setMethodCallHandler(this)
     }
 

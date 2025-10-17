@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/flavors/base/flavor.dart';
 import 'package:sample_basic/domain/flavors/test_flavor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,10 +10,10 @@ import '../data/post.dart';
 
 import 'apis.dart';
 
-part 'global_app.mvvm.dart';
+part 'global_app.kore.dart';
 
 @mainApp
-class App extends UMvvmApp with AppGen {
+class App extends KoreApp with AppGen {
   late SharedPreferences prefs;
   final apis = Apis();
 
@@ -35,11 +35,11 @@ Future<void> initApp({bool testMode = false}) async {
   if (!testMode) {
     app.prefs = await SharedPreferences.getInstance();
 
-    UMvvmApp.cacheGetDelegate = (key) {
+    KoreApp.cacheGetDelegate = (key) {
       return app.prefs.getString(key) ?? '';
     };
 
-    UMvvmApp.cachePutDelegate = (key, value) async {
+    KoreApp.cachePutDelegate = (key, value) async {
       return app.prefs.setString(key, value);
     };
   }

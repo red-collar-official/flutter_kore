@@ -1,7 +1,7 @@
 import 'package:build/build.dart';
 import 'package:test/test.dart';
-import 'package:umvvm_generator/collectors/builders.dart';
-import 'package:umvvm_generator/generators/builders.dart';
+import 'package:flutter_kore_generator/collectors/builders.dart';
+import 'package:flutter_kore_generator/generators/builders.dart';
 
 import 'components/test_generator.dart';
 
@@ -13,7 +13,7 @@ void main() {
         generateApiCollector(BuilderOptions.empty),
         {
           'test_api.dart': '''
-import 'package:umvvm/annotations/api.dart';
+import 'package:flutter_kore/annotations/api.dart';
 
 @api
 class PostsApi {
@@ -29,7 +29,7 @@ class PostsApi {
         {
           'test_api.api.json': '[{"name":"PostsApi"}]',
           'test_api_main.dart': '''
-import 'package:umvvm/annotations/main_api.dart';
+import 'package:flutter_kore/annotations/main_api.dart';
 
 part 'test_api_main.api.dart';
 

@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_navigation/domain/global/global_app.dart';
 import 'package:sample_navigation/domain/interactors/navigation/navigation_interactor.dart';
 import 'package:sample_navigation/domain/interactors/post/post_interactor.dart';
@@ -8,13 +8,14 @@ import 'post_view_state.dart';
 
 class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
+  DependentKoreInstanceConfiguration get configuration =>
+      DependentKoreInstanceConfiguration(
         dependencies: [
           app.connectors.postInteractorConnector(scope: BaseScopes.unique),
         ],
       );
-  
-  late final postInteractor = getLocalInstance<PostInteractor>();
+
+  late final postInteractor = useLocalInstance<PostInteractor>();
 
   @override
   void onLaunch() {
@@ -30,7 +31,9 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   }
 
   void openTestDialog() {
-    app.instances.get<NavigationInteractor>().showDialog(app.navigation.dialogs.error(), dismissable: false);
+    app.instances
+        .get<NavigationInteractor>()
+        .showDialog(app.navigation.dialogs.error(), dismissable: false);
   }
 
   void openTestBottomSheet() {

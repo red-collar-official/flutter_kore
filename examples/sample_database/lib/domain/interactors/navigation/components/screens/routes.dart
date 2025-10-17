@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/domain/interactors/navigation/components/mappers/test_mapper.dart';
 import 'package:sample_database/ui/post/post_view.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 
 part 'routes.navigation.dart';

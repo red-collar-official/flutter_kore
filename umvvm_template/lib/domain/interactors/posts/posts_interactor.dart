@@ -1,6 +1,6 @@
-import 'package:umvvm/umvvm.dart';
-import 'package:umvvm_template/domain/data/data.dart';
-import 'package:umvvm_template/domain/global/global.dart';
+import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore_template/domain/data/data.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
 
 import 'posts_state.dart';
 

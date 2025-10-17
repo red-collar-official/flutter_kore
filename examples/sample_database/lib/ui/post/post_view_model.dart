@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/post/post_interactor.dart';
 
@@ -7,13 +7,14 @@ import 'post_view_state.dart';
 
 class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
+  DependentKoreInstanceConfiguration get configuration =>
+      DependentKoreInstanceConfiguration(
         dependencies: [
           app.connectors.postInteractorConnector(scope: BaseScopes.unique),
         ],
       );
 
-  late final postInteractor = getLocalInstance<PostInteractor>();
+  late final postInteractor = useLocalInstance<PostInteractor>();
 
   @override
   void onLaunch() {
@@ -25,7 +26,7 @@ class PostViewModel extends NavigationViewModel<PostView, PostViewState> {
   }
 
   void like(int id) {
-    getLocalInstance<PostInteractor>().likePost(id);
+    useLocalInstance<PostInteractor>().likePost(id);
   }
 
   void openTestDialog() {

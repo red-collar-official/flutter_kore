@@ -1,5 +1,5 @@
-import 'package:umvvm_template/ui/widgets/base/base_streamable_container.dart';
-import 'package:umvvm_template/ui/widgets/widgets.dart';
+import 'package:flutter_kore_template/ui/widgets/base/base_streamable_container.dart';
+import 'package:flutter_kore_template/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class StreamGrid<T> extends BaseStreamContainer<T> {
@@ -36,7 +36,8 @@ class StreamGrid<T> extends BaseStreamContainer<T> {
   State<StreamGrid> createState() => _StreamGridViewState<T>();
 }
 
-class _StreamGridViewState<T> extends BaseStreamContainerState<T, StreamGrid<T>> {
+class _StreamGridViewState<T>
+    extends BaseStreamContainerState<T, StreamGrid<T>> {
   @override
   Widget content(T object) {
     return SliverGrid(

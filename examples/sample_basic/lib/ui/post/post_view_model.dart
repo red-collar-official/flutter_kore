@@ -1,4 +1,4 @@
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/global/global_app.dart';
 import 'package:sample_basic/domain/interactors/post/post_interactor.dart';
 
@@ -7,7 +7,8 @@ import 'post_view_state.dart';
 
 class PostViewModel extends BaseViewModel<PostView, PostViewState> {
   @override
-  DependentMvvmInstanceConfiguration get configuration => DependentMvvmInstanceConfiguration(
+  DependentKoreInstanceConfiguration get configuration =>
+      DependentKoreInstanceConfiguration(
         dependencies: [
           app.connectors.postInteractorConnector(
             scope: BaseScopes.unique,
@@ -16,7 +17,7 @@ class PostViewModel extends BaseViewModel<PostView, PostViewState> {
         ],
       );
 
-  late final postInteractor = getLocalInstance<PostInteractor>();
+  late final postInteractor = useLocalInstance<PostInteractor>();
 
   @override
   void onLaunch() {

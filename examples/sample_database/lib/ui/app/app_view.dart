@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/ui/home/home_view.dart';
 import 'app_view_model.dart';
 import 'app_view_state.dart';
@@ -17,7 +17,8 @@ class AppView extends BaseWidget {
   }
 }
 
-class _AppViewWidgetState extends NavigationView<AppView, AppViewState, AppViewModel> {
+class _AppViewWidgetState
+    extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return MaterialApp(

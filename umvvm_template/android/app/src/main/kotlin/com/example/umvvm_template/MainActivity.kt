@@ -1,7 +1,7 @@
-package com.example.umvvm_template
+package com.example.flutter_kore_template
 
 import io.flutter.embedding.android.FlutterActivity
-import com.example.umvvm_template.plugins.DeviceLocalePlugin
+import com.example.flutter_kore_template.plugins.DeviceLocalePlugin
 
 import android.annotation.SuppressLint
 

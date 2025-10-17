@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/ui/posts_list/components/post_card.dart';
-import 'package:umvvm/umvvm_widgets.dart';
+import 'package:flutter_kore/flutter_kore_widgets.dart';
 
 import 'post_view_model.dart';
 import 'post_view_state.dart';
@@ -24,7 +24,8 @@ class PostView extends BaseWidget {
   }
 }
 
-class _PostViewWidgetState extends NavigationView<PostView, PostViewState, PostViewModel> {
+class _PostViewWidgetState
+    extends NavigationView<PostView, PostViewState, PostViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
@@ -33,7 +34,7 @@ class _PostViewWidgetState extends NavigationView<PostView, PostViewState, PostV
         title: const Text('Post'),
       ),
       body: Center(
-        child: UmvvmStreamBuilder<StatefulData<Post>?>(
+        child: KoreStreamBuilder<StatefulData<Post>?>(
           streamWrap: viewModel.post,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {

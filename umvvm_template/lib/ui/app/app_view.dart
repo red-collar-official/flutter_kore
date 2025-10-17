@@ -1,13 +1,13 @@
-import 'package:umvvm_template/domain/global/global.dart';
-import 'package:umvvm_template/domain/interactors/navigation/components/screens/routes.dart';
-import 'package:umvvm_template/l10n/app_localizations.dart';
-import 'package:umvvm_template/resources/localizations/locales_info.dart';
-import 'package:umvvm_template/ui/screens.dart';
+import 'package:flutter_kore_template/domain/global/global.dart';
+import 'package:flutter_kore_template/domain/interactors/navigation/components/screens/routes.dart';
+import 'package:flutter_kore_template/l10n/app_localizations.dart';
+import 'package:flutter_kore_template/resources/localizations/locales_info.dart';
+import 'package:flutter_kore_template/ui/screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:umvvm/umvvm.dart';
+import 'package:flutter_kore/flutter_kore.dart';
 
 import 'app_view_model.dart';
 import 'app_view_state.dart';
@@ -26,7 +26,8 @@ class AppView extends BaseWidget {
   static final globalKey = GlobalKey<AppViewWidgetState>();
 }
 
-class AppViewWidgetState extends NavigationView<AppView, AppViewState, AppViewModel> {
+class AppViewWidgetState
+    extends NavigationView<AppView, AppViewState, AppViewModel> {
   @override
   Widget buildView(BuildContext context) {
     return _app(
