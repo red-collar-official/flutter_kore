@@ -1,4 +1,4 @@
-# flutter_kore packge
+# flutter_kore package
 
 <img src="https://github.com/red-collar-official/flutter_kore/blob/main/packages/flutter_kore/doc/doc_images/logo.png?raw=true" alt="header" width="750"/>
 

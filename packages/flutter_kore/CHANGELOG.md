@@ -1,3 +1,7 @@
+## 1.4.2
+
+- Update readme
+
 ## 1.4.1
 
 - Update main example
