@@ -36,7 +36,8 @@ abstract class InstancesModule {
   late T Function<T extends BaseKoreInstance>({int index}) useInstanceDelegate;
   late T Function<T extends BaseInstancePart>({int index})
       useInstancePartDelegate;
-  late T Function<T extends BaseKoreInstance>({int index}) useLazyInstanceDelegate;
+  late T Function<T extends BaseKoreInstance>({int index})
+      useLazyInstanceDelegate;
   late Future<T> Function<T extends BaseKoreInstance>({int index})
       useAsyncLazyInstanceDelegate;
 
@@ -88,7 +89,8 @@ abstract class InstancesModule {
   /// Returns connected instance
   ///
   /// [index] - index of instance if multiple are connected
-  Future<T> useAsyncLazyLocalInstance<T extends BaseKoreInstance>({int index = 0}) {
+  Future<T> useAsyncLazyLocalInstance<T extends BaseKoreInstance>(
+      {int index = 0}) {
     return useAsyncLazyInstanceDelegate<T>(index: index);
   }
 }

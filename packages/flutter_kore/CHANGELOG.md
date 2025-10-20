@@ -1,3 +1,7 @@
+## 1.4.5
+
+- Fix files formatting
+
 ## 1.4.4
 
 - Add ensureInitialized method for kore instances to wait until async initialization is finished

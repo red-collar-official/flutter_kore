@@ -90,7 +90,7 @@ mixin KoreInstance<T> on EventBusReceiver {
     }
   }
 
-  @mustCallSuper 
+  @mustCallSuper
   void markInitialized() {
     isInitialized = true;
   }
@@ -123,7 +123,7 @@ mixin KoreInstance<T> on EventBusReceiver {
   }
 
   /// Base method for async instance initialization.
-  /// 
+  ///
   /// After you call this method call [markInitialized]
   @mustCallSuper
   Future<void> initializeAsync() async {

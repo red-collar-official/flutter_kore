@@ -281,10 +281,8 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
         list.add(() async => _getUniqueInstanceAsync(element, index: i));
       }
 
-      final instancesReserved = List<BaseKoreInstance?>.filled(
-        element.count, 
-        null
-      );
+      final instancesReserved =
+          List<BaseKoreInstance?>.filled(element.count, null);
 
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
@@ -316,10 +314,8 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
         list.add(() => _getUniqueInstance(element, index: i));
       }
 
-      final instancesReserved = List<BaseKoreInstance?>.filled(
-        element.count, 
-        null
-      );
+      final instancesReserved =
+          List<BaseKoreInstance?>.filled(element.count, null);
 
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
