@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_kore: ^1.4.3
+  flutter_kore: ^1.4.5
 
   dio: ^5.9.0
   dart_mappable: ^4.6.1
