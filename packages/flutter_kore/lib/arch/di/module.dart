@@ -33,11 +33,11 @@ import 'package:flutter_kore/flutter_kore.dart';
 /// }
 /// ```
 abstract class InstancesModule {
-  late T Function<T extends KoreInstance>({int index}) useInstanceDelegate;
+  late T Function<T extends BaseKoreInstance>({int index}) useInstanceDelegate;
   late T Function<T extends BaseInstancePart>({int index})
       useInstancePartDelegate;
-  late T Function<T extends KoreInstance>({int index}) useLazyInstanceDelegate;
-  late Future<T> Function<T extends KoreInstance>({int index})
+  late T Function<T extends BaseKoreInstance>({int index}) useLazyInstanceDelegate;
+  late Future<T> Function<T extends BaseKoreInstance>({int index})
       useAsyncLazyInstanceDelegate;
 
   // coverage:ignore-start
@@ -67,7 +67,7 @@ abstract class InstancesModule {
   /// Returns connected instance
   ///
   /// [index] - index of instance if multiple are connected
-  T useLocalInstance<T extends KoreInstance>({int index = 0}) {
+  T useLocalInstance<T extends BaseKoreInstance>({int index = 0}) {
     return useInstanceDelegate<T>(index: index);
   }
 
@@ -81,14 +81,14 @@ abstract class InstancesModule {
   /// Returns connected instance
   ///
   /// [index] - index of instance if multiple are connected
-  T useLazyLocalInstance<T extends KoreInstance>({int index = 0}) {
+  T useLazyLocalInstance<T extends BaseKoreInstance>({int index = 0}) {
     return useLazyInstanceDelegate<T>(index: index);
   }
 
   /// Returns connected instance
   ///
   /// [index] - index of instance if multiple are connected
-  Future<T> useAsyncLazyLocalInstance<T extends KoreInstance>({int index = 0}) {
+  Future<T> useAsyncLazyLocalInstance<T extends BaseKoreInstance>({int index = 0}) {
     return useAsyncLazyInstanceDelegate<T>(index: index);
   }
 }

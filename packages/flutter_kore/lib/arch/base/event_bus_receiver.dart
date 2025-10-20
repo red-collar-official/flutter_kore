@@ -48,13 +48,13 @@ mixin EventBusReceiver {
   }
 
   @mustCallSuper
-  void initializeSub() {
+  void initializeEventBusSubscription() {
     _subscribeToEvents();
   }
 
   /// Closes underlying stream subscription for [EventBus]
   @mustCallSuper
-  void disposeSub() {
+  void disposeEventBusSubscription() {
     _eventsSubscription?.cancel();
     _testReceivedEventsController.close();
 

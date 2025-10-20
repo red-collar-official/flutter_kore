@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
@@ -40,7 +41,11 @@ mixin KoreInstance<T> on EventBusReceiver {
   bool isDisposed = false;
 
   final _parts = HashMap<Type, List<BaseInstancePart?>>();
+
+  /// List of operations that will be executed with dispose call
   final disposeOperations = <Function>[];
+
+  final initializationCompleter = Completer();
 
   /// Input for this instance
   late final T input;
@@ -66,14 +71,14 @@ mixin KoreInstance<T> on EventBusReceiver {
 
   /// Base method for instance initialization
   ///
-  /// After you call this method set [isInitialized] flag to true
+  /// After you call this method call [markInitialized]
   ///
   /// [input] - input for this instance
   @mustCallSuper
   void initialize(T input) {
     this.input = input;
 
-    initializeSub();
+    initializeEventBusSubscription();
     isPaused = false;
 
     allPartsReady.update(false);
@@ -81,16 +86,19 @@ mixin KoreInstance<T> on EventBusReceiver {
     initializeInstanceParts();
 
     if (!isAsync) {
-      isInitialized = true;
+      markInitialized();
     }
   }
 
+  @mustCallSuper 
+  void markInitialized() {
+    isInitialized = true;
+  }
+
   /// Base method for instance dispose
-  ///
-  /// After you call this method set [isInitialized] flag to false
   @mustCallSuper
   void disposeInstance() {
-    disposeSub();
+    disposeEventBusSubscription();
 
     _parts.forEach((key, partsList) {
       for (final value in partsList) {
@@ -98,7 +106,6 @@ mixin KoreInstance<T> on EventBusReceiver {
       }
     });
 
-    isDisposed = true;
     isPaused = true;
 
     allPartsReady.dispose();
@@ -106,6 +113,8 @@ mixin KoreInstance<T> on EventBusReceiver {
     for (final value in disposeOperations) {
       value();
     }
+
+    isDisposed = true;
   }
 
   /// Returns list of parts
@@ -113,14 +122,18 @@ mixin KoreInstance<T> on EventBusReceiver {
     return configuration.parts;
   }
 
-  /// Base method for async instance initialization
+  /// Base method for async instance initialization.
+  /// 
+  /// After you call this method call [markInitialized]
   @mustCallSuper
   Future<void> initializeAsync() async {
     await initializeInstancePartsAsync();
 
     if (isAsync) {
-      isInitialized = true;
+      markInitialized();
     }
+
+    initializationCompleter.complete();
   }
 
   /// Base method for lightweight instance initialization
@@ -319,6 +332,14 @@ mixin KoreInstance<T> on EventBusReceiver {
   @mustCallSuper
   void onAllPartReady() {
     allPartsReady.update(true);
+  }
+
+  /// Helper function that runs given block after async initialization is
+  /// completed.
+  Future<O> ensureInitialized<O>(Future<O> Function() block) async {
+    await initializationCompleter.future;
+
+    return block();
   }
 }
 

@@ -888,6 +888,24 @@ void main() {
       interactor3.dispose();
     });
 
+    test('Interactor ensureInitialized test', () async {
+      final interactor3 = TestInteractor3()..initialize(1);
+
+      expect(interactor3.isInitialized, false);
+
+      var initialized = false;
+
+      unawaited(interactor3.initializeAsync());
+
+      await interactor3.ensureInitialized(() async {
+        initialized = interactor3.isInitialized;
+      });
+
+      expect(initialized, true);
+
+      interactor3.dispose();
+    });
+
     tearDownAll(eventBus.dispose);
   });
 }
