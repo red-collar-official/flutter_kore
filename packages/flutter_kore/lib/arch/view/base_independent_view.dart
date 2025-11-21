@@ -69,8 +69,8 @@ abstract class BaseIndependentView<KWidget extends StatefulWidget>
     initializeDependencies();
 
     if (isAsync) {
-      initializeAsync().then((_) {
-        initializeDependenciesAsync();
+      initializeDependenciesAsync().then((_) {
+        initializeAsync();
       });
     }
 

@@ -183,9 +183,8 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
         .where((element) => element.isAsync && element.isLazy)
         .forEach(_addLazyInstanceAsync);
 
-    connectors
-        .where((element) => !element.isAsync && !element.isLazy)
-        .forEach((element) {
+    // adding async instances also so they are initialized already
+    connectors.where((element) => !element.isLazy).forEach((element) {
       if (_instances[element.type] != null ||
           _lazyInstancesBuilders[element.type] != null) {
         throw IllegalArgumentException(
@@ -214,17 +213,6 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
     final asyncDeps = getFullConnectorsList()
         .where((element) => element.isAsync && !element.isLazy);
 
-    for (final element in asyncDeps) {
-      if (getFullConnectorsList()
-              .where((dependency) => dependency.type == element.type)
-              .length >
-          1) {
-        throw IllegalArgumentException(
-          message: 'Instance already dependent on ${element.type}',
-        );
-      }
-    }
-
     await Future.wait(
       asyncDeps.map(_addAsyncInstance),
     );
@@ -237,27 +225,24 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
   /// Adds instance to local collection
   Future<void> _addAsyncInstance(Connector element) async {
     if (element.count != 1) {
-      final list = List<BaseKoreInstance?>.filled(element.count, null);
-
-      Future<void> add(int index) async {
-        final instance = await _getUniqueInstanceAsync(element, index: index);
-
-        list[index] = instance;
-
+      Future<void> initializeAsyncInstanceFully(int index) async {
+        await _instances[element.type]?[index]?.initializeAsync();
         onAsyncInstanceReady(element.type, index);
       }
 
-      _instances[element.type] = list;
-
       await Future.wait([
-        for (var i = 0; i < element.count; i++) add(i),
+        for (var i = 0; i < element.count; i++) initializeAsyncInstanceFully(i),
       ]);
     } else if (element.scope == BaseScopes.unique) {
-      _instances[element.type] = [await _getUniqueInstanceAsync(element)];
+      await _instances[element.type]?[0]?.initializeAsync();
 
       onAsyncInstanceReady(element.type, null);
     } else {
-      _instances[element.type] = [await _getInstanceAsync(element)];
+      final instance = _instances[element.type]?[0];
+
+      if (!(instance?.isInitialized ?? false)) {
+        await instance?.initializeAsync();
+      }
 
       onAsyncInstanceReady(element.type, null);
     }

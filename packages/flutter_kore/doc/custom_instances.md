@@ -113,9 +113,10 @@ abstract class BaseBox extends BaseKoreInstance<dynamic> with DependentKoreInsta
   @mustCallSuper
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await initializeDependenciesAsync();
+
+    // call this method at the end of async initialization
+    await super.initializeAsync();
   }
 
   @mustCallSuper
@@ -250,9 +251,10 @@ abstract class BaseBox extends BaseKoreInstance<dynamic> with DependentKoreInsta
   @mustCallSuper
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await initializeDependenciesAsync();
+
+    // call this method at the end of async initialization
+    await super.initializeAsync();
   }
 
   @mustCallSuper

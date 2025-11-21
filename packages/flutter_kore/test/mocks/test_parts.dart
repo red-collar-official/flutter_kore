@@ -35,11 +35,11 @@ class TestInstancePart2 extends UniversalInstancePart<int> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     value = input ?? 0;
+
+    await super.initializeAsync();
   }
 
   @override
@@ -94,11 +94,11 @@ class TestInstancePart4 extends UniversalInstancePart<int> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     value = input ?? 0;
+
+    await super.initializeAsync();
   }
 }
 

@@ -42,7 +42,8 @@ abstract class BaseWrapper<Input> extends BaseKoreInstance<Input?>
   @mustCallSuper
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
     await initializeDependenciesAsync();
+
+    await super.initializeAsync();
   }
 }

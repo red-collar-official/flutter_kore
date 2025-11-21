@@ -105,9 +105,10 @@ class UsersBox extends BaseBox {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     // ...
+    
+    // call this method at the end of async initialization
+    await super.initializeAsync();
   }
 
   @override

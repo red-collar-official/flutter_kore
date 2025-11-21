@@ -259,38 +259,25 @@ mixin KoreInstance<T> on EventBusReceiver {
     await Future.wait(
       getFullPartConnectorsList()
           .where((element) => element.isAsync)
-          .map(_addAsyncPart),
+          .map(_initializeAsyncPart),
     );
 
     onAllPartReady();
   }
 
   /// Adds parts to local collection
-  Future<void> _addAsyncPart(PartConnector element) async {
+  Future<void> _initializeAsyncPart(PartConnector element) async {
     if (element.count != 1) {
-      _parts[element.type] = List.empty(growable: true);
-
-      final list = _parts[element.type]!;
-
-      Future<void> add(int index) async {
-        final part = await _getUniquePartAsync(element, index: index)
-            as BaseInstancePart;
-        _setPartRootParentInstance(part);
-
-        list.add(part);
-
+      Future<void> initializeAsync(int index) async {
+        await _parts[element.type]?[index]?.initializeAsync();
         onAsyncPartReady(element.type, index);
       }
 
       await Future.wait([
-        for (var i = 0; i < element.count; i++) add(i),
+        for (var i = 0; i < element.count; i++) initializeAsync(i),
       ]);
     } else {
-      final part = await _getUniquePartAsync(element) as BaseInstancePart;
-
-      _setPartRootParentInstance(part);
-
-      _parts[element.type] = [part];
+      await _parts[element.type]?[0]?.initializeAsync();
 
       onAsyncPartReady(element.type, null);
     }
@@ -298,19 +285,6 @@ mixin KoreInstance<T> on EventBusReceiver {
 
   dynamic _getUniquePart(Connector connector, {int index = 0}) {
     return InstanceCollection.instance.getUniqueByTypeStringWithParams(
-      type: connector.type.toString(),
-      params: connector.inputForIndex != null
-          ? connector.inputForIndex!(index)
-          : connector.input,
-      withoutConnections: connector.withoutConnections,
-      beforeInitialize: (part) {
-        part.parentInstance = this;
-      },
-    );
-  }
-
-  Future _getUniquePartAsync(Connector connector, {int index = 0}) {
-    return InstanceCollection.instance.getUniqueByTypeStringWithParamsAsync(
       type: connector.type.toString(),
       params: connector.inputForIndex != null
           ? connector.inputForIndex!(index)

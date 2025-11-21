@@ -3,6 +3,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 
 import '../helpers/constants.dart';
 import '../helpers/delay_utility.dart';
+import '../mocks/test_interactors.dart';
 
 final class TestBaseKoreInstance extends BaseKoreInstance<int?> {
   int value = 1;
@@ -39,6 +40,13 @@ final class TestBaseKoreInstance2 extends BaseKoreInstance<int?> {
   }
 }
 
+final class TestAsyncBaseKoreInstance extends BaseKoreInstance<int?> {
+  int value = 1;
+
+  @override
+  bool get isAsync => true;
+}
+
 void main() {
   group('Instance collection tests', () {
     final instances = InstanceCollection.instance;
@@ -54,7 +62,12 @@ void main() {
       instances
         ..clear()
         ..addBuilder<TestBaseKoreInstance>(TestBaseKoreInstance.new)
-        ..addBuilder<TestBaseKoreInstance2>(TestBaseKoreInstance2.new);
+        ..addBuilder<TestAsyncBaseKoreInstance>(TestAsyncBaseKoreInstance.new)
+        ..addBuilder<TestAsyncBaseKoreInstance>(TestAsyncBaseKoreInstance.new)
+        ..addBuilder<TestInteractorAsync5>(TestInteractorAsync5.new)
+        ..addBuilder<TestBaseKoreInstance2>(TestBaseKoreInstance2.new)
+        ..addBuilder<TestInteractorAsyncSameDependency>(
+            TestInteractorAsyncSameDependency.new);
     });
 
     test('Instance collection mock test', () async {
@@ -594,6 +607,31 @@ void main() {
         instances.forceGet<TestBaseKoreInstance>(),
         null,
       );
+    });
+
+    test('Instance collection async beforeInitialize test', () async {
+      final instance = await instances
+          .constructAndInitializeInstanceAsync<TestAsyncBaseKoreInstance>(
+              TestAsyncBaseKoreInstance().runtimeType.toString(),
+              beforeInitialize: (instance) {
+        instance.value = 3;
+      });
+
+      expect(
+        instance.value,
+        3,
+      );
+    });
+
+    test('Instance collection async beforeInitialize test', () async {
+      try {
+        await instances.getUniqueAsync<TestInteractorAsyncSameDependency>();
+      } catch (e) {
+        expect(
+          e is IllegalArgumentException,
+          true,
+        );
+      }
     });
   });
 }

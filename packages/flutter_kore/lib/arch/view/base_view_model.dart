@@ -77,8 +77,9 @@ abstract class BaseViewModel<KWidget extends StatefulWidget, MState>
   @mustCallSuper
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
     await initializeDependenciesAsync();
+
+    await super.initializeAsync();
   }
 
   @mustCallSuper

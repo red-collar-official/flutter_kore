@@ -1,3 +1,9 @@
+## 1.4.6
+
+- Fix async dependencies
+- Update tests
+- Update docs
+
 ## 1.4.5
 
 - Fix files formatting

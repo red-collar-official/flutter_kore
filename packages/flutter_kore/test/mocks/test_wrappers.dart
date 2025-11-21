@@ -31,11 +31,11 @@ class TestWrapperAsync extends BaseWrapper<int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     value = input;
+
+    await super.initializeAsync();
   }
 }
 
@@ -60,11 +60,11 @@ class TestWrapperAsync2 extends BaseWrapper<int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     value = input;
+
+    await super.initializeAsync();
   }
 }
 

@@ -119,11 +119,11 @@ class TestInteractorAsync2 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -139,11 +139,11 @@ class TestInteractorAsync3 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -159,11 +159,11 @@ class TestInteractorAsync4 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -179,11 +179,11 @@ class TestInteractorAsync5 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -199,11 +199,11 @@ class TestInteractorAsync6 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -219,11 +219,11 @@ class TestInteractorAsync7 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -239,11 +239,11 @@ class TestInteractorAsync8 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -259,11 +259,11 @@ class TestInteractorAsync9 extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -284,11 +284,11 @@ class TestInteractorAsync extends BaseInteractor<int, int?> {
 
   @override
   Future<void> initializeAsync() async {
-    await super.initializeAsync();
-
     await Future.delayed(const Duration(milliseconds: 100));
 
     updateState(input ?? 0);
+
+    await super.initializeAsync();
   }
 
   @override
@@ -746,4 +746,18 @@ class TestInteractorWithRequest extends BaseInteractor<int, int?> {
   Future<void> executeTestRequest(HttpRequest request) async {
     await executeAndCancelOnDispose(request);
   }
+}
+
+class TestInteractorAsyncSameDependency extends BaseInteractor<int, int?> {
+  @override
+  int get initialState => input ?? 0;
+
+  @override
+  DependentKoreInstanceConfiguration get configuration =>
+      const DependentKoreInstanceConfiguration(
+        dependencies: [
+          Connector(type: TestInteractorAsync5, isAsync: true),
+          Connector(type: TestInteractorAsync5, isAsync: true),
+        ],
+      );
 }
