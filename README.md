@@ -7,6 +7,8 @@ Set of classes for Flutter app architecture.
 
 Main docs can be found [here](packages/flutter_kore/README.md).
 
+Also you can read Medium article with details about components and mechanics [here](https://medium.com/@evgeny_efanov/flutterkore-how-to-use-guide-bed908e367fc).
+
 #### Important note
 
 To generate test coverage report run <b>sh coverage.sh</b> in corresponding package directory.

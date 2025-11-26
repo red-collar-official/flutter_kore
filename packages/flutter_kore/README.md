@@ -6,6 +6,8 @@
 
 Set of classes for Flutter app architecture.
 
+Read Medium article with details about components and mechanics [here](https://medium.com/@evgeny_efanov/flutterkore-how-to-use-guide-bed908e367fc).
+
 ### Installing
 
 ```yaml
