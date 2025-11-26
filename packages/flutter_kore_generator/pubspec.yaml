@@ -2,7 +2,7 @@ name: flutter_kore_generator
 
 description: Source generators for flutter_kore architecture library annotations
 
-version: 2.3.0
+version: 2.3.1
 
 repository: https://github.com/red-collar-official/flutter_kore
 issue_tracker: https://github.com/red-collar-official/flutter_kore/issues

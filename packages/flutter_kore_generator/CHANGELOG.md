@@ -1,3 +1,7 @@
+## 2.3.1
+
+- Update license
+
 ## 2.3.0
 
 - Rename package

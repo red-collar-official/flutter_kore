@@ -1,5 +1,9 @@
 ## 1.4.7
 
+- Update license
+
+## 1.4.7
+
 - Update docs
 
 ## 1.4.6
