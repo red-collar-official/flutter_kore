@@ -8,9 +8,9 @@ typedef ValidatorsMap = Map<GlobalKey, Future<FieldValidationState> Function()>;
 /// Mixin with helper methods to create form views
 mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     on BaseViewModel<Widget, State> {
-  final Map<GlobalKey, Observable<FieldValidationState>> fieldStates = {};
-  final Map<GlobalKey, Future<FieldValidationState> Function()>
-      _actualValidators = {};
+  final fieldStates = <GlobalKey, Observable<FieldValidationState>>{};
+  final _actualValidators =
+      <GlobalKey, Future<FieldValidationState> Function()>{};
 
   final disable = Observable.initial(false);
 
@@ -20,6 +20,10 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
   /// Returns true if form is currently disabled
   bool get isFormDisabled => disable.current ?? false;
+
+  /// Stream wrap of disable flags
+  StateStream<bool> get disableStreamWrap =>
+      StateStream(disableStream, () => isFormDisabled);
 
   bool get validateFormOnSubmit => true;
 
@@ -76,7 +80,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
   /// Resets field state to [IgnoredFieldState]
   void resetField(GlobalKey key) {
-    updateFieldState(key, IgnoredFieldState());
+    updateFieldState(key, const IgnoredFieldState());
   }
 
   @override
@@ -90,15 +94,13 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   @mustCallSuper
   void prefillFields() {
     for (final key in validators.keys) {
-      fieldStates[key] = Observable.initial(IgnoredFieldState());
+      fieldStates[key] = .initial(const IgnoredFieldState());
 
-      _actualValidators[key] = () => validators[key]!().then(
-            (value) {
-              fieldStates[key]!.update(value);
+      _actualValidators[key] = () => validators[key]!().then((value) {
+        fieldStates[key]!.update(value);
 
-              return value;
-            },
-          );
+        return value;
+      });
     }
 
     disposeOperations.add(() {
@@ -109,7 +111,7 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   }
 
   /// Runs action when submitting form
-  Future<void> submit();
+  Future<void> onSubmit();
 
   /// Function where you can add additional checks to form
   /// besides of registered validators
@@ -141,15 +143,18 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
 
     disable.update(true);
 
-    await submit();
+    await onSubmit();
 
     disable.update(false);
   }
 
   /// Brings view to the center of the screen
   // coverage:ignore-start
-  void ensureVisible(GlobalKey key,
-      {double alignment = 0.3, Duration? scrollDuration}) async {
+  void ensureVisible(
+    GlobalKey key, {
+    double alignment = 0.3,
+    Duration? scrollDuration,
+  }) async {
     try {
       await Scrollable.ensureVisible(
         key.currentContext!,
@@ -160,5 +165,6 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
       // ignore
     }
   }
+
   // coverage:ignore-end
 }

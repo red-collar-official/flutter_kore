@@ -77,11 +77,11 @@ class UsersBox extends BaseBox {
   late final testInstancePart1 = useInstancePart<TestInstancePart1>();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 
@@ -112,10 +112,10 @@ class UsersBox extends BaseBox {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```

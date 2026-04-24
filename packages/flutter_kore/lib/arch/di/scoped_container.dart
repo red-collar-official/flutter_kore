@@ -140,10 +140,7 @@ final class ScopedContainer<T> {
   }
 
   /// Returns all objects in given scope
-  List<T>? getObjectsInScope({
-    required String type,
-    required String scopeId,
-  }) {
+  List<T>? getObjectsInScope({required String type, required String scopeId}) {
     return _instances[scopeId]?[type];
   }
 
@@ -268,33 +265,25 @@ final class ScopedContainer<T> {
             return;
           }
 
-          removeFunctions.add(
-            () {
+          removeFunctions.add(() {
+            if (value.isEmpty) {
+              removeObjectReferenceInScope(scopeId: scope, type: key);
+            } else {
+              indicesToRemove.forEach(value.removeAt);
+
+              // checking again
               if (value.isEmpty) {
-                removeObjectReferenceInScope(
-                  scopeId: scope,
-                  type: key,
-                );
-              } else {
-                indicesToRemove.forEach(value.removeAt);
-
-                // checking again
-                if (value.isEmpty) {
-                  removeObjectReferenceInScope(
-                    scopeId: scope,
-                    type: key,
-                  );
-                }
+                removeObjectReferenceInScope(scopeId: scope, type: key);
               }
+            }
 
-              removeObjectInScope(
-                type: key.toString(),
-                scopeId: scope,
-                index: index,
-                onRemove: onRemove,
-              );
-            },
-          );
+            removeObjectInScope(
+              type: key.toString(),
+              scopeId: scope,
+              index: index,
+              onRemove: onRemove,
+            );
+          });
         }
       });
     });
@@ -386,5 +375,6 @@ final class ScopedContainer<T> {
     // ignore: avoid_print
     print('Current intances: $_instances');
   }
+
   // coverage:ignore-end
 }

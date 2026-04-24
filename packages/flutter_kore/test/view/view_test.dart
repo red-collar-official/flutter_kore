@@ -30,10 +30,7 @@ class TestViewModel extends BaseViewModel<TestView, int> {
 }
 
 class TestView extends BaseWidget {
-  const TestView({
-    super.key,
-    super.viewModel,
-  });
+  const TestView({super.key, super.viewModel});
 
   @override
   State<TestView> createState() {
@@ -53,11 +50,11 @@ class TestViewWidgetState extends BaseView<TestView, int, TestViewModel> {
   TestViewModel createViewModel() => TestViewModel();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          number = event.number;
-        }),
-      ];
+  void subscribe() {
+    on<TestEvent>((event) {
+      number = event.number;
+    });
+  }
 }
 
 class ContainingWidget extends StatefulWidget {
@@ -105,9 +102,7 @@ void main() {
       final viewKey = GlobalKey<TestViewWidgetState>();
       final view = TestView(key: viewKey);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(child: view),
-      ));
+      await tester.pumpWidget(MaterialApp(home: Material(child: view)));
 
       await Future.delayed(const Duration(seconds: 3), () {});
 
@@ -131,21 +126,19 @@ void main() {
         child: TestView(viewModel: testViewModel, key: viewKey),
       );
 
-      final overlay = Container(
-        color: Colors.red,
-        width: 20,
-        height: 20,
-      );
+      final overlay = Container(color: Colors.red, width: 20, height: 20);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(
-          child: ContainingWidget(
-            key: containingViewKey,
-            overlay: overlay,
-            child: view,
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: ContainingWidget(
+              key: containingViewKey,
+              overlay: overlay,
+              child: view,
+            ),
           ),
         ),
-      ));
+      );
 
       await Future.delayed(const Duration(seconds: 3), () {});
 
@@ -170,9 +163,7 @@ void main() {
       final viewKey = GlobalKey<TestViewWidgetState>();
       final view = TestView(key: viewKey);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(child: view),
-      ));
+      await tester.pumpWidget(MaterialApp(home: Material(child: view)));
 
       await Future.delayed(const Duration(seconds: 3), () {});
 

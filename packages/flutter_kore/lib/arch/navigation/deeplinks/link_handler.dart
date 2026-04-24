@@ -61,9 +61,7 @@ abstract class LinkHandler {
 class GenericLinkHandler extends LinkHandler {
   final LinkMapper mapper;
 
-  const GenericLinkHandler({
-    required this.mapper,
-  });
+  const GenericLinkHandler({required this.mapper});
 
   @override
   Future<UIRoute> parseLinkToRoute(String url) async {

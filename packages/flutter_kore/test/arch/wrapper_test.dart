@@ -156,10 +156,7 @@ void main() {
     test('Wrapper errors test', () async {
       final wrapper3 = await instances.getUniqueAsync<TestWrapper3>();
 
-      expect(
-        wrapper3.testInstancePart5.isInitialized,
-        false,
-      );
+      expect(wrapper3.testInstancePart5.isInitialized, false);
 
       expect(
         () => wrapper3.testInstancePart5_error_1,

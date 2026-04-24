@@ -15,9 +15,7 @@ class PostLinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
+    final patternQuery = ['filter'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -54,9 +52,7 @@ class Post2LinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-    ];
+    final patternQuery = ['filter'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -93,10 +89,7 @@ class Post3LinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
+    final patternQuery = ['filter', 'query'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -134,10 +127,7 @@ class Post4LinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts/:{id}/test');
-    final patternQuery = [
-      'filter',
-      'query',
-    ];
+    final patternQuery = ['filter', 'query'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -206,9 +196,7 @@ class Posts2LinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('posts');
-    final patternQuery = [
-      'filter',
-    ];
+    final patternQuery = ['filter'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -241,9 +229,7 @@ class StubLinkHandler extends BottomSheetLinkHandler {
     final queryParams = uriPath.queryParametersAll;
 
     final patternUriPath = Uri.parse('stub');
-    final patternQuery = [
-      'filter',
-    ];
+    final patternQuery = ['filter'];
     final patternSegments = patternUriPath.pathSegments;
 
     Map<String, dynamic> queryParamsForView = {};
@@ -356,35 +342,20 @@ mixin BottomSheetsGen on RoutesBase {
             'filter|query?': Post3LinkHandler(),
           },
           '*': {
-            '': {
-              'filter=qwerty1|filter=qwerty2': TestHandler(),
-            },
+            '': {'filter=qwerty1|filter=qwerty2': TestHandler()},
           },
           'test': {
-            '': {
-              'filter|query?': Post4LinkHandler(),
-            },
+            '': {'filter|query?': Post4LinkHandler()},
           },
         },
-        '': {
-          '': PostsLinkHandler(),
-          'filter': Posts2LinkHandler(),
-        },
+        '': {'': PostsLinkHandler(), 'filter': Posts2LinkHandler()},
       },
       'stub': {
-        '': {
-          'filter': StubLinkHandler(),
-        },
+        '': {'filter': StubLinkHandler()},
       },
-      'home': {
-        '': HomeLinkHandler(),
-      },
-      'likedPosts': {
-        '': LikedPostsLinkHandler(),
-      },
+      'home': {'': HomeLinkHandler()},
+      'likedPosts': {'': LikedPostsLinkHandler()},
     });
-    regexHandlers.addAll({
-      '(.*?)': TestMapper(),
-    });
+    regexHandlers.addAll({'(.*?)': TestMapper()});
   }
 }

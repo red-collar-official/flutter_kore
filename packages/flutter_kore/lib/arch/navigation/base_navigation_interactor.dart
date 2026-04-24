@@ -69,22 +69,25 @@ import 'package:flutter_kore/flutter_kore.dart';
 /// }
 /// ```
 abstract class BaseNavigationInteractor<
-        IState,
-        Input,
-        AppTabType,
-        RoutesClassType extends RoutesBase,
-        DialogClassType extends RoutesBase,
-        BottomSheetClassType extends RoutesBase,
-        RouteType,
-        DialogType,
-        BottomSheetType,
-        DeepLinksInteractorType extends BaseDeepLinksInteractor>
+  IState,
+  Input,
+  AppTabType,
+  RoutesClassType extends RoutesBase,
+  DialogClassType extends RoutesBase,
+  BottomSheetClassType extends RoutesBase,
+  RouteType,
+  DialogType,
+  BottomSheetType,
+  DeepLinksInteractorType extends BaseDeepLinksInteractor
+>
     extends BaseInteractor<IState, Input> {
   /// Deeplinks interactor for global app
   /// throws exception if deeplinks interactor not used
-  late final deepLinks = InstanceCollection.instance
-          .find<DeepLinksInteractorType>(BaseScopes.global)
-      as DeepLinksInteractorType;
+  late final deepLinks =
+      InstanceCollection.instance.find<DeepLinksInteractorType>(
+            BaseScopes.global,
+          )
+          as DeepLinksInteractorType;
 
   /// Global key for main app global navigator
   ///
@@ -96,23 +99,21 @@ abstract class BaseNavigationInteractor<
   /// if [NavigationInteractorSettings.bottomSheetsAndDialogsUsingGlobalNavigator] is true then it is [globalNavigatorKey]
   late final bottomSheetDialogNavigatorKey =
       settings.bottomSheetsAndDialogsUsingGlobalNavigator
-          ? globalNavigatorKey
-          : GlobalKey<NavigatorState>();
+      ? globalNavigatorKey
+      : GlobalKey<NavigatorState>();
 
   /// main route observer for app
   final routeObserver = RouteObserver<ModalRoute<void>>();
 
   UIRouteModel _defailtRouteModelFor(RouteType route) => UIRouteModel(
-        name: route,
-        settings: const UIRouteSettings(
-          dismissable: false,
-        ),
-      );
+    name: route,
+    settings: const UIRouteSettings(dismissable: false),
+  );
 
   /// Default stack for global navigator
   List<UIRouteModel> defaultRouteStack() => [
-        _defailtRouteModelFor(settings.initialRoute),
-      ];
+    _defailtRouteModelFor(settings.initialRoute),
+  ];
 
   /// Default stacks for every tab navigator
   Map<AppTabType, List<UIRouteModel>> defaultTabRouteStack() =>
@@ -153,10 +154,7 @@ abstract class BaseNavigationInteractor<
   Future<void> onDialogOpened(Widget child, UIRouteSettings route);
 
   /// Callback for new bottom sheet
-  Future<void> onBottomSheetOpened(
-    Widget child,
-    UIRouteSettings route,
-  );
+  Future<void> onBottomSheetOpened(Widget child, UIRouteSettings route);
 
   /// Main navigation stack that holds navigation history for every navigator
   late final navigationStack = NavigationStack<AppTabType>(
@@ -203,18 +201,20 @@ abstract class BaseNavigationInteractor<
 
     final isHomePresentInStack =
         navigationStack.globalNavigationStack.stack.indexWhere(
-              (element) => element.name == settings.tabViewHomeRoute,
-            ) !=
-            -1;
+          (element) => element.name == settings.tabViewHomeRoute,
+        ) !=
+        -1;
 
     final bool isGlobalStack = includeBottomSheetsAndDialogs
         ? navigationStack.globalNavigationStack.stack.length > 1
         : navigationStack.globalNavigationStack.stack
-                .where((element) =>
-                    element.name is! BottomSheetType &&
-                    element.name is! DialogType)
-                .length >
-            1;
+                  .where(
+                    (element) =>
+                        element.name is! BottomSheetType &&
+                        element.name is! DialogType,
+                  )
+                  .length >
+              1;
 
     return !isHomePresentInStack || isGlobalStack;
   }
@@ -242,10 +242,7 @@ abstract class BaseNavigationInteractor<
   ///
   /// if [onlyInternalStack] is true than only removes route data from navigation stack
   /// Navigator state stays the same in this case
-  void pop({
-    dynamic payload,
-    bool onlyInternalStack = false,
-  }) {
+  void pop({dynamic payload, bool onlyInternalStack = false}) {
     final isInGlobal = isInGlobalStack();
 
     final isInBottomSheetApp = isInBottomSheetDialogScope;
@@ -274,8 +271,9 @@ abstract class BaseNavigationInteractor<
       return;
     }
 
-    final navigator =
-        isInBottomSheetApp ? bottomSheetDialogNavigatorKey : getNavigator();
+    final navigator = isInBottomSheetApp
+        ? bottomSheetDialogNavigatorKey
+        : getNavigator();
 
     navigationStack.pop(currentTab, isInGlobal || isInBottomSheetApp);
 
@@ -383,18 +381,14 @@ abstract class BaseNavigationInteractor<
       // if replace flag is provided we clear stack and navigator state
       navigationStack
         ..clearTabNavigationStack()
-        ..replaceStack(
-          routeName: routeName,
-          settings: routeSettings,
-        );
+        ..replaceStack(routeName: routeName, settings: routeSettings);
 
       unawaited(onRouteOpened(screenToOpen, routeSettings));
 
       // coverage:ignore-start
-      unawaited(navigator.currentState?.pushAndRemoveUntil(
-        route,
-        (route) => false,
-      ));
+      unawaited(
+        navigator.currentState?.pushAndRemoveUntil(route, (route) => false),
+      );
       // coverage:ignore-end
     } else if (routeSettings.replacePrevious) {
       // if replace flag is provided we clear stack and navigator state
@@ -419,14 +413,10 @@ abstract class BaseNavigationInteractor<
       unawaited(onRouteOpened(screenToOpen, routeSettings));
 
       if (awaitRouteResult) {
-        return await navigator.currentState?.push(
-          route,
-        );
+        return await navigator.currentState?.push(route);
       }
 
-      unawaited(navigator.currentState?.push(
-        route,
-      ));
+      unawaited(navigator.currentState?.push(route));
     }
   }
 
@@ -464,8 +454,9 @@ abstract class BaseNavigationInteractor<
 
     final dialogName = dialog.name;
 
-    final navigator =
-        global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
+    final navigator = global
+        ? bottomSheetDialogNavigatorKey
+        : currentTabKeys[currentTab]!;
 
     navigationStack.addRoute(
       routeName: dialogName,
@@ -542,8 +533,9 @@ abstract class BaseNavigationInteractor<
 
     final bottomSheetName = bottomSheet.name;
 
-    final navigator =
-        global ? bottomSheetDialogNavigatorKey : currentTabKeys[currentTab]!;
+    final navigator = global
+        ? bottomSheetDialogNavigatorKey
+        : currentTabKeys[currentTab]!;
 
     navigationStack.addRoute(
       routeName: bottomSheetName,
@@ -680,15 +672,17 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Pops every global route dialog and bottom sheet until current route name is [routeName]
-  void popGlobalUntil(Object routeName) {
-    while (canPop() && latestGlobalRoute().name != routeName) {
+  void popGlobalUntil(Object routeName, {bool checkForDissmisable = true}) {
+    while ((canPop() || !checkForDissmisable) &&
+        latestGlobalRoute().name != routeName) {
       pop();
     }
   }
 
   /// Pops every tab route dialog and bottom sheet until current route name is [routeName] in given tab
-  void popInTabUntil(Object routeName) {
-    while (canPop(global: false) && latestTabRoute().name != routeName) {
+  void popInTabUntil(Object routeName, {bool checkForDissmisable = true}) {
+    while ((canPop(global: false) || !checkForDissmisable) &&
+        latestTabRoute().name != routeName) {
       pop();
     }
   }
@@ -726,8 +720,9 @@ abstract class BaseNavigationInteractor<
 
   /// Checks if global navigator contains given route
   bool containsGlobalRoute(Object routeName) {
-    return navigationStack.globalNavigationStack.stack
-            .indexWhere((element) => element.name == routeName) !=
+    return navigationStack.globalNavigationStack.stack.indexWhere(
+          (element) => element.name == routeName,
+        ) !=
         -1;
   }
 

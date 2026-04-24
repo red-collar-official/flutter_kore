@@ -23,8 +23,8 @@ class OnBecomeVisible extends StatefulWidget {
 }
 
 class _UIOnBecomeVisibleState extends State<OnBecomeVisible> {
-  bool _alreadyBecameVisible = false;
-  bool _alreadyBecameInvisible = false;
+  var _alreadyBecameVisible = false;
+  var _alreadyBecameInvisible = false;
 
   @override
   Widget build(BuildContext context) {

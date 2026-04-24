@@ -8,19 +8,16 @@ class GlobalNavigationStack<AppTabType>
   /// Map of all routes that are currently active in tabs
   final List<UIRouteModel> Function() routeStackBuilder;
 
-  late final Observable<List<UIRouteModel>> _routeStack = Observable.initial(
+  late final Observable<List<UIRouteModel>> _routeStack = .initial(
     routeStackBuilder(),
   );
 
-  GlobalNavigationStack({
-    required this.routeStackBuilder,
-  });
+  GlobalNavigationStack({required this.routeStackBuilder});
 
   List<UIRouteModel> get stack => _routeStack.current ?? [];
 
-  Stream<List<UIRouteModel>> get stackStream => _routeStack.stream.map(
-        (event) => event.next ?? [],
-      );
+  Stream<List<UIRouteModel>> get stackStream =>
+      _routeStack.stream.map((event) => event.next ?? []);
 
   @override
   void addRoute({
@@ -31,12 +28,7 @@ class GlobalNavigationStack<AppTabType>
     final current = List<UIRouteModel>.from(stack);
 
     // ignore: cascade_invocations
-    current.add(
-      UIRouteModel(
-        name: routeName,
-        settings: settings,
-      ),
-    );
+    current.add(UIRouteModel(name: routeName, settings: settings));
 
     _routeStack.update(current);
   }
@@ -73,12 +65,7 @@ class GlobalNavigationStack<AppTabType>
     AppTabType? tab,
     required UIRouteSettings settings,
   }) {
-    _routeStack.update([
-      UIRouteModel(
-        name: routeName,
-        settings: settings,
-      ),
-    ]);
+    _routeStack.update([UIRouteModel(name: routeName, settings: settings)]);
   }
 
   @override

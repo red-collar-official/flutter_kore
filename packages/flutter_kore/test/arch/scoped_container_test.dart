@@ -208,11 +208,7 @@ void main() {
       );
 
       expect(
-        testContainer.contains(
-          testScope,
-          testObject.runtimeType.toString(),
-          0,
-        ),
+        testContainer.contains(testScope, testObject.runtimeType.toString(), 0),
         true,
       );
     });
@@ -241,10 +237,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        );
+        ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
       expect(
         testContainer.containsBy(testScope, (object) => object == 1),
@@ -257,10 +250,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           onRemove: (instance) {},
         )
-        ..decreaseReferences(
-          testScope,
-          testObject.runtimeType,
-        );
+        ..decreaseReferences(testScope, testObject.runtimeType);
 
       expect(
         testContainer.containsBy(testScope, (object) => object == 1),
@@ -282,10 +272,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        )
+        ..increaseReferencesInScope(testScope, testObject.runtimeType)
         ..increaseReferencesInScope(
           testScope,
           testObject.runtimeType,
@@ -312,15 +299,8 @@ void main() {
       );
 
       testContainer
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-          index: 1,
-        )
+        ..increaseReferencesInScope(testScope, testObject.runtimeType)
+        ..increaseReferencesInScope(testScope, testObject.runtimeType, index: 1)
         ..removeObjectReferenceInScope(
           type: testObject.runtimeType,
           scopeId: testScope,
@@ -349,10 +329,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        );
+        ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
       expect(
         testContainer.getCurrentReferenceCount(
@@ -372,10 +349,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        );
+        ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
       expect(
         testContainer.getCurrentReferenceCount(
@@ -385,10 +359,7 @@ void main() {
         1,
       );
 
-      testContainer.decreaseReferences(
-        testScope,
-        testObject.runtimeType,
-      );
+      testContainer.decreaseReferences(testScope, testObject.runtimeType);
 
       expect(
         testContainer.getCurrentReferenceCount(
@@ -408,10 +379,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        )
+        ..increaseReferencesInScope(testScope, testObject.runtimeType)
         ..prune((object) {});
 
       expect(
@@ -420,10 +388,7 @@ void main() {
       );
 
       testContainer
-        ..decreaseReferences(
-          testScope,
-          testObject.runtimeType,
-        )
+        ..decreaseReferences(testScope, testObject.runtimeType)
         ..prune((object) {});
 
       expect(
@@ -432,107 +397,104 @@ void main() {
       );
     });
 
-    test('Scoped container increaseReferencesInScope illegal arguments test',
-        () async {
-      const testObject = 1;
+    test(
+      'Scoped container increaseReferencesInScope illegal arguments test',
+      () async {
+        const testObject = 1;
 
-      testContainer
-        ..addObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          object: testObject,
-        )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
+        testContainer
+          ..addObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            object: testObject,
+          )
+          ..increaseReferencesInScope(testScope, testObject.runtimeType);
+
+        expect(
+          () => testContainer.increaseReferencesInScope(
+            testScope,
+            testObject.runtimeType,
+            index: 10,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
         );
 
-      expect(
-        () => testContainer.increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-          index: 10,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
+        expect(
+          () => testContainer.increaseReferencesInScope(
+            testScope,
+            testObject.runtimeType,
+            index: -1,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
+      },
+    );
 
-      expect(
-        () => testContainer.increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-          index: -1,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-    });
+    test(
+      'Scoped container decreaseReferences illegal arguments test',
+      () async {
+        const testObject = 1;
 
-    test('Scoped container decreaseReferences illegal arguments test',
-        () async {
-      const testObject = 1;
+        testContainer
+          ..addObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            object: testObject,
+          )
+          ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
-      testContainer
-        ..addObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          object: testObject,
-        )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
+        expect(
+          () => testContainer.decreaseReferences(
+            testScope,
+            testObject.runtimeType,
+            index: 10,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
         );
 
-      expect(
-        () => testContainer.decreaseReferences(
-          testScope,
-          testObject.runtimeType,
-          index: 10,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
+        expect(
+          () => testContainer.decreaseReferences(
+            testScope,
+            testObject.runtimeType,
+            index: -1,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
+      },
+    );
 
-      expect(
-        () => testContainer.decreaseReferences(
-          testScope,
-          testObject.runtimeType,
-          index: -1,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-    });
+    test(
+      'Scoped container getCurrentReferenceCount illegal arguments test',
+      () async {
+        const testObject = 1;
 
-    test('Scoped container getCurrentReferenceCount illegal arguments test',
-        () async {
-      const testObject = 1;
+        testContainer
+          ..addObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            object: testObject,
+          )
+          ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
-      testContainer
-        ..addObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          object: testObject,
-        )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
+        expect(
+          () => testContainer.getCurrentReferenceCount(
+            testScope,
+            testObject.runtimeType,
+            index: 10,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
         );
 
-      expect(
-        () => testContainer.getCurrentReferenceCount(
-          testScope,
-          testObject.runtimeType,
-          index: 10,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-
-      expect(
-        () => testContainer.getCurrentReferenceCount(
-          testScope,
-          testObject.runtimeType,
-          index: -1,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-    });
+        expect(
+          () => testContainer.getCurrentReferenceCount(
+            testScope,
+            testObject.runtimeType,
+            index: -1,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
+      },
+    );
 
     test('Scoped container getObjectInScope illegal arguments test', () async {
       const testObject = 1;
@@ -543,10 +505,7 @@ void main() {
           type: testObject.runtimeType.toString(),
           object: testObject,
         )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
-        );
+        ..increaseReferencesInScope(testScope, testObject.runtimeType);
 
       expect(
         () => testContainer.getObjectInScope(
@@ -567,58 +526,57 @@ void main() {
       );
     });
 
-    test('Scoped container removeObjectInScope illegal arguments test',
-        () async {
-      const testObject = 1;
+    test(
+      'Scoped container removeObjectInScope illegal arguments test',
+      () async {
+        const testObject = 1;
 
-      testContainer
-        ..addObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          object: testObject,
-        )
-        ..increaseReferencesInScope(
-          testScope,
-          testObject.runtimeType,
+        testContainer
+          ..addObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            object: testObject,
+          )
+          ..increaseReferencesInScope(testScope, testObject.runtimeType);
+
+        expect(
+          () => testContainer.removeObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            index: 10,
+            onRemove: (instance) {},
+          ),
+          throwsA(isA<IllegalArgumentException>()),
         );
 
-      expect(
-        () => testContainer.removeObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          index: 10,
-          onRemove: (instance) {},
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
+        expect(
+          () => testContainer.removeObjectInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType.toString(),
+            index: -1,
+            onRemove: (instance) {},
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
 
-      expect(
-        () => testContainer.removeObjectInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType.toString(),
-          index: -1,
-          onRemove: (instance) {},
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
+        expect(
+          () => testContainer.removeObjectReferenceInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType,
+            index: -1,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
 
-      expect(
-        () => testContainer.removeObjectReferenceInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType,
-          index: -1,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-
-      expect(
-        () => testContainer.removeObjectReferenceInScope(
-          scopeId: testScope,
-          type: testObject.runtimeType,
-          index: 10,
-        ),
-        throwsA(isA<IllegalArgumentException>()),
-      );
-    });
+        expect(
+          () => testContainer.removeObjectReferenceInScope(
+            scopeId: testScope,
+            type: testObject.runtimeType,
+            index: 10,
+          ),
+          throwsA(isA<IllegalArgumentException>()),
+        );
+      },
+    );
   });
 }

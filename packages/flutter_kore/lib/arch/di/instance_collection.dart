@@ -64,11 +64,7 @@ class InstanceCollection {
   }) {
     final id = instance.runtimeType.toString();
 
-    container.addObjectInScope(
-      object: instance,
-      type: id,
-      scopeId: scope,
-    );
+    container.addObjectInScope(object: instance, type: id, scopeId: scope);
   }
 
   /// Adds builder for given instance type
@@ -179,11 +175,10 @@ class InstanceCollection {
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  Future<KInstance>
-      getUniqueWithParamsAsync<KInstance extends BaseKoreInstance, InputState>({
-    InputState? params,
-    bool withoutConnections = false,
-  }) {
+  Future<KInstance> getUniqueWithParamsAsync<
+    KInstance extends BaseKoreInstance,
+    InputState
+  >({InputState? params, bool withoutConnections = false}) {
     final id = KInstance.toString();
 
     return constructAndInitializeInstanceAsync<KInstance>(
@@ -224,7 +219,7 @@ class InstanceCollection {
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
   Future<KInstance>
-      getWithParamsAsync<KInstance extends BaseKoreInstance, InputState>({
+  getWithParamsAsync<KInstance extends BaseKoreInstance, InputState>({
     InputState? params,
     int? index,
     String scope = BaseScopes.global,
@@ -307,7 +302,10 @@ class InstanceCollection {
     String? scope,
   }) {
     return addWithParamsAsync<DefaultInputType>(
-        type: type, params: params, scope: scope);
+      type: type,
+      params: params,
+      scope: scope,
+    );
   }
 
   /// Adds instance in collection
@@ -348,7 +346,7 @@ class InstanceCollection {
   }
 
   Future<KInstance>
-      constructAndInitializeInstanceAsync<KInstance extends BaseKoreInstance>(
+  constructAndInitializeInstanceAsync<KInstance extends BaseKoreInstance>(
     String id, {
     dynamic params,
     bool withNoConnections = false,
@@ -378,7 +376,7 @@ class InstanceCollection {
   }
 
   Future<KInstance>
-      getInstanceFromCacheAsync<KInstance extends BaseKoreInstance, InputState>(
+  getInstanceFromCacheAsync<KInstance extends BaseKoreInstance, InputState>(
     String id, {
     dynamic params,
     int? index,
@@ -395,22 +393,16 @@ class InstanceCollection {
         params: params,
       );
 
-      container.addObjectInScope(
-        object: instance,
-        type: id,
-        scopeId: scope,
-      );
+      container.addObjectInScope(object: instance, type: id, scopeId: scope);
 
       finishBuildingInstance(id, index);
 
       return instance;
     }
 
-    final instance = container.getObjectInScope(
-      type: id,
-      scopeId: scope,
-      index: index ?? 0,
-    ) as KInstance;
+    final instance =
+        container.getObjectInScope(type: id, scopeId: scope, index: index ?? 0)
+            as KInstance;
 
     if (!instance.isInitialized) {
       if (withoutConnections) {
@@ -449,11 +441,10 @@ class InstanceCollection {
   ///
   /// [withoutConnections] - flag indicating that instance dependencies won`t be connected
   /// [params] - params for this instance
-  KInstance
-      getUniqueWithParams<KInstance extends BaseKoreInstance, InputState>({
-    InputState? params,
-    bool withoutConnections = false,
-  }) {
+  KInstance getUniqueWithParams<
+    KInstance extends BaseKoreInstance,
+    InputState
+  >({InputState? params, bool withoutConnections = false}) {
     final id = KInstance.toString();
 
     return constructAndInitializeInstance<KInstance>(
@@ -473,10 +464,11 @@ class InstanceCollection {
     String scope = BaseScopes.global,
   }) {
     return container.getObjectInScope(
-      type: KInstance.toString(),
-      scopeId: scope,
-      index: index ?? 0,
-    ) as KInstance?;
+          type: KInstance.toString(),
+          scopeId: scope,
+          index: index ?? 0,
+        )
+        as KInstance?;
   }
 
   /// Return instance for given type
@@ -636,7 +628,10 @@ class InstanceCollection {
     String? scope,
   }) {
     return addWithParams<DefaultInputType>(
-        type: type, params: params, scope: scope);
+      type: type,
+      params: params,
+      scope: scope,
+    );
   }
 
   /// Adds instance in collection
@@ -748,22 +743,16 @@ class InstanceCollection {
         params: params,
       );
 
-      container.addObjectInScope(
-        object: instance,
-        type: id,
-        scopeId: scope,
-      );
+      container.addObjectInScope(object: instance, type: id, scopeId: scope);
 
       finishBuildingInstance(id, index);
 
       return instance;
     }
 
-    final instance = container.getObjectInScope(
-      type: id,
-      scopeId: scope,
-      index: index ?? 0,
-    ) as KInstance;
+    final instance =
+        container.getObjectInScope(type: id, scopeId: scope, index: index ?? 0)
+            as KInstance;
 
     if (!instance.isInitialized) {
       if (withoutConnections) {
@@ -791,10 +780,7 @@ class InstanceCollection {
   ///
   /// [index] - index for this instance
   /// [scope] - string scope to get instance from
-  void unregisterInstance<T>({
-    String scope = BaseScopes.global,
-    int? index,
-  }) {
+  void unregisterInstance<T>({String scope = BaseScopes.global, int? index}) {
     if (scope == BaseScopes.global) {
       container.removeObjectInScope(
         type: T.toString(),
@@ -810,11 +796,7 @@ class InstanceCollection {
           index: index,
           onRemove: (instance) => instance.dispose(),
         )
-        ..removeObjectReferenceInScope(
-          type: T,
-          scopeId: scope,
-          index: index,
-        );
+        ..removeObjectReferenceInScope(type: T, scopeId: scope, index: index);
     }
   }
 
@@ -886,9 +868,7 @@ class InstanceCollection {
     Input? params,
     Future Function(T) body,
   ) async {
-    final instance = getUniqueWithParams<T, Input>(
-      params: params,
-    );
+    final instance = getUniqueWithParams<T, Input>(params: params);
 
     final result = await body(instance);
 

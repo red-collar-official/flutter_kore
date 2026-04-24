@@ -67,11 +67,11 @@ class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, Po
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 

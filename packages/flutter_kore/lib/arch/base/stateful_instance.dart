@@ -21,10 +21,7 @@ class StateStream<T> {
   /// Returns current mapped state value
   T? get current => mapper();
 
-  const StateStream(
-    this.stream,
-    this.mapper,
-  );
+  const StateStream(this.stream, this.mapper);
 }
 
 /// Settings for stateful instance. Contain state restore flags and state id
@@ -127,8 +124,8 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
   /// Stream<StoreChange<StatefulData<List<Post>>?>> get postsStream => useLocalInstance<PostsInteractor>().changes((state) => state.posts);
   /// ```
   Stream<StoreChange<Value>> changes<Value>(
-          Value Function(State state) mapper) =>
-      _store.changes(mapper);
+    Value Function(State state) mapper,
+  ) => _store.changes(mapper);
 
   /// [StateStream] object for updates with given mapper for instance state
   ///
@@ -154,13 +151,15 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
   ///   currentMapper: (value) => isUploadedLoading(),
   /// );
   /// ```
-  StateStream<Value> wrapChanges<ChangeValue, Value>(
-      {required ChangeValue Function(State) changeMapper,
-      required Value Function(StoreChange<ChangeValue>) stateMapper,
-      required Value Function(State) currentMapper}) {
+  StateStream<Value> wrapChanges<ChangeValue, Value>({
+    required ChangeValue Function(State) changeMapper,
+    required Value Function(StoreChange<ChangeValue>) stateMapper,
+    required Value Function(State) currentMapper,
+  }) {
     return StateStream(
-        changes(changeMapper).map((change) => stateMapper(change)),
-        () => currentMapper(state));
+      changes(changeMapper).map((change) => stateMapper(change)),
+      () => currentMapper(state),
+    );
   }
 
   /// Underlying stream subsription for [Store] updates
@@ -209,8 +208,12 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
       return;
     }
 
-    final restoredMap = json.decode(stateFromCacheJsonString);
-    onRestore(restoredMap);
+    try {
+      final restoredMap = json.decode(stateFromCacheJsonString);
+      onRestore(restoredMap);
+    } catch (_) {
+      // ignore
+    }
   }
 
   /// Callback to get cache object
@@ -293,7 +296,5 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
 
   /// Settings for state - contains cache id and flags to await initialization if needed
   StateFulInstanceSettings get stateFulInstanceSettings =>
-      StateFulInstanceSettings(
-        stateId: state.runtimeType.toString(),
-      );
+      StateFulInstanceSettings(stateId: state.runtimeType.toString());
 }

@@ -12,7 +12,7 @@ class RequestCollection {
     return _singleton;
   }
 
-  final List<BaseRequest> requests = [];
+  final requests = <BaseRequest>[];
   Completer? cancelReasonProcessingCompleter;
 
   /// Cancels all requests in collection.

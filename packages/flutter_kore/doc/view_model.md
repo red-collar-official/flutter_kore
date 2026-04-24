@@ -100,11 +100,11 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
       );
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 

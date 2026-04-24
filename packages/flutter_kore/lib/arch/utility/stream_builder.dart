@@ -5,12 +5,13 @@ import 'package:flutter_kore/flutter_kore.dart';
 
 /// [StreamBuilder] analogue that allows to pass [StateStream]
 class KoreStreamBuilder<T> extends StatelessWidget {
-  const KoreStreamBuilder(
-      {super.key,
-      this.stream,
-      this.initialData,
-      required this.builder,
-      this.streamWrap});
+  const KoreStreamBuilder({
+    super.key,
+    this.stream,
+    this.initialData,
+    required this.builder,
+    this.streamWrap,
+  });
 
   final Stream<T>? stream;
   final T? Function()? initialData;
@@ -28,8 +29,9 @@ class KoreStreamBuilder<T> extends StatelessWidget {
     }
 
     return StreamBuilder(
-        stream: streamWrap?.stream ?? stream,
-        initialData: initialValue,
-        builder: builder);
+      stream: streamWrap?.stream ?? stream,
+      initialData: initialValue,
+      builder: builder,
+    );
   }
 }

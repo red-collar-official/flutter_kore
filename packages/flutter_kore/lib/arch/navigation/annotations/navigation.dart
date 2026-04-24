@@ -8,10 +8,7 @@
 /// }
 /// ```
 class AppNavigation {
-  const AppNavigation({
-    this.deepLinks,
-    this.tabs,
-  });
+  const AppNavigation({this.deepLinks, this.tabs});
 
   /// Deeplinks interactor type that
   /// will be used by this navigation interactor

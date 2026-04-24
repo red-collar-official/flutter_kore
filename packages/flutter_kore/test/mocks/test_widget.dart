@@ -4,9 +4,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 import 'test_view_model.dart';
 
 class TestWidget extends BaseWidget {
-  const TestWidget({
-    super.key,
-  });
+  const TestWidget({super.key});
 
   @override
   State<StatefulWidget> createState() => PostsListViewWidgetState();

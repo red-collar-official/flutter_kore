@@ -10,10 +10,7 @@ class StoreChange<Value> {
   final Value? previous;
   final Value next;
 
-  StoreChange(
-    this.previous,
-    this.next,
-  );
+  StoreChange(this.previous, this.next);
 }
 
 /// Store is providing access to [State] for current containing class
@@ -23,7 +20,7 @@ class Store<State> {
 
   /// Flag indicating that this store is disposed
   /// Store can't be used if this flag is true
-  bool _isDisposed = false;
+  var _isDisposed = false;
 
   /// Current state in store
   State get state => _state.current!;
@@ -63,7 +60,7 @@ class Store<State> {
   /// ```
   void updateState(State update) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call updateState after dispose.',
       );
     }
@@ -75,13 +72,13 @@ class Store<State> {
   ///
   /// [state] - initial state value
   void initialize(State state) {
-    _state = Observable<State>.initial(state);
+    _state = .initial(state);
   }
 
   /// Disposes internal state [Observable]
   void dispose() {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call dispose if store is already disposed.',
       );
     }
@@ -100,15 +97,17 @@ class Store<State> {
   /// ```
   Stream<Value> updates<Value>(StoreMapper<Value, State> mapper) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call updates after dispose.',
       );
     }
 
-    return _state.stream.where((element) {
-      return mapper(element.previous ?? element.next!) !=
-          mapper(element.next as State);
-    }).map((event) => mapper(event.next as State));
+    return _state.stream
+        .where((element) {
+          return mapper(element.previous ?? element.next!) !=
+              mapper(element.next as State);
+        })
+        .map((event) => mapper(event.next as State));
   }
 
   /// Stream of changes of values [state]
@@ -122,14 +121,16 @@ class Store<State> {
   /// ```
   Stream<StoreChange<Value>> changes<Value>(StoreMapper<Value, State> mapper) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call changes after dispose.',
       );
     }
 
-    return _state.stream.map((event) => StoreChange(
-          mapper(event.previous ?? event.next!),
-          mapper(event.next as State),
-        ));
+    return _state.stream.map(
+      (event) => StoreChange(
+        mapper(event.previous ?? event.next!),
+        mapper(event.next as State),
+      ),
+    );
   }
 }

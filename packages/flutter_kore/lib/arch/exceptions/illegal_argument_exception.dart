@@ -3,7 +3,5 @@
 class IllegalArgumentException implements Exception {
   final String message;
 
-  IllegalArgumentException({
-    required this.message,
-  });
+  const IllegalArgumentException({required this.message});
 }

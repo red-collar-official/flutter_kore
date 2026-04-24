@@ -3,7 +3,5 @@
 class NotRecognizedHttpException implements Exception {
   final String message;
 
-  NotRecognizedHttpException({
-    required this.message,
-  });
+  const NotRecognizedHttpException({required this.message});
 }

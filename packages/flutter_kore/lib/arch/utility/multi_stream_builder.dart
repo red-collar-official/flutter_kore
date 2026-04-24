@@ -36,12 +36,13 @@ extension StreamSubscriptionsIterableExtensions
 
 /// [StreamBuilder] analogue that allows to pass multiple [StateStream]
 class KoreMultiStreamBuilder extends StatefulWidget {
-  const KoreMultiStreamBuilder(
-      {super.key,
-      this.streams,
-      this.initialData,
-      required this.builder,
-      this.streamWraps});
+  const KoreMultiStreamBuilder({
+    super.key,
+    this.streams,
+    this.initialData,
+    required this.builder,
+    this.streamWraps,
+  });
 
   final Iterable<StateStream>? streamWraps;
   final Iterable<Stream>? streams;
@@ -89,7 +90,9 @@ class _KoreMultiStreamBuilderState extends State<KoreMultiStreamBuilder> {
   }
 
   Iterable<R> mapIndexed<R, T>(
-      Iterable<T> streams, R Function(int index, T element) transform) sync* {
+    Iterable<T> streams,
+    R Function(int index, T element) transform,
+  ) sync* {
     var index = 0;
     for (final e in streams) {
       yield transform(index++, e);
@@ -132,7 +135,8 @@ class _KoreMultiStreamBuilderState extends State<KoreMultiStreamBuilder> {
         if (widget.streamWraps != null) {
           values = widget.streamWraps!.map((wrap) => wrap.current).toList();
         } else {
-          values = widget.initialData?.map((e) {
+          values =
+              widget.initialData?.map((e) {
                 return e();
               }).toList() ??
               List.filled(subscriptions.length, null);

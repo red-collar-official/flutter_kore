@@ -29,9 +29,11 @@ class GlobalNavigationInitializer extends StatelessWidget {
         initialRoute: initialRoute,
         key: KoreApp.navigationInteractor!.globalNavigatorKey,
         onGenerateRoute: (_) => MaterialPageRoute(
-          builder: (_) => Builder(builder: (context) {
-            return initialView;
-          }),
+          builder: (_) => Builder(
+            builder: (context) {
+              return initialView;
+            },
+          ),
         ),
       ),
     );

@@ -11,7 +11,7 @@ mixin EventBusReceiver {
   ///
   /// ```dart
   /// @override
-  /// List<EventBusSubscriber> subscribe() {
+  /// void subscribe() {
   ///   on<PostLikedEvent>((event) {
   ///     _onPostLiked(event.id);
   ///   });
@@ -19,10 +19,10 @@ mixin EventBusReceiver {
   /// ```
   void subscribe() {}
 
-  final Map<Type, EventBusSubscriber> _subscribers = {};
-  final List<Type> _receivedEvents = [];
+  final _subscribers = <Type, EventBusSubscriber>{};
+  final _receivedEvents = <Type>[];
 
-  bool isPaused = false;
+  var isPaused = false;
   final _eventsReceivedWhilePaused = [];
 
   /// Underlying stream subsription for [EventBus] events
@@ -43,8 +43,8 @@ mixin EventBusReceiver {
     _eventsSubscription = EventBus.instance
         .streamOfCollection(_subscribers.keys.toList())
         .listen((event) {
-      _subscribers[event.runtimeType]?.call(event);
-    });
+          _subscribers[event.runtimeType]?.call(event);
+        });
   }
 
   @mustCallSuper
@@ -150,8 +150,10 @@ mixin EventBusReceiver {
     int? count,
     Duration timeout = const Duration(seconds: 1),
   }) async {
-    await for (final _ in _testReceivedEventsController.stream
-        .timeout(timeout, onTimeout: (s) => s.close())) {
+    await for (final _ in _testReceivedEventsController.stream.timeout(
+      timeout,
+      onTimeout: (s) => s.close(),
+    )) {
       if (checkEventWasReceived(event, count: count)) {
         break;
       }

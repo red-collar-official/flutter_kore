@@ -382,35 +382,20 @@ mixin DialogsGen on RoutesBase {
             'filter|query?': Post3LinkHandler1(),
           },
           '*': {
-            '': {
-              'filter=qwerty1|filter=qwerty2': TestHandler(),
-            },
+            '': {'filter=qwerty1|filter=qwerty2': TestHandler()},
           },
           'test': {
-            '': {
-              'filter|query?': Post4LinkHandler1(),
-            },
+            '': {'filter|query?': Post4LinkHandler1()},
           },
         },
-        '': {
-          '': PostsLinkHandler1(),
-          'filter': Posts2LinkHandler1(),
-        },
+        '': {'': PostsLinkHandler1(), 'filter': Posts2LinkHandler1()},
       },
       'stub': {
-        '': {
-          'filter': StubLinkHandler1(),
-        },
+        '': {'filter': StubLinkHandler1()},
       },
-      'home': {
-        '': HomeLinkHandler1(),
-      },
-      'likedPosts': {
-        '': LikedPostsLinkHandler1(),
-      },
+      'home': {'': HomeLinkHandler1()},
+      'likedPosts': {'': LikedPostsLinkHandler1()},
     });
-    regexHandlers.addAll({
-      r'(.*?)': TestMapper(),
-    });
+    regexHandlers.addAll({r'(.*?)': TestMapper()});
   }
 }

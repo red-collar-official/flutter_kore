@@ -65,11 +65,11 @@ class TestViewWidgetState extends BaseIndependentView<TestView> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          number = event.number;
-        }),
-      ];
+  void subscribe() {
+    on<TestEvent>((event) {
+      number = event.number;
+    });
+  }
 }
 ```
 

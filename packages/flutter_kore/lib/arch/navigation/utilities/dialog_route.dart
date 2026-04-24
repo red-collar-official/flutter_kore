@@ -12,12 +12,12 @@ class DialogRoute<T> extends PopupRoute<T> {
     required Duration transitionDuration,
     RouteTransitionsBuilder? transitionBuilder,
     super.settings,
-  })  : _pageBuilder = pageBuilder,
-        _barrierDismissible = barrierDismissible,
-        _barrierLabel = barrierLabel ?? '',
-        _barrierColor = barrierColor,
-        _transitionDuration = transitionDuration,
-        _transitionBuilder = transitionBuilder;
+  }) : _pageBuilder = pageBuilder,
+       _barrierDismissible = barrierDismissible,
+       _barrierLabel = barrierLabel ?? '',
+       _barrierColor = barrierColor,
+       _transitionDuration = transitionDuration,
+       _transitionBuilder = transitionBuilder;
 
   final RoutePageBuilder _pageBuilder;
 
@@ -40,8 +40,11 @@ class DialogRoute<T> extends PopupRoute<T> {
   final RouteTransitionsBuilder? _transitionBuilder;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
     return Semantics(
       scopesRoute: true,
       explicitChildNodes: true,
@@ -50,18 +53,19 @@ class DialogRoute<T> extends PopupRoute<T> {
   }
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     if (_transitionBuilder == null) {
       return FadeTransition(
-        opacity: CurvedAnimation(
-          parent: animation,
-          curve: Curves.linear,
-        ),
+        opacity: CurvedAnimation(parent: animation, curve: Curves.linear),
         child: child,
       );
     }
 
-    return _transitionBuilder!(context, animation, secondaryAnimation, child);
+    return _transitionBuilder(context, animation, secondaryAnimation, child);
   }
 }

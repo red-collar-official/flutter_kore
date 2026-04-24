@@ -23,32 +23,36 @@ void main() {
 
     test('ApiCaller dispose test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
       addTestResponsesToDio(request.httpInstance!);
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
       addTestResponsesToDio(request2.httpInstance!);
 
-      final interactor =
-          await instances.getUniqueAsync<TestInteractorWithRequest>();
+      final interactor = await instances
+          .getUniqueAsync<TestInteractorWithRequest>();
 
       late Response<int> response1;
       late Response<int> response2;
 
-      unawaited(interactor.executeAndCancelOnDispose(request).then((value) {
-        response1 = value;
-      }));
+      unawaited(
+        interactor.executeAndCancelOnDispose(request).then((value) {
+          response1 = value;
+        }),
+      );
 
-      unawaited(interactor.executeAndCancelOnDispose(request2).then((value) {
-        response2 = value;
-      }));
+      unawaited(
+        interactor.executeAndCancelOnDispose(request2).then((value) {
+          response2 = value;
+        }),
+      );
 
       await DelayUtility.pause();
 

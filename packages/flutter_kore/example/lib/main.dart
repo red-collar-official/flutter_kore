@@ -94,7 +94,7 @@ class HttpRequest<T> extends DioRequest<T> {
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       HttpRequest<List<Post>>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = 'http://jsonplaceholder.typicode.com'
         ..url = '/posts'
         ..parser = (result, headers) async {
@@ -136,11 +136,11 @@ class PostsInteractor
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
+  void subscribe() {
     on<PostLikedEvent>((event) {
       // update state
-    }),
-  ];
+    });
+  }
 
   @override
   PostsState get initialState => const PostsState();
@@ -189,7 +189,7 @@ class _PostsListViewWidgetState extends BaseIndependentView<PostsListView> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 232, 232, 232),
+      backgroundColor: const .fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
       body: KoreStreamBuilder<StatefulData<List<Post>>?>(
         streamWrap: posts,
@@ -255,18 +255,16 @@ class PostCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 0,
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        margin: const .symmetric(horizontal: 16, vertical: 12),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const .symmetric(horizontal: 16, vertical: 12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: .start,
+            spacing: 8,
             children: [
               _buildUserHeader(),
-              const SizedBox(height: 8),
               Text(title, style: const TextStyle(fontSize: 20)),
-              const SizedBox(height: 8),
               Text(body),
-              const SizedBox(height: 8),
               _buildControls(),
             ],
           ),
@@ -276,7 +274,7 @@ class PostCard extends StatelessWidget {
   }
 
   Widget _buildControls() => Row(
-    mainAxisAlignment: MainAxisAlignment.end,
+    mainAxisAlignment: .end,
     children: [
       GestureDetector(
         onTap: onLikeTap,

@@ -10,9 +10,7 @@ class TestkoreDisposableInstance extends BaseViewModel<StatefulWidget, int>
     with UseDisposableMixin {
   late final scrollController = useScrollController();
   late final textEditingController = useTextEditingController();
-  late final debouncer = useDebouncer(
-    delay: const Duration(milliseconds: 100),
-  );
+  late final debouncer = useDebouncer(delay: const Duration(milliseconds: 100));
 
   @override
   int get initialState => 1;

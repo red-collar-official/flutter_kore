@@ -117,8 +117,7 @@ class NavigationInteractor extends NavigationInteractorDeclaration<NavigationSta
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      ];
+  void subscribe() {}
 
   @override
   NavigationState get initialState => NavigationState();

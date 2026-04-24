@@ -1,9 +1,6 @@
 /// Annotation to mark class containing abstract routes description
 class RoutesAnnotation {
-  const RoutesAnnotation({
-    this.bottomSheets = false,
-    this.dialogs = false,
-  });
+  const RoutesAnnotation({this.bottomSheets = false, this.dialogs = false});
 
   /// Flag indicating bottom sheet routes collection
   final bool bottomSheets;

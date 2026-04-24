@@ -18,19 +18,19 @@ class TestkoreForKInstance1 extends BaseViewModel<StatefulWidget, int>
   int get initialState => 1;
 
   @override
-  Future<void> submit() async {
+  Future<void> onSubmit() async {
     updateState(2);
   }
 
   @override
   ValidatorsMap get validators => {
-        testKey1: () {
-          return Future.value(ValidFieldState());
-        },
-        testKey2: () {
-          return Future.value(ValidFieldState());
-        },
-      };
+    testKey1: () {
+      return Future.value(const ValidFieldState());
+    },
+    testKey2: () {
+      return Future.value(const ValidFieldState());
+    },
+  };
 }
 
 class TestkoreForKInstance2 extends BaseViewModel<StatefulWidget, int>
@@ -39,19 +39,19 @@ class TestkoreForKInstance2 extends BaseViewModel<StatefulWidget, int>
   int get initialState => 1;
 
   @override
-  Future<void> submit() async {
+  Future<void> onSubmit() async {
     updateState(2);
   }
 
   @override
   ValidatorsMap get validators => {
-        testKey1: () {
-          return Future.value(ErrorFieldState());
-        },
-        testKey2: () {
-          return Future.value(ErrorFieldState());
-        },
-      };
+    testKey1: () {
+      return Future.value(const ErrorFieldState());
+    },
+    testKey2: () {
+      return Future.value(const ErrorFieldState());
+    },
+  };
 }
 
 class TestkoreForKInstance3 extends BaseViewModel<StatefulWidget, int>
@@ -60,20 +60,20 @@ class TestkoreForKInstance3 extends BaseViewModel<StatefulWidget, int>
   int get initialState => 1;
 
   @override
-  Future<void> submit() async {
+  Future<void> onSubmit() async {
     await DelayUtility.pause(millis: 100);
     updateState(2);
   }
 
   @override
   ValidatorsMap get validators => {
-        testKey1: () {
-          return Future.value(ValidFieldState());
-        },
-        testKey2: () {
-          return Future.value(ValidFieldState());
-        },
-      };
+    testKey1: () {
+      return Future.value(const ValidFieldState());
+    },
+    testKey2: () {
+      return Future.value(const ValidFieldState());
+    },
+  };
 }
 
 void main() {
@@ -109,11 +109,9 @@ void main() {
 
       FieldValidationState? stateFromStream;
 
-      final subscription = viewModel.fieldStateStream(testKey1).listen(
-        (event) {
-          stateFromStream = event;
-        },
-      );
+      final subscription = viewModel.fieldStateStream(testKey1).listen((event) {
+        stateFromStream = event;
+      });
 
       final validator = viewModel.validatorForKey(testKey1);
 
@@ -123,7 +121,9 @@ void main() {
 
       expect(stateFromStream.runtimeType, ValidFieldState);
       expect(
-          viewModel.currentFieldState(testKey1).runtimeType, ValidFieldState);
+        viewModel.currentFieldState(testKey1).runtimeType,
+        ValidFieldState,
+      );
 
       await subscription.cancel();
       viewModel.dispose();
@@ -150,11 +150,36 @@ void main() {
 
       bool? isDisabledInStream;
 
-      final subscription = viewModel.disableStream.listen(
-        (event) {
-          isDisabledInStream = event;
-        },
-      );
+      final subscription = viewModel.disableStream.listen((event) {
+        isDisabledInStream = event;
+      });
+
+      unawaited(viewModel.executeSubmitAction());
+
+      await DelayUtility.pause();
+
+      expect(viewModel.isFormDisabled, true);
+
+      await DelayUtility.pause(millis: 100);
+
+      expect(viewModel.isFormDisabled, false);
+      expect(isDisabledInStream != null, true);
+
+      await subscription.cancel();
+      viewModel.dispose();
+    });
+
+    test('FormViewModel disable wrap test', () async {
+      final viewModel = TestkoreForKInstance3();
+
+      viewModel.initialize(const TestWidget());
+      viewModel.onLaunch();
+
+      bool? isDisabledInStream;
+
+      final subscription = viewModel.disableStreamWrap.stream.listen((event) {
+        isDisabledInStream = event;
+      });
 
       unawaited(viewModel.executeSubmitAction());
 

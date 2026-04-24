@@ -23,10 +23,6 @@ class UIRoute<T> {
 
   /// Returns copy of this object with changed default settings
   UIRoute<T> copyWithDefaultSettings(UIRouteSettings settings) {
-    return UIRoute<T>(
-      name: name,
-      child: child,
-      defaultSettings: settings,
-    );
+    return UIRoute<T>(name: name, child: child, defaultSettings: settings);
   }
 }

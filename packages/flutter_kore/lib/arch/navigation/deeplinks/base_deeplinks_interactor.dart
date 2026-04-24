@@ -46,7 +46,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 abstract class BaseDeepLinksInteractor<MState>
     extends BaseInteractor<MState, Map<String, dynamic>> {
   /// Flag indicating if initial route is received
-  bool initialLinkReceived = false;
+  var initialLinkReceived = false;
 
   /// [StreamSubscription] for deeplinks stream
   StreamSubscription? _deepLinksSubscription;

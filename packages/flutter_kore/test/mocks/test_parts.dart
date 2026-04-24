@@ -3,8 +3,8 @@ import 'package:flutter_kore/flutter_kore.dart';
 import 'test_event.dart';
 
 class TestInstancePart extends UniversalInstancePart<int> {
-  int value = 0;
-  bool eventProcessed = false;
+  var value = 0;
+  var eventProcessed = false;
 
   @override
   void initialize(int? input) {
@@ -14,24 +14,22 @@ class TestInstancePart extends UniversalInstancePart<int> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          eventProcessed = true;
+  void subscribe() {
+    on<TestEvent>((event) {
+      eventProcessed = true;
 
-          value = event.number;
-        }),
-      ];
+      value = event.number;
+    });
+  }
 }
 
 class TestInstancePart2 extends UniversalInstancePart<int> {
-  int value = 0;
-  bool eventProcessed = false;
+  var value = 0;
+  var eventProcessed = false;
 
   @override
   KoreInstanceConfiguration get configuration =>
-      const KoreInstanceConfiguration(
-        isAsync: true,
-      );
+      const KoreInstanceConfiguration(isAsync: true);
 
   @override
   Future<void> initializeAsync() async {
@@ -43,18 +41,18 @@ class TestInstancePart2 extends UniversalInstancePart<int> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          eventProcessed = true;
+  void subscribe() {
+    on<TestEvent>((event) {
+      eventProcessed = true;
 
-          value = event.number;
-        }),
-      ];
+      value = event.number;
+    });
+  }
 }
 
 class TestInstancePart3 extends UniversalInstancePart<int> {
-  int value = 0;
-  bool eventProcessed = false;
+  var value = 0;
+  var eventProcessed = false;
 
   @override
   KoreInstanceConfiguration get configuration =>
@@ -74,23 +72,21 @@ class TestInstancePart3 extends UniversalInstancePart<int> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          eventProcessed = true;
+  void subscribe() {
+    on<TestEvent>((event) {
+      eventProcessed = true;
 
-          value = event.number;
-        }),
-      ];
+      value = event.number;
+    });
+  }
 }
 
 class TestInstancePart4 extends UniversalInstancePart<int> {
-  int value = 0;
+  var value = 0;
 
   @override
   KoreInstanceConfiguration get configuration =>
-      const KoreInstanceConfiguration(
-        isAsync: true,
-      );
+      const KoreInstanceConfiguration(isAsync: true);
 
   @override
   Future<void> initializeAsync() async {
@@ -103,7 +99,7 @@ class TestInstancePart4 extends UniversalInstancePart<int> {
 }
 
 class TestInstancePart5 extends UniversalInstancePart<int?> {
-  int value = 0;
+  var value = 0;
 
   @override
   KoreInstanceConfiguration get configuration =>
@@ -124,5 +120,5 @@ class TestInstancePart5 extends UniversalInstancePart<int?> {
 }
 
 class TestInstancePart6 extends UniversalInstancePart<int> {
-  int value = 0;
+  var value = 0;
 }

@@ -17,9 +17,9 @@ class TestApp extends KoreApp<NavigationInteractor> {
 
   @override
   List<Connector> get singletonInstances => [
-        const Connector(type: TestInteractor1),
-        const Connector(type: TestInteractor3, isAsync: true),
-      ];
+    const Connector(type: TestInteractor1),
+    const Connector(type: TestInteractor3, isAsync: true),
+  ];
 }
 
 class TestViewModel extends NavigationViewModel<TestWidget, int> {
@@ -58,8 +58,10 @@ void main() {
       await viewModel.initializeAsync();
       viewModel.onLaunch();
 
-      await app.navigation
-          .routeTo(app.navigation.routes.stub(), forceGlobal: true);
+      await app.navigation.routeTo(
+        app.navigation.routes.stub(),
+        forceGlobal: true,
+      );
 
       viewModel.pop();
 

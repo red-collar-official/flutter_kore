@@ -10,7 +10,7 @@ import 'package:sample_database/domain/database/posts_box.dart';
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       HttpRequest<List<Post>>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = getBaseUrl(BackendUrls.main)
         ..url = '/posts'
         ..parser = (result, headers) async {
@@ -27,7 +27,7 @@ class PostsApi {
         ..databasePutDelegate = (PostsBox.putPostsDelegate);
 
   HttpRequest<Post?> likePost(int id) => HttpRequest<Post?>()
-    ..method = RequestMethod.post
+    ..method = .post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts'
     ..body = {'id': id}
@@ -44,7 +44,7 @@ class PostsApi {
     );
 
   HttpRequest<Post?> getPost(int id) => HttpRequest<Post?>()
-    ..method = RequestMethod.post
+    ..method = .post
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts/$id'
     ..body = {'id': id}

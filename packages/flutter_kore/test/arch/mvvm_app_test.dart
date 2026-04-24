@@ -13,19 +13,16 @@ class TestApp extends KoreApp {
 
   @override
   List<Connector> get singletonInstances => [
-        const Connector(type: TestInteractor1),
-        const Connector(type: TestInteractor3, isAsync: true),
-        const Connector(
-          type: TestWrapper3,
-          isAsync: true,
-          awaitInitialization: true,
-          initializationOrder: 1,
-        ),
-        const Connector(
-          type: TestWrapper4,
-          initializationOrder: 2,
-        ),
-      ];
+    const Connector(type: TestInteractor1),
+    const Connector(type: TestInteractor3, isAsync: true),
+    const Connector(
+      type: TestWrapper3,
+      isAsync: true,
+      awaitInitialization: true,
+      initializationOrder: 1,
+    ),
+    const Connector(type: TestWrapper4, initializationOrder: 2),
+  ];
 }
 
 void main() {

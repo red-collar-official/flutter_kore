@@ -38,12 +38,12 @@ class PostInteractor extends BaseInteractor<PostState, Post>
       PostState(post: input == null ? null : SuccessData(result: input!));
 
   @override
-  List<EventBusSubscriber> subscribe() => [
+  void subscribe() {
     on<PostLikedEvent>((event) {
       if (state.post is SuccessData<Post> &&
           event.id == (state.post as SuccessData<Post>).result.id) {
         _onPostLiked();
       }
-    }),
-  ];
+    });
+  }
 }

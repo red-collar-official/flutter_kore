@@ -36,19 +36,19 @@ class RequestSettings<I> {
 /// Main class to hold http response
 class Response<ItemType> {
   /// Parsed result of request
-  ItemType? result;
+  final ItemType? result;
 
   /// Error of http request
-  Object? error;
+  final Object? error;
 
   /// Status code for this request
-  int code;
+  final int code;
 
   /// Headers for response of this request
-  Map? headers;
+  final Map? headers;
 
   /// Flag to detect that [result] was from database
-  bool fromDatabase;
+  final bool fromDatabase;
 
   /// Checks that [error] is not null and status [code] is equal to 200 or less than 400 and greater than 200
   bool get isSuccessful => error == null && code >= 200 && code < 400;
@@ -56,7 +56,7 @@ class Response<ItemType> {
   /// Checks that result is not null and was obtained from database
   bool get isSuccessfulFromDatabase => result != null && fromDatabase;
 
-  Response({
+  const Response({
     this.result,
     this.error,
     required this.code,
@@ -66,18 +66,10 @@ class Response<ItemType> {
 }
 
 /// Http request method
-enum RequestMethod {
-  post,
-  get,
-  put,
-  delete,
-  patch,
-}
+enum RequestMethod { post, get, put, delete, patch }
 
-typedef ResponseParser<ItemType> = Future<ItemType> Function(
-  dynamic result,
-  Map? headers,
-);
+typedef ResponseParser<ItemType> =
+    Future<ItemType> Function(dynamic result, Map? headers);
 typedef DatabasePutDelegate<ItemType> = Future Function(ItemType parsedItem);
 typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 
@@ -89,7 +81,7 @@ typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 /// F - form data type
 abstract class BaseRequest<T, I, B, F> {
   BaseRequest({
-    this.method = RequestMethod.get,
+    this.method = .get,
     this.url,
     this.parser,
     this.query,
@@ -97,7 +89,7 @@ abstract class BaseRequest<T, I, B, F> {
     this.headers,
     this.body,
     this.baseUrl,
-    this.requiresLogin = true,
+    this.requiresAuthentication = true,
     this.databaseGetDelegate,
     this.databasePutDelegate,
     this.simulateResponse,
@@ -147,7 +139,7 @@ abstract class BaseRequest<T, I, B, F> {
   Map<String, dynamic>? query;
 
   /// Flag to indicate that we need to add autharization headers to this request
-  bool requiresLogin;
+  bool requiresAuthentication;
 
   /// For tests: simulates parsed result for this request
   @visibleForTesting
@@ -189,7 +181,7 @@ abstract class BaseRequest<T, I, B, F> {
   void cancel();
 
   /// Collection of all running requests
-  RequestCollection get requestCollection => RequestCollection.instance;
+  RequestCollection get requestCollection => .instance;
 
   /// Underlying http instance
   B? get httpInstance;

@@ -20,7 +20,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 /// ```
 mixin ApiCaller<Input> on KoreInstance<Input> {
   /// Collection of requests running in this instance
-  final List<BaseRequest> requests = [];
+  final requests = <BaseRequest>[];
 
   /// Executes request and adds it in local requests collection
   ///

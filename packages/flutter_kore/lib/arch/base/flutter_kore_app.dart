@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 typedef LocaleCacheGetDelegate = String? Function(String name);
-typedef LocaleCachePutDelegate = Future<bool> Function(
-  String name,
-  String data,
-);
+typedef LocaleCachePutDelegate =
+    Future<bool> Function(String name, String data);
 
 /// Main class for flutter_kore application
 ///
@@ -46,7 +44,8 @@ typedef LocaleCachePutDelegate = Future<bool> Function(
 /// }
 /// ```
 abstract class KoreApp<
-    NavigationInteractorType extends BaseNavigationInteractor> {
+  NavigationInteractorType extends BaseNavigationInteractor
+> {
   /// Main app instances collection
   final instances = InstanceCollection.instance;
 
@@ -54,16 +53,14 @@ abstract class KoreApp<
   final eventBus = EventBus.instance;
 
   /// Navigation interactor for this app
-  static final navigationInteractor =
-      InstanceCollection.instance.find<BaseNavigationInteractor>(
-    BaseScopes.global,
-  );
+  static final navigationInteractor = InstanceCollection.instance
+      .find<BaseNavigationInteractor>(BaseScopes.global);
 
   /// Navigation interactor for this app
   late final NavigationInteractorType navigation =
       navigationInteractor! as NavigationInteractorType;
 
-  bool _initialized = false;
+  var _initialized = false;
 
   /// Flag indicating that all kore instances are created and registered
   bool get isInitialized => _initialized;
@@ -85,24 +82,27 @@ abstract class KoreApp<
   Future<void> createSingletons() async {
     // no need to count references for singletons
 
-    final unorderedInstances = singletonInstances
-        .where((element) => element.initializationOrder == null);
+    final unorderedInstances = singletonInstances.where(
+      (element) => element.initializationOrder == null,
+    );
 
-    final orderedInstances = singletonInstances
-        .where((element) => element.initializationOrder != null)
-        .toList()
-      ..sort((first, second) {
-        return first.initializationOrder!
-            .compareTo(second.initializationOrder!);
-      });
+    final orderedInstances =
+        singletonInstances
+            .where((element) => element.initializationOrder != null)
+            .toList()
+          ..sort((first, second) {
+            return first.initializationOrder!.compareTo(
+              second.initializationOrder!,
+            );
+          });
 
     for (final element in orderedInstances) {
       await _addInstance(element);
     }
 
-    await Future.wait(
-      [for (final element in unorderedInstances) _addInstance(element)],
-    );
+    await Future.wait([
+      for (final element in unorderedInstances) _addInstance(element),
+    ]);
   }
 
   Future<void> _addInstance(Connector element) async {
@@ -113,16 +113,15 @@ abstract class KoreApp<
           scope: BaseScopes.global,
         );
       } else {
-        unawaited(instances.addAsync(
-          type: element.type.toString(),
-          scope: BaseScopes.global,
-        ));
+        unawaited(
+          instances.addAsync(
+            type: element.type.toString(),
+            scope: BaseScopes.global,
+          ),
+        );
       }
     } else {
-      instances.add(
-        type: element.type.toString(),
-        scope: BaseScopes.global,
-      );
+      instances.add(type: element.type.toString(), scope: BaseScopes.global);
     }
   }
 
@@ -167,5 +166,5 @@ abstract class KoreApp<
   /// Flag indicating test mode
   ///
   /// Set it to true before any tests
-  static bool isInTestMode = false;
+  static var isInTestMode = false;
 }

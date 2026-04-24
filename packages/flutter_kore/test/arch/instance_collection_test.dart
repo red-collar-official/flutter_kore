@@ -51,10 +51,10 @@ void main() {
   group('Instance collection tests', () {
     final instances = InstanceCollection.instance;
     const testScope = Constants.testScope;
-    final testInstanceRuntimeType =
-        TestBaseKoreInstance().runtimeType.toString();
-    final testInstance2RuntimeType =
-        TestBaseKoreInstance2().runtimeType.toString();
+    final testInstanceRuntimeType = TestBaseKoreInstance().runtimeType
+        .toString();
+    final testInstance2RuntimeType = TestBaseKoreInstance2().runtimeType
+        .toString();
 
     setUp(() async {
       KoreApp.isInTestMode = true;
@@ -67,7 +67,8 @@ void main() {
         ..addBuilder<TestInteractorAsync5>(TestInteractorAsync5.new)
         ..addBuilder<TestBaseKoreInstance2>(TestBaseKoreInstance2.new)
         ..addBuilder<TestInteractorAsyncSameDependency>(
-            TestInteractorAsyncSameDependency.new);
+          TestInteractorAsyncSameDependency.new,
+        );
     });
 
     test('Instance collection mock test', () async {
@@ -82,7 +83,8 @@ void main() {
 
     test('Instance collection mock builder test', () async {
       instances.mock<TestBaseKoreInstance>(
-          builder: MockTestBaseKoreInstance.new);
+        builder: MockTestBaseKoreInstance.new,
+      );
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 2);
     });
@@ -171,8 +173,7 @@ void main() {
       expect(
         (await instances.getAsync<TestBaseKoreInstance>(
           scope: testScope,
-        ))
-            .value,
+        )).value,
         1,
       );
     });
@@ -188,8 +189,7 @@ void main() {
         (await instances.getAsync<TestBaseKoreInstance>(
           scope: testScope,
           withoutConnections: true,
-        ))
-            .value,
+        )).value,
         1,
       );
     });
@@ -266,16 +266,22 @@ void main() {
 
       expect(
         () => instances
-          ..decreaseReferencesInScope(testScope, TestBaseKoreInstance,
-              index: 10)
+          ..decreaseReferencesInScope(
+            testScope,
+            TestBaseKoreInstance,
+            index: 10,
+          )
           ..prune(),
         throwsA(isA<IllegalArgumentException>()),
       );
 
       expect(
         () => instances
-          ..decreaseReferencesInScope(testScope, TestBaseKoreInstance,
-              index: -1)
+          ..decreaseReferencesInScope(
+            testScope,
+            TestBaseKoreInstance,
+            index: -1,
+          )
           ..prune(),
         throwsA(isA<IllegalArgumentException>()),
       );
@@ -315,7 +321,9 @@ void main() {
 
     test('Instance collection add existing test', () async {
       instances.addExisting(
-          scope: testScope, instance: TestBaseKoreInstance()..initialize(3));
+        scope: testScope,
+        instance: TestBaseKoreInstance()..initialize(3),
+      );
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 3);
     });
@@ -364,7 +372,9 @@ void main() {
 
     test('Instance collection clear test', () async {
       instances.addExisting(
-          scope: testScope, instance: TestBaseKoreInstance()..initialize(3));
+        scope: testScope,
+        instance: TestBaseKoreInstance()..initialize(3),
+      );
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 3);
 
@@ -375,7 +385,9 @@ void main() {
 
     test('Instance collection find test', () async {
       instances.addExisting(
-          scope: testScope, instance: TestBaseKoreInstance()..initialize(3));
+        scope: testScope,
+        instance: TestBaseKoreInstance()..initialize(3),
+      );
 
       expect(instances.find<TestBaseKoreInstance>(testScope)!.value, 3);
 
@@ -392,8 +404,7 @@ void main() {
       expect(
         (await instances.getUniqueWithParamsAsync<TestBaseKoreInstance, int>(
           params: 2,
-        ))
-            .value,
+        )).value,
         2,
       );
     });
@@ -405,53 +416,59 @@ void main() {
     test('Instance collection getWithParamsAsync test', () async {
       expect(
         (await instances.getWithParamsAsync<TestBaseKoreInstance, int>(
-                params: 2))
-            .value,
-        2,
-      );
-    });
-
-    test('Instance collection getAsync when instance already existing test',
-        () async {
-      instances.addExisting(
-          scope: testScope, instance: TestBaseKoreInstance()..initialize(3));
-
-      expect(
-        (await instances.getAsync<TestBaseKoreInstance>(scope: testScope))
-            .value,
-        3,
-      );
-    });
-
-    test('Instance collection getUniqueByTypeStringWithParamsAsync test',
-        () async {
-      expect(
-        (await instances.getUniqueByTypeStringWithParamsAsync<int>(
-          type: testInstanceRuntimeType,
           params: 2,
-        ) as TestBaseKoreInstance)
-            .value,
+        )).value,
         2,
       );
     });
+
+    test(
+      'Instance collection getAsync when instance already existing test',
+      () async {
+        instances.addExisting(
+          scope: testScope,
+          instance: TestBaseKoreInstance()..initialize(3),
+        );
+
+        expect(
+          (await instances.getAsync<TestBaseKoreInstance>(
+            scope: testScope,
+          )).value,
+          3,
+        );
+      },
+    );
+
+    test(
+      'Instance collection getUniqueByTypeStringWithParamsAsync test',
+      () async {
+        expect(
+          (await instances.getUniqueByTypeStringWithParamsAsync<int>(
+                    type: testInstanceRuntimeType,
+                    params: 2,
+                  )
+                  as TestBaseKoreInstance)
+              .value,
+          2,
+        );
+      },
+    );
 
     test('Instance collection getByTypeStringWithParamsAsync test', () async {
       expect(
         (await instances.getByTypeStringWithParamsAsync<int>(
-          type: testInstanceRuntimeType,
-          params: 2,
-          scope: testScope,
-        ) as TestBaseKoreInstance)
+                  type: testInstanceRuntimeType,
+                  params: 2,
+                  scope: testScope,
+                )
+                as TestBaseKoreInstance)
             .value,
         2,
       );
     });
 
     test('Instance collection addAsync test', () async {
-      await instances.addAsync(
-        type: testInstanceRuntimeType,
-        scope: testScope,
-      );
+      await instances.addAsync(type: testInstanceRuntimeType, scope: testScope);
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 1);
     });
@@ -490,23 +507,25 @@ void main() {
       );
     });
 
-    test('Instance collection get when instance already existing test',
-        () async {
-      instances.addExisting(
-          scope: testScope, instance: TestBaseKoreInstance()..initialize(3));
+    test(
+      'Instance collection get when instance already existing test',
+      () async {
+        instances.addExisting(
+          scope: testScope,
+          instance: TestBaseKoreInstance()..initialize(3),
+        );
 
-      expect(
-        instances.get<TestBaseKoreInstance>(scope: testScope).value,
-        3,
-      );
-    });
+        expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 3);
+      },
+    );
 
     test('Instance collection getByTypeString test', () async {
       expect(
         (instances.getByTypeString(
-          type: testInstanceRuntimeType,
-          scope: testScope,
-        ) as TestBaseKoreInstance)
+                  type: testInstanceRuntimeType,
+                  scope: testScope,
+                )
+                as TestBaseKoreInstance)
             .value,
         1,
       );
@@ -515,20 +534,18 @@ void main() {
     test('Instance collection getByTypeStringWithParams test', () async {
       expect(
         (instances.getByTypeStringWithParams<int>(
-          type: testInstanceRuntimeType,
-          params: 2,
-          scope: testScope,
-        ) as TestBaseKoreInstance)
+                  type: testInstanceRuntimeType,
+                  params: 2,
+                  scope: testScope,
+                )
+                as TestBaseKoreInstance)
             .value,
         2,
       );
     });
 
     test('Instance collection add test', () async {
-      instances.add(
-        type: testInstanceRuntimeType,
-        scope: testScope,
-      );
+      instances.add(type: testInstanceRuntimeType, scope: testScope);
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 1);
     });
@@ -552,9 +569,7 @@ void main() {
 
       expect(instances.get<TestBaseKoreInstance>(scope: testScope).value, 2);
 
-      instances.unregisterInstance<TestBaseKoreInstance>(
-        scope: testScope,
-      );
+      instances.unregisterInstance<TestBaseKoreInstance>(scope: testScope);
 
       expect(instances.forceGet<TestBaseKoreInstance>(scope: testScope), null);
     });
@@ -582,55 +597,46 @@ void main() {
     });
 
     test('Instance collection use and dispose instance test', () async {
-      await instances
-          .useAndDisposeInstance<TestBaseKoreInstance>((instance) async {
+      await instances.useAndDisposeInstance<TestBaseKoreInstance>((
+        instance,
+      ) async {
         await DelayUtility.pause();
       });
 
-      expect(
-        instances.forceGet<TestBaseKoreInstance>(),
-        null,
-      );
+      expect(instances.forceGet<TestBaseKoreInstance>(), null);
     });
 
-    test('Instance collection use and dispose instance with params test',
-        () async {
-      await instances
-          .useAndDisposeInstanceWithParams<TestBaseKoreInstance, int>(
-        1,
-        (instance) async {
-          await DelayUtility.pause();
-        },
-      );
+    test(
+      'Instance collection use and dispose instance with params test',
+      () async {
+        await instances
+            .useAndDisposeInstanceWithParams<TestBaseKoreInstance, int>(1, (
+              instance,
+            ) async {
+              await DelayUtility.pause();
+            });
 
-      expect(
-        instances.forceGet<TestBaseKoreInstance>(),
-        null,
-      );
-    });
+        expect(instances.forceGet<TestBaseKoreInstance>(), null);
+      },
+    );
 
     test('Instance collection async beforeInitialize test', () async {
       final instance = await instances
           .constructAndInitializeInstanceAsync<TestAsyncBaseKoreInstance>(
-              TestAsyncBaseKoreInstance().runtimeType.toString(),
-              beforeInitialize: (instance) {
-        instance.value = 3;
-      });
+            TestAsyncBaseKoreInstance().runtimeType.toString(),
+            beforeInitialize: (instance) {
+              instance.value = 3;
+            },
+          );
 
-      expect(
-        instance.value,
-        3,
-      );
+      expect(instance.value, 3);
     });
 
     test('Instance collection async beforeInitialize test', () async {
       try {
         await instances.getUniqueAsync<TestInteractorAsyncSameDependency>();
       } catch (e) {
-        expect(
-          e is IllegalArgumentException,
-          true,
-        );
+        expect(e is IllegalArgumentException, true);
       }
     });
   });

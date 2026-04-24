@@ -30,7 +30,7 @@ class EventBus {
   /// Flag indicating that this event bus is disposed
   ///
   /// Event bus can't be used if this flag is true
-  bool _isDisposed = false;
+  var _isDisposed = false;
 
   /// Flag indicating that this event bus is disposed
   ///
@@ -38,10 +38,10 @@ class EventBus {
   bool get isDisposed => _isDisposed;
 
   EventBus._internal() {
-    _streamController = StreamController.broadcast();
+    _streamController = .broadcast();
   }
 
-  static final EventBus _singletonEventBus = EventBus._internal();
+  static final EventBus _singletonEventBus = ._internal();
 
   static EventBus get instance {
     return _singletonEventBus;
@@ -52,13 +52,13 @@ class EventBus {
   /// Useful when you need eventbus specificaly for one task, for example file upload
   // ignore: prefer_constructors_over_static_methods
   static EventBus newSeparateInstance() {
-    return EventBus._internal();
+    return ._internal();
   }
 
   /// Return dart stream of events with particular name
   Stream<T> streamOf<T>() {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call streamOf after dispose.',
       );
     }
@@ -73,13 +73,14 @@ class EventBus {
   /// [events] - list of events to receive
   Stream streamOfCollection(List<Type> events) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call streamOfCollection after dispose.',
       );
     }
 
-    return _streamController.stream
-        .where((event) => events.contains(event.runtimeType));
+    return _streamController.stream.where(
+      (event) => events.contains(event.runtimeType),
+    );
   }
 
   /// Sends event to stream controller
@@ -87,7 +88,7 @@ class EventBus {
   /// [event] - event instance
   void send(dynamic event) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call send after dispose.',
       );
     }
@@ -102,7 +103,7 @@ class EventBus {
   /// Closes underlying stream controller
   void dispose() {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call dispose if event bus is already disposed.',
       );
     }

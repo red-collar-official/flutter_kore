@@ -17,8 +17,12 @@ import 'package:flutter_kore/flutter_kore.dart';
 ///   appContainsTabNavigation: true,
 /// );
 /// ```
-class NavigationInteractorSettings<AppTabType, RouteType, DialogType,
-    BottomSheetType> {
+class NavigationInteractorSettings<
+  AppTabType,
+  RouteType,
+  DialogType,
+  BottomSheetType
+> {
   /// Initial route of whole app
   /// Used to initialize [NavigationStack]
   final RouteType initialRoute;

@@ -34,15 +34,18 @@ import 'package:flutter_kore/flutter_kore.dart';
 ///   }
 ///
 ///   @override
-///   List<EventBusSubscriber> subscribe() => [
-///         on<TestEvent>((event) {
-///           number = event.number;
-///         }),
-///       ];
+///   void subscribe() {
+///     on<TestEvent>((event) {
+///       number = event.number;
+///     });
+///   }
 /// }
 /// ```
-abstract class BaseView<KWidget extends BaseWidget, ScreenState,
-        ViewModel extends BaseViewModel<KWidget, ScreenState>>
+abstract class BaseView<
+  KWidget extends BaseWidget,
+  ScreenState,
+  ViewModel extends BaseViewModel<KWidget, ScreenState>
+>
     extends State<KWidget>
     with
         AutomaticKeepAliveClientMixin<KWidget>,

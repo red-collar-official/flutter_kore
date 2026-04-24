@@ -26,8 +26,11 @@ abstract class NavigationViewModel<KWidget extends StatefulWidget, IState>
 /// Base view state if app uses navigation
 /// Must be extended by any view if navigation used
 // coverage:ignore-start
-abstract class NavigationView<KWidget extends BaseWidget, ScreenState,
-        ViewModel extends NavigationViewModel<KWidget, ScreenState>>
+abstract class NavigationView<
+  KWidget extends BaseWidget,
+  ScreenState,
+  ViewModel extends NavigationViewModel<KWidget, ScreenState>
+>
     extends BaseView<KWidget, ScreenState, ViewModel> {
   dynamic screenTab;
 
@@ -102,4 +105,5 @@ abstract class IndependentNavigationView<KWidget extends StatefulWidget>
     }
   }
 }
+
 // coverage:ignore-end

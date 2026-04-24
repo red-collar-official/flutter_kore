@@ -15,10 +15,7 @@ class NavigationStack<AppTabType> {
   /// List of all routes that are currently active in tabs
   final List<UIRouteModel> Function() routeStack;
 
-  NavigationStack({
-    required this.tabRouteStack,
-    required this.routeStack,
-  });
+  NavigationStack({required this.tabRouteStack, required this.routeStack});
 
   /// Global navigation history
   late final globalNavigationStack = GlobalNavigationStack<AppTabType>(
@@ -45,11 +42,7 @@ class NavigationStack<AppTabType> {
   }) {
     final stack = _getStack(settings.global);
 
-    stack.addRoute(
-      routeName: routeName,
-      tab: tab,
-      settings: settings,
-    );
+    stack.addRoute(routeName: routeName, tab: tab, settings: settings);
   }
 
   /// Replaces latest route in stack
@@ -63,11 +56,7 @@ class NavigationStack<AppTabType> {
   }) {
     final stack = _getStack(settings.global);
 
-    stack.replaceLastRoute(
-      routeName: routeName,
-      tab: tab,
-      settings: settings,
-    );
+    stack.replaceLastRoute(routeName: routeName, tab: tab, settings: settings);
   }
 
   /// Replaces whole stack with given route
@@ -79,11 +68,7 @@ class NavigationStack<AppTabType> {
   }) {
     final stack = _getStack(settings.global);
 
-    stack.replaceStack(
-      routeName: routeName,
-      tab: tab,
-      settings: settings,
-    );
+    stack.replaceStack(routeName: routeName, tab: tab, settings: settings);
   }
 
   /// Checks if specific route is already in stack Can be screen route, dialog route or bottom sheet route
@@ -95,11 +80,7 @@ class NavigationStack<AppTabType> {
   }) {
     final stack = _getStack(global);
 
-    return stack.checkUnique(
-      routeName: routeName,
-      tab: tab,
-      global: global,
-    );
+    return stack.checkUnique(routeName: routeName, tab: tab, global: global);
   }
 
   /// Pops latest route from stack

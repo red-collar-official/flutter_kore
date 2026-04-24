@@ -8,9 +8,7 @@ import '../helpers/delay_utility.dart';
 class TestState {
   final int number;
 
-  TestState({
-    required this.number,
-  });
+  TestState({required this.number});
 
   TestState copyWith({required int number}) {
     return TestState(number: number);
@@ -40,8 +38,9 @@ void main() {
     test('Store updates test', () async {
       final completer = Completer();
 
-      final subscription =
-          store.updates((state) => state.number).listen((event) {
+      final subscription = store.updates((state) => state.number).listen((
+        event,
+      ) {
         if (event == 2) {
           completer.complete();
         }
@@ -59,8 +58,9 @@ void main() {
     test('Store changes test', () async {
       final completer = Completer();
 
-      final subscription =
-          store.changes((state) => state.number).listen((event) {
+      final subscription = store.changes((state) => state.number).listen((
+        event,
+      ) {
         if (event.next == 2) {
           completer.complete();
         }
@@ -115,10 +115,7 @@ void main() {
 
       expect(store.isDisposed, true);
 
-      expect(
-        store.dispose,
-        throwsA(isA<IllegalStateException>()),
-      );
+      expect(store.dispose, throwsA(isA<IllegalStateException>()));
     });
 
     test('Store updates after dispose test', () async {

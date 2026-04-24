@@ -9,9 +9,7 @@ class SimulateResponse {
   /// Status code for server response
   final int statusCode;
 
-  SimulateResponse({
-    this.data,
-    this.headers,
-    this.statusCode = 200,
-  });
+  // coverage:ignore-start
+  const SimulateResponse({this.data, this.headers, this.statusCode = 200});
+  // coverage:ignore-end
 }

@@ -30,7 +30,7 @@ class HttpRequest<T> extends DioRequest<T> {
       );
 
   @override
-  void onAuthorization(Dio dio) {
+  void decorateRequest(Dio dio) {
     if (token != null) {
       dio.options.headers['Authorization'] = 'Bearer $token';
     }
@@ -80,8 +80,6 @@ You can later cancel a request with the `cancel` method:
 Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: LoadingData()));
 
-    late Response<List<Post>> response;
-
     final request = Apis.posts.getPosts(0, limit);
 
     unawaited(request.execute());
@@ -103,7 +101,7 @@ API classes must be annotated with the `api` annotation.
 
 ```dart
 
-this.method = RequestMethod.get,
+this.method = .get,
 this.url,
 this.parser,
 this.query,
@@ -111,7 +109,7 @@ this.timeout = const Duration(seconds: 20), // connectTimeout + receiveTimeout
 this.headers = const {},
 this.body,
 this.baseUrl,
-this.requiresLogin = true,
+this.requiresAuthentication = true,
 this.databaseGetDelegate,
 this.databasePutDelegate,
 this.simulateResponse,
@@ -139,7 +137,7 @@ A typical example of an API class would be:
 @api
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
-    ..method = RequestMethod.get
+    ..method = .get
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts'
     ..parser = (result, headers) async {
@@ -189,7 +187,7 @@ Here is an example:
 
 ```dart
 HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
-    ..method = RequestMethod.get
+    ..method = .get
     ..baseUrl = getBaseUrl(BackendUrls.main)
     ..url = '/posts'
     ..parser = (result, headers) async {
@@ -297,15 +295,12 @@ class HttpRequest<T> extends DioRequest<T> {
       );
 
   @override
-  void onAuthorization(Dio dio) {
-    if (!requiresLogin) {
+  void decorateRequest(Dio dio) {
+    if (!requiresAuthentication) {
       return;
     }
 
-    final token = app.instances
-        .get<AuthorizationInteractor>()
-        .state
-        .token;
+    final token = app.instances.get<AuthorizationInteractor>().state.token;
 
     if (token != null) {
       dio.options.headers['Authorization'] = 'Bearer $token';
@@ -314,13 +309,12 @@ class HttpRequest<T> extends DioRequest<T> {
 
   @override
   Future onError(DioException error, RetryHandler retry) async {
-    if (error.type == DioExceptionType.cancel) {
+    if (error.type == .cancel) {
       return error;
     }
 
     if (error.response?.statusCode == 401) {
-      final authorizationInteractor =
-          app.instances.get<AuthorizationInteractor>();
+      final authorizationInteractor = app.instances.get<AuthorizationInteractor>();
 
       await requestCollection.cancelAllRequests(
         retryRequestsAfterProcessing: true,

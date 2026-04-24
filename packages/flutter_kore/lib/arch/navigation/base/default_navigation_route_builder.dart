@@ -20,12 +20,12 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback? onPop,
-  }) =>
-      DialogRoute(
-        barrierDismissible: dismissable,
-        barrierColor: UINavigationSettings.barrierColor,
-        transitionDuration: UINavigationSettings.transitionDuration,
-        pageBuilder: (
+  }) => DialogRoute(
+    barrierDismissible: dismissable,
+    barrierColor: UINavigationSettings.barrierColor,
+    transitionDuration: UINavigationSettings.transitionDuration,
+    pageBuilder:
+        (
           BuildContext buildContext,
           Animation<double> animation,
           Animation<double> secondaryAnimation,
@@ -36,7 +36,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
             onPop: onPop,
           );
         },
-      );
+  );
 
   /// Pushes bottom sheet route to [Navigator]
   @override
@@ -45,18 +45,17 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool dismissable,
     required Widget child,
     required VoidCallback? onPop,
-  }) =>
-      ModalBottomSheetRoute(
-        builder: (BuildContext buildContext) {
-          return _overlayRouteContainer(
-            dismissable: dismissable,
-            child: child,
-            onPop: onPop,
-          );
-        },
-        dismissible: dismissable,
-        enableDrag: dismissable,
+  }) => ModalBottomSheetRoute(
+    builder: (BuildContext buildContext) {
+      return _overlayRouteContainer(
+        dismissable: dismissable,
+        child: child,
+        onPop: onPop,
       );
+    },
+    dismissible: dismissable,
+    enableDrag: dismissable,
+  );
 
   /// Pushes route to [Navigator]
   @override

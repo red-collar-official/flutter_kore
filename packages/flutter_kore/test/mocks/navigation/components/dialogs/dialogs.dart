@@ -22,12 +22,7 @@ class TestHandler extends LinkHandler {
 
 @dialogs
 class Dialogs extends RoutesBase with DialogsGen {
-  @Link(
-    paths: ['posts/:{id}'],
-    query: [
-      'filter',
-    ],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter'])
   UIRoute<DialogNames> post({
     int? post,
     int? id,
@@ -44,9 +39,7 @@ class Dialogs extends RoutesBase with DialogsGen {
 
   @Link(
     paths: ['posts/:{id}/:{type}'],
-    query: [
-      'filter=qwerty1|qwerty2',
-    ],
+    query: ['filter=qwerty1|qwerty2'],
     customHandler: TestHandler,
   )
   UIRoute<DialogNames> postCustom({
@@ -63,12 +56,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}'],
-    query: [
-      'filter=qwerty',
-    ],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter=qwerty'])
   UIRoute<DialogNames> post2({
     int? post,
     int? id,
@@ -83,10 +71,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}'],
-    query: ['filter', 'query'],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter', 'query'])
   UIRoute<DialogNames> post3({
     int? post,
     int? id,
@@ -101,10 +86,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}/test'],
-    query: ['filter', 'query'],
-  )
+  @Link(paths: ['posts/:{id}/test'], query: ['filter', 'query'])
   UIRoute<DialogNames> post4({
     int? post,
     int? id,
@@ -119,9 +101,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['posts'],
-  )
+  @Link(paths: ['posts'])
   UIRoute<DialogNames> posts({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -133,11 +113,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(paths: [
-    'posts'
-  ], query: [
-    'filter',
-  ])
+  @Link(paths: ['posts'], query: ['filter'])
   UIRoute<DialogNames> posts2({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -149,11 +125,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(paths: [
-    'stub'
-  ], query: [
-    'filter',
-  ])
+  @Link(paths: ['stub'], query: ['filter'])
   UIRoute<DialogNames> stub({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -165,9 +137,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['home'],
-  )
+  @Link(paths: ['home'])
   UIRoute<DialogNames> home({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -179,9 +149,7 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    paths: ['likedPosts'],
-  )
+  @Link(paths: ['likedPosts'])
   UIRoute<DialogNames> likedPosts({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -193,19 +161,14 @@ class Dialogs extends RoutesBase with DialogsGen {
     );
   }
 
-  @Link(
-    regexes: ['(.*?)'],
-    customParamsMapper: TestMapper,
-  )
+  @Link(regexes: ['(.*?)'], customParamsMapper: TestMapper)
   UIRoute<DialogNames> postsRegex({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
       name: DialogNames.postsRegex,
-      defaultSettings: UIRouteSettings(
-        global: pathParams != null,
-      ),
+      defaultSettings: UIRouteSettings(global: pathParams != null),
       child: Container(),
     );
   }

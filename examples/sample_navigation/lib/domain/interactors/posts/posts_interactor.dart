@@ -46,9 +46,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>>
   PostsState get initialState => PostsState();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
+  void subscribe() {
     on<PostLikedEvent>((event) {
       _onPostLiked(event.id);
-    }),
-  ];
+    });
+  }
 }

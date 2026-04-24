@@ -84,11 +84,11 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   late final testInstancePart1 = useInstancePart<TestInstancePart1>();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 

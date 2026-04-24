@@ -26,7 +26,7 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///      );
 ///
 ///  @override
-///  void onAuthorization(Dio dio) {
+///  void decorateRequest(Dio dio) {
 ///    // ignore
 ///  }
 ///
@@ -48,7 +48,7 @@ abstract class DioRequest<T>
 
   /// Test flag to return null response
   @visibleForTesting
-  bool forceReturnNullFromRequest = false;
+  var forceReturnNullFromRequest = false;
 
   DioRequest() : super();
 
@@ -61,18 +61,18 @@ abstract class DioRequest<T>
     return error;
   }
 
-  /// Function to add authorization headers to [dio.Dio] instance
-  void onAuthorization(dio.Dio dio) {}
+  /// Function to add additional data to [dio.Dio] instance
+  void decorateRequest(dio.Dio dio) {}
   // coverage:ignore-end
 
   @override
   Future<Response<T>> execute() async {
     if (baseUrl?.isEmpty ?? true) {
-      throw IllegalArgumentException(message: 'Base url not set');
+      throw const IllegalArgumentException(message: 'Base url not set');
     }
 
     if (url?.isEmpty ?? true) {
-      throw IllegalArgumentException(message: 'Path url not set');
+      throw const IllegalArgumentException(message: 'Path url not set');
     }
 
     requestCollection.addRequest(this);
@@ -104,7 +104,9 @@ abstract class DioRequest<T>
     if (cancelToken.isCancelled) {
       if (requestCollection.cancelReasonProcessingCompleter != null) {
         await RequestCollection
-            .instance.cancelReasonProcessingCompleter!.future;
+            .instance
+            .cancelReasonProcessingCompleter!
+            .future;
       }
     }
 
@@ -138,7 +140,7 @@ abstract class DioRequest<T>
 
         return Response<T>(
           code: 0,
-          error: NotRecognizedHttpException(message: 'Unknown error'),
+          error: const NotRecognizedHttpException(message: 'Unknown error'),
         );
       }
     }
@@ -180,7 +182,7 @@ abstract class DioRequest<T>
 
       return Response<T>(
         code: 0,
-        error: NotRecognizedHttpException(message: 'Unknown error'),
+        error: const NotRecognizedHttpException(message: 'Unknown error'),
         result: databaseData,
         fromDatabase: databaseData != null,
       );
@@ -189,7 +191,7 @@ abstract class DioRequest<T>
 
       return Response<T>(
         code: 0,
-        error: NotRecognizedHttpException(message: 'Unknown error'),
+        error: const NotRecognizedHttpException(message: 'Unknown error'),
       );
     }
   }
@@ -215,7 +217,7 @@ abstract class DioRequest<T>
 
       return Response<T>(
         code: 0,
-        error: NotRecognizedHttpException(message: 'Unknown error'),
+        error: const NotRecognizedHttpException(message: 'Unknown error'),
       );
     }
   }
@@ -241,10 +243,7 @@ abstract class DioRequest<T>
     if (parser == null) {
       result = simulateResponse!.data;
     } else {
-      result = await parser!(
-        simulateResponse!.data,
-        simulateResponse!.headers,
-      );
+      result = await parser!(simulateResponse!.data, simulateResponse!.headers);
     }
 
     await databasePutDelegate?.call(result);
@@ -322,10 +321,12 @@ abstract class DioRequest<T>
     } on dio.DioException catch (error, trace) {
       defaultSettings.exceptionPrint(error, trace);
 
-      if (error.type == dio.DioExceptionType.cancel) {
+      if (error.type == .cancel) {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
           await RequestCollection
-              .instance.cancelReasonProcessingCompleter!.future;
+              .instance
+              .cancelReasonProcessingCompleter!
+              .future;
           return _retryRequest(client, data, error);
         }
       }
@@ -348,37 +349,35 @@ abstract class DioRequest<T>
       data = encodedData;
     }
 
-    if (requiresLogin) {
-      onAuthorization(client);
-    }
+    decorateRequest(client);
 
     cancelToken = dio.CancelToken();
 
     switch (method) {
-      case RequestMethod.get:
+      case .get:
         return client.getUri(
           constructUri(query ?? {}, url ?? ''),
           cancelToken: cancelToken,
         );
-      case RequestMethod.post:
+      case .post:
         return client.postUri(
           constructUri(query ?? {}, url ?? ''),
           data: data,
           cancelToken: cancelToken,
         );
-      case RequestMethod.put:
+      case .put:
         return client.putUri(
           constructUri(query ?? {}, url ?? ''),
           data: data,
           cancelToken: cancelToken,
         );
-      case RequestMethod.delete:
+      case .delete:
         return client.deleteUri(
           constructUri(query ?? {}, url ?? ''),
           data: data,
           cancelToken: cancelToken,
         );
-      case RequestMethod.patch:
+      case .patch:
         return client.patchUri(
           constructUri(query ?? {}, url ?? ''),
           data: data,

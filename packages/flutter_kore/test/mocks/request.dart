@@ -6,18 +6,19 @@ class HttpRequest<T> extends DioRequest<T> {
 
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-          logPrint: (message) {},
-          exceptionPrint: (error, trace) {},
-          defaultInterceptors: [
-            dio.LogInterceptor(
-              requestBody: true,
-              responseBody: true,
-              logPrint: (object) {},
-            ),
-          ]);
+    logPrint: (message) {},
+    exceptionPrint: (error, trace) {},
+    defaultInterceptors: [
+      dio.LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+        logPrint: (object) {},
+      ),
+    ],
+  );
 
   @override
-  void onAuthorization(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio) {
     // ignore
   }
 
@@ -36,12 +37,12 @@ class HttpRequest2<T> extends DioRequest<T> {
 
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-        logPrint: (message) {},
-        exceptionPrint: (error, trace) {},
-      );
+    logPrint: (message) {},
+    exceptionPrint: (error, trace) {},
+  );
 
   @override
-  void onAuthorization(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio) {
     // ignore
   }
 

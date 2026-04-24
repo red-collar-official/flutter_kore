@@ -17,11 +17,7 @@ class ResultState<T extends Object> {
   /// Message to display if [error] is not null
   final String? messageToDisplay;
 
-  const ResultState._({
-    this.error,
-    this.messageToDisplay,
-    this.result,
-  });
+  const ResultState._({this.error, this.messageToDisplay, this.result});
 
   /// Checks if [error] and [messageToDisplay] are null
   bool get isSuccessful => error == null && messageToDisplay == null;
@@ -38,12 +34,7 @@ class ResultState<T extends Object> {
   /// ```dart
   /// ResultState.success(result: 'test');
   /// ```
-  factory ResultState.success({
-    T? result,
-  }) =>
-      ResultState._(
-        result: result,
-      );
+  factory ResultState.success({T? result}) => ResultState._(result: result);
 
   /// Constructs result based on error value
   ///
@@ -52,14 +43,8 @@ class ResultState<T extends Object> {
   /// ```dart
   /// ResultState.check(error: result.serverSideException);
   /// ```
-  factory ResultState.check({
-    Object? error,
-    String? messageToDisplay,
-  }) =>
-      ResultState._(
-        error: error,
-        messageToDisplay: messageToDisplay,
-      );
+  factory ResultState.check({Object? error, String? messageToDisplay}) =>
+      ResultState._(error: error, messageToDisplay: messageToDisplay);
 
   /// Constructs invalid function result
   ///
@@ -74,9 +59,5 @@ class ResultState<T extends Object> {
   factory ResultState.error({
     required Object error,
     String? messageToDisplay,
-  }) =>
-      ResultState._(
-        error: error,
-        messageToDisplay: messageToDisplay,
-      );
+  }) => ResultState._(error: error, messageToDisplay: messageToDisplay);
 }

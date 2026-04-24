@@ -95,8 +95,5 @@ class UIRouteModel {
   /// Route settings for this route
   final UIRouteSettings settings;
 
-  const UIRouteModel({
-    required this.name,
-    required this.settings,
-  });
+  const UIRouteModel({required this.name, required this.settings});
 }

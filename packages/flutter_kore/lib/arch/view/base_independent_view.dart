@@ -42,11 +42,11 @@ import 'package:flutter_kore/flutter_kore.dart';
 ///   }
 ///
 ///   @override
-///   List<EventBusSubscriber> subscribe() => [
-///         on<TestEvent>((event) {
-///           number = event.number;
-///         }),
-///       ];
+///   void subscribe() {
+///     on<TestEvent>((event) {
+///       number = event.number;
+///     });
+///   }
 /// }
 /// ```
 abstract class BaseIndependentView<KWidget extends StatefulWidget>

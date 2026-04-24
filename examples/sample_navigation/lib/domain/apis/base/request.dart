@@ -6,7 +6,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 ///
 /// ```dart
 /// HttpRequest<List<Post>> getPosts(int offset, int limit) => HttpRequest<List<Post>>()
-///     ..method = RequestMethod.get
+///     ..method = .get
 ///     ..baseUrl = getBaseUrl(BackendUrls.main)
 ///     ..url = '/posts'
 ///     ..parser = (result, headers) async {

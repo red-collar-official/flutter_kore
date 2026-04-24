@@ -42,29 +42,25 @@ void main() {
       final completer = Completer();
       final completer2 = Completer();
 
-      final subscription = eventBus.streamOfCollection([
-        TestEvent,
-        TestEvent2,
-      ]).listen((event) {
-        if (event is TestEvent) {
-          completer.complete();
-        }
+      final subscription = eventBus
+          .streamOfCollection([TestEvent, TestEvent2])
+          .listen((event) {
+            if (event is TestEvent) {
+              completer.complete();
+            }
 
-        if (event is TestEvent2) {
-          completer2.complete();
-        }
-      });
+            if (event is TestEvent2) {
+              completer2.complete();
+            }
+          });
 
       DelayUtility.withDelay(() {
         eventBus.send(TestEvent(number: 2));
       });
 
-      DelayUtility.withDelay(
-        () {
-          eventBus.send(TestEvent2(number: 2));
-        },
-        millis: 100,
-      );
+      DelayUtility.withDelay(() {
+        eventBus.send(TestEvent2(number: 2));
+      }, millis: 100);
 
       await completer.future.timeout(const Duration(seconds: 1));
       await completer2.future.timeout(const Duration(seconds: 1));
@@ -122,10 +118,7 @@ void main() {
 
       expect(eventBus.isDisposed, true);
 
-      expect(
-        eventBus.dispose,
-        throwsA(isA<IllegalStateException>()),
-      );
+      expect(eventBus.dispose, throwsA(isA<IllegalStateException>()));
     });
 
     tearDownAll(() async {

@@ -92,13 +92,13 @@ Future<ResultState> confirmEmail(String link) async {
   // ...
 
   if (error) {
-    return ResultState.error(
+    return .error(
       error: result.serverSideException!,
       messageToDisplay: app.localization.global('something_went_wrong'),
     );
   }
 
-  return ResultState.success();
+  return .success();
 }
 
 final confirmationResult = await confirmEmail(link);
@@ -220,6 +220,8 @@ Button(
   },
 );
 ```
+
+You also can use `disableStreamWrap` to subscribe to stream disable form events so you can ignore taps while form data is sending. 
 
 #### StreamBuilders
 

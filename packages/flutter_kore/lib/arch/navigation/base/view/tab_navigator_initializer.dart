@@ -25,10 +25,7 @@ class TabNavigationInitializer extends StatelessWidget {
         onGenerateRoute: (_) => MaterialPageRoute(
           builder: (_) => Builder(
             builder: (context) {
-              return PopScope(
-                canPop: false,
-                child: initialView,
-              );
+              return PopScope(canPop: false, child: initialView);
             },
           ),
         ),

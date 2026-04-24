@@ -20,11 +20,11 @@ class PostLikedEvent {
 
 ```dart
 @override
-List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+void subscribe() {
+  on<PostLikedEvent>((event) {
+    _onPostLiked(event.id);
+  });
+}
 ```
 
 ```dart
@@ -43,16 +43,16 @@ Reactions to events for every kore instance can be paused and resumed with corre
 
 ```dart
 @override
-List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>(
-        (event) {
-          _onPostLiked(event.id);
-        },
-        reactsToPause: true,
-        // flag indicating if instance needs to 'replay' events that were received while instance was paused
-        firesAfterResume: false,
-      ),
-    ];
+void subscribe() {
+  on<PostLikedEvent>(
+    (event) {
+      _onPostLiked(event.id);
+    },
+    reactsToPause: true,
+    // flag indicating if instance needs to 'replay' events that were received while instance was paused
+    firesAfterResume: false,
+  );
+}
 ```
 
 By default, view models pause event subscriptions when the view becomes invisible and pause them for all dependencies.

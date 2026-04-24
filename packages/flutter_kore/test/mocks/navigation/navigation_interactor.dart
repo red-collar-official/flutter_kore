@@ -14,17 +14,20 @@ final postsNavigatorKey = GlobalKey<NavigatorState>();
 final likedPostsNavigatorKey = GlobalKey<NavigatorState>();
 
 @singleton
-class NavigationInteractor extends BaseNavigationInteractor<
-    NavigationState,
-    Map<String, dynamic>,
-    AppTab,
-    Routes,
-    Dialogs,
-    BottomSheets,
-    RouteNames,
-    DialogNames,
-    BottomSheetNames,
-    TestDeepLinksInteractor> {
+class NavigationInteractor
+    extends
+        BaseNavigationInteractor<
+          NavigationState,
+          Map<String, dynamic>,
+          AppTab,
+          Routes,
+          Dialogs,
+          BottomSheets,
+          RouteNames,
+          DialogNames,
+          BottomSheetNames,
+          TestDeepLinksInteractor
+        > {
   final _routes = Routes();
   final _dialogs = Dialogs();
   final _bottomSheets = BottomSheets();
@@ -34,9 +37,9 @@ class NavigationInteractor extends BaseNavigationInteractor<
 
   @override
   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
-        AppTabs.posts: postsNavigatorKey,
-        AppTabs.likedPosts: likedPostsNavigatorKey,
-      };
+    AppTabs.posts: postsNavigatorKey,
+    AppTabs.likedPosts: likedPostsNavigatorKey,
+  };
 
   @override
   NavigationInteractorSettings get settings =>
@@ -79,7 +82,6 @@ class NavigationInteractor extends BaseNavigationInteractor<
   }
 
   @override
-  NavigationState get initialState => NavigationState(
-        currentTab: AppTabs.posts,
-      );
+  NavigationState get initialState =>
+      NavigationState(currentTab: AppTabs.posts);
 }

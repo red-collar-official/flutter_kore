@@ -19,7 +19,7 @@ sealed class StatefulData<T> {
   /// Returns success data or throws exception if value is not [SuccessData]
   T unwrap() {
     if (this is! SuccessData<T>) {
-      throw IllegalStateException(message: 'Not a success data');
+      throw const IllegalStateException(message: 'Not a success data');
     }
 
     return (this as SuccessData<T>).result;
@@ -62,9 +62,7 @@ class SuccessData<T> extends StatefulData<T> {
   final T result;
 
   // coverage:ignore-start
-  const SuccessData({
-    required this.result,
-  });
+  const SuccessData({required this.result});
   // coverage:ignore-end
 }
 

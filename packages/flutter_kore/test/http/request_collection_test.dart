@@ -16,14 +16,14 @@ void main() {
 
     test('RequestCollection cancel test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
       addTestResponsesToDio(request.httpInstance!);
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -34,13 +34,17 @@ void main() {
       late Response<int> response1;
       late Response<int> response2;
 
-      unawaited(request.execute().then((value) {
-        response1 = value;
-      }));
+      unawaited(
+        request.execute().then((value) {
+          response1 = value;
+        }),
+      );
 
-      unawaited(request2.execute().then((value) {
-        response2 = value;
-      }));
+      unawaited(
+        request2.execute().then((value) {
+          response2 = value;
+        }),
+      );
 
       await DelayUtility.pause();
 
@@ -65,14 +69,14 @@ void main() {
 
     test('RequestCollection cancel with retry test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
       addTestResponsesToDio(request.httpInstance!);
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -83,13 +87,17 @@ void main() {
       late Response<int> response1;
       late Response<int> response2;
 
-      unawaited(request.execute().then((value) {
-        response1 = value;
-      }));
+      unawaited(
+        request.execute().then((value) {
+          response1 = value;
+        }),
+      );
 
-      unawaited(request2.execute().then((value) {
-        response2 = value;
-      }));
+      unawaited(
+        request2.execute().then((value) {
+          response2 = value;
+        }),
+      );
 
       await DelayUtility.pause();
 
@@ -108,14 +116,14 @@ void main() {
 
     test('RequestCollection remove all test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
       addTestResponsesToDio(request.httpInstance!);
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 

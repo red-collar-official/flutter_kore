@@ -93,22 +93,16 @@ abstract class RoutesBase {
     final entries = decisionSubroutes.entries.toList();
 
     // ignore: cascade_invocations
-    entries.sort(
-      (first, second) => -first.value.compareTo(second.value),
-    );
+    entries.sort((first, second) => -first.value.compareTo(second.value));
 
     var latestSelected = selectedRule[entries[0].key];
     final maxValue = entries[0].value;
-    int index = 1;
+    var index = 1;
     var maxEquals = 0;
 
     while (index < entries.length && entries[index].value == maxValue) {
-      final matches = entries[index]
-          .key
-          .characters
-          .where(
-            (element) => element == '=',
-          )
+      final matches = entries[index].key.characters
+          .where((element) => element == '=')
           .length;
 
       if (matches > maxEquals) {

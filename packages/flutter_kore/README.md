@@ -6,6 +6,8 @@
 
 Set of classes for Flutter app architecture.
 
+### Full documentation
+
 Read Medium article with details about components and mechanics [here](https://medium.com/@evgeny_efanov/flutterkore-how-to-use-guide-bed908e367fc).
 
 ### Installing
@@ -108,9 +110,7 @@ Future<void> main() async {
 class HttpRequest<T> extends DioRequest<T> {
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-        logPrint: (message) {
-          print(message);
-        },
+        logPrint: (message) print,
         exceptionPrint: (error, trace) {
           print(error);
           print(trace);
@@ -122,7 +122,7 @@ class HttpRequest<T> extends DioRequest<T> {
 class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       HttpRequest<List<Post>>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = 'http://jsonplaceholder.typicode.com'
         ..url = '/posts'
         ..parser = (result, headers) async {
@@ -150,13 +150,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> {
   Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     updateState(state.copyWith(posts: const LoadingData()));
 
-    late Response<List<Post>> response;
-
-    if (refresh) {
-      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
-    } else {
-      response = await executeAndCancelOnDispose(app.apis.posts.getPosts(offset, limit));
-    }
+    final response = await executeAndCancelOnDispose(
+      app.apis.posts.getPosts(refresh ? 0 : offset, limit)
+    );
 
     if (response.isSuccessful) {
       updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
@@ -166,11 +162,11 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<PostLikedEvent>((event) {
-          // update posts list...
-        }),
-      ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      // update posts list...
+    });
+  }
 
   @override
   PostsState get initialState => const PostsState();
@@ -191,9 +187,7 @@ class _PostsListViewWidgetState extends BaseIndependentView<PostsListView> {
   @override
   DependentKoreInstanceConfiguration get configuration =>
       DependentKoreInstanceConfiguration(
-        dependencies: [
-          app.connectors.postsInteractorConnector(),
-        ],
+        dependencies: [app.connectors.postsInteractorConnector()]
       );
 
   late final postsInteractor = useLocalInstance<PostsInteractor>();
@@ -216,7 +210,7 @@ class _PostsListViewWidgetState extends BaseIndependentView<PostsListView> {
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 232, 232, 232),
+      backgroundColor: const .fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
       body: KoreStreamBuilder<StatefulData<List<Post>>?>(
         streamWrap: postsInteractor.wrapUpdates((state) => state.posts),

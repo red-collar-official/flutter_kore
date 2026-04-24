@@ -187,10 +187,7 @@ void main() {
 
       await DelayUtility.pause(millis: 100);
 
-      expect(
-        app.navigation.latestGlobalRoute().settings.id,
-        'state',
-      );
+      expect(app.navigation.latestGlobalRoute().settings.id, 'state');
 
       DelayUtility.withDelay(() {
         app.navigation.deepLinks.linkStreamController.add(testUrl15);
@@ -228,15 +225,9 @@ void main() {
 
       await DelayUtility.pause(millis: 100);
 
-      expect(
-        app.navigation.latestGlobalRoute().name,
-        RouteNames.post4,
-      );
+      expect(app.navigation.latestGlobalRoute().name, RouteNames.post4);
 
-      expect(
-        app.navigation.latestGlobalRoute().settings.id,
-        '5',
-      );
+      expect(app.navigation.latestGlobalRoute().settings.id, '5');
 
       DelayUtility.withDelay(() {
         app.navigation.deepLinks.linkStreamController.add(testUrl18);
@@ -318,74 +309,76 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, DialogNames.posts);
     });
 
-    test('DeepLinkInteractor test various links for bottom sheets test',
-        () async {
-      app.navigation.dialogs.routeLinkHandlers.clear();
-      app.navigation.bottomSheets.routeLinkHandlers.clear();
-      app.navigation.routes.routeLinkHandlers.clear();
+    test(
+      'DeepLinkInteractor test various links for bottom sheets test',
+      () async {
+        app.navigation.dialogs.routeLinkHandlers.clear();
+        app.navigation.bottomSheets.routeLinkHandlers.clear();
+        app.navigation.routes.routeLinkHandlers.clear();
 
-      app.navigation.dialogs.regexHandlers.clear();
-      app.navigation.bottomSheets.regexHandlers.clear();
-      app.navigation.routes.regexHandlers.clear();
+        app.navigation.dialogs.regexHandlers.clear();
+        app.navigation.bottomSheets.regexHandlers.clear();
+        app.navigation.routes.regexHandlers.clear();
 
-      app.navigation.deepLinks.reset();
-      app.navigation.deepLinks.listenToDeeplinks();
+        app.navigation.deepLinks.reset();
+        app.navigation.deepLinks.listenToDeeplinks();
 
-      app.navigation.bottomSheets.initializeLinkHandlers();
+        app.navigation.bottomSheets.initializeLinkHandlers();
 
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl6);
-      });
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl6);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+        expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
 
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl7);
-      });
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl7);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      // this means nothing opened cause this pattern
-      // is not matched in navigation declaration
-      // but we have regex matching any url
-      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+        // this means nothing opened cause this pattern
+        // is not matched in navigation declaration
+        // but we have regex matching any url
+        expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
 
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl8);
-      });
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl8);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post);
+        expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post);
 
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl9);
-      });
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl9);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post2);
+        expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.post2);
 
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl10);
-      });
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl10);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+        expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
 
-      // this means nothing opened cause this pattern
-      // is not matched in navigation declaration
-      DelayUtility.withDelay(() {
-        app.navigation.deepLinks.linkStreamController.add(testUrl11);
-      });
+        // this means nothing opened cause this pattern
+        // is not matched in navigation declaration
+        DelayUtility.withDelay(() {
+          app.navigation.deepLinks.linkStreamController.add(testUrl11);
+        });
 
-      await DelayUtility.pause(millis: 100);
+        await DelayUtility.pause(millis: 100);
 
-      expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
-    });
+        expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
+      },
+    );
 
     test('DeepLinkInteractor dispose test', () async {
       app.navigation.deepLinks.dispose();
@@ -425,38 +418,42 @@ void main() {
       expect(app.navigation.latestGlobalRoute().name, BottomSheetNames.posts);
     });
 
-    test('DeepLinkInteractor open link prefer dialogs not found test',
-        () async {
-      app.navigation.dialogs.routeLinkHandlers.clear();
-      app.navigation.bottomSheets.routeLinkHandlers.clear();
-      app.navigation.routes.routeLinkHandlers.clear();
+    test(
+      'DeepLinkInteractor open link prefer dialogs not found test',
+      () async {
+        app.navigation.dialogs.routeLinkHandlers.clear();
+        app.navigation.bottomSheets.routeLinkHandlers.clear();
+        app.navigation.routes.routeLinkHandlers.clear();
 
-      app.navigation.deepLinks.reset();
+        app.navigation.deepLinks.reset();
 
-      app.navigation.routes.initializeLinkHandlers();
-      app.navigation.bottomSheets.initializeLinkHandlers();
-      app.navigation.dialogs.initializeLinkHandlers();
+        app.navigation.routes.initializeLinkHandlers();
+        app.navigation.bottomSheets.initializeLinkHandlers();
+        app.navigation.dialogs.initializeLinkHandlers();
 
-      await app.navigation.openLink(testUrl7, preferDialogs: true);
+        await app.navigation.openLink(testUrl7, preferDialogs: true);
 
-      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
-    });
+        expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+      },
+    );
 
-    test('DeepLinkInteractor open link prefer bottom sheets not found test',
-        () async {
-      app.navigation.dialogs.routeLinkHandlers.clear();
-      app.navigation.bottomSheets.routeLinkHandlers.clear();
-      app.navigation.routes.routeLinkHandlers.clear();
+    test(
+      'DeepLinkInteractor open link prefer bottom sheets not found test',
+      () async {
+        app.navigation.dialogs.routeLinkHandlers.clear();
+        app.navigation.bottomSheets.routeLinkHandlers.clear();
+        app.navigation.routes.routeLinkHandlers.clear();
 
-      app.navigation.deepLinks.reset();
+        app.navigation.deepLinks.reset();
 
-      app.navigation.routes.initializeLinkHandlers();
-      app.navigation.bottomSheets.initializeLinkHandlers();
-      app.navigation.dialogs.initializeLinkHandlers();
+        app.navigation.routes.initializeLinkHandlers();
+        app.navigation.bottomSheets.initializeLinkHandlers();
+        app.navigation.dialogs.initializeLinkHandlers();
 
-      await app.navigation.openLink(testUrl7, preferBottomSheets: true);
+        await app.navigation.openLink(testUrl7, preferBottomSheets: true);
 
-      expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
-    });
+        expect(app.navigation.latestGlobalRoute().name, RouteNames.postsRegex);
+      },
+    );
   });
 }

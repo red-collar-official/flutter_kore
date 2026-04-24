@@ -8,9 +8,7 @@ import '../mocks/test_event.dart';
 import '../mocks/test_interactors.dart';
 
 class TestView extends StatefulWidget {
-  const TestView({
-    super.key,
-  });
+  const TestView({super.key});
 
   @override
   State<TestView> createState() {
@@ -34,9 +32,11 @@ class TestViewWidgetState extends BaseIndependentView<TestView> {
   late final testInteractor4 = useLocalInstance<TestInteractorAsync4>();
 
   void executeOperation() {
-    enqueue(operation: () async {
-      // some operation
-    });
+    enqueue(
+      operation: () async {
+        // some operation
+      },
+    );
   }
 
   @override
@@ -45,11 +45,11 @@ class TestViewWidgetState extends BaseIndependentView<TestView> {
   }
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          number = event.number;
-        }),
-      ];
+  void subscribe() {
+    on<TestEvent>((event) {
+      number = event.number;
+    });
+  }
 }
 
 class ContainingWidget extends StatefulWidget {
@@ -102,9 +102,7 @@ void main() {
       final viewKey = GlobalKey<TestViewWidgetState>();
       final view = TestView(key: viewKey);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(child: view),
-      ));
+      await tester.pumpWidget(MaterialApp(home: Material(child: view)));
 
       await Future.delayed(const Duration(seconds: 3), () {});
 
@@ -121,9 +119,7 @@ void main() {
       final viewKey = GlobalKey<TestViewWidgetState>();
       final view = TestView(key: viewKey);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(child: view),
-      ));
+      await tester.pumpWidget(MaterialApp(home: Material(child: view)));
 
       await Future.delayed(const Duration(seconds: 3), () {});
 
@@ -133,8 +129,9 @@ void main() {
       expect(viewKey.currentState!.isInitialized, true);
     });
 
-    testWidgets('BaseIndependentViewState wait event is received test',
-        (tester) async {
+    testWidgets('BaseIndependentViewState wait event is received test', (
+      tester,
+    ) async {
       KoreApp.isInTestMode = true;
 
       await tester.pumpAndSettle();
@@ -142,9 +139,7 @@ void main() {
       final viewKey = GlobalKey<TestViewWidgetState>();
       final view = TestView(key: viewKey);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Material(child: view),
-      ));
+      await tester.pumpWidget(MaterialApp(home: Material(child: view)));
 
       await Future.delayed(const Duration(seconds: 3), () {});
 

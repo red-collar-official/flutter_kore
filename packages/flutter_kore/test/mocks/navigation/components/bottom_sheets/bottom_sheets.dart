@@ -21,12 +21,7 @@ class TestHandler extends LinkHandler {
 
 @bottomSheets
 class BottomSheets extends RoutesBase with BottomSheetsGen {
-  @Link(
-    paths: ['posts/:{id}'],
-    query: [
-      'filter',
-    ],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter'])
   UIRoute<BottomSheetNames> post({
     int? post,
     int? id,
@@ -43,9 +38,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
 
   @Link(
     paths: ['posts/:{id}/:{type}'],
-    query: [
-      'filter=qwerty1|qwerty2',
-    ],
+    query: ['filter=qwerty1|qwerty2'],
     customHandler: TestHandler,
   )
   UIRoute<BottomSheetNames> postCustom({
@@ -62,12 +55,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}'],
-    query: [
-      'filter=qwerty',
-    ],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter=qwerty'])
   UIRoute<BottomSheetNames> post2({
     int? post,
     int? id,
@@ -82,10 +70,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}'],
-    query: ['filter', 'query'],
-  )
+  @Link(paths: ['posts/:{id}'], query: ['filter', 'query'])
   UIRoute<BottomSheetNames> post3({
     int? post,
     int? id,
@@ -100,10 +85,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['posts/:{id}/test'],
-    query: ['filter', 'query'],
-  )
+  @Link(paths: ['posts/:{id}/test'], query: ['filter', 'query'])
   UIRoute<BottomSheetNames> post4({
     int? post,
     int? id,
@@ -118,9 +100,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['posts'],
-  )
+  @Link(paths: ['posts'])
   UIRoute<BottomSheetNames> posts({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -132,11 +112,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(paths: [
-    'posts'
-  ], query: [
-    'filter',
-  ])
+  @Link(paths: ['posts'], query: ['filter'])
   UIRoute<BottomSheetNames> posts2({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -148,11 +124,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(paths: [
-    'stub'
-  ], query: [
-    'filter',
-  ])
+  @Link(paths: ['stub'], query: ['filter'])
   UIRoute<BottomSheetNames> stub({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -164,9 +136,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['home'],
-  )
+  @Link(paths: ['home'])
   UIRoute<BottomSheetNames> home({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -178,9 +148,7 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    paths: ['likedPosts'],
-  )
+  @Link(paths: ['likedPosts'])
   UIRoute<BottomSheetNames> likedPosts({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
@@ -192,19 +160,14 @@ class BottomSheets extends RoutesBase with BottomSheetsGen {
     );
   }
 
-  @Link(
-    regexes: ['(.*?)'],
-    customParamsMapper: TestMapper,
-  )
+  @Link(regexes: ['(.*?)'], customParamsMapper: TestMapper)
   UIRoute<BottomSheetNames> postsRegex({
     Map<String, dynamic>? pathParams,
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
       name: BottomSheetNames.postsRegex,
-      defaultSettings: UIRouteSettings(
-        global: pathParams != null,
-      ),
+      defaultSettings: UIRouteSettings(global: pathParams != null),
       child: Container(),
     );
   }

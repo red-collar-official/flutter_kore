@@ -22,7 +22,7 @@ class Debouncer {
   /// Flag indicating that this debouncer is disposed
   ///
   /// Debouncer bus can't be used if this flag is true
-  bool _isDisposed = false;
+  var _isDisposed = false;
 
   /// Flag indicating that this debouncer is disposed
   ///
@@ -31,16 +31,14 @@ class Debouncer {
 
   void Function()? _currentCallback;
 
-  bool _isPending = false;
+  var _isPending = false;
 
-  Debouncer(
-    this.delay,
-  );
+  Debouncer(this.delay);
 
   // ignore: always_declare_return_types, strict_top_level_inference
   call(void Function() callback) {
     if (_isDisposed) {
-      throw IllegalStateException(
+      throw const IllegalStateException(
         message: 'Can\'t call debouncer after dispose.',
       );
     }

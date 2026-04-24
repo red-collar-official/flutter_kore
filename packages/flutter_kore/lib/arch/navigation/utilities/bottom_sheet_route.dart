@@ -43,14 +43,18 @@ class ModalBottomSheetRoute<T> extends PopupRoute<T> {
   @override
   AnimationController createAnimationController() {
     assert(_animationController == null);
-    _animationController =
-        BottomSheet.createAnimationController(navigator!.overlay!);
+    _animationController = BottomSheet.createAnimationController(
+      navigator!.overlay!,
+    );
     return _animationController!;
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
     Widget bottomSheet = MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -84,9 +88,9 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
 
     return Theme(
       data: Theme.of(context).copyWith(
-        colorScheme: Theme.of(context).colorScheme.copyWith(
-              surface: Colors.transparent,
-            ),
+        colorScheme: Theme.of(
+          context,
+        ).colorScheme.copyWith(surface: Colors.transparent),
       ),
       child: AnimatedBuilder(
         animation: widget.route.animation!,
@@ -133,16 +137,16 @@ class _BottomSheetState<T> extends State<_ModalBottomSheet<T>> {
 
   String? _getRouteLabel(MaterialLocalizations localizations) {
     switch (defaultTargetPlatform) {
-      case TargetPlatform.iOS:
+      case .iOS:
         return '';
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
+      case .android:
+      case .fuchsia:
         return localizations.dialogLabel;
-      case TargetPlatform.linux:
+      case .linux:
         break;
-      case TargetPlatform.macOS:
+      case .macOS:
         break;
-      case TargetPlatform.windows:
+      case .windows:
         break;
     }
     return null;
@@ -187,10 +191,7 @@ class _ModalBottomSheetLayout extends SingleChildLayoutDelegate {
 
   @override
   Offset getPositionForChild(Size size, Size childSize) {
-    return Offset(
-      0,
-      size.height - bottomInset - childSize.height * progress,
-    );
+    return Offset(0, size.height - bottomInset - childSize.height * progress);
   }
 
   @override

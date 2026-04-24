@@ -17,9 +17,7 @@ class MainApp {
   /// If navigation component is not used you can ignore this parameter
   final Type? navigationInteractorType;
 
-  const MainApp({
-    this.navigationInteractorType,
-  });
+  const MainApp({this.navigationInteractorType});
 }
 
 /// Annotate main app class

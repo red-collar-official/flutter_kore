@@ -8,20 +8,14 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
   final Map<AppTabType, List<UIRouteModel>> Function() tabRouteStackBuilder;
 
   late final Observable<Map<AppTabType, List<UIRouteModel>>> _tabRouteStack =
-      Observable.initial(
-    tabRouteStackBuilder(),
-  );
+      .initial(tabRouteStackBuilder());
 
-  TabNavigationStack({
-    required this.tabRouteStackBuilder,
-  });
+  TabNavigationStack({required this.tabRouteStackBuilder});
 
   Map<AppTabType, List<UIRouteModel>> get stack => _tabRouteStack.current ?? {};
 
   Stream<Map<AppTabType, List<UIRouteModel>>> get stackStream =>
-      _tabRouteStack.stream.map(
-        (event) => event.next ?? {},
-      );
+      _tabRouteStack.stream.map((event) => event.next ?? {});
 
   @override
   void addRoute({
@@ -39,10 +33,7 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
       final currentList = List<UIRouteModel>.from(current[tab] ?? []);
 
       // ignore: cascade_invocations
-      currentList.add(UIRouteModel(
-        name: routeName,
-        settings: settings,
-      ));
+      currentList.add(UIRouteModel(name: routeName, settings: settings));
 
       current[tab] = currentList;
     }
@@ -101,12 +92,7 @@ class TabNavigationStack<AppTabType> extends BaseNavigationStack<AppTabType> {
 
     final current = Map<AppTabType, List<UIRouteModel>>.from(stack);
 
-    current[tab] = [
-      UIRouteModel(
-        name: routeName,
-        settings: settings,
-      ),
-    ];
+    current[tab] = [UIRouteModel(name: routeName, settings: settings)];
 
     _tabRouteStack.update(current);
   }

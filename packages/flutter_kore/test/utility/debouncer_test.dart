@@ -10,9 +10,9 @@ void main() {
     });
 
     test('Debouncer debounce test', () async {
-      bool event1Received = false;
-      bool event2Received = false;
-      bool event3Received = false;
+      var event1Received = false;
+      var event2Received = false;
+      var event3Received = false;
 
       final debouncer = Debouncer(const Duration(milliseconds: 200));
 
@@ -42,9 +42,9 @@ void main() {
     });
 
     test('Debouncer processPendingImmediately test', () async {
-      bool event1Received = false;
-      bool event2Received = false;
-      bool event3Received = false;
+      var event1Received = false;
+      var event2Received = false;
+      var event3Received = false;
 
       final debouncer = Debouncer(const Duration(milliseconds: 200));
 

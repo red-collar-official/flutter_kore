@@ -1,3 +1,11 @@
+## 1.4.9
+
+- Update project code style
+- Add ability to ignore undismissable routes in popUntil method
+- Fix issue when we cant parse saved state data from cache
+- Update tests
+- Update docs
+
 ## 1.4.8
 
 - Update license

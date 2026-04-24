@@ -6,10 +6,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 
 /// Model class describing configuration for basic kore instance
 class KoreInstanceConfiguration {
-  const KoreInstanceConfiguration({
-    this.parts = const [],
-    this.isAsync,
-  });
+  const KoreInstanceConfiguration({this.parts = const [], this.isAsync});
 
   /// Parts that are required for this instance
   final List<PartConnector> parts;
@@ -28,7 +25,7 @@ mixin KoreInstance<T> on EventBusReceiver {
   ///
   /// You must set this flag to true in sync [initialize]
   /// and [initializeWithoutConnections] calls
-  bool isInitialized = false;
+  var isInitialized = false;
 
   /// Observable indicating that all parts are connected to this instance
   ///
@@ -38,7 +35,7 @@ mixin KoreInstance<T> on EventBusReceiver {
   /// Flag indicating that this instance is disposed
   ///
   /// Store can't be used if this flag is true
-  bool isDisposed = false;
+  var isDisposed = false;
 
   final _parts = HashMap<Type, List<BaseInstancePart?>>();
 
@@ -63,9 +60,10 @@ mixin KoreInstance<T> on EventBusReceiver {
   bool get isAsync {
     return configuration.isAsync != null
         ? configuration.isAsync!
-        : getFullPartConnectorsList()
-                .indexWhere((element) => element.isAsync) !=
-            -1;
+        : getFullPartConnectorsList().indexWhere(
+                (element) => element.isAsync,
+              ) !=
+              -1;
   }
   // coverage:ignore-end
 
@@ -210,7 +208,7 @@ mixin KoreInstance<T> on EventBusReceiver {
   void initializeInstanceParts() {
     for (final element in getFullPartConnectorsList()) {
       if (element.count != 1) {
-        _parts[element.type] = List.empty(growable: true);
+        _parts[element.type] = .empty(growable: true);
 
         final list = _parts[element.type]!;
 
@@ -221,9 +219,7 @@ mixin KoreInstance<T> on EventBusReceiver {
           list.add(part);
         }
 
-        _parts.addAll({
-          element.type: list,
-        });
+        _parts.addAll({element.type: list});
       } else {
         final part = _getUniquePart(element) as BaseInstancePart;
 

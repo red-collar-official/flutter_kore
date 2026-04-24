@@ -210,12 +210,11 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
 
   /// Adds instances to local collection
   Future<void> _addInstancesAsync() async {
-    final asyncDeps = getFullConnectorsList()
-        .where((element) => element.isAsync && !element.isLazy);
-
-    await Future.wait(
-      asyncDeps.map(_addAsyncInstance),
+    final asyncDeps = getFullConnectorsList().where(
+      (element) => element.isAsync && !element.isLazy,
     );
+
+    await Future.wait(asyncDeps.map(_addAsyncInstance));
 
     allDependenciesReady.update(true);
 
@@ -266,17 +265,19 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
         list.add(() async => _getUniqueInstanceAsync(element, index: i));
       }
 
-      final instancesReserved =
-          List<BaseKoreInstance?>.filled(element.count, null);
+      final instancesReserved = List<BaseKoreInstance?>.filled(
+        element.count,
+        null,
+      );
 
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
       _lazyInstancesBuilders[element.type] = [
-        () async => _getUniqueInstanceAsync(element)
+        () async => _getUniqueInstanceAsync(element),
       ];
     } else {
       _lazyInstancesBuilders[element.type] = [
-        () async => _getInstanceAsync(element)
+        () async => _getInstanceAsync(element),
       ];
     }
   }
@@ -299,13 +300,15 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
         list.add(() => _getUniqueInstance(element, index: i));
       }
 
-      final instancesReserved =
-          List<BaseKoreInstance?>.filled(element.count, null);
+      final instancesReserved = List<BaseKoreInstance?>.filled(
+        element.count,
+        null,
+      );
 
       _instances[element.type] = instancesReserved;
     } else if (element.scope == BaseScopes.unique) {
       _lazyInstancesBuilders[element.type] = [
-        () => _getUniqueInstance(element)
+        () => _getUniqueInstance(element),
       ];
     } else {
       _lazyInstancesBuilders[element.type] = [() => _getInstance(element)];
@@ -402,9 +405,7 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
   /// [index] - index of instance if multiple are connected
   T useLocalInstance<T extends BaseKoreInstance>({int index = 0}) {
     if (_instances[T] == null) {
-      throw IllegalStateException(
-        message: 'Instance $T is not connected.',
-      );
+      throw IllegalStateException(message: 'Instance $T is not connected.');
     }
 
     if (index < 0 || index >= _instances[T]!.length) {
@@ -450,8 +451,9 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
   /// Returns connected instance of given type
   ///
   /// [index] - index of instance if multiple are connected
-  Future<T> useAsyncLazyLocalInstance<T extends BaseKoreInstance>(
-      {int index = 0}) async {
+  Future<T> useAsyncLazyLocalInstance<T extends BaseKoreInstance>({
+    int index = 0,
+  }) async {
     final typedInstances = _instances[T];
     final typedBuilders = _lazyInstancesBuilders[T];
 
@@ -480,8 +482,9 @@ mixin DependentKoreInstance<Input> on KoreInstance<Input> {
 
   /// Connects module from dependencies and returns its reference
   T useModule<T extends InstancesModule>() {
-    final module =
-        configuration.modules.firstWhere((element) => element.runtimeType == T);
+    final module = configuration.modules.firstWhere(
+      (element) => element.runtimeType == T,
+    );
 
     // ignore: cascade_invocations
     module

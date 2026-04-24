@@ -25,9 +25,7 @@ class TestWrapperAsync extends BaseWrapper<int?> {
 
   @override
   DependentKoreInstanceConfiguration get configuration =>
-      const DependentKoreInstanceConfiguration(
-        isAsync: true,
-      );
+      const DependentKoreInstanceConfiguration(isAsync: true);
 
   @override
   Future<void> initializeAsync() async {
@@ -71,9 +69,9 @@ class TestWrapperAsync2 extends BaseWrapper<int?> {
 class TestWrapper3 extends BaseWrapper<int?> {
   int? value;
 
-  bool eventProcessed = false;
-  bool event2Processed = false;
-  bool event3Processed = false;
+  var eventProcessed = false;
+  var event2Processed = false;
+  var event3Processed = false;
 
   @override
   DependentKoreInstanceConfiguration get configuration =>
@@ -156,13 +154,9 @@ class TestWrapper3 extends BaseWrapper<int?> {
   );
 
   // ignore: non_constant_identifier_names
-  late final testWrapper1_error_1 = useLocalInstance<TestWrapper1>(
-    index: -1,
-  );
+  late final testWrapper1_error_1 = useLocalInstance<TestWrapper1>(index: -1);
   // ignore: non_constant_identifier_names
-  late final testWrapper1_error_2 = useLocalInstance<TestWrapper1>(
-    index: 10,
-  );
+  late final testWrapper1_error_2 = useLocalInstance<TestWrapper1>(index: 10);
 
   // ignore: non_constant_identifier_names
   late final testWrapper1_error_no_object = useLocalInstance<TestWrapper4>();
@@ -171,30 +165,27 @@ class TestWrapper3 extends BaseWrapper<int?> {
   late final testPart_error_no_object = useInstancePart<TestInstancePart6>();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-        on<TestEvent>((event) {
-          eventProcessed = true;
+  void subscribe() {
+    on<TestEvent>((event) {
+      eventProcessed = true;
 
-          value = event.number;
-        }),
-        on<TestEvent2>(
-          (event) {
-            event2Processed = true;
+      value = event.number;
+    });
+    on<TestEvent2>((event) {
+      event2Processed = true;
 
-            value = event.number;
-          },
-          reactsToPause: true,
-        ),
-        on<TestEvent3>(
-          (event) {
-            event3Processed = true;
+      value = event.number;
+    }, reactsToPause: true);
+    on<TestEvent3>(
+      (event) {
+        event3Processed = true;
 
-            value = event.number;
-          },
-          reactsToPause: true,
-          firesAfterResume: false,
-        ),
-      ];
+        value = event.number;
+      },
+      reactsToPause: true,
+      firesAfterResume: false,
+    );
+  }
 }
 
 class TestWrapperError extends BaseWrapper<int?> {
@@ -205,16 +196,8 @@ class TestWrapperError extends BaseWrapper<int?> {
       const DependentKoreInstanceConfiguration(
         dependencies: [
           Connector(type: TestWrapper1, input: 2),
-          Connector(
-            type: TestWrapper2,
-            input: 3,
-            scope: BaseScopes.unique,
-          ),
-          Connector(
-            type: TestWrapper2,
-            input: 4,
-            scope: Constants.testScope,
-          ),
+          Connector(type: TestWrapper2, input: 3, scope: BaseScopes.unique),
+          Connector(type: TestWrapper2, input: 4, scope: Constants.testScope),
           Connector(
             type: TestWrapperAsync,
             input: 3,

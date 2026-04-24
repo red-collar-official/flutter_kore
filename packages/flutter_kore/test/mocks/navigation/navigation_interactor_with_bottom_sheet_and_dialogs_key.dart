@@ -13,17 +13,19 @@ import 'components/screens/routes.dart';
 
 @singleton
 class NavigationInteractorWithBottomSheetsAndDialogsKey
-    extends BaseNavigationInteractor<
-        NavigationState,
-        Map<String, dynamic>,
-        AppTab,
-        Routes,
-        Dialogs,
-        BottomSheets,
-        RouteNames,
-        DialogNames,
-        BottomSheetNames,
-        TestDeepLinksInteractor> {
+    extends
+        BaseNavigationInteractor<
+          NavigationState,
+          Map<String, dynamic>,
+          AppTab,
+          Routes,
+          Dialogs,
+          BottomSheets,
+          RouteNames,
+          DialogNames,
+          BottomSheetNames,
+          TestDeepLinksInteractor
+        > {
   final _routes = Routes();
   final _dialogs = Dialogs();
   final _bottomSheets = BottomSheets();
@@ -33,9 +35,9 @@ class NavigationInteractorWithBottomSheetsAndDialogsKey
 
   @override
   Map<AppTab, GlobalKey<NavigatorState>> get currentTabKeys => {
-        AppTabs.posts: postsNavigatorKey,
-        AppTabs.likedPosts: likedPostsNavigatorKey,
-      };
+    AppTabs.posts: postsNavigatorKey,
+    AppTabs.likedPosts: likedPostsNavigatorKey,
+  };
 
   @override
   NavigationInteractorSettings get settings =>
@@ -79,7 +81,6 @@ class NavigationInteractorWithBottomSheetsAndDialogsKey
   }
 
   @override
-  NavigationState get initialState => NavigationState(
-        currentTab: AppTabs.posts,
-      );
+  NavigationState get initialState =>
+      NavigationState(currentTab: AppTabs.posts);
 }

@@ -8,7 +8,7 @@ void main() {
     });
 
     test('Observable initial test', () async {
-      final Observable<int> observable = Observable.initial(1);
+      final observable = Observable.initial(1);
 
       expect(observable.current, 1);
 
@@ -16,7 +16,7 @@ void main() {
     });
 
     test('Observable empty test', () async {
-      final Observable<int> observable = Observable();
+      final observable = Observable();
 
       expect(observable.current, null);
 
@@ -24,7 +24,7 @@ void main() {
     });
 
     test('Observable update test', () async {
-      final Observable<int> observable = Observable.initial(1);
+      final observable = Observable.initial(1);
 
       expect(observable.current, 1);
 
@@ -36,7 +36,7 @@ void main() {
     });
 
     test('Observable dispose test', () async {
-      final Observable<int> observable = Observable.initial(1);
+      final observable = Observable.initial(1);
 
       expect(observable.current, 1);
 
@@ -50,7 +50,7 @@ void main() {
     });
 
     test('Observable update after dispose test', () async {
-      final Observable<int> observable = Observable.initial(1);
+      final observable = Observable.initial(1);
 
       // ignore: cascade_invocations
       observable.dispose();
@@ -60,7 +60,7 @@ void main() {
     });
 
     test('Observable dispose after dispose test', () async {
-      final Observable<int> observable = Observable.initial(1);
+      final observable = Observable.initial(1);
 
       // ignore: cascade_invocations
       observable.dispose();

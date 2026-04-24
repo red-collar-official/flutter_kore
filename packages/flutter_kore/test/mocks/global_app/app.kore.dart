@@ -23,9 +23,9 @@ mixin AppGen on KoreApp<NavigationInteractor> {
 
   @override
   List<Connector> get singletonInstances => [
-        connectors.navigationInteractorConnector(),
-        connectors.testDeepLinksInteractorConnector(),
-      ];
+    connectors.navigationInteractorConnector(),
+    connectors.testDeepLinksInteractorConnector(),
+  ];
 
   @override
   void registerInstances() {

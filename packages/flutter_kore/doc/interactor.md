@@ -86,11 +86,11 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
   PostsState get initialState => PostsState();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 
@@ -122,11 +122,11 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, Map<Strin
       );
   
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 
 ```
@@ -170,11 +170,11 @@ class UserDefaultsInteractor extends BaseInteractor<UserDefaultsState, String> {
       );
   
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 
@@ -261,11 +261,11 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
   PostsState get initialState => PostsState();
 
   @override
-  List<EventBusSubscriber> subscribe() => [
-      on<PostLikedEvent>((event) {
-        _onPostLiked(event.id);
-      }),
-    ];
+  void subscribe() {
+    on<PostLikedEvent>((event) {
+      _onPostLiked(event.id);
+    });
+  }
 }
 ```
 

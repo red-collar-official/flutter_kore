@@ -62,9 +62,7 @@ abstract class LinkMapper {
   /// first map is path params
   /// second map is queryParams
   /// third parameter is achor value
-  LinkParams mapParamsFromUrl(
-    String url,
-  );
+  LinkParams mapParamsFromUrl(String url);
 
   /// Costructs route with given url params
   UIRoute constructRoute(LinkParams params);

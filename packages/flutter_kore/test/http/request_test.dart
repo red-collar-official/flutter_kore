@@ -19,7 +19,7 @@ const testBody = 'testParam';
 const testBodyMap = {'testParam': 1};
 final testFormData = dio.FormData();
 const testBodyMapWithList = {
-  'testParam': [1, 2]
+  'testParam': [1, 2],
 };
 
 Uri _fixDioUrlForQueryUri(
@@ -43,10 +43,11 @@ Uri _fixDioUrlForQueryUri(
   final uri = Uri.parse(baseUrl + finalUrl);
 
   final resultUri = Uri(
-      scheme: uri.scheme,
-      host: uri.host,
-      path: uri.path.substring(1),
-      queryParameters: correctedMap.isEmpty ? null : correctedMap);
+    scheme: uri.scheme,
+    host: uri.host,
+    path: uri.path.substring(1),
+    queryParameters: correctedMap.isEmpty ? null : correctedMap,
+  );
 
   return resultUri;
 }
@@ -57,11 +58,8 @@ void addTestErrorResponsesToDio(dio.Dio dio) {
   // ignore: cascade_invocations
   dioAdapter.onGet(
     testMockPath,
-    (server) => server.reply(
-      500,
-      null,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) =>
+        server.reply(500, null, delay: const Duration(milliseconds: 100)),
   );
 }
 
@@ -69,12 +67,9 @@ void addTestNullResponsesToDio(dio.Dio dio) {
   final dioAdapter = DioAdapter(dio: dio);
 
   // ignore: cascade_invocations
-  dioAdapter.onGet(
-    testMockPath,
-    (server) {
-      server.reply(500, null);
-    },
-  );
+  dioAdapter.onGet(testMockPath, (server) {
+    server.reply(500, null);
+  });
 }
 
 void addTestResponsesToDioForHeadersTest(dio.Dio dio) {
@@ -83,11 +78,7 @@ void addTestResponsesToDioForHeadersTest(dio.Dio dio) {
   // ignore: cascade_invocations
   dioAdapter.onGet(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
     headers: testHeaders,
   );
 }
@@ -98,51 +89,31 @@ void addTestResponsesToDio(dio.Dio dio) {
   // ignore: cascade_invocations
   dioAdapter.onGet(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPost(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPut(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPatch(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onDelete(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 }
 
@@ -152,43 +123,27 @@ void addTestResponsesForParamsToDio(dio.Dio dio) {
   // ignore: cascade_invocations
   dioAdapter.onGet(
     _fixDioUrlForQueryUri(testBaseUrl, testBodyMap, testPath).toString(),
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPost(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
     data: jsonEncode(testBodyMap),
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPatch(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
     data: testBody,
   );
 
   // ignore: cascade_invocations
   dioAdapter.onPut(
     testMockPath,
-    (server) => server.reply(
-      200,
-      1,
-      delay: const Duration(milliseconds: 100),
-    ),
+    (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
     data: testFormData,
   );
 }
@@ -204,7 +159,7 @@ void main() {
 
     test('Request get test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -217,7 +172,7 @@ void main() {
     });
 
     test('Request preconditions test', () async {
-      final request = HttpRequest<int>()..method = RequestMethod.get;
+      final request = HttpRequest<int>()..method = .get;
 
       expect(
         () async => request.execute(),
@@ -225,7 +180,7 @@ void main() {
       );
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl;
 
       expect(
@@ -236,10 +191,10 @@ void main() {
 
     test('Request simulate result test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
-        ..simulateResult = Response(code: 200, result: 1);
+        ..simulateResult = const Response(code: 200, result: 1);
 
       final result = await request.execute();
 
@@ -249,17 +204,16 @@ void main() {
 
     test('Request additionalInterceptors test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
-        ..additionalInterceptors = [
-          dio.LogInterceptor(),
-        ]
-        ..simulateResult = Response(code: 200, result: 1);
+        ..additionalInterceptors = [dio.LogInterceptor()]
+        ..simulateResult = const Response(code: 200, result: 1);
 
       expect(
-        request.httpInstance!.interceptors
-                .indexWhere((element) => element is dio.LogInterceptor) !=
+        request.httpInstance!.interceptors.indexWhere(
+              (element) => element is dio.LogInterceptor,
+            ) !=
             -1,
         true,
       );
@@ -267,14 +221,15 @@ void main() {
 
     test('Request defaultInterceptors test', () async {
       final request = HttpRequest2<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
-        ..simulateResult = Response(code: 200, result: 1);
+        ..simulateResult = const Response(code: 200, result: 1);
 
       expect(
-        request.httpInstance!.interceptors
-                .indexWhere((element) => element is dio.LogInterceptor) !=
+        request.httpInstance!.interceptors.indexWhere(
+              (element) => element is dio.LogInterceptor,
+            ) !=
             -1,
         true,
       );
@@ -282,12 +237,10 @@ void main() {
 
     test('Request simulate response test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
-        ..simulateResponse = SimulateResponse(
-          data: 1,
-        );
+        ..simulateResponse = const SimulateResponse(data: 1);
 
       final result = await request.execute();
 
@@ -297,12 +250,10 @@ void main() {
 
     test('Request simulate response with parser test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
-        ..simulateResponse = SimulateResponse(
-          data: 1,
-        )
+        ..simulateResponse = const SimulateResponse(data: 1)
         ..parser = (result, headers) async {
           return result;
         };
@@ -315,7 +266,7 @@ void main() {
 
     test('Request parser test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..parser = (result, headers) async {
@@ -332,7 +283,7 @@ void main() {
 
     test('Request parser fail test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..parser = (result, headers) async {
@@ -349,7 +300,7 @@ void main() {
 
     test('Request empty response test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..forceReturnNullFromRequest = true;
@@ -364,7 +315,7 @@ void main() {
 
     test('Request empty response database error test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -382,7 +333,7 @@ void main() {
 
     test('Request database error test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -402,7 +353,7 @@ void main() {
 
     test('Request database test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -422,7 +373,7 @@ void main() {
       var storedValue = 0;
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -447,7 +398,7 @@ void main() {
 
     test('Request database put error test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -467,7 +418,7 @@ void main() {
       var storedValue = 0;
 
       final request2 = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..databaseGetDelegate = (headers) async {
@@ -492,7 +443,7 @@ void main() {
 
     test('Request post test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -506,7 +457,7 @@ void main() {
 
     test('Request patch test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.patch
+        ..method = .patch
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -520,7 +471,7 @@ void main() {
 
     test('Request delete test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.delete
+        ..method = .delete
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -534,7 +485,7 @@ void main() {
 
     test('Request put test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.put
+        ..method = .put
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
@@ -548,7 +499,7 @@ void main() {
 
     test('Request get with params test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..query = testBodyMap
         ..baseUrl = testBaseUrl
         ..url = testPath;
@@ -563,7 +514,7 @@ void main() {
 
     test('Request get with params with list test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..query = testBodyMapWithList
         ..baseUrl = testBaseUrl
         ..url = testPath;
@@ -572,13 +523,13 @@ void main() {
 
       // ignore: cascade_invocations
       dioAdapter.onGet(
-        _fixDioUrlForQueryUri(testBaseUrl, testBodyMapWithList, testPath)
-            .toString(),
-        (server) => server.reply(
-          200,
-          1,
-          delay: const Duration(milliseconds: 100),
-        ),
+        _fixDioUrlForQueryUri(
+          testBaseUrl,
+          testBodyMapWithList,
+          testPath,
+        ).toString(),
+        (server) =>
+            server.reply(200, 1, delay: const Duration(milliseconds: 100)),
       );
 
       final result = await request.execute();
@@ -589,7 +540,7 @@ void main() {
 
     test('Request post with params test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..body = testBodyMap
         ..baseUrl = testBaseUrl
         ..url = testPath;
@@ -604,7 +555,7 @@ void main() {
 
     test('Request put with params test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.put
+        ..method = .put
         ..body = {}
         ..baseUrl = testBaseUrl
         ..url = testPath;
@@ -618,7 +569,7 @@ void main() {
 
     test('Request patch with params test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.patch
+        ..method = .patch
         ..body = testBody
         ..baseUrl = testBaseUrl
         ..url = testPath;
@@ -633,7 +584,7 @@ void main() {
 
     test('Request put with form data test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.put
+        ..method = .put
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..formData = Future.value(testFormData);
@@ -648,7 +599,7 @@ void main() {
 
     test('Request headers test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.get
+        ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..headers = testHeaders;
@@ -663,7 +614,7 @@ void main() {
 
     test('Request cancel before execute test', () async {
       final request = HttpRequest<int>()
-        ..method = RequestMethod.post
+        ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath
         ..body = testBodyMap;
@@ -676,9 +627,11 @@ void main() {
 
       late Response<int> response;
 
-      unawaited(request.execute().then((value) {
-        response = value;
-      }));
+      unawaited(
+        request.execute().then((value) {
+          response = value;
+        }),
+      );
 
       unawaited(request.execute());
 

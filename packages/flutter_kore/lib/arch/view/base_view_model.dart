@@ -43,11 +43,6 @@ abstract class BaseViewModel<KWidget extends StatefulWidget, MState>
   /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
   void onFirstFrame() {}
 
-  /// Utility method to check if [Navigator] can be popped
-  bool canPop(BuildContext context) {
-    return Navigator.of(context).canPop();
-  }
-
   /// Utility function to remove input focus for current view
   void removeInputFocus() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
