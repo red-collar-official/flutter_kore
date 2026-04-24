@@ -10,9 +10,9 @@ class MockPostsApi extends PostsApi {
   @override
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       super.getPosts(offset, limit)
-        ..simulateResult = Response(
+        ..simulateResult = const Response(
           code: 200,
-          result: const [Post(title: '', body: '', id: 1)],
+          result: [Post(title: '', body: '', id: 1)],
         );
 }
 

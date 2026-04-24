@@ -1,3 +1,8 @@
+## 1.4.10
+
+- Update example projects
+- Update docs
+
 ## 1.4.9
 
 - Update project code style

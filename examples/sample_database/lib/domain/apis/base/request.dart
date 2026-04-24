@@ -38,13 +38,13 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void onAuthorization(Dio dio) {
+  void decorateRequest(Dio dio) {
     // ignore
   }
 
   @override
   Future onError(DioException error, RetryHandler retry) async {
-    if (error.type == DioExceptionType.cancel) {
+    if (error.type == .cancel) {
       return error;
     }
 

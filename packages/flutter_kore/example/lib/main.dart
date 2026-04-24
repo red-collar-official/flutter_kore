@@ -80,7 +80,7 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void onAuthorization(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio) {
     // ignore
   }
 

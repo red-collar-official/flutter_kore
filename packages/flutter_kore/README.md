@@ -110,7 +110,7 @@ Future<void> main() async {
 class HttpRequest<T> extends DioRequest<T> {
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-        logPrint: (message) print,
+        logPrint: print,
         exceptionPrint: (error, trace) {
           print(error);
           print(trace);

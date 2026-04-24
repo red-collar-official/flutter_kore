@@ -23,8 +23,8 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void onAuthorization(dio.Dio dio) {
-    if (!requiresLogin) {
+  void decorateRequest(dio.Dio dio) {
+    if (!requiresAuthentication) {
       return;
     }
 
@@ -44,7 +44,7 @@ class HttpRequest<T> extends DioRequest<T> {
       return error;
     }
 
-    if (error.type == dio.DioExceptionType.cancel) {
+    if (error.type == .cancel) {
       return error;
     }
 
