@@ -1,22 +1,22 @@
 enum Flavor {
   prod(
     name: prodName,
-    baseUrl: String.fromEnvironment('BASE_URL_PROD'),
+    baseUrl: .fromEnvironment('BASE_URL_PROD'),
     enableLogs: false,
   ),
   prodTest(
     name: prodName,
-    baseUrl: String.fromEnvironment('BASE_URL_PROD'),
+    baseUrl: .fromEnvironment('BASE_URL_PROD'),
     enableLogs: true,
   ),
   stage(
     name: stageName,
-    baseUrl: String.fromEnvironment('BASE_URL_STAGE'),
+    baseUrl: .fromEnvironment('BASE_URL_STAGE'),
     enableLogs: true,
   ),
   dev(
     name: devName,
-    baseUrl: String.fromEnvironment('BASE_URL_DEV'),
+    baseUrl: .fromEnvironment('BASE_URL_DEV'),
     enableLogs: true,
   );
 
@@ -40,15 +40,15 @@ enum Flavor {
   static Flavor fromName(String name) {
     switch (name) {
       case devName:
-        return Flavor.dev;
+        return .dev;
       case stageName:
-        return Flavor.stage;
+        return .stage;
       case prodName:
-        return Flavor.prod;
+        return .prod;
       case prodTestName:
-        return Flavor.prodTest;
+        return .prodTest;
       default:
-        return Flavor.prod;
+        return .prod;
     }
   }
 }

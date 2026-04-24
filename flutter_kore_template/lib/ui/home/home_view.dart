@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kore/flutter_kore.dart';
+import 'package:flutter_kore/flutter_kore_widgets.dart';
 import 'package:flutter_kore_template/domain/data/data.dart';
 
 import 'components/bottom_navigation_bar.dart';
@@ -27,9 +28,8 @@ class _HomeViewWidgetState
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: StreamBuilder<AppTab?>(
-        stream: viewModel.currentTabStream,
-        initialData: viewModel.initialTab,
+      body: KoreStreamBuilder<AppTab?>(
+        streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           return Stack(
             children: AppTabs.tabs
@@ -46,9 +46,8 @@ class _HomeViewWidgetState
           );
         },
       ),
-      bottomNavigationBar: StreamBuilder<AppTab?>(
-        stream: viewModel.currentTabStream,
-        initialData: viewModel.initialTab,
+      bottomNavigationBar: KoreStreamBuilder<AppTab?>(
+        streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             return const SizedBox.shrink();

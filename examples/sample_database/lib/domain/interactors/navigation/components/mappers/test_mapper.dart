@@ -7,7 +7,7 @@ class TestMapper extends LinkMapper {
   @override
   UIRoute constructRoute(LinkParams params) {
     return UIRoute<RouteNames>(
-      name: RouteNames.postsRegex,
+      name: .postsRegex,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );

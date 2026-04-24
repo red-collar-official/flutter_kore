@@ -21,7 +21,7 @@ class _PostsListViewWidgetState
   @override
   Widget buildView(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 232, 232, 232),
+      backgroundColor: const .fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
       body: KoreStreamBuilder<StatefulData<List<Post>>?>(
         streamWrap: viewModel.posts,

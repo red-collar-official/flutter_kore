@@ -18,7 +18,6 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
     required this.builder,
     required this.padding,
     required this.title,
-    required this.currentData,
     required this.bottomSlivers,
     required this.showHeaderWhenEmpty,
     required this.showTitleWhenEmpty,
@@ -32,7 +31,7 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
   });
 
   final Widget? header;
-  final Stream<StatefulData<T>?> stream;
+  final StateStream<StatefulData<T>?> stream;
   final Future<void> Function()? onRefresh;
   final Future<void> Function()? onLoadMore;
   final List<Widget>? loadingSlivers;
@@ -43,7 +42,6 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
   final Widget Function(BuildContext, int, T) builder;
   final EdgeInsets padding;
   final Widget? title;
-  final StatefulData<T>? Function()? currentData;
   final List<Widget> Function(int, T?)? bottomSlivers;
   final bool showHeaderWhenEmpty;
   final bool showTitleWhenEmpty;
@@ -57,15 +55,13 @@ abstract class BaseStreamContainer<T> extends StatefulWidget {
 
 abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>>
     extends State<W> {
-  bool isLoadingMore = false;
-  int currentListLength = 0;
+  var isLoadingMore = false;
+  var currentListLength = 0;
 
   @override
   Widget build(BuildContext context) {
     return KoreStreamBuilder<StatefulData<T>?>(
-      stream: widget.stream,
-      // ignore: prefer_null_aware_operators
-      initialData: widget.currentData != null ? widget.currentData! : null,
+      streamWrap: widget.stream,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           if (widget.asSliver) {
@@ -137,7 +133,7 @@ abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>>
     }
 
     return [
-      if (widget.header != null) widget.header!,
+      ?widget.header,
       if (widget.onRefresh != null) _refreshControl(),
       if (widget.title != null && showTitle) widget.title!,
       SliverPadding(padding: widget.padding, sliver: content(result)),

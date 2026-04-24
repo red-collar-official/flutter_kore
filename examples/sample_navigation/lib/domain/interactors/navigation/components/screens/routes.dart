@@ -10,7 +10,7 @@ part 'routes.navigation.dart';
 class Routes extends RoutesBase with RoutesGen {
   UIRoute<RouteNames> post({Post? post, int? id}) {
     return UIRoute(
-      name: RouteNames.post,
+      name: .post,
       defaultSettings: const UIRouteSettings(),
       child: PostView(post: post, id: id),
     );
@@ -22,7 +22,7 @@ class Routes extends RoutesBase with RoutesGen {
     Map<String, dynamic>? queryParams,
   }) {
     return UIRoute(
-      name: RouteNames.posts,
+      name: .posts,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
@@ -30,7 +30,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   UIRoute<RouteNames> stub() {
     return UIRoute(
-      name: RouteNames.stub,
+      name: .stub,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
@@ -38,7 +38,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   UIRoute<RouteNames> home() {
     return UIRoute(
-      name: RouteNames.home,
+      name: .home,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );
@@ -46,7 +46,7 @@ class Routes extends RoutesBase with RoutesGen {
 
   UIRoute<RouteNames> likedPosts() {
     return UIRoute(
-      name: RouteNames.likedPosts,
+      name: .likedPosts,
       defaultSettings: const UIRouteSettings(),
       child: Container(),
     );

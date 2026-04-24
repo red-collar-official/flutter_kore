@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/domain/global/global_app.dart';
-import 'package:sample_database/domain/interactors/navigation/navigation_interactor.dart';
 
 import 'home_view.dart';
 import 'home_view_state.dart';
@@ -31,7 +30,7 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
     app.navigation.setCurrentTab(tab);
   }
 
-  late final currentTab = app.instances.get<NavigationInteractor>().wrapUpdates(
+  late final currentTab = app.navigation.wrapUpdates(
     (state) => state.currentTab,
   );
 

@@ -16,7 +16,6 @@ class StreamGrid<T> extends BaseStreamContainer<T> {
     required super.builder,
     required super.padding,
     super.title,
-    super.currentData,
     super.bottomSlivers,
     super.showHeaderWhenEmpty = true,
     super.showTitleWhenEmpty = true,

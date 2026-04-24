@@ -15,7 +15,6 @@ class StreamList<T> extends BaseStreamContainer<T> {
     required super.builder,
     required super.padding,
     super.title,
-    super.currentData,
     super.loadingSlivers,
     super.bottomSlivers,
     super.showHeaderWhenEmpty = true,

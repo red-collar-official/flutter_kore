@@ -22,18 +22,16 @@ class PostCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 0,
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        margin: const .symmetric(horizontal: 16, vertical: 12),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const .symmetric(horizontal: 16, vertical: 12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: .start,
+            spacing: 8,
             children: [
               _buildUserHeader(),
-              const SizedBox(height: 8),
               Text(title, style: const TextStyle(fontSize: 20)),
-              const SizedBox(height: 8),
               Text(body),
-              const SizedBox(height: 8),
               _buildControls(),
             ],
           ),
@@ -43,7 +41,7 @@ class PostCard extends StatelessWidget {
   }
 
   Widget _buildControls() => Row(
-    mainAxisAlignment: MainAxisAlignment.end,
+    mainAxisAlignment: .end,
     children: [
       GestureDetector(
         onTap: onLikeTap,

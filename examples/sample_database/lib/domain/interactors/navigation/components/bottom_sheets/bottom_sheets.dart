@@ -7,7 +7,7 @@ part 'bottom_sheets.navigation.dart';
 class BottomSheets extends RoutesBase with BottomSheetsGen {
   UIRoute<BottomSheetNames> authorization() {
     return UIRoute(
-      name: BottomSheetNames.authorization,
+      name: .authorization,
       defaultSettings: const UIBottomSheetRouteSettings(),
       child: Container(),
     );

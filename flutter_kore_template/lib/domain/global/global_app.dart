@@ -25,7 +25,7 @@ class App extends KoreApp<NavigationInteractor> with AppGen {
 
     UINavigationSettings.transitionDuration = kAnimationDuration;
     UINavigationSettings.barrierColor = UIColors.surfaceDarkSemitransparent;
-    UINavigationSettings.bottomSheetBorderRadius = BorderRadius.only(
+    UINavigationSettings.bottomSheetBorderRadius = .only(
       topLeft: UIDimentions.defaultWidgetBorderRadius.topLeft,
       topRight: UIDimentions.defaultWidgetBorderRadius.topRight,
     );
@@ -36,10 +36,7 @@ class App extends KoreApp<NavigationInteractor> with AppGen {
 
 final app = App();
 
-Future<void> initApp({
-  bool testMode = false,
-  Flavor flavor = Flavor.dev,
-}) async {
+Future<void> initApp({bool testMode = false, Flavor flavor = .dev}) async {
   currentFlavor = flavor;
   KoreApp.isInTestMode = testMode;
 

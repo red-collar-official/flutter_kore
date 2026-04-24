@@ -7,7 +7,7 @@ part 'dialogs.navigation.dart';
 class Dialogs extends RoutesBase with DialogsGen {
   UIRoute<DialogNames> error() {
     return UIRoute(
-      name: DialogNames.error,
+      name: .error,
       defaultSettings: const UIDialogRouteSettings(),
       child: Container(),
     );

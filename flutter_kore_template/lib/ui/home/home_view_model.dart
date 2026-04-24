@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter_kore_template/domain/data/data.dart';
 import 'package:flutter_kore_template/domain/global/global.dart';
-import 'package:flutter_kore_template/domain/interactors/interactors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
@@ -28,11 +25,9 @@ class HomeViewModel extends NavigationViewModel<HomeView, HomeViewState> {
     app.navigation.setCurrentTab(tab);
   }
 
-  AppTab get initialTab => app.navigation.state.currentTab;
-
-  Stream<AppTab?> get currentTabStream => app.instances
-      .get<NavigationInteractor>()
-      .updates((state) => state.currentTab);
+  late final currentTab = app.navigation.wrapUpdates(
+    (state) => state.currentTab,
+  );
 
   @override
   HomeViewState get initialState => const HomeViewState();

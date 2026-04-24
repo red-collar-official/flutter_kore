@@ -6,7 +6,7 @@ enum BackendUrls { main }
 /// Returns backend base url based on current flavor
 String getBaseUrl(BackendUrls api) {
   switch (api) {
-    case BackendUrls.main:
+    case .main:
       return currentFlavor.baseUrl;
   }
 }

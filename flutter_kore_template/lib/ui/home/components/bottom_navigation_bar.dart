@@ -27,9 +27,9 @@ class BottomNavigation extends StatelessWidget {
       height: 82,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
+        borderRadius: const .only(
+          topRight: .circular(30),
+          topLeft: .circular(30),
         ),
         boxShadow: [
           BoxShadow(
@@ -39,14 +39,9 @@ class BottomNavigation extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 20,
-          right: 12,
-          left: 12,
-          bottom: 22,
-        ),
+        padding: const .only(top: 20, right: 12, left: 12, bottom: 22),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: .spaceEvenly,
           children: items
               .map(
                 (tabItem) => GestureDetector(
@@ -93,8 +88,8 @@ class BottomNavigationItem extends StatelessWidget {
         width: 62.2,
         height: 49,
         child: Stack(
-          fit: StackFit.expand,
-          clipBehavior: Clip.antiAlias,
+          fit: .expand,
+          clipBehavior: .antiAlias,
           children: [Positioned.fill(child: buildIcon())],
         ),
       ),

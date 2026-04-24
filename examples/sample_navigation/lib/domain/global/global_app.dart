@@ -21,9 +21,9 @@ class App extends KoreApp<NavigationInteractor> with AppGen {
 
     UINavigationSettings.transitionDuration = const Duration(milliseconds: 200);
     UINavigationSettings.barrierColor = Colors.black.withValues(alpha: 0.5);
-    UINavigationSettings.bottomSheetBorderRadius = const BorderRadius.only(
-      topLeft: Radius.circular(8),
-      topRight: Radius.circular(8),
+    UINavigationSettings.bottomSheetBorderRadius = const .only(
+      topLeft: .circular(8),
+      topRight: .circular(8),
     );
   }
 }

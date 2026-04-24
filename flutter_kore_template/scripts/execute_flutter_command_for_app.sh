@@ -20,25 +20,25 @@ args+=($ACTION)
 args+=($PLATFORM)
 args+=(--$TYPE)
 
-if [[ "$PLATFORM" == "ios" ]]
+if [[ "$PLATFORM" == "ios" || "$PLATFORM" == "ipa" ]]
 then
 case $LAUNCH_FILE in
 	"lib/main_dev.dart") \
-		sed -i '' 's/Flavor.prodTest/Flavor.dev/g' lib/main.dart && \
-        sed -i '' 's/Flavor.stage/Flavor.dev/g' lib/main.dart && \
-        sed -i '' 's/Flavor.prod/Flavor.dev/g' lib/main.dart ;;
+		sed -i '' 's/.prodTest/.dev/g' lib/main.dart && \
+        sed -i '' 's/.stage/.dev/g' lib/main.dart && \
+        sed -i '' 's/.prod/.dev/g' lib/main.dart ;;
 	"lib/main_stage.dart") \
-		sed -i '' 's/Flavor.prodTest/Flavor.stage/g' lib/main.dart && \
-        sed -i '' 's/Flavor.dev/Flavor.stage/g' lib/main.dart && \
-        sed -i '' 's/Flavor.prod/Flavor.stage/g' lib/main.dart ;;
+		sed -i '' 's/.prodTest/.stage/g' lib/main.dart && \
+        sed -i '' 's/.dev/.stage/g' lib/main.dart && \
+        sed -i '' 's/.prod/.stage/g' lib/main.dart ;;
 	"lib/main_prod.dart") \
-		sed -i '' 's/Flavor.dev/Flavor.prod/g' lib/main.dart && \
-        sed -i '' 's/Flavor.stage/Flavor.prod/g' lib/main.dart && \
-        sed -i '' 's/Flavor.prod/Flavor.prod/g' lib/main.dart ;;
+		sed -i '' 's/.dev/.prod/g' lib/main.dart && \
+        sed -i '' 's/.stage/.prod/g' lib/main.dart && \
+        sed -i '' 's/.prod/.prod/g' lib/main.dart ;;
 	*)
-        sed -i '' 's/Flavor.dev/Flavor.prod/g' lib/main.dart && \
-        sed -i '' 's/Flavor.stage/Flavor.prod/g' lib/main.dart && \
-        sed -i '' 's/Flavor.prodTest/Flavor.prod/g' lib/main.dart ;;
+        sed -i '' 's/.dev/.prod/g' lib/main.dart && \
+        sed -i '' 's/.stage/.prod/g' lib/main.dart && \
+        sed -i '' 's/.prodTest/.prod/g' lib/main.dart ;;
 esac
 fi
 

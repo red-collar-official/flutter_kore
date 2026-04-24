@@ -11,8 +11,8 @@ class UIStyles {
         height: 1.25,
         color: color,
         decorationColor: color,
-        fontWeight: FontWeight.w400,
-        textBaseline: TextBaseline.alphabetic,
+        fontWeight: .w400,
+        textBaseline: .alphabetic,
       );
 
   // TODO: place app text styles here

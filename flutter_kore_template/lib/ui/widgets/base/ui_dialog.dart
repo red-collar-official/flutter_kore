@@ -19,9 +19,7 @@ class UIDialog extends StatelessWidget {
   final Widget child;
 
   static const RoundedRectangleBorder _defaultDialogShape =
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(2)),
-      );
+      RoundedRectangleBorder(borderRadius: .all(.circular(2)));
   static const double _defaultElevation = 24;
 
   @override
@@ -29,7 +27,7 @@ class UIDialog extends StatelessWidget {
     final dialogTheme = DialogTheme.of(context);
 
     return AnimatedPadding(
-      padding: MediaQuery.of(context).viewInsets + const EdgeInsets.all(24),
+      padding: MediaQuery.of(context).viewInsets + const .all(24),
       duration: insetAnimationDuration,
       curve: insetAnimationCurve,
       child: Center(
@@ -47,11 +45,8 @@ class UIDialog extends StatelessWidget {
               elevation:
                   elevation ?? dialogTheme.elevation ?? _defaultElevation,
               shape: shape ?? dialogTheme.shape ?? _defaultDialogShape,
-              type: MaterialType.card,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: child,
-              ),
+              type: .card,
+              child: ClipRRect(borderRadius: .circular(16), child: child),
             ),
           ),
         ),

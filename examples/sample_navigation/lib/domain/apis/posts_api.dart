@@ -10,13 +10,13 @@ class PostsApi {
   HttpRequest<List<Post>> getPosts(int offset, int limit) =>
       HttpRequest<List<Post>>()
         ..method = .get
-        ..baseUrl = getBaseUrl(BackendUrls.main)
+        ..baseUrl = getBaseUrl(.main)
         ..url = '/posts'
         ..parser = (result, headers) async {
           final list = <Post>[];
 
           result?.forEach((data) {
-            list.add(Post.fromJson(data));
+            list.add(.fromJson(data));
           });
 
           return list;
@@ -24,7 +24,7 @@ class PostsApi {
 
   HttpRequest<Post?> likePost(int id) => HttpRequest<Post?>()
     ..method = .post
-    ..baseUrl = getBaseUrl(BackendUrls.main)
+    ..baseUrl = getBaseUrl(.main)
     ..url = '/posts'
     ..body = {'id': id}
     ..parser = (result, headers) async {
@@ -32,7 +32,7 @@ class PostsApi {
         return null;
       }
 
-      return Post.fromJson(result);
+      return .fromJson(result);
     }
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(
@@ -42,7 +42,7 @@ class PostsApi {
 
   HttpRequest<Post?> getPost(int id) => HttpRequest<Post?>()
     ..method = .post
-    ..baseUrl = getBaseUrl(BackendUrls.main)
+    ..baseUrl = getBaseUrl(.main)
     ..url = '/posts/$id'
     ..body = {'id': id}
     ..parser = (result, headers) async {
@@ -50,7 +50,7 @@ class PostsApi {
         return null;
       }
 
-      return Post.fromJson(result);
+      return .fromJson(result);
     }
     // ignore: invalid_use_of_visible_for_testing_member
     ..simulateResult = Response(

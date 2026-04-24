@@ -38,19 +38,18 @@ class UIRefreshControl extends StatelessWidget {
             var opacity = percentageComplete;
 
             if (appearsBelowTransparentView &&
-                (refreshState == RefreshIndicatorMode.armed ||
-                    refreshState == RefreshIndicatorMode.refresh ||
-                    refreshState == RefreshIndicatorMode.done ||
-                    refreshState == RefreshIndicatorMode.inactive)) {
+                (refreshState == .armed ||
+                    refreshState == .refresh ||
+                    refreshState == .done ||
+                    refreshState == .inactive)) {
               opacity = 0;
-            } else if (refreshState == RefreshIndicatorMode.armed ||
-                refreshState == RefreshIndicatorMode.refresh) {
+            } else if (refreshState == .armed || refreshState == .refresh) {
               opacity = 1;
             }
 
             return Center(
               child: Stack(
-                clipBehavior: Clip.none,
+                clipBehavior: .none,
                 children: <Widget>[
                   Positioned(
                     top: 0,
