@@ -23,7 +23,7 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void decorateRequest(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio, dio.Options options) {
     if (!requiresAuthentication) {
       return;
     }
@@ -34,7 +34,7 @@ class HttpRequest<T> extends DioRequest<T> {
     // final token = app.instances.get<AuthorizationInteractor>().state.jwt;
     //
     // if (token != null) {
-    //   dio.options.headers['Authorization'] = 'Bearer $token';
+    //   options.headers['Authorization'] = 'Bearer $token';
     // }
   }
 

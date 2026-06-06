@@ -38,7 +38,7 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void decorateRequest(Dio dio) {
+  void decorateRequest(Dio dio, Options options) {
     // ignore
   }
 
