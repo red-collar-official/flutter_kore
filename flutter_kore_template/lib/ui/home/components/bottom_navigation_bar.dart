@@ -4,22 +4,22 @@ import 'package:flutter_kore_template/domain/data/data.dart';
 typedef OnTabChangedCallback = void Function(AppTab appTab);
 
 class BottomNavigationItemData {
-  final AppTab appTabValue;
-
   const BottomNavigationItemData(this.appTabValue);
+
+  final AppTab appTabValue;
 }
 
 class BottomNavigation extends StatelessWidget {
-  final AppTab currentTab;
-  final OnTabChangedCallback onTabChanged;
-  final List<BottomNavigationItemData> items;
-
   const BottomNavigation({
     super.key,
     required this.currentTab,
     required this.onTabChanged,
     required this.items,
   });
+
+  final AppTab currentTab;
+  final OnTabChangedCallback onTabChanged;
+  final List<BottomNavigationItemData> items;
 
   @override
   Widget build(BuildContext context) {
@@ -62,14 +62,14 @@ class BottomNavigation extends StatelessWidget {
 }
 
 class BottomNavigationItem extends StatelessWidget {
-  final bool selected;
-  final AppTab appTab;
-
   const BottomNavigationItem({
     super.key,
     required this.appTab,
     this.selected = false,
   });
+
+  final bool selected;
+  final AppTab appTab;
 
   @override
   Widget build(BuildContext context) {

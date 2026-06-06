@@ -4,7 +4,7 @@
 import 'package:flutter_kore_template/domain/global/global.dart';
 
 class LogUtility {
-  static void e(dynamic e, dynamic trace) async {
+  static void e(dynamic e, dynamic trace) {
     if (!currentFlavor.enableLogs) {
       return;
     }
@@ -13,7 +13,7 @@ class LogUtility {
     print(trace);
   }
 
-  static void printMessage(dynamic message) async {
+  static void printMessage(dynamic message) {
     if (!currentFlavor.enableLogs) {
       return;
     }

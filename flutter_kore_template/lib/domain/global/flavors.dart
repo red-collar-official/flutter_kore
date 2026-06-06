@@ -20,17 +20,17 @@ enum Flavor {
     enableLogs: true,
   );
 
-  final String baseUrl;
-  final String name;
-  final bool enableLogs;
-
-  // TODO: add flavor settings here
-
   const Flavor({
     required this.name,
     required this.baseUrl,
     required this.enableLogs,
   });
+
+  final String baseUrl;
+  final String name;
+  final bool enableLogs;
+
+  // TODO: add flavor settings here
 
   static const devName = 'devName';
   static const stageName = 'stageName';

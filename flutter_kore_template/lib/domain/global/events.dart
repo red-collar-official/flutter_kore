@@ -1,13 +1,13 @@
 class PostLikedEvent {
-  final int id;
-
   const PostLikedEvent({required this.id});
+
+  final int id;
 }
 
 class GlobalRoutePushedEvent {
-  final bool replace;
-
   const GlobalRoutePushedEvent({this.replace = false});
+
+  final bool replace;
 }
 
 // TODO: add events here

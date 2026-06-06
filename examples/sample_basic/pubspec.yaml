@@ -13,7 +13,7 @@ dependencies:
 
   dart_mappable: ^4.8.0
   dio: ^5.9.2
-  flutter_kore: ^1.5.0
+  flutter_kore: ^1.5.1
   shared_preferences: ^2.5.5
 
 dev_dependencies:
