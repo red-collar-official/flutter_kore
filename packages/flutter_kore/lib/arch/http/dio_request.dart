@@ -43,8 +43,9 @@ abstract class DioRequest<T>
   /// changes after every [execute] call
   var cancelToken = dio.CancelToken();
 
-  /// Underlying [dio.Dio] instance
-  late final _dio = _buildClient();
+  /// Shared singleton [dio.Dio] instance used by all requests.
+  /// Initialized lazily on first use via [_buildClient].
+  static dio.Dio? _sharedDio;
 
   /// Test flag to return null response
   @visibleForTesting
@@ -61,7 +62,7 @@ abstract class DioRequest<T>
     return error;
   }
 
-  /// Function to add additional data to [dio.Dio] instance
+  /// Function to add additional data to the shared [dio.Dio] instance
   void decorateRequest(dio.Dio dio) {}
   // coverage:ignore-end
 
@@ -91,7 +92,7 @@ abstract class DioRequest<T>
       return _simulateServerResponse();
     }
 
-    final client = _dio;
+    final client = _getOrBuildClient();
 
     dynamic data;
 
@@ -134,7 +135,7 @@ abstract class DioRequest<T>
       try {
         result = await parser!(responseBody.data, responseBody.headers.map);
       } catch (e, trace) {
-        defaultSettings.exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint?.call(e, trace);
 
         requestCollection.removeRequest(this);
 
@@ -149,7 +150,7 @@ abstract class DioRequest<T>
       try {
         await databasePutDelegate?.call(result);
       } catch (e, trace) {
-        defaultSettings.exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint?.call(e, trace);
       }
     }
 
@@ -170,7 +171,7 @@ abstract class DioRequest<T>
 
         onPrefetchFromDatabase!(databaseData);
       } catch (e, trace) {
-        defaultSettings.exceptionPrint(e, trace);
+        defaultSettings.exceptionPrint?.call(e, trace);
       }
     }
   }
@@ -187,7 +188,7 @@ abstract class DioRequest<T>
         fromDatabase: databaseData != null,
       );
     } catch (e, trace) {
-      defaultSettings.exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint?.call(e, trace);
 
       return Response<T>(
         code: 0,
@@ -213,7 +214,7 @@ abstract class DioRequest<T>
         fromDatabase: databaseData != null,
       );
     } catch (e, trace) {
-      defaultSettings.exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint?.call(e, trace);
 
       return Response<T>(
         code: 0,
@@ -255,46 +256,67 @@ abstract class DioRequest<T>
     );
   }
 
-  /// Builds [dio.Dio] client for this request
+  /// Returns the shared [dio.Dio] instance, building it on first call.
+  ///
+  /// The singleton is configured with only the base URL, transformer, and
+  /// default interceptors — settings that are global and do not vary per
+  /// request. Per-request concerns (headers, timeouts) are passed via
+  /// [dio.Options] at call time inside [constructRequest].
+  dio.Dio _getOrBuildClient() {
+    _sharedDio ??= _buildClient();
+
+    // Allow subclasses to mutate the shared instance (e.g. add auth headers).
+    decorateRequest(_sharedDio!);
+
+    return _sharedDio!;
+  }
+
+  /// Builds the shared [dio.Dio] singleton.
+  ///
+  /// Only global, request-agnostic settings belong here. Per-request options
+  /// (headers, timeouts) are passed directly to each HTTP verb call.
   dio.Dio _buildClient() {
     final client = dio.Dio();
 
     client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
-    final requestTimeout =
-        timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
-    client.options.connectTimeout = Duration(seconds: requestTimeout ~/ 2);
-    client.options.receiveTimeout = Duration(seconds: requestTimeout ~/ 2);
-
-    final resultHeaders = Map<String, dynamic>.from(
-      defaultSettings.defaultHeaders,
-    );
-
-    if (headers != null) {
-      resultHeaders.addAll(headers!);
-    }
-
-    client.options.headers = resultHeaders;
-
-    client.interceptors.addAll([
-      dio.LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        logPrint: defaultSettings.logPrint,
-      ),
-    ]);
-
-    if (additionalInterceptors.isNotEmpty) {
-      client.interceptors.addAll(additionalInterceptors);
-    }
-
     if (defaultSettings.defaultInterceptors.isNotEmpty) {
       client.interceptors.addAll(defaultSettings.defaultInterceptors);
     }
 
+    client.interceptors.add(
+      dio.LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+        logPrint: defaultSettings.logPrint ?? (_) {},
+      ),
+    );
+
     client.transformer = dio.BackgroundTransformer();
 
     return client;
+  }
+
+  /// Builds a [dio.Options] object carrying all per-request settings:
+  /// merged headers (defaults + request-level) and connect/receive timeouts.
+  dio.Options _buildRequestOptions() {
+    final requestTimeout =
+        timeout?.inSeconds ?? defaultSettings.defaultTimeoutInSeconds;
+    final timeoutDuration = Duration(seconds: requestTimeout ~/ 2);
+
+    final mergedHeaders = Map<String, dynamic>.from(
+      defaultSettings.defaultHeaders,
+    );
+
+    if (headers != null) {
+      mergedHeaders.addAll(headers!);
+    }
+
+    return dio.Options(
+      headers: mergedHeaders,
+      sendTimeout: timeoutDuration,
+      receiveTimeout: timeoutDuration,
+    );
   }
 
   /// Function to retry request
@@ -306,7 +328,7 @@ abstract class DioRequest<T>
     try {
       return await constructRequest(client, method, data);
     } catch (e, trace) {
-      defaultSettings.exceptionPrint(e, trace);
+      defaultSettings.exceptionPrint?.call(e, trace);
 
       return error;
     }
@@ -319,9 +341,9 @@ abstract class DioRequest<T>
     try {
       response = await constructRequest(client, method, data);
     } on dio.DioException catch (error, trace) {
-      defaultSettings.exceptionPrint(error, trace);
+      defaultSettings.exceptionPrint?.call(error, trace);
 
-      if (error.type == .cancel) {
+      if (error.type == dio.DioExceptionType.cancel) {
         if (requestCollection.cancelReasonProcessingCompleter != null) {
           await RequestCollection
               .instance
@@ -337,80 +359,61 @@ abstract class DioRequest<T>
     return response;
   }
 
-  /// Adds data to dio, adds autharization headers if needed and returns [Future] with request results
+  /// Executes the appropriate HTTP verb using named [queryParameters] and
+  /// per-request [dio.Options]. Headers and timeouts travel with the call
+  /// rather than being stamped onto the shared client.
   Future<dio.Response> constructRequest(
     dio.Dio client,
     RequestMethod method,
     dynamic encodedData,
   ) async {
-    dynamic data;
-
-    if (encodedData != null) {
-      data = encodedData;
-    }
-
-    decorateRequest(client);
-
     cancelToken = dio.CancelToken();
+
+    final options = _buildRequestOptions();
+    final queryParams = query?.isNotEmpty ?? false ? query : null;
+    final path = url ?? '';
 
     switch (method) {
       case .get:
-        return client.getUri(
-          constructUri(query ?? {}, url ?? ''),
+        return client.get(
+          path,
+          queryParameters: queryParams,
+          options: options,
           cancelToken: cancelToken,
         );
       case .post:
-        return client.postUri(
-          constructUri(query ?? {}, url ?? ''),
-          data: data,
+        return client.post(
+          path,
+          data: encodedData,
+          queryParameters: queryParams,
+          options: options,
           cancelToken: cancelToken,
         );
       case .put:
-        return client.putUri(
-          constructUri(query ?? {}, url ?? ''),
-          data: data,
+        return client.put(
+          path,
+          data: encodedData,
+          queryParameters: queryParams,
+          options: options,
           cancelToken: cancelToken,
         );
       case .delete:
-        return client.deleteUri(
-          constructUri(query ?? {}, url ?? ''),
-          data: data,
+        return client.delete(
+          path,
+          data: encodedData,
+          queryParameters: queryParams,
+          options: options,
           cancelToken: cancelToken,
         );
       case .patch:
-        return client.patchUri(
-          constructUri(query ?? {}, url ?? ''),
-          data: data,
+        return client.patch(
+          path,
+          data: encodedData,
+          queryParameters: queryParams,
+          options: options,
           cancelToken: cancelToken,
         );
     }
-  }
-
-  /// Utility method to construct [dio.Dio] queries
-  Uri constructUri(Map<String, dynamic> queryParameters, String url) {
-    final finalUrl = url;
-
-    if (queryParameters.isEmpty) {
-      return Uri.parse((baseUrl ?? '') + finalUrl);
-    }
-
-    final correctedMap = {
-      for (final value in queryParameters.keys)
-        value.toString(): queryParameters[value] is List
-            ? queryParameters[value].map((value) => value?.toString())
-            : queryParameters[value]?.toString(),
-    };
-
-    final uri = Uri.parse((baseUrl ?? '') + finalUrl);
-
-    final resultUri = Uri(
-      scheme: uri.scheme,
-      host: uri.host,
-      path: uri.path.substring(1),
-      queryParameters: correctedMap.isEmpty ? null : correctedMap,
-    );
-
-    return resultUri;
   }
 
   /// Cancels current request if it is still executing
@@ -428,7 +431,7 @@ abstract class DioRequest<T>
     }
   }
 
-  /// Underlying [dio.Dio] instance
+  /// Underlying [dio.Dio] instance — returns the shared singleton.
   @override
-  dio.Dio? get httpInstance => _dio;
+  dio.Dio? get httpInstance => _sharedDio;
 }

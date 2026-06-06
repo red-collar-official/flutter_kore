@@ -18,18 +18,18 @@ class RequestSettings<I> {
   final Iterable<I> defaultInterceptors;
 
   /// Print function for logger
-  final void Function(Object obj) logPrint;
+  final void Function(Object obj)? logPrint;
 
   /// Print function for logger
-  final void Function(Object error, StackTrace trace) exceptionPrint;
+  final void Function(Object error, StackTrace trace)? exceptionPrint;
 
   const RequestSettings({
     this.defaultHeaders = const {},
     this.defaultBaseUrl = '',
     this.defaultTimeoutInSeconds = 10,
     this.defaultInterceptors = const [],
-    required this.logPrint,
-    required this.exceptionPrint,
+    this.logPrint,
+    this.exceptionPrint,
   });
 }
 

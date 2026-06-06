@@ -1,3 +1,8 @@
+## 1.5.0
+
+- Update dio request
+- Update docs
+
 ## 1.4.10
 
 - Update example projects
