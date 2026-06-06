@@ -20,14 +20,14 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final request2 = HttpRequest<int>()
         ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request2.httpInstance!);
+      addTestResponsesToDio(request2.httpInstance);
 
       final collection = RequestCollection.instance;
 
@@ -73,14 +73,14 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final request2 = HttpRequest<int>()
         ..method = .post
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request2.httpInstance!);
+      addTestResponsesToDio(request2.httpInstance);
 
       final collection = RequestCollection.instance;
 
@@ -120,14 +120,14 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final request2 = HttpRequest<int>()
         ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request2.httpInstance!);
+      addTestResponsesToDio(request2.httpInstance);
 
       final collection = RequestCollection.instance;
 

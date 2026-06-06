@@ -27,14 +27,14 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final request2 = HttpRequest<int>()
         ..method = .get
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request2.httpInstance!);
+      addTestResponsesToDio(request2.httpInstance);
 
       final interactor = await instances
           .getUniqueAsync<TestInteractorWithRequest>();

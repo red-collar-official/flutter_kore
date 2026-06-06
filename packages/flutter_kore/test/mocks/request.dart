@@ -6,7 +6,7 @@ class HttpRequest<T> extends DioRequest<T> {
 
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-    logPrint: (message) {},
+    logPrint: (_) {},
     exceptionPrint: (error, trace) {},
     defaultInterceptors: [
       dio.LogInterceptor(
@@ -18,13 +18,13 @@ class HttpRequest<T> extends DioRequest<T> {
   );
 
   @override
-  void decorateRequest(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio, dio.Options options) {
     // ignore
   }
 
   @override
   Future onError(dio.DioException error, RetryHandler retry) async {
-    if (error.type == dio.DioExceptionType.cancel) {
+    if (error.type == .cancel) {
       return error;
     }
 
@@ -37,18 +37,18 @@ class HttpRequest2<T> extends DioRequest<T> {
 
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
-    logPrint: (message) {},
-    exceptionPrint: (error, trace) {},
+    logPrint: (_) {},
+    exceptionPrint: (_, _) {},
   );
 
   @override
-  void decorateRequest(dio.Dio dio) {
+  void decorateRequest(dio.Dio dio, dio.Options options) {
     // ignore
   }
 
   @override
   Future onError(dio.DioException error, RetryHandler retry) async {
-    if (error.type == dio.DioExceptionType.cancel) {
+    if (error.type == .cancel) {
       return error;
     }
 

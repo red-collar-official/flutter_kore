@@ -22,36 +22,6 @@ const testBodyMapWithList = {
   'testParam': [1, 2],
 };
 
-Uri _fixDioUrlForQueryUri(
-  String baseUrl,
-  Map<String, dynamic> queryParameters,
-  String url,
-) {
-  final finalUrl = url;
-
-  if (queryParameters.isEmpty) {
-    return Uri.parse(baseUrl + finalUrl);
-  }
-
-  final correctedMap = {
-    for (final value in queryParameters.keys)
-      value.toString(): queryParameters[value] is List
-          ? queryParameters[value].map((value) => value?.toString())
-          : queryParameters[value]?.toString(),
-  };
-
-  final uri = Uri.parse(baseUrl + finalUrl);
-
-  final resultUri = Uri(
-    scheme: uri.scheme,
-    host: uri.host,
-    path: uri.path.substring(1),
-    queryParameters: correctedMap.isEmpty ? null : correctedMap,
-  );
-
-  return resultUri;
-}
-
 void addTestErrorResponsesToDio(dio.Dio dio) {
   final dioAdapter = DioAdapter(dio: dio);
 
@@ -122,7 +92,8 @@ void addTestResponsesForParamsToDio(dio.Dio dio) {
 
   // ignore: cascade_invocations
   dioAdapter.onGet(
-    _fixDioUrlForQueryUri(testBaseUrl, testBodyMap, testPath).toString(),
+    testMockPath,
+    queryParameters: testBodyMap,
     (server) => server.reply(200, 1, delay: const Duration(milliseconds: 100)),
   );
 
@@ -163,7 +134,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -211,7 +182,7 @@ void main() {
         ..simulateResult = const Response(code: 200, result: 1);
 
       expect(
-        request.httpInstance!.interceptors.indexWhere(
+        request.httpInstance.interceptors.indexWhere(
               (element) => element is dio.LogInterceptor,
             ) !=
             -1,
@@ -227,7 +198,7 @@ void main() {
         ..simulateResult = const Response(code: 200, result: 1);
 
       expect(
-        request.httpInstance!.interceptors.indexWhere(
+        request.httpInstance.interceptors.indexWhere(
               (element) => element is dio.LogInterceptor,
             ) !=
             -1,
@@ -273,7 +244,7 @@ void main() {
           return result;
         };
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -290,7 +261,7 @@ void main() {
           throw Exception();
         };
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -305,7 +276,7 @@ void main() {
         ..url = testPath
         ..forceReturnNullFromRequest = true;
 
-      addTestNullResponsesToDio(request.httpInstance!);
+      addTestNullResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -323,7 +294,7 @@ void main() {
         }
         ..forceReturnNullFromRequest = true;
 
-      addTestNullResponsesToDio(request.httpInstance!);
+      addTestNullResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -343,7 +314,7 @@ void main() {
           throw Exception();
         };
 
-      addTestErrorResponsesToDio(request.httpInstance!);
+      addTestErrorResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -363,7 +334,7 @@ void main() {
           cache = parsedItem;
         };
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -386,7 +357,7 @@ void main() {
           cache = parsedItem;
         };
 
-      addTestErrorResponsesToDio(request2.httpInstance!);
+      addTestErrorResponsesToDio(request2.httpInstance);
 
       final result2 = await request2.execute();
 
@@ -408,7 +379,7 @@ void main() {
           throw Exception();
         };
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -431,7 +402,7 @@ void main() {
           cache = parsedItem;
         };
 
-      addTestErrorResponsesToDio(request2.httpInstance!);
+      addTestErrorResponsesToDio(request2.httpInstance);
 
       final result2 = await request2.execute();
 
@@ -447,7 +418,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -461,7 +432,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -475,7 +446,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -489,7 +460,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesToDio(request.httpInstance!);
+      addTestResponsesToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -504,7 +475,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -519,15 +490,12 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      final dioAdapter = DioAdapter(dio: request.httpInstance!);
+      final dioAdapter = DioAdapter(dio: request.httpInstance);
 
       // ignore: cascade_invocations
       dioAdapter.onGet(
-        _fixDioUrlForQueryUri(
-          testBaseUrl,
-          testBodyMapWithList,
-          testPath,
-        ).toString(),
+        testMockPath,
+        queryParameters: testBodyMapWithList,
         (server) =>
             server.reply(200, 1, delay: const Duration(milliseconds: 100)),
       );
@@ -545,7 +513,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -560,7 +528,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -574,7 +542,7 @@ void main() {
         ..baseUrl = testBaseUrl
         ..url = testPath;
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -589,7 +557,7 @@ void main() {
         ..url = testPath
         ..formData = Future.value(testFormData);
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       final result = await request.execute();
 
@@ -604,7 +572,7 @@ void main() {
         ..url = testPath
         ..headers = testHeaders;
 
-      addTestResponsesToDioForHeadersTest(request.httpInstance!);
+      addTestResponsesToDioForHeadersTest(request.httpInstance);
 
       final result = await request.execute();
 
@@ -619,7 +587,7 @@ void main() {
         ..url = testPath
         ..body = testBodyMap;
 
-      addTestResponsesForParamsToDio(request.httpInstance!);
+      addTestResponsesForParamsToDio(request.httpInstance);
 
       RequestCollection.instance.cancelReasonProcessingCompleter = Completer();
 

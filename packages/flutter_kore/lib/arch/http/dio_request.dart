@@ -51,7 +51,9 @@ abstract class DioRequest<T>
   @visibleForTesting
   var forceReturnNullFromRequest = false;
 
-  DioRequest() : super();
+  DioRequest() : super() {
+    _getOrBuildClient();
+  }
 
   /// Default settings for all requests
   RequestSettings<dio.Interceptor> get defaultSettings;
@@ -63,7 +65,7 @@ abstract class DioRequest<T>
   }
 
   /// Function to add additional data to the shared [dio.Dio] instance
-  void decorateRequest(dio.Dio dio) {}
+  void decorateRequest(dio.Dio dio, dio.Options options) {}
   // coverage:ignore-end
 
   @override
@@ -92,7 +94,7 @@ abstract class DioRequest<T>
       return _simulateServerResponse();
     }
 
-    final client = _getOrBuildClient();
+    final client = httpInstance;
 
     dynamic data;
 
@@ -265,9 +267,6 @@ abstract class DioRequest<T>
   dio.Dio _getOrBuildClient() {
     _sharedDio ??= _buildClient();
 
-    // Allow subclasses to mutate the shared instance (e.g. add auth headers).
-    decorateRequest(_sharedDio!);
-
     return _sharedDio!;
   }
 
@@ -277,8 +276,6 @@ abstract class DioRequest<T>
   /// (headers, timeouts) are passed directly to each HTTP verb call.
   dio.Dio _buildClient() {
     final client = dio.Dio();
-
-    client.options.baseUrl = baseUrl ?? defaultSettings.defaultBaseUrl;
 
     if (defaultSettings.defaultInterceptors.isNotEmpty) {
       client.interceptors.addAll(defaultSettings.defaultInterceptors);
@@ -370,8 +367,10 @@ abstract class DioRequest<T>
     cancelToken = dio.CancelToken();
 
     final options = _buildRequestOptions();
-    final queryParams = query?.isNotEmpty ?? false ? query : null;
-    final path = url ?? '';
+    final queryParams = (query?.isNotEmpty ?? false) ? query : null;
+    final path = (baseUrl ?? defaultSettings.defaultBaseUrl) + (url ?? '');
+
+    decorateRequest(client, options);
 
     switch (method) {
       case .get:
@@ -433,5 +432,5 @@ abstract class DioRequest<T>
 
   /// Underlying [dio.Dio] instance — returns the shared singleton.
   @override
-  dio.Dio? get httpInstance => _sharedDio;
+  dio.Dio get httpInstance => _sharedDio!;
 }
