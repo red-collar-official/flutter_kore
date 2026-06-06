@@ -26,7 +26,7 @@ typedef AuthHandler = void Function(dio.Dio dio);
 ///      );
 ///
 ///  @override
-///  void decorateRequest(Dio dio) {
+///  void decorateRequest(Dio dio, Options options) {
 ///    // ignore
 ///  }
 ///

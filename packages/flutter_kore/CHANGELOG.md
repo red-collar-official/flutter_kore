@@ -1,3 +1,8 @@
+## 1.5.1
+
+- Update tests
+- Update docs
+
 ## 1.5.0
 
 - Update dio request
