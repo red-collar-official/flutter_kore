@@ -106,7 +106,7 @@ class _PostsListViewWidgetState extends BaseView<PostsListView, PostsListViewSta
       appBar: AppBar(
         title: const Text('Posts'),
       ),
-      body: KoreStreamBuilder<StatefulData<List<Post>>?>(
+      body: KoreStreamBuilder(
         streamWrap: viewModel.posts,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {

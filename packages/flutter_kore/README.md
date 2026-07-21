@@ -212,7 +212,7 @@ class _PostsListViewWidgetState extends BaseIndependentView<PostsListView> {
     return Scaffold(
       backgroundColor: const .fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
-      body: KoreStreamBuilder<StatefulData<List<Post>>?>(
+      body: KoreStreamBuilder(
         streamWrap: postsInteractor.wrapUpdates((state) => state.posts),
         builder: (context, snapshot) {
           // build list with snapshot.data...

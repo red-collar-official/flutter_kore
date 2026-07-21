@@ -23,7 +23,7 @@ class _PostsListViewWidgetState
     return Scaffold(
       backgroundColor: const .fromARGB(255, 232, 232, 232),
       appBar: AppBar(title: const Text('Posts')),
-      body: KoreStreamBuilder<StatefulData<List<Post>>?>(
+      body: KoreStreamBuilder(
         streamWrap: viewModel.posts,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {

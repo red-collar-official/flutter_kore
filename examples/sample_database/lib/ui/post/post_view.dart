@@ -53,7 +53,7 @@ class _PostViewWidgetState extends BaseIndependentView<PostView> {
       backgroundColor: Colors.white,
       appBar: AppBar(title: const Text('Post')),
       body: Center(
-        child: KoreStreamBuilder<StatefulData<Post>?>(
+        child: KoreStreamBuilder(
           streamWrap: post,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {

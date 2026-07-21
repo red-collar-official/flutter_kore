@@ -43,7 +43,7 @@ abstract class BaseBox extends BaseKoreInstance<dynamic> {
 Then you can use it in child classes and receive events, connect parts, etc.
 
 ```dart
-@basicInstance
+@asyncBasicInstance
 class UsersBox extends BaseBox {
   @override
   KoreInstanceConfiguration get configuration =>
@@ -90,7 +90,7 @@ Every kore instance can also be async. In this case, you need to specify the `is
 Here is an example:
 
 ```dart
-@basicInstance
+@asyncBasicInstance
 class UsersBox extends BaseBox {
   @override
   KoreInstanceConfiguration get configuration =>

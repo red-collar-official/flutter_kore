@@ -1,7 +1,7 @@
 {
-    "flutter_kore-gen.base_view_model_class": "NavigationViewModel",
-    "flutter_kore-gen.base_view_class": "NavigationView",
-    "flutter_kore-gen.base_class_import": "package:flutter_kore_template/domain/global/global.dart",
+    "flutter-kore-gen.base_view_model_class": "NavigationViewModel",
+    "flutter-kore-gen.base_view_class": "NavigationView",
+    "flutter-kore-gen.base_independent_view_class": "IndependentNavigationView",    
     "dart.lineLength": 120,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,

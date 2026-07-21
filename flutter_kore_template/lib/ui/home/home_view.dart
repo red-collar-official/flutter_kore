@@ -28,7 +28,7 @@ class _HomeViewWidgetState
   Widget buildView(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: KoreStreamBuilder<AppTab?>(
+      body: KoreStreamBuilder(
         streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           return Stack(
@@ -46,7 +46,7 @@ class _HomeViewWidgetState
           );
         },
       ),
-      bottomNavigationBar: KoreStreamBuilder<AppTab?>(
+      bottomNavigationBar: KoreStreamBuilder(
         streamWrap: viewModel.currentTab,
         builder: (context, snapshot) {
           if (snapshot.data == null) {

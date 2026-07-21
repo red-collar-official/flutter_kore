@@ -13,13 +13,8 @@ class AppTab with AppTabMappable {
 }
 
 class AppTabs {
-  static const AppTab posts = AppTab(name: 'posts', index: 0, icon: Icons.feed);
-
-  static const AppTab likedPosts = AppTab(
-    name: 'liked_posts',
-    index: 1,
-    icon: Icons.feed,
-  );
+  static const posts = AppTab(name: 'posts', index: 0, icon: Icons.feed);
+  static const likedPosts = AppTab(name: 'liked_posts', index: 1, icon: Icons.feed);
 
   static const List<AppTab> tabs = [posts, likedPosts];
 }

@@ -230,7 +230,7 @@ The library contains simple analogues of `StreamBuilder` that allow you to pass 
 Here are examples:
 
 ```dart
-KoreStreamBuilder<StatefulData<User>?>(
+KoreStreamBuilder(
   streamWrap: viewModel.user,
   builder: (context, snapshot) {
     final userData = snapshot.data;

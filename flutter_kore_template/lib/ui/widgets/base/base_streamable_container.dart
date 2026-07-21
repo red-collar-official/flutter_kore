@@ -60,7 +60,7 @@ abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>>
 
   @override
   Widget build(BuildContext context) {
-    return KoreStreamBuilder<StatefulData<T>?>(
+    return KoreStreamBuilder(
       streamWrap: widget.stream,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
