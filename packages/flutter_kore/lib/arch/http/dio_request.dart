@@ -367,10 +367,11 @@ abstract class DioRequest<T>
     cancelToken = dio.CancelToken();
 
     final options = _buildRequestOptions();
-    final queryParams = (query?.isNotEmpty ?? false) ? query : null;
-    final path = (baseUrl ?? defaultSettings.defaultBaseUrl) + (url ?? '');
 
     decorateRequest(client, options);
+    
+    final queryParams = (query?.isNotEmpty ?? false) ? query : null;
+    final path = (baseUrl ?? defaultSettings.defaultBaseUrl) + (url ?? '');
 
     switch (method) {
       case .get:

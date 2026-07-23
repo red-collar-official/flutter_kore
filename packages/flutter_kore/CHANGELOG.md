@@ -1,3 +1,7 @@
+## 1.5.2
+
+- Fix request decoration call
+
 ## 1.5.1
 
 - Update tests
