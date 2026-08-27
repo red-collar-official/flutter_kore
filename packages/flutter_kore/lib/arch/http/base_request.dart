@@ -68,8 +68,10 @@ class Response<ItemType> {
 /// Http request method
 enum RequestMethod { post, get, put, delete, patch }
 
-typedef ResponseParser<ItemType> =
-    Future<ItemType> Function(dynamic result, Map? headers);
+typedef ResponseParser<ItemType> = Future<ItemType> Function(
+  dynamic result,
+  Map? headers,
+);
 typedef DatabasePutDelegate<ItemType> = Future Function(ItemType parsedItem);
 typedef DatabaseGetDelegate<ItemType> = Future Function(Map? headers);
 
@@ -95,7 +97,7 @@ abstract class BaseRequest<T, I, B, F> {
     this.simulateResponse,
     this.simulateResult,
     this.formData,
-    this.ignoreCancelations = false,
+    this.ignoreCancellations = false,
     this.onPrefetchFromDatabase,
     this.additionalInterceptors = const [],
   });
@@ -167,7 +169,7 @@ abstract class BaseRequest<T, I, B, F> {
   Future<F>? formData;
 
   /// Flag indicating that this request cant be canceled from [RequestCollection]
-  bool ignoreCancelations;
+  bool ignoreCancellations;
 
   /// Aditional interceptors for http instance
   Iterable<I> additionalInterceptors;

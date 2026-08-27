@@ -14,6 +14,13 @@ analyzer:
     - lib/**.kore.dart
     - lib/**.api.dart
     - lib/**.arb
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 linter:
   rules:

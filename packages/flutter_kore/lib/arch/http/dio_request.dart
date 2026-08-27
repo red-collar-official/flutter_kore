@@ -369,7 +369,7 @@ abstract class DioRequest<T>
     final options = _buildRequestOptions();
 
     decorateRequest(client, options);
-    
+
     final queryParams = (query?.isNotEmpty ?? false) ? query : null;
     final path = (baseUrl ?? defaultSettings.defaultBaseUrl) + (url ?? '');
 
@@ -420,7 +420,7 @@ abstract class DioRequest<T>
   @mustCallSuper
   @override
   void cancel() {
-    if (ignoreCancelations) {
+    if (ignoreCancellations) {
       return;
     }
 

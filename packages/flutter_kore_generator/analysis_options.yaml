@@ -10,6 +10,13 @@ analyzer:
     - lib/**.navigation.dart
     - lib/**.kore.dart
     - lib/**.api.dart
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 linter:
   rules:

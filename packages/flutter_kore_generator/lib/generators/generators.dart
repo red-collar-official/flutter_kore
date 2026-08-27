@@ -597,8 +597,12 @@ if (pathSegmentPattern == '$element') {
       ..writeln()
       ..writeln('enum $namesEnumClass {');
 
-    for (final method in methodsVisitor.allMethods) {
-      classBuffer.writeln('$method,');
+    if (methodsVisitor.allMethods.isNotEmpty) {
+      for (final method in methodsVisitor.allMethods) {
+        classBuffer.writeln('$method,');
+      }
+    } else {
+      classBuffer.writeln('stub,');
     }
 
     classBuffer

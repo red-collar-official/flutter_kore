@@ -115,7 +115,7 @@ this.databasePutDelegate,
 this.simulateResponse,
 this.simulateResult,
 this.formData,
-this.ignoreCancelations = false,
+this.ignoreCancellations = false,
 this.onPrefetchFromDatabase,
 this.additionalInterceptors = const [],
 ```

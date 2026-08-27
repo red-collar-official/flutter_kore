@@ -1,3 +1,8 @@
+## 2.5.0
+
+- Update dependencies
+- Fix empty navigation generation
+
 ## 2.4.0
 
 - Update dependencies
