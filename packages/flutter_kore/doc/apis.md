@@ -66,9 +66,9 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     }
 
     if (response.isSuccessful) {
-      updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+      updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: ErrorData(response.error)));
+      updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
 }
 ```
@@ -250,9 +250,9 @@ Future<void> loadPosts(int offset, int limit, {bool refresh = false}) async {
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-      updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+      updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: ErrorData(response.error)));
+      updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
 }
 ```

@@ -225,7 +225,7 @@ You also can use `disableStreamWrap` to subscribe to stream disable form events 
 
 #### StreamBuilders
 
-The library contains simple analogues of `StreamBuilder` that allow you to pass `StateStream` (wrapper object to get stream and current value for a given state mapper)—`KoreStreamBuilder` and `flutter_koreMultiStreamBuilder`. These widgets also allow you to pass `Stream` and `initialData` as usual if needed.
+The library contains simple analogues of `StreamBuilder` that allow you to pass `StateStream` (wrapper object to get stream and current value for a given state mapper)—`KoreStreamBuilder` and `KoreMultiStreamBuilder`. These widgets also allow you to pass `Stream` and `initialData` as usual if needed.
 
 Here are examples:
 
@@ -247,7 +247,7 @@ KoreStreamBuilder(
 ```
 
 ```dart
-flutter_koreMultiStreamBuilder(
+KoreMultiStreamBuilder(
   streamWraps: [viewModel.user, viewModel.auth],
   builder: (context, snapshot) {
     if (!(viewModel.auth.current ?? false)) {

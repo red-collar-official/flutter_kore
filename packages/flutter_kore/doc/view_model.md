@@ -4,7 +4,7 @@
 
 View models contain logic for view classes.
 
-View models can be ommited if they are not needed. Then you can use `IndependentBaseView`.
+View models can be ommited if they are not needed. Then you can use `BaseIndependentView`.
 
 They also contain local state that we like `Interactor` can update with `updateState`.
 
@@ -40,9 +40,9 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   DependentKoreInstanceConfiguration get configuration =>
     DependentKoreInstanceConfiguration(
       dependencies: [
-        app.postsInteractorConnector(isLazy: true),
-        app.postInteractorConnector(scopes: BaseScopes.unique),
-        app.reactionsWrapperConnector(),
+        app.connectors.postsInteractorConnector(isLazy: true),
+        app.connectors.postInteractorConnector(scope: BaseScopes.unique),
+        app.connectors.reactionsWrapperConnector(),
       ],
       parts: [
         app.connectors.downloadUserPartConnector(
@@ -60,7 +60,7 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
   late final followUser = useInstancePart<FollowUserPart>();
 
   @override
-  void onLaunch(PostsListView widget) {
+  void onLaunch() {
     // Called with initState
     useLocalInstance<PostsInteractor>().loadPosts(0, 30);
   }
@@ -133,9 +133,9 @@ class PostsListViewModel extends BaseViewModel<PostsListView, PostsListViewState
       }
 
       if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-        updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+        updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
       } else {
-        updateState(state.copyWith(posts: ErrorData(response.error)));
+        updateState(state.copyWith(posts: ErrorData(error: response.error)));
       }
     })
   }

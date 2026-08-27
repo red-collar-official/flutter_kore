@@ -169,15 +169,15 @@ void popInTab(
   bool onlyInternalStack = false,
 });
 
-Future<void> routeTo(
+Future<dynamic> routeTo(
   UIRoute<RouteType> routeData, {
   bool? fullScreenDialog,
-  bool replace = false,
-  bool replacePrevious = false,
+  bool? replace,
+  bool? replacePrevious,
   bool? uniqueInStack,
   bool? forceGlobal,
   bool? needToEnsureClose,
-  bool? dismissable,
+  bool? dismissible,
   Object? id,
   NavigationRouteBuilder? customRouteBuilder,
   bool awaitRouteResult = false,
@@ -186,7 +186,7 @@ Future<void> routeTo(
 Future<dynamic> showDialog(
   UIRoute<DialogType> dialog, {
   bool? forceGlobal,
-  bool? dismissable,
+  bool? dismissible,
   bool? uniqueInStack,
   Object? id,
   NavigationRouteBuilder? customRouteBuilder,
@@ -195,7 +195,7 @@ Future<dynamic> showDialog(
 Future<dynamic> showBottomSheet(
   UIRoute<BottomSheetType> bottomSheet, {
   bool? forceGlobal,
-  bool? dismissable,
+  bool? dismissible,
   bool? uniqueInStack,
   Object? id,
   NavigationRouteBuilder? customRouteBuilder,
@@ -211,7 +211,7 @@ Future<bool> openLink(
   bool? uniqueInStack,
   bool? forceGlobal,
   bool? needToEnsureClose,
-  bool? dismissable,
+  bool? dismissible,
   Object? id,
   NavigationRouteBuilder? customRouteBuilder,
 });
@@ -221,7 +221,7 @@ bool canPop({bool global = true});
 void popGlobalToFirst();
 void popInTabToFirst(AppTabType appTab, {bool clearStack = true});
 void popToTab(AppTabType tab);
-void popAllNavigatiorsToFirst();
+void popAllNavigatorsToFirst();
 void popAllDialogsAndBottomSheets();
 void popUntil(Object routeName, {bool forceGlobal = false});
 void popGlobalUntil(Object routeName);
@@ -1076,9 +1076,9 @@ There are two ways to do it. First—you can pass `defaultSettings` when buildin
 
 Here is a list of supported parameters:
 
-1) dismissable - if true, then the route cannot be popped by system gestures or back buttons but can be popped with the `pop` method;
+1) dismissible - if true, then the route cannot be popped by system gestures or back buttons but can be popped with the `pop` method;
 2) uniqueInStack - if true, then if a route with the given name is already present in the stack, the new route will be ignored;
-3) needToEnsureClose - flag indicating that if system gestures or back buttons are used instead of popping the screen or ignoring it, the navigation interactor will send an `EnsureCloseRequestedEvent` event to the global event bus. You can subscribe to it in view models of screens that need to be checked before closing. It is recommended to pause this event so only the visible screen can respond to the sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with the iOS swipe back gesture—it will always be executed if the route is `dismissable`;
+3) needToEnsureClose - flag indicating that if system gestures or back buttons are used instead of popping the screen or ignoring it, the navigation interactor will send an `EnsureCloseRequestedEvent` event to the global event bus. You can subscribe to it in view models of screens that need to be checked before closing. It is recommended to pause this event so only the visible screen can respond to the sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with the iOS swipe back gesture—it will always be executed if the route is `dismissible`;
 4) fullScreenDialog - flag indicating that the route will be opened as a fullscreen dialog—with back gestures disabled on iOS and a specific animation;
 5) global - flag indicating that this route must be opened in the global stack, not in the tab stack. If the app does not use tab navigation, this flag is ignored;
 6) id - unique id of this route. Can be any Object;

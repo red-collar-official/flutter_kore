@@ -61,9 +61,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-      updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+      updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: ErrorData(response.error)));
+      updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
   }
 
@@ -77,7 +77,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 
     posts[index] = posts[index].copyWith(isLiked: !posts[index].isLiked);
 
-    updateState(state.copyWith(posts: SuccessData(posts)));
+    updateState(state.copyWith(posts: SuccessData(result: posts)));
   }
 
   late final posts = wrapUpdates((state) => state.posts);
@@ -238,9 +238,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
     }
 
     if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-      updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+      updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
     } else {
-      updateState(state.copyWith(posts: ErrorData(response.error)));
+      updateState(state.copyWith(posts: ErrorData(error: response.error)));
     }
   }
 
@@ -254,7 +254,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
 
     posts[index] = posts[index].copyWith(isLiked: !posts[index].isLiked);
 
-    updateState(state.copyWith(posts: SuccessData(posts)));
+    updateState(state.copyWith(posts: SuccessData(result: posts)));
   }
 
   @override
@@ -289,9 +289,9 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> w
       }
 
       if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-        updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
+        updateState(state.copyWith(posts: SuccessData(result: response.result ?? [])));
       } else {
-        updateState(state.copyWith(posts: ErrorData(response.error)));
+        updateState(state.copyWith(posts: ErrorData(error: response.error)));
       }
     })
   }

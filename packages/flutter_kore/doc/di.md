@@ -109,7 +109,7 @@ class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
 ```
 
 ```dart
-@Instance(isAsync: true, initializationOrder: 1, awaitInitialization: true, singleton: true)
+@Instance(isAsync: true, initializationOrder: 1, awaitInitialization: true, isSingleton: true)
 class StringWrapper extends BaseWrapper<Map<String, dynamic>> {
   @override
   DependentKoreInstanceConfiguration get configuration =>

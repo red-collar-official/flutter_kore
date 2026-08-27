@@ -15,13 +15,13 @@ abstract class NavigationRouteBuilder {
   /// Pushes dialog route to [Navigator]
   PopupRoute buildDialogRoute({
     required GlobalKey<NavigatorState> navigator,
-    required bool dismissable,
+    required bool dismissible,
     required Widget child,
     required VoidCallback? onPop,
   }) {
     return defaultRouteBuilder.buildDialogRoute(
       navigator: navigator,
-      dismissable: dismissable,
+      dismissible: dismissible,
       child: child,
       onPop: onPop,
     );
@@ -30,13 +30,13 @@ abstract class NavigationRouteBuilder {
   /// Pushes bottom sheet route to [Navigator]
   PopupRoute buildBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
-    required bool dismissable,
+    required bool dismissible,
     required Widget child,
     required VoidCallback? onPop,
   }) {
     return defaultRouteBuilder.buildBottomSheetRoute(
       navigator: navigator,
-      dismissable: dismissable,
+      dismissible: dismissible,
       child: child,
       onPop: onPop,
     );

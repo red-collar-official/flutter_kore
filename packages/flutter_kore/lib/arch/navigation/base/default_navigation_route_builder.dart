@@ -17,11 +17,11 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   @override
   PopupRoute buildDialogRoute({
     required GlobalKey<NavigatorState> navigator,
-    required bool dismissable,
+    required bool dismissible,
     required Widget child,
     required VoidCallback? onPop,
   }) => DialogRoute(
-    barrierDismissible: dismissable,
+    barrierDismissible: dismissible,
     barrierColor: UINavigationSettings.barrierColor,
     transitionDuration: UINavigationSettings.transitionDuration,
     pageBuilder:
@@ -31,7 +31,7 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
           Animation<double> secondaryAnimation,
         ) {
           return _overlayRouteContainer(
-            dismissable: dismissable,
+            dismissible: dismissible,
             child: child,
             onPop: onPop,
           );
@@ -42,19 +42,19 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   @override
   PopupRoute buildBottomSheetRoute({
     required GlobalKey<NavigatorState> navigator,
-    required bool dismissable,
+    required bool dismissible,
     required Widget child,
     required VoidCallback? onPop,
   }) => ModalBottomSheetRoute(
     builder: (BuildContext buildContext) {
       return _overlayRouteContainer(
-        dismissable: dismissable,
+        dismissible: dismissible,
         child: child,
         onPop: onPop,
       );
     },
-    dismissible: dismissable,
-    enableDrag: dismissable,
+    dismissible: dismissible,
+    enableDrag: dismissible,
   );
 
   /// Pushes route to [Navigator]
@@ -80,14 +80,14 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
   }
 
   Widget _overlayRouteContainer({
-    required bool dismissable,
+    required bool dismissible,
     required Widget child,
     required VoidCallback? onPop,
   }) {
     return Builder(
       builder: (BuildContext context) {
         return PopScope(
-          canPop: dismissable,
+          canPop: dismissible,
           child: child,
           onPopInvokedWithResult: (didPop, result) {
             if (!didPop || onPop == null) {

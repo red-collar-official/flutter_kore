@@ -12,7 +12,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 class UIRouteSettings {
   /// Flag indicating if route can be popped
   /// with system back gestures or back buttons
-  final bool dismissable;
+  final bool dismissible;
 
   /// Flag indicating if route can be opened multiple times in current stack
   final bool uniqueInStack;
@@ -43,7 +43,7 @@ class UIRouteSettings {
   final NavigationRouteBuilder? customRouteBuilder;
 
   const UIRouteSettings({
-    this.dismissable = true,
+    this.dismissible = true,
     this.uniqueInStack = false,
     this.needToEnsureClose = false,
     this.fullScreenDialog = false,
@@ -59,7 +59,7 @@ class UIRouteSettings {
 /// Class describing bottom sheet route settings
 class UIBottomSheetRouteSettings extends UIRouteSettings {
   const UIBottomSheetRouteSettings({
-    super.dismissable = true,
+    super.dismissible = true,
     super.uniqueInStack = true,
     super.needToEnsureClose = false,
     super.fullScreenDialog = false,
@@ -74,7 +74,7 @@ class UIBottomSheetRouteSettings extends UIRouteSettings {
 /// Class describing dialog route settings
 class UIDialogRouteSettings extends UIRouteSettings {
   const UIDialogRouteSettings({
-    super.dismissable = true,
+    super.dismissible = true,
     super.uniqueInStack = true,
     super.needToEnsureClose = false,
     super.fullScreenDialog = false,

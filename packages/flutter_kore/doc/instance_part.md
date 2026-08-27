@@ -122,9 +122,9 @@ class TestInteractorPart extends RestrictedInstancePart<Map<String, dynamic>, Po
       }
 
       if (response.isSuccessful || response.isSuccessfulFromDatabase) {
-        parentInstance.updateState(parentInstance.state.copyWith(posts: SuccessData(response.result ?? [])));
+        parentInstance.updateState(parentInstance.state.copyWith(posts: SuccessData(result: response.result ?? [])));
       } else {
-        parentInstance.updateState(parentInstance.state.copyWith(posts: ErrorData(response.error)));
+        parentInstance.updateState(parentInstance.state.copyWith(posts: ErrorData(error: response.error)));
       }
     })
   }

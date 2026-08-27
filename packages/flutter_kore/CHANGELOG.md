@@ -1,3 +1,7 @@
+## 1.5.3
+
+- Fix documentation
+
 ## 1.5.2
 
 - Fix request decoration call
@@ -20,7 +24,7 @@
 ## 1.4.9
 
 - Update project code style
-- Add ability to ignore undismissable routes in popUntil method
+- Add ability to ignore undismissible routes in popUntil method
 - Fix issue when we cant parse saved state data from cache
 - Update tests
 - Update docs
@@ -124,7 +128,7 @@ Add check for instance initialization in InstanceCollection construct functions
 
 ## 1.2.3
 
-- Fix flutter_koreMultiStreamBuilder initial data bug
+- Fix KoreMultiStreamBuilder initial data bug
 
 ## 1.2.2
 
@@ -145,7 +149,7 @@ Add check for instance initialization in InstanceCollection construct functions
 
 - Add wrapChanges method - analogue of wrapUpdates
 - Update docs
-- Add KoreStreamBuilder and flutter_koreMultiStreamBuilder - analogues of StreamBuilder that allow to pass StateStream
+- Add KoreStreamBuilder and KoreMultiStreamBuilder - analogues of StreamBuilder that allow to pass StateStream
 
 ## 1.1.1
 

@@ -31,7 +31,7 @@ You can also force get an instance (skipping initialization checks).
 app.instances.addTest<PostInteractor>(BaseScopes.global, mockPostInteractor);
 
 app.instances.forceGet<PostInteractor>(); // valid
-app.instances.forceGet<UserInteractor>(); // throws exception
+app.instances.forceGet<UserInteractor>(); // returns null
 
 ```
 

@@ -5,19 +5,14 @@ import 'package:flutter/cupertino.dart';
 /// Default dialog route implementation
 class DialogRoute<T> extends PopupRoute<T> {
   DialogRoute({
-    required RoutePageBuilder pageBuilder,
-    bool barrierDismissible = true,
+    required this._pageBuilder,
+    this._barrierDismissible = true,
     String? barrierLabel,
-    required Color barrierColor,
-    required Duration transitionDuration,
-    RouteTransitionsBuilder? transitionBuilder,
+    required this._barrierColor,
+    required this._transitionDuration,
+    this._transitionBuilder,
     super.settings,
-  }) : _pageBuilder = pageBuilder,
-       _barrierDismissible = barrierDismissible,
-       _barrierLabel = barrierLabel ?? '',
-       _barrierColor = barrierColor,
-       _transitionDuration = transitionDuration,
-       _transitionBuilder = transitionBuilder;
+  }) : _barrierLabel = barrierLabel ?? '';
 
   final RoutePageBuilder _pageBuilder;
 

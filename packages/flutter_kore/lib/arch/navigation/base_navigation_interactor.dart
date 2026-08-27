@@ -107,7 +107,7 @@ abstract class BaseNavigationInteractor<
 
   UIRouteModel _defailtRouteModelFor(RouteType route) => UIRouteModel(
     name: route,
-    settings: const UIRouteSettings(dismissable: false),
+    settings: const UIRouteSettings(dismissible: false),
   );
 
   /// Default stack for global navigator
@@ -318,7 +318,7 @@ abstract class BaseNavigationInteractor<
     bool? uniqueInStack,
     bool? forceGlobal,
     bool? needToEnsureClose,
-    bool? dismissable,
+    bool? dismissible,
     Object? id,
     NavigationRouteBuilder? customRouteBuilder,
     bool awaitRouteResult = false,
@@ -334,7 +334,7 @@ abstract class BaseNavigationInteractor<
       uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
       needToEnsureClose:
           needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
-      dismissable: dismissable ?? routeData.defaultSettings.dismissable,
+      dismissible: dismissible ?? routeData.defaultSettings.dismissible,
       id: id ?? routeData.defaultSettings.id,
       replace: replace ?? routeData.defaultSettings.replace,
       replacePrevious:
@@ -424,7 +424,7 @@ abstract class BaseNavigationInteractor<
   Future<dynamic> showDialog(
     UIRoute<DialogType> dialog, {
     bool? forceGlobal,
-    bool? dismissable,
+    bool? dismissible,
     bool? uniqueInStack,
     Object? id,
     NavigationRouteBuilder? customRouteBuilder,
@@ -436,7 +436,7 @@ abstract class BaseNavigationInteractor<
     final dialogSettings = UIRouteSettings(
       global: global,
       uniqueInStack: uniqueInStack ?? dialog.defaultSettings.uniqueInStack,
-      dismissable: dismissable ?? dialog.defaultSettings.dismissable,
+      dismissible: dismissible ?? dialog.defaultSettings.dismissible,
       id: id ?? dialog.defaultSettings.id,
       name: dialog.name.toString(),
       customRouteBuilder:
@@ -479,7 +479,7 @@ abstract class BaseNavigationInteractor<
 
     final route = routeBuilder.buildDialogRoute(
       navigator: navigator,
-      dismissable: dialogSettings.dismissable,
+      dismissible: dialogSettings.dismissible,
       child: dialogToOpen,
       // coverage:ignore-start
       onPop: () {
@@ -503,7 +503,7 @@ abstract class BaseNavigationInteractor<
   Future<dynamic> showBottomSheet(
     UIRoute<BottomSheetType> bottomSheet, {
     bool? forceGlobal,
-    bool? dismissable,
+    bool? dismissible,
     bool? uniqueInStack,
     Object? id,
     NavigationRouteBuilder? customRouteBuilder,
@@ -515,7 +515,7 @@ abstract class BaseNavigationInteractor<
     final bottomSheetSettings = UIRouteSettings(
       global: global,
       uniqueInStack: uniqueInStack ?? bottomSheet.defaultSettings.uniqueInStack,
-      dismissable: dismissable ?? bottomSheet.defaultSettings.dismissable,
+      dismissible: dismissible ?? bottomSheet.defaultSettings.dismissible,
       id: id,
       name: bottomSheet.name.toString(),
       customRouteBuilder:
@@ -558,7 +558,7 @@ abstract class BaseNavigationInteractor<
 
     final route = routeBuilder.buildBottomSheetRoute(
       navigator: navigator,
-      dismissable: bottomSheetSettings.dismissable,
+      dismissible: bottomSheetSettings.dismissible,
       child: bottomSheetToOpen,
       // coverage:ignore-start
       onPop: () {
@@ -584,14 +584,14 @@ abstract class BaseNavigationInteractor<
   /// Checks if route can be popped
   ///
   /// The route cant be popped if it is root route in navigator
-  /// or if latest route is not dismissable
+  /// or if latest route is not dismissible
   bool canPop({bool global = true}) {
     if (global) {
       return navigationStack.globalNavigationStack.stack.length > 1 &&
-          latestGlobalRoute().settings.dismissable;
+          latestGlobalRoute().settings.dismissible;
     } else {
       return navigationStack.tabNavigationStack.stack[currentTab]!.length > 1 &&
-          latestTabRoute().settings.dismissable;
+          latestTabRoute().settings.dismissible;
     }
   }
 
@@ -644,7 +644,7 @@ abstract class BaseNavigationInteractor<
   }
 
   /// Pops every route in every navigator to root view
-  void popAllNavigatiorsToFirst() {
+  void popAllNavigatorsToFirst() {
     popGlobalToFirst();
     popAllTabsToFirst();
   }
@@ -739,7 +739,7 @@ abstract class BaseNavigationInteractor<
     bool? uniqueInStack,
     bool? forceGlobal,
     bool? needToEnsureClose,
-    bool? dismissable,
+    bool? dismissible,
     Object? id,
     NavigationRouteBuilder? customRouteBuilder,
   }) async {
@@ -776,7 +776,7 @@ abstract class BaseNavigationInteractor<
         uniqueInStack: uniqueInStack ?? routeData.defaultSettings.uniqueInStack,
         needToEnsureClose:
             needToEnsureClose ?? routeData.defaultSettings.needToEnsureClose,
-        dismissable: dismissable ?? routeData.defaultSettings.dismissable,
+        dismissible: dismissible ?? routeData.defaultSettings.dismissible,
         id: id ?? routeData.defaultSettings.id,
         replace: replace ?? routeData.defaultSettings.replace,
         replacePrevious:

@@ -346,7 +346,7 @@ void main() {
 
       expect(app.navigation.latestGlobalRoute().name, RouteNames.stub);
 
-      app.navigation.popAllNavigatiorsToFirst();
+      app.navigation.popAllNavigatorsToFirst();
 
       await app.navigation.routeTo(app.navigation.routes.stub());
       await app.navigation.routeTo(app.navigation.routes.post());
@@ -388,7 +388,7 @@ void main() {
       );
     });
 
-    test('NavigationInteractor popAllNavigatiorsToFirst test', () async {
+    test('NavigationInteractor popAllNavigatorsToFirst test', () async {
       await app.navigation.routeTo(
         app.navigation.routes.stub(),
         forceGlobal: true,
@@ -727,12 +727,12 @@ void main() {
       );
     });
 
-    test('NavigationInteractor route dismissable test', () async {
+    test('NavigationInteractor route dismissible test', () async {
       unawaited(
         app.navigation.routeTo(
           app.navigation.routes.stub(),
           forceGlobal: true,
-          dismissable: false,
+          dismissible: false,
         ),
       );
 

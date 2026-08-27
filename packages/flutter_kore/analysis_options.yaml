@@ -10,6 +10,13 @@ analyzer:
     - lib/**.navigation.dart
     - lib/**.kore.dart
     - lib/**.api.dart
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 linter:
   rules:
@@ -24,9 +31,7 @@ linter:
     - avoid_implementing_value_types
     - avoid_init_to_null
     - avoid_js_rounded_ints
-    - avoid_null_checks_in_equality_operators
     - avoid_print
-    - avoid_private_typedef_functions
     - avoid_redundant_argument_values
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
@@ -66,7 +71,6 @@ linter:
     - no_logic_in_create_state
     - no_runtimeType_toString
     - null_closures
-    - one_member_abstracts
     - only_throw_errors
     - overridden_fields
     - package_names
@@ -109,7 +113,6 @@ linter:
     - throw_in_finally
     - type_init_formals
     - unawaited_futures
-    - unnecessary_await_in_return
     - unnecessary_brace_in_string_interps
     - unnecessary_const
     - unnecessary_getters_setters
@@ -135,7 +138,6 @@ linter:
     - unnecessary_breaks
     - use_super_parameters
     - void_checks
-    - use_if_null_to_convert_nulls_to_bools
     - use_is_even_rather_than_modulo
     - use_key_in_widget_constructors
     - use_late_for_private_fields_and_variables
