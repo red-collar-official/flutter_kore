@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_kore/arch/utility/on_become_visible.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
@@ -103,10 +103,10 @@ abstract class BaseView<
 
   @override
   void dispose() {
-    super.dispose();
-
     disposeInstance();
     _viewModel.dispose();
+    
+    super.dispose();
   }
 
   /// Factory method for view model for this view

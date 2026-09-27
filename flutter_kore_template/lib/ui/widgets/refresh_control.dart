@@ -1,17 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class UIRefreshControl extends StatelessWidget {
-  const UIRefreshControl({
-    super.key,
-    required this.onRefresh,
-    this.appearsBelowTransparentView = false,
-  });
-
-  final Future<void> Function() onRefresh;
-  final bool appearsBelowTransparentView;
-
+class const UIRefreshControl({
+  super.key,
+  required final Future<void> Function() onRefresh,
+  final bool appearsBelowTransparentView = false,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSliverRefreshControl(

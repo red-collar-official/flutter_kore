@@ -5,10 +5,6 @@ import 'package:sample_basic/domain/data/post.dart';
 part 'post_state.mapper.dart';
 
 @MappableClass()
-class PostState with PostStateMappable {
-  const PostState({this.post});
-
-  final StatefulData<Post>? post;
-
+class const PostState({final StatefulData<Post>? post}) with PostStateMappable {
   static const fromMap = PostStateMapper.fromMap;
 }

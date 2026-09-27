@@ -3,14 +3,9 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'user_defaults_state.mapper.dart';
 
 @MappableClass()
-class UserDefaultsState with UserDefaultsStateMappable {
-  const UserDefaultsState({
-    this.firebaseTokenSentFlag = false,
-    this.lastRegisteredFirebaseToken,
-  });
-
-  final bool firebaseTokenSentFlag;
-  final String? lastRegisteredFirebaseToken;
-
+class const UserDefaultsState({
+  final bool firebaseTokenSentFlag = false,
+  final String? lastRegisteredFirebaseToken,
+}) with UserDefaultsStateMappable {
   static const fromMap = UserDefaultsStateMapper.fromMap;
 }

@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_kore/arch/navigation/base/default_navigation_route_builder.dart';
 
 /// Class describing how to open app routes

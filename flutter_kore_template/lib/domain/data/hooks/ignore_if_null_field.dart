@@ -2,9 +2,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 final _ignoreObject = Object();
 
-class IgnoreIfNullField extends MappingHook {
-  const IgnoreIfNullField();
-
+class const IgnoreIfNullField() extends MappingHook {
   @override
   Object? afterEncode(Object? value) {
     if (value == null) {
@@ -15,9 +13,7 @@ class IgnoreIfNullField extends MappingHook {
   }
 }
 
-class RemoveIgnoredFields extends MappingHook {
-  const RemoveIgnoredFields();
-
+class const RemoveIgnoredFields() extends MappingHook {
   @override
   Object? afterEncode(Object? value) {
     if (value is Map) {

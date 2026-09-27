@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Widget that initializes global navigation container
 class TabNavigationInitializer extends StatelessWidget {

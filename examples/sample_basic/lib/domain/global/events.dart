@@ -1,5 +1,1 @@
-class PostLikedEvent {
-  final int id;
-
-  const PostLikedEvent({required this.id});
-}
+class const PostLikedEvent({required final int id});

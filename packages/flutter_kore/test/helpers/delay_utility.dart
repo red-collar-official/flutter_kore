@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class DelayUtility {
   static Future<void> pause({int millis = 50}) async {

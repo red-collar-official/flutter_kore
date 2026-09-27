@@ -3,15 +3,12 @@ import 'package:flutter_kore_template/domain/interactors/navigation/components/s
 import 'package:flutter_kore_template/l10n/app_localizations.dart';
 import 'package:flutter_kore_template/resources/localizations/locales_info.dart';
 import 'package:flutter_kore_template/ui/screens.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_kore/flutter_kore.dart';
 
-class AppView extends StatefulWidget {
-  const AppView({super.key});
-
+class const AppView({super.key}) extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return AppViewWidgetState();
@@ -39,9 +36,7 @@ class AppViewWidgetState extends IndependentNavigationView<AppView> {
       MaterialApp(
         localizationsDelegates: const [
           AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+          ...GlobalMaterialLocalizations.delegates,
           DefaultCupertinoLocalizations.delegate,
         ],
         supportedLocales: locales.keys.map(Locale.new).toList(),

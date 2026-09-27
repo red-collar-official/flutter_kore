@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:sample_navigation/ui/app/app_view.dart';
 import 'domain/global/global_app.dart';
 

@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Class containing settings for app navigation
 ///

@@ -1,21 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class PostCard extends StatelessWidget {
-  final VoidCallback onTap;
-  final String title;
-  final String body;
-  final bool isLiked;
-  final VoidCallback onLikeTap;
-
-  const PostCard({
-    super.key,
-    required this.onTap,
-    required this.title,
-    required this.body,
-    required this.isLiked,
-    required this.onLikeTap,
-  });
-
+class const PostCard({
+  super.key,
+  required final VoidCallback onTap,
+  required final String title,
+  required final String body,
+  required final bool isLiked,
+  required final VoidCallback onLikeTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 /// Widget to detect view visibility changes

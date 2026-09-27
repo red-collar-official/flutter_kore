@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class RefreshScrollPhysics extends BouncingScrollPhysics {
-  const RefreshScrollPhysics({super.parent});
-
+class const RefreshScrollPhysics({super.parent}) extends BouncingScrollPhysics {
   @override
   RefreshScrollPhysics applyTo(ScrollPhysics? ancestor) {
     return RefreshScrollPhysics(parent: buildParent(ancestor));

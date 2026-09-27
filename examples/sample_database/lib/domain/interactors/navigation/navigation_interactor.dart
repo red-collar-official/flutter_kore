@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_database/domain/data/app_tab.dart';
 import 'package:sample_database/domain/global/events.dart';

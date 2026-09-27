@@ -1,26 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore_template/domain/data/data.dart';
 
 typedef OnTabChangedCallback = void Function(AppTab appTab);
 
-class BottomNavigationItemData {
-  const BottomNavigationItemData(this.appTabValue);
+class const BottomNavigationItemData(final AppTab appTabValue);
 
-  final AppTab appTabValue;
-}
-
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({
-    super.key,
-    required this.currentTab,
-    required this.onTabChanged,
-    required this.items,
-  });
-
-  final AppTab currentTab;
-  final OnTabChangedCallback onTabChanged;
-  final List<BottomNavigationItemData> items;
-
+class const BottomNavigation({
+  super.key,
+  required final AppTab currentTab,
+  required final OnTabChangedCallback onTabChanged,
+  required final List<BottomNavigationItemData> items,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,16 +51,11 @@ class BottomNavigation extends StatelessWidget {
   }
 }
 
-class BottomNavigationItem extends StatelessWidget {
-  const BottomNavigationItem({
-    super.key,
-    required this.appTab,
-    this.selected = false,
-  });
-
-  final bool selected;
-  final AppTab appTab;
-
+class const BottomNavigationItem({
+  super.key,
+  required final AppTab appTab,
+  final bool selected = false,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(

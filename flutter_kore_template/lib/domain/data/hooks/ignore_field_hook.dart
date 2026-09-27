@@ -1,8 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
-class IgnoreField extends MappingHook {
-  const IgnoreField();
-
+class const IgnoreField() extends MappingHook {
   @override
   Object? afterEncode(Object? value) {
     return null;

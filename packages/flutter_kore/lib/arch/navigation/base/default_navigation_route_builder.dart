@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/material.dart' hide DialogRoute, ModalBottomSheetRoute;
+import 'package:material_ui/material_ui.dart' hide DialogRoute, ModalBottomSheetRoute;
 import 'package:flutter_kore/arch/navigation/settings.dart';
 import 'package:flutter_kore/arch/navigation/utilities/bottom_sheet_route.dart';
 import 'package:flutter_kore/arch/navigation/utilities/dialog_route.dart';

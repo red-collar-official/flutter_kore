@@ -1,4 +1,8 @@
-enum Flavor {
+enum Flavor({
+  required final String name,
+  required final String baseUrl,
+  required final bool enableLogs,
+}) {
   prod(
     name: prodName,
     baseUrl: .fromEnvironment('BASE_URL_PROD'),
@@ -19,16 +23,6 @@ enum Flavor {
     baseUrl: .fromEnvironment('BASE_URL_DEV'),
     enableLogs: true,
   );
-
-  const Flavor({
-    required this.name,
-    required this.baseUrl,
-    required this.enableLogs,
-  });
-
-  final String baseUrl;
-  final String name;
-  final bool enableLogs;
 
   // TODO: add flavor settings here
 

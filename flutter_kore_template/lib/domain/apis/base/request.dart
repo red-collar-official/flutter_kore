@@ -9,11 +9,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:flutter_kore_template/utilities/utilities.dart';
 
-class HttpRequest<T> extends DioRequest<T> {
-  HttpRequest({this.doNotRetry = false}) : super();
-
-  final bool doNotRetry;
-
+class HttpRequest<T>({final bool doNotRetry = false}) extends DioRequest<T> {
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
     defaultBaseUrl: Flavor.dev.baseUrl,

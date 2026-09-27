@@ -8,7 +8,7 @@ import 'package:flutter_kore_template/resources/resources.dart';
 import 'package:flutter_kore_template/ui/widgets/widgets.dart';
 import 'package:flutter_kore_template/utilities/utilities.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 part 'global_app.kore.dart';

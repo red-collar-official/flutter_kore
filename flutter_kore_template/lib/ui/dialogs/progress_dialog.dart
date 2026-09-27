@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class UIProgressDialog extends StatelessWidget {
-  const UIProgressDialog({super.key});
-
+class const UIProgressDialog({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Material(child: Center(child: CircularProgressIndicator()));

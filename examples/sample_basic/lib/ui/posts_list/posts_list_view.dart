@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/ui/posts_list/components/post_card.dart';
@@ -7,9 +7,7 @@ import 'package:flutter_kore/flutter_kore_widgets.dart';
 import 'posts_list_view_model.dart';
 import 'posts_list_view_state.dart';
 
-class PostsListView extends BaseWidget {
-  const PostsListView({super.key, super.viewModel});
-
+class const PostsListView({super.key, super.viewModel}) extends BaseWidget {
   @override
   State<StatefulWidget> createState() {
     return _PostsListViewWidgetState();

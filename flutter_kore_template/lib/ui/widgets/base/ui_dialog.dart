@@ -1,23 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class UIDialog extends StatelessWidget {
-  const UIDialog({
-    super.key,
-    this.backgroundColor,
-    this.elevation,
-    this.insetAnimationDuration = const Duration(milliseconds: 100),
-    this.insetAnimationCurve = Curves.decelerate,
-    this.shape,
-    required this.child,
-  });
-
-  final Color? backgroundColor;
-  final double? elevation;
-  final Duration insetAnimationDuration;
-  final Curve insetAnimationCurve;
-  final ShapeBorder? shape;
-  final Widget child;
-
+class const UIDialog({
+  super.key,
+  final Color? backgroundColor,
+  final double? elevation,
+  final Duration insetAnimationDuration = const Duration(milliseconds: 100),
+  final Curve insetAnimationCurve = Curves.decelerate,
+  final ShapeBorder? shape,
+  required final Widget child,
+}) extends StatelessWidget {
   static const RoundedRectangleBorder _defaultDialogShape =
       RoundedRectangleBorder(borderRadius: .all(.circular(2)));
   static const double _defaultElevation = 24;

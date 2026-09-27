@@ -5,11 +5,9 @@ import 'package:sample_basic/domain/data/post.dart';
 part 'posts_state.mapper.dart';
 
 @MappableClass()
-class PostsState with PostsStateMappable {
-  const PostsState({this.posts, this.active});
-
-  final StatefulData<List<Post>>? posts;
-  final bool? active;
-
+class const PostsState({
+  final StatefulData<List<Post>>? posts,
+  final bool? active,
+}) with PostsStateMappable {
   static const fromMap = PostsStateMapper.fromMap;
 }

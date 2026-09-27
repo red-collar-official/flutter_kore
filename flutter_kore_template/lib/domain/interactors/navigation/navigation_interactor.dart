@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:flutter_kore_template/domain/data/data.dart';
 import 'package:flutter_kore_template/domain/global/global.dart';

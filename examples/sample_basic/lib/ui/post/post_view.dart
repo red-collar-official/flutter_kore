@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:sample_basic/domain/data/post.dart';
 import 'package:sample_basic/domain/global/global_app.dart';
@@ -6,12 +6,8 @@ import 'package:sample_basic/domain/interactors/interactors.dart';
 import 'package:sample_basic/ui/posts_list/components/post_card.dart';
 import 'package:flutter_kore/flutter_kore_widgets.dart';
 
-class PostView extends StatefulWidget {
-  final Post? post;
-  final int? id;
-
-  const PostView({super.key, this.post, this.id});
-
+class const PostView({super.key, final Post? post, final int? id})
+    extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _PostViewWidgetState();

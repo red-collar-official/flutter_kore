@@ -3,12 +3,10 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'post.mapper.dart';
 
 @MappableClass()
-class Post with PostMappable {
-  const Post({required this.title, required this.body, required this.id});
-
-  final String? id;
-  final String? title;
-  final String? body;
-
+class const Post({
+  required final String? title,
+  required final String? body,
+  required final String? id,
+}) with PostMappable {
   static const fromMap = PostMapper.fromMap;
 }

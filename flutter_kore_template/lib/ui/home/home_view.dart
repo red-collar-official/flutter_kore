@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:flutter_kore/flutter_kore_widgets.dart';
 import 'package:flutter_kore_template/domain/data/data.dart';
@@ -8,9 +8,7 @@ import 'components/bottom_navigation_bar.dart';
 import 'home_view_model.dart';
 import 'home_view_state.dart';
 
-class HomeView extends BaseWidget {
-  const HomeView({super.key, super.viewModel});
-
+class const HomeView({super.key, super.viewModel}) extends BaseWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeViewWidgetState();

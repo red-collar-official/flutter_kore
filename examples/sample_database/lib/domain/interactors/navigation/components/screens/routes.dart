@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:sample_database/domain/data/post.dart';
 import 'package:sample_database/ui/post/post_view.dart';
 import 'package:flutter_kore/flutter_kore.dart';

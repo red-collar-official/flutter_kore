@@ -4,8 +4,5 @@ import 'package:flutter_kore_template/domain/data/app_tab.dart';
 part 'navigation_state.mapper.dart';
 
 @MappableClass()
-class NavigationState with NavigationStateMappable {
-  const NavigationState({required this.currentTab});
-
-  final AppTab currentTab;
-}
+class const NavigationState({required final AppTab currentTab})
+    with NavigationStateMappable;

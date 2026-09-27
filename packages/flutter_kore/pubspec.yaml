@@ -2,7 +2,7 @@ name: flutter_kore
 
 description: This library contains components for Flutter architecture, and also utility classes for HTTP, navigation and DI
 
-version: 1.5.3
+version: 1.6.0
 
 repository: https://github.com/red-collar-official/flutter_kore
 issue_tracker: https://github.com/red-collar-official/flutter_kore/issues
@@ -11,11 +11,14 @@ topics: [state-management, di, navigation, http]
 
 environment:
   sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  
+
+  material_ui: ^1.4.0
+  cupertino_ui: ^1.1.1
   dio: ^5.9.2
   async: ^2.13.1
   visibility_detector: ^0.4.0+2

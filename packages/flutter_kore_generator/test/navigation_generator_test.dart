@@ -1098,7 +1098,7 @@ mixin RoutesGen on RoutesBase {
           'test_navigation_main.dart': '''
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 part 'test_navigation_main.app_navigation.dart';

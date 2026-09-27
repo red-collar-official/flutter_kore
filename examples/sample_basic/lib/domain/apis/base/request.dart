@@ -19,9 +19,7 @@ import 'package:flutter_kore/flutter_kore.dart';
 ///       return list;
 ///     };
 /// ```
-class HttpRequest<T> extends DioRequest<T> {
-  HttpRequest() : super();
-
+class HttpRequest<T>() extends DioRequest<T> {
   @override
   RequestSettings<dio.Interceptor> get defaultSettings => RequestSettings(
     logPrint: (message) {

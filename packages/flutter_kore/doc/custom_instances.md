@@ -49,15 +49,7 @@ Then you can extend this custom instance and use its state, receive updates, res
 ```dart
 
 @MappableClass()
-class UsersBoxState with UsersBoxStateMappable {
-  const UsersBoxState({
-    this.id,
-    this.users,
-  });
-
-  final String? id;
-  final List<User>? users;
-}
+class const UsersBoxState({final String? id, final List<User>? users}) with UsersBoxStateMappable;
 
 @basicInstance
 class UsersBox extends BaseBox<UsersBoxState> {

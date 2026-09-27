@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 /// Mixin with methods to create disposable instances that will be disposed

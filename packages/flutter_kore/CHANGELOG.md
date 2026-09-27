@@ -1,3 +1,11 @@
+## 1.6.0
+
+- Migrate from `package:flutter/material.dart` and `package:flutter/cupertino.dart` to `material_ui` and `cupertino_ui` packages
+- Require Flutter 3.47 or newer
+- Update example project
+- Update tests
+- Update docs
+
 ## 1.5.3
 
 - Fix documentation

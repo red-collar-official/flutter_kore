@@ -20,6 +20,8 @@ dev_dependencies:
   flutter_kore_generator: ^<latest version>
 ```
 
+flutter_kore uses [material_ui](https://pub.dev/packages/material_ui) and [cupertino_ui](https://pub.dev/packages/cupertino_ui) packages, so your app should use them instead of `package:flutter/material.dart` and `package:flutter/cupertino.dart`. To migrate existing code run `dart fix --apply --code=migrate_design_widgets`.
+
 You also need dependency for build_runner if you don't have it yet.
 
 ```yaml
@@ -53,7 +55,7 @@ Here is small example demonstrating all components:
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 import 'package:flutter_kore/flutter_kore_widgets.dart';
 
@@ -61,28 +63,15 @@ part 'main.api.dart';
 part 'main.kore.dart';
 part 'main.mapper.dart';
 
-class PostLikedEvent {
-  final int id;
-
-  const PostLikedEvent({
-    required this.id,
-  });
-}
+class const PostLikedEvent({required final int id});
 
 @MappableClass()
-class Post with PostMappable {
-  const Post({
-    required this.title,
-    required this.body,
-    required this.id,
-    this.isLiked = false,
-  });
-
-  final String? title;
-  final String? body;
-  final int? id;
-  final bool isLiked;
-
+class const Post({
+  required final String? title,
+  required final String? body,
+  required final int? id,
+  final bool isLiked = false,
+}) with PostMappable {
   static const fromMap = PostMapper.fromMap;
 }
 
@@ -137,13 +126,7 @@ class PostsApi {
 }
 
 @MappableClass()
-class PostsState with PostsStateMappable {
-  const PostsState({
-    this.posts,
-  });
-
-  final StatefulData<List<Post>>? posts;
-}
+class const PostsState({final StatefulData<List<Post>>? posts}) with PostsStateMappable;
 
 @basicInstance
 class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> {
@@ -172,11 +155,7 @@ class PostsInteractor extends BaseInteractor<PostsState, Map<String, dynamic>> {
   PostsState get initialState => const PostsState();
 }
 
-class PostsListView extends StatefulWidget {
-  const PostsListView({
-    super.key,
-  });
-
+class const PostsListView({super.key}) extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _PostsListViewWidgetState();

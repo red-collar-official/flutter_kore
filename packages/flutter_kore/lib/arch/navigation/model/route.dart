@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 /// Class describing route for navigation interactor methods

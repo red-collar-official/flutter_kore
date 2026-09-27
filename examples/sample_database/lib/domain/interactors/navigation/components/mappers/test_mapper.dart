@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:sample_database/domain/global/global_app.dart';
 import 'package:sample_database/domain/interactors/navigation/components/screens/routes.dart';
 import 'package:flutter_kore/flutter_kore.dart';

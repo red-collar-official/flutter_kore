@@ -1,6 +1,6 @@
 // coverage:ignore-file
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 
 /// Default dialog route implementation
 class DialogRoute<T> extends PopupRoute<T> {

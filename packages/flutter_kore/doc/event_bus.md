@@ -11,11 +11,7 @@ Events are just model classes with needed fields.
 An example:
 
 ```dart
-class PostLikedEvent {
-  final int id;
-
-  const PostLikedEvent({required this.id});
-}
+class const PostLikedEvent({required final int id});
 ```
 
 ```dart

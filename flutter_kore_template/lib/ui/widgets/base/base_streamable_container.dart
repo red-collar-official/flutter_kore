@@ -1,57 +1,33 @@
 import 'package:flutter_kore/flutter_kore_widgets.dart';
 import 'package:flutter_kore_template/ui/widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
-abstract class BaseStreamContainer<T> extends StatefulWidget {
-  const BaseStreamContainer({
-    super.key,
-    required this.header,
-    required this.stream,
-    required this.onRefresh,
-    required this.onLoadMore,
-    this.loadingSlivers,
-    this.loadingView,
-    required this.errorView,
-    required this.length,
-    required this.builder,
-    required this.padding,
-    required this.title,
-    required this.bottomSlivers,
-    required this.showHeaderWhenEmpty,
-    required this.showTitleWhenEmpty,
-    required this.emptyView,
-    required this.showTitle,
-    required this.enableRefreshWhenError,
-    required this.asSliver,
-    required this.isFinish,
-    this.scrollController,
-    this.physics = const BouncingScrollPhysics(),
-  });
-
-  final Widget? header;
-  final StateStream<StatefulData<T>?> stream;
-  final Future<void> Function()? onRefresh;
-  final Future<void> Function()? onLoadMore;
-  final List<Widget>? loadingSlivers;
-  final Widget? loadingView;
-  final Widget errorView;
-  final Widget? emptyView;
-  final int Function(T) length;
-  final Widget Function(BuildContext, int, T) builder;
-  final EdgeInsets padding;
-  final Widget? title;
-  final List<Widget> Function(int, T?)? bottomSlivers;
-  final bool showHeaderWhenEmpty;
-  final bool showTitleWhenEmpty;
-  final bool enableRefreshWhenError;
-  final bool Function(int)? showTitle;
-  final bool asSliver;
-  final bool Function(T)? isFinish;
-  final ScrollController? scrollController;
-  final ScrollPhysics physics;
-}
+abstract class const BaseStreamContainer<T>({
+  super.key,
+  required final Widget? header,
+  required final StateStream<StatefulData<T>?> stream,
+  required final Future<void> Function()? onRefresh,
+  required final Future<void> Function()? onLoadMore,
+  final List<Widget>? loadingSlivers,
+  final Widget? loadingView,
+  required final Widget errorView,
+  required final int Function(T) length,
+  required final Widget Function(BuildContext, int, T) builder,
+  required final EdgeInsets padding,
+  required final Widget? title,
+  required final List<Widget> Function(int, T?)? bottomSlivers,
+  required final bool showHeaderWhenEmpty,
+  required final bool showTitleWhenEmpty,
+  required final Widget? emptyView,
+  required final bool Function(int)? showTitle,
+  required final bool enableRefreshWhenError,
+  required final bool asSliver,
+  required final bool Function(T)? isFinish,
+  final ScrollController? scrollController,
+  final ScrollPhysics physics = const BouncingScrollPhysics(),
+}) extends StatefulWidget;
 
 abstract class BaseStreamContainerState<T, W extends BaseStreamContainer<T>>
     extends State<W> {
