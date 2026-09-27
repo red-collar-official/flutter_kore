@@ -57,7 +57,8 @@ abstract class BaseIndependentView<KWidget extends StatefulWidget>
         EventBusReceiver,
         KoreInstance<KWidget>,
         DependentKoreInstance<KWidget>,
-        SynchronizedKoreInstance<KWidget> {
+        SynchronizedKoreInstance<KWidget>,
+        ViewKoreInstance {
   final _visibilityDetectorKey = UniqueKey();
 
   @override
@@ -74,13 +75,12 @@ abstract class BaseIndependentView<KWidget extends StatefulWidget>
       });
     }
 
+    onLaunch();
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       onFirstFrame();
     });
   }
-
-  /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
-  void onFirstFrame() {}
 
   @override
   @mustCallSuper

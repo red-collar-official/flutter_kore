@@ -105,6 +105,25 @@ abstract class BaseNavigationInteractor<
   /// main route observer for app
   final routeObserver = RouteObserver<ModalRoute<void>>();
 
+  /// Flag indicating that navigator is currently popped by this interactor
+  ///
+  /// System pop callbacks are ignored while this flag is true
+  /// because navigation stack is already updated
+  var _isPoppingNavigator = false;
+
+  /// Runs given navigator pop operation with [_isPoppingNavigator] flag set
+  void _popNavigator(VoidCallback operation) {
+    final wasPoppingNavigator = _isPoppingNavigator;
+
+    _isPoppingNavigator = true;
+
+    try {
+      operation();
+    } finally {
+      _isPoppingNavigator = wasPoppingNavigator;
+    }
+  }
+
   UIRouteModel _defailtRouteModelFor(RouteType route) => UIRouteModel(
     name: route,
     settings: const UIRouteSettings(dismissible: false),
@@ -277,7 +296,7 @@ abstract class BaseNavigationInteractor<
 
     navigationStack.pop(currentTab, isInGlobal || isInBottomSheetApp);
 
-    navigator.currentState?.pop(payload);
+    _popNavigator(() => navigator.currentState?.pop(payload));
   }
 
   /// Pops latest route in given tab
@@ -306,7 +325,7 @@ abstract class BaseNavigationInteractor<
 
     navigationStack.pop(tab, false);
 
-    navigator?.currentState?.pop(payload);
+    _popNavigator(() => navigator?.currentState?.pop(payload));
   }
 
   /// Opens new route
@@ -372,7 +391,9 @@ abstract class BaseNavigationInteractor<
       onSystemPop: routeSettings.replace
           ? null
           : () {
-              pop(onlyInternalStack: true);
+              if (!_isPoppingNavigator) {
+                pop(onlyInternalStack: true);
+              }
             },
     );
     // coverage:ignore-end
@@ -602,7 +623,9 @@ abstract class BaseNavigationInteractor<
     final navigator = getNavigator(forceGlobal: true);
 
     // coverage:ignore-start
-    navigator.currentState?.popUntil((route) => route.isFirst);
+    _popNavigator(
+      () => navigator.currentState?.popUntil((route) => route.isFirst),
+    );
     // coverage:ignore-end
 
     navigationStack.replaceStack(
@@ -621,7 +644,9 @@ abstract class BaseNavigationInteractor<
     }
 
     // coverage:ignore-start
-    navigator.currentState?.popUntil((route) => route.isFirst);
+    _popNavigator(
+      () => navigator.currentState?.popUntil((route) => route.isFirst),
+    );
     // coverage:ignore-end
 
     if (!clearStack) {
@@ -656,8 +681,10 @@ abstract class BaseNavigationInteractor<
     }
 
     // coverage:ignore-start
-    bottomSheetDialogNavigatorKey.currentState?.popUntil(
-      (route) => route.isFirst,
+    _popNavigator(
+      () => bottomSheetDialogNavigatorKey.currentState?.popUntil(
+        (route) => route.isFirst,
+      ),
     );
     // coverage:ignore-end
   }

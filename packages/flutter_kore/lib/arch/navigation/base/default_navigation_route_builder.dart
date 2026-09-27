@@ -4,7 +4,7 @@ import 'package:material_ui/material_ui.dart' hide DialogRoute, ModalBottomSheet
 import 'package:flutter_kore/arch/navigation/settings.dart';
 import 'package:flutter_kore/arch/navigation/utilities/bottom_sheet_route.dart';
 import 'package:flutter_kore/arch/navigation/utilities/dialog_route.dart';
-import 'package:flutter_kore/arch/navigation/utilities/willpop_cupertino_page_route.dart';
+import 'package:flutter_kore/arch/navigation/utilities/page_routes.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import 'navigation_route_builder.dart';
@@ -64,17 +64,18 @@ class DefaultNavigationRouteBuilder extends NavigationRouteBuilder {
     required bool fullScreenDialog,
     required VoidCallback? onSystemPop,
   }) {
+    // onSystemPop triggers only when system back gesture is used
     if (UniversalPlatform.isAndroid) {
-      return MaterialPageRoute(
+      return UIMaterialPageRoute(
         builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
+        onSystemPop: onSystemPop,
       );
     } else {
       return UICupertinoPageRoute(
         builder: (BuildContext context) => child,
         fullscreenDialog: fullScreenDialog,
-        onClosedCallback:
-            onSystemPop, // triggers only when used ios back gesture
+        onSystemPop: onSystemPop,
       );
     }
   }

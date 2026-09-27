@@ -1,3 +1,12 @@
+## 1.6.1
+
+- `FormViewModelMixin` can now be applied to `BaseIndependentView` too, added `FormViewMixin` alias for independent views
+- `FormViewModelMixin` now disposes `disable` observable and ignores validation and submit results that arrive after dispose
+- Repeated `prefillFields` calls are ignored
+- Replace outdated copy of `CupertinoPageRoute` with `UICupertinoPageRoute` and `UIMaterialPageRoute` based on new `SystemPopRouteMixin`
+- Update tests
+- Update docs
+
 ## 1.6.0
 
 - Migrate from `package:flutter/material.dart` and `package:flutter/cupertino.dart` to `material_ui` and `cupertino_ui` packages

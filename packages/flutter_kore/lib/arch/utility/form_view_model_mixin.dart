@@ -5,9 +5,15 @@ import 'package:flutter_kore/flutter_kore.dart';
 
 typedef ValidatorsMap = Map<GlobalKey, Future<FieldValidationState> Function()>;
 
+/// Alias of [FormViewModelMixin] to use with independent views
+typedef FormViewMixin = FormViewModelMixin;
+
 /// Mixin with helper methods to create form views
-mixin FormViewModelMixin<Widget extends StatefulWidget, State>
-    on BaseViewModel<Widget, State> {
+///
+/// Can be applied to both [BaseViewModel] and [BaseIndependentView]
+mixin FormViewModelMixin on ViewKoreInstance {
+  var _fieldsPrefilled = false;
+
   final fieldStates = <GlobalKey, Observable<FieldValidationState>>{};
   final _actualValidators =
       <GlobalKey, Future<FieldValidationState> Function()>{};
@@ -53,6 +59,11 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
       final validationFunction = _actualValidators[element];
 
       final validationResult = await validationFunction!();
+
+      if (isDisposed) {
+        return false;
+      }
+
       updateFieldState(element, validationResult);
 
       result &= validationResult is! ErrorFieldState;
@@ -73,7 +84,10 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
     final validationFunction = _actualValidators[key];
 
     final validationResult = await validationFunction!();
-    updateFieldState(key, validationResult);
+
+    if (!isDisposed) {
+      updateFieldState(key, validationResult);
+    }
 
     return validationResult;
   }
@@ -86,18 +100,28 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
   @override
   @mustCallSuper
   void onLaunch() {
+    super.onLaunch();
+
     prefillFields();
   }
 
   /// Prefills all field in form
-  /// This is run when view model is created
+  /// This is run in [onLaunch], repeated calls are ignored
   @mustCallSuper
   void prefillFields() {
+    if (_fieldsPrefilled) {
+      return;
+    }
+
+    _fieldsPrefilled = true;
+
     for (final key in validators.keys) {
       fieldStates[key] = .initial(const IgnoredFieldState());
 
       _actualValidators[key] = () => validators[key]!().then((value) {
-        fieldStates[key]!.update(value);
+        if (!isDisposed) {
+          fieldStates[key]!.update(value);
+        }
 
         return value;
       });
@@ -107,6 +131,8 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
       fieldStates.forEach((key, value) {
         value.dispose();
       });
+
+      disable.dispose();
     });
   }
 
@@ -141,9 +167,17 @@ mixin FormViewModelMixin<Widget extends StatefulWidget, State>
       }
     }
 
+    if (isDisposed) {
+      return;
+    }
+
     disable.update(true);
 
     await onSubmit();
+
+    if (isDisposed) {
+      return;
+    }
 
     disable.update(false);
   }

@@ -149,6 +149,8 @@ UINavigationSettings.bottomSheetBorderRadius = BorderRadius.only(
 
 If you need to specify a custom transition builder, you can specify `routeBuilder` in the navigation settings object or you can specify `customRouteBuilder` for a specific route.
 
+The default route builder uses `UICupertinoPageRoute` on iOS and `UIMaterialPageRoute` on Android. When a route is popped by a system back gesture (the iOS back swipe or the Android predictive back gesture), these routes call `onSystemPop`, so the navigation stack stays in sync. If your custom route builder returns its own page routes, apply `SystemPopRouteMixin` to them and pass `onSystemPop` to keep this behavior.
+
 You can see how routes are specified in the `example_navigation` example and in the section below.
 
 You also need to create a root navigation view model and view state. This is described below.
@@ -1068,6 +1070,28 @@ app.navigation.showBottomSheet(
 
 ```
 
+### Route Results
+
+If you pass `awaitRouteResult: true` to `routeTo`, it returns the payload passed to `pop`:
+
+```dart
+final result = await app.navigation.routeTo(
+  app.navigation.routes.editPost(),
+  awaitRouteResult: true,
+);
+
+// in edit post view model
+app.navigation.pop(payload: editedPost);
+```
+
+If the route is closed without a payload—for example, with the iOS back swipe or the Android predictive back gesture—the result is `null`. To return a value in this case, set `defaultResult` for the route from the view:
+
+```dart
+SystemPopRouteMixin.of(context)?.defaultResult = editedPost;
+```
+
+`defaultResult` is returned whenever the route is closed without a payload.
+
 ### Route Settings
 
 You can pass settings to every route, dialog, or bottom sheet.
@@ -1078,7 +1102,7 @@ Here is a list of supported parameters:
 
 1) dismissible - if true, then the route cannot be popped by system gestures or back buttons but can be popped with the `pop` method;
 2) uniqueInStack - if true, then if a route with the given name is already present in the stack, the new route will be ignored;
-3) needToEnsureClose - flag indicating that if system gestures or back buttons are used instead of popping the screen or ignoring it, the navigation interactor will send an `EnsureCloseRequestedEvent` event to the global event bus. You can subscribe to it in view models of screens that need to be checked before closing. It is recommended to pause this event so only the visible screen can respond to the sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with the iOS swipe back gesture—it will always be executed if the route is `dismissible`;
+3) needToEnsureClose - flag indicating that if system gestures or back buttons are used instead of popping the screen or ignoring it, the navigation interactor will send an `EnsureCloseRequestedEvent` event to the global event bus. You can subscribe to it in view models of screens that need to be checked before closing. It is recommended to pause this event so only the visible screen can respond to the sent event. More information about events can be found [here](./event_bus.md). Be aware that this flag does not work with the iOS swipe back gesture or the Android predictive back gesture—they will always be executed if the route is `dismissible`;
 4) fullScreenDialog - flag indicating that the route will be opened as a fullscreen dialog—with back gestures disabled on iOS and a specific animation;
 5) global - flag indicating that this route must be opened in the global stack, not in the tab stack. If the app does not use tab navigation, this flag is ignored;
 6) id - unique id of this route. Can be any Object;

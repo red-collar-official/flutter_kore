@@ -210,6 +210,23 @@ void main() {
     viewModel.dispose();
   });
 
+  test('FormViewModel repeated prefill test', () async {
+    final viewModel = TestkoreForKInstance1();
+
+    viewModel.initialize(const TestWidget());
+    viewModel.onLaunch();
+
+    final fieldState = viewModel.fieldStates[testKey1];
+
+    viewModel.prefillFields();
+
+    expect(identical(viewModel.fieldStates[testKey1], fieldState), true);
+
+    viewModel.dispose();
+
+    expect(viewModel.disable.isDisposed, true);
+  });
+
   test('FormViewModel reset field test', () async {
     final viewModel = TestkoreForKInstance2();
 

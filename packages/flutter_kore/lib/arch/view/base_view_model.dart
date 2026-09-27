@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_kore/flutter_kore.dart';
 
 /// Main class to extend to create view models
@@ -35,21 +34,8 @@ abstract class BaseViewModel<KWidget extends StatefulWidget, MState>
         StatefulKoreInstance<MState, KWidget>,
         DependentKoreInstance<KWidget>,
         SynchronizedKoreInstance<KWidget>,
-        ApiCaller<KWidget> {
-  /// Function to be executed after [State.initState]
-  // coverage:ignore-start
-  void onLaunch() {}
-
-  /// Function to be executed after first frame with [WidgetsBinding.instance.addPostFrameCallback]
-  void onFirstFrame() {}
-
-  /// Utility function to remove input focus for current view
-  void removeInputFocus() {
-    SystemChannels.textInput.invokeMethod('TextInput.hide');
-    FocusManager.instance.primaryFocus?.unfocus();
-  }
-  // coverage:ignore-end
-
+        ApiCaller<KWidget>,
+        ViewKoreInstance {
   @mustCallSuper
   @override
   void initialize(KWidget input) {

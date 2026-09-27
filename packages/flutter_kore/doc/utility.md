@@ -106,7 +106,7 @@ final confirmationResult = await confirmEmail(link);
 final error = confirmationResult.unwrapError<ServerSideException>();
 ```
 
-There are also two helper mixins that you can apply to your view models or instances.
+There are also two helper mixins that you can apply to your view models, independent views or instances.
 
 #### UseDisposableMixin
 
@@ -126,7 +126,7 @@ Here is a use case example:
 
 ```dart
 class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState>
-    with UseDisposableViewModelMixin {
+    with UseDisposableMixin {
   late final descriptionController = useTextEditingController();
   late final emailController = useTextEditingController();
 }
@@ -134,7 +134,7 @@ class SupportViewModel extends NavigationViewModel<SupportView, SupportViewState
 
 #### FormViewModelMixin
 
-`FormViewModelMixin` can be applied only to view models.
+`FormViewModelMixin` can be applied to view models and independent views. For independent views you can also use the `FormViewMixin` alias - it is the same mixin.
 
 It helps to manage form views where you need to validate user input.
 
@@ -164,7 +164,7 @@ Here you can see an example:
 ```dart
 class SupportViewModel
     extends NavigationViewModel<SupportView, SupportViewState>
-    with FormViewModelMixin, UseDisposableViewModelMixin {
+    with FormViewModelMixin, UseDisposableMixin {
   late final descriptionController = useTextEditingController();
   late final emailController = useTextEditingController();
 
@@ -181,7 +181,7 @@ class SupportViewModel
   }
 
   @override
-  Future<void> submit() async {
+  Future<void> onSubmit() async {
     await sendSupportRequest();
   }
 
@@ -222,6 +222,47 @@ Button(
 ```
 
 You also can use `disableStreamWrap` to subscribe to stream disable form events so you can ignore taps while form data is sending. 
+
+Fields are prefilled in `onLaunch`, so if you override `onLaunch` always call `super.onLaunch()`.
+
+Here is the same form in an independent view:
+
+```dart
+class _SupportViewWidgetState extends BaseIndependentView<SupportView>
+    with FormViewMixin, UseDisposableMixin {
+  late final descriptionController = useTextEditingController();
+
+  final descriptionKey = GlobalKey();
+
+  @override
+  Future<void> onSubmit() async {
+    await sendSupportRequest();
+  }
+
+  @override
+  ValidatorsMap get validators => {
+        descriptionKey: () {
+          return Future.value(validateSupportTicket(descriptionController));
+        },
+      };
+
+  @override
+  Widget buildView(BuildContext context) {
+    return Column(
+      children: [
+        WhatHappenedField(
+          key: descriptionKey,
+          controller: descriptionController,
+          stateStream: fieldStateStream(descriptionKey),
+          initialState: () => currentFieldState(descriptionKey),
+          validator: () => validatorForKey(descriptionKey),
+        ),
+        Button(onTap: executeSubmitAction),
+      ],
+    );
+  }
+}
+```
 
 #### StreamBuilders
 

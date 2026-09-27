@@ -22,7 +22,7 @@ To get local instances connected to the view model, use `useLocalInstance<T>()`.
 
 To get a part, use the `useInstancePart<T>()` method.
 
-Independent views can also override the `onFirstFrame`, which is called on the first post-frame callback of the corresponding view.
+Independent views can also override the `onLaunch` method, which is called on `initState` after dependencies are initialized, and `onFirstFrame`, which is called on the first post-frame callback of the corresponding view.
 
 Example:
 

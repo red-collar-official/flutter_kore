@@ -8,6 +8,8 @@ export 'base/view/tab_navigator_initializer.dart';
 export 'base/default_navigation_route_builder.dart';
 export 'base/navigation_route_builder.dart';
 
+export 'utilities/page_routes.dart';
+
 export 'model/route.dart';
 export 'model/route_settings.dart';
 export 'model/navigation_interactor_settings.dart';
