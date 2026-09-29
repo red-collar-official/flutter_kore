@@ -12,13 +12,16 @@ abstract class NavigationViewModel<KWidget extends StatefulWidget, IState>
 
   late final navigationInteractor = KoreApp.navigationInteractor!;
 
-  void pop() {
+  /// Pops current screen in navigator where this screen is placed
+  ///
+  /// [payload] is returned as route result to awaiting routeTo call
+  void pop({dynamic payload}) {
     if (navigationInteractor.isInGlobalStack()) {
-      navigationInteractor.pop();
+      navigationInteractor.pop(payload: payload);
     } else if (screenTab == null) {
-      navigationInteractor.pop();
+      navigationInteractor.pop(payload: payload);
     } else {
-      navigationInteractor.popInTab(screenTab);
+      navigationInteractor.popInTab(screenTab, payload: payload);
     }
   }
 }
@@ -71,13 +74,16 @@ abstract class IndependentNavigationView<KWidget extends StatefulWidget>
 
   late final navigationInteractor = KoreApp.navigationInteractor!;
 
-  void pop() {
+  /// Pops current screen in navigator where this screen is placed
+  ///
+  /// [payload] is returned as route result to awaiting routeTo call
+  void pop({dynamic payload}) {
     if (navigationInteractor.isInGlobalStack()) {
-      navigationInteractor.pop();
+      navigationInteractor.pop(payload: payload);
     } else if (screenTab == null) {
-      navigationInteractor.pop();
+      navigationInteractor.pop(payload: payload);
     } else {
-      navigationInteractor.popInTab(screenTab);
+      navigationInteractor.popInTab(screenTab, payload: payload);
     }
   }
 

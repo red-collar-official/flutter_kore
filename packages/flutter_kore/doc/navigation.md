@@ -478,7 +478,20 @@ class _PostsViewWidgetState extends NavigationView<HomeView, HomeViewState, Home
 }
 ```
 
-Inside `NavigationViewModel`, you need to use the `pop` method of the view model instead of `app.navigation.pop()`.
+Inside `NavigationViewModel`, you need to use the `pop` method of the view model instead of `app.navigation.pop()`. The same applies to `IndependentNavigationView`. The view model or view knows which navigator its screen is in, so it pops the right tab navigator.
+
+You can pass a result to the screen that opened this route with `payload`. It is returned from `routeTo` when the route is opened with `awaitRouteResult: true`:
+
+```dart
+// opening screen
+final result = await app.navigation.routeTo(
+  app.navigation.routes.post(id: '1'),
+  awaitRouteResult: true,
+);
+
+// inside NavigationViewModel or IndependentNavigationView of the opened screen
+pop(payload: true);
+```
 
 ### Deep Links
 

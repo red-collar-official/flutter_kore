@@ -6,6 +6,7 @@ import '../helpers/test_builders.dart';
 import '../mocks/navigation/components/app_tab.dart';
 import '../mocks/navigation/components/screens/routes.dart';
 import '../mocks/navigation/navigation_interactor.dart';
+import '../mocks/test_widget.dart';
 
 class TestApp extends KoreApp<NavigationInteractor> {
   @override
@@ -17,11 +18,32 @@ class TestApp extends KoreApp<NavigationInteractor> {
   List<Connector> get singletonInstances => [];
 }
 
-UIRoute<RouteNames> globalRoute(RouteNames name) {
+class TestNavigationViewModel extends NavigationViewModel<TestWidget, int> {
+  @override
+  int get initialState => 1;
+}
+
+class TestIndependentNavigationWidget extends StatefulWidget {
+  const TestIndependentNavigationWidget({super.key});
+
+  @override
+  State<TestIndependentNavigationWidget> createState() =>
+      TestIndependentNavigationWidgetState();
+}
+
+class TestIndependentNavigationWidgetState
+    extends IndependentNavigationView<TestIndependentNavigationWidget> {
+  @override
+  Widget buildView(BuildContext context) {
+    return const Text('independent');
+  }
+}
+
+UIRoute<RouteNames> globalRoute(RouteNames name, {Widget? child}) {
   return UIRoute<RouteNames>(
     name: name,
     defaultSettings: const UIRouteSettings(global: true),
-    child: Text(name.toString()),
+    child: child ?? Text(name.toString()),
   );
 }
 
@@ -136,5 +158,58 @@ void main() {
       expect(globalStack().length, 1);
       expect(await result, 'payload');
     });
+
+    testWidgets('NavigationViewModel pop with payload returns payload test', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+
+      final viewModel = TestNavigationViewModel()
+        ..initialize(const TestWidget());
+
+      final result = app.navigation.routeTo(
+        globalRoute(RouteNames.post),
+        awaitRouteResult: true,
+      );
+      await tester.pumpAndSettle();
+
+      viewModel.pop(payload: 'payload');
+      await tester.pumpAndSettle();
+
+      expect(find.text(RouteNames.post.toString()), findsNothing);
+      expect(globalStack().length, 1);
+      expect(await result, 'payload');
+
+      viewModel.dispose();
+    });
+
+    testWidgets(
+      'IndependentNavigationView pop with payload returns payload test',
+      (tester) async {
+        await pumpApp(tester);
+
+        final result = app.navigation.routeTo(
+          globalRoute(
+            RouteNames.post,
+            child: const TestIndependentNavigationWidget(),
+          ),
+          awaitRouteResult: true,
+        );
+        await tester.pumpAndSettle();
+
+        tester
+            .state<TestIndependentNavigationWidgetState>(
+              find.byType(TestIndependentNavigationWidget),
+            )
+            .pop(payload: 'payload');
+        await tester.pumpAndSettle();
+
+        expect(find.text('independent'), findsNothing);
+        expect(globalStack().length, 1);
+        expect(await result, 'payload');
+
+        await tester.pump(const Duration(milliseconds: 500));
+      },
+    );
   });
 }

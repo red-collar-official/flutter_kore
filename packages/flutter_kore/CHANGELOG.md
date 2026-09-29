@@ -1,3 +1,9 @@
+## 1.6.2
+
+- `NavigationViewModel.pop` and `IndependentNavigationView.pop` now accept optional `payload` that is returned as route result
+- Update tests
+- Update docs
+
 ## 1.6.1
 
 - `FormViewModelMixin` can now be applied to `BaseIndependentView` too, added `FormViewMixin` alias for independent views
