@@ -1,3 +1,9 @@
+## 1.6.3
+
+- `StatefulKoreInstance.updateState` now ignores calls after dispose instead of throwing `IllegalStateException`, so state can be safely updated after an `executeAndCancelOnDispose` request is canceled (`Store.updateState` is unchanged)
+- Update tests
+- Update docs
+
 ## 1.6.2
 
 - `NavigationViewModel.pop` and `IndependentNavigationView.pop` now accept optional `payload` that is returned as route result

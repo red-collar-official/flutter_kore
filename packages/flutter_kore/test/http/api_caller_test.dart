@@ -74,5 +74,48 @@ void main() {
         true,
       );
     });
+
+    test('ApiCaller updateState after request completed test', () async {
+      final request = HttpRequest<int>()
+        ..method = .get
+        ..baseUrl = testBaseUrl
+        ..url = testPath;
+
+      addTestResponsesToDio(request.httpInstance);
+
+      final interactor = await instances
+          .getUniqueAsync<TestInteractorWithRequest>();
+
+      await interactor.executeTestRequestAndUpdateState(request);
+
+      expect(interactor.state, 1);
+
+      interactor.dispose();
+    });
+
+    test('ApiCaller updateState after cancel on dispose test', () async {
+      final request = HttpRequest<int>()
+        ..method = .get
+        ..baseUrl = testBaseUrl
+        ..url = testPath;
+
+      addTestResponsesToDio(request.httpInstance);
+
+      final interactor = await instances
+          .getUniqueAsync<TestInteractorWithRequest>();
+
+      final future = interactor.executeTestRequestAndUpdateState(request);
+
+      await DelayUtility.pause();
+
+      expect(interactor.state, -1);
+
+      interactor.dispose();
+
+      await expectLater(future, completes);
+
+      expect(interactor.isDisposed, true);
+      expect(interactor.state, -1);
+    });
   });
 }

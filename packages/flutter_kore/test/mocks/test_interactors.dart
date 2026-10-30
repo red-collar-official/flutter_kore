@@ -695,6 +695,20 @@ class TestInteractorWithRequest extends BaseInteractor<int, int?> {
   Future<void> executeTestRequest(HttpRequest request) async {
     await executeAndCancelOnDispose(request);
   }
+
+  Future<void> executeTestRequestAndUpdateState(
+    HttpRequest<int> request,
+  ) async {
+    updateState(-1);
+
+    final response = await executeAndCancelOnDispose(request);
+
+    if (response.isSuccessful) {
+      updateState(response.result ?? 0);
+    } else {
+      updateState(-2);
+    }
+  }
 }
 
 class TestInteractorAsyncSameDependency extends BaseInteractor<int, int?> {

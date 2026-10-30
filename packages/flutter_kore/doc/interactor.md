@@ -12,6 +12,8 @@ Interactor state can be any immutable object. You can use `dart-mappable` or `fr
 
 State can be updated with the `updateState` method, and receivers like view models can later subscribe to state update events with `updates` or `changes` (`changes` returns a stream of old and new values in the object, `updates` returns a stream of new object values).
 
+Calling `updateState` on a disposed instance does nothing. This makes it safe to update state after `await executeAndCancelOnDispose(...)`, where the instance can be disposed while the request is running. Only `updateState` is ignored—`updates`, `changes`, and `wrapUpdates` still throw after dispose, so check `isDisposed` if you do anything else after `await`.
+
 There is also a `wrapUpdates` method that returns a `Stream` for a given mapper and also exposes the current value—it simplifies work with `StreamBuilder`. Instead of creating a `Stream` getter with the `updates` method and a getter for the current value, you can use this method to get an object that wraps these getters, and you can use the `stream` field and `current` getter. And also there is a `wrapChanges` analogue for the `changes` method.
 
 Interactors must be annotated with `basicInstance`, `singleton`, or the full `Instance` annotation.

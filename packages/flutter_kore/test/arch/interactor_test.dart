@@ -494,10 +494,10 @@ void main() {
 
       expect(interactor3.isDisposed, true);
 
-      expect(
-        () => interactor3.updateState(1),
-        throwsA(isA<IllegalStateException>()),
-      );
+      final stateBefore = interactor3.state;
+
+      expect(() => interactor3.updateState(1), returnsNormally);
+      expect(interactor3.state, stateBefore);
     });
 
     test('Interactor async unconnected store initial state test', () async {

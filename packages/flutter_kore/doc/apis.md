@@ -351,6 +351,18 @@ response = await app.apis.posts.getPosts(0, limit).execute();
 response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
 ```
 
+When the instance is disposed, the request is canceled, but the code after `await` is still executed on the disposed instance. Usually the response is unsuccessful with a canceled error, but it can also be successful—for example, if the request is retried after `RequestCollection.cancelAllRequests`, has the `ignoreCancellations` flag, or returns data from the database. So do not use `response.isSuccessful` to detect dispose.
+
+Calling `updateState` there is safe because it is ignored after dispose. Other calls are not covered—`updates`, `changes`, and `wrapUpdates` still throw on a disposed instance, and navigation or events are still executed—so check `isDisposed` before doing anything else after `await`:
+
+```dart
+final response = await executeAndCancelOnDispose(app.apis.posts.getPosts(0, limit));
+
+if (isDisposed) {
+  return;
+}
+```
+
 If you do not want to cancel a request—for example, if it is some important POST request—use the request as usual.
 
 More info about custom API callers can be found [here](https://./custom_instances.md).

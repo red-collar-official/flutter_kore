@@ -24,6 +24,16 @@ mixin ApiCaller<Input> on KoreInstance<Input> {
 
   /// Executes request and adds it in local requests collection
   ///
+  /// If this instance is disposed while request is running the request is canceled,
+  /// but the returned future still completes and the code after `await`
+  /// is executed on a disposed instance
+  ///
+  /// Usually the result is unsuccessful [Response] with canceled error,
+  /// but it can also be successful - for example if request is retried
+  /// after [RequestCollection.cancelAllRequests], has [BaseRequest.ignoreCancellations] flag
+  /// or returns data from database. Do not rely on [Response.isSuccessful] to detect dispose,
+  /// check [KoreInstance.isDisposed] instead
+  ///
   /// [request] - request to track
   Future<Response<T>> executeAndCancelOnDispose<T, I, B, F>(
     BaseRequest<T, I, B, F> request,

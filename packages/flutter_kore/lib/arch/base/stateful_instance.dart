@@ -227,13 +227,20 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
   ///
   /// [state] - new state value
   ///
+  /// If the underlying [Store] is already disposed the call is ignored.
+  /// This happens when a request executed with [ApiCaller.executeAndCancelOnDispose]
+  /// is canceled on dispose and the code after `await` tries to publish the result
+  ///
+  /// Only this method is ignored after dispose - [updates], [changes]
+  /// and [wrapUpdates] still throw [IllegalStateException]
+  ///
   /// ```dart
   /// @basicInstance
   /// class PostsInteractor extends BaseInteractor<PostsState> {
   ///   Future<void> loadPosts({bool refresh = false}) async {
   ///     updateState(state.copyWith(posts: LoadingData()));
   ///
-  ///     final response = await app.apis.posts.getPosts().execute();
+  ///     final response = await executeAndCancelOnDispose(app.apis.posts.getPosts());
   ///
   ///     if (response.isSuccessful) {
   ///       updateState(state.copyWith(posts: SuccessData(response.result ?? [])));
@@ -244,6 +251,10 @@ mixin StatefulKoreInstance<State, Input> on KoreInstance<Input> {
   /// }
   /// ```
   void updateState(State state) {
+    if (_store.isDisposed) {
+      return;
+    }
+
     _store.updateState(state);
   }
 
